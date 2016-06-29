@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'SpotHero_iOS_Partner_SDK_Example' do
+  pod 'SpotHero_iOS_Partner_SDK', :path => '../'
+
+  target 'SpotHero_iOS_Partner_SDK_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
