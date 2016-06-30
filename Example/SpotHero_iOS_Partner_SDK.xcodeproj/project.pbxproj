@@ -218,6 +218,7 @@
 				607FACCC1AFB9204008FA782 /* Sources */,
 				607FACCD1AFB9204008FA782 /* Frameworks */,
 				607FACCE1AFB9204008FA782 /* Resources */,
+				336178351D249EA300AF7AD6 /* 🤓 Swift-Clean Run Script */,
 				3583224C1D12D105F5CAE194 /* 📦 Embed Pods Frameworks */,
 				0880808AA2DC77C3EC9D3374 /* 📦 Copy Pods Resources */,
 			);
@@ -336,6 +337,20 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SpotHero_iOS_Partner_SDK_Example/Pods-SpotHero_iOS_Partner_SDK_Example-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		336178351D249EA300AF7AD6 /* 🤓 Swift-Clean Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "🤓 Swift-Clean Run Script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Scripts/Swift-Clean_Run_Script.sh\"";
 		};
 		3583224C1D12D105F5CAE194 /* 📦 Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -617,16 +632,13 @@
 			baseConfigurationReference = 598A47307E22AF714D78D454 /* Pods-SpotHero_iOS_Partner_SDK_Tests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = Tests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SpotHero_iOS_Partner_SDK_Example.app/SpotHero_iOS_Partner_SDK_Example";
@@ -638,12 +650,9 @@
 			baseConfigurationReference = 2EA8833E3E8B61B4E0E4DBA1 /* Pods-SpotHero_iOS_Partner_SDK_Tests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Tests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SpotHero_iOS_Partner_SDK_Example.app/SpotHero_iOS_Partner_SDK_Example";
