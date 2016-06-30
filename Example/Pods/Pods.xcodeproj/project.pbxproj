@@ -33,6 +33,7 @@
 		336178491D24B8AD00AF7AD6 /* SpotHeroPartnerSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336178481D24B8AD00AF7AD6 /* SpotHeroPartnerSDK.swift */; };
 		3361784B1D24BAF200AF7AD6 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3361784A1D24BAF200AF7AD6 /* APIError.swift */; };
 		3361784E1D24BD6A00AF7AD6 /* ServerErrorJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3361784D1D24BD6A00AF7AD6 /* ServerErrorJSON.swift */; };
+		336178501D24C08A00AF7AD6 /* UIColor+SpotHeroPartner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3361784F1D24C08A00AF7AD6 /* UIColor+SpotHeroPartner.swift */; };
 		349E3EACBE9B962B4B7D1E8CECBF382F /* IOHIDEvent+KIF.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B846D8DAD5EA51B03E71CD54AFAB26D /* IOHIDEvent+KIF.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		36DFA0C24074B24B2339CC6AC599D497 /* UIAutomationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 07BFFA364566EBAF20725705610903D5 /* UIAutomationHelper.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		3784B462CF975A5AD43D9C1E5A7BDAB3 /* UITouch-KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 718E1B6539BF872712FC1452A8E291C1 /* UITouch-KIFAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -238,6 +239,7 @@
 		336178481D24B8AD00AF7AD6 /* SpotHeroPartnerSDK.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotHeroPartnerSDK.swift; sourceTree = "<group>"; };
 		3361784A1D24BAF200AF7AD6 /* APIError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		3361784D1D24BD6A00AF7AD6 /* ServerErrorJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerErrorJSON.swift; sourceTree = "<group>"; };
+		3361784F1D24C08A00AF7AD6 /* UIColor+SpotHeroPartner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+SpotHeroPartner.swift"; sourceTree = "<group>"; };
 		34F191306BE13B0604226705D0A83380 /* Pods-SpotHero_iOS_Partner_SDK_ExampleUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SpotHero_iOS_Partner_SDK_ExampleUITests-umbrella.h"; sourceTree = "<group>"; };
 		36DDAFCA2170A1E7AA4BDAFECBCBEA88 /* VOKBenkode-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "VOKBenkode-prefix.pch"; sourceTree = "<group>"; };
 		3A2ADFE230B15D2C3B7F51A9ED50B3BB /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -544,6 +546,7 @@
 			isa = PBXGroup;
 			children = (
 				336178431D24B6E400AF7AD6 /* NSURLQueryItem+QueryParams.swift */,
+				3361784F1D24C08A00AF7AD6 /* UIColor+SpotHeroPartner.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1110,6 +1113,7 @@
 				336178471D24B7EE00AF7AD6 /* DLog.swift in Sources */,
 				2799793652B21D53C49E22C03174A0A9 /* SpotHero_iOS_Partner_SDK-dummy.m in Sources */,
 				3361783D1D24B23D00AF7AD6 /* JSONDictionary.swift in Sources */,
+				336178501D24C08A00AF7AD6 /* UIColor+SpotHeroPartner.swift in Sources */,
 				336178411D24B4B800AF7AD6 /* APIHeaders.swift in Sources */,
 				336178441D24B6E400AF7AD6 /* NSURLQueryItem+QueryParams.swift in Sources */,
 			);
