@@ -7,8 +7,10 @@
 //
 
 import XCTest
+import KIF
+@testable import SpotHero_iOS_Partner_SDK_Example
 
-class ShowSDKUITests: XCTestCase {
+class ShowSDKUITests: KIFTestCase {
 
     func testExample() {
         XCTFail("Tests don't actually exist yet")

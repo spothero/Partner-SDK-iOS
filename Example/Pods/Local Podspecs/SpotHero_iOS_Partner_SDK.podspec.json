@@ -1,22 +1,19 @@
 {
   "name": "SpotHero_iOS_Partner_SDK",
-  "version": "0.1.0",
-  "summary": "A short description of SpotHero_iOS_Partner_SDK.",
-  "description": "TODO: Add long description of the pod here.",
-  "homepage": "https://github.com/<GITHUB_USERNAME>/SpotHero_iOS_Partner_SDK",
-  "license": {
-    "type": "MIT",
-    "file": "LICENSE"
-  },
-  "authors": {
-    "Ellen Shapiro": "designatednerd@gmail.com"
-  },
-  "source": {
-    "git": "https://github.com/<GITHUB_USERNAME>/SpotHero_iOS_Partner_SDK.git",
-    "tag": "0.1.0"
-  },
   "platforms": {
     "ios": "8.0"
   },
+  "version": "0.1.0",
+  "summary": "An SDK for simple integration with SpotHero.",
+  "description": "An SDK that allows your users to book SpotHero parking directly from within your app.",
+  "homepage": "https://github.com/spothero/iOS_Partner_SDK",
+  "authors": {
+    "SpotHero Mobile": "mobile@spothero.com"
+  },
+  "source": {
+    "git": "https://github.com/spothero/iOS_Partner_SDK.git",
+    "tag": "0.1.0"
+  },
+  "social_media_url": "https://twitter.com/SpotHero",
   "source_files": "SpotHero_iOS_Partner_SDK/Classes/**/*"
 }

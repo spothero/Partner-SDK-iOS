@@ -7,44 +7,118 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0A926AAC6986320FD52817EE19D7A789 /* ILGHttpConstants.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CB61B0DE29CF966BCC306F5D5DACCB7 /* ILGHttpConstants.framework */; };
-		0E696E98B16C59A6AD10807E246A5511 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4430772A57A40F1F217AD8EBBA497984 /* Foundation.framework */; };
-		0EC3A3C75959F539AC43CD48A01BDAD4 /* VOKMockUrlProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 40D9E12F0F8F6271368E20AA2C72820A /* VOKMockUrlProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1884983D6D196A42E1BC81DC044F29D0 /* HTTPHeaderFields.m in Sources */ = {isa = PBXBuildFile; fileRef = 754AB02150922FB3C8F3A4A5EB2A7B86 /* HTTPHeaderFields.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		193A81B1776D2369F4FC9E6286795DA8 /* Pods-SpotHero_iOS_Partner_SDK_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F87E46BCD58FC250A59C7F26CAB15814 /* Pods-SpotHero_iOS_Partner_SDK_Tests-dummy.m */; };
-		259DA652410E563D6B1B5F11F810E005 /* ILGHttpConstants-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 861289AABBD7FCBC46E40C978754A843 /* ILGHttpConstants-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0824965B2A80196CEF34AD2484607391 /* UIEvent+KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5141EEC8C982E43265D1E96C75AE2CDF /* UIEvent+KIFAdditions.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		08C36943DBE0C12A28C58EF08E700AD4 /* VOKBenkode-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5DD8AEB4125F372055C269CA62A172 /* VOKBenkode-dummy.m */; };
+		0A5FA559B0951C4714A7E81D65E373A4 /* VOKBenkode.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DCB61DE61D8B651F49EE3470324FAB2 /* VOKBenkode.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0E696E98B16C59A6AD10807E246A5511 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAA471DC88D7981D1715E00C65286989 /* Foundation.framework */; };
+		12AC30A8BBD2D158AE154DD3E358D754 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAA471DC88D7981D1715E00C65286989 /* Foundation.framework */; };
+		1884983D6D196A42E1BC81DC044F29D0 /* HTTPHeaderFields.m in Sources */ = {isa = PBXBuildFile; fileRef = 33475DCFAD041DE4DE25A6AEB9C41CCF /* HTTPHeaderFields.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		193A81B1776D2369F4FC9E6286795DA8 /* Pods-SpotHero_iOS_Partner_SDK_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2684D36E1DF39EED96E5B6EA84EDF8CF /* Pods-SpotHero_iOS_Partner_SDK_Tests-dummy.m */; };
+		1E1827AB0EE18F4378346C43B5D3AF30 /* KIF.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E92F4D0973DF03CD24869F9E6F735AF /* KIF.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		21AB8D34D93E6013D1F8B4DCF29A87D2 /* XCTestCase-KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EB1A3AF8990991D2F50BC122E00E52C /* XCTestCase-KIFAdditions.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		226E515781459EB5B7B504765084C2DB /* ILGHttpConstants.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82B74321C7FAC7908781CB14A24A8F86 /* ILGHttpConstants.framework */; };
+		259DA652410E563D6B1B5F11F810E005 /* ILGHttpConstants-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F8E91F97381005CCA5971CFDC42B11D /* ILGHttpConstants-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2799793652B21D53C49E22C03174A0A9 /* SpotHero_iOS_Partner_SDK-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9D0967FE03B2BEE6B5141E0E759AB3 /* SpotHero_iOS_Partner_SDK-dummy.m */; };
-		27B6FD9D32F66B18694AEB0D1AAAD61F /* ILGHttpConstants-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 79FBC021731552D0922DFB21C24A6E58 /* ILGHttpConstants-dummy.m */; };
-		29E6B15B22C17C35C2BE96F372D0BCD5 /* VOKBenkode-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D74A496CB045952F2AB9B90F3A3FAE2 /* VOKBenkode-dummy.m */; };
-		2C3D9350F3953374366C2ED9276E1F7A /* VOKBenkode.h in Headers */ = {isa = PBXBuildFile; fileRef = ADD8B0F1487F83D2525AC7E3CB4E2FEB /* VOKBenkode.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		30E7E144B3A77C361A9A709BABC047A8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4430772A57A40F1F217AD8EBBA497984 /* Foundation.framework */; };
-		368F4D4D613BE65D7387B664324B3861 /* VOKBenkode.m in Sources */ = {isa = PBXBuildFile; fileRef = 96B699AF534FFEACDA3BF644D593BF22 /* VOKBenkode.m */; };
-		48DEB2A624D36AA6E3659A886E34000F /* VOKBenkode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24E8136C3B7CEDB0353A3C5F95544807 /* VOKBenkode.framework */; };
-		5987915EAD9F7739863FCFEA312420E5 /* Pods-SpotHero_iOS_Partner_SDK_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D4646E7934EB8DB26A2D7DB7FD12828 /* Pods-SpotHero_iOS_Partner_SDK_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5FBAA909FCCF323BAF0F5DE579BFA4F2 /* HTTPMethods.h in Headers */ = {isa = PBXBuildFile; fileRef = EEAD6CD194F802D44ADE4F59B24D77CA /* HTTPMethods.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		808C51209182AFC1B09C6672600D75D5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4430772A57A40F1F217AD8EBBA497984 /* Foundation.framework */; };
-		8B3D8E8C84DE44FA1674A906CF0A8B7E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4430772A57A40F1F217AD8EBBA497984 /* Foundation.framework */; };
-		942B535D5CB86055632F63509E6AB337 /* Pods-SpotHero_iOS_Partner_SDK_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 958D8AD77247F8070332D3F4CBACEF29 /* Pods-SpotHero_iOS_Partner_SDK_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27B6FD9D32F66B18694AEB0D1AAAD61F /* ILGHttpConstants-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 108DBB169E266E6EC3FDB9CBDDF95C03 /* ILGHttpConstants-dummy.m */; };
+		29CAD778A47E9E6A885EED0C213C92B5 /* CGGeometry-KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 9DB2C5A9EAFD2CE4CE5E13DA35F17F1E /* CGGeometry-KIFAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2F3A34375696851FF376DA46EC068B80 /* KIFTestActor.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F9834255F1AD996A87768E97EF1B473 /* KIFTestActor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		31AA341E7EDFBE3669985A45EDB7E804 /* UIView-KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FCA36D95D527363F166C3A8F1861A1A /* UIView-KIFAdditions.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		333BA472101F58E064B1460B2A1B5FD0 /* VOKBenkode.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4CF7A50631AF2A005CAC54E0AFE35A /* VOKBenkode.m */; };
+		349E3EACBE9B962B4B7D1E8CECBF382F /* IOHIDEvent+KIF.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B846D8DAD5EA51B03E71CD54AFAB26D /* IOHIDEvent+KIF.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		36DFA0C24074B24B2339CC6AC599D497 /* UIAutomationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 07BFFA364566EBAF20725705610903D5 /* UIAutomationHelper.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		3784B462CF975A5AD43D9C1E5A7BDAB3 /* UITouch-KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 718E1B6539BF872712FC1452A8E291C1 /* UITouch-KIFAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3BADDD3C134A5E113EAD273551A2D8F3 /* NSPredicate+KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 55ECF96D8592049FBD6BD1CA64B88394 /* NSPredicate+KIFAdditions.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		3C955FEF2B6B904A0693F2D4A36303D4 /* KIFAccessibilityEnabler.m in Sources */ = {isa = PBXBuildFile; fileRef = 101D557B37CCE9563A1FABF23EB9658E /* KIFAccessibilityEnabler.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		40B27CB573D79F7B2706AA553AFDD84C /* NSException-KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 07ADC416C31F90FC7915AA70B44B725B /* NSException-KIFAdditions.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		434A684B5815FEF21BB46FD1D5DE0F78 /* NSPredicate+KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CB123FB5D77E3F8664393DC0E1738D8 /* NSPredicate+KIFAdditions.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		4CCF56464850A1680048C89EC0FC5926 /* NSString+KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B2BDB6B0056A130D22CEA0D1D7703F42 /* NSString+KIFAdditions.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		511D6F2BC63416651CCBEC1EEB87C0E6 /* KIFTypist.m in Sources */ = {isa = PBXBuildFile; fileRef = 29630067298D9691D1EDC478071A851D /* KIFTypist.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		51D76AF18883C9420DDE406B3958884A /* CALayer-KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 60C64AD05EE83119DE42DE3F559DECFB /* CALayer-KIFAdditions.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		5731D1E11C6FE3DEE2AC24B4CE584E75 /* KIFAccessibilityEnabler.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F7752DC4B791EBD378C06A956F75F53 /* KIFAccessibilityEnabler.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		57532FB3D77CEFC9ED59B9578716B598 /* UIAccessibilityElement-KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 28055B0F3FDCF6A2BBBD43BFBD8C0C23 /* UIAccessibilityElement-KIFAdditions.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		5987915EAD9F7739863FCFEA312420E5 /* Pods-SpotHero_iOS_Partner_SDK_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 07697703F62E04514A84CD427DBC0A21 /* Pods-SpotHero_iOS_Partner_SDK_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5A2082CB9ACBE18A0F0CF2BAD9E93969 /* UIScrollView-KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B0B05AFB294F36681FBA6D5996EFF1EF /* UIScrollView-KIFAdditions.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		5BA738407C406D5AABC24D5D04C9FAF3 /* NSBundle-KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 68728FC2496F1CA1A2B72D7542B72F34 /* NSBundle-KIFAdditions.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		5CF478A0065CDB211B8E3074BB1A5CC2 /* NSException-KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = CC94D1BD3EC065C485FFBABA54E7D7B6 /* NSException-KIFAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5FBAA909FCCF323BAF0F5DE579BFA4F2 /* HTTPMethods.h in Headers */ = {isa = PBXBuildFile; fileRef = 47B12878D4433F7E7B446830522A141D /* HTTPMethods.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		606C9DC52EAFAA3D95D61A99B7EE3D49 /* VOKMockUrlProtocol-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FFF533926512C588619E82503028867 /* VOKMockUrlProtocol-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		63255B7124A4D0E1AEFF926C7CD4B872 /* KIFSystemTestActor.m in Sources */ = {isa = PBXBuildFile; fileRef = 5204D3FF98582E7C2C930F45ED65DAF0 /* KIFSystemTestActor.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		6723234ECFE7183DC606C40DF84F7BC8 /* KIFSystemTestActor.h in Headers */ = {isa = PBXBuildFile; fileRef = E128E10FF1C789EB329960994259FA13 /* KIFSystemTestActor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		674501A5C68EA1A9A4C20D06B7151F1A /* Pods-SpotHero_iOS_Partner_SDK_ExampleUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 34F191306BE13B0604226705D0A83380 /* Pods-SpotHero_iOS_Partner_SDK_ExampleUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		683D6AE62BAFBD994BEB88F6E078E7C6 /* UIAutomationHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 41C5827B333E62A1501E5A43FE1ED365 /* UIAutomationHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6AC9021F7E02139A41F3C04215C0D53E /* KIFTestCase.h in Headers */ = {isa = PBXBuildFile; fileRef = D1F8FB3005BB7B8EB686A975F4597EB1 /* KIFTestCase.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6AF5B7EFFC3A2A025D9D967D5F56AA11 /* KIFUIViewTestActor.m in Sources */ = {isa = PBXBuildFile; fileRef = BB6A800542D3897FE795CEE01EFA95D3 /* KIFUIViewTestActor.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		6BC39C530072AF240E295CEB68ED25F1 /* KIFUIViewTestActor.h in Headers */ = {isa = PBXBuildFile; fileRef = D10040B581C25A4E1A27841139186348 /* KIFUIViewTestActor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6FE9F808530AB9DC672CEAECE12C4D02 /* KIFTypist.h in Headers */ = {isa = PBXBuildFile; fileRef = 7240645AAFDBF88464277CABC0546617 /* KIFTypist.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		73367717EF726950B8988F5FEA29DD79 /* NSFileManager-KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = DC74D712F1D9579CDB655E04AA9F42E5 /* NSFileManager-KIFAdditions.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		74946EA107D85C75D1970BC40B3071B5 /* NSError-KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 518A4AD82A898D965539E0B185F0270A /* NSError-KIFAdditions.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		768529B9847407AAD115441DD7D7D14B /* UIView-Debugging.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EF8013A4CF8058FD5898D786C70184D /* UIView-Debugging.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		7C6BAE898560DC1DD8AA376B6A8BCCD1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E73B717D88624CAEA47E1BDFEFA89B02 /* CoreGraphics.framework */; };
+		7D4DE709D4EB98ACB4E4E898CE06EC02 /* UIScreen+KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CB3A314D4DB995926792A8534AF4971 /* UIScreen+KIFAdditions.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		7F0A300C99805F759E0788B38CC2D375 /* VOKMockUrlProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = B9B57B04FEA617ADAB2C10BD467E0C73 /* VOKMockUrlProtocol.m */; };
+		7F7E238CBEC0D69DFDCF12CFBB32A90F /* UIScrollView-KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = A744DFD60A2921A9ED1858A634A658CE /* UIScrollView-KIFAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8718C2367B6EA7D05986673AB764715C /* UIApplication-KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D44B90A1A9BC73CFCFA47DD2086821A /* UIApplication-KIFAdditions.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		8B3D8E8C84DE44FA1674A906CF0A8B7E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAA471DC88D7981D1715E00C65286989 /* Foundation.framework */; };
+		8CA1A5447FD8323EDD575D7E28F3CAB2 /* KIFUITestActor.h in Headers */ = {isa = PBXBuildFile; fileRef = CED353CC3F3A082AC308EE2853EFE9CB /* KIFUITestActor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		92EE4D6AADD682A1AC8F83FF7789F49A /* CALayer-KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 435BC16961D9DCFB57AB922201A37CB1 /* CALayer-KIFAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		942B535D5CB86055632F63509E6AB337 /* Pods-SpotHero_iOS_Partner_SDK_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C0A0C46C6A2D321077A532B60B60D0D /* Pods-SpotHero_iOS_Partner_SDK_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9934F594895B7B937160AE96B66B1EC0 /* SpotHero_iOS_Partner_SDK-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 80805D60E0B652775A2CD10042959F59 /* SpotHero_iOS_Partner_SDK-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B0C4B8516EE6C999E4B1D8F1F9DC48D8 /* VOKMockUrlProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B5730019265AD83CC9C34E5A785E51 /* VOKMockUrlProtocol.m */; };
-		BDDCB4CDFBE0DA7ABC3482FA0B5510AE /* VOKMockUrlProtocol-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 129230B2C06D3E47312A7759233F04A7 /* VOKMockUrlProtocol-dummy.m */; };
-		D11F15D5184BA286FB4905F43158DB14 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4430772A57A40F1F217AD8EBBA497984 /* Foundation.framework */; };
-		D5440F617EDA5444E81923029E3C248D /* VOKMockUrlProtocol-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F0054F005FC37C22CF3E5051D2FDAA82 /* VOKMockUrlProtocol-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D8CBEF4421FED8390D4868423EB4A462 /* HTTPStatusCodes.h in Headers */ = {isa = PBXBuildFile; fileRef = 240526CAC7DEC0311CB7CA501B41E0E7 /* HTTPStatusCodes.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		99DB9BC0176F91DBB4F4598B44E46722 /* UIView-Debugging.h in Headers */ = {isa = PBXBuildFile; fileRef = 9E5239623CAD227698662FA0389B43E9 /* UIView-Debugging.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A3B0B3B8CEA57D6946A2309D861FA409 /* UIAccessibilityElement-KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = F70B42744B02FB3EDE62E01578484619 /* UIAccessibilityElement-KIFAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A53676112A1D092D65C9E38F544973BF /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FF11D1533C6E2D689EC4A4AB6172B90 /* IOKit.framework */; };
+		A612F5EA7A60D21B8C15504F973BD03C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAA471DC88D7981D1715E00C65286989 /* Foundation.framework */; };
+		A613224495F0938A12F4139E5490E38E /* VOKBenkode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 493AABAC34161F1E54FDE1DF7E8741C0 /* VOKBenkode.framework */; };
+		AD3F27EB1CCD87BF3F449541ECF66C61 /* XCTestCase-KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 1AF13184C6C478B74EFFED0A75FB28DC /* XCTestCase-KIFAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AEFC1D9AE9BE5096E67DE7EC648B55E0 /* NSFileManager-KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 4AA95BF17B097BD8C882FEB2D687347B /* NSFileManager-KIFAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AF170A86479C55433CF89FFBEF083A04 /* KIFUITestActor-ConditionalTests.h in Headers */ = {isa = PBXBuildFile; fileRef = D26DE1861587C68C5E1C238B12AAFA74 /* KIFUITestActor-ConditionalTests.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AFCF75F49DBCD313ABB0364ABC92FF2A /* UITableView-KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 45BB445329961C907AEADDF253DAF17E /* UITableView-KIFAdditions.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		B1F4C6D39B1E376B07936B0AE796D99D /* UITableView-KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 31DDCAD0F2CF98F26A1FBA045BEE0E63 /* UITableView-KIFAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B215F3E7A6EF4282A67CAC6CC09F9F07 /* LoadableCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = C04CA52D422F0C14621480F77800A14A /* LoadableCategory.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		B4E7F512993CF19B3851900CAA8DD132 /* UITouch-KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2FC399DE3E08555C9F4EF4D587E880 /* UITouch-KIFAdditions.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		B60C457E28F5645D64A7035D25809FD0 /* CGGeometry-KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 67CEFF5676B7558BDC777E71C5D4AFD4 /* CGGeometry-KIFAdditions.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		B66CDC415E1EC5D2A532851C3AFBA199 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAA471DC88D7981D1715E00C65286989 /* Foundation.framework */; };
+		B746B0861267B8572A12A4A6D135BB06 /* UIWindow-KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = C1D166214B7CD4227BA16F3C79AB2CBD /* UIWindow-KIFAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BC6C168E14C3B1B7042B897135E5245F /* UIView-KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 1456BCEA72759C60727AFF952EF591D1 /* UIView-KIFAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C14992679A9ED625623F4E9DCED1C774 /* KIFUIObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D57F3D10D1B0A92A6F67BCFF816BC3C /* KIFUIObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C75A299B0860D3016DF20B1A5779903C /* NSBundle-KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E0527B6F28C55DD186FE2AD382616187 /* NSBundle-KIFAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C78EF3CB4FC7369BB2E9EB62DD231C2D /* KIFUIObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 6863E13C4D9C3DA825286E26213C105A /* KIFUIObject.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		C8D3D09E32433113799CE6FD434D6FEE /* KIF-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A4118229E82AF62B5973027C25E7FBDE /* KIF-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C97B7C0A7D47F9089B279FEB3B338A4F /* KIFUITestActor-ConditionalTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 117DC4EDDFFBE0C4A7AB0F057D7D3564 /* KIFUITestActor-ConditionalTests.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		CB567CAB623EE579448E24D486300050 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEF642A77897092B77458B21635CAD8E /* QuartzCore.framework */; };
+		CDB9060D902A7490C8EDE904F0E29EAA /* Pods-SpotHero_iOS_Partner_SDK_ExampleUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCB13CA9753FE818B409E09D017F825 /* Pods-SpotHero_iOS_Partner_SDK_ExampleUITests-dummy.m */; };
+		CEC421BB4EBE769F02F8CBFB3FE44A1D /* KIFTestActor.m in Sources */ = {isa = PBXBuildFile; fileRef = 13BE74C806B6FDC81630F6836EB27D41 /* KIFTestActor.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		D071461B60A2B6F115815CA4C5F5C8CB /* KIFUITestActor.m in Sources */ = {isa = PBXBuildFile; fileRef = C03C4F3A0839CB5F95557F74F91C7EFC /* KIFUITestActor.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		D11F15D5184BA286FB4905F43158DB14 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAA471DC88D7981D1715E00C65286989 /* Foundation.framework */; };
+		D1D16548BEC37FCE1D97522ECB69B8D0 /* VOKMockUrlProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = A24D29F1383067FED859AEEC2BF6D107 /* VOKMockUrlProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D38C28954AC19016C9CF3E59E2970C06 /* IOHIDEvent+KIF.m in Sources */ = {isa = PBXBuildFile; fileRef = 5989385DB2E9683DF2574368841F1429 /* IOHIDEvent+KIF.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		D8CBEF4421FED8390D4868423EB4A462 /* HTTPStatusCodes.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C697BE21D1ACD302B11B902AAF2D97A /* HTTPStatusCodes.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D9B023452762FBBA2546AA4D749BC682 /* NSString+KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 560465DBC4C328FCB5AA806688C3ABB9 /* NSString+KIFAdditions.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		DA448530A535F1170BAD136297E3188A /* VOKMockUrlProtocol-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E6D3709DC54477B06CB25AE2F7DD9076 /* VOKMockUrlProtocol-dummy.m */; };
 		DD06971B4677FE19A5E38CFAB1B70DB7 /* ReplaceMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9474662916CCA3CBFA40361B5EF98296 /* ReplaceMe.swift */; };
-		DDE6AD2AEE8DCD669114D225E307D53F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4430772A57A40F1F217AD8EBBA497984 /* Foundation.framework */; };
-		DE277F85AC878AD1C3898A1D735E3ADC /* Pods-SpotHero_iOS_Partner_SDK_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9611CC81DDC661231495DC33B2117300 /* Pods-SpotHero_iOS_Partner_SDK_Example-dummy.m */; };
-		EB032D54E80B38703EB76B542FAC66AD /* VOKBenkode-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 276A7971B01094A731224F841BD18997 /* VOKBenkode-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F08B1A93137ED9FED89E962C565503E6 /* HTTPMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C1BB793055586EE352420F15245DE2 /* HTTPMethods.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		F10EBB363DF27458768A3026CE1FDA1A /* HTTPHeaderFields.h in Headers */ = {isa = PBXBuildFile; fileRef = 243705F9DA28EAD104676B966FD25390 /* HTTPHeaderFields.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDE6AD2AEE8DCD669114D225E307D53F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAA471DC88D7981D1715E00C65286989 /* Foundation.framework */; };
+		DE277F85AC878AD1C3898A1D735E3ADC /* Pods-SpotHero_iOS_Partner_SDK_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BFB888D7AF57F531266DD178438689EB /* Pods-SpotHero_iOS_Partner_SDK_Example-dummy.m */; };
+		DECC827D45A03F3CDCEF6143EEC31D44 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAA471DC88D7981D1715E00C65286989 /* Foundation.framework */; };
+		E2188BD1DA9F9082E204D57F8BA441A1 /* KIFTestStepValidation.h in Headers */ = {isa = PBXBuildFile; fileRef = 083215CD5BF8BE8E2C28590E3A2D908A /* KIFTestStepValidation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E2969CCE19A9AFCC9FC0C71D787CD2AB /* UIScreen+KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = A36E69B84A90DCB66EE3618DD933B0E6 /* UIScreen+KIFAdditions.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		E64317F7451461B64C33E9621B1CD455 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12456CD8217D8522BE42E6B9DB33A068 /* XCTest.framework */; };
+		E83CBEA6149B3DAFF3FE7F19FE7DB2CC /* KIFTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 94CBE121FA336ECDA22CE72BA2559A6D /* KIFTestCase.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		EB375964C4815482397A27EA78CF5B44 /* UIWindow-KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = EDC026576A5230A6ADEA8494C11BAA98 /* UIWindow-KIFAdditions.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		EE3530B1EF1B06F5405DCE672B93E2B0 /* KIFTestStepValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F24AF2E2FD829C2C62FC52131B3A7C /* KIFTestStepValidation.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		F08B1A93137ED9FED89E962C565503E6 /* HTTPMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7A4098EBEA5D0F0D6447FD2A93B4F8 /* HTTPMethods.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		F10EBB363DF27458768A3026CE1FDA1A /* HTTPHeaderFields.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C8BDC3534C9762CF77E0E8465DB8921 /* HTTPHeaderFields.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F429D1BAEADA79BFA15D3E876B826EC9 /* UIApplication-KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = B1606FD8F6FAE2BEE0F30C2682E32412 /* UIApplication-KIFAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F9C9316C97DFB7F39D018454A8E61940 /* VOKBenkode-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 14CC0C2507AB8F15346FCCA174BFFE82 /* VOKBenkode-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA67989EFA6028157D46CFECD13A0031 /* NSError-KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A72C2F94E92ECDA3231540D0A31D5C1 /* NSError-KIFAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FD91B16E8422DA54EF19AD7AC98C3B94 /* KIF-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F720E8BF515E0A89278FF3FABA4EACC /* KIF-dummy.m */; };
+		FD94FFF788EF7395F99F3EC2675D21F3 /* UIEvent+KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = C46B6258C3006561FC37367145F9196E /* UIEvent+KIFAdditions.h */; settings = {ATTRIBUTES = (Project, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		25F96E243D11A60CEDEEE592CF02E209 /* PBXContainerItemProxy */ = {
+		37E2F36ABECD779EAA8068E3CE8DB3AC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = D41B9823D31A85F354897D5A343B8814;
+			remoteGlobalIDString = AD9A8BE9C00B3D02C1A78E8C7E88696F;
 			remoteInfo = VOKBenkode;
 		};
 		381B1A293F6BBDD2B3B8144F616CC703 /* PBXContainerItemProxy */ = {
@@ -53,6 +127,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = 11C417C5A444DA622081003D30C568F0;
 			remoteInfo = SpotHero_iOS_Partner_SDK;
+		};
+		41C334D338218E165F29B6D334079015 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AD9A8BE9C00B3D02C1A78E8C7E88696F;
+			remoteInfo = VOKBenkode;
+		};
+		4EB9FFB547C5DF41A9C497F062582444 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DCCBDC731E172083F7CC90FF6493A73B;
+			remoteInfo = VOKMockUrlProtocol;
 		};
 		54236D81254BE83FAC41AA1B8581CEE1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -65,90 +153,190 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 7B64D9F8043BD344992AE705D91A44F4;
+			remoteGlobalIDString = DCCBDC731E172083F7CC90FF6493A73B;
 			remoteInfo = VOKMockUrlProtocol;
 		};
-		D2227B1DB4AAD0BB729FC53724C1C4B9 /* PBXContainerItemProxy */ = {
+		AB0F3D02D40FA453DF9AFC0ECA1C459F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 28C1D2BCF3CF2F2210CB63D423BEF55E;
 			remoteInfo = ILGHttpConstants;
 		};
+		BB820FF9AE881AE7BA02F4F7FF5091F7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 28C1D2BCF3CF2F2210CB63D423BEF55E;
+			remoteInfo = ILGHttpConstants;
+		};
+		C6C034765F2C056043A00A7C653F284A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C4B626F99CE43C4E7F967B3DA5EE188F;
+			remoteInfo = KIF;
+		};
 		F2CABF85269BA5183BEE26FBD10273AC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = D41B9823D31A85F354897D5A343B8814;
+			remoteGlobalIDString = AD9A8BE9C00B3D02C1A78E8C7E88696F;
 			remoteInfo = VOKBenkode;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		01780D7D649AF33B6FECD42B8D49271B /* VOKMockUrlProtocol.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = VOKMockUrlProtocol.xcconfig; sourceTree = "<group>"; };
+		04DD97FA9ED2A09D81E7E25B8D515C2F /* KIF-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "KIF-prefix.pch"; sourceTree = "<group>"; };
+		07697703F62E04514A84CD427DBC0A21 /* Pods-SpotHero_iOS_Partner_SDK_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SpotHero_iOS_Partner_SDK_Example-umbrella.h"; sourceTree = "<group>"; };
+		07ADC416C31F90FC7915AA70B44B725B /* NSException-KIFAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSException-KIFAdditions.m"; path = "Additions/NSException-KIFAdditions.m"; sourceTree = "<group>"; };
+		07BFFA364566EBAF20725705610903D5 /* UIAutomationHelper.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = UIAutomationHelper.m; path = Classes/UIAutomationHelper.m; sourceTree = "<group>"; };
+		083215CD5BF8BE8E2C28590E3A2D908A /* KIFTestStepValidation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KIFTestStepValidation.h; path = Classes/KIFTestStepValidation.h; sourceTree = "<group>"; };
+		0D57F3D10D1B0A92A6F67BCFF816BC3C /* KIFUIObject.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KIFUIObject.h; path = Classes/KIFUIObject.h; sourceTree = "<group>"; };
+		0F092BCA2988A5D2AE8864F04E617F25 /* Pods-SpotHero_iOS_Partner_SDK_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-SpotHero_iOS_Partner_SDK_Tests.modulemap"; sourceTree = "<group>"; };
 		0FDB6E0441FCF444D737862EE4AA9E34 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		129230B2C06D3E47312A7759233F04A7 /* VOKMockUrlProtocol-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "VOKMockUrlProtocol-dummy.m"; sourceTree = "<group>"; };
-		1A8AF1BDAFEA23FD4A199C652DCC012D /* ILGHttpConstants.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ILGHttpConstants.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		1F9D4460CCF42836DD407A9E36A66004 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		235C3545B7D4770A2285A107F66E498F /* Pods-SpotHero_iOS_Partner_SDK_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-SpotHero_iOS_Partner_SDK_Example.modulemap"; sourceTree = "<group>"; };
-		240526CAC7DEC0311CB7CA501B41E0E7 /* HTTPStatusCodes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = HTTPStatusCodes.h; sourceTree = "<group>"; };
-		243705F9DA28EAD104676B966FD25390 /* HTTPHeaderFields.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = HTTPHeaderFields.h; sourceTree = "<group>"; };
-		24E8136C3B7CEDB0353A3C5F95544807 /* VOKBenkode.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VOKBenkode.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		276A7971B01094A731224F841BD18997 /* VOKBenkode-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "VOKBenkode-umbrella.h"; sourceTree = "<group>"; };
-		2D74A496CB045952F2AB9B90F3A3FAE2 /* VOKBenkode-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "VOKBenkode-dummy.m"; sourceTree = "<group>"; };
-		2DED65A599C2FA0E8899C88AAB34425A /* ILGHttpConstants.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ILGHttpConstants.xcconfig; sourceTree = "<group>"; };
-		2EC0424F227AB2EF0353784782433701 /* Pods-SpotHero_iOS_Partner_SDK_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SpotHero_iOS_Partner_SDK_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
-		301C18F7A9BF05AE991C02121FED0628 /* VOKBenkode.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = VOKBenkode.xcconfig; sourceTree = "<group>"; };
-		30C1BB793055586EE352420F15245DE2 /* HTTPMethods.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = HTTPMethods.m; sourceTree = "<group>"; };
-		39F07DD3F593E41BFBF556013DD48BB9 /* Pods-SpotHero_iOS_Partner_SDK_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SpotHero_iOS_Partner_SDK_Tests-frameworks.sh"; sourceTree = "<group>"; };
-		40D9E12F0F8F6271368E20AA2C72820A /* VOKMockUrlProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VOKMockUrlProtocol.h; sourceTree = "<group>"; };
-		426D671F53A4C67163C970C98B0D6DEC /* SpotHero_iOS_Partner_SDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SpotHero_iOS_Partner_SDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4430772A57A40F1F217AD8EBBA497984 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		4DC2734C5AD14AB0EB6B5B82D1E25FBC /* Pods-SpotHero_iOS_Partner_SDK_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SpotHero_iOS_Partner_SDK_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		590E923CEB91C2D8AB4F62296F819FE0 /* Pods-SpotHero_iOS_Partner_SDK_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SpotHero_iOS_Partner_SDK_Example-resources.sh"; sourceTree = "<group>"; };
-		5ADDC082B96D51D0EDBD43F3D95621F6 /* ILGHttpConstants.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = ILGHttpConstants.modulemap; sourceTree = "<group>"; };
-		6AEFB4B7B417B086F54B3618D3A509AA /* VOKBenkode-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "VOKBenkode-prefix.pch"; sourceTree = "<group>"; };
-		6E9A177346E1EAA3B776F06731025945 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		101D557B37CCE9563A1FABF23EB9658E /* KIFAccessibilityEnabler.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = KIFAccessibilityEnabler.m; path = Classes/KIFAccessibilityEnabler.m; sourceTree = "<group>"; };
+		105A38EED625B3A853DAD9FF80562323 /* Pods-SpotHero_iOS_Partner_SDK_ExampleUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SpotHero_iOS_Partner_SDK_ExampleUITests.release.xcconfig"; sourceTree = "<group>"; };
+		108DBB169E266E6EC3FDB9CBDDF95C03 /* ILGHttpConstants-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ILGHttpConstants-dummy.m"; sourceTree = "<group>"; };
+		117DC4EDDFFBE0C4A7AB0F057D7D3564 /* KIFUITestActor-ConditionalTests.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "KIFUITestActor-ConditionalTests.m"; path = "Classes/KIFUITestActor-ConditionalTests.m"; sourceTree = "<group>"; };
+		12456CD8217D8522BE42E6B9DB33A068 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		12F419EB9D92785AAE0A8749F7D453D3 /* Pods-SpotHero_iOS_Partner_SDK_ExampleUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SpotHero_iOS_Partner_SDK_ExampleUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		13BE74C806B6FDC81630F6836EB27D41 /* KIFTestActor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = KIFTestActor.m; path = Classes/KIFTestActor.m; sourceTree = "<group>"; };
+		1456BCEA72759C60727AFF952EF591D1 /* UIView-KIFAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIView-KIFAdditions.h"; path = "Additions/UIView-KIFAdditions.h"; sourceTree = "<group>"; };
+		14CC0C2507AB8F15346FCCA174BFFE82 /* VOKBenkode-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "VOKBenkode-umbrella.h"; sourceTree = "<group>"; };
+		1AF13184C6C478B74EFFED0A75FB28DC /* XCTestCase-KIFAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "XCTestCase-KIFAdditions.h"; path = "Additions/XCTestCase-KIFAdditions.h"; sourceTree = "<group>"; };
+		1B9EE4552760134BA8F9B2575A5B357D /* Pods-SpotHero_iOS_Partner_SDK_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SpotHero_iOS_Partner_SDK_Example.release.xcconfig"; sourceTree = "<group>"; };
+		1C0A0C46C6A2D321077A532B60B60D0D /* Pods-SpotHero_iOS_Partner_SDK_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SpotHero_iOS_Partner_SDK_Tests-umbrella.h"; sourceTree = "<group>"; };
+		1E5F49D147153B475B8F13A52855EC93 /* Pods-SpotHero_iOS_Partner_SDK_ExampleUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SpotHero_iOS_Partner_SDK_ExampleUITests-acknowledgements.plist"; sourceTree = "<group>"; };
+		1EF8013A4CF8058FD5898D786C70184D /* UIView-Debugging.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIView-Debugging.m"; path = "Additions/UIView-Debugging.m"; sourceTree = "<group>"; };
+		1F7752DC4B791EBD378C06A956F75F53 /* KIFAccessibilityEnabler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KIFAccessibilityEnabler.h; path = Classes/KIFAccessibilityEnabler.h; sourceTree = "<group>"; };
+		1FF11D1533C6E2D689EC4A4AB6172B90 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/IOKit.framework; sourceTree = DEVELOPER_DIR; };
+		2104480BD41771813A122D52ACA90F83 /* Pods_SpotHero_iOS_Partner_SDK_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpotHero_iOS_Partner_SDK_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2684D36E1DF39EED96E5B6EA84EDF8CF /* Pods-SpotHero_iOS_Partner_SDK_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SpotHero_iOS_Partner_SDK_Tests-dummy.m"; sourceTree = "<group>"; };
+		27B96FA03251D2984B001ADB3AD894E8 /* Pods-SpotHero_iOS_Partner_SDK_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SpotHero_iOS_Partner_SDK_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		28055B0F3FDCF6A2BBBD43BFBD8C0C23 /* UIAccessibilityElement-KIFAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIAccessibilityElement-KIFAdditions.m"; path = "Additions/UIAccessibilityElement-KIFAdditions.m"; sourceTree = "<group>"; };
+		29630067298D9691D1EDC478071A851D /* KIFTypist.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = KIFTypist.m; path = Classes/KIFTypist.m; sourceTree = "<group>"; };
+		2A72C2F94E92ECDA3231540D0A31D5C1 /* NSError-KIFAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSError-KIFAdditions.h"; path = "Additions/NSError-KIFAdditions.h"; sourceTree = "<group>"; };
+		2C70D8DEC3E7F4EB969D3CCFD178F679 /* Pods-SpotHero_iOS_Partner_SDK_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SpotHero_iOS_Partner_SDK_Example-resources.sh"; sourceTree = "<group>"; };
+		301E195C2D84BDEFA95256606CD27545 /* VOKMockUrlProtocol.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = VOKMockUrlProtocol.xcconfig; sourceTree = "<group>"; };
+		31DDCAD0F2CF98F26A1FBA045BEE0E63 /* UITableView-KIFAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UITableView-KIFAdditions.h"; path = "Additions/UITableView-KIFAdditions.h"; sourceTree = "<group>"; };
+		33475DCFAD041DE4DE25A6AEB9C41CCF /* HTTPHeaderFields.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = HTTPHeaderFields.m; sourceTree = "<group>"; };
+		34F191306BE13B0604226705D0A83380 /* Pods-SpotHero_iOS_Partner_SDK_ExampleUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SpotHero_iOS_Partner_SDK_ExampleUITests-umbrella.h"; sourceTree = "<group>"; };
+		36DDAFCA2170A1E7AA4BDAFECBCBEA88 /* VOKBenkode-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "VOKBenkode-prefix.pch"; sourceTree = "<group>"; };
+		3A2ADFE230B15D2C3B7F51A9ED50B3BB /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3B846D8DAD5EA51B03E71CD54AFAB26D /* IOHIDEvent+KIF.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "IOHIDEvent+KIF.h"; path = "Classes/IOHIDEvent+KIF.h"; sourceTree = "<group>"; };
+		3D2FC399DE3E08555C9F4EF4D587E880 /* UITouch-KIFAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UITouch-KIFAdditions.m"; path = "Additions/UITouch-KIFAdditions.m"; sourceTree = "<group>"; };
+		3D44B90A1A9BC73CFCFA47DD2086821A /* UIApplication-KIFAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIApplication-KIFAdditions.m"; path = "Additions/UIApplication-KIFAdditions.m"; sourceTree = "<group>"; };
+		3DCB61DE61D8B651F49EE3470324FAB2 /* VOKBenkode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VOKBenkode.h; path = Pod/Classes/VOKBenkode.h; sourceTree = "<group>"; };
+		3F8E91F97381005CCA5971CFDC42B11D /* ILGHttpConstants-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ILGHttpConstants-umbrella.h"; sourceTree = "<group>"; };
+		3FFF533926512C588619E82503028867 /* VOKMockUrlProtocol-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "VOKMockUrlProtocol-umbrella.h"; sourceTree = "<group>"; };
+		41C5827B333E62A1501E5A43FE1ED365 /* UIAutomationHelper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = UIAutomationHelper.h; path = Classes/UIAutomationHelper.h; sourceTree = "<group>"; };
+		435BC16961D9DCFB57AB922201A37CB1 /* CALayer-KIFAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "CALayer-KIFAdditions.h"; path = "Additions/CALayer-KIFAdditions.h"; sourceTree = "<group>"; };
+		45BB445329961C907AEADDF253DAF17E /* UITableView-KIFAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UITableView-KIFAdditions.m"; path = "Additions/UITableView-KIFAdditions.m"; sourceTree = "<group>"; };
+		45DD5C960CEC6151A3D5F0A1FCBCD170 /* Pods-SpotHero_iOS_Partner_SDK_ExampleUITests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SpotHero_iOS_Partner_SDK_ExampleUITests-resources.sh"; sourceTree = "<group>"; };
+		4777173DD31D9679DDAEBC3B8C3F17A5 /* Pods-SpotHero_iOS_Partner_SDK_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SpotHero_iOS_Partner_SDK_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		47B12878D4433F7E7B446830522A141D /* HTTPMethods.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = HTTPMethods.h; sourceTree = "<group>"; };
+		485EB766887DD817CB9A3837C7A43EE8 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		48A760F2D4631318CAE9119B7FE81C5D /* Pods-SpotHero_iOS_Partner_SDK_ExampleUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SpotHero_iOS_Partner_SDK_ExampleUITests-frameworks.sh"; sourceTree = "<group>"; };
+		493AABAC34161F1E54FDE1DF7E8741C0 /* VOKBenkode.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VOKBenkode.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		49F8A598D117A1BBE6A251F3D6E20C33 /* SpotHero_iOS_Partner_SDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SpotHero_iOS_Partner_SDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4AA95BF17B097BD8C882FEB2D687347B /* NSFileManager-KIFAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSFileManager-KIFAdditions.h"; path = "Additions/NSFileManager-KIFAdditions.h"; sourceTree = "<group>"; };
+		4CB123FB5D77E3F8664393DC0E1738D8 /* NSPredicate+KIFAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSPredicate+KIFAdditions.m"; path = "Additions/NSPredicate+KIFAdditions.m"; sourceTree = "<group>"; };
+		50E7887E667F443F5769AB1EA47F2910 /* Pods-SpotHero_iOS_Partner_SDK_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SpotHero_iOS_Partner_SDK_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+		5141EEC8C982E43265D1E96C75AE2CDF /* UIEvent+KIFAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIEvent+KIFAdditions.m"; path = "Additions/UIEvent+KIFAdditions.m"; sourceTree = "<group>"; };
+		518A4AD82A898D965539E0B185F0270A /* NSError-KIFAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSError-KIFAdditions.m"; path = "Additions/NSError-KIFAdditions.m"; sourceTree = "<group>"; };
+		5204D3FF98582E7C2C930F45ED65DAF0 /* KIFSystemTestActor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = KIFSystemTestActor.m; path = Classes/KIFSystemTestActor.m; sourceTree = "<group>"; };
+		54523F911B68D91D192C4DE7E097A15D /* VOKBenkode.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VOKBenkode.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		55ECF96D8592049FBD6BD1CA64B88394 /* NSPredicate+KIFAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSPredicate+KIFAdditions.h"; path = "Additions/NSPredicate+KIFAdditions.h"; sourceTree = "<group>"; };
+		560465DBC4C328FCB5AA806688C3ABB9 /* NSString+KIFAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSString+KIFAdditions.h"; path = "Additions/NSString+KIFAdditions.h"; sourceTree = "<group>"; };
+		5803D81A30D18771642B9ED5518FB480 /* Pods-SpotHero_iOS_Partner_SDK_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SpotHero_iOS_Partner_SDK_Tests-frameworks.sh"; sourceTree = "<group>"; };
+		5989385DB2E9683DF2574368841F1429 /* IOHIDEvent+KIF.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "IOHIDEvent+KIF.m"; path = "Classes/IOHIDEvent+KIF.m"; sourceTree = "<group>"; };
+		5F9834255F1AD996A87768E97EF1B473 /* KIFTestActor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KIFTestActor.h; path = Classes/KIFTestActor.h; sourceTree = "<group>"; };
+		60C64AD05EE83119DE42DE3F559DECFB /* CALayer-KIFAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "CALayer-KIFAdditions.m"; path = "Additions/CALayer-KIFAdditions.m"; sourceTree = "<group>"; };
+		67090360536AAA2CCBBDB617992A44F5 /* KIF.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = KIF.xcconfig; sourceTree = "<group>"; };
+		67CEFF5676B7558BDC777E71C5D4AFD4 /* CGGeometry-KIFAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "CGGeometry-KIFAdditions.m"; path = "Additions/CGGeometry-KIFAdditions.m"; sourceTree = "<group>"; };
+		6863E13C4D9C3DA825286E26213C105A /* KIFUIObject.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = KIFUIObject.m; path = Classes/KIFUIObject.m; sourceTree = "<group>"; };
+		68728FC2496F1CA1A2B72D7542B72F34 /* NSBundle-KIFAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSBundle-KIFAdditions.m"; path = "Additions/NSBundle-KIFAdditions.m"; sourceTree = "<group>"; };
+		69CF9EE8A678C30435E2E3474D318C64 /* VOKBenkode.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = VOKBenkode.xcconfig; sourceTree = "<group>"; };
+		6C697BE21D1ACD302B11B902AAF2D97A /* HTTPStatusCodes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = HTTPStatusCodes.h; sourceTree = "<group>"; };
+		6CB3A314D4DB995926792A8534AF4971 /* UIScreen+KIFAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIScreen+KIFAdditions.h"; path = "Additions/UIScreen+KIFAdditions.h"; sourceTree = "<group>"; };
+		6E92F4D0973DF03CD24869F9E6F735AF /* KIF.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KIF.h; path = Classes/KIF.h; sourceTree = "<group>"; };
 		6F9D0967FE03B2BEE6B5141E0E759AB3 /* SpotHero_iOS_Partner_SDK-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SpotHero_iOS_Partner_SDK-dummy.m"; sourceTree = "<group>"; };
-		6FF96EA2B60F4771E690EBFA37F0B23A /* Pods-SpotHero_iOS_Partner_SDK_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SpotHero_iOS_Partner_SDK_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		754AB02150922FB3C8F3A4A5EB2A7B86 /* HTTPHeaderFields.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = HTTPHeaderFields.m; sourceTree = "<group>"; };
-		773C2E7EF967396E848A9F8A3E760FC3 /* VOKBenkode.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VOKBenkode.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		79FBC021731552D0922DFB21C24A6E58 /* ILGHttpConstants-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ILGHttpConstants-dummy.m"; sourceTree = "<group>"; };
-		7CB61B0DE29CF966BCC306F5D5DACCB7 /* ILGHttpConstants.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ILGHttpConstants.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7CF492743F481C274B82B189ED965626 /* VOKMockUrlProtocol-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "VOKMockUrlProtocol-prefix.pch"; sourceTree = "<group>"; };
-		7D870128F2EA706D20FC67B35B063667 /* ILGHttpConstants-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ILGHttpConstants-prefix.pch"; sourceTree = "<group>"; };
+		718E1B6539BF872712FC1452A8E291C1 /* UITouch-KIFAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UITouch-KIFAdditions.h"; path = "Additions/UITouch-KIFAdditions.h"; sourceTree = "<group>"; };
+		7240645AAFDBF88464277CABC0546617 /* KIFTypist.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KIFTypist.h; path = Classes/KIFTypist.h; sourceTree = "<group>"; };
+		72CF597D56D63BC415CE0F77857458F9 /* Pods-SpotHero_iOS_Partner_SDK_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-SpotHero_iOS_Partner_SDK_Example.modulemap"; sourceTree = "<group>"; };
+		77CBB8F9EFB48CCD7636F88AE153EE6F /* VOKMockUrlProtocol.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = VOKMockUrlProtocol.modulemap; sourceTree = "<group>"; };
+		791A5445D306D31CE1A784DB9E264414 /* Pods-SpotHero_iOS_Partner_SDK_ExampleUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SpotHero_iOS_Partner_SDK_ExampleUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		7B5DD8AEB4125F372055C269CA62A172 /* VOKBenkode-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "VOKBenkode-dummy.m"; sourceTree = "<group>"; };
+		7C7A4098EBEA5D0F0D6447FD2A93B4F8 /* HTTPMethods.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = HTTPMethods.m; sourceTree = "<group>"; };
+		7D54BACBA56D12077E7A78872F2C1D2F /* ILGHttpConstants.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = ILGHttpConstants.modulemap; sourceTree = "<group>"; };
 		7ED7A7191D0E6104870C0967A337C3C3 /* SpotHero_iOS_Partner_SDK-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SpotHero_iOS_Partner_SDK-prefix.pch"; sourceTree = "<group>"; };
 		80805D60E0B652775A2CD10042959F59 /* SpotHero_iOS_Partner_SDK-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SpotHero_iOS_Partner_SDK-umbrella.h"; sourceTree = "<group>"; };
-		861289AABBD7FCBC46E40C978754A843 /* ILGHttpConstants-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ILGHttpConstants-umbrella.h"; sourceTree = "<group>"; };
-		88B5730019265AD83CC9C34E5A785E51 /* VOKMockUrlProtocol.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = VOKMockUrlProtocol.m; sourceTree = "<group>"; };
-		9048FDBBACD393EBB963D4D6FCAD7149 /* Pods-SpotHero_iOS_Partner_SDK_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SpotHero_iOS_Partner_SDK_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		82B74321C7FAC7908781CB14A24A8F86 /* ILGHttpConstants.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ILGHttpConstants.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		88597449EDD06DA2B0D8A053C58F10DA /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8C8BDC3534C9762CF77E0E8465DB8921 /* HTTPHeaderFields.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = HTTPHeaderFields.h; sourceTree = "<group>"; };
+		8CCB13CA9753FE818B409E09D017F825 /* Pods-SpotHero_iOS_Partner_SDK_ExampleUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SpotHero_iOS_Partner_SDK_ExampleUITests-dummy.m"; sourceTree = "<group>"; };
+		8E445A100FD63186F3123406ABE006E8 /* Pods-SpotHero_iOS_Partner_SDK_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SpotHero_iOS_Partner_SDK_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		8EB1A3AF8990991D2F50BC122E00E52C /* XCTestCase-KIFAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "XCTestCase-KIFAdditions.m"; path = "Additions/XCTestCase-KIFAdditions.m"; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9474662916CCA3CBFA40361B5EF98296 /* ReplaceMe.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ReplaceMe.swift; sourceTree = "<group>"; };
-		958D8AD77247F8070332D3F4CBACEF29 /* Pods-SpotHero_iOS_Partner_SDK_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SpotHero_iOS_Partner_SDK_Tests-umbrella.h"; sourceTree = "<group>"; };
-		9611CC81DDC661231495DC33B2117300 /* Pods-SpotHero_iOS_Partner_SDK_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SpotHero_iOS_Partner_SDK_Example-dummy.m"; sourceTree = "<group>"; };
-		96B699AF534FFEACDA3BF644D593BF22 /* VOKBenkode.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = VOKBenkode.m; path = Pod/Classes/VOKBenkode.m; sourceTree = "<group>"; };
-		9C0247723063F0585AE9B8E89DDEEB60 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9D4646E7934EB8DB26A2D7DB7FD12828 /* Pods-SpotHero_iOS_Partner_SDK_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SpotHero_iOS_Partner_SDK_Example-umbrella.h"; sourceTree = "<group>"; };
-		ADD8B0F1487F83D2525AC7E3CB4E2FEB /* VOKBenkode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VOKBenkode.h; path = Pod/Classes/VOKBenkode.h; sourceTree = "<group>"; };
-		B56CC85972A587FB4CA0AC8724B51416 /* Pods-SpotHero_iOS_Partner_SDK_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SpotHero_iOS_Partner_SDK_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		94CBE121FA336ECDA22CE72BA2559A6D /* KIFTestCase.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = KIFTestCase.m; path = Classes/KIFTestCase.m; sourceTree = "<group>"; };
+		96F24AF2E2FD829C2C62FC52131B3A7C /* KIFTestStepValidation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = KIFTestStepValidation.m; path = Classes/KIFTestStepValidation.m; sourceTree = "<group>"; };
+		973CC9EB6FB5F4D339E575B64C952D6C /* Pods_SpotHero_iOS_Partner_SDK_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpotHero_iOS_Partner_SDK_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D6FE183FE8B961977D0E68B0D60A595 /* Pods-SpotHero_iOS_Partner_SDK_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SpotHero_iOS_Partner_SDK_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		9DB2C5A9EAFD2CE4CE5E13DA35F17F1E /* CGGeometry-KIFAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "CGGeometry-KIFAdditions.h"; path = "Additions/CGGeometry-KIFAdditions.h"; sourceTree = "<group>"; };
+		9E5239623CAD227698662FA0389B43E9 /* UIView-Debugging.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIView-Debugging.h"; path = "Additions/UIView-Debugging.h"; sourceTree = "<group>"; };
+		9F720E8BF515E0A89278FF3FABA4EACC /* KIF-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "KIF-dummy.m"; sourceTree = "<group>"; };
+		9FCA36D95D527363F166C3A8F1861A1A /* UIView-KIFAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIView-KIFAdditions.m"; path = "Additions/UIView-KIFAdditions.m"; sourceTree = "<group>"; };
+		9FFA4D44CD7BEA34C4A678167CD96CD1 /* KIF.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = KIF.modulemap; sourceTree = "<group>"; };
+		A1F8E3B80D2A84E3EC1CCFF12FB5816F /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A24D29F1383067FED859AEEC2BF6D107 /* VOKMockUrlProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VOKMockUrlProtocol.h; sourceTree = "<group>"; };
+		A36E69B84A90DCB66EE3618DD933B0E6 /* UIScreen+KIFAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIScreen+KIFAdditions.m"; path = "Additions/UIScreen+KIFAdditions.m"; sourceTree = "<group>"; };
+		A4118229E82AF62B5973027C25E7FBDE /* KIF-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "KIF-umbrella.h"; sourceTree = "<group>"; };
+		A744DFD60A2921A9ED1858A634A658CE /* UIScrollView-KIFAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIScrollView-KIFAdditions.h"; path = "Additions/UIScrollView-KIFAdditions.h"; sourceTree = "<group>"; };
+		A74F85BE7618CE5FFAAA013859F1345F /* ILGHttpConstants-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ILGHttpConstants-prefix.pch"; sourceTree = "<group>"; };
+		A9B161941B347A29F861D9AAF7F325A4 /* VOKBenkode.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = VOKBenkode.modulemap; sourceTree = "<group>"; };
+		B03DDC183E86127A9B620C1A4F1E2B29 /* Pods-SpotHero_iOS_Partner_SDK_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SpotHero_iOS_Partner_SDK_Tests-resources.sh"; sourceTree = "<group>"; };
+		B0B05AFB294F36681FBA6D5996EFF1EF /* UIScrollView-KIFAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIScrollView-KIFAdditions.m"; path = "Additions/UIScrollView-KIFAdditions.m"; sourceTree = "<group>"; };
+		B1606FD8F6FAE2BEE0F30C2682E32412 /* UIApplication-KIFAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIApplication-KIFAdditions.h"; path = "Additions/UIApplication-KIFAdditions.h"; sourceTree = "<group>"; };
+		B2BDB6B0056A130D22CEA0D1D7703F42 /* NSString+KIFAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSString+KIFAdditions.m"; path = "Additions/NSString+KIFAdditions.m"; sourceTree = "<group>"; };
 		B6E9CEF881615D2C3BA0F2F2A8E31AB5 /* SpotHero_iOS_Partner_SDK.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = SpotHero_iOS_Partner_SDK.modulemap; sourceTree = "<group>"; };
-		BECA19F598F3DBE98AB6A9EF169049DA /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C4E1274D93B6F4CDA9C2C37E78FAB8A2 /* Pods_SpotHero_iOS_Partner_SDK_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpotHero_iOS_Partner_SDK_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D2184C01844B22D157FC4440520E07A6 /* Pods-SpotHero_iOS_Partner_SDK_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SpotHero_iOS_Partner_SDK_Example.release.xcconfig"; sourceTree = "<group>"; };
-		DBF94AD7E9FE0D5B4C4E9C4D7764FBE2 /* Pods-SpotHero_iOS_Partner_SDK_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-SpotHero_iOS_Partner_SDK_Tests.modulemap"; sourceTree = "<group>"; };
-		E21E0C5C14FACA32C096D26616FC3F3B /* Pods-SpotHero_iOS_Partner_SDK_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SpotHero_iOS_Partner_SDK_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
-		E3085CCEEEF73CD4A069D258F300EC6A /* Pods-SpotHero_iOS_Partner_SDK_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SpotHero_iOS_Partner_SDK_Example-acknowledgements.plist"; sourceTree = "<group>"; };
-		E76107D65002A3F5A2D4A2EA2A8FE5A1 /* Pods-SpotHero_iOS_Partner_SDK_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SpotHero_iOS_Partner_SDK_Example-frameworks.sh"; sourceTree = "<group>"; };
-		E8151939116F16500DCEF464B71D0C65 /* Pods_SpotHero_iOS_Partner_SDK_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpotHero_iOS_Partner_SDK_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E93F066CE1CF48BA6C6028FEE270DAAE /* Pods-SpotHero_iOS_Partner_SDK_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SpotHero_iOS_Partner_SDK_Tests-resources.sh"; sourceTree = "<group>"; };
-		EBF470C6E899CC3CA397D424E65CC170 /* VOKMockUrlProtocol.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VOKMockUrlProtocol.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		EE0D515B1D9D60C454F5494F32460255 /* VOKBenkode.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = VOKBenkode.modulemap; sourceTree = "<group>"; };
+		B9B57B04FEA617ADAB2C10BD467E0C73 /* VOKMockUrlProtocol.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = VOKMockUrlProtocol.m; sourceTree = "<group>"; };
+		BB4CF7A50631AF2A005CAC54E0AFE35A /* VOKBenkode.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = VOKBenkode.m; path = Pod/Classes/VOKBenkode.m; sourceTree = "<group>"; };
+		BB65D5FB9941D22DCFF75511D44BD252 /* ILGHttpConstants.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ILGHttpConstants.xcconfig; sourceTree = "<group>"; };
+		BB6A800542D3897FE795CEE01EFA95D3 /* KIFUIViewTestActor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = KIFUIViewTestActor.m; path = Classes/KIFUIViewTestActor.m; sourceTree = "<group>"; };
+		BEF642A77897092B77458B21635CAD8E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
+		BFB888D7AF57F531266DD178438689EB /* Pods-SpotHero_iOS_Partner_SDK_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SpotHero_iOS_Partner_SDK_Example-dummy.m"; sourceTree = "<group>"; };
+		C03C4F3A0839CB5F95557F74F91C7EFC /* KIFUITestActor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = KIFUITestActor.m; path = Classes/KIFUITestActor.m; sourceTree = "<group>"; };
+		C04CA52D422F0C14621480F77800A14A /* LoadableCategory.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LoadableCategory.h; path = Additions/LoadableCategory.h; sourceTree = "<group>"; };
+		C1D166214B7CD4227BA16F3C79AB2CBD /* UIWindow-KIFAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIWindow-KIFAdditions.h"; path = "Additions/UIWindow-KIFAdditions.h"; sourceTree = "<group>"; };
+		C46B6258C3006561FC37367145F9196E /* UIEvent+KIFAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIEvent+KIFAdditions.h"; path = "Additions/UIEvent+KIFAdditions.h"; sourceTree = "<group>"; };
+		CC94D1BD3EC065C485FFBABA54E7D7B6 /* NSException-KIFAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSException-KIFAdditions.h"; path = "Additions/NSException-KIFAdditions.h"; sourceTree = "<group>"; };
+		CED353CC3F3A082AC308EE2853EFE9CB /* KIFUITestActor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KIFUITestActor.h; path = Classes/KIFUITestActor.h; sourceTree = "<group>"; };
+		D10040B581C25A4E1A27841139186348 /* KIFUIViewTestActor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KIFUIViewTestActor.h; path = Classes/KIFUIViewTestActor.h; sourceTree = "<group>"; };
+		D1F8FB3005BB7B8EB686A975F4597EB1 /* KIFTestCase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KIFTestCase.h; path = Classes/KIFTestCase.h; sourceTree = "<group>"; };
+		D26DE1861587C68C5E1C238B12AAFA74 /* KIFUITestActor-ConditionalTests.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "KIFUITestActor-ConditionalTests.h"; path = "Classes/KIFUITestActor-ConditionalTests.h"; sourceTree = "<group>"; };
+		D786B2E88548322A347D7016CC1B5E8E /* Pods-SpotHero_iOS_Partner_SDK_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SpotHero_iOS_Partner_SDK_Example-frameworks.sh"; sourceTree = "<group>"; };
+		DA236F220E0C444843C6531850CBB74A /* VOKMockUrlProtocol.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VOKMockUrlProtocol.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC74D712F1D9579CDB655E04AA9F42E5 /* NSFileManager-KIFAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSFileManager-KIFAdditions.m"; path = "Additions/NSFileManager-KIFAdditions.m"; sourceTree = "<group>"; };
+		DCC5ED37B6366962F94BBD4F34F1607D /* Pods-SpotHero_iOS_Partner_SDK_ExampleUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-SpotHero_iOS_Partner_SDK_ExampleUITests.modulemap"; sourceTree = "<group>"; };
+		E0527B6F28C55DD186FE2AD382616187 /* NSBundle-KIFAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSBundle-KIFAdditions.h"; path = "Additions/NSBundle-KIFAdditions.h"; sourceTree = "<group>"; };
+		E128E10FF1C789EB329960994259FA13 /* KIFSystemTestActor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KIFSystemTestActor.h; path = Classes/KIFSystemTestActor.h; sourceTree = "<group>"; };
+		E6D3709DC54477B06CB25AE2F7DD9076 /* VOKMockUrlProtocol-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "VOKMockUrlProtocol-dummy.m"; sourceTree = "<group>"; };
+		E73B717D88624CAEA47E1BDFEFA89B02 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
+		EC39B13BE65F58591BB7798B49188584 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EDC026576A5230A6ADEA8494C11BAA98 /* UIWindow-KIFAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIWindow-KIFAdditions.m"; path = "Additions/UIWindow-KIFAdditions.m"; sourceTree = "<group>"; };
 		EE3860FDB2A6469B3F986EE1B4DCA235 /* SpotHero_iOS_Partner_SDK.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SpotHero_iOS_Partner_SDK.xcconfig; sourceTree = "<group>"; };
-		EEAD6CD194F802D44ADE4F59B24D77CA /* HTTPMethods.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = HTTPMethods.h; sourceTree = "<group>"; };
-		EF1CF96E53B6EC2C07E219971F21CFEB /* VOKMockUrlProtocol.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = VOKMockUrlProtocol.modulemap; sourceTree = "<group>"; };
-		F0054F005FC37C22CF3E5051D2FDAA82 /* VOKMockUrlProtocol-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "VOKMockUrlProtocol-umbrella.h"; sourceTree = "<group>"; };
-		F87E46BCD58FC250A59C7F26CAB15814 /* Pods-SpotHero_iOS_Partner_SDK_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SpotHero_iOS_Partner_SDK_Tests-dummy.m"; sourceTree = "<group>"; };
-		FAD6A0E02D7DE37089C7AA377AFE01C3 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F1040CA6CAB2E4929292EB7CFEC89768 /* Pods-SpotHero_iOS_Partner_SDK_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SpotHero_iOS_Partner_SDK_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		F58E4DEA75B3E05BADC495FB5C2A9987 /* Pods_SpotHero_iOS_Partner_SDK_ExampleUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpotHero_iOS_Partner_SDK_ExampleUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F70B42744B02FB3EDE62E01578484619 /* UIAccessibilityElement-KIFAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIAccessibilityElement-KIFAdditions.h"; path = "Additions/UIAccessibilityElement-KIFAdditions.h"; sourceTree = "<group>"; };
+		F7A1B38FA43F648E4BC74A4C2FF5542C /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F8CAEF1A388C2AD4016A62A07055ED39 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FAA471DC88D7981D1715E00C65286989 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		FB6AEC58190F0784952BEBE53275EF37 /* KIF.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KIF.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FCBADE621DB86EA34EF71DC291E77D99 /* ILGHttpConstants.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ILGHttpConstants.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FD8D47137BD2E6CF7E923081DC882A72 /* VOKMockUrlProtocol-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "VOKMockUrlProtocol-prefix.pch"; sourceTree = "<group>"; };
+		FF46B62D9A88082DB961B9FAC6AA2ACC /* Pods-SpotHero_iOS_Partner_SDK_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SpotHero_iOS_Partner_SDK_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,16 +345,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B3D8E8C84DE44FA1674A906CF0A8B7E /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2AB640B8CD7C31DCF6BF11897B3AE7E9 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				808C51209182AFC1B09C6672600D75D5 /* Foundation.framework in Frameworks */,
-				0A926AAC6986320FD52817EE19D7A789 /* ILGHttpConstants.framework in Frameworks */,
-				48DEB2A624D36AA6E3659A886E34000F /* VOKBenkode.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -186,6 +364,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9A644352019DA83960582E9FC00E08D9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B66CDC415E1EC5D2A532851C3AFBA199 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BCBAED73FAE4894E9B6F505B3EC3E69F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				12AC30A8BBD2D158AE154DD3E358D754 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CEFA5FEC64F66E8A37F3A72E4DA13D81 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -194,99 +388,197 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DC8B09EC6BDC11255544091965A577CA /* Frameworks */ = {
+		CF3207B4D736DB1C7D5F07B945B252CA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				30E7E144B3A77C361A9A709BABC047A8 /* Foundation.framework in Frameworks */,
+				DECC827D45A03F3CDCEF6143EEC31D44 /* Foundation.framework in Frameworks */,
+				226E515781459EB5B7B504765084C2DB /* ILGHttpConstants.framework in Frameworks */,
+				A613224495F0938A12F4139E5490E38E /* VOKBenkode.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA41C84864E5ABA6F9C3876DDCA781A7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7C6BAE898560DC1DD8AA376B6A8BCCD1 /* CoreGraphics.framework in Frameworks */,
+				A612F5EA7A60D21B8C15504F973BD03C /* Foundation.framework in Frameworks */,
+				A53676112A1D092D65C9E38F544973BF /* IOKit.framework in Frameworks */,
+				CB567CAB623EE579448E24D486300050 /* QuartzCore.framework in Frameworks */,
+				E64317F7451461B64C33E9621B1CD455 /* XCTest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0122951EE308F299877938271E7E9A8C /* iOS */ = {
+		0C9705DF08F9D2045971E9ED3D1A75A9 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				4430772A57A40F1F217AD8EBBA497984 /* Foundation.framework */,
+				88597449EDD06DA2B0D8A053C58F10DA /* Info.plist */,
+				9FFA4D44CD7BEA34C4A678167CD96CD1 /* KIF.modulemap */,
+				67090360536AAA2CCBBDB617992A44F5 /* KIF.xcconfig */,
+				9F720E8BF515E0A89278FF3FABA4EACC /* KIF-dummy.m */,
+				04DD97FA9ED2A09D81E7E25B8D515C2F /* KIF-prefix.pch */,
+				A4118229E82AF62B5973027C25E7FBDE /* KIF-umbrella.h */,
 			);
-			name = iOS;
+			name = "Support Files";
+			path = "../Target Support Files/KIF";
 			sourceTree = "<group>";
 		};
-		1FE4E3D7F4DE26F9D35223BCA45DBE91 /* Pods-SpotHero_iOS_Partner_SDK_Example */ = {
+		114B63B749345DAD3E18093E5BBF4BC2 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				FAD6A0E02D7DE37089C7AA377AFE01C3 /* Info.plist */,
-				235C3545B7D4770A2285A107F66E498F /* Pods-SpotHero_iOS_Partner_SDK_Example.modulemap */,
-				E21E0C5C14FACA32C096D26616FC3F3B /* Pods-SpotHero_iOS_Partner_SDK_Example-acknowledgements.markdown */,
-				E3085CCEEEF73CD4A069D258F300EC6A /* Pods-SpotHero_iOS_Partner_SDK_Example-acknowledgements.plist */,
-				9611CC81DDC661231495DC33B2117300 /* Pods-SpotHero_iOS_Partner_SDK_Example-dummy.m */,
-				E76107D65002A3F5A2D4A2EA2A8FE5A1 /* Pods-SpotHero_iOS_Partner_SDK_Example-frameworks.sh */,
-				590E923CEB91C2D8AB4F62296F819FE0 /* Pods-SpotHero_iOS_Partner_SDK_Example-resources.sh */,
-				9D4646E7934EB8DB26A2D7DB7FD12828 /* Pods-SpotHero_iOS_Partner_SDK_Example-umbrella.h */,
-				B56CC85972A587FB4CA0AC8724B51416 /* Pods-SpotHero_iOS_Partner_SDK_Example.debug.xcconfig */,
-				D2184C01844B22D157FC4440520E07A6 /* Pods-SpotHero_iOS_Partner_SDK_Example.release.xcconfig */,
+				435BC16961D9DCFB57AB922201A37CB1 /* CALayer-KIFAdditions.h */,
+				60C64AD05EE83119DE42DE3F559DECFB /* CALayer-KIFAdditions.m */,
+				9DB2C5A9EAFD2CE4CE5E13DA35F17F1E /* CGGeometry-KIFAdditions.h */,
+				67CEFF5676B7558BDC777E71C5D4AFD4 /* CGGeometry-KIFAdditions.m */,
+				3B846D8DAD5EA51B03E71CD54AFAB26D /* IOHIDEvent+KIF.h */,
+				5989385DB2E9683DF2574368841F1429 /* IOHIDEvent+KIF.m */,
+				6E92F4D0973DF03CD24869F9E6F735AF /* KIF.h */,
+				1F7752DC4B791EBD378C06A956F75F53 /* KIFAccessibilityEnabler.h */,
+				101D557B37CCE9563A1FABF23EB9658E /* KIFAccessibilityEnabler.m */,
+				E128E10FF1C789EB329960994259FA13 /* KIFSystemTestActor.h */,
+				5204D3FF98582E7C2C930F45ED65DAF0 /* KIFSystemTestActor.m */,
+				5F9834255F1AD996A87768E97EF1B473 /* KIFTestActor.h */,
+				13BE74C806B6FDC81630F6836EB27D41 /* KIFTestActor.m */,
+				D1F8FB3005BB7B8EB686A975F4597EB1 /* KIFTestCase.h */,
+				94CBE121FA336ECDA22CE72BA2559A6D /* KIFTestCase.m */,
+				083215CD5BF8BE8E2C28590E3A2D908A /* KIFTestStepValidation.h */,
+				96F24AF2E2FD829C2C62FC52131B3A7C /* KIFTestStepValidation.m */,
+				7240645AAFDBF88464277CABC0546617 /* KIFTypist.h */,
+				29630067298D9691D1EDC478071A851D /* KIFTypist.m */,
+				0D57F3D10D1B0A92A6F67BCFF816BC3C /* KIFUIObject.h */,
+				6863E13C4D9C3DA825286E26213C105A /* KIFUIObject.m */,
+				CED353CC3F3A082AC308EE2853EFE9CB /* KIFUITestActor.h */,
+				C03C4F3A0839CB5F95557F74F91C7EFC /* KIFUITestActor.m */,
+				D26DE1861587C68C5E1C238B12AAFA74 /* KIFUITestActor-ConditionalTests.h */,
+				117DC4EDDFFBE0C4A7AB0F057D7D3564 /* KIFUITestActor-ConditionalTests.m */,
+				D10040B581C25A4E1A27841139186348 /* KIFUIViewTestActor.h */,
+				BB6A800542D3897FE795CEE01EFA95D3 /* KIFUIViewTestActor.m */,
+				C04CA52D422F0C14621480F77800A14A /* LoadableCategory.h */,
+				E0527B6F28C55DD186FE2AD382616187 /* NSBundle-KIFAdditions.h */,
+				68728FC2496F1CA1A2B72D7542B72F34 /* NSBundle-KIFAdditions.m */,
+				2A72C2F94E92ECDA3231540D0A31D5C1 /* NSError-KIFAdditions.h */,
+				518A4AD82A898D965539E0B185F0270A /* NSError-KIFAdditions.m */,
+				CC94D1BD3EC065C485FFBABA54E7D7B6 /* NSException-KIFAdditions.h */,
+				07ADC416C31F90FC7915AA70B44B725B /* NSException-KIFAdditions.m */,
+				4AA95BF17B097BD8C882FEB2D687347B /* NSFileManager-KIFAdditions.h */,
+				DC74D712F1D9579CDB655E04AA9F42E5 /* NSFileManager-KIFAdditions.m */,
+				55ECF96D8592049FBD6BD1CA64B88394 /* NSPredicate+KIFAdditions.h */,
+				4CB123FB5D77E3F8664393DC0E1738D8 /* NSPredicate+KIFAdditions.m */,
+				560465DBC4C328FCB5AA806688C3ABB9 /* NSString+KIFAdditions.h */,
+				B2BDB6B0056A130D22CEA0D1D7703F42 /* NSString+KIFAdditions.m */,
+				F70B42744B02FB3EDE62E01578484619 /* UIAccessibilityElement-KIFAdditions.h */,
+				28055B0F3FDCF6A2BBBD43BFBD8C0C23 /* UIAccessibilityElement-KIFAdditions.m */,
+				B1606FD8F6FAE2BEE0F30C2682E32412 /* UIApplication-KIFAdditions.h */,
+				3D44B90A1A9BC73CFCFA47DD2086821A /* UIApplication-KIFAdditions.m */,
+				41C5827B333E62A1501E5A43FE1ED365 /* UIAutomationHelper.h */,
+				07BFFA364566EBAF20725705610903D5 /* UIAutomationHelper.m */,
+				C46B6258C3006561FC37367145F9196E /* UIEvent+KIFAdditions.h */,
+				5141EEC8C982E43265D1E96C75AE2CDF /* UIEvent+KIFAdditions.m */,
+				6CB3A314D4DB995926792A8534AF4971 /* UIScreen+KIFAdditions.h */,
+				A36E69B84A90DCB66EE3618DD933B0E6 /* UIScreen+KIFAdditions.m */,
+				A744DFD60A2921A9ED1858A634A658CE /* UIScrollView-KIFAdditions.h */,
+				B0B05AFB294F36681FBA6D5996EFF1EF /* UIScrollView-KIFAdditions.m */,
+				31DDCAD0F2CF98F26A1FBA045BEE0E63 /* UITableView-KIFAdditions.h */,
+				45BB445329961C907AEADDF253DAF17E /* UITableView-KIFAdditions.m */,
+				718E1B6539BF872712FC1452A8E291C1 /* UITouch-KIFAdditions.h */,
+				3D2FC399DE3E08555C9F4EF4D587E880 /* UITouch-KIFAdditions.m */,
+				9E5239623CAD227698662FA0389B43E9 /* UIView-Debugging.h */,
+				1EF8013A4CF8058FD5898D786C70184D /* UIView-Debugging.m */,
+				1456BCEA72759C60727AFF952EF591D1 /* UIView-KIFAdditions.h */,
+				9FCA36D95D527363F166C3A8F1861A1A /* UIView-KIFAdditions.m */,
+				C1D166214B7CD4227BA16F3C79AB2CBD /* UIWindow-KIFAdditions.h */,
+				EDC026576A5230A6ADEA8494C11BAA98 /* UIWindow-KIFAdditions.m */,
+				1AF13184C6C478B74EFFED0A75FB28DC /* XCTestCase-KIFAdditions.h */,
+				8EB1A3AF8990991D2F50BC122E00E52C /* XCTestCase-KIFAdditions.m */,
 			);
-			name = "Pods-SpotHero_iOS_Partner_SDK_Example";
-			path = "Target Support Files/Pods-SpotHero_iOS_Partner_SDK_Example";
+			name = Core;
 			sourceTree = "<group>";
 		};
-		374411C0A4B8C9B87215B250FEC4BF4A /* ILGHttpConstants */ = {
+		2FA946C649DF875B7FE8639B29A406F7 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				243705F9DA28EAD104676B966FD25390 /* HTTPHeaderFields.h */,
-				754AB02150922FB3C8F3A4A5EB2A7B86 /* HTTPHeaderFields.m */,
-				EEAD6CD194F802D44ADE4F59B24D77CA /* HTTPMethods.h */,
-				30C1BB793055586EE352420F15245DE2 /* HTTPMethods.m */,
-				240526CAC7DEC0311CB7CA501B41E0E7 /* HTTPStatusCodes.h */,
-				B71469CA14B311BB25FAE35BF38755A5 /* Support Files */,
+				F7A1B38FA43F648E4BC74A4C2FF5542C /* Info.plist */,
+				A9B161941B347A29F861D9AAF7F325A4 /* VOKBenkode.modulemap */,
+				69CF9EE8A678C30435E2E3474D318C64 /* VOKBenkode.xcconfig */,
+				7B5DD8AEB4125F372055C269CA62A172 /* VOKBenkode-dummy.m */,
+				36DDAFCA2170A1E7AA4BDAFECBCBEA88 /* VOKBenkode-prefix.pch */,
+				14CC0C2507AB8F15346FCCA174BFFE82 /* VOKBenkode-umbrella.h */,
 			);
-			path = ILGHttpConstants;
+			name = "Support Files";
+			path = "../Target Support Files/VOKBenkode";
 			sourceTree = "<group>";
 		};
-		43C2642D06F1A125BFCEAA7947E97BE0 /* Products */ = {
+		3D2DCF33051FF1A95AA888C711F96AEF /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				1A8AF1BDAFEA23FD4A199C652DCC012D /* ILGHttpConstants.framework */,
-				E8151939116F16500DCEF464B71D0C65 /* Pods_SpotHero_iOS_Partner_SDK_Example.framework */,
-				C4E1274D93B6F4CDA9C2C37E78FAB8A2 /* Pods_SpotHero_iOS_Partner_SDK_Tests.framework */,
-				426D671F53A4C67163C970C98B0D6DEC /* SpotHero_iOS_Partner_SDK.framework */,
-				773C2E7EF967396E848A9F8A3E760FC3 /* VOKBenkode.framework */,
-				EBF470C6E899CC3CA397D424E65CC170 /* VOKMockUrlProtocol.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		46A628D5DC37B2C76BA1D7E73B07DDF7 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				BECA19F598F3DBE98AB6A9EF169049DA /* Info.plist */,
-				EF1CF96E53B6EC2C07E219971F21CFEB /* VOKMockUrlProtocol.modulemap */,
-				01780D7D649AF33B6FECD42B8D49271B /* VOKMockUrlProtocol.xcconfig */,
-				129230B2C06D3E47312A7759233F04A7 /* VOKMockUrlProtocol-dummy.m */,
-				7CF492743F481C274B82B189ED965626 /* VOKMockUrlProtocol-prefix.pch */,
-				F0054F005FC37C22CF3E5051D2FDAA82 /* VOKMockUrlProtocol-umbrella.h */,
+				A1F8E3B80D2A84E3EC1CCFF12FB5816F /* Info.plist */,
+				77CBB8F9EFB48CCD7636F88AE153EE6F /* VOKMockUrlProtocol.modulemap */,
+				301E195C2D84BDEFA95256606CD27545 /* VOKMockUrlProtocol.xcconfig */,
+				E6D3709DC54477B06CB25AE2F7DD9076 /* VOKMockUrlProtocol-dummy.m */,
+				FD8D47137BD2E6CF7E923081DC882A72 /* VOKMockUrlProtocol-prefix.pch */,
+				3FFF533926512C588619E82503028867 /* VOKMockUrlProtocol-umbrella.h */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/VOKMockUrlProtocol";
 			sourceTree = "<group>";
 		};
-		6CB41DEC3EDF4248D44A89018EAC63F9 /* Pods-SpotHero_iOS_Partner_SDK_Tests */ = {
+		3D3E99EF4D2145905C74A81CDC93B737 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1F9D4460CCF42836DD407A9E36A66004 /* Info.plist */,
-				DBF94AD7E9FE0D5B4C4E9C4D7764FBE2 /* Pods-SpotHero_iOS_Partner_SDK_Tests.modulemap */,
-				6FF96EA2B60F4771E690EBFA37F0B23A /* Pods-SpotHero_iOS_Partner_SDK_Tests-acknowledgements.markdown */,
-				2EC0424F227AB2EF0353784782433701 /* Pods-SpotHero_iOS_Partner_SDK_Tests-acknowledgements.plist */,
-				F87E46BCD58FC250A59C7F26CAB15814 /* Pods-SpotHero_iOS_Partner_SDK_Tests-dummy.m */,
-				39F07DD3F593E41BFBF556013DD48BB9 /* Pods-SpotHero_iOS_Partner_SDK_Tests-frameworks.sh */,
-				E93F066CE1CF48BA6C6028FEE270DAAE /* Pods-SpotHero_iOS_Partner_SDK_Tests-resources.sh */,
-				958D8AD77247F8070332D3F4CBACEF29 /* Pods-SpotHero_iOS_Partner_SDK_Tests-umbrella.h */,
-				4DC2734C5AD14AB0EB6B5B82D1E25FBC /* Pods-SpotHero_iOS_Partner_SDK_Tests.debug.xcconfig */,
-				9048FDBBACD393EBB963D4D6FCAD7149 /* Pods-SpotHero_iOS_Partner_SDK_Tests.release.xcconfig */,
+				82B74321C7FAC7908781CB14A24A8F86 /* ILGHttpConstants.framework */,
+				493AABAC34161F1E54FDE1DF7E8741C0 /* VOKBenkode.framework */,
+				D98449FC2E1F88072CBDD9F22BBA2F14 /* iOS */,
 			);
-			name = "Pods-SpotHero_iOS_Partner_SDK_Tests";
-			path = "Target Support Files/Pods-SpotHero_iOS_Partner_SDK_Tests";
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3F3E89A84BB83FDD8B85931DDC9B6EFF /* Pods-SpotHero_iOS_Partner_SDK_ExampleUITests */ = {
+			isa = PBXGroup;
+			children = (
+				EC39B13BE65F58591BB7798B49188584 /* Info.plist */,
+				DCC5ED37B6366962F94BBD4F34F1607D /* Pods-SpotHero_iOS_Partner_SDK_ExampleUITests.modulemap */,
+				12F419EB9D92785AAE0A8749F7D453D3 /* Pods-SpotHero_iOS_Partner_SDK_ExampleUITests-acknowledgements.markdown */,
+				1E5F49D147153B475B8F13A52855EC93 /* Pods-SpotHero_iOS_Partner_SDK_ExampleUITests-acknowledgements.plist */,
+				8CCB13CA9753FE818B409E09D017F825 /* Pods-SpotHero_iOS_Partner_SDK_ExampleUITests-dummy.m */,
+				48A760F2D4631318CAE9119B7FE81C5D /* Pods-SpotHero_iOS_Partner_SDK_ExampleUITests-frameworks.sh */,
+				45DD5C960CEC6151A3D5F0A1FCBCD170 /* Pods-SpotHero_iOS_Partner_SDK_ExampleUITests-resources.sh */,
+				34F191306BE13B0604226705D0A83380 /* Pods-SpotHero_iOS_Partner_SDK_ExampleUITests-umbrella.h */,
+				791A5445D306D31CE1A784DB9E264414 /* Pods-SpotHero_iOS_Partner_SDK_ExampleUITests.debug.xcconfig */,
+				105A38EED625B3A853DAD9FF80562323 /* Pods-SpotHero_iOS_Partner_SDK_ExampleUITests.release.xcconfig */,
+			);
+			name = "Pods-SpotHero_iOS_Partner_SDK_ExampleUITests";
+			path = "Target Support Files/Pods-SpotHero_iOS_Partner_SDK_ExampleUITests";
+			sourceTree = "<group>";
+		};
+		5F9014B5D7D901D2AC943141E7FCE6F1 /* ILGHttpConstants */ = {
+			isa = PBXGroup;
+			children = (
+				8C8BDC3534C9762CF77E0E8465DB8921 /* HTTPHeaderFields.h */,
+				33475DCFAD041DE4DE25A6AEB9C41CCF /* HTTPHeaderFields.m */,
+				47B12878D4433F7E7B446830522A141D /* HTTPMethods.h */,
+				7C7A4098EBEA5D0F0D6447FD2A93B4F8 /* HTTPMethods.m */,
+				6C697BE21D1ACD302B11B902AAF2D97A /* HTTPStatusCodes.h */,
+				612D52B490FB9D5D2846557B2A5F059B /* Support Files */,
+			);
+			path = ILGHttpConstants;
+			sourceTree = "<group>";
+		};
+		612D52B490FB9D5D2846557B2A5F059B /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				7D54BACBA56D12077E7A78872F2C1D2F /* ILGHttpConstants.modulemap */,
+				BB65D5FB9941D22DCFF75511D44BD252 /* ILGHttpConstants.xcconfig */,
+				108DBB169E266E6EC3FDB9CBDDF95C03 /* ILGHttpConstants-dummy.m */,
+				A74F85BE7618CE5FFAAA013859F1345F /* ILGHttpConstants-prefix.pch */,
+				3F8E91F97381005CCA5971CFDC42B11D /* ILGHttpConstants-umbrella.h */,
+				485EB766887DD817CB9A3837C7A43EE8 /* Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/ILGHttpConstants";
 			sourceTree = "<group>";
 		};
 		6F6337513DD3CAA4544A8D6CB59AC753 /* Support Files */ = {
@@ -303,14 +595,22 @@
 			path = "Example/Pods/Target Support Files/SpotHero_iOS_Partner_SDK";
 			sourceTree = "<group>";
 		};
-		6FB109F596AB581CB293C049DAEE6079 /* Frameworks */ = {
+		764910FD9C4B71D3E0AF86B71E1974F2 /* Pods-SpotHero_iOS_Partner_SDK_Example */ = {
 			isa = PBXGroup;
 			children = (
-				7CB61B0DE29CF966BCC306F5D5DACCB7 /* ILGHttpConstants.framework */,
-				24E8136C3B7CEDB0353A3C5F95544807 /* VOKBenkode.framework */,
-				0122951EE308F299877938271E7E9A8C /* iOS */,
+				3A2ADFE230B15D2C3B7F51A9ED50B3BB /* Info.plist */,
+				72CF597D56D63BC415CE0F77857458F9 /* Pods-SpotHero_iOS_Partner_SDK_Example.modulemap */,
+				9D6FE183FE8B961977D0E68B0D60A595 /* Pods-SpotHero_iOS_Partner_SDK_Example-acknowledgements.markdown */,
+				FF46B62D9A88082DB961B9FAC6AA2ACC /* Pods-SpotHero_iOS_Partner_SDK_Example-acknowledgements.plist */,
+				BFB888D7AF57F531266DD178438689EB /* Pods-SpotHero_iOS_Partner_SDK_Example-dummy.m */,
+				D786B2E88548322A347D7016CC1B5E8E /* Pods-SpotHero_iOS_Partner_SDK_Example-frameworks.sh */,
+				2C70D8DEC3E7F4EB969D3CCFD178F679 /* Pods-SpotHero_iOS_Partner_SDK_Example-resources.sh */,
+				07697703F62E04514A84CD427DBC0A21 /* Pods-SpotHero_iOS_Partner_SDK_Example-umbrella.h */,
+				F1040CA6CAB2E4929292EB7CFEC89768 /* Pods-SpotHero_iOS_Partner_SDK_Example.debug.xcconfig */,
+				1B9EE4552760134BA8F9B2575A5B357D /* Pods-SpotHero_iOS_Partner_SDK_Example.release.xcconfig */,
 			);
-			name = Frameworks;
+			name = "Pods-SpotHero_iOS_Partner_SDK_Example";
+			path = "Target Support Files/Pods-SpotHero_iOS_Partner_SDK_Example";
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
@@ -318,40 +618,36 @@
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				A778BEBFA7CE74D524D94C8B9A759FEC /* Development Pods */,
-				6FB109F596AB581CB293C049DAEE6079 /* Frameworks */,
-				C8F75D9CEA8B98E5746018A0B0CB67FD /* Pods */,
-				43C2642D06F1A125BFCEAA7947E97BE0 /* Products */,
-				84275A24548F5E025574DFDE2A367365 /* Targets Support Files */,
+				3D3E99EF4D2145905C74A81CDC93B737 /* Frameworks */,
+				E26809B06FFBF788D3C1F33A554D8965 /* Pods */,
+				83263F8E4C07A8AB0641121DC7D562FA /* Products */,
+				BC90AD44F8EB4CF4C8DBB7E6010A6D68 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		82DAF4B28C000B165B343056E1E8E579 /* VOKBenkode */ = {
+		829243ED7502CAA615FDA386C4EC5C53 /* VOKBenkode */ = {
 			isa = PBXGroup;
 			children = (
-				ADD8B0F1487F83D2525AC7E3CB4E2FEB /* VOKBenkode.h */,
-				96B699AF534FFEACDA3BF644D593BF22 /* VOKBenkode.m */,
-				D1DE35E6946E98414022126C3FEAEC02 /* Support Files */,
+				3DCB61DE61D8B651F49EE3470324FAB2 /* VOKBenkode.h */,
+				BB4CF7A50631AF2A005CAC54E0AFE35A /* VOKBenkode.m */,
+				2FA946C649DF875B7FE8639B29A406F7 /* Support Files */,
 			);
 			path = VOKBenkode;
 			sourceTree = "<group>";
 		};
-		84275A24548F5E025574DFDE2A367365 /* Targets Support Files */ = {
+		83263F8E4C07A8AB0641121DC7D562FA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1FE4E3D7F4DE26F9D35223BCA45DBE91 /* Pods-SpotHero_iOS_Partner_SDK_Example */,
-				6CB41DEC3EDF4248D44A89018EAC63F9 /* Pods-SpotHero_iOS_Partner_SDK_Tests */,
+				FCBADE621DB86EA34EF71DC291E77D99 /* ILGHttpConstants.framework */,
+				FB6AEC58190F0784952BEBE53275EF37 /* KIF.framework */,
+				2104480BD41771813A122D52ACA90F83 /* Pods_SpotHero_iOS_Partner_SDK_Example.framework */,
+				F58E4DEA75B3E05BADC495FB5C2A9987 /* Pods_SpotHero_iOS_Partner_SDK_ExampleUITests.framework */,
+				973CC9EB6FB5F4D339E575B64C952D6C /* Pods_SpotHero_iOS_Partner_SDK_Tests.framework */,
+				49F8A598D117A1BBE6A251F3D6E20C33 /* SpotHero_iOS_Partner_SDK.framework */,
+				54523F911B68D91D192C4DE7E097A15D /* VOKBenkode.framework */,
+				DA236F220E0C444843C6531850CBB74A /* VOKMockUrlProtocol.framework */,
 			);
-			name = "Targets Support Files";
-			sourceTree = "<group>";
-		};
-		955B58F3D216669B53FF95E6CA91D2E6 /* VOKMockUrlProtocol */ = {
-			isa = PBXGroup;
-			children = (
-				40D9E12F0F8F6271368E20AA2C72820A /* VOKMockUrlProtocol.h */,
-				88B5730019265AD83CC9C34E5A785E51 /* VOKMockUrlProtocol.m */,
-				46A628D5DC37B2C76BA1D7E73B07DDF7 /* Support Files */,
-			);
-			path = VOKMockUrlProtocol;
+			name = Products;
 			sourceTree = "<group>";
 		};
 		A4A2EF78528C9B9A2212DDE263099DE0 /* SpotHero_iOS_Partner_SDK */ = {
@@ -370,18 +666,14 @@
 			name = "Development Pods";
 			sourceTree = "<group>";
 		};
-		B71469CA14B311BB25FAE35BF38755A5 /* Support Files */ = {
+		BC90AD44F8EB4CF4C8DBB7E6010A6D68 /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				5ADDC082B96D51D0EDBD43F3D95621F6 /* ILGHttpConstants.modulemap */,
-				2DED65A599C2FA0E8899C88AAB34425A /* ILGHttpConstants.xcconfig */,
-				79FBC021731552D0922DFB21C24A6E58 /* ILGHttpConstants-dummy.m */,
-				7D870128F2EA706D20FC67B35B063667 /* ILGHttpConstants-prefix.pch */,
-				861289AABBD7FCBC46E40C978754A843 /* ILGHttpConstants-umbrella.h */,
-				6E9A177346E1EAA3B776F06731025945 /* Info.plist */,
+				764910FD9C4B71D3E0AF86B71E1974F2 /* Pods-SpotHero_iOS_Partner_SDK_Example */,
+				3F3E89A84BB83FDD8B85931DDC9B6EFF /* Pods-SpotHero_iOS_Partner_SDK_ExampleUITests */,
+				EC0952BD06CA66491CF2A1D9891404CC /* Pods-SpotHero_iOS_Partner_SDK_Tests */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/ILGHttpConstants";
+			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
 		BCA49DBF1F8786AF2FB70E0D741C058C /* SpotHero_iOS_Partner_SDK */ = {
@@ -394,28 +686,14 @@
 			path = ../..;
 			sourceTree = "<group>";
 		};
-		C8F75D9CEA8B98E5746018A0B0CB67FD /* Pods */ = {
+		CFC1CC8E27E5F71DF7D155ECF49BB40E /* VOKMockUrlProtocol */ = {
 			isa = PBXGroup;
 			children = (
-				374411C0A4B8C9B87215B250FEC4BF4A /* ILGHttpConstants */,
-				82DAF4B28C000B165B343056E1E8E579 /* VOKBenkode */,
-				955B58F3D216669B53FF95E6CA91D2E6 /* VOKMockUrlProtocol */,
+				A24D29F1383067FED859AEEC2BF6D107 /* VOKMockUrlProtocol.h */,
+				B9B57B04FEA617ADAB2C10BD467E0C73 /* VOKMockUrlProtocol.m */,
+				3D2DCF33051FF1A95AA888C711F96AEF /* Support Files */,
 			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		D1DE35E6946E98414022126C3FEAEC02 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				9C0247723063F0585AE9B8E89DDEEB60 /* Info.plist */,
-				EE0D515B1D9D60C454F5494F32460255 /* VOKBenkode.modulemap */,
-				301C18F7A9BF05AE991C02121FED0628 /* VOKBenkode.xcconfig */,
-				2D74A496CB045952F2AB9B90F3A3FAE2 /* VOKBenkode-dummy.m */,
-				6AEFB4B7B417B086F54B3618D3A509AA /* VOKBenkode-prefix.pch */,
-				276A7971B01094A731224F841BD18997 /* VOKBenkode-umbrella.h */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/VOKBenkode";
+			path = VOKMockUrlProtocol;
 			sourceTree = "<group>";
 		};
 		D83AEA22B39A4E372250EDCA366B733D /* Classes */ = {
@@ -426,6 +704,56 @@
 			path = Classes;
 			sourceTree = "<group>";
 		};
+		D98449FC2E1F88072CBDD9F22BBA2F14 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				E73B717D88624CAEA47E1BDFEFA89B02 /* CoreGraphics.framework */,
+				FAA471DC88D7981D1715E00C65286989 /* Foundation.framework */,
+				1FF11D1533C6E2D689EC4A4AB6172B90 /* IOKit.framework */,
+				BEF642A77897092B77458B21635CAD8E /* QuartzCore.framework */,
+				12456CD8217D8522BE42E6B9DB33A068 /* XCTest.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		DBAF6D5E71F792B88869B033096444AB /* KIF */ = {
+			isa = PBXGroup;
+			children = (
+				114B63B749345DAD3E18093E5BBF4BC2 /* Core */,
+				0C9705DF08F9D2045971E9ED3D1A75A9 /* Support Files */,
+			);
+			path = KIF;
+			sourceTree = "<group>";
+		};
+		E26809B06FFBF788D3C1F33A554D8965 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5F9014B5D7D901D2AC943141E7FCE6F1 /* ILGHttpConstants */,
+				DBAF6D5E71F792B88869B033096444AB /* KIF */,
+				829243ED7502CAA615FDA386C4EC5C53 /* VOKBenkode */,
+				CFC1CC8E27E5F71DF7D155ECF49BB40E /* VOKMockUrlProtocol */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		EC0952BD06CA66491CF2A1D9891404CC /* Pods-SpotHero_iOS_Partner_SDK_Tests */ = {
+			isa = PBXGroup;
+			children = (
+				F8CAEF1A388C2AD4016A62A07055ED39 /* Info.plist */,
+				0F092BCA2988A5D2AE8864F04E617F25 /* Pods-SpotHero_iOS_Partner_SDK_Tests.modulemap */,
+				8E445A100FD63186F3123406ABE006E8 /* Pods-SpotHero_iOS_Partner_SDK_Tests-acknowledgements.markdown */,
+				50E7887E667F443F5769AB1EA47F2910 /* Pods-SpotHero_iOS_Partner_SDK_Tests-acknowledgements.plist */,
+				2684D36E1DF39EED96E5B6EA84EDF8CF /* Pods-SpotHero_iOS_Partner_SDK_Tests-dummy.m */,
+				5803D81A30D18771642B9ED5518FB480 /* Pods-SpotHero_iOS_Partner_SDK_Tests-frameworks.sh */,
+				B03DDC183E86127A9B620C1A4F1E2B29 /* Pods-SpotHero_iOS_Partner_SDK_Tests-resources.sh */,
+				1C0A0C46C6A2D321077A532B60B60D0D /* Pods-SpotHero_iOS_Partner_SDK_Tests-umbrella.h */,
+				27B96FA03251D2984B001ADB3AD894E8 /* Pods-SpotHero_iOS_Partner_SDK_Tests.debug.xcconfig */,
+				4777173DD31D9679DDAEBC3B8C3F17A5 /* Pods-SpotHero_iOS_Partner_SDK_Tests.release.xcconfig */,
+			);
+			name = "Pods-SpotHero_iOS_Partner_SDK_Tests";
+			path = "Target Support Files/Pods-SpotHero_iOS_Partner_SDK_Tests";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -434,15 +762,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9934F594895B7B937160AE96B66B1EC0 /* SpotHero_iOS_Partner_SDK-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5734B488E00811649CB27AD98C85D528 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				EB032D54E80B38703EB76B542FAC66AD /* VOKBenkode-umbrella.h in Headers */,
-				2C3D9350F3953374366C2ED9276E1F7A /* VOKBenkode.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -462,12 +781,53 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AB41FF081F33CF6FAA93FF718560E603 /* Headers */ = {
+		A5750BB11B22841195B1E3C545092DB2 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D5440F617EDA5444E81923029E3C248D /* VOKMockUrlProtocol-umbrella.h in Headers */,
-				0EC3A3C75959F539AC43CD48A01BDAD4 /* VOKMockUrlProtocol.h in Headers */,
+				92EE4D6AADD682A1AC8F83FF7789F49A /* CALayer-KIFAdditions.h in Headers */,
+				29CAD778A47E9E6A885EED0C213C92B5 /* CGGeometry-KIFAdditions.h in Headers */,
+				349E3EACBE9B962B4B7D1E8CECBF382F /* IOHIDEvent+KIF.h in Headers */,
+				C8D3D09E32433113799CE6FD434D6FEE /* KIF-umbrella.h in Headers */,
+				1E1827AB0EE18F4378346C43B5D3AF30 /* KIF.h in Headers */,
+				5731D1E11C6FE3DEE2AC24B4CE584E75 /* KIFAccessibilityEnabler.h in Headers */,
+				6723234ECFE7183DC606C40DF84F7BC8 /* KIFSystemTestActor.h in Headers */,
+				2F3A34375696851FF376DA46EC068B80 /* KIFTestActor.h in Headers */,
+				6AC9021F7E02139A41F3C04215C0D53E /* KIFTestCase.h in Headers */,
+				E2188BD1DA9F9082E204D57F8BA441A1 /* KIFTestStepValidation.h in Headers */,
+				6FE9F808530AB9DC672CEAECE12C4D02 /* KIFTypist.h in Headers */,
+				C14992679A9ED625623F4E9DCED1C774 /* KIFUIObject.h in Headers */,
+				AF170A86479C55433CF89FFBEF083A04 /* KIFUITestActor-ConditionalTests.h in Headers */,
+				8CA1A5447FD8323EDD575D7E28F3CAB2 /* KIFUITestActor.h in Headers */,
+				6BC39C530072AF240E295CEB68ED25F1 /* KIFUIViewTestActor.h in Headers */,
+				B215F3E7A6EF4282A67CAC6CC09F9F07 /* LoadableCategory.h in Headers */,
+				C75A299B0860D3016DF20B1A5779903C /* NSBundle-KIFAdditions.h in Headers */,
+				FA67989EFA6028157D46CFECD13A0031 /* NSError-KIFAdditions.h in Headers */,
+				5CF478A0065CDB211B8E3074BB1A5CC2 /* NSException-KIFAdditions.h in Headers */,
+				AEFC1D9AE9BE5096E67DE7EC648B55E0 /* NSFileManager-KIFAdditions.h in Headers */,
+				3BADDD3C134A5E113EAD273551A2D8F3 /* NSPredicate+KIFAdditions.h in Headers */,
+				D9B023452762FBBA2546AA4D749BC682 /* NSString+KIFAdditions.h in Headers */,
+				A3B0B3B8CEA57D6946A2309D861FA409 /* UIAccessibilityElement-KIFAdditions.h in Headers */,
+				F429D1BAEADA79BFA15D3E876B826EC9 /* UIApplication-KIFAdditions.h in Headers */,
+				683D6AE62BAFBD994BEB88F6E078E7C6 /* UIAutomationHelper.h in Headers */,
+				FD94FFF788EF7395F99F3EC2675D21F3 /* UIEvent+KIFAdditions.h in Headers */,
+				7D4DE709D4EB98ACB4E4E898CE06EC02 /* UIScreen+KIFAdditions.h in Headers */,
+				7F7E238CBEC0D69DFDCF12CFBB32A90F /* UIScrollView-KIFAdditions.h in Headers */,
+				B1F4C6D39B1E376B07936B0AE796D99D /* UITableView-KIFAdditions.h in Headers */,
+				3784B462CF975A5AD43D9C1E5A7BDAB3 /* UITouch-KIFAdditions.h in Headers */,
+				99DB9BC0176F91DBB4F4598B44E46722 /* UIView-Debugging.h in Headers */,
+				BC6C168E14C3B1B7042B897135E5245F /* UIView-KIFAdditions.h in Headers */,
+				B746B0861267B8572A12A4A6D135BB06 /* UIWindow-KIFAdditions.h in Headers */,
+				AD3F27EB1CCD87BF3F449541ECF66C61 /* XCTestCase-KIFAdditions.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B50CEE4FD87CFF8F42763EA2A3C87F7C /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F9C9316C97DFB7F39D018454A8E61940 /* VOKBenkode-umbrella.h in Headers */,
+				0A5FA559B0951C4714A7E81D65E373A4 /* VOKBenkode.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -479,6 +839,23 @@
 				5FBAA909FCCF323BAF0F5DE579BFA4F2 /* HTTPMethods.h in Headers */,
 				D8CBEF4421FED8390D4868423EB4A462 /* HTTPStatusCodes.h in Headers */,
 				259DA652410E563D6B1B5F11F810E005 /* ILGHttpConstants-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E6EEB1375D86EC91E86A407CC89F2860 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				606C9DC52EAFAA3D95D61A99B7EE3D49 /* VOKMockUrlProtocol-umbrella.h in Headers */,
+				D1D16548BEC37FCE1D97522ECB69B8D0 /* VOKMockUrlProtocol.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F31CEF698AA6E776028EF7CCD3F2966B /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				674501A5C68EA1A9A4C20D06B7151F1A /* Pods-SpotHero_iOS_Partner_SDK_ExampleUITests-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -499,7 +876,7 @@
 			);
 			name = SpotHero_iOS_Partner_SDK;
 			productName = SpotHero_iOS_Partner_SDK;
-			productReference = 426D671F53A4C67163C970C98B0D6DEC /* SpotHero_iOS_Partner_SDK.framework */;
+			productReference = 49F8A598D117A1BBE6A251F3D6E20C33 /* SpotHero_iOS_Partner_SDK.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		28C1D2BCF3CF2F2210CB63D423BEF55E /* ILGHttpConstants */ = {
@@ -516,7 +893,7 @@
 			);
 			name = ILGHttpConstants;
 			productName = ILGHttpConstants;
-			productReference = 1A8AF1BDAFEA23FD4A199C652DCC012D /* ILGHttpConstants.framework */;
+			productReference = FCBADE621DB86EA34EF71DC291E77D99 /* ILGHttpConstants.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		36D9E8263DBEC5EFA24F2AAC9D831BD6 /* Pods-SpotHero_iOS_Partner_SDK_Example */ = {
@@ -534,26 +911,7 @@
 			);
 			name = "Pods-SpotHero_iOS_Partner_SDK_Example";
 			productName = "Pods-SpotHero_iOS_Partner_SDK_Example";
-			productReference = E8151939116F16500DCEF464B71D0C65 /* Pods_SpotHero_iOS_Partner_SDK_Example.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		7B64D9F8043BD344992AE705D91A44F4 /* VOKMockUrlProtocol */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 13FB89636F6864BEE09FE50317793DA3 /* Build configuration list for PBXNativeTarget "VOKMockUrlProtocol" */;
-			buildPhases = (
-				76CEC3B13E4F4FE8B7E52A0CF3A5CA76 /* Sources */,
-				2AB640B8CD7C31DCF6BF11897B3AE7E9 /* Frameworks */,
-				AB41FF081F33CF6FAA93FF718560E603 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				8136E33D22418F60AB157D2695AF484E /* PBXTargetDependency */,
-				AFE3A69A37EB3475FFE9CA42BCBFEF99 /* PBXTargetDependency */,
-			);
-			name = VOKMockUrlProtocol;
-			productName = VOKMockUrlProtocol;
-			productReference = EBF470C6E899CC3CA397D424E65CC170 /* VOKMockUrlProtocol.framework */;
+			productReference = 2104480BD41771813A122D52ACA90F83 /* Pods_SpotHero_iOS_Partner_SDK_Example.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		7F7429D3ED936A2EE8CAA540C86B8E7B /* Pods-SpotHero_iOS_Partner_SDK_Tests */ = {
@@ -573,16 +931,37 @@
 			);
 			name = "Pods-SpotHero_iOS_Partner_SDK_Tests";
 			productName = "Pods-SpotHero_iOS_Partner_SDK_Tests";
-			productReference = C4E1274D93B6F4CDA9C2C37E78FAB8A2 /* Pods_SpotHero_iOS_Partner_SDK_Tests.framework */;
+			productReference = 973CC9EB6FB5F4D339E575B64C952D6C /* Pods_SpotHero_iOS_Partner_SDK_Tests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		D41B9823D31A85F354897D5A343B8814 /* VOKBenkode */ = {
+		812BEC2415B40B37AAE67F9ED0DC03E3 /* Pods-SpotHero_iOS_Partner_SDK_ExampleUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7D391110B44722B486963C52F455E3DB /* Build configuration list for PBXNativeTarget "VOKBenkode" */;
+			buildConfigurationList = 984F479E1C16806D72707DF009024948 /* Build configuration list for PBXNativeTarget "Pods-SpotHero_iOS_Partner_SDK_ExampleUITests" */;
 			buildPhases = (
-				A8E9768CB3D7DDDDEFDBD1425DBB63B2 /* Sources */,
-				DC8B09EC6BDC11255544091965A577CA /* Frameworks */,
-				5734B488E00811649CB27AD98C85D528 /* Headers */,
+				E55B75902B179326922B3C7BA2A7477A /* Sources */,
+				BCBAED73FAE4894E9B6F505B3EC3E69F /* Frameworks */,
+				F31CEF698AA6E776028EF7CCD3F2966B /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				04E726D069E4FB2D38EA1B531D7DB2F4 /* PBXTargetDependency */,
+				7F722DD3097508ED7D2CA08959AED509 /* PBXTargetDependency */,
+				ED19177482778DE431AAA4532F44CC18 /* PBXTargetDependency */,
+				7C5E5634E3DA3AC358DFE5703692AC29 /* PBXTargetDependency */,
+			);
+			name = "Pods-SpotHero_iOS_Partner_SDK_ExampleUITests";
+			productName = "Pods-SpotHero_iOS_Partner_SDK_ExampleUITests";
+			productReference = F58E4DEA75B3E05BADC495FB5C2A9987 /* Pods_SpotHero_iOS_Partner_SDK_ExampleUITests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		AD9A8BE9C00B3D02C1A78E8C7E88696F /* VOKBenkode */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A8F846406CBF1F57BE846AE578350BE5 /* Build configuration list for PBXNativeTarget "VOKBenkode" */;
+			buildPhases = (
+				D590DDD79ADD837A32769666FE0A88D3 /* Sources */,
+				9A644352019DA83960582E9FC00E08D9 /* Frameworks */,
+				B50CEE4FD87CFF8F42763EA2A3C87F7C /* Headers */,
 			);
 			buildRules = (
 			);
@@ -590,7 +969,43 @@
 			);
 			name = VOKBenkode;
 			productName = VOKBenkode;
-			productReference = 773C2E7EF967396E848A9F8A3E760FC3 /* VOKBenkode.framework */;
+			productReference = 54523F911B68D91D192C4DE7E097A15D /* VOKBenkode.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		C4B626F99CE43C4E7F967B3DA5EE188F /* KIF */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0F4FA7E18EC5AC457A84C5C971853846 /* Build configuration list for PBXNativeTarget "KIF" */;
+			buildPhases = (
+				E3800857FF93D7AF752F8A5F80890E14 /* Sources */,
+				FA41C84864E5ABA6F9C3876DDCA781A7 /* Frameworks */,
+				A5750BB11B22841195B1E3C545092DB2 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KIF;
+			productName = KIF;
+			productReference = FB6AEC58190F0784952BEBE53275EF37 /* KIF.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		DCCBDC731E172083F7CC90FF6493A73B /* VOKMockUrlProtocol */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E3C12EDFD57A5CE262F69CA33108645A /* Build configuration list for PBXNativeTarget "VOKMockUrlProtocol" */;
+			buildPhases = (
+				121EFC165203950B7DAF22A86EBE62CB /* Sources */,
+				CF3207B4D736DB1C7D5F07B945B252CA /* Frameworks */,
+				E6EEB1375D86EC91E86A407CC89F2860 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EEA644958708D564842A8908B90AE6FD /* PBXTargetDependency */,
+				01BA1B9AB4D389D392C9B4431F06C4CD /* PBXTargetDependency */,
+			);
+			name = VOKMockUrlProtocol;
+			productName = VOKMockUrlProtocol;
+			productReference = DA236F220E0C444843C6531850CBB74A /* VOKMockUrlProtocol.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -610,16 +1025,18 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 43C2642D06F1A125BFCEAA7947E97BE0 /* Products */;
+			productRefGroup = 83263F8E4C07A8AB0641121DC7D562FA /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				28C1D2BCF3CF2F2210CB63D423BEF55E /* ILGHttpConstants */,
+				C4B626F99CE43C4E7F967B3DA5EE188F /* KIF */,
 				36D9E8263DBEC5EFA24F2AAC9D831BD6 /* Pods-SpotHero_iOS_Partner_SDK_Example */,
+				812BEC2415B40B37AAE67F9ED0DC03E3 /* Pods-SpotHero_iOS_Partner_SDK_ExampleUITests */,
 				7F7429D3ED936A2EE8CAA540C86B8E7B /* Pods-SpotHero_iOS_Partner_SDK_Tests */,
 				11C417C5A444DA622081003D30C568F0 /* SpotHero_iOS_Partner_SDK */,
-				D41B9823D31A85F354897D5A343B8814 /* VOKBenkode */,
-				7B64D9F8043BD344992AE705D91A44F4 /* VOKMockUrlProtocol */,
+				AD9A8BE9C00B3D02C1A78E8C7E88696F /* VOKBenkode */,
+				DCCBDC731E172083F7CC90FF6493A73B /* VOKMockUrlProtocol */,
 			);
 		};
 /* End PBXProject section */
@@ -634,29 +1051,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		121EFC165203950B7DAF22A86EBE62CB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DA448530A535F1170BAD136297E3188A /* VOKMockUrlProtocol-dummy.m in Sources */,
+				7F0A300C99805F759E0788B38CC2D375 /* VOKMockUrlProtocol.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		45CF85766D84B21DB35F2E9DA9821455 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				193A81B1776D2369F4FC9E6286795DA8 /* Pods-SpotHero_iOS_Partner_SDK_Tests-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		76CEC3B13E4F4FE8B7E52A0CF3A5CA76 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BDDCB4CDFBE0DA7ABC3482FA0B5510AE /* VOKMockUrlProtocol-dummy.m in Sources */,
-				B0C4B8516EE6C999E4B1D8F1F9DC48D8 /* VOKMockUrlProtocol.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A8E9768CB3D7DDDDEFDBD1425DBB63B2 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				29E6B15B22C17C35C2BE96F372D0BCD5 /* VOKBenkode-dummy.m in Sources */,
-				368F4D4D613BE65D7387B664324B3861 /* VOKBenkode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -678,32 +1086,100 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D590DDD79ADD837A32769666FE0A88D3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				08C36943DBE0C12A28C58EF08E700AD4 /* VOKBenkode-dummy.m in Sources */,
+				333BA472101F58E064B1460B2A1B5FD0 /* VOKBenkode.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E3800857FF93D7AF752F8A5F80890E14 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				51D76AF18883C9420DDE406B3958884A /* CALayer-KIFAdditions.m in Sources */,
+				B60C457E28F5645D64A7035D25809FD0 /* CGGeometry-KIFAdditions.m in Sources */,
+				D38C28954AC19016C9CF3E59E2970C06 /* IOHIDEvent+KIF.m in Sources */,
+				FD91B16E8422DA54EF19AD7AC98C3B94 /* KIF-dummy.m in Sources */,
+				3C955FEF2B6B904A0693F2D4A36303D4 /* KIFAccessibilityEnabler.m in Sources */,
+				63255B7124A4D0E1AEFF926C7CD4B872 /* KIFSystemTestActor.m in Sources */,
+				CEC421BB4EBE769F02F8CBFB3FE44A1D /* KIFTestActor.m in Sources */,
+				E83CBEA6149B3DAFF3FE7F19FE7DB2CC /* KIFTestCase.m in Sources */,
+				EE3530B1EF1B06F5405DCE672B93E2B0 /* KIFTestStepValidation.m in Sources */,
+				511D6F2BC63416651CCBEC1EEB87C0E6 /* KIFTypist.m in Sources */,
+				C78EF3CB4FC7369BB2E9EB62DD231C2D /* KIFUIObject.m in Sources */,
+				C97B7C0A7D47F9089B279FEB3B338A4F /* KIFUITestActor-ConditionalTests.m in Sources */,
+				D071461B60A2B6F115815CA4C5F5C8CB /* KIFUITestActor.m in Sources */,
+				6AF5B7EFFC3A2A025D9D967D5F56AA11 /* KIFUIViewTestActor.m in Sources */,
+				5BA738407C406D5AABC24D5D04C9FAF3 /* NSBundle-KIFAdditions.m in Sources */,
+				74946EA107D85C75D1970BC40B3071B5 /* NSError-KIFAdditions.m in Sources */,
+				40B27CB573D79F7B2706AA553AFDD84C /* NSException-KIFAdditions.m in Sources */,
+				73367717EF726950B8988F5FEA29DD79 /* NSFileManager-KIFAdditions.m in Sources */,
+				434A684B5815FEF21BB46FD1D5DE0F78 /* NSPredicate+KIFAdditions.m in Sources */,
+				4CCF56464850A1680048C89EC0FC5926 /* NSString+KIFAdditions.m in Sources */,
+				57532FB3D77CEFC9ED59B9578716B598 /* UIAccessibilityElement-KIFAdditions.m in Sources */,
+				8718C2367B6EA7D05986673AB764715C /* UIApplication-KIFAdditions.m in Sources */,
+				36DFA0C24074B24B2339CC6AC599D497 /* UIAutomationHelper.m in Sources */,
+				0824965B2A80196CEF34AD2484607391 /* UIEvent+KIFAdditions.m in Sources */,
+				E2969CCE19A9AFCC9FC0C71D787CD2AB /* UIScreen+KIFAdditions.m in Sources */,
+				5A2082CB9ACBE18A0F0CF2BAD9E93969 /* UIScrollView-KIFAdditions.m in Sources */,
+				AFCF75F49DBCD313ABB0364ABC92FF2A /* UITableView-KIFAdditions.m in Sources */,
+				B4E7F512993CF19B3851900CAA8DD132 /* UITouch-KIFAdditions.m in Sources */,
+				768529B9847407AAD115441DD7D7D14B /* UIView-Debugging.m in Sources */,
+				31AA341E7EDFBE3669985A45EDB7E804 /* UIView-KIFAdditions.m in Sources */,
+				EB375964C4815482397A27EA78CF5B44 /* UIWindow-KIFAdditions.m in Sources */,
+				21AB8D34D93E6013D1F8B4DCF29A87D2 /* XCTestCase-KIFAdditions.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E55B75902B179326922B3C7BA2A7477A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CDB9060D902A7490C8EDE904F0E29EAA /* Pods-SpotHero_iOS_Partner_SDK_ExampleUITests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		01BA1B9AB4D389D392C9B4431F06C4CD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = VOKBenkode;
+			target = AD9A8BE9C00B3D02C1A78E8C7E88696F /* VOKBenkode */;
+			targetProxy = 41C334D338218E165F29B6D334079015 /* PBXContainerItemProxy */;
+		};
+		04E726D069E4FB2D38EA1B531D7DB2F4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ILGHttpConstants;
+			target = 28C1D2BCF3CF2F2210CB63D423BEF55E /* ILGHttpConstants */;
+			targetProxy = BB820FF9AE881AE7BA02F4F7FF5091F7 /* PBXContainerItemProxy */;
+		};
 		2460020138EED24032412BEA92D1DB5E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SpotHero_iOS_Partner_SDK;
 			target = 11C417C5A444DA622081003D30C568F0 /* SpotHero_iOS_Partner_SDK */;
 			targetProxy = 381B1A293F6BBDD2B3B8144F616CC703 /* PBXContainerItemProxy */;
 		};
-		8136E33D22418F60AB157D2695AF484E /* PBXTargetDependency */ = {
+		7C5E5634E3DA3AC358DFE5703692AC29 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = ILGHttpConstants;
-			target = 28C1D2BCF3CF2F2210CB63D423BEF55E /* ILGHttpConstants */;
-			targetProxy = D2227B1DB4AAD0BB729FC53724C1C4B9 /* PBXContainerItemProxy */;
+			name = VOKMockUrlProtocol;
+			target = DCCBDC731E172083F7CC90FF6493A73B /* VOKMockUrlProtocol */;
+			targetProxy = 4EB9FFB547C5DF41A9C497F062582444 /* PBXContainerItemProxy */;
+		};
+		7F722DD3097508ED7D2CA08959AED509 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = KIF;
+			target = C4B626F99CE43C4E7F967B3DA5EE188F /* KIF */;
+			targetProxy = C6C034765F2C056043A00A7C653F284A /* PBXContainerItemProxy */;
 		};
 		8F6928827C79BA679F9BDE2AA4C8D1C4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = VOKBenkode;
-			target = D41B9823D31A85F354897D5A343B8814 /* VOKBenkode */;
+			target = AD9A8BE9C00B3D02C1A78E8C7E88696F /* VOKBenkode */;
 			targetProxy = F2CABF85269BA5183BEE26FBD10273AC /* PBXContainerItemProxy */;
-		};
-		AFE3A69A37EB3475FFE9CA42BCBFEF99 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = VOKBenkode;
-			target = D41B9823D31A85F354897D5A343B8814 /* VOKBenkode */;
-			targetProxy = 25F96E243D11A60CEDEEE592CF02E209 /* PBXContainerItemProxy */;
 		};
 		E2E2ABDB390C680783B2C685016AC77B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -711,10 +1187,22 @@
 			target = 28C1D2BCF3CF2F2210CB63D423BEF55E /* ILGHttpConstants */;
 			targetProxy = 54236D81254BE83FAC41AA1B8581CEE1 /* PBXContainerItemProxy */;
 		};
+		ED19177482778DE431AAA4532F44CC18 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = VOKBenkode;
+			target = AD9A8BE9C00B3D02C1A78E8C7E88696F /* VOKBenkode */;
+			targetProxy = 37E2F36ABECD779EAA8068E3CE8DB3AC /* PBXContainerItemProxy */;
+		};
+		EEA644958708D564842A8908B90AE6FD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ILGHttpConstants;
+			target = 28C1D2BCF3CF2F2210CB63D423BEF55E /* ILGHttpConstants */;
+			targetProxy = AB0F3D02D40FA453DF9AFC0ECA1C459F /* PBXContainerItemProxy */;
+		};
 		F711C0D0DCDA04BCFAC53E075C5E1F62 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = VOKMockUrlProtocol;
-			target = 7B64D9F8043BD344992AE705D91A44F4 /* VOKMockUrlProtocol */;
+			target = DCCBDC731E172083F7CC90FF6493A73B /* VOKMockUrlProtocol */;
 			targetProxy = 716E5923AEE296859542FDF7634CB4A7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -722,7 +1210,7 @@
 /* Begin XCBuildConfiguration section */
 		028D4280F13CD4684B59A139802C0DCE /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2DED65A599C2FA0E8899C88AAB34425A /* ILGHttpConstants.xcconfig */;
+			baseConfigurationReference = BB65D5FB9941D22DCFF75511D44BD252 /* ILGHttpConstants.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -787,9 +1275,9 @@
 			};
 			name = Release;
 		};
-		17BDC22A4F087B24F8EA56E8C8950E17 /* Debug */ = {
+		0AF509BD6AC47B8EBF229FAD9276E494 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 01780D7D649AF33B6FECD42B8D49271B /* VOKMockUrlProtocol.xcconfig */;
+			baseConfigurationReference = 791A5445D306D31CE1A784DB9E264414 /* Pods-SpotHero_iOS_Partner_SDK_ExampleUITests.debug.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -800,14 +1288,47 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/VOKMockUrlProtocol/VOKMockUrlProtocol-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/VOKMockUrlProtocol/Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-SpotHero_iOS_Partner_SDK_ExampleUITests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-SpotHero_iOS_Partner_SDK_ExampleUITests/Pods-SpotHero_iOS_Partner_SDK_ExampleUITests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_SpotHero_iOS_Partner_SDK_ExampleUITests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		2B26646FB5696348A495F987CADFF814 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 67090360536AAA2CCBBDB617992A44F5 /* KIF.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/KIF/KIF-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/KIF/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/VOKMockUrlProtocol/VOKMockUrlProtocol.modulemap";
+				MODULEMAP_FILE = "Target Support Files/KIF/KIF.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = VOKMockUrlProtocol;
+				PRODUCT_NAME = KIF;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -818,7 +1339,7 @@
 		};
 		3E707460B48E7E0E08295FCD479EA848 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9048FDBBACD393EBB963D4D6FCAD7149 /* Pods-SpotHero_iOS_Partner_SDK_Tests.release.xcconfig */;
+			baseConfigurationReference = 4777173DD31D9679DDAEBC3B8C3F17A5 /* Pods-SpotHero_iOS_Partner_SDK_Tests.release.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -849,13 +1370,13 @@
 			};
 			name = Release;
 		};
-		4284D7865C58FB9E1E5B6E12107D2751 /* Release */ = {
+		40F0E8E25ECA94662351F76005417010 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 301C18F7A9BF05AE991C02121FED0628 /* VOKBenkode.xcconfig */;
+			baseConfigurationReference = 69CF9EE8A678C30435E2E3474D318C64 /* VOKBenkode.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -868,8 +1389,37 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/VOKBenkode/VOKBenkode.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_NAME = VOKBenkode;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		5A20B2ABE9E24EDFF2B5AF47008104EB /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 301E195C2D84BDEFA95256606CD27545 /* VOKMockUrlProtocol.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/VOKMockUrlProtocol/VOKMockUrlProtocol-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/VOKMockUrlProtocol/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/VOKMockUrlProtocol/VOKMockUrlProtocol.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = VOKMockUrlProtocol;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -880,7 +1430,7 @@
 		};
 		6B4F14E9CA2574D707AD7ADF1EBA8B91 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B56CC85972A587FB4CA0AC8724B51416 /* Pods-SpotHero_iOS_Partner_SDK_Example.debug.xcconfig */;
+			baseConfigurationReference = F1040CA6CAB2E4929292EB7CFEC89768 /* Pods-SpotHero_iOS_Partner_SDK_Example.debug.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -912,9 +1462,100 @@
 			};
 			name = Debug;
 		};
+		9207C24555C6FE2B21F5A7D5221DB4E6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 67090360536AAA2CCBBDB617992A44F5 /* KIF.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/KIF/KIF-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/KIF/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/KIF/KIF.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = KIF;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		99B5B97BEF91174BADC73E805BE53CC9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 301E195C2D84BDEFA95256606CD27545 /* VOKMockUrlProtocol.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/VOKMockUrlProtocol/VOKMockUrlProtocol-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/VOKMockUrlProtocol/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/VOKMockUrlProtocol/VOKMockUrlProtocol.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = VOKMockUrlProtocol;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		A15B433F917F4126969E3F6DD21541A8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 105A38EED625B3A853DAD9FF80562323 /* Pods-SpotHero_iOS_Partner_SDK_ExampleUITests.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-SpotHero_iOS_Partner_SDK_ExampleUITests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-SpotHero_iOS_Partner_SDK_ExampleUITests/Pods-SpotHero_iOS_Partner_SDK_ExampleUITests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_SpotHero_iOS_Partner_SDK_ExampleUITests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		A33D070B9D46E1F89250547B1B632D1C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4DC2734C5AD14AB0EB6B5B82D1E25FBC /* Pods-SpotHero_iOS_Partner_SDK_Tests.debug.xcconfig */;
+			baseConfigurationReference = 27B96FA03251D2984B001ADB3AD894E8 /* Pods-SpotHero_iOS_Partner_SDK_Tests.debug.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -977,7 +1618,7 @@
 		};
 		B2A37750AFD4109E08F73F3E513405EC /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2DED65A599C2FA0E8899C88AAB34425A /* ILGHttpConstants.xcconfig */;
+			baseConfigurationReference = BB65D5FB9941D22DCFF75511D44BD252 /* ILGHttpConstants.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -996,64 +1637,6 @@
 				MODULEMAP_FILE = "Target Support Files/ILGHttpConstants/ILGHttpConstants.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_NAME = ILGHttpConstants;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		C3CAAA46906BFA5E5D704DAACF00BB2F /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 01780D7D649AF33B6FECD42B8D49271B /* VOKMockUrlProtocol.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/VOKMockUrlProtocol/VOKMockUrlProtocol-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/VOKMockUrlProtocol/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/VOKMockUrlProtocol/VOKMockUrlProtocol.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = VOKMockUrlProtocol;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		C43561853429AFD12A1C8A074AB9F0E7 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 301C18F7A9BF05AE991C02121FED0628 /* VOKBenkode.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/VOKBenkode/VOKBenkode-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/VOKBenkode/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/VOKBenkode/VOKBenkode.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = VOKBenkode;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1133,9 +1716,38 @@
 			};
 			name = Debug;
 		};
+		D473CA4DC91CF0DDDAAF125F2BE2DFAB /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 69CF9EE8A678C30435E2E3474D318C64 /* VOKBenkode.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/VOKBenkode/VOKBenkode-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/VOKBenkode/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/VOKBenkode/VOKBenkode.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = VOKBenkode;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		D51C090B2626810CFB7DDE14909C0BE0 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D2184C01844B22D157FC4440520E07A6 /* Pods-SpotHero_iOS_Partner_SDK_Example.release.xcconfig */;
+			baseConfigurationReference = 1B9EE4552760134BA8F9B2575A5B357D /* Pods-SpotHero_iOS_Partner_SDK_Example.release.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -1169,11 +1781,11 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		13FB89636F6864BEE09FE50317793DA3 /* Build configuration list for PBXNativeTarget "VOKMockUrlProtocol" */ = {
+		0F4FA7E18EC5AC457A84C5C971853846 /* Build configuration list for PBXNativeTarget "KIF" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				17BDC22A4F087B24F8EA56E8C8950E17 /* Debug */,
-				C3CAAA46906BFA5E5D704DAACF00BB2F /* Release */,
+				2B26646FB5696348A495F987CADFF814 /* Debug */,
+				9207C24555C6FE2B21F5A7D5221DB4E6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1214,11 +1826,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7D391110B44722B486963C52F455E3DB /* Build configuration list for PBXNativeTarget "VOKBenkode" */ = {
+		984F479E1C16806D72707DF009024948 /* Build configuration list for PBXNativeTarget "Pods-SpotHero_iOS_Partner_SDK_ExampleUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C43561853429AFD12A1C8A074AB9F0E7 /* Debug */,
-				4284D7865C58FB9E1E5B6E12107D2751 /* Release */,
+				0AF509BD6AC47B8EBF229FAD9276E494 /* Debug */,
+				A15B433F917F4126969E3F6DD21541A8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A8F846406CBF1F57BE846AE578350BE5 /* Build configuration list for PBXNativeTarget "VOKBenkode" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				40F0E8E25ECA94662351F76005417010 /* Debug */,
+				D473CA4DC91CF0DDDAAF125F2BE2DFAB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1228,6 +1849,15 @@
 			buildConfigurations = (
 				6B4F14E9CA2574D707AD7ADF1EBA8B91 /* Debug */,
 				D51C090B2626810CFB7DDE14909C0BE0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E3C12EDFD57A5CE262F69CA33108645A /* Build configuration list for PBXNativeTarget "VOKMockUrlProtocol" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				99B5B97BEF91174BADC73E805BE53CC9 /* Debug */,
+				5A20B2ABE9E24EDFF2B5AF47008104EB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
