@@ -7,19 +7,46 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A926AAC6986320FD52817EE19D7A789 /* ILGHttpConstants.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CB61B0DE29CF966BCC306F5D5DACCB7 /* ILGHttpConstants.framework */; };
+		0E696E98B16C59A6AD10807E246A5511 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4430772A57A40F1F217AD8EBBA497984 /* Foundation.framework */; };
+		0EC3A3C75959F539AC43CD48A01BDAD4 /* VOKMockUrlProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 40D9E12F0F8F6271368E20AA2C72820A /* VOKMockUrlProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1884983D6D196A42E1BC81DC044F29D0 /* HTTPHeaderFields.m in Sources */ = {isa = PBXBuildFile; fileRef = 754AB02150922FB3C8F3A4A5EB2A7B86 /* HTTPHeaderFields.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		193A81B1776D2369F4FC9E6286795DA8 /* Pods-SpotHero_iOS_Partner_SDK_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F87E46BCD58FC250A59C7F26CAB15814 /* Pods-SpotHero_iOS_Partner_SDK_Tests-dummy.m */; };
+		259DA652410E563D6B1B5F11F810E005 /* ILGHttpConstants-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 861289AABBD7FCBC46E40C978754A843 /* ILGHttpConstants-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2799793652B21D53C49E22C03174A0A9 /* SpotHero_iOS_Partner_SDK-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9D0967FE03B2BEE6B5141E0E759AB3 /* SpotHero_iOS_Partner_SDK-dummy.m */; };
-		2EB84AC33FC0D234EE8F95DA03328605 /* Pods-SpotHero_iOS_Partner_SDK_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 958D8AD77247F8070332D3F4CBACEF29 /* Pods-SpotHero_iOS_Partner_SDK_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27B6FD9D32F66B18694AEB0D1AAAD61F /* ILGHttpConstants-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 79FBC021731552D0922DFB21C24A6E58 /* ILGHttpConstants-dummy.m */; };
+		29E6B15B22C17C35C2BE96F372D0BCD5 /* VOKBenkode-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D74A496CB045952F2AB9B90F3A3FAE2 /* VOKBenkode-dummy.m */; };
+		2C3D9350F3953374366C2ED9276E1F7A /* VOKBenkode.h in Headers */ = {isa = PBXBuildFile; fileRef = ADD8B0F1487F83D2525AC7E3CB4E2FEB /* VOKBenkode.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		30E7E144B3A77C361A9A709BABC047A8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4430772A57A40F1F217AD8EBBA497984 /* Foundation.framework */; };
+		368F4D4D613BE65D7387B664324B3861 /* VOKBenkode.m in Sources */ = {isa = PBXBuildFile; fileRef = 96B699AF534FFEACDA3BF644D593BF22 /* VOKBenkode.m */; };
+		48DEB2A624D36AA6E3659A886E34000F /* VOKBenkode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24E8136C3B7CEDB0353A3C5F95544807 /* VOKBenkode.framework */; };
 		5987915EAD9F7739863FCFEA312420E5 /* Pods-SpotHero_iOS_Partner_SDK_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D4646E7934EB8DB26A2D7DB7FD12828 /* Pods-SpotHero_iOS_Partner_SDK_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8B3D8E8C84DE44FA1674A906CF0A8B7E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
+		5FBAA909FCCF323BAF0F5DE579BFA4F2 /* HTTPMethods.h in Headers */ = {isa = PBXBuildFile; fileRef = EEAD6CD194F802D44ADE4F59B24D77CA /* HTTPMethods.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		808C51209182AFC1B09C6672600D75D5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4430772A57A40F1F217AD8EBBA497984 /* Foundation.framework */; };
+		8B3D8E8C84DE44FA1674A906CF0A8B7E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4430772A57A40F1F217AD8EBBA497984 /* Foundation.framework */; };
+		942B535D5CB86055632F63509E6AB337 /* Pods-SpotHero_iOS_Partner_SDK_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 958D8AD77247F8070332D3F4CBACEF29 /* Pods-SpotHero_iOS_Partner_SDK_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9934F594895B7B937160AE96B66B1EC0 /* SpotHero_iOS_Partner_SDK-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 80805D60E0B652775A2CD10042959F59 /* SpotHero_iOS_Partner_SDK-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BD96E018488CA88EF67649A53AEE28B2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
+		B0C4B8516EE6C999E4B1D8F1F9DC48D8 /* VOKMockUrlProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B5730019265AD83CC9C34E5A785E51 /* VOKMockUrlProtocol.m */; };
+		BDDCB4CDFBE0DA7ABC3482FA0B5510AE /* VOKMockUrlProtocol-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 129230B2C06D3E47312A7759233F04A7 /* VOKMockUrlProtocol-dummy.m */; };
+		D11F15D5184BA286FB4905F43158DB14 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4430772A57A40F1F217AD8EBBA497984 /* Foundation.framework */; };
+		D5440F617EDA5444E81923029E3C248D /* VOKMockUrlProtocol-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F0054F005FC37C22CF3E5051D2FDAA82 /* VOKMockUrlProtocol-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D8CBEF4421FED8390D4868423EB4A462 /* HTTPStatusCodes.h in Headers */ = {isa = PBXBuildFile; fileRef = 240526CAC7DEC0311CB7CA501B41E0E7 /* HTTPStatusCodes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DD06971B4677FE19A5E38CFAB1B70DB7 /* ReplaceMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9474662916CCA3CBFA40361B5EF98296 /* ReplaceMe.swift */; };
-		DDE6AD2AEE8DCD669114D225E307D53F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
+		DDE6AD2AEE8DCD669114D225E307D53F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4430772A57A40F1F217AD8EBBA497984 /* Foundation.framework */; };
 		DE277F85AC878AD1C3898A1D735E3ADC /* Pods-SpotHero_iOS_Partner_SDK_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9611CC81DDC661231495DC33B2117300 /* Pods-SpotHero_iOS_Partner_SDK_Example-dummy.m */; };
-		EB5FBEEED404CBF595C0B0CE4CE3033D /* Pods-SpotHero_iOS_Partner_SDK_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F87E46BCD58FC250A59C7F26CAB15814 /* Pods-SpotHero_iOS_Partner_SDK_Tests-dummy.m */; };
+		EB032D54E80B38703EB76B542FAC66AD /* VOKBenkode-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 276A7971B01094A731224F841BD18997 /* VOKBenkode-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F08B1A93137ED9FED89E962C565503E6 /* HTTPMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C1BB793055586EE352420F15245DE2 /* HTTPMethods.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		F10EBB363DF27458768A3026CE1FDA1A /* HTTPHeaderFields.h in Headers */ = {isa = PBXBuildFile; fileRef = 243705F9DA28EAD104676B966FD25390 /* HTTPHeaderFields.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		25F96E243D11A60CEDEEE592CF02E209 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D41B9823D31A85F354897D5A343B8814;
+			remoteInfo = VOKBenkode;
+		};
 		381B1A293F6BBDD2B3B8144F616CC703 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
@@ -27,39 +54,99 @@
 			remoteGlobalIDString = 11C417C5A444DA622081003D30C568F0;
 			remoteInfo = SpotHero_iOS_Partner_SDK;
 		};
+		54236D81254BE83FAC41AA1B8581CEE1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 28C1D2BCF3CF2F2210CB63D423BEF55E;
+			remoteInfo = ILGHttpConstants;
+		};
+		716E5923AEE296859542FDF7634CB4A7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7B64D9F8043BD344992AE705D91A44F4;
+			remoteInfo = VOKMockUrlProtocol;
+		};
+		D2227B1DB4AAD0BB729FC53724C1C4B9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 28C1D2BCF3CF2F2210CB63D423BEF55E;
+			remoteInfo = ILGHttpConstants;
+		};
+		F2CABF85269BA5183BEE26FBD10273AC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D41B9823D31A85F354897D5A343B8814;
+			remoteInfo = VOKBenkode;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		01780D7D649AF33B6FECD42B8D49271B /* VOKMockUrlProtocol.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = VOKMockUrlProtocol.xcconfig; sourceTree = "<group>"; };
 		0FDB6E0441FCF444D737862EE4AA9E34 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		129230B2C06D3E47312A7759233F04A7 /* VOKMockUrlProtocol-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "VOKMockUrlProtocol-dummy.m"; sourceTree = "<group>"; };
+		1A8AF1BDAFEA23FD4A199C652DCC012D /* ILGHttpConstants.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ILGHttpConstants.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F9D4460CCF42836DD407A9E36A66004 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		235C3545B7D4770A2285A107F66E498F /* Pods-SpotHero_iOS_Partner_SDK_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-SpotHero_iOS_Partner_SDK_Example.modulemap"; sourceTree = "<group>"; };
+		240526CAC7DEC0311CB7CA501B41E0E7 /* HTTPStatusCodes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = HTTPStatusCodes.h; sourceTree = "<group>"; };
+		243705F9DA28EAD104676B966FD25390 /* HTTPHeaderFields.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = HTTPHeaderFields.h; sourceTree = "<group>"; };
+		24E8136C3B7CEDB0353A3C5F95544807 /* VOKBenkode.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VOKBenkode.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		276A7971B01094A731224F841BD18997 /* VOKBenkode-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "VOKBenkode-umbrella.h"; sourceTree = "<group>"; };
+		2D74A496CB045952F2AB9B90F3A3FAE2 /* VOKBenkode-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "VOKBenkode-dummy.m"; sourceTree = "<group>"; };
+		2DED65A599C2FA0E8899C88AAB34425A /* ILGHttpConstants.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ILGHttpConstants.xcconfig; sourceTree = "<group>"; };
 		2EC0424F227AB2EF0353784782433701 /* Pods-SpotHero_iOS_Partner_SDK_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SpotHero_iOS_Partner_SDK_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
-		2FE6A77CBC248E73BB77157A3663AF06 /* SpotHero_iOS_Partner_SDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SpotHero_iOS_Partner_SDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		301C18F7A9BF05AE991C02121FED0628 /* VOKBenkode.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = VOKBenkode.xcconfig; sourceTree = "<group>"; };
+		30C1BB793055586EE352420F15245DE2 /* HTTPMethods.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = HTTPMethods.m; sourceTree = "<group>"; };
 		39F07DD3F593E41BFBF556013DD48BB9 /* Pods-SpotHero_iOS_Partner_SDK_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SpotHero_iOS_Partner_SDK_Tests-frameworks.sh"; sourceTree = "<group>"; };
+		40D9E12F0F8F6271368E20AA2C72820A /* VOKMockUrlProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VOKMockUrlProtocol.h; sourceTree = "<group>"; };
+		426D671F53A4C67163C970C98B0D6DEC /* SpotHero_iOS_Partner_SDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SpotHero_iOS_Partner_SDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4430772A57A40F1F217AD8EBBA497984 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		4DC2734C5AD14AB0EB6B5B82D1E25FBC /* Pods-SpotHero_iOS_Partner_SDK_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SpotHero_iOS_Partner_SDK_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		590E923CEB91C2D8AB4F62296F819FE0 /* Pods-SpotHero_iOS_Partner_SDK_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SpotHero_iOS_Partner_SDK_Example-resources.sh"; sourceTree = "<group>"; };
+		5ADDC082B96D51D0EDBD43F3D95621F6 /* ILGHttpConstants.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = ILGHttpConstants.modulemap; sourceTree = "<group>"; };
+		6AEFB4B7B417B086F54B3618D3A509AA /* VOKBenkode-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "VOKBenkode-prefix.pch"; sourceTree = "<group>"; };
+		6E9A177346E1EAA3B776F06731025945 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6F9D0967FE03B2BEE6B5141E0E759AB3 /* SpotHero_iOS_Partner_SDK-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SpotHero_iOS_Partner_SDK-dummy.m"; sourceTree = "<group>"; };
 		6FF96EA2B60F4771E690EBFA37F0B23A /* Pods-SpotHero_iOS_Partner_SDK_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SpotHero_iOS_Partner_SDK_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		7B94942A1F891B701E4B379793941691 /* Pods_SpotHero_iOS_Partner_SDK_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpotHero_iOS_Partner_SDK_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		754AB02150922FB3C8F3A4A5EB2A7B86 /* HTTPHeaderFields.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = HTTPHeaderFields.m; sourceTree = "<group>"; };
+		773C2E7EF967396E848A9F8A3E760FC3 /* VOKBenkode.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VOKBenkode.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		79FBC021731552D0922DFB21C24A6E58 /* ILGHttpConstants-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ILGHttpConstants-dummy.m"; sourceTree = "<group>"; };
+		7CB61B0DE29CF966BCC306F5D5DACCB7 /* ILGHttpConstants.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ILGHttpConstants.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7CF492743F481C274B82B189ED965626 /* VOKMockUrlProtocol-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "VOKMockUrlProtocol-prefix.pch"; sourceTree = "<group>"; };
+		7D870128F2EA706D20FC67B35B063667 /* ILGHttpConstants-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ILGHttpConstants-prefix.pch"; sourceTree = "<group>"; };
 		7ED7A7191D0E6104870C0967A337C3C3 /* SpotHero_iOS_Partner_SDK-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SpotHero_iOS_Partner_SDK-prefix.pch"; sourceTree = "<group>"; };
 		80805D60E0B652775A2CD10042959F59 /* SpotHero_iOS_Partner_SDK-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SpotHero_iOS_Partner_SDK-umbrella.h"; sourceTree = "<group>"; };
+		861289AABBD7FCBC46E40C978754A843 /* ILGHttpConstants-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ILGHttpConstants-umbrella.h"; sourceTree = "<group>"; };
+		88B5730019265AD83CC9C34E5A785E51 /* VOKMockUrlProtocol.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = VOKMockUrlProtocol.m; sourceTree = "<group>"; };
 		9048FDBBACD393EBB963D4D6FCAD7149 /* Pods-SpotHero_iOS_Partner_SDK_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SpotHero_iOS_Partner_SDK_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9474662916CCA3CBFA40361B5EF98296 /* ReplaceMe.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ReplaceMe.swift; sourceTree = "<group>"; };
 		958D8AD77247F8070332D3F4CBACEF29 /* Pods-SpotHero_iOS_Partner_SDK_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SpotHero_iOS_Partner_SDK_Tests-umbrella.h"; sourceTree = "<group>"; };
 		9611CC81DDC661231495DC33B2117300 /* Pods-SpotHero_iOS_Partner_SDK_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SpotHero_iOS_Partner_SDK_Example-dummy.m"; sourceTree = "<group>"; };
-		977D637E7B6A5EFEE4662F0B2EFB43FB /* Pods_SpotHero_iOS_Partner_SDK_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpotHero_iOS_Partner_SDK_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		96B699AF534FFEACDA3BF644D593BF22 /* VOKBenkode.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = VOKBenkode.m; path = Pod/Classes/VOKBenkode.m; sourceTree = "<group>"; };
+		9C0247723063F0585AE9B8E89DDEEB60 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D4646E7934EB8DB26A2D7DB7FD12828 /* Pods-SpotHero_iOS_Partner_SDK_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SpotHero_iOS_Partner_SDK_Example-umbrella.h"; sourceTree = "<group>"; };
+		ADD8B0F1487F83D2525AC7E3CB4E2FEB /* VOKBenkode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VOKBenkode.h; path = Pod/Classes/VOKBenkode.h; sourceTree = "<group>"; };
 		B56CC85972A587FB4CA0AC8724B51416 /* Pods-SpotHero_iOS_Partner_SDK_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SpotHero_iOS_Partner_SDK_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		B6E9CEF881615D2C3BA0F2F2A8E31AB5 /* SpotHero_iOS_Partner_SDK.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = SpotHero_iOS_Partner_SDK.modulemap; sourceTree = "<group>"; };
-		CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		BECA19F598F3DBE98AB6A9EF169049DA /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C4E1274D93B6F4CDA9C2C37E78FAB8A2 /* Pods_SpotHero_iOS_Partner_SDK_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpotHero_iOS_Partner_SDK_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2184C01844B22D157FC4440520E07A6 /* Pods-SpotHero_iOS_Partner_SDK_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SpotHero_iOS_Partner_SDK_Example.release.xcconfig"; sourceTree = "<group>"; };
 		DBF94AD7E9FE0D5B4C4E9C4D7764FBE2 /* Pods-SpotHero_iOS_Partner_SDK_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-SpotHero_iOS_Partner_SDK_Tests.modulemap"; sourceTree = "<group>"; };
 		E21E0C5C14FACA32C096D26616FC3F3B /* Pods-SpotHero_iOS_Partner_SDK_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SpotHero_iOS_Partner_SDK_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		E3085CCEEEF73CD4A069D258F300EC6A /* Pods-SpotHero_iOS_Partner_SDK_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SpotHero_iOS_Partner_SDK_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		E76107D65002A3F5A2D4A2EA2A8FE5A1 /* Pods-SpotHero_iOS_Partner_SDK_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SpotHero_iOS_Partner_SDK_Example-frameworks.sh"; sourceTree = "<group>"; };
+		E8151939116F16500DCEF464B71D0C65 /* Pods_SpotHero_iOS_Partner_SDK_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpotHero_iOS_Partner_SDK_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E93F066CE1CF48BA6C6028FEE270DAAE /* Pods-SpotHero_iOS_Partner_SDK_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SpotHero_iOS_Partner_SDK_Tests-resources.sh"; sourceTree = "<group>"; };
+		EBF470C6E899CC3CA397D424E65CC170 /* VOKMockUrlProtocol.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VOKMockUrlProtocol.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE0D515B1D9D60C454F5494F32460255 /* VOKBenkode.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = VOKBenkode.modulemap; sourceTree = "<group>"; };
 		EE3860FDB2A6469B3F986EE1B4DCA235 /* SpotHero_iOS_Partner_SDK.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SpotHero_iOS_Partner_SDK.xcconfig; sourceTree = "<group>"; };
+		EEAD6CD194F802D44ADE4F59B24D77CA /* HTTPMethods.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = HTTPMethods.h; sourceTree = "<group>"; };
+		EF1CF96E53B6EC2C07E219971F21CFEB /* VOKMockUrlProtocol.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = VOKMockUrlProtocol.modulemap; sourceTree = "<group>"; };
+		F0054F005FC37C22CF3E5051D2FDAA82 /* VOKMockUrlProtocol-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "VOKMockUrlProtocol-umbrella.h"; sourceTree = "<group>"; };
 		F87E46BCD58FC250A59C7F26CAB15814 /* Pods-SpotHero_iOS_Partner_SDK_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SpotHero_iOS_Partner_SDK_Tests-dummy.m"; sourceTree = "<group>"; };
 		FAD6A0E02D7DE37089C7AA377AFE01C3 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -73,11 +160,29 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B100705C483D67E2FE243E927A2B99F9 /* Frameworks */ = {
+		2AB640B8CD7C31DCF6BF11897B3AE7E9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BD96E018488CA88EF67649A53AEE28B2 /* Foundation.framework in Frameworks */,
+				808C51209182AFC1B09C6672600D75D5 /* Foundation.framework in Frameworks */,
+				0A926AAC6986320FD52817EE19D7A789 /* ILGHttpConstants.framework in Frameworks */,
+				48DEB2A624D36AA6E3659A886E34000F /* VOKBenkode.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2D3731083F958F62680F219D98146CD1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0E696E98B16C59A6AD10807E246A5511 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52DD1DF8254C9F1B6A160EEF190AC7B7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D11F15D5184BA286FB4905F43158DB14 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,17 +194,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DC8B09EC6BDC11255544091965A577CA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				30E7E144B3A77C361A9A709BABC047A8 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		10BCB72DA55F52851E873622C55ADFC7 /* Products */ = {
+		0122951EE308F299877938271E7E9A8C /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				977D637E7B6A5EFEE4662F0B2EFB43FB /* Pods_SpotHero_iOS_Partner_SDK_Example.framework */,
-				7B94942A1F891B701E4B379793941691 /* Pods_SpotHero_iOS_Partner_SDK_Tests.framework */,
-				2FE6A77CBC248E73BB77157A3663AF06 /* SpotHero_iOS_Partner_SDK.framework */,
+				4430772A57A40F1F217AD8EBBA497984 /* Foundation.framework */,
 			);
-			name = Products;
+			name = iOS;
 			sourceTree = "<group>";
 		};
 		1FE4E3D7F4DE26F9D35223BCA45DBE91 /* Pods-SpotHero_iOS_Partner_SDK_Example */ = {
@@ -120,12 +231,44 @@
 			path = "Target Support Files/Pods-SpotHero_iOS_Partner_SDK_Example";
 			sourceTree = "<group>";
 		};
-		3DCAB2B7CDE207B3958B6CB957FCC758 /* iOS */ = {
+		374411C0A4B8C9B87215B250FEC4BF4A /* ILGHttpConstants */ = {
 			isa = PBXGroup;
 			children = (
-				CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */,
+				243705F9DA28EAD104676B966FD25390 /* HTTPHeaderFields.h */,
+				754AB02150922FB3C8F3A4A5EB2A7B86 /* HTTPHeaderFields.m */,
+				EEAD6CD194F802D44ADE4F59B24D77CA /* HTTPMethods.h */,
+				30C1BB793055586EE352420F15245DE2 /* HTTPMethods.m */,
+				240526CAC7DEC0311CB7CA501B41E0E7 /* HTTPStatusCodes.h */,
+				B71469CA14B311BB25FAE35BF38755A5 /* Support Files */,
 			);
-			name = iOS;
+			path = ILGHttpConstants;
+			sourceTree = "<group>";
+		};
+		43C2642D06F1A125BFCEAA7947E97BE0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1A8AF1BDAFEA23FD4A199C652DCC012D /* ILGHttpConstants.framework */,
+				E8151939116F16500DCEF464B71D0C65 /* Pods_SpotHero_iOS_Partner_SDK_Example.framework */,
+				C4E1274D93B6F4CDA9C2C37E78FAB8A2 /* Pods_SpotHero_iOS_Partner_SDK_Tests.framework */,
+				426D671F53A4C67163C970C98B0D6DEC /* SpotHero_iOS_Partner_SDK.framework */,
+				773C2E7EF967396E848A9F8A3E760FC3 /* VOKBenkode.framework */,
+				EBF470C6E899CC3CA397D424E65CC170 /* VOKMockUrlProtocol.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		46A628D5DC37B2C76BA1D7E73B07DDF7 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				BECA19F598F3DBE98AB6A9EF169049DA /* Info.plist */,
+				EF1CF96E53B6EC2C07E219971F21CFEB /* VOKMockUrlProtocol.modulemap */,
+				01780D7D649AF33B6FECD42B8D49271B /* VOKMockUrlProtocol.xcconfig */,
+				129230B2C06D3E47312A7759233F04A7 /* VOKMockUrlProtocol-dummy.m */,
+				7CF492743F481C274B82B189ED965626 /* VOKMockUrlProtocol-prefix.pch */,
+				F0054F005FC37C22CF3E5051D2FDAA82 /* VOKMockUrlProtocol-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/VOKMockUrlProtocol";
 			sourceTree = "<group>";
 		};
 		6CB41DEC3EDF4248D44A89018EAC63F9 /* Pods-SpotHero_iOS_Partner_SDK_Tests */ = {
@@ -160,15 +303,36 @@
 			path = "Example/Pods/Target Support Files/SpotHero_iOS_Partner_SDK";
 			sourceTree = "<group>";
 		};
+		6FB109F596AB581CB293C049DAEE6079 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7CB61B0DE29CF966BCC306F5D5DACCB7 /* ILGHttpConstants.framework */,
+				24E8136C3B7CEDB0353A3C5F95544807 /* VOKBenkode.framework */,
+				0122951EE308F299877938271E7E9A8C /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				A778BEBFA7CE74D524D94C8B9A759FEC /* Development Pods */,
-				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				10BCB72DA55F52851E873622C55ADFC7 /* Products */,
+				6FB109F596AB581CB293C049DAEE6079 /* Frameworks */,
+				C8F75D9CEA8B98E5746018A0B0CB67FD /* Pods */,
+				43C2642D06F1A125BFCEAA7947E97BE0 /* Products */,
 				84275A24548F5E025574DFDE2A367365 /* Targets Support Files */,
 			);
+			sourceTree = "<group>";
+		};
+		82DAF4B28C000B165B343056E1E8E579 /* VOKBenkode */ = {
+			isa = PBXGroup;
+			children = (
+				ADD8B0F1487F83D2525AC7E3CB4E2FEB /* VOKBenkode.h */,
+				96B699AF534FFEACDA3BF644D593BF22 /* VOKBenkode.m */,
+				D1DE35E6946E98414022126C3FEAEC02 /* Support Files */,
+			);
+			path = VOKBenkode;
 			sourceTree = "<group>";
 		};
 		84275A24548F5E025574DFDE2A367365 /* Targets Support Files */ = {
@@ -178,6 +342,16 @@
 				6CB41DEC3EDF4248D44A89018EAC63F9 /* Pods-SpotHero_iOS_Partner_SDK_Tests */,
 			);
 			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		955B58F3D216669B53FF95E6CA91D2E6 /* VOKMockUrlProtocol */ = {
+			isa = PBXGroup;
+			children = (
+				40D9E12F0F8F6271368E20AA2C72820A /* VOKMockUrlProtocol.h */,
+				88B5730019265AD83CC9C34E5A785E51 /* VOKMockUrlProtocol.m */,
+				46A628D5DC37B2C76BA1D7E73B07DDF7 /* Support Files */,
+			);
+			path = VOKMockUrlProtocol;
 			sourceTree = "<group>";
 		};
 		A4A2EF78528C9B9A2212DDE263099DE0 /* SpotHero_iOS_Partner_SDK */ = {
@@ -196,12 +370,18 @@
 			name = "Development Pods";
 			sourceTree = "<group>";
 		};
-		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
+		B71469CA14B311BB25FAE35BF38755A5 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				3DCAB2B7CDE207B3958B6CB957FCC758 /* iOS */,
+				5ADDC082B96D51D0EDBD43F3D95621F6 /* ILGHttpConstants.modulemap */,
+				2DED65A599C2FA0E8899C88AAB34425A /* ILGHttpConstants.xcconfig */,
+				79FBC021731552D0922DFB21C24A6E58 /* ILGHttpConstants-dummy.m */,
+				7D870128F2EA706D20FC67B35B063667 /* ILGHttpConstants-prefix.pch */,
+				861289AABBD7FCBC46E40C978754A843 /* ILGHttpConstants-umbrella.h */,
+				6E9A177346E1EAA3B776F06731025945 /* Info.plist */,
 			);
-			name = Frameworks;
+			name = "Support Files";
+			path = "../Target Support Files/ILGHttpConstants";
 			sourceTree = "<group>";
 		};
 		BCA49DBF1F8786AF2FB70E0D741C058C /* SpotHero_iOS_Partner_SDK */ = {
@@ -212,6 +392,30 @@
 			);
 			name = SpotHero_iOS_Partner_SDK;
 			path = ../..;
+			sourceTree = "<group>";
+		};
+		C8F75D9CEA8B98E5746018A0B0CB67FD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				374411C0A4B8C9B87215B250FEC4BF4A /* ILGHttpConstants */,
+				82DAF4B28C000B165B343056E1E8E579 /* VOKBenkode */,
+				955B58F3D216669B53FF95E6CA91D2E6 /* VOKMockUrlProtocol */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		D1DE35E6946E98414022126C3FEAEC02 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				9C0247723063F0585AE9B8E89DDEEB60 /* Info.plist */,
+				EE0D515B1D9D60C454F5494F32460255 /* VOKBenkode.modulemap */,
+				301C18F7A9BF05AE991C02121FED0628 /* VOKBenkode.xcconfig */,
+				2D74A496CB045952F2AB9B90F3A3FAE2 /* VOKBenkode-dummy.m */,
+				6AEFB4B7B417B086F54B3618D3A509AA /* VOKBenkode-prefix.pch */,
+				276A7971B01094A731224F841BD18997 /* VOKBenkode-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/VOKBenkode";
 			sourceTree = "<group>";
 		};
 		D83AEA22B39A4E372250EDCA366B733D /* Classes */ = {
@@ -233,11 +437,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		79ADAB343DCB4916C58B25D2CBAB7EBD /* Headers */ = {
+		5734B488E00811649CB27AD98C85D528 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2EB84AC33FC0D234EE8F95DA03328605 /* Pods-SpotHero_iOS_Partner_SDK_Tests-umbrella.h in Headers */,
+				EB032D54E80B38703EB76B542FAC66AD /* VOKBenkode-umbrella.h in Headers */,
+				2C3D9350F3953374366C2ED9276E1F7A /* VOKBenkode.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9412A8F47FEEE8680F54C7FE4E32D7C2 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				942B535D5CB86055632F63509E6AB337 /* Pods-SpotHero_iOS_Partner_SDK_Tests-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -246,6 +459,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				5987915EAD9F7739863FCFEA312420E5 /* Pods-SpotHero_iOS_Partner_SDK_Example-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AB41FF081F33CF6FAA93FF718560E603 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D5440F617EDA5444E81923029E3C248D /* VOKMockUrlProtocol-umbrella.h in Headers */,
+				0EC3A3C75959F539AC43CD48A01BDAD4 /* VOKMockUrlProtocol.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D6D3B98A2AE0C642450CC70F3563950B /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F10EBB363DF27458768A3026CE1FDA1A /* HTTPHeaderFields.h in Headers */,
+				5FBAA909FCCF323BAF0F5DE579BFA4F2 /* HTTPMethods.h in Headers */,
+				D8CBEF4421FED8390D4868423EB4A462 /* HTTPStatusCodes.h in Headers */,
+				259DA652410E563D6B1B5F11F810E005 /* ILGHttpConstants-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,7 +499,24 @@
 			);
 			name = SpotHero_iOS_Partner_SDK;
 			productName = SpotHero_iOS_Partner_SDK;
-			productReference = 2FE6A77CBC248E73BB77157A3663AF06 /* SpotHero_iOS_Partner_SDK.framework */;
+			productReference = 426D671F53A4C67163C970C98B0D6DEC /* SpotHero_iOS_Partner_SDK.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		28C1D2BCF3CF2F2210CB63D423BEF55E /* ILGHttpConstants */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 649AF03E2CF4D3646BA49211841AE022 /* Build configuration list for PBXNativeTarget "ILGHttpConstants" */;
+			buildPhases = (
+				CD77564A01AC2DF84839683F5A55A8C6 /* Sources */,
+				52DD1DF8254C9F1B6A160EEF190AC7B7 /* Frameworks */,
+				D6D3B98A2AE0C642450CC70F3563950B /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ILGHttpConstants;
+			productName = ILGHttpConstants;
+			productReference = 1A8AF1BDAFEA23FD4A199C652DCC012D /* ILGHttpConstants.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		36D9E8263DBEC5EFA24F2AAC9D831BD6 /* Pods-SpotHero_iOS_Partner_SDK_Example */ = {
@@ -284,24 +534,63 @@
 			);
 			name = "Pods-SpotHero_iOS_Partner_SDK_Example";
 			productName = "Pods-SpotHero_iOS_Partner_SDK_Example";
-			productReference = 977D637E7B6A5EFEE4662F0B2EFB43FB /* Pods_SpotHero_iOS_Partner_SDK_Example.framework */;
+			productReference = E8151939116F16500DCEF464B71D0C65 /* Pods_SpotHero_iOS_Partner_SDK_Example.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		EE0D30C3233F4761E6BEFC20306953B7 /* Pods-SpotHero_iOS_Partner_SDK_Tests */ = {
+		7B64D9F8043BD344992AE705D91A44F4 /* VOKMockUrlProtocol */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E2F79B9D1B5F149D38872F8837D4A214 /* Build configuration list for PBXNativeTarget "Pods-SpotHero_iOS_Partner_SDK_Tests" */;
+			buildConfigurationList = 13FB89636F6864BEE09FE50317793DA3 /* Build configuration list for PBXNativeTarget "VOKMockUrlProtocol" */;
 			buildPhases = (
-				48642D83BF871730B022FEBB05A0097F /* Sources */,
-				B100705C483D67E2FE243E927A2B99F9 /* Frameworks */,
-				79ADAB343DCB4916C58B25D2CBAB7EBD /* Headers */,
+				76CEC3B13E4F4FE8B7E52A0CF3A5CA76 /* Sources */,
+				2AB640B8CD7C31DCF6BF11897B3AE7E9 /* Frameworks */,
+				AB41FF081F33CF6FAA93FF718560E603 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8136E33D22418F60AB157D2695AF484E /* PBXTargetDependency */,
+				AFE3A69A37EB3475FFE9CA42BCBFEF99 /* PBXTargetDependency */,
+			);
+			name = VOKMockUrlProtocol;
+			productName = VOKMockUrlProtocol;
+			productReference = EBF470C6E899CC3CA397D424E65CC170 /* VOKMockUrlProtocol.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		7F7429D3ED936A2EE8CAA540C86B8E7B /* Pods-SpotHero_iOS_Partner_SDK_Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2B09B3AC34CB8C02AD172F925B29A5B7 /* Build configuration list for PBXNativeTarget "Pods-SpotHero_iOS_Partner_SDK_Tests" */;
+			buildPhases = (
+				45CF85766D84B21DB35F2E9DA9821455 /* Sources */,
+				2D3731083F958F62680F219D98146CD1 /* Frameworks */,
+				9412A8F47FEEE8680F54C7FE4E32D7C2 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E2E2ABDB390C680783B2C685016AC77B /* PBXTargetDependency */,
+				8F6928827C79BA679F9BDE2AA4C8D1C4 /* PBXTargetDependency */,
+				F711C0D0DCDA04BCFAC53E075C5E1F62 /* PBXTargetDependency */,
+			);
+			name = "Pods-SpotHero_iOS_Partner_SDK_Tests";
+			productName = "Pods-SpotHero_iOS_Partner_SDK_Tests";
+			productReference = C4E1274D93B6F4CDA9C2C37E78FAB8A2 /* Pods_SpotHero_iOS_Partner_SDK_Tests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		D41B9823D31A85F354897D5A343B8814 /* VOKBenkode */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7D391110B44722B486963C52F455E3DB /* Build configuration list for PBXNativeTarget "VOKBenkode" */;
+			buildPhases = (
+				A8E9768CB3D7DDDDEFDBD1425DBB63B2 /* Sources */,
+				DC8B09EC6BDC11255544091965A577CA /* Frameworks */,
+				5734B488E00811649CB27AD98C85D528 /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "Pods-SpotHero_iOS_Partner_SDK_Tests";
-			productName = "Pods-SpotHero_iOS_Partner_SDK_Tests";
-			productReference = 7B94942A1F891B701E4B379793941691 /* Pods_SpotHero_iOS_Partner_SDK_Tests.framework */;
+			name = VOKBenkode;
+			productName = VOKBenkode;
+			productReference = 773C2E7EF967396E848A9F8A3E760FC3 /* VOKBenkode.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -321,13 +610,16 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 10BCB72DA55F52851E873622C55ADFC7 /* Products */;
+			productRefGroup = 43C2642D06F1A125BFCEAA7947E97BE0 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				28C1D2BCF3CF2F2210CB63D423BEF55E /* ILGHttpConstants */,
 				36D9E8263DBEC5EFA24F2AAC9D831BD6 /* Pods-SpotHero_iOS_Partner_SDK_Example */,
-				EE0D30C3233F4761E6BEFC20306953B7 /* Pods-SpotHero_iOS_Partner_SDK_Tests */,
+				7F7429D3ED936A2EE8CAA540C86B8E7B /* Pods-SpotHero_iOS_Partner_SDK_Tests */,
 				11C417C5A444DA622081003D30C568F0 /* SpotHero_iOS_Partner_SDK */,
+				D41B9823D31A85F354897D5A343B8814 /* VOKBenkode */,
+				7B64D9F8043BD344992AE705D91A44F4 /* VOKMockUrlProtocol */,
 			);
 		};
 /* End PBXProject section */
@@ -342,11 +634,39 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		48642D83BF871730B022FEBB05A0097F /* Sources */ = {
+		45CF85766D84B21DB35F2E9DA9821455 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EB5FBEEED404CBF595C0B0CE4CE3033D /* Pods-SpotHero_iOS_Partner_SDK_Tests-dummy.m in Sources */,
+				193A81B1776D2369F4FC9E6286795DA8 /* Pods-SpotHero_iOS_Partner_SDK_Tests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		76CEC3B13E4F4FE8B7E52A0CF3A5CA76 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BDDCB4CDFBE0DA7ABC3482FA0B5510AE /* VOKMockUrlProtocol-dummy.m in Sources */,
+				B0C4B8516EE6C999E4B1D8F1F9DC48D8 /* VOKMockUrlProtocol.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A8E9768CB3D7DDDDEFDBD1425DBB63B2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				29E6B15B22C17C35C2BE96F372D0BCD5 /* VOKBenkode-dummy.m in Sources */,
+				368F4D4D613BE65D7387B664324B3861 /* VOKBenkode.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD77564A01AC2DF84839683F5A55A8C6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1884983D6D196A42E1BC81DC044F29D0 /* HTTPHeaderFields.m in Sources */,
+				F08B1A93137ED9FED89E962C565503E6 /* HTTPMethods.m in Sources */,
+				27B6FD9D32F66B18694AEB0D1AAAD61F /* ILGHttpConstants-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -367,9 +687,68 @@
 			target = 11C417C5A444DA622081003D30C568F0 /* SpotHero_iOS_Partner_SDK */;
 			targetProxy = 381B1A293F6BBDD2B3B8144F616CC703 /* PBXContainerItemProxy */;
 		};
+		8136E33D22418F60AB157D2695AF484E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ILGHttpConstants;
+			target = 28C1D2BCF3CF2F2210CB63D423BEF55E /* ILGHttpConstants */;
+			targetProxy = D2227B1DB4AAD0BB729FC53724C1C4B9 /* PBXContainerItemProxy */;
+		};
+		8F6928827C79BA679F9BDE2AA4C8D1C4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = VOKBenkode;
+			target = D41B9823D31A85F354897D5A343B8814 /* VOKBenkode */;
+			targetProxy = F2CABF85269BA5183BEE26FBD10273AC /* PBXContainerItemProxy */;
+		};
+		AFE3A69A37EB3475FFE9CA42BCBFEF99 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = VOKBenkode;
+			target = D41B9823D31A85F354897D5A343B8814 /* VOKBenkode */;
+			targetProxy = 25F96E243D11A60CEDEEE592CF02E209 /* PBXContainerItemProxy */;
+		};
+		E2E2ABDB390C680783B2C685016AC77B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ILGHttpConstants;
+			target = 28C1D2BCF3CF2F2210CB63D423BEF55E /* ILGHttpConstants */;
+			targetProxy = 54236D81254BE83FAC41AA1B8581CEE1 /* PBXContainerItemProxy */;
+		};
+		F711C0D0DCDA04BCFAC53E075C5E1F62 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = VOKMockUrlProtocol;
+			target = 7B64D9F8043BD344992AE705D91A44F4 /* VOKMockUrlProtocol */;
+			targetProxy = 716E5923AEE296859542FDF7634CB4A7 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		028D4280F13CD4684B59A139802C0DCE /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2DED65A599C2FA0E8899C88AAB34425A /* ILGHttpConstants.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/ILGHttpConstants/ILGHttpConstants-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ILGHttpConstants/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/ILGHttpConstants/ILGHttpConstants.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = ILGHttpConstants;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		0ACDCBCB0B6796575F46FFA2F5410C6B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -408,6 +787,97 @@
 			};
 			name = Release;
 		};
+		17BDC22A4F087B24F8EA56E8C8950E17 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 01780D7D649AF33B6FECD42B8D49271B /* VOKMockUrlProtocol.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/VOKMockUrlProtocol/VOKMockUrlProtocol-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/VOKMockUrlProtocol/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/VOKMockUrlProtocol/VOKMockUrlProtocol.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = VOKMockUrlProtocol;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		3E707460B48E7E0E08295FCD479EA848 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9048FDBBACD393EBB963D4D6FCAD7149 /* Pods-SpotHero_iOS_Partner_SDK_Tests.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-SpotHero_iOS_Partner_SDK_Tests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-SpotHero_iOS_Partner_SDK_Tests/Pods-SpotHero_iOS_Partner_SDK_Tests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_SpotHero_iOS_Partner_SDK_Tests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		4284D7865C58FB9E1E5B6E12107D2751 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 301C18F7A9BF05AE991C02121FED0628 /* VOKBenkode.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/VOKBenkode/VOKBenkode-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/VOKBenkode/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/VOKBenkode/VOKBenkode.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = VOKBenkode;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		6B4F14E9CA2574D707AD7ADF1EBA8B91 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B56CC85972A587FB4CA0AC8724B51416 /* Pods-SpotHero_iOS_Partner_SDK_Example.debug.xcconfig */;
@@ -442,13 +912,13 @@
 			};
 			name = Debug;
 		};
-		9FF5F6E68DEA773D7EF428118844BBE0 /* Release */ = {
+		A33D070B9D46E1F89250547B1B632D1C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9048FDBBACD393EBB963D4D6FCAD7149 /* Pods-SpotHero_iOS_Partner_SDK_Tests.release.xcconfig */;
+			baseConfigurationReference = 4DC2734C5AD14AB0EB6B5B82D1E25FBC /* Pods-SpotHero_iOS_Partner_SDK_Tests.debug.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -461,7 +931,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-SpotHero_iOS_Partner_SDK_Tests/Pods-SpotHero_iOS_Partner_SDK_Tests.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_ENABLE_DEBUG_INFO = YES;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
@@ -473,7 +943,7 @@
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Release;
+			name = Debug;
 		};
 		A6FD83DB88EC5FA813FB399F64BFBCCF /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -505,9 +975,9 @@
 			};
 			name = Debug;
 		};
-		BF5826B2936C1CA671122214A6A47A5F /* Debug */ = {
+		B2A37750AFD4109E08F73F3E513405EC /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4DC2734C5AD14AB0EB6B5B82D1E25FBC /* Pods-SpotHero_iOS_Partner_SDK_Tests.debug.xcconfig */;
+			baseConfigurationReference = 2DED65A599C2FA0E8899C88AAB34425A /* ILGHttpConstants.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -518,18 +988,72 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-SpotHero_iOS_Partner_SDK_Tests/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/ILGHttpConstants/ILGHttpConstants-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ILGHttpConstants/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-SpotHero_iOS_Partner_SDK_Tests/Pods-SpotHero_iOS_Partner_SDK_Tests.modulemap";
+				MODULEMAP_FILE = "Target Support Files/ILGHttpConstants/ILGHttpConstants.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_SpotHero_iOS_Partner_SDK_Tests;
+				PRODUCT_NAME = ILGHttpConstants;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		C3CAAA46906BFA5E5D704DAACF00BB2F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 01780D7D649AF33B6FECD42B8D49271B /* VOKMockUrlProtocol.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/VOKMockUrlProtocol/VOKMockUrlProtocol-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/VOKMockUrlProtocol/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/VOKMockUrlProtocol/VOKMockUrlProtocol.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = VOKMockUrlProtocol;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		C43561853429AFD12A1C8A074AB9F0E7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 301C18F7A9BF05AE991C02121FED0628 /* VOKBenkode.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/VOKBenkode/VOKBenkode-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/VOKBenkode/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/VOKBenkode/VOKBenkode.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = VOKBenkode;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -645,11 +1169,38 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		13FB89636F6864BEE09FE50317793DA3 /* Build configuration list for PBXNativeTarget "VOKMockUrlProtocol" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				17BDC22A4F087B24F8EA56E8C8950E17 /* Debug */,
+				C3CAAA46906BFA5E5D704DAACF00BB2F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2B09B3AC34CB8C02AD172F925B29A5B7 /* Build configuration list for PBXNativeTarget "Pods-SpotHero_iOS_Partner_SDK_Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A33D070B9D46E1F89250547B1B632D1C /* Debug */,
+				3E707460B48E7E0E08295FCD479EA848 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D3E3D092A3FF7311A98E44BBA36FFD12 /* Debug */,
 				0ACDCBCB0B6796575F46FFA2F5410C6B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		649AF03E2CF4D3646BA49211841AE022 /* Build configuration list for PBXNativeTarget "ILGHttpConstants" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B2A37750AFD4109E08F73F3E513405EC /* Debug */,
+				028D4280F13CD4684B59A139802C0DCE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -663,20 +1214,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		7D391110B44722B486963C52F455E3DB /* Build configuration list for PBXNativeTarget "VOKBenkode" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C43561853429AFD12A1C8A074AB9F0E7 /* Debug */,
+				4284D7865C58FB9E1E5B6E12107D2751 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		C6CC7B7D5D39CD0B06B6B42F84252CA4 /* Build configuration list for PBXNativeTarget "Pods-SpotHero_iOS_Partner_SDK_Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6B4F14E9CA2574D707AD7ADF1EBA8B91 /* Debug */,
 				D51C090B2626810CFB7DDE14909C0BE0 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		E2F79B9D1B5F149D38872F8837D4A214 /* Build configuration list for PBXNativeTarget "Pods-SpotHero_iOS_Partner_SDK_Tests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				BF5826B2936C1CA671122214A6A47A5F /* Debug */,
-				9FF5F6E68DEA773D7EF428118844BBE0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

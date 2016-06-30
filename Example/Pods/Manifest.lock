@@ -1,16 +1,25 @@
 PODS:
+  - ILGHttpConstants (1.0.1)
   - SpotHero_iOS_Partner_SDK (0.1.0)
+  - VOKBenkode (0.3.0)
+  - VOKMockUrlProtocol (2.2.0):
+    - ILGHttpConstants (~> 1.0.0)
+    - VOKBenkode (~> 0.3)
 
 DEPENDENCIES:
   - SpotHero_iOS_Partner_SDK (from `../`)
+  - VOKMockUrlProtocol (~> 2.2.0)
 
 EXTERNAL SOURCES:
   SpotHero_iOS_Partner_SDK:
     :path: ../
 
 SPEC CHECKSUMS:
+  ILGHttpConstants: 715aca4c2b260527059242c0088abc748b52f98e
   SpotHero_iOS_Partner_SDK: 5a16c1e23ab9ca2419498d85cf049d9f77252e28
+  VOKBenkode: 272b78425bbeca87d0e2fc0809ffc041f88f8cd1
+  VOKMockUrlProtocol: ec55ad7b5dc8c759a65abf232e9e622f8b271bc2
 
-PODFILE CHECKSUM: bb9aad94adc4ba4bb364d2b5861ea7f745ec41ed
+PODFILE CHECKSUM: 7082054dadca3042ccad1231597ed049e81148ac
 
 COCOAPODS: 1.0.0
