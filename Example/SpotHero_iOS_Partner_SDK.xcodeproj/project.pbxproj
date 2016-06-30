@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		234673EB15066D4EC9DC8FC8 /* Pods_SpotHero_iOS_Partner_SDK_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F26D5251B78585BF5881D75 /* Pods_SpotHero_iOS_Partner_SDK_Example.framework */; };
 		3361782E1D249B1A00AF7AD6 /* ShowSDKUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3361782D1D249B1A00AF7AD6 /* ShowSDKUITests.swift */; };
+		336178381D24A8BB00AF7AD6 /* XCTestCase+KIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336178371D24A8BB00AF7AD6 /* XCTestCase+KIF.swift */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
@@ -44,6 +45,7 @@
 		3361782B1D249B1A00AF7AD6 /* SpotHero_iOS_Partner_SDK_ExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpotHero_iOS_Partner_SDK_ExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3361782D1D249B1A00AF7AD6 /* ShowSDKUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowSDKUITests.swift; sourceTree = "<group>"; };
 		3361782F1D249B1A00AF7AD6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		336178371D24A8BB00AF7AD6 /* XCTestCase+KIF.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCTestCase+KIF.swift"; sourceTree = "<group>"; };
 		404DD54A3DE66EB92B0AF76B /* Pods-SpotHero_iOS_Partner_SDK_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpotHero_iOS_Partner_SDK_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SpotHero_iOS_Partner_SDK_Example/Pods-SpotHero_iOS_Partner_SDK_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		598A47307E22AF714D78D454 /* Pods-SpotHero_iOS_Partner_SDK_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpotHero_iOS_Partner_SDK_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SpotHero_iOS_Partner_SDK_Tests/Pods-SpotHero_iOS_Partner_SDK_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		5F9343FE890355916ED4BCDD /* Pods-SpotHero_iOS_Partner_SDK_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpotHero_iOS_Partner_SDK_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-SpotHero_iOS_Partner_SDK_Example/Pods-SpotHero_iOS_Partner_SDK_Example.release.xcconfig"; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 		3361782C1D249B1A00AF7AD6 /* UITests */ = {
 			isa = PBXGroup;
 			children = (
+				336178371D24A8BB00AF7AD6 /* XCTestCase+KIF.swift */,
 				3361782D1D249B1A00AF7AD6 /* ShowSDKUITests.swift */,
 				3361782F1D249B1A00AF7AD6 /* Info.plist */,
 			);
@@ -506,6 +509,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3361782E1D249B1A00AF7AD6 /* ShowSDKUITests.swift in Sources */,
+				336178381D24A8BB00AF7AD6 /* XCTestCase+KIF.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
