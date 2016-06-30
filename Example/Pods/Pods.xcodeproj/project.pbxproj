@@ -24,6 +24,15 @@
 		2F3A34375696851FF376DA46EC068B80 /* KIFTestActor.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F9834255F1AD996A87768E97EF1B473 /* KIFTestActor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		31AA341E7EDFBE3669985A45EDB7E804 /* UIView-KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FCA36D95D527363F166C3A8F1861A1A /* UIView-KIFAdditions.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		333BA472101F58E064B1460B2A1B5FD0 /* VOKBenkode.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4CF7A50631AF2A005CAC54E0AFE35A /* VOKBenkode.m */; };
+		3361783B1D24B20A00AF7AD6 /* SpotHeroPartnerAPIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3361783A1D24B20A00AF7AD6 /* SpotHeroPartnerAPIController.swift */; };
+		3361783D1D24B23D00AF7AD6 /* JSONDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3361783C1D24B23D00AF7AD6 /* JSONDictionary.swift */; };
+		3361783F1D24B27800AF7AD6 /* ServerEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3361783E1D24B27800AF7AD6 /* ServerEnvironment.swift */; };
+		336178411D24B4B800AF7AD6 /* APIHeaders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336178401D24B4B800AF7AD6 /* APIHeaders.swift */; };
+		336178441D24B6E400AF7AD6 /* NSURLQueryItem+QueryParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336178431D24B6E400AF7AD6 /* NSURLQueryItem+QueryParams.swift */; };
+		336178471D24B7EE00AF7AD6 /* DLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336178461D24B7EE00AF7AD6 /* DLog.swift */; };
+		336178491D24B8AD00AF7AD6 /* SpotHeroPartnerSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336178481D24B8AD00AF7AD6 /* SpotHeroPartnerSDK.swift */; };
+		3361784B1D24BAF200AF7AD6 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3361784A1D24BAF200AF7AD6 /* APIError.swift */; };
+		3361784E1D24BD6A00AF7AD6 /* ServerErrorJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3361784D1D24BD6A00AF7AD6 /* ServerErrorJSON.swift */; };
 		349E3EACBE9B962B4B7D1E8CECBF382F /* IOHIDEvent+KIF.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B846D8DAD5EA51B03E71CD54AFAB26D /* IOHIDEvent+KIF.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		36DFA0C24074B24B2339CC6AC599D497 /* UIAutomationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 07BFFA364566EBAF20725705610903D5 /* UIAutomationHelper.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		3784B462CF975A5AD43D9C1E5A7BDAB3 /* UITouch-KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 718E1B6539BF872712FC1452A8E291C1 /* UITouch-KIFAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -221,6 +230,15 @@
 		301E195C2D84BDEFA95256606CD27545 /* VOKMockUrlProtocol.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = VOKMockUrlProtocol.xcconfig; sourceTree = "<group>"; };
 		31DDCAD0F2CF98F26A1FBA045BEE0E63 /* UITableView-KIFAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UITableView-KIFAdditions.h"; path = "Additions/UITableView-KIFAdditions.h"; sourceTree = "<group>"; };
 		33475DCFAD041DE4DE25A6AEB9C41CCF /* HTTPHeaderFields.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = HTTPHeaderFields.m; sourceTree = "<group>"; };
+		3361783A1D24B20A00AF7AD6 /* SpotHeroPartnerAPIController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotHeroPartnerAPIController.swift; sourceTree = "<group>"; };
+		3361783C1D24B23D00AF7AD6 /* JSONDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONDictionary.swift; sourceTree = "<group>"; };
+		3361783E1D24B27800AF7AD6 /* ServerEnvironment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerEnvironment.swift; sourceTree = "<group>"; };
+		336178401D24B4B800AF7AD6 /* APIHeaders.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIHeaders.swift; sourceTree = "<group>"; };
+		336178431D24B6E400AF7AD6 /* NSURLQueryItem+QueryParams.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSURLQueryItem+QueryParams.swift"; sourceTree = "<group>"; };
+		336178461D24B7EE00AF7AD6 /* DLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DLog.swift; sourceTree = "<group>"; };
+		336178481D24B8AD00AF7AD6 /* SpotHeroPartnerSDK.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotHeroPartnerSDK.swift; sourceTree = "<group>"; };
+		3361784A1D24BAF200AF7AD6 /* APIError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		3361784D1D24BD6A00AF7AD6 /* ServerErrorJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerErrorJSON.swift; sourceTree = "<group>"; };
 		34F191306BE13B0604226705D0A83380 /* Pods-SpotHero_iOS_Partner_SDK_ExampleUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SpotHero_iOS_Partner_SDK_ExampleUITests-umbrella.h"; sourceTree = "<group>"; };
 		36DDAFCA2170A1E7AA4BDAFECBCBEA88 /* VOKBenkode-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "VOKBenkode-prefix.pch"; sourceTree = "<group>"; };
 		3A2ADFE230B15D2C3B7F51A9ED50B3BB /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -512,6 +530,42 @@
 			path = "../Target Support Files/VOKBenkode";
 			sourceTree = "<group>";
 		};
+		336178391D24B1F000AF7AD6 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				3361784A1D24BAF200AF7AD6 /* APIError.swift */,
+				336178401D24B4B800AF7AD6 /* APIHeaders.swift */,
+				3361783C1D24B23D00AF7AD6 /* JSONDictionary.swift */,
+				3361783E1D24B27800AF7AD6 /* ServerEnvironment.swift */,
+				3361783A1D24B20A00AF7AD6 /* SpotHeroPartnerAPIController.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		336178421D24B6C400AF7AD6 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				336178431D24B6E400AF7AD6 /* NSURLQueryItem+QueryParams.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		336178451D24B7E300AF7AD6 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				336178461D24B7EE00AF7AD6 /* DLog.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		3361784C1D24BD6000AF7AD6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3361784D1D24BD6A00AF7AD6 /* ServerErrorJSON.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		3D2DCF33051FF1A95AA888C711F96AEF /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -699,6 +753,11 @@
 		D83AEA22B39A4E372250EDCA366B733D /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				336178481D24B8AD00AF7AD6 /* SpotHeroPartnerSDK.swift */,
+				336178451D24B7E300AF7AD6 /* Utilities */,
+				336178421D24B6C400AF7AD6 /* Extensions */,
+				3361784C1D24BD6000AF7AD6 /* Models */,
+				336178391D24B1F000AF7AD6 /* Network */,
 				9474662916CCA3CBFA40361B5EF98296 /* ReplaceMe.swift */,
 			);
 			path = Classes;
@@ -1046,8 +1105,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3361783F1D24B27800AF7AD6 /* ServerEnvironment.swift in Sources */,
+				3361783B1D24B20A00AF7AD6 /* SpotHeroPartnerAPIController.swift in Sources */,
+				336178491D24B8AD00AF7AD6 /* SpotHeroPartnerSDK.swift in Sources */,
+				3361784B1D24BAF200AF7AD6 /* APIError.swift in Sources */,
+				3361784E1D24BD6A00AF7AD6 /* ServerErrorJSON.swift in Sources */,
 				DD06971B4677FE19A5E38CFAB1B70DB7 /* ReplaceMe.swift in Sources */,
+				336178471D24B7EE00AF7AD6 /* DLog.swift in Sources */,
 				2799793652B21D53C49E22C03174A0A9 /* SpotHero_iOS_Partner_SDK-dummy.m in Sources */,
+				3361783D1D24B23D00AF7AD6 /* JSONDictionary.swift in Sources */,
+				336178411D24B4B800AF7AD6 /* APIHeaders.swift in Sources */,
+				336178441D24B6E400AF7AD6 /* NSURLQueryItem+QueryParams.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
