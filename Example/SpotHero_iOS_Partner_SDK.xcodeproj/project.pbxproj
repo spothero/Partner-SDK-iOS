@@ -219,6 +219,7 @@
 				607FACCD1AFB9204008FA782 /* Frameworks */,
 				607FACCE1AFB9204008FA782 /* Resources */,
 				336178351D249EA300AF7AD6 /* 🤓 Swift-Clean Run Script */,
+				336178361D24A64200AF7AD6 /* ⚠️ Swift Warning Run Script */,
 				3583224C1D12D105F5CAE194 /* 📦 Embed Pods Frameworks */,
 				0880808AA2DC77C3EC9D3374 /* 📦 Copy Pods Resources */,
 			);
@@ -351,6 +352,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Scripts/Swift-Clean_Run_Script.sh\"";
+		};
+		336178361D24A64200AF7AD6 /* ⚠️ Swift Warning Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "⚠️ Swift Warning Run Script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Scripts/Swift_Warning_Run_Script.sh\"";
 		};
 		3583224C1D12D105F5CAE194 /* 📦 Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
