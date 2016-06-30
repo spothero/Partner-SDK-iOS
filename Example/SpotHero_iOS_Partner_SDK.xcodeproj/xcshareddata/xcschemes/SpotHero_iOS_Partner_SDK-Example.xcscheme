@@ -52,6 +52,16 @@
                ReferencedContainer = "container:SpotHero_iOS_Partner_SDK.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "3361782A1D249B1A00AF7AD6"
+               BuildableName = "SpotHero_iOS_Partner_SDK_ExampleUITests.xctest"
+               BlueprintName = "SpotHero_iOS_Partner_SDK_ExampleUITests"
+               ReferencedContainer = "container:SpotHero_iOS_Partner_SDK.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

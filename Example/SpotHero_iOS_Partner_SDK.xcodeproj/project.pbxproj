@@ -8,16 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		234673EB15066D4EC9DC8FC8 /* Pods_SpotHero_iOS_Partner_SDK_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F26D5251B78585BF5881D75 /* Pods_SpotHero_iOS_Partner_SDK_Example.framework */; };
+		3361782E1D249B1A00AF7AD6 /* ShowSDKUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3361782D1D249B1A00AF7AD6 /* ShowSDKUITests.swift */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
-		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
+		607FACEC1AFB9204008FA782 /* PartnerAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* PartnerAPITests.swift */; };
 		8798EBC4124F84C4DF1F320C /* Pods_SpotHero_iOS_Partner_SDK_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E872C07734ECBB92B5B34F8 /* Pods_SpotHero_iOS_Partner_SDK_Tests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		336178301D249B1A00AF7AD6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 607FACC81AFB9204008FA782 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 607FACCF1AFB9204008FA782;
+			remoteInfo = SpotHero_iOS_Partner_SDK_Example;
+		};
 		607FACE61AFB9204008FA782 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 607FACC81AFB9204008FA782 /* Project object */;
@@ -31,6 +39,9 @@
 		0E872C07734ECBB92B5B34F8 /* Pods_SpotHero_iOS_Partner_SDK_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpotHero_iOS_Partner_SDK_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F26D5251B78585BF5881D75 /* Pods_SpotHero_iOS_Partner_SDK_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpotHero_iOS_Partner_SDK_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EA8833E3E8B61B4E0E4DBA1 /* Pods-SpotHero_iOS_Partner_SDK_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpotHero_iOS_Partner_SDK_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SpotHero_iOS_Partner_SDK_Tests/Pods-SpotHero_iOS_Partner_SDK_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		3361782B1D249B1A00AF7AD6 /* SpotHero_iOS_Partner_SDK_ExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpotHero_iOS_Partner_SDK_ExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3361782D1D249B1A00AF7AD6 /* ShowSDKUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowSDKUITests.swift; sourceTree = "<group>"; };
+		3361782F1D249B1A00AF7AD6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		404DD54A3DE66EB92B0AF76B /* Pods-SpotHero_iOS_Partner_SDK_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpotHero_iOS_Partner_SDK_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SpotHero_iOS_Partner_SDK_Example/Pods-SpotHero_iOS_Partner_SDK_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		598A47307E22AF714D78D454 /* Pods-SpotHero_iOS_Partner_SDK_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpotHero_iOS_Partner_SDK_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SpotHero_iOS_Partner_SDK_Tests/Pods-SpotHero_iOS_Partner_SDK_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		5F9343FE890355916ED4BCDD /* Pods-SpotHero_iOS_Partner_SDK_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpotHero_iOS_Partner_SDK_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-SpotHero_iOS_Partner_SDK_Example/Pods-SpotHero_iOS_Partner_SDK_Example.release.xcconfig"; sourceTree = "<group>"; };
@@ -43,13 +54,20 @@
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		607FACE51AFB9204008FA782 /* SpotHero_iOS_Partner_SDK_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpotHero_iOS_Partner_SDK_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
+		607FACEB1AFB9204008FA782 /* PartnerAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerAPITests.swift; sourceTree = "<group>"; };
 		ACCD235132D0F3E91139EDA1 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		B3D6EF80E8E12778E5EA7832 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		B881BE5BF8EFF967D394C2B4 /* SpotHero_iOS_Partner_SDK.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = SpotHero_iOS_Partner_SDK.podspec; path = ../SpotHero_iOS_Partner_SDK.podspec; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		336178281D249B1A00AF7AD6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		607FACCD1AFB9204008FA782 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -69,6 +87,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3361782C1D249B1A00AF7AD6 /* UITests */ = {
+			isa = PBXGroup;
+			children = (
+				3361782D1D249B1A00AF7AD6 /* ShowSDKUITests.swift */,
+				3361782F1D249B1A00AF7AD6 /* Info.plist */,
+			);
+			name = UITests;
+			path = SpotHero_iOS_Partner_SDK_ExampleUITests;
+			sourceTree = "<group>";
+		};
 		4AFCBA9B0DCE8DAA07A14EBC /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -86,6 +114,7 @@
 				607FACF51AFB993E008FA782 /* Podspec Metadata */,
 				607FACD21AFB9204008FA782 /* Example */,
 				607FACE81AFB9204008FA782 /* Tests */,
+				3361782C1D249B1A00AF7AD6 /* UITests */,
 				607FACD11AFB9204008FA782 /* Products */,
 				4AFCBA9B0DCE8DAA07A14EBC /* Pods */,
 				C20B51A341C0C5FA9E3B0FA1 /* Frameworks */,
@@ -97,6 +126,7 @@
 			children = (
 				607FACD01AFB9204008FA782 /* SpotHero_iOS_Partner_SDK_Example.app */,
 				607FACE51AFB9204008FA782 /* SpotHero_iOS_Partner_SDK_Tests.xctest */,
+				3361782B1D249B1A00AF7AD6 /* SpotHero_iOS_Partner_SDK_ExampleUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -126,7 +156,7 @@
 		607FACE81AFB9204008FA782 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				607FACEB1AFB9204008FA782 /* Tests.swift */,
+				607FACEB1AFB9204008FA782 /* PartnerAPITests.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 			);
 			path = Tests;
@@ -162,6 +192,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		3361782A1D249B1A00AF7AD6 /* SpotHero_iOS_Partner_SDK_ExampleUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 336178341D249B1A00AF7AD6 /* Build configuration list for PBXNativeTarget "SpotHero_iOS_Partner_SDK_ExampleUITests" */;
+			buildPhases = (
+				336178271D249B1A00AF7AD6 /* Sources */,
+				336178281D249B1A00AF7AD6 /* Frameworks */,
+				336178291D249B1A00AF7AD6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				336178311D249B1A00AF7AD6 /* PBXTargetDependency */,
+			);
+			name = SpotHero_iOS_Partner_SDK_ExampleUITests;
+			productName = SpotHero_iOS_Partner_SDK_ExampleUITests;
+			productReference = 3361782B1D249B1A00AF7AD6 /* SpotHero_iOS_Partner_SDK_ExampleUITests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		607FACCF1AFB9204008FA782 /* SpotHero_iOS_Partner_SDK_Example */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 607FACEF1AFB9204008FA782 /* Build configuration list for PBXNativeTarget "SpotHero_iOS_Partner_SDK_Example" */;
@@ -209,10 +257,14 @@
 		607FACC81AFB9204008FA782 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0720;
+				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0720;
-				ORGANIZATIONNAME = CocoaPods;
+				ORGANIZATIONNAME = "SpotHero, Inc.";
 				TargetAttributes = {
+					3361782A1D249B1A00AF7AD6 = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = 607FACCF1AFB9204008FA782;
+					};
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
 					};
@@ -237,11 +289,19 @@
 			targets = (
 				607FACCF1AFB9204008FA782 /* SpotHero_iOS_Partner_SDK_Example */,
 				607FACE41AFB9204008FA782 /* SpotHero_iOS_Partner_SDK_Tests */,
+				3361782A1D249B1A00AF7AD6 /* SpotHero_iOS_Partner_SDK_ExampleUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		336178291D249B1A00AF7AD6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		607FACCE1AFB9204008FA782 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -355,6 +415,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		336178271D249B1A00AF7AD6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3361782E1D249B1A00AF7AD6 /* ShowSDKUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		607FACCC1AFB9204008FA782 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -368,13 +436,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				607FACEC1AFB9204008FA782 /* Tests.swift in Sources */,
+				607FACEC1AFB9204008FA782 /* PartnerAPITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		336178311D249B1A00AF7AD6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 607FACCF1AFB9204008FA782 /* SpotHero_iOS_Partner_SDK_Example */;
+			targetProxy = 336178301D249B1A00AF7AD6 /* PBXContainerItemProxy */;
+		};
 		607FACE71AFB9204008FA782 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 607FACCF1AFB9204008FA782 /* SpotHero_iOS_Partner_SDK_Example */;
@@ -402,6 +475,35 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		336178321D249B1A00AF7AD6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				INFOPLIST_FILE = SpotHero_iOS_Partner_SDK_ExampleUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.spothero.SpotHero-iOS-Partner-SDK-ExampleUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SpotHero_iOS_Partner_SDK_Example.app/SpotHero_iOS_Partner_SDK_Example";
+			};
+			name = Debug;
+		};
+		336178331D249B1A00AF7AD6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				INFOPLIST_FILE = SpotHero_iOS_Partner_SDK_ExampleUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.spothero.SpotHero-iOS-Partner-SDK-ExampleUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SpotHero_iOS_Partner_SDK_Example.app/SpotHero_iOS_Partner_SDK_Example";
+			};
+			name = Release;
+		};
 		607FACED1AFB9204008FA782 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -551,6 +653,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		336178341D249B1A00AF7AD6 /* Build configuration list for PBXNativeTarget "SpotHero_iOS_Partner_SDK_ExampleUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				336178321D249B1A00AF7AD6 /* Debug */,
+				336178331D249B1A00AF7AD6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		607FACCB1AFB9204008FA782 /* Build configuration list for PBXProject "SpotHero_iOS_Partner_SDK" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
