@@ -1,0 +1,6 @@
+framework module SpotHero_iOS_Partner_SDK {
+  umbrella header "SpotHero_iOS_Partner_SDK-umbrella.h"
+
+  export *
+  module * { export * }
+}

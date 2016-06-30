@@ -1,0 +1,22 @@
+{
+  "name": "SpotHero_iOS_Partner_SDK",
+  "version": "0.1.0",
+  "summary": "A short description of SpotHero_iOS_Partner_SDK.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/<GITHUB_USERNAME>/SpotHero_iOS_Partner_SDK",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Ellen Shapiro": "designatednerd@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/<GITHUB_USERNAME>/SpotHero_iOS_Partner_SDK.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "SpotHero_iOS_Partner_SDK/Classes/**/*"
+}

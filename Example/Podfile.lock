@@ -1,0 +1,16 @@
+PODS:
+  - SpotHero_iOS_Partner_SDK (0.1.0)
+
+DEPENDENCIES:
+  - SpotHero_iOS_Partner_SDK (from `../`)
+
+EXTERNAL SOURCES:
+  SpotHero_iOS_Partner_SDK:
+    :path: ../
+
+SPEC CHECKSUMS:
+  SpotHero_iOS_Partner_SDK: 5a16c1e23ab9ca2419498d85cf049d9f77252e28
+
+PODFILE CHECKSUM: bb9aad94adc4ba4bb364d2b5861ea7f745ec41ed
+
+COCOAPODS: 1.0.0
