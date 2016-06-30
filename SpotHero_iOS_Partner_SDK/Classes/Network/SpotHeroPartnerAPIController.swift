@@ -106,7 +106,11 @@ struct SpotHeroPartnerAPIController {
         
         //Pre-flight checks
         if ((noResponseSuccessCompletion != nil && jsonSuccessCompletion != nil) //Both are there
-            || (noResponseSuccessCompletion == nil && jsonSuccessCompletion == nil)) { //both are nil
+            //##SWIFTCLEAN_SKIP##
+            || (noResponseSuccessCompletion
+            //^ known bug with swift-clean
+            //##SWIFTCLEAN_ENDSKIP##
+                == nil && jsonSuccessCompletion == nil)) { //both are nil
             let error = APIError.errorWithDescription("You must select one, JSON success or no response expected success. You cannot has both or neither.",
                                                       andStatusCode: APIError.PartnerSDKErrorCode.InvalidParameter.rawValue)
             errorCompletion(error: error)
@@ -231,7 +235,7 @@ struct SpotHeroPartnerAPIController {
             return
         }
         
-        guard let successJSON = self.JSONDictionaryFromData(returnedData, errorCompletion: errorCompletion) else {
+        guard let successJSON = self.jsonDictionaryFromData(returnedData, errorCompletion: errorCompletion) else {
             //JSON method will call the error completion with the JSON error.
             return
         }
@@ -255,7 +259,7 @@ struct SpotHeroPartnerAPIController {
             return
         }
         
-        guard let errorJSON = self.JSONDictionaryFromData(errorData, errorCompletion: completion) else {
+        guard let errorJSON = self.jsonDictionaryFromData(errorData, errorCompletion: completion) else {
             //JSON method will call the error completion with the JSON error.
             return
         }
@@ -272,7 +276,7 @@ struct SpotHeroPartnerAPIController {
         
     }
     
-    private static func JSONDictionaryFromData(data: NSData, errorCompletion: APIErrorCompletion) -> JSONDictionary? {
+    private static func jsonDictionaryFromData(data: NSData, errorCompletion: APIErrorCompletion) -> JSONDictionary? {
         do {
             let dictionary = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions()) as? JSONDictionary
             return dictionary
