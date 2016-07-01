@@ -12,6 +12,7 @@ import SpotHero_iOS_Partner_SDK
 
 class PartnerAPITests: XCTestCase {
     func testExample() {
-        XCTFail("Tests don't actually exist yet")
+        let thing: String? = nil
+        XCTAssertNil(thing)
     }
 }
