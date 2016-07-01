@@ -6,6 +6,9 @@
 //  Copyright © 2016 SpotHero, Inc. All rights reserved.
 //
 
+import KIF
+import XCTest 
+
 /*
  Helpers to allow KIF to be accessed from Swift.
  */
