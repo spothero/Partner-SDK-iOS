@@ -13,6 +13,7 @@ import KIF
 class ShowSDKUITests: KIFTestCase {
 
     func testExample() {
-        XCTFail("Tests don't actually exist yet")
+        let thing: String? = nil
+        XCTAssertNil(thing)
     }
 }

@@ -1,0 +1,150 @@
+default_platform :ios
+
+platform :ios do
+
+######################
+# Pre-defined values #
+######################
+
+# The output folder for test coverage data
+test_output_folder = 'test_output'
+
+# The root fastlane folder
+fastlane_folder='fastlane'
+
+# The URL for the slack webhook to post to
+slack_webhook_url='https://hooks.slack.com/services/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'
+
+####################
+# Pre-defined keys #
+####################
+
+# Key for string specifying the name of the Scheme to use to perform various tasks. 
+scheme_options_key = 'scheme'
+
+# Key for string path for folder to output data to (relative to fastlane_folder)
+output_options_key = 'output'
+
+#########################
+# Per-Project Variables #
+#########################
+
+# The name of the main scheme for building and testing the app. Must be a shared scheme!
+main_scheme = 'SpotHero_iOS_Partner_SDK-Example'
+
+# The path to the .xcworkspace file
+workspace_file='Example/SpotHero_iOS_Partner_SDK.xcworkspace'
+
+# The path to the .xcodeproj for the framework (for getting coverage info)
+project_file='Example/SpotHero_iOS_Partner_SDK.xcodeproj'
+
+
+# TRAVIS NOTE: Any lane using an encrypted environment variable should only be used on 
+# Travis after the pull request has been merged - otherwise those variables will have
+# empty data. Encrypted environment variables can be added at:  
+# https://travis-ci.com/spothero/SpotHero-iOS/settings
+
+
+###########
+## SETUP ##
+###########
+
+    before_all do
+        ENV['SLACK_URL'] = slack_webhook_url
+    end
+    
+
+#############################  
+## TESTING & CODE COVERAGE ##
+#############################
+
+    desc "Runs tests with the given options"    
+    desc "Expects values for the following keys:"
+    desc "scheme_options_key: The name of the scheme to use to run the tests"
+    desc "output_options_key: The path to output information from the tests"
+    private_lane :run_tests do |options|
+        if !options.key?(:scheme_options_key) || !options.key?(:output_options_key)
+            raise "Not all required options for this lane are present!"
+            return
+        end
+
+        scheme = options[:scheme_options_key]
+        output_folder = options[:output_options_key]
+        
+        # Build and run the given tests
+        scan(
+            workspace: workspace_file,
+            scheme: scheme,
+            sdk: 'iphonesimulator',
+            skip_slack: !is_ci, # only let us know if we're on CI
+            output_directory: File.join(fastlane_folder, output_folder),
+            clean: true,  
+        )        
+    end
+
+    desc "Runs slather with cobertura output on a specified scheme"
+    desc "Expects values for the following keys:"
+    desc "output_options_key: The folder in which to put the cobertura.xml file"
+    desc "scheme_options_key: The scheme to collect coverage for"
+    private_lane :slather_cobertura do |options|
+        if !options.key?(:scheme_options_key) || !options.key?(:output_options_key)
+            raise "Not all required options for this lane are present!"
+            return
+        end
+    
+        # What should we test and where should we put it? 
+        output = options[:output_options_key]
+        scheme = options[:scheme_options_key]
+        
+        #TODO: Re-enable when I figure out wtf is going on with slather
+#        slather(
+#            cobertura_xml: true,
+#            proj: project_file,
+#            input_format: 'profdata',
+#            scheme: scheme,
+#            output_directory: File.join(fastlane_folder, output),
+#        )    
+    end
+
+    desc "Runs all the tests of the app and gathers code coverage"
+    lane :test do   
+        # Run the Unit tests 
+        run_tests(
+            scheme_options_key: main_scheme,
+            output_options_key: test_output_folder,
+        )
+        
+        # Run coverage for the app
+        slather_cobertura(
+            scheme_options_key: main_scheme,
+            output_options_key: test_output_folder,
+        )
+    end
+
+
+######################
+## SUCCESS HANDLING ##
+######################
+
+    # This gets called if the executed lanes were all successful 
+    after_all do |lane|
+        puts "Success!"
+
+        if is_ci
+            slack(message: "iOS App build succeeded", success: true)
+        end
+    end
+    
+    
+######################
+## FAILURE HANDLING ##
+######################
+    
+    # This gets called if anything failed along the way
+    error do |lane, exception|
+        puts "---- SOMETHING FAILED ---"
+        if is_ci
+            slack(message: "iOS App build FAIL!!!!: #{exception}", success: false)
+        end
+    end
+end
