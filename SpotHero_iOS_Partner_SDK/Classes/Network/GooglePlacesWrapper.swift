@@ -18,7 +18,9 @@ enum GooglePlacesError: ErrorType {
 typealias GooglePlacesWrapperCompletion = ([GooglePlacesPrediction], ErrorType?) -> (Void)
 
 struct GooglePlacesWrapper {
-    static func getPredictions(input: String, location: CLLocation? = nil, completion: GooglePlacesWrapperCompletion) {
+    static func getPredictions(input: String,
+                               location: CLLocation? = nil,
+                               completion: GooglePlacesWrapperCompletion) {
         let urlComponents = NSURLComponents()
         urlComponents.host = "maps.googleapis.com"
         urlComponents.scheme = "https"
