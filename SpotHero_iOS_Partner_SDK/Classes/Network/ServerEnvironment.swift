@@ -48,7 +48,7 @@ public enum ServerEnvironment {
         let pureBase: String
         switch self {
         case .Staging:
-            pureBase = "https://mobiledev.kickthe.tires"
+            pureBase = "https://pdp.kickthe.tires"
         case .Production:
             pureBase = "https://spothero.com"
         case .Custom (let baseURLString):
@@ -63,7 +63,7 @@ public enum ServerEnvironment {
     public var websiteBaseURLString: String {
         switch self {
         case .Staging:
-            return "http://mobiledev.kickthe.tires"
+            return "http://pdp.kickthe.tires"
         case .Production:
             return "http://www.spothero.com"
         case .Custom (let baseURLString):
