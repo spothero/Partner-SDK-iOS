@@ -15,5 +15,15 @@
     "tag": "0.1.0"
   },
   "social_media_url": "https://twitter.com/SpotHero",
-  "source_files": "SpotHero_iOS_Partner_SDK/Classes/**/*"
+  "source_files": "SpotHero_iOS_Partner_SDK/Classes/**/*",
+  "resource_bundles": {
+    "SpotHero_iOS_Partner_SDK": [
+      "SpotHero_iOS_Partner_SDK/Assets/*.{png,storyboard,lproj}"
+    ]
+  },
+  "public_header_files": "Pod/Classes/**/*.h",
+  "frameworks": [
+    "UIKit",
+    "MapKit"
+  ]
 }
