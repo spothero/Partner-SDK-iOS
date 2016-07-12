@@ -9,7 +9,13 @@
 import Foundation
 import CoreLocation
 
-typealias GooglePlacesWrapperCompletion = ([GooglePlacesPrediction]) -> (Void)
+enum GooglePlacesError: ErrorType {
+    case
+    NoPredictions,
+    CannotFormURL
+}
+
+typealias GooglePlacesWrapperCompletion = ([GooglePlacesPrediction], ErrorType?) -> (Void)
 
 struct GooglePlacesWrapper {
     static func getPredictions(input: String, location: CLLocation? = nil, completion: GooglePlacesWrapperCompletion) {
@@ -30,25 +36,29 @@ struct GooglePlacesWrapper {
         if let url = urlComponents.URL {
             NSURLSession.sharedSession().dataTaskWithURL(url, completionHandler: { (data, response, error) in
                 guard let data = data else {
+                    completion([], error)
                     return
                 }
                 
                 do {
                     let responseDictionary = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions()) as? JSONDictionary
-                    if let predictionDictionaries = responseDictionary?["predictions"] as? [JSONDictionary] {
+                    if let predictionDictionaries = responseDictionary?["predictions"] as? [JSONDictionary] where predictionDictionaries.count > 0 {
                         var predictions = [GooglePlacesPrediction]()
                         for predictionDictionary in predictionDictionaries {
                             let predition = try GooglePlacesPrediction(json: predictionDictionary)
                             predictions.append(predition)
                         }
-                        completion(predictions)
+                        completion(predictions, nil)
+                    } else {
+                        completion([], GooglePlacesError.NoPredictions)
                     }
-                } catch {
-                    // TODO: Handle errors
+                } catch let error {
+                    completion([], error)
                 }
             }).resume()
         } else {
             assertionFailure("Unable to form URL")
+            completion([], GooglePlacesError.CannotFormURL)
         }
     }
 }
