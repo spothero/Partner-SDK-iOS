@@ -41,7 +41,7 @@ class GooglePlacesTests: XCTestCase {
     }
     
     func testNoResults() {
-        let exp = self.expectationWithDescription("testGetPredictionsWithPlaceName")
+        let exp = self.expectationWithDescription("testNoResults")
         
         // Just passing in jibberish so it finds no predictions
         GooglePlacesWrapper.getPredictions("fjkaiofnaic", location: CLLocation(latitude: chicagoLat, longitude: chicagoLong)) { predictions, error in
