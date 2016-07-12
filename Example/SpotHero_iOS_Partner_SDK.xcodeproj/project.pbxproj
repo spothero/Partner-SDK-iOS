@@ -18,6 +18,7 @@
 		607FACEC1AFB9204008FA782 /* PartnerAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* PartnerAPITests.swift */; };
 		7C3F6C31A49AA7ED9569FD2A /* Pods_SpotHero_iOS_Partner_SDK_ExampleUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98C2BDA4124E6288B4D2DBB4 /* Pods_SpotHero_iOS_Partner_SDK_ExampleUITests.framework */; };
 		8798EBC4124F84C4DF1F320C /* Pods_SpotHero_iOS_Partner_SDK_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E872C07734ECBB92B5B34F8 /* Pods_SpotHero_iOS_Partner_SDK_Tests.framework */; };
+		C73848581D35538C0023E1A8 /* GooglePlacesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73848571D35538C0023E1A8 /* GooglePlacesTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 		B3D6EF80E8E12778E5EA7832 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		B881BE5BF8EFF967D394C2B4 /* SpotHero_iOS_Partner_SDK.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = SpotHero_iOS_Partner_SDK.podspec; path = ../SpotHero_iOS_Partner_SDK.podspec; sourceTree = "<group>"; };
 		C31FF8F2573F1F03B4C264B2 /* Pods-SpotHero_iOS_Partner_SDK_ExampleUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpotHero_iOS_Partner_SDK_ExampleUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SpotHero_iOS_Partner_SDK_ExampleUITests/Pods-SpotHero_iOS_Partner_SDK_ExampleUITests.release.xcconfig"; sourceTree = "<group>"; };
+		C73848571D35538C0023E1A8 /* GooglePlacesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GooglePlacesTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +170,7 @@
 			children = (
 				607FACEB1AFB9204008FA782 /* PartnerAPITests.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
+				C73848571D35538C0023E1A8 /* GooglePlacesTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -526,6 +529,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C73848581D35538C0023E1A8 /* GooglePlacesTests.swift in Sources */,
 				607FACEC1AFB9204008FA782 /* PartnerAPITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
