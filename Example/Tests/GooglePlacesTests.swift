@@ -36,10 +36,8 @@ class GooglePlacesTests: XCTestCase {
                                                 XCTAssertEqual(firstPrediction.placeID, "ChIJs9x2O7UsDogR6kgNUj4svDQ")
                                                 XCTAssertGreaterThan(firstPrediction.terms.count, 0)
                                             } else {
-                                                XCTFail()
+                                                XCTFail("Unable to get first prediction")
                                             }
-                                            
-
         }
         
         self.waitForExpectationsWithTimeout(self.waitDuration, handler: nil)
@@ -60,7 +58,7 @@ class GooglePlacesTests: XCTestCase {
                                                 XCTAssertEqual(firstPrediction.placeID, self.spotheroPrediction.placeID)
                                                 XCTAssertGreaterThan(firstPrediction.terms.count, 0)
                                             } else {
-                                                XCTFail()
+                                                XCTFail("Unable to get first prediction")
                                             }
         }
         
@@ -96,6 +94,8 @@ class GooglePlacesTests: XCTestCase {
                 XCTAssertEqual(placeDetails.placeID, self.spotheroPrediction.placeID)
                 XCTAssertEqualWithAccuracy(placeDetails.location.coordinate.latitude, self.chicagoLocation.coordinate.latitude, accuracy: 0.001, "The two locacations are not within 0.001")
                 XCTAssertEqualWithAccuracy(placeDetails.location.coordinate.longitude, self.chicagoLocation.coordinate.longitude, accuracy: 0.001, "The two locacations are not within 0.001")
+            } else {
+                XCTFail("Place Details is nil")
             }
         }
         
