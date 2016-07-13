@@ -20,9 +20,9 @@ typealias GooglePlacesWrapperCompletion = ([GooglePlacesPrediction], ErrorType?)
 typealias GooglePlaceDetailsCompletion = (GooglePlaceDetails?, ErrorType?) -> (Void)
 
 struct GooglePlacesWrapper {
-    static let host = "maps.googleapis.com"
-    static let scheme = "https"
-    static let keyQueryItem = NSURLQueryItem(name: "key", value: "AIzaSyCJSVbplK6bGdyV-8YvuEQS-VpU7E_qduY")
+    static let Host = "maps.googleapis.com"
+    static let Scheme = "https"
+    static let KeyQueryItem = NSURLQueryItem(name: "key", value: "AIzaSyCJSVbplK6bGdyV-8YvuEQS-VpU7E_qduY")
     
     /**
      Finds Predictions based on a string
@@ -35,12 +35,12 @@ struct GooglePlacesWrapper {
                                location: CLLocation? = nil,
                                completion: GooglePlacesWrapperCompletion) {
         let urlComponents = NSURLComponents()
-        urlComponents.host = host
-        urlComponents.scheme = scheme
+        urlComponents.host = Host
+        urlComponents.scheme = Scheme
         urlComponents.path = "/maps/api/place/autocomplete/json"
         urlComponents.queryItems = [
             NSURLQueryItem(name: "input", value: input),
-            keyQueryItem
+            KeyQueryItem
         ]
         
         if let location = location {
@@ -85,12 +85,12 @@ struct GooglePlacesWrapper {
      */
     static func getPlaceDetails(predition: GooglePlacesPrediction, completion: GooglePlaceDetailsCompletion) {
         let urlComponents = NSURLComponents()
-        urlComponents.host = host
-        urlComponents.scheme = scheme
+        urlComponents.host = Host
+        urlComponents.scheme = Scheme
         urlComponents.path = "/maps/api/place/details/json"
         urlComponents.queryItems = [
             NSURLQueryItem(name: "placeid", value: predition.placeID),
-            keyQueryItem
+            KeyQueryItem
         ]
         
         if let url = urlComponents.URL {
