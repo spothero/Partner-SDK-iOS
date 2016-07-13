@@ -12,15 +12,15 @@ import CoreLocation
 
 class GooglePlacesTests: XCTestCase {
     let waitDuration: NSTimeInterval = 10
-    let location = CLLocation(latitude: 41.894503, longitude: -87.636659)
+    let chicagoLocation = CLLocation(latitude: 41.894503, longitude: -87.636659)
 
     func testGetPredictionsWithAddressSubstring() {
-        let exp = self.expectationWithDescription("testGetPredictionsWithAddressSubstring")
+        let expectation = self.expectationWithDescription("testGetPredictionsWithAddressSubstring")
         
         GooglePlacesWrapper.getPredictions("325 W Huron",
-                                           location: self.location) {
+                                           location: self.chicagoLocation) {
                                                 predictions, error in
-                                                exp.fulfill()
+                                                expectation.fulfill()
                                                 XCTAssertNil(error)
                                                 XCTAssertEqual(predictions.count, 5)
                                                 XCTAssertEqual(predictions.first?.description, "325 W Huron St, Chicago, IL, United States")
@@ -31,12 +31,12 @@ class GooglePlacesTests: XCTestCase {
     }
 
     func testGetPredictionsWithPlaceName() {
-        let exp = self.expectationWithDescription("testGetPredictionsWithPlaceName")
+        let expectation = self.expectationWithDescription("testGetPredictionsWithPlaceName")
         
         GooglePlacesWrapper.getPredictions("SpotHero",
-                                           location: self.location) {
+                                           location: self.chicagoLocation) {
                                             predictions, error in
-                                            exp.fulfill()
+                                            expectation.fulfill()
                                             XCTAssertNil(error)
                                             XCTAssertEqual(predictions.count, 1)
                                             XCTAssertEqual(predictions.first?.description, "SpotHero, West Huron Street, Chicago, IL, United States")
@@ -47,13 +47,13 @@ class GooglePlacesTests: XCTestCase {
     }
     
     func testNoResults() {
-        let exp = self.expectationWithDescription("testNoResults")
+        let expectation = self.expectationWithDescription("testNoResults")
         
         // Just passing in jibberish so it finds no predictions
         GooglePlacesWrapper.getPredictions("fjkaiofnaic",
-                                           location: self.location) {
+                                           location: self.chicagoLocation) {
                                             predictions, error in
-                                            exp.fulfill()
+                                            expectation.fulfill()
                                             XCTAssertNotNil(error)
                                             XCTAssertEqual((error as? GooglePlacesError), GooglePlacesError.NoPredictions)
                                             XCTAssertEqual(predictions.count, 0)
