@@ -24,6 +24,7 @@ class GooglePlacesTests: XCTestCase {
                                                 XCTAssertNil(error)
                                                 XCTAssertEqual(predictions.count, 5)
                                                 XCTAssertEqual(predictions.first?.description, "325 W Huron St, Chicago, IL, United States")
+                                                XCTAssertEqual(predictions.first?.placeID, "ChIJs9x2O7UsDogR6kgNUj4svDQ")
         }
         
         self.waitForExpectationsWithTimeout(self.waitDuration, handler: nil)
@@ -39,6 +40,7 @@ class GooglePlacesTests: XCTestCase {
                                             XCTAssertNil(error)
                                             XCTAssertEqual(predictions.count, 1)
                                             XCTAssertEqual(predictions.first?.description, "SpotHero, West Huron Street, Chicago, IL, United States")
+                                            XCTAssertEqual(predictions.first?.placeID, "ChIJEyn6463TD4gR9Ta3uIauNyo")
         }
         
         self.waitForExpectationsWithTimeout(self.waitDuration, handler: nil)
