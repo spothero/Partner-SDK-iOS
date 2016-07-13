@@ -12,13 +12,12 @@ import CoreLocation
 
 class GooglePlacesTests: XCTestCase {
     let waitDuration: NSTimeInterval = 10
-    let chicagoLocation = CLLocation(latitude: 41.894503, longitude: -87.636659)
 
     func testGetPredictionsWithAddressSubstring() {
         let expectation = self.expectationWithDescription("testGetPredictionsWithAddressSubstring")
         
         GooglePlacesWrapper.getPredictions("325 W Huron",
-                                           location: self.chicagoLocation) {
+                                           location: Constants.chicagoLocation) {
                                                 predictions, error in
                                                 expectation.fulfill()
                                                 XCTAssertNil(error)
@@ -35,7 +34,7 @@ class GooglePlacesTests: XCTestCase {
         let expectation = self.expectationWithDescription("testGetPredictionsWithPlaceName")
         
         GooglePlacesWrapper.getPredictions("SpotHero",
-                                           location: self.chicagoLocation) {
+                                           location: Constants.chicagoLocation) {
                                             predictions, error in
                                             expectation.fulfill()
                                             XCTAssertNil(error)
@@ -53,7 +52,7 @@ class GooglePlacesTests: XCTestCase {
         
         // Just passing in jibberish so it finds no predictions
         GooglePlacesWrapper.getPredictions("fjkaiofnaic",
-                                           location: self.chicagoLocation) {
+                                           location: Constants.chicagoLocation) {
                                             predictions, error in
                                             expectation.fulfill()
                                             XCTAssertNotNil(error)
