@@ -12,6 +12,10 @@ import CoreLocation
 
 class GooglePlacesTests: XCTestCase {
     let waitDuration: NSTimeInterval = 10
+    let chicagoLocation = CLLocation(latitude: 41.894503, longitude: -87.636659)
+    let spotheroName = "SpotHero"
+    let spotheroPrediction = GooglePlacesPrediction(description: "SpotHero, West Huron Street, Chicago, IL, United States", placeID: "ChIJEyn6463TD4gR9Ta3uIauNyo")
+    let invalidPrediction = GooglePlacesPrediction(description: "Invalid", placeID: "Invalid")
 
     func testGetPredictionsWithAddressSubstring() {
         let expectation = self.expectationWithDescription("testGetPredictionsWithAddressSubstring")
@@ -33,15 +37,15 @@ class GooglePlacesTests: XCTestCase {
     func testGetPredictionsWithPlaceName() {
         let expectation = self.expectationWithDescription("testGetPredictionsWithPlaceName")
         
-        GooglePlacesWrapper.getPredictions("SpotHero",
-                                           location: Constants.ChicagoLocation) {
+        GooglePlacesWrapper.getPredictions(self.spotheroName,
+                                           location: self.chicagoLocation) {
                                             predictions, error in
                                             expectation.fulfill()
                                             XCTAssertNil(error)
                                             XCTAssertGreaterThanOrEqual(predictions.count, 1)
                                             XCTAssertLessThanOrEqual(predictions.count, 5)
-                                            XCTAssertEqual(predictions.first?.description, "SpotHero, West Huron Street, Chicago, IL, United States")
-                                            XCTAssertEqual(predictions.first?.placeID, "ChIJEyn6463TD4gR9Ta3uIauNyo")
+                                            XCTAssertEqual(predictions.first?.description, self.spotheroPrediction.description)
+                                            XCTAssertEqual(predictions.first?.placeID, self.spotheroPrediction.placeID)
         }
         
         self.waitForExpectationsWithTimeout(self.waitDuration, handler: nil)
@@ -58,6 +62,39 @@ class GooglePlacesTests: XCTestCase {
                                             XCTAssertNotNil(error)
                                             XCTAssertEqual((error as? GooglePlacesError), GooglePlacesError.NoPredictions)
                                             XCTAssertEqual(predictions.count, 0)
+        }
+        
+        self.waitForExpectationsWithTimeout(self.waitDuration, handler: nil)
+    }
+    
+    func testGetPlaceDetails() {
+        let expectation = self.expectationWithDescription("testGetPlaceDetails")
+        
+        GooglePlacesWrapper.getPlaceDetails(self.spotheroPrediction) {
+            placeDetails, error in
+            expectation.fulfill()
+            XCTAssertNil(error)
+            XCTAssertNotNil(placeDetails)
+            if let placeDetails = placeDetails {
+                XCTAssertEqual(placeDetails.name, self.spotheroName)
+                XCTAssertEqual(placeDetails.placeID, self.spotheroPrediction.placeID)
+                XCTAssertEqualWithAccuracy(placeDetails.location.coordinate.latitude, self.chicagoLocation.coordinate.latitude, accuracy: 0.001, "The two locacations are not within 0.001")
+                XCTAssertEqualWithAccuracy(placeDetails.location.coordinate.longitude, self.chicagoLocation.coordinate.longitude, accuracy: 0.001, "The two locacations are not within 0.001")
+            }
+        }
+        
+        self.waitForExpectationsWithTimeout(self.waitDuration, handler: nil)
+    }
+    
+    func testInvalidPlaceID() {
+        let expectation = self.expectationWithDescription("testGetPlaceDetails")
+        
+        GooglePlacesWrapper.getPlaceDetails(self.invalidPrediction) {
+            placeDetails, error in
+            expectation.fulfill()
+            XCTAssertNotNil(error)
+            XCTAssertNil(placeDetails)
+            XCTAssertEqual((error as? GooglePlacesError), GooglePlacesError.PlaceDetailsNotFound)
         }
         
         self.waitForExpectationsWithTimeout(self.waitDuration, handler: nil)
