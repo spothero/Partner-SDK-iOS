@@ -12,12 +12,17 @@ import CoreLocation
 enum GooglePlacesError: ErrorType {
     case
     NoPredictions,
-    CannotFormURL
+    CannotFormURL,
+    PlaceDetailsNotFound
 }
 
 typealias GooglePlacesWrapperCompletion = ([GooglePlacesPrediction], ErrorType?) -> (Void)
+typealias GooglePlaceDetailsCompletion = (GooglePlaceDetails?, ErrorType?) -> (Void)
 
 struct GooglePlacesWrapper {
+    static let host = "maps.googleapis.com"
+    static let scheme = "https"
+    static let keyQueryItem = NSURLQueryItem(name: "key", value: "AIzaSyCJSVbplK6bGdyV-8YvuEQS-VpU7E_qduY")
     
     /**
      Finds Predictions based on a string
@@ -30,12 +35,12 @@ struct GooglePlacesWrapper {
                                location: CLLocation? = nil,
                                completion: GooglePlacesWrapperCompletion) {
         let urlComponents = NSURLComponents()
-        urlComponents.host = "maps.googleapis.com"
-        urlComponents.scheme = "https"
+        urlComponents.host = host
+        urlComponents.scheme = scheme
         urlComponents.path = "/maps/api/place/autocomplete/json"
         urlComponents.queryItems = [
             NSURLQueryItem(name: "input", value: input),
-            NSURLQueryItem(name: "key", value: "AIzaSyCJSVbplK6bGdyV-8YvuEQS-VpU7E_qduY")
+            keyQueryItem
         ]
         
         if let location = location {
@@ -69,6 +74,47 @@ struct GooglePlacesWrapper {
         } else {
             assertionFailure("Unable to form URL")
             completion([], GooglePlacesError.CannotFormURL)
+        }
+    }
+    
+    /**
+     Finds the place details based on a prediction
+     
+     - parameter predition:  Prediction to find the details for
+     - parameter completion: Completion closure. Passing in either the details or an error
+     */
+    static func getPlaceDetails(predition: GooglePlacesPrediction, completion: GooglePlaceDetailsCompletion) {
+        let urlComponents = NSURLComponents()
+        urlComponents.host = host
+        urlComponents.scheme = scheme
+        urlComponents.path = "/maps/api/place/details/json"
+        urlComponents.queryItems = [
+            NSURLQueryItem(name: "placeid", value: predition.placeID),
+            keyQueryItem
+        ]
+        
+        if let url = urlComponents.URL {
+            NSURLSession.sharedSession().dataTaskWithURL(url, completionHandler: { (data, response, error) in
+                guard let data = data else {
+                    completion(nil, error)
+                    return
+                }
+                
+                do {
+                    let responseDictionary = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions()) as? JSONDictionary
+                    if let placeDictionary = responseDictionary?["result"] as? JSONDictionary {
+                        let placeDetails = try GooglePlaceDetails(json: placeDictionary)
+                        completion(placeDetails, nil)
+                    } else {
+                        completion(nil, GooglePlacesError.PlaceDetailsNotFound)
+                    }
+                } catch let error {
+                    completion(nil, error)
+                }
+            }).resume()
+        } else {
+            assertionFailure("Unable to form URL")
+            completion(nil, GooglePlacesError.CannotFormURL)
         }
     }
 }
