@@ -14,21 +14,28 @@ class GooglePlacesTests: XCTestCase {
     let waitDuration: NSTimeInterval = 10
     let chicagoLocation = CLLocation(latitude: 41.894503, longitude: -87.636659)
     let spotheroQuery = "SpotHero"
-    let spotheroPrediction = GooglePlacesPrediction(description: "SpotHero, West Huron Street, Chicago, IL, United States", placeID: "ChIJEyn6463TD4gR9Ta3uIauNyo")
-    let invalidPrediction = GooglePlacesPrediction(description: "Invalid", placeID: "Invalid")
+    let spotheroPrediction = GooglePlacesPrediction(description: "SpotHero, West Huron Street, Chicago, IL, United States", placeID: "ChIJEyn6463TD4gR9Ta3uIauNyo", terms: [])
+    let invalidPrediction = GooglePlacesPrediction(description: "Invalid", placeID: "Invalid", terms: [])
 
     func testGetPredictionsWithAddressSubstring() {
         let expectation = self.expectationWithDescription("testGetPredictionsWithAddressSubstring")
         
         GooglePlacesWrapper.getPredictions("325 W Huron",
                                            location: self.chicagoLocation) {
-                                                predictions, error in
-                                                expectation.fulfill()
-                                                XCTAssertNil(error)
-                                                XCTAssertGreaterThanOrEqual(predictions.count, 1)
-                                                XCTAssertLessThanOrEqual(predictions.count, 5)
-                                                XCTAssertEqual(predictions.first?.description, "325 W Huron St, Chicago, IL, United States")
-                                                XCTAssertEqual(predictions.first?.placeID, "ChIJs9x2O7UsDogR6kgNUj4svDQ")
+                                            predictions, error in
+                                            expectation.fulfill()
+                                            XCTAssertNil(error)
+                                            XCTAssertGreaterThanOrEqual(predictions.count, 1)
+                                            XCTAssertLessThanOrEqual(predictions.count, 5)
+                                            if let firstPrediction = predictions.first {
+                                                XCTAssertEqual(firstPrediction.description, "325 W Huron St, Chicago, IL, United States")
+                                                XCTAssertEqual(firstPrediction.placeID, "ChIJs9x2O7UsDogR6kgNUj4svDQ")
+                                                XCTAssertGreaterThan(firstPrediction.terms.count, 0)
+                                            } else {
+                                                XCTFail()
+                                            }
+                                            
+
         }
         
         self.waitForExpectationsWithTimeout(self.waitDuration, handler: nil)
@@ -44,8 +51,13 @@ class GooglePlacesTests: XCTestCase {
                                             XCTAssertNil(error)
                                             XCTAssertGreaterThanOrEqual(predictions.count, 1)
                                             XCTAssertLessThanOrEqual(predictions.count, 5)
-                                            XCTAssertEqual(predictions.first?.description, self.spotheroPrediction.description)
-                                            XCTAssertEqual(predictions.first?.placeID, self.spotheroPrediction.placeID)
+                                            if let firstPrediction = predictions.first {
+                                                XCTAssertEqual(firstPrediction.description, self.spotheroPrediction.description)
+                                                XCTAssertEqual(firstPrediction.placeID, self.spotheroPrediction.placeID)
+                                                XCTAssertGreaterThan(firstPrediction.terms.count, 0)
+                                            } else {
+                                                XCTFail()
+                                            }
         }
         
         self.waitForExpectationsWithTimeout(self.waitDuration, handler: nil)
