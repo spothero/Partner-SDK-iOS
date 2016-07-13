@@ -19,8 +19,7 @@ class MapViewController: UIViewController {
     }
     
     private func setMapViewRegion() {
-        let region = MKCoordinateRegionMake(CLLocationCoordinate2DMake(Constants.ChicagoLocation.coordinate.latitude, Constants.ChicagoLocation.coordinate.longitude),
-                                            MKCoordinateSpanMake(0.1, 0.1))
+        let region = MKCoordinateRegionMake(Constants.ChicagoLocation.coordinate, MKCoordinateSpanMake(0.1, 0.1))
         self.mapView.setRegion(region, animated: true)
         self.mapView.accessibilityLabel = AccessibilityStrings.MapView
     }
