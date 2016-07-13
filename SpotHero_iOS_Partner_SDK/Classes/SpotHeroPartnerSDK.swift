@@ -45,8 +45,17 @@ public class SpotHeroPartnerSDK: NSObject {
      - parameter completion:     A completion block to be passed through to `presentViewController`, or nil. Defaults to nil.
      */
     public func launchSDKFromViewController(viewController: UIViewController, completion: (() -> Void)? = nil) {
-        //TODO: Update to a real vc.
-        viewController.presentViewController(UIViewController(),
+        let storyboard = UIStoryboard(name: "Main", bundle: NSBundle(forClass: SpotHeroPartnerSDK.self))
+        guard let navController = storyboard.instantiateInitialViewController() as? UINavigationController else {
+            return
+        }
+        
+        let textAttributes = [NSForegroundColorAttributeName: self.textColor]
+        navController.navigationBar.titleTextAttributes = textAttributes
+        navController.navigationBar.tintColor = self.textColor
+        navController.navigationBar.barTintColor = self.tintColor
+        
+        viewController.presentViewController(navController,
                                              animated: true,
                                              completion: completion)
     }
