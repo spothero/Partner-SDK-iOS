@@ -18,6 +18,14 @@ enum GooglePlacesError: ErrorType {
 typealias GooglePlacesWrapperCompletion = ([GooglePlacesPrediction], ErrorType?) -> (Void)
 
 struct GooglePlacesWrapper {
+    
+    /**
+     Finds Predictions based on a string
+     
+     - parameter input:      String to base predictions on
+     - parameter location:   Location to find predictions near. Optional
+     - parameter completion: Completion closure. Passes in array of predictions and possible error.
+     */
     static func getPredictions(input: String,
                                location: CLLocation? = nil,
                                completion: GooglePlacesWrapperCompletion) {

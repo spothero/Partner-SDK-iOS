@@ -8,6 +8,9 @@
 
 import Foundation
 
+/**
+ *  Prediction of a google place
+ */
 struct GooglePlacesPrediction {
     let description: String
     let placeID: String
