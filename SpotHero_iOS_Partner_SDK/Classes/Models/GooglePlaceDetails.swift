@@ -15,7 +15,7 @@ import CoreLocation
 struct GooglePlaceDetails {
     let name: String
     let placeID: String
-    let location: CLLocation?
+    let location: CLLocation
 }
 
 extension GooglePlaceDetails {
