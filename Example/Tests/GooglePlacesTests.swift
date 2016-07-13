@@ -13,7 +13,6 @@ import CoreLocation
 class GooglePlacesTests: XCTestCase {
     let waitDuration: NSTimeInterval = 10
     let chicagoLocation = CLLocation(latitude: 41.894503, longitude: -87.636659)
-    let spotheroLocation = CLLocation(latitude: 41.894532, longitude: -87.636668)
     let spotheroQuery = "SpotHero"
     let spotheroPrediction = GooglePlacesPrediction(description: "SpotHero, West Huron Street, Chicago, IL, United States", placeID: "ChIJEyn6463TD4gR9Ta3uIauNyo")
     let invalidPrediction = GooglePlacesPrediction(description: "Invalid", placeID: "Invalid")
