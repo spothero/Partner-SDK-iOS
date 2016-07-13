@@ -17,7 +17,7 @@ class GooglePlacesTests: XCTestCase {
         let expectation = self.expectationWithDescription("testGetPredictionsWithAddressSubstring")
         
         GooglePlacesWrapper.getPredictions("325 W Huron",
-                                           location: Constants.chicagoLocation) {
+                                           location: Constants.ChicagoLocation) {
                                                 predictions, error in
                                                 expectation.fulfill()
                                                 XCTAssertNil(error)
@@ -34,7 +34,7 @@ class GooglePlacesTests: XCTestCase {
         let expectation = self.expectationWithDescription("testGetPredictionsWithPlaceName")
         
         GooglePlacesWrapper.getPredictions("SpotHero",
-                                           location: Constants.chicagoLocation) {
+                                           location: Constants.ChicagoLocation) {
                                             predictions, error in
                                             expectation.fulfill()
                                             XCTAssertNil(error)
@@ -52,7 +52,7 @@ class GooglePlacesTests: XCTestCase {
         
         // Just passing in jibberish so it finds no predictions
         GooglePlacesWrapper.getPredictions("fjkaiofnaic",
-                                           location: Constants.chicagoLocation) {
+                                           location: Constants.ChicagoLocation) {
                                             predictions, error in
                                             expectation.fulfill()
                                             XCTAssertNotNil(error)

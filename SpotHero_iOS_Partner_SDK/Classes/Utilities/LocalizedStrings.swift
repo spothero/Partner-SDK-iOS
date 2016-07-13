@@ -9,10 +9,10 @@
 import Foundation
 
 enum LocalizedStrings {
-    static let close = NSLocalizedString("Close",
+    static let Close = NSLocalizedString("Close",
                                          comment: "Close bar button title")
-    static let launchSDK = NSLocalizedString("Launch SDK",
+    static let LaunchSDK = NSLocalizedString("Launch SDK",
                                              comment: "Launch SDK button title")
-    static let findParking = NSLocalizedString("Find Parking",
+    static let FindParking = NSLocalizedString("Find Parking",
                                                comment: "Find parking view title")
 }

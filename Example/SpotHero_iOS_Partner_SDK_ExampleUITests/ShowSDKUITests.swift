@@ -15,18 +15,18 @@ class ShowSDKUITests: KIFTestCase {
     
     override func beforeEach() {
         super.beforeEach()
-        tester().tapViewWithAccessibilityLabel(LocalizedStrings.launchSDK)
+        tester().tapViewWithAccessibilityLabel(LocalizedStrings.LaunchSDK)
     }
     
     override func afterEach() {
         super.afterEach()
-        tester().tapViewWithAccessibilityLabel(LocalizedStrings.close)
+        tester().tapViewWithAccessibilityLabel(LocalizedStrings.Close)
     }
     
     func testLaunchSDKShowsMapView() {
-        tester().waitForViewWithAccessibilityLabel(LocalizedStrings.findParking)
-        tester().waitForViewWithAccessibilityLabel(LocalizedStrings.close)
-        tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.mapView)
+        tester().waitForViewWithAccessibilityLabel(LocalizedStrings.FindParking)
+        tester().waitForViewWithAccessibilityLabel(LocalizedStrings.Close)
+        tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.MapView)
     }
     
 }

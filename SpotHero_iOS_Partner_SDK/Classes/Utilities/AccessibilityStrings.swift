@@ -9,6 +9,6 @@
 import Foundation
 
 enum AccessibilityStrings {
-    static let mapView = NSLocalizedString("MapView",
+    static let MapView = NSLocalizedString("MapView",
                                            comment: "Accessibility label for map view")
 }
