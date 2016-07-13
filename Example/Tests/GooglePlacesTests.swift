@@ -22,7 +22,8 @@ class GooglePlacesTests: XCTestCase {
                                                 predictions, error in
                                                 expectation.fulfill()
                                                 XCTAssertNil(error)
-                                                XCTAssertEqual(predictions.count, 5)
+                                                XCTAssertGreaterThanOrEqual(predictions.count, 1)
+                                                XCTAssertLessThanOrEqual(predictions.count, 5)
                                                 XCTAssertEqual(predictions.first?.description, "325 W Huron St, Chicago, IL, United States")
                                                 XCTAssertEqual(predictions.first?.placeID, "ChIJs9x2O7UsDogR6kgNUj4svDQ")
         }
@@ -38,7 +39,8 @@ class GooglePlacesTests: XCTestCase {
                                             predictions, error in
                                             expectation.fulfill()
                                             XCTAssertNil(error)
-                                            XCTAssertEqual(predictions.count, 1)
+                                            XCTAssertGreaterThanOrEqual(predictions.count, 1)
+                                            XCTAssertLessThanOrEqual(predictions.count, 5)
                                             XCTAssertEqual(predictions.first?.description, "SpotHero, West Huron Street, Chicago, IL, United States")
                                             XCTAssertEqual(predictions.first?.placeID, "ChIJEyn6463TD4gR9Ta3uIauNyo")
         }
