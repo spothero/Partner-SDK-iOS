@@ -49,7 +49,8 @@ struct GooglePlacesWrapper {
         }
         
         if let url = urlComponents.URL {
-            NSURLSession.sharedSession().dataTaskWithURL(url, completionHandler: { (data, response, error) in
+            NSURLSession.sharedSession().dataTaskWithURL(url, completionHandler: {
+                data, response, error in
                 guard let data = data else {
                     completion([], error)
                     return
@@ -94,7 +95,8 @@ struct GooglePlacesWrapper {
         ]
         
         if let url = urlComponents.URL {
-            NSURLSession.sharedSession().dataTaskWithURL(url, completionHandler: { (data, response, error) in
+            NSURLSession.sharedSession().dataTaskWithURL(url, completionHandler: {
+                data, response, error in
                 guard let data = data else {
                     completion(nil, error)
                     return
