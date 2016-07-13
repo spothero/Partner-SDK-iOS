@@ -14,8 +14,12 @@ class GooglePlacesTests: XCTestCase {
     let waitDuration: NSTimeInterval = 10
     let chicagoLocation = CLLocation(latitude: 41.894503, longitude: -87.636659)
     let spotheroName = "SpotHero"
-    let spotheroPrediction = GooglePlacesPrediction(description: "SpotHero, West Huron Street, Chicago, IL, United States", placeID: "ChIJEyn6463TD4gR9Ta3uIauNyo", terms: [])
-    let invalidPrediction = GooglePlacesPrediction(description: "Invalid", placeID: "Invalid", terms: [])
+    let spotheroPrediction = GooglePlacesPrediction(description: "SpotHero, West Huron Street, Chicago, IL, United States",
+                                                    placeID: "ChIJEyn6463TD4gR9Ta3uIauNyo",
+                                                    terms: [])
+    let invalidPrediction = GooglePlacesPrediction(description: "Invalid",
+                                                   placeID: "Invalid",
+                                                   terms: [])
 
     func testGetPredictionsWithAddressSubstring() {
         let expectation = self.expectationWithDescription("testGetPredictionsWithAddressSubstring")
