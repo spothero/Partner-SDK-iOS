@@ -96,6 +96,8 @@
 		BD572E211D36D45F001DEE5A /* AccessibilityStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD572E201D36D45F001DEE5A /* AccessibilityStrings.swift */; };
 		BD572E291D36D7BD001DEE5A /* LocalizedStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD572E281D36D7BD001DEE5A /* LocalizedStrings.swift */; };
 		C14992679A9ED625623F4E9DCED1C774 /* KIFUIObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D57F3D10D1B0A92A6F67BCFF816BC3C /* KIFUIObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C716CAB61D37F75F00AFB290 /* PredictionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C716CAB41D37F6C900AFB290 /* PredictionTableViewCell.swift */; };
+		C716CAC41D38059200AFB290 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C716CAC31D38059200AFB290 /* Images.xcassets */; };
 		C73848691D36A6210023E1A8 /* GooglePlaceDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73848671D36A5350023E1A8 /* GooglePlaceDetails.swift */; };
 		C75A299B0860D3016DF20B1A5779903C /* NSBundle-KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E0527B6F28C55DD186FE2AD382616187 /* NSBundle-KIFAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C78EF3CB4FC7369BB2E9EB62DD231C2D /* KIFUIObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 6863E13C4D9C3DA825286E26213C105A /* KIFUIObject.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
@@ -359,6 +361,8 @@
 		C1D166214B7CD4227BA16F3C79AB2CBD /* UIWindow-KIFAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIWindow-KIFAdditions.h"; path = "Additions/UIWindow-KIFAdditions.h"; sourceTree = "<group>"; };
 		C1FC901A488DCAF88E302D2C22C3AD11 /* VOKBenkode.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VOKBenkode.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C46B6258C3006561FC37367145F9196E /* UIEvent+KIFAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIEvent+KIFAdditions.h"; path = "Additions/UIEvent+KIFAdditions.h"; sourceTree = "<group>"; };
+		C716CAB41D37F6C900AFB290 /* PredictionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredictionTableViewCell.swift; sourceTree = "<group>"; };
+		C716CAC31D38059200AFB290 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C73848671D36A5350023E1A8 /* GooglePlaceDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GooglePlaceDetails.swift; sourceTree = "<group>"; };
 		CC94D1BD3EC065C485FFBABA54E7D7B6 /* NSException-KIFAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSException-KIFAdditions.h"; path = "Additions/NSException-KIFAdditions.h"; sourceTree = "<group>"; };
 		CED353CC3F3A082AC308EE2853EFE9CB /* KIFUITestActor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KIFUITestActor.h; path = Classes/KIFUITestActor.h; sourceTree = "<group>"; };
@@ -484,6 +488,7 @@
 		0B577809A12B8E7A90DEDA52F75E9A2C /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				C716CAB31D37F6AB00AFB290 /* Views */,
 				BD572E1D1D36CB78001DEE5A /* View Controllers */,
 				63ED7EAF24F9A39EAB65B2B93B305B73 /* SpotHeroPartnerSDK.swift */,
 				743AE8BA8426B53450A9E6667E0626F0 /* Extensions */,
@@ -784,6 +789,7 @@
 			isa = PBXGroup;
 			children = (
 				BD572E191D36CB01001DEE5A /* Main.storyboard */,
+				C716CAC31D38059200AFB290 /* Images.xcassets */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -830,6 +836,14 @@
 			);
 			name = "Support Files";
 			path = "Example/Pods/Target Support Files/SpotHero_iOS_Partner_SDK";
+			sourceTree = "<group>";
+		};
+		C716CAB31D37F6AB00AFB290 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C716CAB41D37F6C900AFB290 /* PredictionTableViewCell.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		CFC1CC8E27E5F71DF7D155ECF49BB40E /* VOKMockUrlProtocol */ = {
@@ -1216,6 +1230,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				531841026ABB73DA0B1357AD71CD343B /* SpotHero_iOS_Partner_SDK.bundle in Resources */,
+				C716CAC41D38059200AFB290 /* Images.xcassets in Resources */,
 				BD572E1A1D36CB01001DEE5A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1250,6 +1265,7 @@
 				6AF6B72A20E67E68A9819528B7A26E36 /* ServerErrorJSON.swift in Sources */,
 				BD572E291D36D7BD001DEE5A /* LocalizedStrings.swift in Sources */,
 				92AE906D4525578C3B9FDD0B9370D6B5 /* SpotHero_iOS_Partner_SDK-dummy.m in Sources */,
+				C716CAB61D37F75F00AFB290 /* PredictionTableViewCell.swift in Sources */,
 				4F7CFF57AA379383B10FFD972C8374AB /* SpotHeroPartnerAPIController.swift in Sources */,
 				CB7B4E22612718545A19D1257994FECB /* SpotHeroPartnerSDK.swift in Sources */,
 				8E3CA569BDDD2A985B7F185B4D270E8B /* UIColor+SpotHeroPartner.swift in Sources */,
