@@ -35,7 +35,7 @@ class MapViewController: UIViewController {
         self.mapView.accessibilityLabel = AccessibilityStrings.MapView
     }
     
-    func setupViews() {
+    private func setupViews() {
         self.searchContainerView.layer.cornerRadius = 5
         self.searchContainerView.layer.masksToBounds = true
     }
@@ -44,7 +44,7 @@ class MapViewController: UIViewController {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    func updatePredictions() {
+    private func updatePredictions() {
         self.predictionTableView.reloadData()
         self.view.layoutIfNeeded()
         UIView.animateWithDuration(0.3, animations: {             
