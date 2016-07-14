@@ -10,11 +10,11 @@ import UIKit
 import MapKit
 
 class MapViewController: UIViewController {
-    @IBOutlet weak var predictionTableView: UITableView!
+    @IBOutlet weak private var predictionTableView: UITableView!
     @IBOutlet weak private var mapView: MKMapView!
-    @IBOutlet weak var searchContainerView: UIView!
-    @IBOutlet weak var searchContainerViewHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak private var searchContainerView: UIView!
+    @IBOutlet weak private var searchContainerViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak private var searchBar: UISearchBar!
     
     var predictions = [GooglePlacesPrediction]() {
         didSet {
@@ -94,7 +94,7 @@ extension MapViewController: UITableViewDelegate {
         view.backgroundColor = .whiteColor()
         
         let label = UILabel()
-        label.text = "BEST MATCHES"
+        label.text = LocalizedStrings.BestMatches
         label.font = UIFont.systemFontOfSize(14)
         label.textColor = UIColor(white: 0.6, alpha: 1)
         label.translatesAutoresizingMaskIntoConstraints = false
