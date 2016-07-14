@@ -7,8 +7,12 @@
 //
 
 import UIKit
+import SpotHero_iOS_Partner_SDK
 
 class ViewController: UIViewController {
-
-    //WARN: We should probably add something here.
+    
+    @IBAction private func launchSDKButtonPressed(sender: AnyObject) {
+        SpotHeroPartnerSDK.SharedInstance.launchSDKFromViewController(self)
+    }
+    
 }

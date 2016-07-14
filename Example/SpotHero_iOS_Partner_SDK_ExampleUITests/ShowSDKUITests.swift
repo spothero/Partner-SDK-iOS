@@ -9,11 +9,24 @@
 import XCTest
 import KIF
 @testable import SpotHero_iOS_Partner_SDK_Example
+@testable import SpotHero_iOS_Partner_SDK
 
 class ShowSDKUITests: KIFTestCase {
-
-    func testExample() {
-        let thing: String? = nil
-        XCTAssertNil(thing)
+    
+    override func beforeEach() {
+        super.beforeEach()
+        tester().tapViewWithAccessibilityLabel(LocalizedStrings.LaunchSDK)
     }
+    
+    override func afterEach() {
+        super.afterEach()
+        tester().tapViewWithAccessibilityLabel(LocalizedStrings.Close)
+    }
+    
+    func testLaunchSDKShowsMapView() {
+        tester().waitForViewWithAccessibilityLabel(LocalizedStrings.FindParking)
+        tester().waitForViewWithAccessibilityLabel(LocalizedStrings.Close)
+        tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.MapView)
+    }
+    
 }

@@ -25,10 +25,10 @@ class GooglePlacesTests: XCTestCase {
         let expectation = self.expectationWithDescription("testGetPredictionsWithAddressSubstring")
         
         GooglePlacesWrapper.getPredictions("325 W Huron",
-                                           location: self.chicagoLocation) {
-                                            predictions, error in
-                                            expectation.fulfill()
-                                            XCTAssertNil(error)
+                                           location: Constants.ChicagoLocation) {
+                                                predictions, error in
+                                                expectation.fulfill()
+                                                XCTAssertNil(error)
                                             XCTAssertGreaterThanOrEqual(predictions.count, 1)
                                             XCTAssertLessThanOrEqual(predictions.count, 5)
                                             if let firstPrediction = predictions.first {
@@ -70,7 +70,7 @@ class GooglePlacesTests: XCTestCase {
         
         // Just passing in jibberish so it finds no predictions
         GooglePlacesWrapper.getPredictions("fjkaiofnaic",
-                                           location: self.chicagoLocation) {
+                                           location: Constants.ChicagoLocation) {
                                             predictions, error in
                                             expectation.fulfill()
                                             XCTAssertNotNil(error)
