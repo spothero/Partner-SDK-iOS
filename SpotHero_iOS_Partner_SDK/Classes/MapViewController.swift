@@ -52,6 +52,7 @@ class MapViewController: UIViewController {
     }
 }
 
+//MARK: PredictionControllerDelegate
 extension MapViewController: PredictionControllerDelegate {
     func didUpdatePredictions(predictions: [GooglePlacesPrediction]) {
         self.predictionTableView.reloadData()
