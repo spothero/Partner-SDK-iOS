@@ -11,17 +11,7 @@ import KIF
 @testable import SpotHero_iOS_Partner_SDK_Example
 @testable import SpotHero_iOS_Partner_SDK
 
-class ShowSDKUITests: KIFTestCase {
-    
-    override func beforeEach() {
-        super.beforeEach()
-        tester().tapViewWithAccessibilityLabel(LocalizedStrings.LaunchSDK)
-    }
-    
-    override func afterEach() {
-        super.afterEach()
-        tester().tapViewWithAccessibilityLabel(LocalizedStrings.Close)
-    }
+class ShowSDKUITests: BaseUITests {
     
     func testLaunchSDKShowsMapView() {
         tester().waitForViewWithAccessibilityLabel(LocalizedStrings.FindParking)

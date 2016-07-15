@@ -45,6 +45,9 @@ class MapViewController: UIViewController {
             forHeaderFooterViewReuseIdentifier: "predictionHeader")
         self.predictionTableView.registerNib(UINib(nibName: "GooglePredictionTableFooter", bundle: NSBundle(forClass: MapViewController.self)),
             forHeaderFooterViewReuseIdentifier: "predictionFooter")
+        
+        self.searchBar.accessibilityLabel = AccessibilityStrings.SearchBar
+        self.predictionTableView.accessibilityLabel = AccessibilityStrings.PredictionTableView
     }
     
     @IBAction private func closeButtonPressed(sender: AnyObject) {
