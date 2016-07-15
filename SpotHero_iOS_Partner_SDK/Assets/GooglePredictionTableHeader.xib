@@ -3,28 +3,41 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="600" height="98"/>
+        <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" id="iN0-l3-epB" customClass="GooglePredictionTableHeader" customModule="SpotHero_iOS_Partner_SDK" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="367" height="47"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zXI-St-wXH">
-                    <rect key="frame" x="8" y="38" width="42" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" text="BEST MATCHES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="siU-4F-YaF">
+                    <rect key="frame" x="8" y="15" width="105" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ibl-ik-Dfo">
+                    <rect key="frame" x="0.0" y="46" width="367" height="1"/>
+                    <color key="backgroundColor" white="0.89990562084026848" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="poN-tt-ybJ"/>
+                    </constraints>
+                </view>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="zXI-St-wXH" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="FYv-hR-Wve"/>
-                <constraint firstItem="zXI-St-wXH" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="XaK-Xo-C1P"/>
+                <constraint firstItem="ibl-ik-Dfo" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="027-am-cuY"/>
+                <constraint firstItem="siU-4F-YaF" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leadingMargin" id="3wo-aa-NcY"/>
+                <constraint firstItem="siU-4F-YaF" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="SQA-Sl-U5I"/>
+                <constraint firstAttribute="trailing" secondItem="ibl-ik-Dfo" secondAttribute="trailing" id="TMl-v0-Pkb"/>
+                <constraint firstAttribute="bottom" secondItem="ibl-ik-Dfo" secondAttribute="bottom" id="lij-7o-H0U"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="1058" y="584"/>
+            <connections>
+                <outlet property="label" destination="siU-4F-YaF" id="dDj-LW-6Gw"/>
+            </connections>
+            <point key="canvasLocation" x="435.5" y="821.5"/>
         </view>
     </objects>
 </document>

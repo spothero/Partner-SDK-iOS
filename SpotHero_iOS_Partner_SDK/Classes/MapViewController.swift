@@ -40,6 +40,11 @@ class MapViewController: UIViewController {
         self.predictionTableView.dataSource = self.predictionController
         self.predictionTableView.delegate = self.predictionController
         self.searchBar.delegate = self.predictionController
+        
+        self.predictionTableView.registerNib(UINib(nibName: String(GooglePredictionTableHeader), bundle: NSBundle(forClass: MapViewController.self)),
+            forHeaderFooterViewReuseIdentifier: "predictionHeader")
+        self.predictionTableView.registerNib(UINib(nibName: "GooglePredictionTableFooter", bundle: NSBundle(forClass: MapViewController.self)),
+            forHeaderFooterViewReuseIdentifier: "predictionFooter")
     }
     
     @IBAction private func closeButtonPressed(sender: AnyObject) {
