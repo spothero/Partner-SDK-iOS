@@ -383,7 +383,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Scripts/Swift-Clean_Run_Script.sh\"";
+			shellScript = "#\"${SRCROOT}/Scripts/Swift-Clean_Run_Script.sh\"";
 		};
 		336178361D24A64200AF7AD6 /* ⚠️ Swift Warning Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
