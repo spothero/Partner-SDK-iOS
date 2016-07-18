@@ -75,7 +75,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="560" height="44"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </searchBar>
-                                    <view hidden="YES" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k6h-I3-1nd">
+                                    <view hidden="YES" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k6h-I3-1nd" customClass="CollapsedSearchBarView" customModule="SpotHero_iOS_Partner_SDK">
                                         <rect key="frame" x="0.0" y="0.0" width="560" height="44"/>
                                         <subviews>
                                             <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4tn-Sv-RqJ">
@@ -123,6 +123,8 @@
                                             <constraint firstAttribute="bottom" secondItem="4tn-Sv-RqJ" secondAttribute="bottom" id="qg6-t3-uQq"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="chevron" destination="MJm-oz-LMs" id="uEQ-KI-5BD"/>
+                                            <outlet property="timeLabel" destination="k0h-0s-jgf" id="QMa-S5-Sbh"/>
                                             <outletCollection property="gestureRecognizers" destination="ADb-9R-XrE" appends="YES" id="Hqu-FA-A0O"/>
                                         </connections>
                                     </view>
