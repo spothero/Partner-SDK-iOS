@@ -14,6 +14,8 @@ class PredictionTableViewCell: UITableViewCell {
 
     func configureCell(prediction: GooglePlacesPrediction) {
         addressLabel.text = prediction.terms.first
+        
+        // Remove first term (address) and last term (country) and join with a comma
         cityLabel.text = prediction.terms
             .filter({ $0 != prediction.terms.first && $0 != prediction.terms.last })
             .joinWithSeparator(", ")

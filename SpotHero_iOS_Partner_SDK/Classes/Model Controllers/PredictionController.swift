@@ -60,7 +60,6 @@ extension PredictionController: UITableViewDelegate {
     
     func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let view = tableView.dequeueReusableHeaderFooterViewWithIdentifier("predictionFooter")
-            
         return view
     }
 }
