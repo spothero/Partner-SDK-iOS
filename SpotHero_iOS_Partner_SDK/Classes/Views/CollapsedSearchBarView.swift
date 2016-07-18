@@ -14,12 +14,15 @@ class CollapsedSearchBarView: UIView {
     
     var text: String? {
         didSet {
-            timeLabel.text = self.text
+            self.timeLabel.text = self.text
         }
     }
     
     func showCollapsedSearchBar(show: Bool) {
-        UIView.animateWithDuration(0.3, delay: 0, options: .CurveEaseOut, animations: {
+        UIView.animateWithDuration(0.3,
+                                   delay: 0,
+                                   options: .CurveEaseOut,
+                                   animations: {
             self.alpha = show ? 1 : 0
         }) { (finished) in
             self.hidden = show ? false : true
