@@ -56,7 +56,7 @@ class GooglePlacesUITests: BaseUITests {
         
         //THEN: The search bar has the address in it
         guard let searchBar = tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.SearchBar) as? UISearchBar else {
-            XCTFail("Search bar is noty visible")
+            XCTFail("Search bar is not visible")
             return
         }
         
