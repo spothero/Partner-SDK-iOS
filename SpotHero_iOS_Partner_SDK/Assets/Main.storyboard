@@ -75,7 +75,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="560" height="44"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </searchBar>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k6h-I3-1nd">
+                                    <view hidden="YES" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k6h-I3-1nd">
                                         <rect key="frame" x="0.0" y="0.0" width="560" height="44"/>
                                         <subviews>
                                             <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4tn-Sv-RqJ">
@@ -163,6 +163,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="collapsedSearchBar" destination="k6h-I3-1nd" id="eZI-Zy-oel"/>
                         <outlet property="mapView" destination="nEN-Yc-ckc" id="6bX-7F-2O6"/>
                         <outlet property="predictionTableView" destination="k7g-kF-iqV" id="TSz-4Y-HDE"/>
                         <outlet property="searchBar" destination="pgM-LO-aq0" id="Ojn-18-3IW"/>

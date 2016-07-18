@@ -15,6 +15,7 @@ class MapViewController: UIViewController {
     @IBOutlet weak private var searchContainerView: UIView!
     @IBOutlet weak private var searchContainerViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak private var searchBar: UISearchBar!
+    @IBOutlet weak var collapsedSearchBar: UIView!
     
     let bundle = NSBundle(forClass: MapViewController.self)
     let predictionController = PredictionController()
@@ -51,14 +52,21 @@ class MapViewController: UIViewController {
         self.predictionTableView.accessibilityLabel = AccessibilityStrings.PredictionTableView
     }
     
+    func showCollapsedSearchBar(show: Bool) {
+        UIView.animateWithDuration(0.3, delay: 0, options: .CurveEaseOut, animations: {
+            self.collapsedSearchBar.alpha = show ? 1 : 0
+        }) { (finished) in
+            self.collapsedSearchBar.hidden = show ? false : true
+        }
+    }
+    
     @IBAction private func closeButtonPressed(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     @IBAction func searchBarTapped(sender: AnyObject) {
-        
+        showCollapsedSearchBar(false)
     }
-    
 }
 
 //MARK: PredictionControllerDelegate
