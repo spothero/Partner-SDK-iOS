@@ -53,6 +53,11 @@ class MapViewController: UIViewController {
     @IBAction private func closeButtonPressed(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
+    
+    @IBAction func searchBarTapped(sender: AnyObject) {
+        
+    }
+    
 }
 
 //MARK: PredictionControllerDelegate
