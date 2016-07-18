@@ -51,7 +51,7 @@ class GooglePlacesUITests: BaseUITests {
         
         tester().tapRowAtIndexPath(indexPath, inTableView: tableView)
         
-        //THEN: The tableview collapses
+        //THEN: The tableview collapses so it is no longer visible
         XCTAssertEqual(tableView.frame.height, 0)
         
         //THEN: The search bar has the address in it
