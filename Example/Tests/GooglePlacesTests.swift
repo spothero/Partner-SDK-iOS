@@ -12,7 +12,6 @@ import CoreLocation
 
 class GooglePlacesTests: XCTestCase {
     let waitDuration: NSTimeInterval = 10
-    let chicagoLocation = CLLocation(latitude: 41.894503, longitude: -87.636659)
     let spotheroName = "SpotHero"
     let spotheroPrediction = GooglePlacesPrediction(description: "SpotHero, West Huron Street, Chicago, IL, United States",
                                                     placeID: "ChIJEyn6463TD4gR9Ta3uIauNyo",
@@ -47,7 +46,7 @@ class GooglePlacesTests: XCTestCase {
         let expectation = self.expectationWithDescription("testGetPredictionsWithPlaceName")
         
         GooglePlacesWrapper.getPredictions(self.spotheroName,
-                                           location: self.chicagoLocation) {
+                                           location: Constants.ChicagoLocation) {
                                             predictions, error in
                                             expectation.fulfill()
                                             XCTAssertNil(error)
@@ -92,8 +91,8 @@ class GooglePlacesTests: XCTestCase {
             if let placeDetails = placeDetails {
                 XCTAssertEqual(placeDetails.name, self.spotheroName)
                 XCTAssertEqual(placeDetails.placeID, self.spotheroPrediction.placeID)
-                XCTAssertEqualWithAccuracy(placeDetails.location.coordinate.latitude, self.chicagoLocation.coordinate.latitude, accuracy: 0.001, "The two locacations are not within 0.001")
-                XCTAssertEqualWithAccuracy(placeDetails.location.coordinate.longitude, self.chicagoLocation.coordinate.longitude, accuracy: 0.001, "The two locacations are not within 0.001")
+                XCTAssertEqualWithAccuracy(placeDetails.location.coordinate.latitude, Constants.ChicagoLocation.coordinate.latitude, accuracy: 0.001, "The two locacations are not within 0.001")
+                XCTAssertEqualWithAccuracy(placeDetails.location.coordinate.longitude, Constants.ChicagoLocation.coordinate.longitude, accuracy: 0.001, "The two locacations are not within 0.001")
             } else {
                 XCTFail("Place Details is nil")
             }
