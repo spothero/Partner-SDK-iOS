@@ -16,6 +16,7 @@ class MapViewController: UIViewController {
     @IBOutlet weak private var searchContainerViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak private var searchBar: UISearchBar!
     
+    let bundle = NSBundle(forClass: MapViewController.self)
     let predictionController = PredictionController()
     
     override func viewDidLoad() {
@@ -41,10 +42,10 @@ class MapViewController: UIViewController {
         self.predictionTableView.delegate = self.predictionController
         self.searchBar.delegate = self.predictionController
         
-        self.predictionTableView.registerNib(UINib(nibName: String(GooglePredictionTableHeader), bundle: NSBundle(forClass: MapViewController.self)),
-            forHeaderFooterViewReuseIdentifier: "predictionHeader")
-        self.predictionTableView.registerNib(UINib(nibName: "GooglePredictionTableFooter", bundle: NSBundle(forClass: MapViewController.self)),
-            forHeaderFooterViewReuseIdentifier: "predictionFooter")
+        self.predictionTableView.registerNib(UINib(nibName: String(GooglePredictionTableHeader), bundle: bundle),
+            forHeaderFooterViewReuseIdentifier: GooglePredictionTableHeader.reuseIdentifier)
+        self.predictionTableView.registerNib(UINib(nibName: String(GooglePredictionTableFooter), bundle: bundle),
+            forHeaderFooterViewReuseIdentifier: GooglePredictionTableFooter.reuseIdentifier)
         
         self.searchBar.accessibilityLabel = AccessibilityStrings.SearchBar
         self.predictionTableView.accessibilityLabel = AccessibilityStrings.PredictionTableView
@@ -56,6 +57,7 @@ class MapViewController: UIViewController {
 }
 
 //MARK: PredictionControllerDelegate
+
 extension MapViewController: PredictionControllerDelegate {
     func didUpdatePredictions(predictions: [GooglePlacesPrediction]) {
         self.predictionTableView.reloadData()
