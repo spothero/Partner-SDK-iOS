@@ -16,7 +16,6 @@ class MapViewController: UIViewController {
     @IBOutlet weak private var searchContainerViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak private var searchBar: UISearchBar!
     
-    let bundle = NSBundle(forClass: MapViewController.self)
     let predictionController = PredictionController()
     
     override func viewDidLoad() {
@@ -41,6 +40,8 @@ class MapViewController: UIViewController {
         self.predictionTableView.dataSource = self.predictionController
         self.predictionTableView.delegate = self.predictionController
         self.searchBar.delegate = self.predictionController
+        
+        let bundle = NSBundle(forClass: MapViewController.self)
         
         self.predictionTableView.registerNib(UINib(nibName: String(GooglePredictionTableHeader), bundle: bundle),
             forHeaderFooterViewReuseIdentifier: GooglePredictionTableHeader.reuseIdentifier)

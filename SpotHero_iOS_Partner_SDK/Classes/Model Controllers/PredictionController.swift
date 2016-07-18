@@ -24,6 +24,7 @@ class PredictionController: NSObject {
 }
 
 //MARK: UITableViewDataSource
+
 extension PredictionController: UITableViewDataSource {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.predictions.count
@@ -39,6 +40,7 @@ extension PredictionController: UITableViewDataSource {
 }
 
 //MARK: UITableViewDelegate
+
 extension PredictionController: UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let prediction = predictions[indexPath.row]
@@ -65,6 +67,7 @@ extension PredictionController: UITableViewDelegate {
 }
 
 //MARK: UISearchBarDelegate
+
 extension PredictionController: UISearchBarDelegate {
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         GooglePlacesWrapper.getPredictions(searchText) { (predictions, error) -> (Void) in
