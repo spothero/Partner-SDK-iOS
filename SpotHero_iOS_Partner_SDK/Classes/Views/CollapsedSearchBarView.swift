@@ -24,7 +24,8 @@ class CollapsedSearchBarView: UIView {
                                    options: .CurveEaseOut,
                                    animations: {
             self.alpha = show ? 1 : 0
-        }) { (finished) in
+        }) {
+            finished in
             self.hidden = show ? false : true
         }
     }
