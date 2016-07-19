@@ -50,6 +50,13 @@ public class SpotHeroPartnerSDK: NSObject {
             return
         }
         
+        if partnerApplicationKey.isEmpty {
+            // Yell in dev, return in production
+            assertionFailure("Your API key is blank! You must have an API key to use the SDK")
+            // Return from function so SDK is not launched without an API Key
+            return
+        }
+        
         let textAttributes = [NSForegroundColorAttributeName : self.textColor]
         navController.navigationBar.titleTextAttributes = textAttributes
         navController.navigationBar.tintColor = self.textColor
