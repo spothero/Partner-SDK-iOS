@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Find Parking-->
@@ -20,13 +21,83 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="nEN-Yc-ckc">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                             </mapView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lqQ-xQ-L7J">
+                                <rect key="frame" x="20" y="84" width="560" height="44"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="k7g-kF-iqV">
+                                        <rect key="frame" x="0.0" y="44" width="560" height="0.0"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="predictionCell" id="gny-aK-qke" customClass="PredictionTableViewCell" customModule="SpotHero_iOS_Partner_SDK">
+                                                <rect key="frame" x="0.0" y="28" width="560" height="60"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="gny-aK-qke" id="DsV-UZ-K9d">
+                                                    <rect key="frame" x="0.0" y="0.0" width="560" height="60"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chicago IL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Oq9-B0-NHM">
+                                                            <rect key="frame" x="15" y="33" width="530" height="17"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="320 W Erie" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NTj-8v-LEs">
+                                                            <rect key="frame" x="15" y="10" width="88" height="21"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="Oq9-B0-NHM" firstAttribute="leading" secondItem="DsV-UZ-K9d" secondAttribute="leadingMargin" id="34J-wl-p1S"/>
+                                                        <constraint firstItem="Oq9-B0-NHM" firstAttribute="leading" secondItem="DsV-UZ-K9d" secondAttribute="leading" constant="15" id="BzQ-ed-cNE"/>
+                                                        <constraint firstItem="NTj-8v-LEs" firstAttribute="leading" secondItem="DsV-UZ-K9d" secondAttribute="leading" constant="15" id="Rz7-fW-CdO"/>
+                                                        <constraint firstItem="Oq9-B0-NHM" firstAttribute="trailing" secondItem="DsV-UZ-K9d" secondAttribute="trailingMargin" id="TTY-73-pk3"/>
+                                                        <constraint firstItem="Oq9-B0-NHM" firstAttribute="bottom" secondItem="DsV-UZ-K9d" secondAttribute="bottomMargin" id="ZbQ-s7-GZQ"/>
+                                                        <constraint firstItem="NTj-8v-LEs" firstAttribute="leading" secondItem="DsV-UZ-K9d" secondAttribute="leadingMargin" id="h51-I7-rSm"/>
+                                                        <constraint firstItem="NTj-8v-LEs" firstAttribute="top" secondItem="DsV-UZ-K9d" secondAttribute="topMargin" id="k88-XG-N7y"/>
+                                                    </constraints>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="Rz7-fW-CdO"/>
+                                                            <exclude reference="BzQ-ed-cNE"/>
+                                                        </mask>
+                                                    </variation>
+                                                </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="addressLabel" destination="NTj-8v-LEs" id="Mft-sJ-Pe4"/>
+                                                    <outlet property="cityLabel" destination="Oq9-B0-NHM" id="bmX-qR-RHr"/>
+                                                </connections>
+                                            </tableViewCell>
+                                        </prototypes>
+                                    </tableView>
+                                    <searchBar contentMode="redraw" placeholder="Search address, landmark or neighborhood" translatesAutoresizingMaskIntoConstraints="NO" id="pgM-LO-aq0">
+                                        <rect key="frame" x="0.0" y="0.0" width="560" height="44"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </searchBar>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="7EC-9h-HCr"/>
+                                    <constraint firstItem="k7g-kF-iqV" firstAttribute="top" secondItem="pgM-LO-aq0" secondAttribute="bottom" id="HyP-f1-TY8"/>
+                                    <constraint firstItem="k7g-kF-iqV" firstAttribute="leading" secondItem="lqQ-xQ-L7J" secondAttribute="leading" id="QvS-zh-Iq1"/>
+                                    <constraint firstAttribute="trailing" secondItem="k7g-kF-iqV" secondAttribute="trailing" id="Szy-wT-ySj"/>
+                                    <constraint firstItem="pgM-LO-aq0" firstAttribute="leading" secondItem="lqQ-xQ-L7J" secondAttribute="leading" id="Z1s-vn-PoG"/>
+                                    <constraint firstItem="pgM-LO-aq0" firstAttribute="top" secondItem="lqQ-xQ-L7J" secondAttribute="top" id="eEy-63-OMw"/>
+                                    <constraint firstAttribute="bottom" secondItem="k7g-kF-iqV" secondAttribute="bottom" id="nGl-GY-Ugd"/>
+                                    <constraint firstAttribute="trailing" secondItem="pgM-LO-aq0" secondAttribute="trailing" id="tDy-uA-Kgu"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="nEN-Yc-ckc" firstAttribute="leading" secondItem="74f-zj-sek" secondAttribute="leading" id="4vY-Al-seu"/>
                             <constraint firstItem="EcZ-Kj-xzb" firstAttribute="top" secondItem="nEN-Yc-ckc" secondAttribute="bottom" id="B2r-xD-bGq"/>
+                            <constraint firstItem="lqQ-xQ-L7J" firstAttribute="leading" secondItem="74f-zj-sek" secondAttribute="leadingMargin" id="B45-8V-QuJ"/>
                             <constraint firstAttribute="trailing" secondItem="nEN-Yc-ckc" secondAttribute="trailing" id="CLK-1o-cOr"/>
                             <constraint firstItem="nEN-Yc-ckc" firstAttribute="top" secondItem="2XB-0q-QOj" secondAttribute="bottom" id="GnU-qy-Jkr"/>
+                            <constraint firstItem="lqQ-xQ-L7J" firstAttribute="top" secondItem="2XB-0q-QOj" secondAttribute="bottom" constant="20" id="a7U-tH-R8F"/>
+                            <constraint firstItem="lqQ-xQ-L7J" firstAttribute="trailing" secondItem="74f-zj-sek" secondAttribute="trailingMargin" id="aW0-lV-yr3"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Find Parking" id="QQS-us-8wq">
@@ -38,6 +109,10 @@
                     </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="nEN-Yc-ckc" id="6bX-7F-2O6"/>
+                        <outlet property="predictionTableView" destination="k7g-kF-iqV" id="TSz-4Y-HDE"/>
+                        <outlet property="searchBar" destination="pgM-LO-aq0" id="Ojn-18-3IW"/>
+                        <outlet property="searchContainerView" destination="lqQ-xQ-L7J" id="SIA-V9-TjC"/>
+                        <outlet property="searchContainerViewHeightConstraint" destination="7EC-9h-HCr" id="KER-ok-iZx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gQG-L7-PVk" userLabel="First Responder" sceneMemberID="firstResponder"/>
