@@ -42,8 +42,8 @@ public struct APIHeaders {
         case
         ContentType(contentType: HTTPContentType),
         PartnerSDKUserAgent(versionNumber: Int),
-        APIMinorVersion
-        
+        APIMinorVersion,
+        APIToken
         
         /**
          - returns: The value of the header as a single string.
@@ -56,6 +56,8 @@ public struct APIHeaders {
                 return "ios-partner-sdk-version-\(buildNumber)"
             case APIMinorVersion:
                 return APIHeaders.CurrentAPIMinorVersion
+            case .APIToken:
+                return "Token \(SpotHeroPartnerSDK.SharedInstance.partnerApplicationKey)"
             }
         }
     }
@@ -76,6 +78,7 @@ public struct APIHeaders {
         headers[.APIMinorVersion] = .APIMinorVersion
         headers[.UserAgent] = self.UserAgent
         headers[.Accept] = .ContentType(contentType: .JSON)
+        headers[.Authorization] = .APIToken
         
         return headers
     }
