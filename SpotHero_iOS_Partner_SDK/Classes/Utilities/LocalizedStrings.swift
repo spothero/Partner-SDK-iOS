@@ -15,4 +15,6 @@ enum LocalizedStrings {
                                              comment: "Launch SDK button title")
     static let FindParking = NSLocalizedString("Find Parking",
                                                comment: "Find parking view title")
+    static let BestMatches = NSLocalizedString("BEST MATCHES",
+                                               comment: "Places Autocomplete Title")
 }
