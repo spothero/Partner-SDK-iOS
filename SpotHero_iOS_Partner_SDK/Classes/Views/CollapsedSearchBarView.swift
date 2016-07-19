@@ -18,6 +18,11 @@ class CollapsedSearchBarView: UIView {
         }
     }
     
+    /**
+     Show or hide collapsed search bar
+     
+     - parameter show: pass in true to show, false to hide
+     */
     func showCollapsedSearchBar(show: Bool) {
         UIView.animateWithDuration(0.3,
                                    delay: 0,
@@ -30,10 +35,16 @@ class CollapsedSearchBarView: UIView {
         }
     }
     
+    /**
+     Show collapsed search bar
+     */
     func show() {
         self.showCollapsedSearchBar(true)
     }
     
+    /**
+     Hide collapsed search bar
+     */
     func hide() {
         self.showCollapsedSearchBar(false)
     }
