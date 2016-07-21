@@ -15,6 +15,9 @@ fastlane_folder='fastlane'
 # The URL for the slack webhook to post to
 slack_webhook_url='https://hooks.slack.com/services/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'
 
+# The username of the CI user on iTunes Connect.
+ci_username = 'ci-ios@spothero.com'
+
 ####################
 # Pre-defined keys #
 ####################
@@ -24,6 +27,12 @@ scheme_options_key = 'scheme'
 
 # Key for string path for folder to output data to (relative to fastlane_folder)
 output_options_key = 'output'
+
+# Key for string specifying the name of a the provisioning profile to use for various tasks.
+profile_options_key = 'profile'
+
+# Key for string specifying the app identifier to use to perform various tasks
+app_identifier_options_key = 'app_identifier'
 
 #########################
 # Per-Project Variables #
@@ -38,11 +47,26 @@ workspace_file='Example/SpotHero_iOS_Partner_SDK.xcworkspace'
 # The path to the .xcodeproj for the framework (for getting coverage info)
 project_file='Example/SpotHero_iOS_Partner_SDK.xcodeproj'
 
+# The name of the keychain to use on CI
+keychain_name = 'SpotHeroSDKKeys.keychain'
 
-# TRAVIS NOTE: Any lane using an encrypted environment variable should only be used on 
-# Travis after the pull request has been merged - otherwise those variables will have
-# empty data. Encrypted environment variables can be added at:  
-# https://travis-ci.com/spothero/SpotHero-iOS/settings
+# The path to the Certificates.p12 file which should be used to sign the app 
+p12_file = 'Certificates/SpotHeroiOSReleaseCertificates.p12'
+
+# The identifier to use for testflight uploads
+test_flight_app_identifier = 'com.spothero.demo.SpotHero-iOS-Partner-SDK-Example'
+
+# The name on the signing certificate for distribution
+codesigning_id = 'iPhone Distribution: Spot Hero Inc.'
+
+# The identifier of the team to use when retrieving provisioning profiles
+team_identifier = 'ZW7QWR628D'
+
+# The SDK to use to archive builds. Should be of the format 'iphoneosX.X'
+archive_sdk = 'iphoneos9.3' 
+
+# The name of the TestFlight provisioning profile
+test_flight_provisioning_profile_name = 'FIXME'
 
 
 ###########
@@ -52,6 +76,55 @@ project_file='Example/SpotHero_iOS_Partner_SDK.xcodeproj'
     before_all do
         ENV['SLACK_URL'] = slack_webhook_url
     end
+    
+##############    
+## KEYCHAIN ##
+##############
+  
+    private_lane :setup_keychain do
+        puts "------ Creating Keychain -------"    
+        
+        cert_password = ENV["P12_PASSWORD"]
+        if cert_password == "FIXME" 
+            raise 'You need to update your P12_PASSWORD on Jenkins and/or local_config.sh'
+        end      
+        
+        begin 
+            # Create a keychain in which to store the signing cert.
+            create_keychain(
+               default_keychain: false,
+               name: keychain_name,
+               unlock: true,
+               timeout: 3600,
+               password: cert_password,
+            )
+        rescue 
+            # Prevent crashage if there's already a keychain
+            puts "Keychain already set up!"
+        end
+        
+        
+        puts "------ Importing Cert ------"
+        
+        # Import Ye Cert to that keychain
+        import_certificate(
+            keychain_name: keychain_name,
+            certificate_path: File.join(fastlane_folder, p12_file),
+            certificate_password: cert_password,
+        )
+    end 
+    
+    private_lane :teardown_keychain do      
+        begin 
+            # Nuke the keychain: 
+            delete_keychain(
+                name: keychain_name
+            )
+        rescue
+            # Prevent crashage if there's no keychain
+            puts "Keychain already deleted!"
+        end             
+    end 
     
 
 #############################  
@@ -121,6 +194,116 @@ project_file='Example/SpotHero_iOS_Partner_SDK.xcodeproj'
         )
     end
 
+######################## 
+## BUILDING & SIGNING ##
+######################## 
+
+    desc "Uses sigh to go out and get the specified provisioning profile"
+    desc "Expects values for the following keys:"
+    desc "profile_options_key: The name of the profile to retrieve"
+    desc "app_identifier_options_key: The name of the app identifier to use"
+    private_lane :get_provisioning do |options|
+        if !options.key?(:profile_options_key) || !options.key?(:app_identifier_options_key)
+            raise "Not all required options for this lane are present!"
+            return
+        end
+    
+        # Get the provisioning profile to use        
+        provisioning = options[:profile_options_key]
+        
+        # Get the app identifier to use
+        identifier = options[:app_identifier_options_key]
+                
+        if ENV["FASTLANE_PASSWORD"] == "FIXME" 
+            raise "You need to set up your FASTLANE_PASSWORD in Jenkins, local_config.sh, or both!"
+            return
+        end
+        
+        # Get current version of specified provisioning profile
+        sigh(
+            adhoc: true,
+            app_identifier: identifier,
+            username: ci_username,
+            team_id: team_identifier,
+            output_path: File.join(fastlane_folder, "Provisioning"),
+            provisioning_name: provisioning,
+        )
+    end
+    
+    desc "Responsible for building and signing the app for Test Flight distribution"
+    desc "Note: This will always create a build pointed at Production."
+    desc "Note: Setup/teardown of the keychain should be handled outside this method."
+    private_lane :build_itc do        
+        # Make sure the App Store provisioning profile name is actually set up        
+        if test_flight_provisioning_profile_name == "FIXME"
+            raise "You need to set up the TestFlight provisioning profile name at the top of your Fastfile!"
+            return 
+        end  
+        
+        setup_keychain
+        
+        # Get current version of TestFlight profile 
+        get_provisioning(
+          profile_options_key: test_flight_provisioning_profile_name,
+          app_identifier_options_key: test_flight_app_identifier
+        )
+
+        puts "------ BUILDING TESTFLIGHT/ITC FOR SDK SAMPLE APP -------"
+
+        # Build Production-pointed app for App Store / Test Flight  
+        archive_build(
+            scheme_options_key: main_scheme,
+            method_options_key: 'app-store',
+        )
+    end
+
+    
+##################  
+## DISTRIBUTION ##
+##################
+  
+    desc "Uploads a build iTunes Connect"
+    desc "Note: This build should only be distributed via Test Flight."
+    lane :itc do            
+        # Create an iTunes Connect build
+        build_itc
+        
+        # Upload build to ITC
+        pilot(
+            username: ci_username,
+            changelog: "This build was automatically uploaded by Fastlane - DO NOT SUBMIT FOR TEST FLIGHT UNTIL RELEASE NOTES ARE UPDATED!!!!",
+            distribute_external: false,
+            skip_submission: true, 
+            app_identifier: test_flight_app_identifier,      
+            skip_waiting_for_build_processing: true,      
+        )
+        
+        slack(message: "SDK Sample app build uploaded to iTunes Connect!", success: true)
+    end
+    
+    desc "Bumps the version, commits it to git with the appropriate tag, and pushes to the remote."
+    lane :bump_commit_tag do 
+        # Bump the build number and commit it
+        increment_build_number        
+        commit_version_bump
+        
+        # Set the tag as b(build number) for the committed version bump.
+        build_number = Actions.lane_context[Actions::SharedValues::BUILD_NUMBER]
+        add_git_tag(
+            tag: "b" + build_number
+        )
+        
+        # Push to remote
+        push_to_git_remote        
+    end
+    
+    desc "Method to run after a successful merge."
+    desc "Will bump/commit/tag/push the version and upload to iTunes Connect."
+    lane :sample_itc do 
+        bump_commit_tag
+        itc
+    end
+
 
 ######################
 ## SUCCESS HANDLING ##
@@ -133,6 +316,9 @@ project_file='Example/SpotHero_iOS_Partner_SDK.xcodeproj'
         if is_ci
             slack(message: "iOS App build succeeded", success: true)
         end
+        
+        # Tear down the keychain now that it's built and signed so nobody else can use it.
+        teardown_keychain
     end
     
     
@@ -146,5 +332,8 @@ project_file='Example/SpotHero_iOS_Partner_SDK.xcodeproj'
         if is_ci
             slack(message: "iOS App build FAIL!!!!: #{exception}", success: false)
         end
+        
+        # Nuke the keychain: 
+        teardown_keychain
     end
 end
