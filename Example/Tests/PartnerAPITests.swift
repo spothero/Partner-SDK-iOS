@@ -6,13 +6,50 @@
 //  Copyright © 2016 SpotHero, Inc. All rights reserved.
 //
 
-import UIKit
 import XCTest
-import SpotHero_iOS_Partner_SDK
+import CoreLocation
+@testable import SpotHero_iOS_Partner_SDK
 
 class PartnerAPITests: XCTestCase {
-    func testExample() {
-        let thing: String? = nil
-        XCTAssertNil(thing)
+    let startDate = NSDate().dateByAddingTimeInterval(60 * 60 * 5)
+    let endDate = NSDate().dateByAddingTimeInterval(60 * 60 * 10)
+    let timeoutDuration: NSTimeInterval = 60
+    
+    override func setUp() {
+        super.setUp()
+        SpotHeroPartnerSDK.SharedInstance.partnerApplicationKey = "0d08a88b4613fafb2a4d2badb522b1f664b1d23b"
+    }
+    
+    func testGetFacilities() {
+        let expectation = self.expectationWithDescription("testGetFacilities")
+        
+        FacilityAPI.fetchFacilities(Constants.ChicagoLocation,
+                                    starts: self.startDate,
+                                    ends: self.endDate) {
+                                        facilities, error in
+                                        XCTAssertNil(error)
+                                        XCTAssert(facilities.count > 0)
+                                        expectation.fulfill()
+        }
+        
+        waitForExpectationsWithTimeout(self.timeoutDuration, handler: nil)
+    }
+    
+    func testNoFacilities() {
+        let expectation = self.expectationWithDescription("testNoFacilities")
+        
+        // Location in london so no facilities are found
+        let location = CLLocation(latitude: 51.5074, longitude: 0.1278)
+        
+        FacilityAPI.fetchFacilities(location,
+                                    starts: self.startDate,
+                                    ends: self.endDate) {
+                                        facilities, error in
+                                        XCTAssertNotNil(error)
+                                        XCTAssert(facilities.count == 0)
+                                        expectation.fulfill()
+        }
+        
+        waitForExpectationsWithTimeout(self.timeoutDuration, handler: nil)
     }
 }

@@ -61,7 +61,7 @@ public class SpotHeroPartnerSDK: NSObject {
         navController.navigationBar.titleTextAttributes = textAttributes
         navController.navigationBar.tintColor = self.textColor
         navController.navigationBar.barTintColor = self.tintColor
-        
+
         viewController.presentViewController(navController,
                                              animated: true,
                                              completion: completion)
