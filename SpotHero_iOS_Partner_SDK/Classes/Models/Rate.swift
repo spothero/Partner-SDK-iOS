@@ -32,7 +32,7 @@ extension Rate {
         self.amenities = try json.shp_dictionary("amenities") as JSONDictionary
         
         let startsString = try json.shp_string("starts")
-        if let starts = Constants.dateFormatter.dateFromString(startsString) {
+        if let starts = DateFormatter.ISO8601NoSeconds.dateFromString(startsString) {
             self.starts = starts
         } else {
             assertionFailure("Cannot parse start time")
@@ -40,7 +40,7 @@ extension Rate {
         }
         
         let endsString = try json.shp_string("ends")
-        if let ends = Constants.dateFormatter.dateFromString(endsString) {
+        if let ends = DateFormatter.ISO8601NoSeconds.dateFromString(endsString) {
             self.ends = ends
         } else {
             assertionFailure("Cannot parse end time")
