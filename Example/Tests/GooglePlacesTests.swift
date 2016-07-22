@@ -29,13 +29,6 @@ class GooglePlacesTests: XCTestCase {
                                                 XCTAssertNil(error)
                                             XCTAssertGreaterThanOrEqual(predictions.count, 1)
                                             XCTAssertLessThanOrEqual(predictions.count, 5)
-                                            if let firstPrediction = predictions.first {
-                                                XCTAssertEqual(firstPrediction.description, "325 W Huron St, Chicago, IL, United States")
-                                                XCTAssertEqual(firstPrediction.placeID, "ChIJs9x2O7UsDogR6kgNUj4svDQ")
-                                                XCTAssertGreaterThan(firstPrediction.terms.count, 0)
-                                            } else {
-                                                XCTFail("Unable to get first prediction")
-                                            }
                                             expectation.fulfill()
         }
         
@@ -51,13 +44,6 @@ class GooglePlacesTests: XCTestCase {
                                             XCTAssertNil(error)
                                             XCTAssertGreaterThanOrEqual(predictions.count, 1)
                                             XCTAssertLessThanOrEqual(predictions.count, 5)
-                                            if let firstPrediction = predictions.first {
-                                                XCTAssertEqual(firstPrediction.description, self.spotheroPrediction.description)
-                                                XCTAssertEqual(firstPrediction.placeID, self.spotheroPrediction.placeID)
-                                                XCTAssertGreaterThan(firstPrediction.terms.count, 0)
-                                            } else {
-                                                XCTFail("Unable to get first prediction")
-                                            }
                                             expectation.fulfill()
         }
         
