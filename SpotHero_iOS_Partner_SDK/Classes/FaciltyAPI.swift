@@ -27,8 +27,8 @@ struct FacilityAPI {
                                 starts: NSDate,
                                 ends: NSDate,
                                 completion: ([Facility], ErrorType?) -> (Void)) {
-        let startsString = Constants.dateFormatter.stringFromDate(starts)
-        let endsString = Constants.dateFormatter.stringFromDate(ends)
+        let startsString = DateFormatter.ISO8601NoSeconds.stringFromDate(starts)
+        let endsString = DateFormatter.ISO8601NoSeconds.stringFromDate(ends)
         
         let latitude = "\(location.coordinate.latitude)"
         let longitude = "\(location.coordinate.longitude)"
@@ -64,7 +64,6 @@ struct FacilityAPI {
                 } catch let error {
                     completion([], error)
                 }
-                
             }
         }
     }
