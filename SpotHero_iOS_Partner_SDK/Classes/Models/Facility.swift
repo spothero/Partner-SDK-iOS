@@ -9,6 +9,9 @@
 import Foundation
 import CoreLocation
 
+/**
+ *  Represents a facility
+ */
 struct Facility {
     let title: String
     let licensePlateRequired: Bool

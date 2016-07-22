@@ -14,6 +14,15 @@ enum FacilityError: ErrorType {
 }
 
 struct FacilityAPI {
+    
+    /**
+     Returns the facilities near a given location within a range of dates
+     
+     - parameter location:   location to find facilities near
+     - parameter starts:     when the reservation shold start
+     - parameter ends:       when the reservation should end
+     - parameter completion: closure to call after network call is made. passes in an array of facilities or an error
+     */
     static func fetchFacilities(location: CLLocation,
                                 starts: NSDate,
                                 ends: NSDate,

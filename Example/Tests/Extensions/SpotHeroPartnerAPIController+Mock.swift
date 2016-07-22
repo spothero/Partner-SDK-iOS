@@ -36,7 +36,6 @@ extension SpotHeroPartnerAPIController {
         VOKMockUrlProtocol.setTestBundle(testBundle)
         
         self.updateManagerWithConfiguration(mockConfig)
-        
     }
     
     /**

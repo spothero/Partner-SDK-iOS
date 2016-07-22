@@ -8,18 +8,19 @@
 
 import Foundation
 
-//enum Amenities: String {
-////    case 
-//}
-
+/**
+ *  Represents the Hourly Rates of a Facility 
+ */
 struct Rate {
     let displayPrice: Double
     let starts: NSDate
     let ends: NSDate
     let unavailable: Bool
     let price: Double
-    let amenities: JSONDictionary
     let unavailableReason: String?
+
+    // TODO: Change to struct or enum
+    let amenities: JSONDictionary
 }
 
 extension Rate {
