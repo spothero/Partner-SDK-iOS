@@ -11,28 +11,34 @@ import CoreLocation
 @testable import SpotHero_iOS_Partner_SDK
 
 class PartnerAPITests: XCTestCase {
-    let startDate = NSDate().dateByAddingTimeInterval(60 * 60 * 5)
-    let endDate = NSDate().dateByAddingTimeInterval(60 * 60 * 10)
     let timeoutDuration: NSTimeInterval = 60
     
     override func setUp() {
         super.setUp()
-        SpotHeroPartnerSDK.SharedInstance.partnerApplicationKey = "0d08a88b4613fafb2a4d2badb522b1f664b1d23b"
+        SpotHeroPartnerSDK.SharedInstance.partnerApplicationKey = "6b8382b154d9527c1f97341247708bfe7855207a"
+    }
+    
+    func getFacilities(location: CLLocation, completion: ([Facility], ErrorType?) -> Void) {
+        let startDate = NSDate().dateByAddingTimeInterval(60 * 60 * 5)
+        let endDate = NSDate().dateByAddingTimeInterval(60 * 60 * 10)
+        FacilityAPI.fetchFacilities(location,
+                                    starts: startDate,
+                                    ends: endDate,
+                                    completion: completion)
     }
     
     func testGetFacilities() {
         let expectation = self.expectationWithDescription("testGetFacilities")
         
-        FacilityAPI.fetchFacilities(Constants.ChicagoLocation,
-                                    starts: self.startDate,
-                                    ends: self.endDate) {
-                                        facilities, error in
-                                        XCTAssertNil(error)
-                                        XCTAssert(facilities.count > 0)
-                                        expectation.fulfill()
+        self.getFacilities(Constants.ChicagoLocation) {
+            facilities, error in
+            XCTAssertNil(error)
+            XCTAssert(facilities.count > 0)
+            expectation.fulfill()
+
         }
         
-        waitForExpectationsWithTimeout(self.timeoutDuration, handler: nil)
+        self.waitForExpectationsWithTimeout(self.timeoutDuration, handler: nil)
     }
     
     func testNoFacilities() {
@@ -41,15 +47,45 @@ class PartnerAPITests: XCTestCase {
         // Location in london so no facilities are found
         let location = CLLocation(latitude: 51.5074, longitude: 0.1278)
         
-        FacilityAPI.fetchFacilities(location,
-                                    starts: self.startDate,
-                                    ends: self.endDate) {
-                                        facilities, error in
-                                        XCTAssertNotNil(error)
-                                        XCTAssert(facilities.count == 0)
-                                        expectation.fulfill()
+        self.getFacilities(location) {
+            facilities, error in
+            XCTAssertNotNil(error)
+            XCTAssert(facilities.count == 0)
+            expectation.fulfill()
         }
         
-        waitForExpectationsWithTimeout(self.timeoutDuration, handler: nil)
+       self.waitForExpectationsWithTimeout(self.timeoutDuration, handler: nil)
+    }
+    
+    func testCreateReservation() {
+        let expectation = self.expectationWithDescription("testCreateReservation")
+        
+        self.getFacilities(Constants.ChicagoLocation) {
+            facilities, error in
+            if let facility = facilities.first, rate = facility.rates.first {
+                ReservationAPI.createReservation(facility,
+                                                 rate: rate,
+                                                 email: "matt@test.com",
+                                                 completion: {
+                                                    reservation, error in
+                                                    XCTAssertNil(error)
+                                                    XCTAssertNotNil(reservation)
+                                                    if let reservation = reservation {
+                                                        // Cancel Reservation so spots don't run out
+                                                        ReservationAPI.cancelReservation(reservation, completion: { (error) -> (Void) in
+                                                            XCTAssertNil(error)
+                                                            expectation.fulfill()
+                                                        })
+                                                    } else {
+                                                        XCTFail("Could not get reservation")
+                                                    }
+                                                    
+                })
+            } else {
+                XCTFail("Cannot get facility and rate")
+            }
+        }
+        
+        self.waitForExpectationsWithTimeout(self.timeoutDuration, handler: nil)
     }
 }

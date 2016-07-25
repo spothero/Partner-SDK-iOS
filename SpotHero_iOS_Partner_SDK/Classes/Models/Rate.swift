@@ -17,6 +17,7 @@ struct Rate {
     let ends: NSDate
     let unavailable: Bool
     let price: Double
+    let ruleGroupID: Int
     let unavailableReason: String?
 
     // TODO: Change to struct or enum
@@ -30,6 +31,7 @@ extension Rate {
         self.unavailableReason = try? json.shp_string("unavailable_reason")
         self.price = try json.shp_double("price")
         self.amenities = try json.shp_dictionary("amenities") as JSONDictionary
+        self.ruleGroupID = try json.shp_int("rule_group_id")
         
         let startsString = try json.shp_string("starts")
         if let starts = DateFormatter.ISO8601NoSeconds.dateFromString(startsString) {
