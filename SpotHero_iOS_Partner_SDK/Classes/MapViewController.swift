@@ -10,14 +10,20 @@ import UIKit
 import MapKit
 
 class MapViewController: UIViewController {
+    
     @IBOutlet weak private var predictionTableView: UITableView!
     @IBOutlet weak private var mapView: MKMapView!
     @IBOutlet weak private var searchContainerView: UIView!
     @IBOutlet weak private var searchContainerViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak private var searchBar: UISearchBar!
     @IBOutlet weak private var collapsedSearchBar: CollapsedSearchBarView!
+    @IBOutlet weak private var timeSelectionView: UIView!
+    @IBOutlet weak var reservationContainerView: UIView!
+    @IBOutlet weak var reservationContainerViewHeightConstraint: NSLayoutConstraint!
     
     let predictionController = PredictionController()
+    private let searchBarHeight: CGFloat = 44
+    private let reservationContainerViewHeight: CGFloat = 134
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,8 +39,8 @@ class MapViewController: UIViewController {
     }
     
     private func setupViews() {
-        self.searchContainerView.layer.cornerRadius = 5
-        self.searchContainerView.layer.masksToBounds = true
+        self.reservationContainerView.layer.cornerRadius = 5
+        self.reservationContainerView.layer.masksToBounds = true
         
         self.predictionController.delegate = self
         
@@ -53,12 +59,31 @@ class MapViewController: UIViewController {
         self.predictionTableView.accessibilityLabel = AccessibilityStrings.PredictionTableView
     }
     
+    private func hideTimeSelectionView() {
+        self.timeSelectionView.hidden = true
+        self.reservationContainerViewHeightConstraint.constant = self.searchBarHeight
+    }
+    
+    private func showTimeSelectionView() {
+        self.timeSelectionView.hidden = false
+        self.reservationContainerViewHeightConstraint.constant = self.reservationContainerViewHeight
+    }
+    
     @IBAction private func closeButtonPressed(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    @IBAction func searchBarTapped(sender: AnyObject) {
+    @IBAction func collapsedSearchBarTapped(sender: AnyObject) {
         self.collapsedSearchBar.hide()
+        self.timeSelectionView.hidden = true
+    }
+    
+    @IBAction func startViewTapped(sender: AnyObject) {
+        //TODO: Show date picker
+    }
+    
+    @IBAction func endViewTapped(sender: AnyObject) {
+        //TODO: Show date picker
     }
 }
 
@@ -69,14 +94,16 @@ extension MapViewController: PredictionControllerDelegate {
         self.predictionTableView.reloadData()
         self.view.layoutIfNeeded()
         UIView.animateWithDuration(0.3, animations: {
-            let searchBarHeight: CGFloat = 44
             let headerFooterHeight: CGFloat = 28
             let rowHeight: CGFloat = 60
             
             if predictions.count > 0 {
-                self.searchContainerViewHeightConstraint.constant = searchBarHeight + CGFloat(predictions.count) * rowHeight + headerFooterHeight * 2
+                self.hideTimeSelectionView()
+                self.searchContainerViewHeightConstraint.constant = self.searchBarHeight + CGFloat(predictions.count) * rowHeight + headerFooterHeight * 2
+                self.reservationContainerViewHeightConstraint.constant = self.searchBarHeight + CGFloat(predictions.count) * rowHeight + headerFooterHeight * 2
             } else {
-                self.searchContainerViewHeightConstraint.constant = searchBarHeight
+                self.reservationContainerViewHeightConstraint.constant = self.reservationContainerViewHeight
+                self.searchContainerViewHeightConstraint.constant = self.searchBarHeight
             }
             self.view.layoutIfNeeded()
             }, completion: nil)
@@ -84,5 +111,10 @@ extension MapViewController: PredictionControllerDelegate {
     
     func didSelectPrediction(prediction: GooglePlacesPrediction) {
         self.searchBar.text = prediction.description
+        self.showTimeSelectionView()
+    }
+    
+    func didTapXButton() {
+        self.showTimeSelectionView()
     }
 }
