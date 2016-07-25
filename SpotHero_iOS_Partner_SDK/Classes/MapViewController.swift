@@ -156,9 +156,9 @@ class MapViewController: UIViewController {
     @IBAction func datePickerValueDidChange(datePicker: UIDatePicker) {
         let date = datePicker.date
         if (self.isStartView) {
-            
+            //TODO: update start date time labels
         } else {
-            
+            //TODO: update end date time labels
         }
     }
     
