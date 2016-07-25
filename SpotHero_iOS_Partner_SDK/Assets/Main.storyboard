@@ -283,7 +283,8 @@
                                             <constraint firstAttribute="height" constant="44" id="e8M-6f-Bq9"/>
                                         </constraints>
                                         <items>
-                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="wP4-Eg-kV3"/>
+                                            <barButtonItem title="Cancel" id="5i9-34-qxs"/>
+                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="J01-RM-yhE"/>
                                             <barButtonItem title="Done" width="63" id="Xr8-AX-NHR">
                                                 <connections>
                                                     <action selector="doneButtonPressed:" destination="Vax-OI-bt8" id="zoy-fh-t9E"/>
@@ -291,16 +292,24 @@
                                             </barButtonItem>
                                         </items>
                                     </toolbar>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set Start Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q0M-iA-GXA">
+                                        <rect key="frame" x="245" y="12" width="110" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="pQl-fm-uqf" secondAttribute="trailing" id="1dX-LR-fvQ"/>
                                     <constraint firstItem="pQl-fm-uqf" firstAttribute="leading" secondItem="zfM-Xw-6w1" secondAttribute="leading" id="8Ki-UI-hzP"/>
                                     <constraint firstAttribute="height" constant="200" id="8Mq-7j-iZE"/>
+                                    <constraint firstItem="q0M-iA-GXA" firstAttribute="centerY" secondItem="7bS-M8-91S" secondAttribute="centerY" id="B5Q-FX-6nE"/>
                                     <constraint firstItem="7bS-M8-91S" firstAttribute="leading" secondItem="zfM-Xw-6w1" secondAttribute="leading" id="CnA-LG-Ohj"/>
                                     <constraint firstItem="pQl-fm-uqf" firstAttribute="top" secondItem="7bS-M8-91S" secondAttribute="bottom" id="JOW-4g-zDs"/>
                                     <constraint firstItem="7bS-M8-91S" firstAttribute="top" secondItem="zfM-Xw-6w1" secondAttribute="top" id="UOx-rT-yqI"/>
                                     <constraint firstAttribute="bottom" secondItem="pQl-fm-uqf" secondAttribute="bottom" id="iFF-AV-OMU"/>
+                                    <constraint firstItem="q0M-iA-GXA" firstAttribute="centerX" secondItem="7bS-M8-91S" secondAttribute="centerX" id="pbI-HV-kMh"/>
                                     <constraint firstAttribute="trailing" secondItem="7bS-M8-91S" secondAttribute="trailing" id="zyA-SS-jiW"/>
                                 </constraints>
                             </view>
@@ -344,6 +353,7 @@
                         <outlet property="startTimeLabel" destination="RuZ-vp-ds5" id="Fjl-CE-Dn6"/>
                         <outlet property="timeSelectionView" destination="00R-A9-LV4" id="VCz-Sm-EMU"/>
                         <outlet property="toolbar" destination="7bS-M8-91S" id="quR-bn-UFx"/>
+                        <outlet property="toolbarTitleLabel" destination="q0M-iA-GXA" id="FHA-BW-EoP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gQG-L7-PVk" userLabel="First Responder" sceneMemberID="firstResponder"/>

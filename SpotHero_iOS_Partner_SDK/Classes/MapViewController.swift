@@ -21,6 +21,8 @@ class MapViewController: UIViewController {
     @IBOutlet weak var reservationContainerView: UIView!
     @IBOutlet weak var reservationContainerViewHeightConstraint: NSLayoutConstraint!
     
+    
+    @IBOutlet weak var toolbarTitleLabel: UILabel!
     @IBOutlet weak var endTimeLabel: UILabel!
     @IBOutlet weak var endDateLabel: UILabel!
     @IBOutlet weak var startTimeLabel: UILabel!
@@ -116,11 +118,15 @@ class MapViewController: UIViewController {
     @IBAction func startViewTapped(sender: AnyObject) {
         self.isStartView = true
         self.showDatePickerView()
+        //TODO: Localize
+        self.toolbarTitleLabel.text = "Set Start Time"
     }
     
     @IBAction func endViewTapped(sender: AnyObject) {
         self.isStartView = false
         self.showDatePickerView()
+        //TODO: Localize
+        self.toolbarTitleLabel.text = "Set End Time"
     }
     
     private func setupDatePickerView() {
