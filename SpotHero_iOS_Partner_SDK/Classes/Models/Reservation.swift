@@ -25,6 +25,8 @@ extension Reservation {
         self.status = try json.shp_string("reservation_status")
         self.rentalID = try json.shp_int("rental_id")
         self.price = try json.shp_double("price")
+        
+        //TODO: Figure out better way to get this key
         let cancelURLString = try json.shp_string("cancel_url")
         if let cancelURLComponents = NSURLComponents(string: cancelURLString), key = cancelURLComponents.queryItems?.first?.value {
             self.receiptAccessKey = key
