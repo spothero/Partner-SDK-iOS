@@ -265,16 +265,58 @@
                                     <constraint firstAttribute="trailing" secondItem="00R-A9-LV4" secondAttribute="trailing" id="ulT-LG-tob"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zfM-Xw-6w1" userLabel="Date Picker View">
+                                <rect key="frame" x="0.0" y="400" width="600" height="200"/>
+                                <subviews>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="30" translatesAutoresizingMaskIntoConstraints="NO" id="pQl-fm-uqf">
+                                        <rect key="frame" x="0.0" y="44" width="600" height="156"/>
+                                        <date key="date" timeIntervalSinceReferenceDate="491165988.92301297">
+                                            <!--2016-07-25 18:59:48 +0000-->
+                                        </date>
+                                        <connections>
+                                            <action selector="datePickerValueDidChange:" destination="Vax-OI-bt8" eventType="valueChanged" id="rWB-5m-eQX"/>
+                                        </connections>
+                                    </datePicker>
+                                    <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7bS-M8-91S">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="e8M-6f-Bq9"/>
+                                        </constraints>
+                                        <items>
+                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="wP4-Eg-kV3"/>
+                                            <barButtonItem title="Done" width="63" id="Xr8-AX-NHR">
+                                                <connections>
+                                                    <action selector="doneButtonPressed:" destination="Vax-OI-bt8" id="zoy-fh-t9E"/>
+                                                </connections>
+                                            </barButtonItem>
+                                        </items>
+                                    </toolbar>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="pQl-fm-uqf" secondAttribute="trailing" id="1dX-LR-fvQ"/>
+                                    <constraint firstItem="pQl-fm-uqf" firstAttribute="leading" secondItem="zfM-Xw-6w1" secondAttribute="leading" id="8Ki-UI-hzP"/>
+                                    <constraint firstAttribute="height" constant="200" id="8Mq-7j-iZE"/>
+                                    <constraint firstItem="7bS-M8-91S" firstAttribute="leading" secondItem="zfM-Xw-6w1" secondAttribute="leading" id="CnA-LG-Ohj"/>
+                                    <constraint firstItem="pQl-fm-uqf" firstAttribute="top" secondItem="7bS-M8-91S" secondAttribute="bottom" id="JOW-4g-zDs"/>
+                                    <constraint firstItem="7bS-M8-91S" firstAttribute="top" secondItem="zfM-Xw-6w1" secondAttribute="top" id="UOx-rT-yqI"/>
+                                    <constraint firstAttribute="bottom" secondItem="pQl-fm-uqf" secondAttribute="bottom" id="iFF-AV-OMU"/>
+                                    <constraint firstAttribute="trailing" secondItem="7bS-M8-91S" secondAttribute="trailing" id="zyA-SS-jiW"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="EcZ-Kj-xzb" firstAttribute="top" secondItem="nEN-Yc-ckc" secondAttribute="bottom" id="Eta-77-iSQ"/>
                             <constraint firstItem="nEN-Yc-ckc" firstAttribute="leading" secondItem="74f-zj-sek" secondAttribute="leading" id="Vao-aZ-gnQ"/>
+                            <constraint firstItem="EcZ-Kj-xzb" firstAttribute="top" secondItem="zfM-Xw-6w1" secondAttribute="bottom" id="VzY-Ya-tjU"/>
                             <constraint firstAttribute="trailing" secondItem="37V-ku-ODQ" secondAttribute="trailing" constant="20" id="Wnb-L3-ErZ"/>
+                            <constraint firstItem="zfM-Xw-6w1" firstAttribute="leading" secondItem="74f-zj-sek" secondAttribute="leading" id="aIN-e6-wW9"/>
                             <constraint firstAttribute="trailing" secondItem="nEN-Yc-ckc" secondAttribute="trailing" id="cvr-jp-0PY"/>
                             <constraint firstItem="nEN-Yc-ckc" firstAttribute="top" secondItem="2XB-0q-QOj" secondAttribute="bottom" id="e5U-fH-ez1"/>
                             <constraint firstItem="37V-ku-ODQ" firstAttribute="top" secondItem="2XB-0q-QOj" secondAttribute="bottom" constant="8" id="iTE-7t-dXl"/>
                             <constraint firstItem="37V-ku-ODQ" firstAttribute="leading" secondItem="74f-zj-sek" secondAttribute="leading" constant="20" id="rzZ-Xn-oDh"/>
+                            <constraint firstAttribute="trailing" secondItem="zfM-Xw-6w1" secondAttribute="trailing" id="yts-Lh-Xvr"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Find Parking" id="QQS-us-8wq">
@@ -286,6 +328,11 @@
                     </navigationItem>
                     <connections>
                         <outlet property="collapsedSearchBar" destination="k6h-I3-1nd" id="eZI-Zy-oel"/>
+                        <outlet property="datePicker" destination="pQl-fm-uqf" id="wOr-O3-ajj"/>
+                        <outlet property="datePickerView" destination="zfM-Xw-6w1" id="WIY-kY-Gk0"/>
+                        <outlet property="datePickerViewBottomConstraint" destination="VzY-Ya-tjU" id="plg-Si-aUe"/>
+                        <outlet property="endDateLabel" destination="rvd-oM-7oL" id="nTV-nO-0ae"/>
+                        <outlet property="endTimeLabel" destination="hRI-UE-E7g" id="bYa-pu-z7a"/>
                         <outlet property="mapView" destination="nEN-Yc-ckc" id="6bX-7F-2O6"/>
                         <outlet property="predictionTableView" destination="k7g-kF-iqV" id="TSz-4Y-HDE"/>
                         <outlet property="reservationContainerView" destination="37V-ku-ODQ" id="u5t-sw-uVG"/>
@@ -293,7 +340,10 @@
                         <outlet property="searchBar" destination="pgM-LO-aq0" id="Ojn-18-3IW"/>
                         <outlet property="searchContainerView" destination="lqQ-xQ-L7J" id="SIA-V9-TjC"/>
                         <outlet property="searchContainerViewHeightConstraint" destination="14r-MT-7qT" id="cw0-Qx-byZ"/>
+                        <outlet property="startDateLabel" destination="nXl-sc-e5R" id="9kH-ow-Pcu"/>
+                        <outlet property="startTimeLabel" destination="RuZ-vp-ds5" id="Fjl-CE-Dn6"/>
                         <outlet property="timeSelectionView" destination="00R-A9-LV4" id="VCz-Sm-EMU"/>
+                        <outlet property="toolbar" destination="7bS-M8-91S" id="quR-bn-UFx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gQG-L7-PVk" userLabel="First Responder" sceneMemberID="firstResponder"/>
