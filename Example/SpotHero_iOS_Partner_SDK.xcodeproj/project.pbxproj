@@ -21,6 +21,9 @@
 		C70AA21E1D397E75004C7BDE /* GooglePlacesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70AA21C1D397E2C004C7BDE /* GooglePlacesUITests.swift */; };
 		C70AA2211D398435004C7BDE /* BaseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70AA21F1D398432004C7BDE /* BaseUITests.swift */; };
 		C73848581D35538C0023E1A8 /* GooglePlacesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73848571D35538C0023E1A8 /* GooglePlacesTests.swift */; };
+		C7CBF4891D411F0F001D988F /* SpotHeroPartnerAPIController+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7CBF4871D411EFA001D988F /* SpotHeroPartnerAPIController+Mock.swift */; };
+		C7CBF48C1D412362001D988F /* PartnerAPIMockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7CBF48B1D412362001D988F /* PartnerAPIMockTests.swift */; };
+		C7FBD09B1D4273B40089A53B /* VOKMockData in Resources */ = {isa = PBXBuildFile; fileRef = C7FBD09A1D4273B40089A53B /* VOKMockData */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +73,9 @@
 		C70AA21C1D397E2C004C7BDE /* GooglePlacesUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GooglePlacesUITests.swift; sourceTree = "<group>"; };
 		C70AA21F1D398432004C7BDE /* BaseUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseUITests.swift; sourceTree = "<group>"; };
 		C73848571D35538C0023E1A8 /* GooglePlacesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GooglePlacesTests.swift; sourceTree = "<group>"; };
+		C7CBF4871D411EFA001D988F /* SpotHeroPartnerAPIController+Mock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SpotHeroPartnerAPIController+Mock.swift"; sourceTree = "<group>"; };
+		C7CBF48B1D412362001D988F /* PartnerAPIMockTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartnerAPIMockTests.swift; sourceTree = "<group>"; };
+		C7FBD09A1D4273B40089A53B /* VOKMockData */ = {isa = PBXFileReference; lastKnownFileType = folder; path = VOKMockData; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +180,9 @@
 		607FACE81AFB9204008FA782 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				C7FBD09A1D4273B40089A53B /* VOKMockData */,
+				C7CBF48A1D41201F001D988F /* MockTests */,
+				C7CBF4861D411ED5001D988F /* Extensions */,
 				607FACEB1AFB9204008FA782 /* PartnerAPITests.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 				C73848571D35538C0023E1A8 /* GooglePlacesTests.swift */,
@@ -207,6 +216,22 @@
 				98C2BDA4124E6288B4D2DBB4 /* Pods_SpotHero_iOS_Partner_SDK_ExampleUITests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C7CBF4861D411ED5001D988F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C7CBF4871D411EFA001D988F /* SpotHeroPartnerAPIController+Mock.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		C7CBF48A1D41201F001D988F /* MockTests */ = {
+			isa = PBXGroup;
+			children = (
+				C7CBF48B1D412362001D988F /* PartnerAPIMockTests.swift */,
+			);
+			path = MockTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -341,6 +366,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7FBD09B1D4273B40089A53B /* VOKMockData in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -538,7 +564,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C73848581D35538C0023E1A8 /* GooglePlacesTests.swift in Sources */,
+				C7CBF4891D411F0F001D988F /* SpotHeroPartnerAPIController+Mock.swift in Sources */,
 				607FACEC1AFB9204008FA782 /* PartnerAPITests.swift in Sources */,
+				C7CBF48C1D412362001D988F /* PartnerAPIMockTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
