@@ -32,7 +32,7 @@
                                                 <rect key="frame" x="0.0" y="28" width="560" height="60"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="gny-aK-qke" id="DsV-UZ-K9d">
-                                                    <rect key="frame" x="0.0" y="0.0" width="560" height="59.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="560" height="60"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chicago IL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Oq9-B0-NHM">
