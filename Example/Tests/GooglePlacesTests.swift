@@ -26,17 +26,10 @@ class GooglePlacesTests: XCTestCase {
         GooglePlacesWrapper.getPredictions("325 W Huron",
                                            location: Constants.ChicagoLocation) {
                                                 predictions, error in
-                                                expectation.fulfill()
                                                 XCTAssertNil(error)
                                             XCTAssertGreaterThanOrEqual(predictions.count, 1)
                                             XCTAssertLessThanOrEqual(predictions.count, 5)
-                                            if let firstPrediction = predictions.first {
-                                                XCTAssertEqual(firstPrediction.description, "325 W Huron St, Chicago, IL, United States")
-                                                XCTAssertEqual(firstPrediction.placeID, "ChIJs9x2O7UsDogR6kgNUj4svDQ")
-                                                XCTAssertGreaterThan(firstPrediction.terms.count, 0)
-                                            } else {
-                                                XCTFail("Unable to get first prediction")
-                                            }
+                                            expectation.fulfill()
         }
         
         self.waitForExpectationsWithTimeout(self.waitDuration, handler: nil)
@@ -48,17 +41,10 @@ class GooglePlacesTests: XCTestCase {
         GooglePlacesWrapper.getPredictions(self.spotheroName,
                                            location: Constants.ChicagoLocation) {
                                             predictions, error in
-                                            expectation.fulfill()
                                             XCTAssertNil(error)
                                             XCTAssertGreaterThanOrEqual(predictions.count, 1)
                                             XCTAssertLessThanOrEqual(predictions.count, 5)
-                                            if let firstPrediction = predictions.first {
-                                                XCTAssertEqual(firstPrediction.description, self.spotheroPrediction.description)
-                                                XCTAssertEqual(firstPrediction.placeID, self.spotheroPrediction.placeID)
-                                                XCTAssertGreaterThan(firstPrediction.terms.count, 0)
-                                            } else {
-                                                XCTFail("Unable to get first prediction")
-                                            }
+                                            expectation.fulfill()
         }
         
         self.waitForExpectationsWithTimeout(self.waitDuration, handler: nil)
@@ -71,10 +57,10 @@ class GooglePlacesTests: XCTestCase {
         GooglePlacesWrapper.getPredictions("fjkaiofnaic",
                                            location: Constants.ChicagoLocation) {
                                             predictions, error in
-                                            expectation.fulfill()
                                             XCTAssertNotNil(error)
                                             XCTAssertEqual((error as? GooglePlacesError), GooglePlacesError.NoPredictions)
                                             XCTAssertEqual(predictions.count, 0)
+                                            expectation.fulfill()
         }
         
         self.waitForExpectationsWithTimeout(self.waitDuration, handler: nil)
@@ -85,7 +71,6 @@ class GooglePlacesTests: XCTestCase {
         
         GooglePlacesWrapper.getPlaceDetails(self.spotheroPrediction) {
             placeDetails, error in
-            expectation.fulfill()
             XCTAssertNil(error)
             XCTAssertNotNil(placeDetails)
             if let placeDetails = placeDetails {
@@ -96,6 +81,7 @@ class GooglePlacesTests: XCTestCase {
             } else {
                 XCTFail("Place Details is nil")
             }
+            expectation.fulfill()
         }
         
         self.waitForExpectationsWithTimeout(self.waitDuration, handler: nil)
@@ -106,10 +92,10 @@ class GooglePlacesTests: XCTestCase {
         
         GooglePlacesWrapper.getPlaceDetails(self.invalidPrediction) {
             placeDetails, error in
-            expectation.fulfill()
             XCTAssertNotNil(error)
             XCTAssertNil(placeDetails)
             XCTAssertEqual((error as? GooglePlacesError), GooglePlacesError.PlaceDetailsNotFound)
+            expectation.fulfill()
         }
         
         self.waitForExpectationsWithTimeout(self.waitDuration, handler: nil)

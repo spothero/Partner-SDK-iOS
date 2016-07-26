@@ -15,7 +15,7 @@ An SDK that allows your users to book SpotHero parking directly from within your
 #TODO: Update these as we go along
     # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
     s.resource_bundles = {
-        'SpotHero_iOS_Partner_SDK' => ['SpotHero_iOS_Partner_SDK/Assets/*.{png,storyboard,lproj}']
+        'SpotHero_iOS_Partner_SDK' => ['SpotHero_iOS_Partner_SDK/Assets/*.{png,storyboard,lproj,xcassets,xib}']
     }
 
     s.public_header_files = 'Pod/Classes/**/*.h'
