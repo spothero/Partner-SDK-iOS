@@ -18,7 +18,7 @@
   "source_files": "SpotHero_iOS_Partner_SDK/Classes/**/*",
   "resource_bundles": {
     "SpotHero_iOS_Partner_SDK": [
-      "SpotHero_iOS_Partner_SDK/Assets/*.{png,storyboard,lproj}"
+      "SpotHero_iOS_Partner_SDK/Assets/*.{png,storyboard,lproj,xcassets,xib}"
     ]
   },
   "public_header_files": "Pod/Classes/**/*.h",
