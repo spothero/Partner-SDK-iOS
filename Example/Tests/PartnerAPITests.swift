@@ -35,7 +35,6 @@ class PartnerAPITests: XCTestCase {
             XCTAssertNil(error)
             XCTAssert(facilities.count > 0)
             expectation.fulfill()
-
         }
         
         self.waitForExpectationsWithTimeout(self.timeoutDuration, handler: nil)
