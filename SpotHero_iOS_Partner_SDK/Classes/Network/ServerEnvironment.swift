@@ -47,6 +47,7 @@ public enum ServerEnvironment {
     public var stripeAPIKey: String {
         switch self {
         case .Production:
+            // TODO Get production API key
             return ""
         case .Staging:
             return "sk_test_BQokikJOvBiI2HlWgH4olfQ2"
