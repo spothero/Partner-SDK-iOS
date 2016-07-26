@@ -44,7 +44,7 @@ class PartnerAPITests: XCTestCase {
     func testNoFacilities() {
         let expectation = self.expectationWithDescription("testNoFacilities")
         
-        // Location in london so no facilities are found
+        // Location in london so no facilities will be found
         let location = CLLocation(latitude: 51.5074, longitude: 0.1278)
         
         self.getFacilities(location) {
