@@ -17,7 +17,7 @@ class PartnerAPITests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        SpotHeroPartnerSDK.SharedInstance.partnerApplicationKey = "0d08a88b4613fafb2a4d2badb522b1f664b1d23b"
+        SpotHeroPartnerSDK.SharedInstance.partnerApplicationKey = "6b8382b154d9527c1f97341247708bfe7855207a"
     }
     
     func testGetFacilities() {

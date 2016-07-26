@@ -112,6 +112,7 @@
 		C78EF3CB4FC7369BB2E9EB62DD231C2D /* KIFUIObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 6863E13C4D9C3DA825286E26213C105A /* KIFUIObject.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		C7FBD0A91D4297320089A53B /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7FBD0A51D4296B10089A53B /* DateFormatter.swift */; };
 		C7FBD0AA1D4297370089A53B /* StringEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7FBD0A71D4296F40089A53B /* StringEnum.swift */; };
+		C7FBD0AF1D47BF620089A53B /* StripeWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7FBD0AB1D47BA0E0089A53B /* StripeWrapper.swift */; };
 		C8D3D09E32433113799CE6FD434D6FEE /* KIF-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A4118229E82AF62B5973027C25E7FBDE /* KIF-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C97B7C0A7D47F9089B279FEB3B338A4F /* KIFUITestActor-ConditionalTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 117DC4EDDFFBE0C4A7AB0F057D7D3564 /* KIFUITestActor-ConditionalTests.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		CA6E63F1F1B7A9E25EAF76AACCD0FBF4 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA4572E524D57E8BD04D7094E16C102 /* APIError.swift */; };
@@ -386,6 +387,7 @@
 		C73B499F1D3FC80300EC83F8 /* FaciltyAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaciltyAPI.swift; sourceTree = "<group>"; };
 		C7FBD0A51D4296B10089A53B /* DateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		C7FBD0A71D4296F40089A53B /* StringEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringEnum.swift; sourceTree = "<group>"; };
+		C7FBD0AB1D47BA0E0089A53B /* StripeWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StripeWrapper.swift; sourceTree = "<group>"; };
 		CC94D1BD3EC065C485FFBABA54E7D7B6 /* NSException-KIFAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSException-KIFAdditions.h"; path = "Additions/NSException-KIFAdditions.h"; sourceTree = "<group>"; };
 		CED353CC3F3A082AC308EE2853EFE9CB /* KIFUITestActor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KIFUITestActor.h; path = Classes/KIFUITestActor.h; sourceTree = "<group>"; };
 		D10040B581C25A4E1A27841139186348 /* KIFUIViewTestActor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KIFUIViewTestActor.h; path = Classes/KIFUIViewTestActor.h; sourceTree = "<group>"; };
@@ -669,6 +671,7 @@
 				A28098D0DCB7B0121D338E3C76658252 /* JSONDictionary.swift */,
 				DE499E83FD138FE64BECC178BE8F9D77 /* ServerEnvironment.swift */,
 				7E392C5EFA5F9148CAE25F7E53EFB905 /* SpotHeroPartnerAPIController.swift */,
+				C7FBD0AB1D47BA0E0089A53B /* StripeWrapper.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -1312,6 +1315,7 @@
 				949A8C1D2AE2517A4688B954059D11A6 /* GooglePlacesPrediction.swift in Sources */,
 				C73B49A11D3FCA2B00EC83F8 /* FaciltyAPI.swift in Sources */,
 				EE4EFBBFC0002FB29AFA6E0C32009D13 /* GooglePlacesWrapper.swift in Sources */,
+				C7FBD0AF1D47BF620089A53B /* StripeWrapper.swift in Sources */,
 				BD572E1F1D36D40D001DEE5A /* Constants.swift in Sources */,
 				C73848691D36A6210023E1A8 /* GooglePlaceDetails.swift in Sources */,
 				C73B499C1D3ED75400EC83F8 /* Rate.swift in Sources */,

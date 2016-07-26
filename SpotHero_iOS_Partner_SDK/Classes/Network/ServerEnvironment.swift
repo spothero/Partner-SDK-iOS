@@ -44,6 +44,17 @@ public enum ServerEnvironment {
         return fullURLString
     }
     
+    public var stripeAPIKey: String {
+        switch self {
+        case .Production:
+            return ""
+        case .Staging:
+            return "sk_test_BQokikJOvBiI2HlWgH4olfQ2"
+        default:
+            return ""
+        }
+    }
+    
     public var apiBaseURLString: String {
         let pureBase: String
         switch self {
