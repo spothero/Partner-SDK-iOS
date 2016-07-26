@@ -12,6 +12,7 @@ import CoreLocation
 
 class PartnerAPITests: XCTestCase {
     let timeoutDuration: NSTimeInterval = 60
+    let testEmail = "matt@test.com"
     
     override func setUp() {
         super.setUp()
@@ -64,7 +65,7 @@ class PartnerAPITests: XCTestCase {
             if let facility = facilities.first, rate = facility.rates.first {
                 ReservationAPI.createReservation(facility,
                                                  rate: rate,
-                                                 email: "matt@test.com",
+                                                 email: self.testEmail,
                                                  completion: {
                                                     reservation, error in
                                                     XCTAssertNil(error)
@@ -78,7 +79,6 @@ class PartnerAPITests: XCTestCase {
                                                     } else {
                                                         XCTFail("Could not get reservation")
                                                     }
-                                                    
                 })
             } else {
                 XCTFail("Cannot get facility and rate")
