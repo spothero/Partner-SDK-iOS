@@ -106,7 +106,6 @@
 		BDB843F01D46D72D00ACC270 /* GooglePredictionTableHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14ECDC384ACDBDE8F87CDC482A8D12F6 /* GooglePredictionTableHeader.xib */; };
 		BDB843F11D46D73100ACC270 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF0FD056D3177DAC24F25DA6BEC2939C /* Images.xcassets */; };
 		BDB843F21D46D73500ACC270 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7048324CEF486FF30A52B07D4D35FE52 /* Main.storyboard */; };
-		BDE66C3C1D47C029001F9215 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE66C3B1D47C029001F9215 /* DatePickerView.swift */; };
 		C14992679A9ED625623F4E9DCED1C774 /* KIFUIObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D57F3D10D1B0A92A6F67BCFF816BC3C /* KIFUIObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C75A299B0860D3016DF20B1A5779903C /* NSBundle-KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E0527B6F28C55DD186FE2AD382616187 /* NSBundle-KIFAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C78EF3CB4FC7369BB2E9EB62DD231C2D /* KIFUIObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 6863E13C4D9C3DA825286E26213C105A /* KIFUIObject.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
@@ -377,7 +376,6 @@
 		BB65D5FB9941D22DCFF75511D44BD252 /* ILGHttpConstants.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ILGHttpConstants.xcconfig; sourceTree = "<group>"; };
 		BB6A800542D3897FE795CEE01EFA95D3 /* KIFUIViewTestActor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = KIFUIViewTestActor.m; path = Classes/KIFUIViewTestActor.m; sourceTree = "<group>"; };
 		BDA5C1ABC880715D3886B73E810648CF /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		BDE66C3B1D47C029001F9215 /* DatePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
 		BF0FD056D3177DAC24F25DA6BEC2939C /* Images.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		BF417A0AC673E17995B074801D1448EA /* VOKBenkode.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VOKBenkode.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFB888D7AF57F531266DD178438689EB /* Pods-SpotHero_iOS_Partner_SDK_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SpotHero_iOS_Partner_SDK_Example-dummy.m"; sourceTree = "<group>"; };
@@ -760,7 +758,6 @@
 		8B2948C191A2A982EC46523CC161BA60 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				BDE66C3B1D47C029001F9215 /* DatePickerView.swift */,
 				AAB4C8DD577E61856E004EFA3401E43A /* CollapsedSearchBarView.swift */,
 				D39DC4C18EE01E85BF0D751003F32306 /* GooglePredictionTableFooter.swift */,
 				128AE93A5EAC83942B18CE49C8890E01 /* GooglePredictionTableHeader.swift */,
@@ -1299,7 +1296,6 @@
 			files = (
 				97D411B39DA8CDDDBAD77122465AF762 /* AccessibilityStrings.swift in Sources */,
 				47754F7B0CCF84AE06087333CDC77DE3 /* APIError.swift in Sources */,
-				BDE66C3C1D47C029001F9215 /* DatePickerView.swift in Sources */,
 				FF8D3A3271C40321CE58EEBA9F250F89 /* APIHeaders.swift in Sources */,
 				72898ADC9DE9FD668FD40BFD6361AD76 /* CollapsedSearchBarView.swift in Sources */,
 				6B60AF6D4C891A74854ACB3A7D25C780 /* Constants.swift in Sources */,
