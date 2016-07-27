@@ -265,7 +265,7 @@
                                     <constraint firstAttribute="trailing" secondItem="00R-A9-LV4" secondAttribute="trailing" id="ulT-LG-tob"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zfM-Xw-6w1" userLabel="Date Picker View" customClass="DatePickerView" customModule="SpotHero_iOS_Partner_SDK" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zfM-Xw-6w1" userLabel="Date Picker View">
                                 <rect key="frame" x="0.0" y="400" width="600" height="200"/>
                                 <subviews>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="30" translatesAutoresizingMaskIntoConstraints="NO" id="pQl-fm-uqf">
