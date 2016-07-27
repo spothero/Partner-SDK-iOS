@@ -111,6 +111,10 @@
 		C7FBD0B51D480C950089A53B /* GooglePredictionTableHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14ECDC384ACDBDE8F87CDC482A8D12F6 /* GooglePredictionTableHeader.xib */; };
 		C7FBD0B61D480C980089A53B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF0FD056D3177DAC24F25DA6BEC2939C /* Images.xcassets */; };
 		C7FBD0B71D480C9D0089A53B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7048324CEF486FF30A52B07D4D35FE52 /* Main.storyboard */; };
+		C7FBD0B91D4960770089A53B /* CheckoutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7FBD0B81D4960770089A53B /* CheckoutTableViewController.swift */; };
+		C7FBD0BB1D496AC90089A53B /* ReservationInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7FBD0BA1D496AC90089A53B /* ReservationInfoTableViewCell.swift */; };
+		C7FBD0BD1D496ADA0089A53B /* PersonalInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7FBD0BC1D496ADA0089A53B /* PersonalInfoTableViewCell.swift */; };
+		C7FBD0BF1D496AE70089A53B /* PaymentInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7FBD0BE1D496AE70089A53B /* PaymentInfoTableViewCell.swift */; };
 		C8D3D09E32433113799CE6FD434D6FEE /* KIF-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A4118229E82AF62B5973027C25E7FBDE /* KIF-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C97B7C0A7D47F9089B279FEB3B338A4F /* KIFUITestActor-ConditionalTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 117DC4EDDFFBE0C4A7AB0F057D7D3564 /* KIFUITestActor-ConditionalTests.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		CB567CAB623EE579448E24D486300050 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A3069CE220EB84DC77D16EB0EFCDF29 /* QuartzCore.framework */; };
@@ -387,6 +391,10 @@
 		C1FC901A488DCAF88E302D2C22C3AD11 /* VOKBenkode.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VOKBenkode.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C46396168959C07A5D33115CBE6924CB /* ServerEnvironment.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ServerEnvironment.swift; sourceTree = "<group>"; };
 		C46B6258C3006561FC37367145F9196E /* UIEvent+KIFAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIEvent+KIFAdditions.h"; path = "Additions/UIEvent+KIFAdditions.h"; sourceTree = "<group>"; };
+		C7FBD0B81D4960770089A53B /* CheckoutTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutTableViewController.swift; sourceTree = "<group>"; };
+		C7FBD0BA1D496AC90089A53B /* ReservationInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReservationInfoTableViewCell.swift; sourceTree = "<group>"; };
+		C7FBD0BC1D496ADA0089A53B /* PersonalInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalInfoTableViewCell.swift; sourceTree = "<group>"; };
+		C7FBD0BE1D496AE70089A53B /* PaymentInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentInfoTableViewCell.swift; sourceTree = "<group>"; };
 		CA205B5854E0C73DBD4276BB6FFA989E /* NSURLQueryItem+QueryParams.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "NSURLQueryItem+QueryParams.swift"; sourceTree = "<group>"; };
 		CC94D1BD3EC065C485FFBABA54E7D7B6 /* NSException-KIFAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSException-KIFAdditions.h"; path = "Additions/NSException-KIFAdditions.h"; sourceTree = "<group>"; };
 		CED353CC3F3A082AC308EE2853EFE9CB /* KIFUITestActor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KIFUITestActor.h; path = Classes/KIFUITestActor.h; sourceTree = "<group>"; };
@@ -623,6 +631,9 @@
 				79E248BADBA9ED97533D3D500FC450D2 /* CollapsedSearchBarView.swift */,
 				30EAAAD0EFE06D156D4865C321A3141B /* GooglePredictionTableFooter.swift */,
 				F9D9628D3ED5246880DCF375B23F66F2 /* GooglePredictionTableHeader.swift */,
+				C7FBD0BA1D496AC90089A53B /* ReservationInfoTableViewCell.swift */,
+				C7FBD0BC1D496ADA0089A53B /* PersonalInfoTableViewCell.swift */,
+				C7FBD0BE1D496AE70089A53B /* PaymentInfoTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -826,6 +837,7 @@
 				4768370AB8CD958A1E129AB17A216C4E /* Network */,
 				5AE8056728035BE9DB1A6E5B4F04D01C /* Utilities */,
 				25248E8EADE5A8FE9B42D4A85232DB04 /* Views */,
+				C7FBD0B81D4960770089A53B /* CheckoutTableViewController.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -1314,6 +1326,7 @@
 				1F86D0DA96D34D29AD2A2EDFA9A7C207 /* FaciltyAPI.swift in Sources */,
 				FA3FDC863230CF5F291F7C1C14B2A59E /* GooglePlaceDetails.swift in Sources */,
 				177954FA445DF28E0303B4FC42D77BEF /* GooglePlacesPrediction.swift in Sources */,
+				C7FBD0B91D4960770089A53B /* CheckoutTableViewController.swift in Sources */,
 				34D14769904FBE7039B55BB7E9335115 /* GooglePlacesWrapper.swift in Sources */,
 				EA1DCD1AE8981C8655B0F0EEC48DD15C /* GooglePredictionTableFooter.swift in Sources */,
 				06BAEFC121353914388D3572CF4D16FB /* GooglePredictionTableHeader.swift in Sources */,
@@ -1327,11 +1340,14 @@
 				51C1BCF05A4ED4461AF01BA5178F4066 /* Reservation.swift in Sources */,
 				1BEF95242528A49961186488FDCBA020 /* ReservationAPI.swift in Sources */,
 				BC9B3C04789B3587FE5A5DA203653C64 /* ServerEnvironment.swift in Sources */,
+				C7FBD0BD1D496ADA0089A53B /* PersonalInfoTableViewCell.swift in Sources */,
 				3CBA685F659C0AA657C245D0A3794A93 /* ServerErrorJSON.swift in Sources */,
 				9C80D4A4E3A0164A5625546510D8EAB3 /* SpotHero_iOS_Partner_SDK-dummy.m in Sources */,
 				7121370C5D98534832A632617573758F /* SpotHeroPartnerAPIController.swift in Sources */,
 				BFB1172AB19258150037DFAA00FEFB7A /* SpotHeroPartnerSDK.swift in Sources */,
 				9D260760161AEE1CBD3F49C0392D796B /* StringEnum.swift in Sources */,
+				C7FBD0BB1D496AC90089A53B /* ReservationInfoTableViewCell.swift in Sources */,
+				C7FBD0BF1D496AE70089A53B /* PaymentInfoTableViewCell.swift in Sources */,
 				3AD8D1E88F5461B44EBA356157B52200 /* StripeWrapper.swift in Sources */,
 				FEAA7DD45647C79FEFBAA77F19E8D78D /* UIColor+SpotHeroPartner.swift in Sources */,
 			);
