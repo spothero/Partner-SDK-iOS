@@ -49,21 +49,20 @@ struct FacilityAPI {
                                                             completion([], error)
         }) {
             JSON in
-            if let results = JSON["results"] as? [JSONDictionary] {
+            do {
+                let results = try JSON.shp_array("results") as [JSONDictionary]
                 var facilities = [Facility]()
-                do {
-                    for result in results {
-                        let facility = try Facility(json: result)
-                        facilities.append(facility)
-                    }
-                    if facilities.count > 0 {
-                        completion(facilities, nil)
-                    } else {
-                        completion([], FacilityError.NoFacilitiesFound)
-                    }
-                } catch let error {
-                    completion([], error)
+                for result in results {
+                    let facility = try Facility(json: result)
+                    facilities.append(facility)
                 }
+                if facilities.count > 0 {
+                    completion(facilities, nil)
+                } else {
+                    completion([], FacilityError.NoFacilitiesFound)
+                }
+            } catch let error {
+                completion([], error)
             }
         }
     }

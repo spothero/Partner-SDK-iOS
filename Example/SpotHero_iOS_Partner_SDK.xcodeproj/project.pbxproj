@@ -24,6 +24,7 @@
 		C7CBF4891D411F0F001D988F /* SpotHeroPartnerAPIController+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7CBF4871D411EFA001D988F /* SpotHeroPartnerAPIController+Mock.swift */; };
 		C7CBF48C1D412362001D988F /* PartnerAPIMockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7CBF48B1D412362001D988F /* PartnerAPIMockTests.swift */; };
 		C7FBD09B1D4273B40089A53B /* VOKMockData in Resources */ = {isa = PBXBuildFile; fileRef = C7FBD09A1D4273B40089A53B /* VOKMockData */; };
+		C7FBD0AE1D47BF170089A53B /* StripeWrapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7FBD0AD1D47BF170089A53B /* StripeWrapperTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,7 @@
 		C7CBF4871D411EFA001D988F /* SpotHeroPartnerAPIController+Mock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SpotHeroPartnerAPIController+Mock.swift"; sourceTree = "<group>"; };
 		C7CBF48B1D412362001D988F /* PartnerAPIMockTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartnerAPIMockTests.swift; sourceTree = "<group>"; };
 		C7FBD09A1D4273B40089A53B /* VOKMockData */ = {isa = PBXFileReference; lastKnownFileType = folder; path = VOKMockData; sourceTree = "<group>"; };
+		C7FBD0AD1D47BF170089A53B /* StripeWrapperTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StripeWrapperTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +188,7 @@
 				607FACEB1AFB9204008FA782 /* PartnerAPITests.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 				C73848571D35538C0023E1A8 /* GooglePlacesTests.swift */,
+				C7FBD0AD1D47BF170089A53B /* StripeWrapperTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -564,6 +567,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C73848581D35538C0023E1A8 /* GooglePlacesTests.swift in Sources */,
+				C7FBD0AE1D47BF170089A53B /* StripeWrapperTests.swift in Sources */,
 				C7CBF4891D411F0F001D988F /* SpotHeroPartnerAPIController+Mock.swift in Sources */,
 				607FACEC1AFB9204008FA782 /* PartnerAPITests.swift in Sources */,
 				C7CBF48C1D412362001D988F /* PartnerAPIMockTests.swift in Sources */,
