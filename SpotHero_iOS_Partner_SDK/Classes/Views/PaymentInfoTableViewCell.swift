@@ -23,10 +23,4 @@ class PaymentInfoTableViewCell: UITableViewCell {
         self.creditCardView.layer.cornerRadius = 5
         self.creditCardContainerView.layer.cornerRadius = 5
     }
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
 }
