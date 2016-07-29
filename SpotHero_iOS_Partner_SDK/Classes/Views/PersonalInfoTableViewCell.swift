@@ -8,14 +8,9 @@
 
 import UIKit
 
-class PersonalInfoTableViewCell: UITableViewCell, CheckoutCell {
+class PersonalInfoTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var primaryLabel: UILabel!
-    
-    func configureCell(title: String, primaryText: String, secondaryText: String) {
-        self.titleLabel.text = title
-        self.primaryLabel.text = primaryText
-    }
+    @IBOutlet weak var textField: UITextField!
     
     override func awakeFromNib() {
         super.awakeFromNib()

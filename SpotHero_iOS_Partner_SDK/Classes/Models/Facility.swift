@@ -19,6 +19,9 @@ struct Facility {
     let timeZone: String
     let location: CLLocation
     let phoneNumberRequired: Bool
+    let city: String
+    let state: String
+    let streetAddress: String
     
     var rates = [Rate]()
 }
@@ -41,5 +44,10 @@ extension Facility {
                 rates.append(rate)
             }
         }
+        
+        let details = try json.shp_dictionary("facility") as JSONDictionary
+        self.city = try details.shp_string("city")
+        self.state = try details.shp_string("state")
+        self.streetAddress = try details.shp_string("street_address")
     }
 }

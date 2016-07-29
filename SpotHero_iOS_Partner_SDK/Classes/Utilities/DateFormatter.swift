@@ -28,8 +28,8 @@ class DateFormatter: NSObject {
     private enum DateFormat: String, StringEnum {
         case
         NoTime = "MM/dd/yyyy",
-        DateOnlyNoYear = "MMM dd",
-        TimeOnly = "h:mm a",
+        DateOnlyNoYear = "MM/dd",
+        TimeOnly = "h:mma",
         PrettyDayDateTime = "EEE MMM d 'at' h:mma",
         MMDDHmma = "MM/dd h:mm a",
         PrettyDayDate = "EEE, MMM d",
@@ -45,6 +45,14 @@ class DateFormatter: NSObject {
             formatter.locale = NSLocale(localeIdentifier: "en_US")
         }
         
+        return formatter
+    }
+    
+    private static func relativeFormatterWithFormat() -> NSDateFormatter {
+        let formatter = NSDateFormatter()
+        formatter.dateStyle = .ShortStyle
+        formatter.timeStyle = .NoStyle
+        formatter.doesRelativeDateFormatting = true
         return formatter
     }
     
@@ -104,5 +112,8 @@ class DateFormatter: NSObject {
     
     ///A formatter for translating link date times
     static let LinkDateTime: NSDateFormatter = DateFormatter.formatterWithFormat(DateFormat.LinkDateTime)
+    
+    ///A formatter for translating relative dates
+    static let RelativeDate: NSDateFormatter = DateFormatter.relativeFormatterWithFormat()
     
 }

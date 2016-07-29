@@ -115,7 +115,6 @@
 		C7FBD0BB1D496AC90089A53B /* ReservationInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7FBD0BA1D496AC90089A53B /* ReservationInfoTableViewCell.swift */; };
 		C7FBD0BD1D496ADA0089A53B /* PersonalInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7FBD0BC1D496ADA0089A53B /* PersonalInfoTableViewCell.swift */; };
 		C7FBD0BF1D496AE70089A53B /* PaymentInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7FBD0BE1D496AE70089A53B /* PaymentInfoTableViewCell.swift */; };
-		C7FBD0C31D4A63500089A53B /* CheckoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7FBD0C11D4A63030089A53B /* CheckoutCell.swift */; };
 		C8D3D09E32433113799CE6FD434D6FEE /* KIF-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A4118229E82AF62B5973027C25E7FBDE /* KIF-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C97B7C0A7D47F9089B279FEB3B338A4F /* KIFUITestActor-ConditionalTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 117DC4EDDFFBE0C4A7AB0F057D7D3564 /* KIFUITestActor-ConditionalTests.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		CB567CAB623EE579448E24D486300050 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A3069CE220EB84DC77D16EB0EFCDF29 /* QuartzCore.framework */; };
@@ -396,7 +395,6 @@
 		C7FBD0BA1D496AC90089A53B /* ReservationInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReservationInfoTableViewCell.swift; sourceTree = "<group>"; };
 		C7FBD0BC1D496ADA0089A53B /* PersonalInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalInfoTableViewCell.swift; sourceTree = "<group>"; };
 		C7FBD0BE1D496AE70089A53B /* PaymentInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentInfoTableViewCell.swift; sourceTree = "<group>"; };
-		C7FBD0C11D4A63030089A53B /* CheckoutCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutCell.swift; sourceTree = "<group>"; };
 		CA205B5854E0C73DBD4276BB6FFA989E /* NSURLQueryItem+QueryParams.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "NSURLQueryItem+QueryParams.swift"; sourceTree = "<group>"; };
 		CC94D1BD3EC065C485FFBABA54E7D7B6 /* NSException-KIFAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSException-KIFAdditions.h"; path = "Additions/NSException-KIFAdditions.h"; sourceTree = "<group>"; };
 		CED353CC3F3A082AC308EE2853EFE9CB /* KIFUITestActor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KIFUITestActor.h; path = Classes/KIFUITestActor.h; sourceTree = "<group>"; };
@@ -828,7 +826,6 @@
 		B3F3A1CB46B6AFD32623EE34B8E98694 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				C7FBD0C01D4A62CA0089A53B /* Protocols */,
 				E931C15F2E199CB6CD180DDB97DDE296 /* FaciltyAPI.swift */,
 				C7FBD0B81D4960770089A53B /* CheckoutTableViewController.swift */,
 				2595BD9E1A3D5483626A6313B1CC0F3F /* MapViewController.swift */,
@@ -876,14 +873,6 @@
 			);
 			name = "Support Files";
 			path = "Example/Pods/Target Support Files/SpotHero_iOS_Partner_SDK";
-			sourceTree = "<group>";
-		};
-		C7FBD0C01D4A62CA0089A53B /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				C7FBD0C11D4A63030089A53B /* CheckoutCell.swift */,
-			);
-			name = Protocols;
 			sourceTree = "<group>";
 		};
 		CFC1CC8E27E5F71DF7D155ECF49BB40E /* VOKMockUrlProtocol */ = {
@@ -1333,7 +1322,6 @@
 				0720C9A62E9485777AD390CD6B262F47 /* Constants.swift in Sources */,
 				05C57C1CD0BDFAF18E31F8A0148F1CC8 /* DateFormatter.swift in Sources */,
 				E47BD80523CED4B6B371ECA9B1BDCD0A /* DLog.swift in Sources */,
-				C7FBD0C31D4A63500089A53B /* CheckoutCell.swift in Sources */,
 				EDE8E09F549AFCEE1C0045275DA37AFD /* Facility.swift in Sources */,
 				1F86D0DA96D34D29AD2A2EDFA9A7C207 /* FaciltyAPI.swift in Sources */,
 				FA3FDC863230CF5F291F7C1C14B2A59E /* GooglePlaceDetails.swift in Sources */,

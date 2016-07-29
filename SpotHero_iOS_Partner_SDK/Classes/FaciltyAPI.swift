@@ -38,7 +38,8 @@ struct FacilityAPI {
             "longitude" : longitude,
             "latitude" : latitude,
             "starts" : startsString,
-            "ends" : endsString
+            "ends" : endsString,
+            "include" : "facility"
         ]
         
         SpotHeroPartnerAPIController.getJSONFromEndpoint("partner/v1/facilities/rates",

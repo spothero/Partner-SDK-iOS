@@ -12,8 +12,32 @@ enum CheckoutSection: Int {
     case
     ReservationInfo,
     PersonalInfo,
-    PaymentInfo,
-    Count
+    PaymentInfo
+    
+    func reuseIdentifier() -> String {
+        switch self {
+        case .ReservationInfo:
+            return "reservationInfoCell"
+        case .PersonalInfo:
+            return "personalInfoCell"
+        case .PaymentInfo:
+            return "paymentInfoCell"
+        }
+    }
+}
+
+enum ReservationInfoRow: Int {
+    case
+    Address,
+    Starts,
+    Ends
+}
+
+enum PersonalInfoRow: Int {
+    case
+    FullName,
+    Email,
+    Phone
 }
 
 class CheckoutTableViewController: UITableViewController {
@@ -29,9 +53,14 @@ class CheckoutTableViewController: UITableViewController {
         "Email",
         "Phone"
     ]
+    let personalInfoPlaceholders = [
+        "Enter Full Name",
+        "Enter Email Address",
+        "Enter Phone Number"
+    ]
     
-    var reservation: Reservation?
     var facility: Facility?
+    var rate: Rate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +70,7 @@ class CheckoutTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return CheckoutSection.Count.rawValue
+        return 3
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -54,45 +83,43 @@ class CheckoutTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        //TODO: Uncomment when finished we can pass in a reservation and facility
-//        guard let
-//            facility = facility,
-//            reservation = reservation else {
-//                assertionFailure("You need a facility and reservation before you can checkout")
-//                return UITableViewCell()
-//        }
+        let section = CheckoutSection(rawValue: indexPath.section)!
+        let cell = tableView.dequeueReusableCellWithIdentifier(section.reuseIdentifier(), forIndexPath: indexPath)
         
-        let reuseIdentifier: String
-        let title: String
-        let primaryText: String
-        let secondaryText: String
-        switch indexPath.section {
-        case CheckoutSection.ReservationInfo.rawValue:
-            reuseIdentifier = "reservationInfoCell"
-            title = reservationCellTitles[indexPath.row]
-            primaryText = ""
-            secondaryText = ""
-        case CheckoutSection.PersonalInfo.rawValue:
-            reuseIdentifier = "personalInfoCell"
-            title = personalInfoTitles[indexPath.row]
-            primaryText = ""
-            secondaryText = ""
-        case CheckoutSection.PaymentInfo.rawValue:
-            reuseIdentifier = "paymentInfoCell"
-            title = ""
-            primaryText = ""
-            secondaryText = ""
-        default:
-            reuseIdentifier = ""
-            title = ""
-            primaryText = ""
-            secondaryText = ""
-        }
-        
-        let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath)
-        
-        if let cell = cell as? CheckoutCell {
-            cell.configureCell(title, primaryText: primaryText, secondaryText: secondaryText)
+        if let
+            cell = cell as? ReservationInfoTableViewCell,
+            facility = facility,
+            rate = rate {
+            cell.titleLabel.text = reservationCellTitles[indexPath.row]
+            
+            switch indexPath.row {
+            case ReservationInfoRow.Address.rawValue:
+                cell.primaryLabel.text = facility.streetAddress
+                cell.secondaryLabel.text = "\(facility.city), \(facility.state)"
+            case ReservationInfoRow.Starts.rawValue:
+                cell.primaryLabel.text = "\(DateFormatter.RelativeDate.stringFromDate(rate.starts)), \(DateFormatter.DateOnlyNoYear.stringFromDate(rate.starts))"
+                cell.secondaryLabel.text = DateFormatter.TimeOnly.stringFromDate(rate.starts)
+            case ReservationInfoRow.Ends.rawValue:
+                cell.primaryLabel.text = "\(DateFormatter.RelativeDate.stringFromDate(rate.ends)), \(DateFormatter.DateOnlyNoYear.stringFromDate(rate.ends))"
+                cell.secondaryLabel.text = DateFormatter.TimeOnly.stringFromDate(rate.ends)
+            default:
+                break
+            }
+        } else if let cell = cell as? PersonalInfoTableViewCell {
+            cell.titleLabel.text = personalInfoTitles[indexPath.row]
+            cell.textField.placeholder = personalInfoPlaceholders[indexPath.row]
+            
+            switch indexPath.row {
+            case PersonalInfoRow.FullName.rawValue:
+                cell.textField.autocapitalizationType = .Words
+            case PersonalInfoRow.Email.rawValue:
+                cell.textField.autocapitalizationType = .None
+                cell.textField.keyboardType = .EmailAddress
+            case PersonalInfoRow.Phone.rawValue:
+                cell.textField.keyboardType = .PhonePad
+            default:
+                break
+            }
         }
         
         return cell
@@ -124,4 +151,5 @@ class CheckoutTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return CGFloat.min
     }
+    
 }

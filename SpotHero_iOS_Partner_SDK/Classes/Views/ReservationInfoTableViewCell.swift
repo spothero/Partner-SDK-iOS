@@ -8,17 +8,11 @@
 
 import UIKit
 
-class ReservationInfoTableViewCell: UITableViewCell, CheckoutCell {
+class ReservationInfoTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var primaryLabel: UILabel!
     @IBOutlet weak var secondaryLabel: UILabel!
     
-    func configureCell(title: String, primaryText: String, secondaryText: String) {
-        self.titleLabel.text = title
-        self.primaryLabel.text = primaryText
-        self.secondaryLabel.text = secondaryText
-    }
-
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

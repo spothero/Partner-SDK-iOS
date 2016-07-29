@@ -19,6 +19,8 @@ class MapViewController: UIViewController {
     
     let predictionController = PredictionController()
     
+    var facilities = [Facility]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setMapViewRegion()
@@ -59,6 +61,27 @@ class MapViewController: UIViewController {
     
     @IBAction func searchBarTapped(sender: AnyObject) {
         self.collapsedSearchBar.hide()
+    }
+    
+    //TEMP! Only for testing
+    
+    @IBAction func tempCheckoutButtonPressed(sender: AnyObject) {
+        FacilityAPI.fetchFacilities(Constants.ChicagoLocation,
+                                    starts: NSDate().dateByAddingTimeInterval(60 * 60 * 2),
+                                    ends: NSDate().dateByAddingTimeInterval(60 * 60 * 5)) {
+                                        facilities, error -> (Void) in
+                                        self.facilities = facilities
+                                        NSOperationQueue.mainQueue().addOperationWithBlock({ 
+                                            self.performSegueWithIdentifier("showCheckout", sender: nil)
+                                        })
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let vc = segue.destinationViewController as? CheckoutTableViewController {
+            vc.facility = facilities.first
+            vc.rate = facilities.first?.rates.first
+        }
     }
 }
 
