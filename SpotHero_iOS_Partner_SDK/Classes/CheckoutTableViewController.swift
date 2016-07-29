@@ -91,7 +91,7 @@ class CheckoutTableViewController: UITableViewController {
             cell = tableView.dequeueReusableCellWithIdentifier(section.reuseIdentifier(), forIndexPath: indexPath)
         } else {
             assertionFailure("Cannot get the section")
-            cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
+            cell = UITableViewCell()
         }
         
         if let
