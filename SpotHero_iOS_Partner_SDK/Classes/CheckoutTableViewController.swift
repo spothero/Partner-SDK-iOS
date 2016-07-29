@@ -12,7 +12,8 @@ enum CheckoutSection: Int {
     case
     ReservationInfo,
     PersonalInfo,
-    PaymentInfo
+    PaymentInfo,
+    Count
     
     func reuseIdentifier() -> String {
         switch self {
@@ -22,6 +23,8 @@ enum CheckoutSection: Int {
             return "personalInfoCell"
         case .PaymentInfo:
             return "paymentInfoCell"
+        default:
+            return ""
         }
     }
 }
@@ -70,7 +73,7 @@ class CheckoutTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 3
+        return CheckoutSection.Count.rawValue
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -83,8 +86,13 @@ class CheckoutTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let section = CheckoutSection(rawValue: indexPath.section)!
-        let cell = tableView.dequeueReusableCellWithIdentifier(section.reuseIdentifier(), forIndexPath: indexPath)
+        let cell: UITableViewCell
+        if let section = CheckoutSection(rawValue: indexPath.section) {
+            cell = tableView.dequeueReusableCellWithIdentifier(section.reuseIdentifier(), forIndexPath: indexPath)
+        } else {
+            assertionFailure("Cannot get the section")
+            cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
+        }
         
         if let
             cell = cell as? ReservationInfoTableViewCell,
