@@ -263,7 +263,7 @@ test_flight_provisioning_profile_name = 'Distribution: SDK Sample App'
   
     desc "Uploads a build iTunes Connect"
     desc "Note: This build should only be distributed via Test Flight."
-    lane :itc do            
+    private lane :itc do            
         # Create an iTunes Connect build
         build_itc
         
