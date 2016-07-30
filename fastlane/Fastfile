@@ -263,7 +263,7 @@ test_flight_provisioning_profile_name = 'Distribution: SDK Sample App'
   
     desc "Uploads a build iTunes Connect"
     desc "Note: This build should only be distributed via Test Flight."
-    private lane :itc do            
+    private_lane :itc do            
         # Create an iTunes Connect build
         build_itc
         
@@ -281,7 +281,7 @@ test_flight_provisioning_profile_name = 'Distribution: SDK Sample App'
     end
     
     desc "Bumps the version, commits it to git with the appropriate tag, and pushes to the remote."
-    private lane :bump_commit_tag do 
+    private_lane :bump_commit_tag do 
         # Bump the build number and commit it
         increment_build_number(
             xcodeproj: project_file,
