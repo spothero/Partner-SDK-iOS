@@ -297,7 +297,9 @@ test_flight_provisioning_profile_name = 'Distribution: SDK Sample App'
         )
         
         # Push to remote
-        push_to_git_remote        
+        push_to_git_remote(
+            remote: 'GitHub',
+        )        
     end
     
     desc "Method to run after a successful merge."
