@@ -232,7 +232,7 @@ test_flight_provisioning_profile_name = 'Distribution: SDK Sample App'
     desc "Responsible for building and signing the app for Test Flight distribution"
     desc "Note: This will always create a build pointed at Production."
     desc "Note: Setup/teardown of the keychain should be handled outside this method."
-    private_lane :build_itc do        
+    private lane :build_itc do        
         # Make sure the App Store provisioning profile name is actually set up        
         if test_flight_provisioning_profile_name == "FIXME"
             raise "You need to set up the TestFlight provisioning profile name at the top of your Fastfile!"
