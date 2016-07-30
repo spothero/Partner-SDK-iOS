@@ -103,7 +103,6 @@ test_flight_provisioning_profile_name = 'FIXME'
             puts "Keychain already set up!"
         end
         
-        
         puts "------ Importing Cert ------"
         
         # Import Ye Cert to that keychain
