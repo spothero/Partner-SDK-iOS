@@ -281,9 +281,11 @@ test_flight_provisioning_profile_name = 'Distribution: SDK Sample App'
     end
     
     desc "Bumps the version, commits it to git with the appropriate tag, and pushes to the remote."
-    lane :bump_commit_tag do 
+    private lane :bump_commit_tag do 
         # Bump the build number and commit it
-        increment_build_number        
+        increment_build_number(
+            xcodeproj: project_file,
+        )        
         commit_version_bump
         
         # Set the tag as b(build number) for the committed version bump.
