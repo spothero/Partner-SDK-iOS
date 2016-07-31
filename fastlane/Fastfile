@@ -34,6 +34,9 @@ profile_options_key = 'profile'
 # Key for string specifying the app identifier to use to perform various tasks
 app_identifier_options_key = 'app_identifier'
 
+# Key for string specifying the distribution method - "ad-hoc" or "app-store" to use with gym
+method_options_key = 'method'
+
 #########################
 # Per-Project Variables #
 #########################
@@ -228,6 +231,33 @@ test_flight_provisioning_profile_name = 'Distribution: SDK Sample App'
             provisioning_name: provisioning,
         )
     end
+    
+    desc "Uses gym to output a build with the specified options."
+    desc "Expects values for the following keys:"
+    desc "method_options_key: Specify method for building: 'ad-hoc' or 'app-store'"
+    desc "scheme_options_key: The scheme to use for building"
+    private_lane :archive_build do |options|
+        if !options.key?(:method_options_key) || !options.key?(:scheme_options_key)
+            raise "Not all required options for this lane are present!"
+            return
+        end
+    
+        method = options[:method_options_key]
+        scheme = options[:scheme_options_key]
+
+        # Archive away!
+        gym(
+            workspace: workspace_file, 
+            scheme: scheme, 
+            export_method: method,
+            output_directory: File.join(fastlane_folder, "Build"),
+            include_bitcode: false,
+            include_symbols: true,
+            sdk: archive_sdk,
+            clean: true,
+            codesigning_identity: codesigning_id,
+        )
+    end 
     
     desc "Responsible for building and signing the app for Test Flight distribution"
     desc "Note: This will always create a build pointed at Production."
