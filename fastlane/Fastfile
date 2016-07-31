@@ -223,7 +223,7 @@ test_flight_provisioning_profile_name = 'Distribution: SDK Sample App'
         
         # Get current version of specified provisioning profile
         sigh(
-            adhoc: true,
+            adhoc: false,
             app_identifier: identifier,
             username: ci_username,
             team_id: team_identifier,
