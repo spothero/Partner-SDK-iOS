@@ -34,3 +34,4 @@ Carthage
 
 fastlane/test_output
 local_config.sh
+fastlane/Provisioning
