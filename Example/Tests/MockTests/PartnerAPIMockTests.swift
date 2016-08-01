@@ -12,6 +12,10 @@ import CoreLocation
 
 @testable import SpotHero_iOS_Partner_SDK
 
+enum PartnerAPIMockTestsError: ErrorType {
+    case CannotParseDate
+}
+
 class PartnerAPIMockTests: BaseTests {
     let timeoutDuration: NSTimeInterval = 2
     let startDate = DateFormatter.ISO8601NoSeconds.dateFromString("2016-08-01T19:08")
@@ -40,6 +44,7 @@ class PartnerAPIMockTests: BaseTests {
                                             ends: endDate,
                                             completion: completion)
         } else {
+            completion([], PartnerAPIMockTestsError.CannotParseDate)
             XCTFail("Cannot parse dates")
         }
     }
