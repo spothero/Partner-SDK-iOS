@@ -8,6 +8,7 @@
 
 import XCTest
 import VOKMockUrlProtocol
+import CoreLocation
 
 @testable import SpotHero_iOS_Partner_SDK
 
@@ -25,21 +26,49 @@ class PartnerAPIMockTests: XCTestCase {
         super.tearDown()
     }
     
-    func skip_testGetFacilities() {
+    func testGetFacilities() {
         let expectation = self.expectationWithDescription("testGetFacilities")
-        let startDate = NSDate().dateByAddingTimeInterval(60 * 60 * 5)
-        let endDate = NSDate().dateByAddingTimeInterval(60 * 60 * 10)
-        
-        FacilityAPI.fetchFacilities(Constants.ChicagoLocation,
-                                    starts: startDate,
-                                    ends: endDate) {
-                                        facilities, error in
-                                        XCTAssertNil(error)
-                                        XCTAssert(facilities.count > 0)
-                                        expectation.fulfill()
+        if let
+            startDate = DateFormatter.ISO8601NoSeconds.dateFromString("2016-08-01T16:18"),
+            endDate = DateFormatter.ISO8601NoSeconds.dateFromString("2016-08-01T21:18") {
+            FacilityAPI.fetchFacilities(Constants.ChicagoLocation,
+                                        starts: startDate,
+                                        ends: endDate) {
+                                            facilities, error in
+                                            XCTAssertNil(error)
+                                            XCTAssertEqual(facilities.count, 188)
+                                            guard let
+                                                facility = facilities.first,
+                                                rate = facility.rates.first else {
+                                                    XCTFail("Did not get facility or rate")
+                                                    return
+                                            }
+                                            
+                                            XCTAssertEqual(facility.title, "320 W Erie St. - Valet")
+                                            XCTAssert(facility.licensePlateRequired)
+                                            XCTAssertEqual(facility.parkingSpotID, 1477)
+                                            XCTAssertEqual(facility.timeZone, "America/Chicago")
+                                            XCTAssertEqual(facility.location.coordinate.latitude, 41.894011708375274)
+                                            XCTAssertEqual(facility.location.coordinate.longitude, -87.63697385787964)
+                                            XCTAssertFalse(facility.phoneNumberRequired)
+                                            
+                                            XCTAssertEqual(rate.displayPrice, 15)
+                                            XCTAssertEqual(rate.starts, startDate)
+                                            XCTAssertEqual(rate.ends, endDate)
+                                            XCTAssertFalse(rate.unavailable)
+                                            XCTAssertEqual(rate.price, 1500)
+                                            XCTAssertEqual(rate.ruleGroupID, 1390)
+                                            XCTAssertNil(rate.unavailableReason)
+                                            
+                                            expectation.fulfill()
+            }
+        } else {
+            XCTFail("Unable to parse dates")
         }
         
-        waitForExpectationsWithTimeout(60, handler: nil)
+        waitForExpectationsWithTimeout(2, handler: nil)
     }
+    
+    
     
 }
