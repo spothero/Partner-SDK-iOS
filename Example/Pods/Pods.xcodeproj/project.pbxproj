@@ -105,6 +105,7 @@
 		BFB1172AB19258150037DFAA00FEFB7A /* SpotHeroPartnerSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181EBBE7E74872AFCEBDCD295C7BF9DE /* SpotHeroPartnerSDK.swift */; };
 		C14992679A9ED625623F4E9DCED1C774 /* KIFUIObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D57F3D10D1B0A92A6F67BCFF816BC3C /* KIFUIObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C45BFA9E405F62417E1D379F2B36FD03 /* NSURLQueryItem+QueryParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA205B5854E0C73DBD4276BB6FFA989E /* NSURLQueryItem+QueryParams.swift */; };
+		C74D07DD1D4FED170068851B /* CountableIntEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74D07DB1D4FECE00068851B /* CountableIntEnum.swift */; };
 		C75A299B0860D3016DF20B1A5779903C /* NSBundle-KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E0527B6F28C55DD186FE2AD382616187 /* NSBundle-KIFAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C78EF3CB4FC7369BB2E9EB62DD231C2D /* KIFUIObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 6863E13C4D9C3DA825286E26213C105A /* KIFUIObject.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		C7FBD0B41D480C910089A53B /* GooglePredictionTableFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FC0802185970666C7C42C8F69891832 /* GooglePredictionTableFooter.xib */; };
@@ -391,6 +392,7 @@
 		C1FC901A488DCAF88E302D2C22C3AD11 /* VOKBenkode.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VOKBenkode.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C46396168959C07A5D33115CBE6924CB /* ServerEnvironment.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ServerEnvironment.swift; sourceTree = "<group>"; };
 		C46B6258C3006561FC37367145F9196E /* UIEvent+KIFAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIEvent+KIFAdditions.h"; path = "Additions/UIEvent+KIFAdditions.h"; sourceTree = "<group>"; };
+		C74D07DB1D4FECE00068851B /* CountableIntEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountableIntEnum.swift; sourceTree = "<group>"; };
 		C7FBD0B81D4960770089A53B /* CheckoutTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutTableViewController.swift; sourceTree = "<group>"; };
 		C7FBD0BA1D496AC90089A53B /* ReservationInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReservationInfoTableViewCell.swift; sourceTree = "<group>"; };
 		C7FBD0BC1D496ADA0089A53B /* PersonalInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalInfoTableViewCell.swift; sourceTree = "<group>"; };
@@ -826,6 +828,7 @@
 		B3F3A1CB46B6AFD32623EE34B8E98694 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				C74D07DA1D4FECB80068851B /* Protocols */,
 				E931C15F2E199CB6CD180DDB97DDE296 /* FaciltyAPI.swift */,
 				C7FBD0B81D4960770089A53B /* CheckoutTableViewController.swift */,
 				2595BD9E1A3D5483626A6313B1CC0F3F /* MapViewController.swift */,
@@ -873,6 +876,14 @@
 			);
 			name = "Support Files";
 			path = "Example/Pods/Target Support Files/SpotHero_iOS_Partner_SDK";
+			sourceTree = "<group>";
+		};
+		C74D07DA1D4FECB80068851B /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				C74D07DB1D4FECE00068851B /* CountableIntEnum.swift */,
+			);
+			name = Protocols;
 			sourceTree = "<group>";
 		};
 		CFC1CC8E27E5F71DF7D155ECF49BB40E /* VOKMockUrlProtocol */ = {
@@ -1326,6 +1337,7 @@
 				EDE8E09F549AFCEE1C0045275DA37AFD /* Facility.swift in Sources */,
 				1F86D0DA96D34D29AD2A2EDFA9A7C207 /* FaciltyAPI.swift in Sources */,
 				FA3FDC863230CF5F291F7C1C14B2A59E /* GooglePlaceDetails.swift in Sources */,
+				C74D07DD1D4FED170068851B /* CountableIntEnum.swift in Sources */,
 				177954FA445DF28E0303B4FC42D77BEF /* GooglePlacesPrediction.swift in Sources */,
 				C7FBD0B91D4960770089A53B /* CheckoutTableViewController.swift in Sources */,
 				34D14769904FBE7039B55BB7E9335115 /* GooglePlacesWrapper.swift in Sources */,
