@@ -34,7 +34,7 @@ extension CountableIntEnum {
      */
     static var AllCases: [Self] {
         var caseIndex = 0
-        let generator = anyGenerator { Self(rawValue: caseIndex++) }
+        let generator = AnyGenerator { Self(rawValue: caseIndex++) }
         return Array(generator)
     }
     
