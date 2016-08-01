@@ -14,10 +14,10 @@ import CoreLocation
 
 class PartnerAPIMockTests: BaseTests {
     let timeoutDuration: NSTimeInterval = 2
-    let startDate = DateFormatter.ISO8601NoSeconds.dateFromString("2016-08-01T16:18")
-    let endDate = DateFormatter.ISO8601NoSeconds.dateFromString("2016-08-01T21:18")
-    let reservationStartDate = DateFormatter.ISO8601NoMillisecondsUTC.dateFromString("2016-08-01T21:58:00Z")
-    let reservationEndDate = DateFormatter.ISO8601NoMillisecondsUTC.dateFromString("2016-08-02T02:58:00Z")
+    let startDate = DateFormatter.ISO8601NoSeconds.dateFromString("2016-08-01T19:08")
+    let endDate = DateFormatter.ISO8601NoSeconds.dateFromString("2016-08-02T00:08")
+    let reservationStartDate = DateFormatter.ISO8601NoMillisecondsUTC.dateFromString("2016-08-02T00:08:00Z")
+    let reservationEndDate = DateFormatter.ISO8601NoMillisecondsUTC.dateFromString("2016-08-02T05:08:00Z")
     
     override func setUp() {
         super.setUp()
@@ -39,14 +39,16 @@ class PartnerAPIMockTests: BaseTests {
                                             starts: startDate,
                                             ends: endDate,
                                             completion: completion)
+        } else {
+            XCTFail("Cannot parse dates")
         }
     }
     
-    func testGetFacilities() {
-        let expectation = self.expectationWithDescription("testGetFacilities")
+    func testMockGetFacilities() {
+        let expectation = self.expectationWithDescription("Got facilities")
         self.getFacilities(Constants.ChicagoLocation) { (facilities, error) in
             XCTAssertNil(error)
-            XCTAssertEqual(facilities.count, 188)
+            XCTAssertEqual(facilities.count, 170)
             guard let
                 facility = facilities.first,
                 rate = facility.rates.first else {
@@ -76,8 +78,8 @@ class PartnerAPIMockTests: BaseTests {
         waitForExpectationsWithTimeout(self.timeoutDuration, handler: nil)
     }
     
-    func testCreateReservation() {
-        let expectation = self.expectationWithDescription("testCreateReservation")
+    func testMockCreateReservation() {
+        let expectation = self.expectationWithDescription("Created reservation")
         
         self.getFacilities(Constants.ChicagoLocation) {
             facilities, error in
@@ -90,11 +92,11 @@ class PartnerAPIMockTests: BaseTests {
                                                     XCTAssertNil(error)
                                                     XCTAssertNotNil(reservation)
                                                     XCTAssertEqual(reservation?.status, "valid")
-                                                    XCTAssertEqual(reservation?.rentalID, 3559195)
+                                                    XCTAssertEqual(reservation?.rentalID, 3559198)
                                                     XCTAssertEqual(reservation?.starts, self.reservationStartDate)
                                                     XCTAssertEqual(reservation?.ends, self.reservationEndDate)
                                                     XCTAssertEqual(reservation?.price, 1500)
-                                                    XCTAssertEqual(reservation?.receiptAccessKey, "5d7889b76832b64daf9aeadf46dca48bd470c2a34f46619899de8adeabf64c24")
+                                                    XCTAssertEqual(reservation?.receiptAccessKey, "bdce43f47b539e06e0cce19ffff2fa2f37e5b0d391caf2a76b5e9afbd34a9292")
                                                     
                                                     expectation.fulfill()
                 })
