@@ -11,4 +11,6 @@ import UIKit
 class PersonalInfoTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var textField: UITextField!
+    
+    static let reuseIdentifier = "personalInfoCell"
 }

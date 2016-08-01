@@ -13,6 +13,8 @@ class PaymentInfoTableViewCell: UITableViewCell {
     @IBOutlet weak var cardImage: UIImageView!
     @IBOutlet weak var creditCardTextField: UITextField!
     @IBOutlet weak var creditCardContainerView: UIView!
+    
+    static let reuseIdentifier = "paymentInfoCell"
 
     override func awakeFromNib() {
         super.awakeFromNib()

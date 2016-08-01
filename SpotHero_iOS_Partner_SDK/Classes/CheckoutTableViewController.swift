@@ -17,11 +17,11 @@ enum CheckoutSection: Int, CountableIntEnum {
     func reuseIdentifier() -> String {
         switch self {
         case .ReservationInfo:
-            return "reservationInfoCell"
+            return ReservationInfoTableViewCell.reuseIdentifier
         case .PersonalInfo:
-            return "personalInfoCell"
+            return PersonalInfoTableViewCell.reuseIdentifier
         case .PaymentInfo:
-            return "paymentInfoCell"
+            return PaymentInfoTableViewCell.reuseIdentifier
         }
     }
 }
