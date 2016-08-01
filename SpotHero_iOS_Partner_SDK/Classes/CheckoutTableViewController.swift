@@ -2,7 +2,7 @@
 //  CheckoutTableViewController.swift
 //  Pods
 //
-//  Created by SpotHeroMatt on 7/27/16.
+//  Created by Matthew Reed on 7/27/16.
 //
 //
 
@@ -34,6 +34,8 @@ enum ReservationInfoRow: Int {
     Address,
     Starts,
     Ends
+    
+    
 }
 
 enum PersonalInfoRow: Int {

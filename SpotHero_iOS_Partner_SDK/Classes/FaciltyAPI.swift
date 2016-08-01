@@ -2,7 +2,7 @@
 //  FaciltyAPI.swift
 //  Pods
 //
-//  Created by SpotHeroMatt on 7/20/16.
+//  Created by Matthew Reed on 7/20/16.
 //
 //
 
