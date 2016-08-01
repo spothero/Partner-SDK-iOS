@@ -20,7 +20,7 @@ class PaymentInfoTableViewCell: UITableViewCell {
         self.creditCardView.layer.borderWidth = 1
         //TODO: Use some sort of utility file for colors
         self.creditCardView.layer.borderColor = UIColor(white: 0.9, alpha: 1).CGColor
-        self.creditCardView.layer.cornerRadius = 5
-        self.creditCardContainerView.layer.cornerRadius = 5
+        self.creditCardView.layer.cornerRadius = HeightsAndLengths.standardCornerRadius
+        self.creditCardContainerView.layer.cornerRadius = HeightsAndLengths.standardCornerRadius
     }
 }

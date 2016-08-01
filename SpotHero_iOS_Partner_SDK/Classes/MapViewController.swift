@@ -36,7 +36,7 @@ class MapViewController: UIViewController {
     }
     
     private func setupViews() {
-        self.searchContainerView.layer.cornerRadius = 5
+        self.searchContainerView.layer.cornerRadius = HeightsAndLengths.standardCornerRadius
         self.searchContainerView.layer.masksToBounds = true
         
         self.predictionController.delegate = self
