@@ -10,9 +10,8 @@ import XCTest
 import CoreLocation
 @testable import SpotHero_iOS_Partner_SDK
 
-class PartnerAPITests: XCTestCase {
+class PartnerAPITests: BaseTests {
     let timeoutDuration: NSTimeInterval = 60
-    let testEmail = "matt@test.com"
     
     override func setUp() {
         super.setUp()
