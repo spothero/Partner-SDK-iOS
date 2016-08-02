@@ -33,8 +33,12 @@ extension CountableIntEnum {
      .count so you can get the number of items in this enum.
      */
     static var AllCases: [Self] {
-        var caseIndex = 0
-        let generator = AnyGenerator { Self(rawValue: caseIndex++) }
+        var caseIndex: Int = 0
+        let generator: AnyGenerator<Self> = AnyGenerator {
+            let _generator = Self(rawValue: caseIndex)
+            caseIndex += 1
+            return _generator
+        }
         return Array(generator)
     }
     
