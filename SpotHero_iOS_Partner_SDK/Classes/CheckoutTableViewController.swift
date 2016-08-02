@@ -32,19 +32,17 @@ enum ReservationInfoRow: Int {
     Starts,
     Ends
     
-    //TODO: Localize
     func title() -> String {
         switch self {
         case .Address:
-            return "Address"
+            return LocalizedStrings.Address
         case .Starts:
-            return "Starts"
+            return LocalizedStrings.Starts
         case .Ends:
-            return "Ends"
+            return LocalizedStrings.Ends
         }
     }
 }
-
 
 enum PersonalInfoRow: Int {
     case
@@ -52,27 +50,25 @@ enum PersonalInfoRow: Int {
     Email,
     Phone
     
-    //TODO: Localize
     func title() -> String {
         switch self {
         case .FullName:
-            return "Full Name"
+            return LocalizedStrings.FullName
         case .Email:
-            return "Email"
+            return LocalizedStrings.Email
         case .Phone:
-            return "Phone"
+            return LocalizedStrings.Phone
         }
     }
     
-    //TODO: Localize
     func placeholder() -> String {
         switch self {
         case .FullName:
-            return "Enter Full Name"
+            return LocalizedStrings.EnterFullName
         case .Email:
-            return "Enter Email Address"
+            return LocalizedStrings.EnterEmailAddress
         case .Phone:
-            return "Enter Phone Number"
+            return LocalizedStrings.EnterPhoneNumber
         }
     }
 }
@@ -162,16 +158,17 @@ class CheckoutTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        // TODO: Localize
-        switch section {
-        case CheckoutSection.ReservationInfo.rawValue:
-            return "RESERVATION INFO"
-        case CheckoutSection.PersonalInfo.rawValue:
-            return "PERSONAL INFO"
-        case CheckoutSection.PaymentInfo.rawValue:
-            return "PAYMENT INFO"
-        default:
-            return ""
+        guard let checkoutSection = CheckoutSection(rawValue: section) else {
+            return nil
+        }
+        
+        switch checkoutSection {
+        case CheckoutSection.ReservationInfo:
+            return LocalizedStrings.ReservationInfo
+        case CheckoutSection.PersonalInfo:
+            return LocalizedStrings.PersonalInfo
+        case CheckoutSection.PaymentInfo:
+            return LocalizedStrings.PaymentInfo
         }
     }
     

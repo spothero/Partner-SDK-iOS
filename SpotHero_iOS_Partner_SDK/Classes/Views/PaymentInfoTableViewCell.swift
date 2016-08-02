@@ -13,6 +13,7 @@ class PaymentInfoTableViewCell: UITableViewCell {
     @IBOutlet weak var cardImage: UIImageView!
     @IBOutlet weak var creditCardTextField: UITextField!
     @IBOutlet weak var creditCardContainerView: UIView!
+    @IBOutlet weak var warningLabel: UILabel!
     
     static let reuseIdentifier = "paymentInfoCell"
 
@@ -23,5 +24,6 @@ class PaymentInfoTableViewCell: UITableViewCell {
         self.creditCardView.layer.borderColor = UIColor.sph_lightGray().CGColor
         self.creditCardView.layer.cornerRadius = HeightsAndLengths.standardCornerRadius
         self.creditCardContainerView.layer.cornerRadius = HeightsAndLengths.standardCornerRadius
+        self.warningLabel.text = LocalizedStrings.CreditCardWarning
     }
 }
