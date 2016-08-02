@@ -13,19 +13,4 @@ class PersonalInfoTableViewCell: UITableViewCell {
     @IBOutlet weak var textField: UITextField!
     
     static let reuseIdentifier = "personalInfoCell"
-    
-    func configureCell(row: PersonalInfoRow) {
-        self.titleLabel.text = row.title()
-        self.textField.placeholder = row.placeholder()
-        
-        switch row {
-        case PersonalInfoRow.FullName:
-            self.textField.autocapitalizationType = .Words
-        case PersonalInfoRow.Email:
-            self.textField.autocapitalizationType = .None
-            self.textField.keyboardType = .EmailAddress
-        case PersonalInfoRow.Phone:
-            self.textField.keyboardType = .PhonePad
-        }
-    }
 }
