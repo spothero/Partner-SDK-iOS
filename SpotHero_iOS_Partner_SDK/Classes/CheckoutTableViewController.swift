@@ -92,7 +92,8 @@ class CheckoutTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
-        case CheckoutSection.ReservationInfo.rawValue, CheckoutSection.PersonalInfo.rawValue:
+        case CheckoutSection.ReservationInfo.rawValue,
+             CheckoutSection.PersonalInfo.rawValue:
             return 3
         default:
             return 1
@@ -110,39 +111,19 @@ class CheckoutTableViewController: UITableViewController {
         
         if let
             cell = cell as? ReservationInfoTableViewCell,
-            facility = facility,
-            rate = rate,
+            facility = self.facility,
+            rate = self.rate,
             row = ReservationInfoRow(rawValue: indexPath.row) {
             
-            cell.titleLabel.text = row.title()
-            
-            switch row {
-            case ReservationInfoRow.Address:
-                cell.primaryLabel.text = facility.streetAddress
-                cell.secondaryLabel.text = "\(facility.city), \(facility.state)"
-            case ReservationInfoRow.Starts:
-                cell.primaryLabel.text = "\(DateFormatter.RelativeDate.stringFromDate(rate.starts)), \(DateFormatter.DateOnlyNoYear.stringFromDate(rate.starts))"
-                cell.secondaryLabel.text = DateFormatter.TimeOnly.stringFromDate(rate.starts)
-            case ReservationInfoRow.Ends:
-                cell.primaryLabel.text = "\(DateFormatter.RelativeDate.stringFromDate(rate.ends)), \(DateFormatter.DateOnlyNoYear.stringFromDate(rate.ends))"
-                cell.secondaryLabel.text = DateFormatter.TimeOnly.stringFromDate(rate.ends)
-            }
+            self.configureCell(cell,
+                               row: row,
+                               facility: facility,
+                               rate: rate)
         } else if let
             cell = cell as? PersonalInfoTableViewCell,
             row = PersonalInfoRow(rawValue: indexPath.row) {
             
-            cell.titleLabel.text = row.title()
-            cell.textField.placeholder = row.placeholder()
-            
-            switch row {
-            case PersonalInfoRow.FullName:
-                cell.textField.autocapitalizationType = .Words
-            case PersonalInfoRow.Email:
-                cell.textField.autocapitalizationType = .None
-                cell.textField.keyboardType = .EmailAddress
-            case PersonalInfoRow.Phone:
-                cell.textField.keyboardType = .PhonePad
-            }
+            self.configureCell(cell, row: row)
         }
         
         return cell
@@ -176,4 +157,36 @@ class CheckoutTableViewController: UITableViewController {
         return CGFloat.min
     }
     
+    //MARK: Helpers
+    
+    func configureCell(cell: ReservationInfoTableViewCell, row: ReservationInfoRow, facility: Facility, rate: Rate) {
+        cell.titleLabel.text = row.title()
+        
+        switch row {
+        case ReservationInfoRow.Address:
+            cell.primaryLabel.text = facility.streetAddress
+            cell.secondaryLabel.text = "\(facility.city), \(facility.state)"
+        case ReservationInfoRow.Starts:
+            cell.primaryLabel.text = "\(DateFormatter.RelativeDate.stringFromDate(rate.starts)), \(DateFormatter.DateOnlyNoYear.stringFromDate(rate.starts))"
+            cell.secondaryLabel.text = DateFormatter.TimeOnly.stringFromDate(rate.starts)
+        case ReservationInfoRow.Ends:
+            cell.primaryLabel.text = "\(DateFormatter.RelativeDate.stringFromDate(rate.ends)), \(DateFormatter.DateOnlyNoYear.stringFromDate(rate.ends))"
+            cell.secondaryLabel.text = DateFormatter.TimeOnly.stringFromDate(rate.ends)
+        }
+    }
+    
+    func configureCell(cell: PersonalInfoTableViewCell, row: PersonalInfoRow) {
+        cell.titleLabel.text = row.title()
+        cell.textField.placeholder = row.placeholder()
+        
+        switch row {
+        case PersonalInfoRow.FullName:
+            cell.textField.autocapitalizationType = .Words
+        case PersonalInfoRow.Email:
+            cell.textField.autocapitalizationType = .None
+            cell.textField.keyboardType = .EmailAddress
+        case PersonalInfoRow.Phone:
+            cell.textField.keyboardType = .PhonePad
+        }
+    }
 }
