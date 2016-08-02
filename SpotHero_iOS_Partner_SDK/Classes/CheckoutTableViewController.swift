@@ -2,29 +2,26 @@
 //  CheckoutTableViewController.swift
 //  Pods
 //
-//  Created by SpotHeroMatt on 7/27/16.
+//  Created by Matthew Reed on 7/27/16.
 //
 //
 
 import UIKit
 
-enum CheckoutSection: Int {
+enum CheckoutSection: Int, CountableIntEnum {
     case
     ReservationInfo,
     PersonalInfo,
-    PaymentInfo,
-    Count
+    PaymentInfo
     
     func reuseIdentifier() -> String {
         switch self {
         case .ReservationInfo:
-            return "reservationInfoCell"
+            return ReservationInfoTableViewCell.reuseIdentifier
         case .PersonalInfo:
-            return "personalInfoCell"
+            return PersonalInfoTableViewCell.reuseIdentifier
         case .PaymentInfo:
-            return "paymentInfoCell"
-        default:
-            return ""
+            return PaymentInfoTableViewCell.reuseIdentifier
         }
     }
 }
@@ -34,6 +31,17 @@ enum ReservationInfoRow: Int {
     Address,
     Starts,
     Ends
+    
+    func title() -> String {
+        switch self {
+        case .Address:
+            return LocalizedStrings.Address
+        case .Starts:
+            return LocalizedStrings.Starts
+        case .Ends:
+            return LocalizedStrings.Ends
+        }
+    }
 }
 
 enum PersonalInfoRow: Int {
@@ -41,41 +49,47 @@ enum PersonalInfoRow: Int {
     FullName,
     Email,
     Phone
+    
+    func title() -> String {
+        switch self {
+        case .FullName:
+            return LocalizedStrings.FullName
+        case .Email:
+            return LocalizedStrings.Email
+        case .Phone:
+            return LocalizedStrings.Phone
+        }
+    }
+    
+    func placeholder() -> String {
+        switch self {
+        case .FullName:
+            return LocalizedStrings.EnterFullName
+        case .Email:
+            return LocalizedStrings.EnterEmailAddress
+        case .Phone:
+            return LocalizedStrings.EnterPhoneNumber
+        }
+    }
 }
 
 class CheckoutTableViewController: UITableViewController {
     let reservationCellHeight: CGFloat = 86
-    //TODO: Localize
-    let reservationCellTitles = [
-        "Address",
-        "Starts",
-        "Ends"
-    ]
-    let personalInfoTitles = [
-        "Full Name",
-        "Email",
-        "Phone"
-    ]
-    let personalInfoPlaceholders = [
-        "Enter Full Name",
-        "Enter Email Address",
-        "Enter Phone Number"
-    ]
     
     var facility: Facility?
     var rate: Rate?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.estimatedRowHeight = 60
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return CheckoutSection.Count.rawValue
+        return CheckoutSection.AllCases.count
     }
-
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case CheckoutSection.ReservationInfo.rawValue, CheckoutSection.PersonalInfo.rawValue:
@@ -97,36 +111,37 @@ class CheckoutTableViewController: UITableViewController {
         if let
             cell = cell as? ReservationInfoTableViewCell,
             facility = facility,
-            rate = rate {
-            cell.titleLabel.text = reservationCellTitles[indexPath.row]
+            rate = rate,
+            row = ReservationInfoRow(rawValue: indexPath.row) {
             
-            switch indexPath.row {
-            case ReservationInfoRow.Address.rawValue:
+            cell.titleLabel.text = row.title()
+            
+            switch row {
+            case ReservationInfoRow.Address:
                 cell.primaryLabel.text = facility.streetAddress
                 cell.secondaryLabel.text = "\(facility.city), \(facility.state)"
-            case ReservationInfoRow.Starts.rawValue:
+            case ReservationInfoRow.Starts:
                 cell.primaryLabel.text = "\(DateFormatter.RelativeDate.stringFromDate(rate.starts)), \(DateFormatter.DateOnlyNoYear.stringFromDate(rate.starts))"
                 cell.secondaryLabel.text = DateFormatter.TimeOnly.stringFromDate(rate.starts)
-            case ReservationInfoRow.Ends.rawValue:
+            case ReservationInfoRow.Ends:
                 cell.primaryLabel.text = "\(DateFormatter.RelativeDate.stringFromDate(rate.ends)), \(DateFormatter.DateOnlyNoYear.stringFromDate(rate.ends))"
                 cell.secondaryLabel.text = DateFormatter.TimeOnly.stringFromDate(rate.ends)
-            default:
-                break
             }
-        } else if let cell = cell as? PersonalInfoTableViewCell {
-            cell.titleLabel.text = personalInfoTitles[indexPath.row]
-            cell.textField.placeholder = personalInfoPlaceholders[indexPath.row]
+        } else if let
+            cell = cell as? PersonalInfoTableViewCell,
+            row = PersonalInfoRow(rawValue: indexPath.row) {
             
-            switch indexPath.row {
-            case PersonalInfoRow.FullName.rawValue:
+            cell.titleLabel.text = row.title()
+            cell.textField.placeholder = row.placeholder()
+            
+            switch row {
+            case PersonalInfoRow.FullName:
                 cell.textField.autocapitalizationType = .Words
-            case PersonalInfoRow.Email.rawValue:
+            case PersonalInfoRow.Email:
                 cell.textField.autocapitalizationType = .None
                 cell.textField.keyboardType = .EmailAddress
-            case PersonalInfoRow.Phone.rawValue:
+            case PersonalInfoRow.Phone:
                 cell.textField.keyboardType = .PhonePad
-            default:
-                break
             }
         }
         
@@ -143,16 +158,17 @@ class CheckoutTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        // TODO: Localize
-        switch section {
-        case CheckoutSection.ReservationInfo.rawValue:
-            return "RESERVATION INFO"
-        case CheckoutSection.PersonalInfo.rawValue:
-            return "PERSONAL INFO"
-        case CheckoutSection.PaymentInfo.rawValue:
-            return "PAYMENT INFO"
-        default:
-            return ""
+        guard let checkoutSection = CheckoutSection(rawValue: section) else {
+            return nil
+        }
+        
+        switch checkoutSection {
+        case CheckoutSection.ReservationInfo:
+            return LocalizedStrings.ReservationInfo
+        case CheckoutSection.PersonalInfo:
+            return LocalizedStrings.PersonalInfo
+        case CheckoutSection.PaymentInfo:
+            return LocalizedStrings.PaymentInfo
         }
     }
     

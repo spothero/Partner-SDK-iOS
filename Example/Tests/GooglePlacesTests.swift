@@ -2,7 +2,7 @@
 //  GooglePlacesTests.swift
 //  SpotHero_iOS_Partner_SDK
 //
-//  Created by SpotHeroMatt on 7/12/16.
+//  Created by Matthew Reed on 7/12/16.
 //  Copyright © 2016 SpotHero, Inc. All rights reserved.
 //
 
