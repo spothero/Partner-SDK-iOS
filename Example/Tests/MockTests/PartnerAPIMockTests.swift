@@ -18,8 +18,8 @@ enum PartnerAPIMockTestsError: ErrorType {
 
 class PartnerAPIMockTests: BaseTests {
     let timeoutDuration: NSTimeInterval = 2
-    let startDate = DateFormatter.ISO8601NoSeconds.dateFromString("2016-08-01T19:08")
-    let endDate = DateFormatter.ISO8601NoSeconds.dateFromString("2016-08-02T00:08")
+    let startDate = DateFormatter.ISO8601NoSeconds.dateFromString("2016-08-02T19:01")
+    let endDate = DateFormatter.ISO8601NoSeconds.dateFromString("2016-08-03T00:01")
     let reservationStartDate = DateFormatter.ISO8601NoMillisecondsUTC.dateFromString("2016-08-02T00:08:00Z")
     let reservationEndDate = DateFormatter.ISO8601NoMillisecondsUTC.dateFromString("2016-08-02T05:08:00Z")
     
