@@ -82,8 +82,8 @@ class MapViewController: UIViewController {
     //TODO: Remove when facility UI is done
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let vc = segue.destinationViewController as? CheckoutTableViewController {
-            vc.facility = facilities.first
-            vc.rate = facilities.first?.rates.first
+            vc.facility = self.facilities.first
+            vc.rate = self.facilities.first?.rates.first
         }
     }
 }
