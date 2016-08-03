@@ -36,5 +36,9 @@ public extension UIColor {
                                  green: 153,
                                  blue: 3)
     }
+    
+    static func sph_lightGray() -> UIColor {
+        return UIColor(white: 0.9, alpha: 1)
+    }
 
 }
