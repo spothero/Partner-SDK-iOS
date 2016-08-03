@@ -35,8 +35,8 @@ class DatePickerView: UIView {
     
     private func setupDatePickerView() {
         self.datePickerViewBottomConstraint.constant = -self.DatePickerViewHeight
-        self.datePicker.minimumDate = NSDate.dateByRoundingMinutesDownBy30(NSDate())
-        self.datePicker.date = NSDate.dateByRoundingMinutesDownBy30(NSDate())
+        self.datePicker.minimumDate = NSDate().shp_dateByRoundingMinutesBy30(true)
+        self.datePicker.date = NSDate().shp_dateByRoundingMinutesBy30(true)
     }
     
     /**
@@ -75,7 +75,7 @@ extension DatePickerView: TimeSelectionViewDelegate {
     
     func didTapEndView(startDate: NSDate, endDate: NSDate) {
         self.showDatePickerView(true)
-        self.datePicker.minimumDate = NSDate.dateByRoundingMinutesUpBy30(startDate)
+        self.datePicker.minimumDate = startDate.shp_dateByRoundingMinutesBy30(false)
         self.datePicker.maximumDate = nil
         self.datePicker.date = endDate
         self.toolbarTitleLabel.text = LocalizedStrings.SetEndTime

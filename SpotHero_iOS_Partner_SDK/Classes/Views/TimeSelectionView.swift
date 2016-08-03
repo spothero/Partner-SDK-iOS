@@ -30,8 +30,8 @@ class TimeSelectionView: UIView {
     
     private var isStartView = false
     private let thirtyMins: NSTimeInterval = 1800
-    private var startDate: NSDate = NSDate.dateByRoundingMinutesDownBy30(NSDate())
-    private var endDate: NSDate = NSDate.dateByRoundingMinutesUpBy30(NSDate.dateByRoundingMinutesDownBy30(NSDate()))
+    private var startDate: NSDate = NSDate().shp_dateByRoundingMinutesBy30(true)
+    private var endDate: NSDate = NSDate().shp_dateByRoundingMinutesBy30(true).shp_dateByRoundingMinutesBy30(false)
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -93,7 +93,7 @@ class TimeSelectionView: UIView {
         if (self.isStartView) {
             self.startDate = date
             if (self.endDate.timeIntervalSinceDate(date) < self.thirtyMins) {
-                self.endDate = NSDate.dateByRoundingMinutesUpBy30(date)
+                self.endDate = date.shp_dateByRoundingMinutesBy30(false)
             }
         } else {
             self.endDate = date
