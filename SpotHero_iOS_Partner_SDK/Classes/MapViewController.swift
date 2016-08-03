@@ -22,9 +22,9 @@ class MapViewController: UIViewController {
     @IBOutlet weak private var reservationContainerViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak private var datePickerView: DatePickerView!
     
-    let predictionController = PredictionController()
-    let searchBarHeight: CGFloat = 44
-    let reservationContainerViewHeight: CGFloat = 134
+    private let predictionController = PredictionController()
+    private let searchBarHeight: CGFloat = 44
+    private let reservationContainerViewHeight: CGFloat = 134
     
     override func viewDidLoad() {
         super.viewDidLoad()
