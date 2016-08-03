@@ -17,7 +17,9 @@ protocol PredictionControllerDelegate {
 class PredictionController: NSObject {
     private var predictions = [GooglePlacesPrediction]() {
         didSet {
-            self.delegate?.didUpdatePredictions(self.predictions)
+            guard let delegate = self.delegate?.didUpdatePredictions(self.predictions) else {
+                return assertionFailure("delegate is nil")
+            }
         }
     }
     
