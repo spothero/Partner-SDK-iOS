@@ -136,7 +136,7 @@
                                             <constraint firstAttribute="bottom" secondItem="k7g-kF-iqV" secondAttribute="bottom" id="z0R-tg-7r1"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="00R-A9-LV4">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="00R-A9-LV4" customClass="TimeSelectionView" customModule="SpotHero_iOS_Partner_SDK" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="44" width="560" height="90"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hB6-e2-G5a">
@@ -252,6 +252,12 @@
                                             <constraint firstAttribute="bottom" secondItem="7JF-vh-Ckv" secondAttribute="bottom" constant="8" id="qIw-se-mUI"/>
                                             <constraint firstAttribute="trailing" secondItem="OXP-P9-EfD" secondAttribute="trailing" constant="8" id="quh-kS-Wd1"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="endDateLabel" destination="rvd-oM-7oL" id="OzR-1b-ADs"/>
+                                            <outlet property="endTimeLabel" destination="hRI-UE-E7g" id="zqK-ua-8xe"/>
+                                            <outlet property="startDateLabel" destination="nXl-sc-e5R" id="wpR-gT-0wn"/>
+                                            <outlet property="startTimeLabel" destination="RuZ-vp-ds5" id="gsa-ix-ynN"/>
+                                        </connections>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -265,18 +271,9 @@
                                     <constraint firstAttribute="trailing" secondItem="00R-A9-LV4" secondAttribute="trailing" id="ulT-LG-tob"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zfM-Xw-6w1" userLabel="Date Picker View">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zfM-Xw-6w1" userLabel="Date Picker View" customClass="DatePickerView" customModule="SpotHero_iOS_Partner_SDK" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="400" width="600" height="200"/>
                                 <subviews>
-                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="30" translatesAutoresizingMaskIntoConstraints="NO" id="pQl-fm-uqf">
-                                        <rect key="frame" x="0.0" y="44" width="600" height="156"/>
-                                        <date key="date" timeIntervalSinceReferenceDate="491165988.92301297">
-                                            <!--2016-07-25 18:59:48 +0000-->
-                                        </date>
-                                        <connections>
-                                            <action selector="datePickerValueDidChange:" destination="Vax-OI-bt8" eventType="valueChanged" id="rWB-5m-eQX"/>
-                                        </connections>
-                                    </datePicker>
                                     <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7bS-M8-91S">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <constraints>
@@ -286,7 +283,7 @@
                                             <barButtonItem style="plain" systemItem="flexibleSpace" id="J01-RM-yhE"/>
                                             <barButtonItem title="Done" width="63" id="Xr8-AX-NHR">
                                                 <connections>
-                                                    <action selector="doneButtonPressed:" destination="Vax-OI-bt8" id="zoy-fh-t9E"/>
+                                                    <action selector="doneButtonPressed:" destination="zfM-Xw-6w1" id="zZy-qW-8RE"/>
                                                 </connections>
                                             </barButtonItem>
                                         </items>
@@ -294,9 +291,18 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set Start Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q0M-iA-GXA">
                                         <rect key="frame" x="245" y="12" width="110" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="30" translatesAutoresizingMaskIntoConstraints="NO" id="pQl-fm-uqf">
+                                        <rect key="frame" x="0.0" y="44" width="600" height="156"/>
+                                        <date key="date" timeIntervalSinceReferenceDate="491165988.92301297">
+                                            <!--2016-07-25 18:59:48 +0000-->
+                                        </date>
+                                        <connections>
+                                            <action selector="datePickerValueDidChange:" destination="zfM-Xw-6w1" eventType="valueChanged" id="4jI-3s-pHW"/>
+                                        </connections>
+                                    </datePicker>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -311,6 +317,12 @@
                                     <constraint firstItem="q0M-iA-GXA" firstAttribute="centerX" secondItem="7bS-M8-91S" secondAttribute="centerX" id="pbI-HV-kMh"/>
                                     <constraint firstAttribute="trailing" secondItem="7bS-M8-91S" secondAttribute="trailing" id="zyA-SS-jiW"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="datePicker" destination="pQl-fm-uqf" id="ZeN-4k-TS2"/>
+                                    <outlet property="datePickerViewBottomConstraint" destination="VzY-Ya-tjU" id="MET-KH-F94"/>
+                                    <outlet property="toolbar" destination="7bS-M8-91S" id="0aJ-HF-MOR"/>
+                                    <outlet property="toolbarTitleLabel" destination="q0M-iA-GXA" id="Sp9-Ss-y2Y"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -336,11 +348,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="collapsedSearchBar" destination="k6h-I3-1nd" id="eZI-Zy-oel"/>
-                        <outlet property="datePicker" destination="pQl-fm-uqf" id="wOr-O3-ajj"/>
                         <outlet property="datePickerView" destination="zfM-Xw-6w1" id="WIY-kY-Gk0"/>
-                        <outlet property="datePickerViewBottomConstraint" destination="VzY-Ya-tjU" id="plg-Si-aUe"/>
-                        <outlet property="endDateLabel" destination="rvd-oM-7oL" id="nTV-nO-0ae"/>
-                        <outlet property="endTimeLabel" destination="hRI-UE-E7g" id="bYa-pu-z7a"/>
                         <outlet property="mapView" destination="nEN-Yc-ckc" id="6bX-7F-2O6"/>
                         <outlet property="predictionTableView" destination="k7g-kF-iqV" id="TSz-4Y-HDE"/>
                         <outlet property="reservationContainerView" destination="37V-ku-ODQ" id="u5t-sw-uVG"/>
@@ -348,11 +356,7 @@
                         <outlet property="searchBar" destination="pgM-LO-aq0" id="Ojn-18-3IW"/>
                         <outlet property="searchContainerView" destination="lqQ-xQ-L7J" id="SIA-V9-TjC"/>
                         <outlet property="searchContainerViewHeightConstraint" destination="14r-MT-7qT" id="cw0-Qx-byZ"/>
-                        <outlet property="startDateLabel" destination="nXl-sc-e5R" id="9kH-ow-Pcu"/>
-                        <outlet property="startTimeLabel" destination="RuZ-vp-ds5" id="Fjl-CE-Dn6"/>
                         <outlet property="timeSelectionView" destination="00R-A9-LV4" id="VCz-Sm-EMU"/>
-                        <outlet property="toolbar" destination="7bS-M8-91S" id="quR-bn-UFx"/>
-                        <outlet property="toolbarTitleLabel" destination="q0M-iA-GXA" id="FHA-BW-EoP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gQG-L7-PVk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -363,12 +367,12 @@
                 </tapGestureRecognizer>
                 <tapGestureRecognizer id="b1i-w7-gEP">
                     <connections>
-                        <action selector="endViewTapped:" destination="Vax-OI-bt8" id="utN-MV-UXS"/>
+                        <action selector="endViewTapped:" destination="00R-A9-LV4" id="nCF-FR-Pbj"/>
                     </connections>
                 </tapGestureRecognizer>
                 <tapGestureRecognizer id="Krv-xQ-Ko3">
                     <connections>
-                        <action selector="startViewTapped:" destination="Vax-OI-bt8" id="rwE-lv-f9t"/>
+                        <action selector="startViewTapped:" destination="00R-A9-LV4" id="cNg-dd-4jS"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
