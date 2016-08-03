@@ -75,7 +75,10 @@ class MapViewController: UIViewController {
     }
     
     func showCollapsedSearchBar() {
-        if (self.searchBar.text?.characters.count > 0) {
+        guard let isEmpty = self.searchBar.text?.isEmpty else {
+            return
+        }
+        if (!isEmpty) {
             self.collapsedSearchBar.show()
             self.timeSelectionView.showTimeSelectionView(false)
             //TODO: Set time label
