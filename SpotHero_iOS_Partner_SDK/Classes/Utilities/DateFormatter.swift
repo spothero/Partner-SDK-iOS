@@ -108,6 +108,5 @@ class DateFormatter: NSObject {
     
     //A formatter for translating pretty month day dates
     static let PrettyMonthDayDate: NSDateFormatter = DateFormatter.formatterWithFormat(DateFormat.PrettyMonthDayDate)
-
     
 }
