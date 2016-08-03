@@ -29,7 +29,7 @@ class ValidatorTests: XCTestCase {
             try Validator.validateFullName(invalidFullNameOneWord)
             XCTFail("Did not throw error")
         } catch ValidatorError.FieldInvalid(let fieldName, let message) {
-            XCTAssertEqual(fieldName, "Full Name")
+            XCTAssertEqual(fieldName, LocalizedStrings.FullName)
             XCTAssertEqual(message, "Full Name must have at least 2 words")
         } catch {
             XCTFail("Validator threw the wrong error")
@@ -44,7 +44,7 @@ class ValidatorTests: XCTestCase {
             try Validator.validateFullName(blankName)
             XCTFail("Did not throw error")
         } catch ValidatorError.FieldBlank(let fieldName) {
-            XCTAssertEqual(fieldName, "Full Name")
+            XCTAssertEqual(fieldName, LocalizedStrings.FullName)
         } catch {
             XCTFail("Validator threw the wrong error")
         }
@@ -53,7 +53,7 @@ class ValidatorTests: XCTestCase {
             try Validator.validateFullName(blankSpace)
             XCTFail("Did not throw error")
         } catch ValidatorError.FieldBlank(let fieldName) {
-            XCTAssertEqual(fieldName, "Full Name")
+            XCTAssertEqual(fieldName, LocalizedStrings.FullName)
         } catch {
             XCTFail("Validator threw the wrong error")
         }
@@ -79,7 +79,7 @@ class ValidatorTests: XCTestCase {
             try Validator.validateEmail(invalidEmailNoTLD)
             XCTFail("Did not throw error")
         } catch ValidatorError.FieldInvalid(let fieldName, let message) {
-            XCTAssertEqual(fieldName, "Email")
+            XCTAssertEqual(fieldName, LocalizedStrings.Email)
             XCTAssertEqual(message, "Please enter a valid email")
         } catch {
             XCTFail("Validator threw the wrong error")
@@ -89,7 +89,7 @@ class ValidatorTests: XCTestCase {
             try Validator.validateEmail(invalidUsername)
             XCTFail("Did not throw error")
         } catch ValidatorError.FieldInvalid(let fieldName, let message) {
-            XCTAssertEqual(fieldName, "Email")
+            XCTAssertEqual(fieldName, LocalizedStrings.Email)
             XCTAssertEqual(message, "Please enter a valid email")
         } catch {
             XCTFail("Validator threw the wrong error")
@@ -99,7 +99,7 @@ class ValidatorTests: XCTestCase {
             try Validator.validateEmail(invalidTLD)
             XCTFail("Did not throw error")
         } catch ValidatorError.FieldInvalid(let fieldName, let message) {
-            XCTAssertEqual(fieldName, "Email")
+            XCTAssertEqual(fieldName, LocalizedStrings.Email)
             XCTAssertEqual(message, "Please enter a valid email")
         } catch {
             XCTFail("Validator threw the wrong error")
@@ -109,7 +109,7 @@ class ValidatorTests: XCTestCase {
             try Validator.validateEmail(invalidEmailNoUsername)
             XCTFail("Did not throw error")
         } catch ValidatorError.FieldInvalid(let fieldName, let message) {
-            XCTAssertEqual(fieldName, "Email")
+            XCTAssertEqual(fieldName, LocalizedStrings.Email)
             XCTAssertEqual(message, "Please enter a valid email")
         } catch {
             XCTFail("Validator threw the wrong error")
@@ -124,7 +124,7 @@ class ValidatorTests: XCTestCase {
             try Validator.validateEmail(blankEmail)
             XCTFail("Did not throw error")
         } catch ValidatorError.FieldBlank(let fieldName) {
-            XCTAssertEqual(fieldName, "Email")
+            XCTAssertEqual(fieldName, LocalizedStrings.Email)
         } catch {
             XCTFail("Validator did threw the wrong error")
         }
@@ -133,7 +133,7 @@ class ValidatorTests: XCTestCase {
             try Validator.validateEmail(blankSpace)
             XCTFail("Did not throw error")
         } catch ValidatorError.FieldBlank(let fieldName) {
-            XCTAssertEqual(fieldName, "Email")
+            XCTAssertEqual(fieldName, LocalizedStrings.Email)
         } catch {
             XCTFail("Validator threw the wrong error")
         }
@@ -158,7 +158,7 @@ class ValidatorTests: XCTestCase {
             try Validator.validatePhone(invalidPhoneNotTenDigits)
             XCTFail("Did not throw error")
         } catch ValidatorError.FieldInvalid(let fieldName, let message) {
-            XCTAssertEqual(fieldName, "Phone")
+            XCTAssertEqual(fieldName, LocalizedStrings.Phone)
             XCTAssertEqual(message, "Please enter a valid phone number")
         } catch {
             XCTFail("Validator threw the wrong error")
@@ -168,7 +168,7 @@ class ValidatorTests: XCTestCase {
             try Validator.validatePhone(invalidPhoneNonNumeric)
             XCTFail("Did not throw error")
         } catch ValidatorError.FieldInvalid(let fieldName, let message) {
-            XCTAssertEqual(fieldName, "Phone")
+            XCTAssertEqual(fieldName, LocalizedStrings.Phone)
             XCTAssertEqual(message, "Please enter a valid phone number")
         } catch {
             XCTFail("Validator threw the wrong error")
@@ -183,7 +183,7 @@ class ValidatorTests: XCTestCase {
             try Validator.validatePhone(blankPhone)
             XCTFail("Did not throw error")
         } catch ValidatorError.FieldBlank(let fieldName) {
-            XCTAssertEqual(fieldName, "Phone")
+            XCTAssertEqual(fieldName, LocalizedStrings.Phone)
         } catch {
             XCTFail("Validator did threw the wrong error")
         }
@@ -192,7 +192,7 @@ class ValidatorTests: XCTestCase {
             try Validator.validatePhone(blankSpace)
             XCTFail("Did not throw error")
         } catch ValidatorError.FieldBlank(let fieldName) {
-            XCTAssertEqual(fieldName, "Phone")
+            XCTAssertEqual(fieldName, LocalizedStrings.Phone)
         } catch {
             XCTFail("Validator threw the wrong error")
         }
@@ -249,7 +249,7 @@ class ValidatorTests: XCTestCase {
             try Validator.validateCreditCard(invalidVisa)
             XCTFail("Validator did not throw an error")
         } catch ValidatorError.FieldInvalid(let fieldName, let message) {
-            XCTAssertEqual(fieldName, "Credit Card")
+            XCTAssertEqual(fieldName, LocalizedStrings.CreditCard)
             XCTAssertEqual(message, "Please enter a valid credit card number")
         } catch let error {
             XCTFail("Validator threw the wrong error: \(error)")
@@ -263,7 +263,7 @@ class ValidatorTests: XCTestCase {
             try Validator.validateCreditCard(invalidDiscover)
             XCTFail("Validator did not throw an error")
         } catch ValidatorError.FieldInvalid(let fieldName, let message) {
-            XCTAssertEqual(fieldName, "Credit Card")
+            XCTAssertEqual(fieldName, LocalizedStrings.CreditCard)
             XCTAssertEqual(message, "Please enter a valid credit card number")
         } catch let error {
             XCTFail("Validator threw the wrong error: \(error)")
@@ -277,7 +277,7 @@ class ValidatorTests: XCTestCase {
             try Validator.validateCreditCard(validMasterCard)
             XCTFail("Validator did not throw an error")
         } catch ValidatorError.FieldInvalid(let fieldName, let message) {
-            XCTAssertEqual(fieldName, "Credit Card")
+            XCTAssertEqual(fieldName, LocalizedStrings.CreditCard)
             XCTAssertEqual(message, "Please enter a valid credit card number")
         } catch let error {
             XCTFail("Validator threw the wrong error: \(error)")
@@ -291,7 +291,7 @@ class ValidatorTests: XCTestCase {
             try Validator.validateCreditCard(invalidAMEX)
             XCTFail("Validator did not throw an error")
         } catch ValidatorError.FieldInvalid(let fieldName, let message) {
-            XCTAssertEqual(fieldName, "Credit Card")
+            XCTAssertEqual(fieldName, LocalizedStrings.CreditCard)
             XCTAssertEqual(message, "Please enter a valid credit card number")
         } catch let error {
             XCTFail("Validator threw the wrong error: \(error)")
@@ -305,7 +305,7 @@ class ValidatorTests: XCTestCase {
             try Validator.validateCreditCard(invalidCreditCard)
             XCTFail("Validator did not throw an error")
         } catch ValidatorError.FieldInvalid(let fieldName, let message) {
-            XCTAssertEqual(fieldName, "Credit Card")
+            XCTAssertEqual(fieldName, LocalizedStrings.CreditCard)
             XCTAssertEqual(message, "Please enter a Visa, Discover, MasterCard, or American Express card.")
         } catch let error {
             XCTFail("Validator threw the wrong error: \(error)")
@@ -320,7 +320,7 @@ class ValidatorTests: XCTestCase {
             try Validator.validateCreditCard(blankCreditCard)
             XCTFail("Validator did not throw an error")
         } catch ValidatorError.FieldBlank(let fieldName) {
-            XCTAssertEqual(fieldName, "Credit Card")
+            XCTAssertEqual(fieldName, LocalizedStrings.CreditCard)
         } catch let error {
             XCTFail("Validator threw the wrong error: \(error)")
         }
@@ -329,7 +329,7 @@ class ValidatorTests: XCTestCase {
             try Validator.validateCreditCard(blankSpace)
             XCTFail("Validator did not throw an error")
         } catch ValidatorError.FieldBlank(let fieldName) {
-            XCTAssertEqual(fieldName, "Credit Card")
+            XCTAssertEqual(fieldName, LocalizedStrings.CreditCard)
         } catch let error {
             XCTFail("Validator threw the wrong error: \(error)")
         }
@@ -384,7 +384,7 @@ class ValidatorTests: XCTestCase {
                 
                 XCTFail("Validator did not throw an error")
             } catch ValidatorError.FieldInvalid(let fieldName, let message) {
-                XCTAssertEqual(fieldName, "Expiration Date")
+                XCTAssertEqual(fieldName, LocalizedStrings.ExpirationDate)
                 XCTAssertEqual(message, "Please enter an expiration date in the future")
             } catch let error {
                 XCTFail("Validator threw the wrong error: \(error)")
@@ -394,7 +394,7 @@ class ValidatorTests: XCTestCase {
                 try Validator.validateExpiration(month, year: pastYear)
                 XCTFail("Validator did not throw an error")
             } catch ValidatorError.FieldInvalid(let fieldName, let message) {
-                XCTAssertEqual(fieldName, "Expiration Date")
+                XCTAssertEqual(fieldName, LocalizedStrings.ExpirationDate)
                 XCTAssertEqual(message, "Please enter an expiration date in the future")
             } catch let error {
                 XCTFail("Validator threw the wrong error: \(error)")
@@ -404,7 +404,7 @@ class ValidatorTests: XCTestCase {
                 try Validator.validateExpiration(month, year: invalidYear)
                 XCTFail("Validator did not throw an error")
             } catch ValidatorError.FieldInvalid(let fieldName, let message) {
-                XCTAssertEqual(fieldName, "Expiration Date")
+                XCTAssertEqual(fieldName, LocalizedStrings.ExpirationDate)
                 XCTAssertEqual(message, "Please enter a valid expiration date")
             } catch let error {
                 XCTFail("Validator threw the wrong error: \(error)")
@@ -414,7 +414,7 @@ class ValidatorTests: XCTestCase {
                 try Validator.validateExpiration(invalidMonth, year: year)
                 XCTFail("Validator did not throw an error")
             } catch ValidatorError.FieldInvalid(let fieldName, let message) {
-                XCTAssertEqual(fieldName, "Expiration Date")
+                XCTAssertEqual(fieldName, LocalizedStrings.ExpirationDate)
                 XCTAssertEqual(message, "Please enter a valid expiration date")
             } catch let error {
                 XCTFail("Validator threw the wrong error: \(error)")
@@ -432,7 +432,7 @@ class ValidatorTests: XCTestCase {
             try Validator.validateExpiration(blank, year: blank)
             XCTFail("Did not throw an error")
         } catch ValidatorError.FieldBlank(let fieldName) {
-            XCTAssertEqual(fieldName, "Expiration Date")
+            XCTAssertEqual(fieldName, LocalizedStrings.ExpirationDate)
         } catch let error {
             XCTFail("Validator threw the wrong error: \(error)")
         }
@@ -441,7 +441,7 @@ class ValidatorTests: XCTestCase {
             try Validator.validateExpiration(space, year: space)
             XCTFail("Did not throw an error")
         } catch ValidatorError.FieldBlank(let fieldName) {
-            XCTAssertEqual(fieldName, "Expiration Date")
+            XCTAssertEqual(fieldName, LocalizedStrings.ExpirationDate)
         } catch let error {
             XCTFail("Validator threw the wrong error: \(error)")
         }
@@ -475,7 +475,7 @@ class ValidatorTests: XCTestCase {
             try Validator.validateCVC(invalidCVC)
             XCTFail("Did not throw error")
         } catch ValidatorError.FieldInvalid(let fieldName, let message) {
-            XCTAssertEqual(fieldName, "CVC")
+            XCTAssertEqual(fieldName, LocalizedStrings.CVC)
             XCTAssertEqual(message, "Please enter a valid cvc")
         } catch let error {
             XCTFail("Threw wrong error: \(error)")
@@ -485,7 +485,7 @@ class ValidatorTests: XCTestCase {
             try Validator.validateCVC(invalidCVCNonAmex)
             XCTFail("Did not throw error")
         } catch ValidatorError.FieldInvalid(let fieldName, let message) {
-            XCTAssertEqual(fieldName, "CVC")
+            XCTAssertEqual(fieldName, LocalizedStrings.CVC)
             XCTAssertEqual(message, "Please enter a valid cvc")
         } catch let error {
             XCTFail("Threw wrong error: \(error)")
@@ -495,7 +495,7 @@ class ValidatorTests: XCTestCase {
             try Validator.validateCVC(invalidCVC, amex: true)
             XCTFail("Did not throw error")
         } catch ValidatorError.FieldInvalid(let fieldName, let message) {
-            XCTAssertEqual(fieldName, "CVC")
+            XCTAssertEqual(fieldName, LocalizedStrings.CVC)
             XCTAssertEqual(message, "Please enter a valid cvc")
         } catch let error {
             XCTFail("Threw wrong error: \(error)")
@@ -505,7 +505,7 @@ class ValidatorTests: XCTestCase {
             try Validator.validateCVC(invalidCVCAmex, amex: true)
             XCTFail("Did not throw error")
         } catch ValidatorError.FieldInvalid(let fieldName, let message) {
-            XCTAssertEqual(fieldName, "CVC")
+            XCTAssertEqual(fieldName, LocalizedStrings.CVC)
             XCTAssertEqual(message, "Please enter a valid cvc")
         } catch let error {
             XCTFail("Threw wrong error: \(error)")
@@ -520,7 +520,7 @@ class ValidatorTests: XCTestCase {
             try Validator.validateCVC(blank)
             XCTFail("Did not throw an error")
         } catch ValidatorError.FieldBlank(let fieldName) {
-            XCTAssertEqual(fieldName, "CVC")
+            XCTAssertEqual(fieldName, LocalizedStrings.CVC)
         } catch let error {
             XCTFail("Validator threw the wrong error: \(error)")
         }
@@ -529,7 +529,7 @@ class ValidatorTests: XCTestCase {
             try Validator.validateCVC(space)
             XCTFail("Did not throw an error")
         } catch ValidatorError.FieldBlank(let fieldName) {
-            XCTAssertEqual(fieldName, "CVC")
+            XCTAssertEqual(fieldName, LocalizedStrings.CVC)
         } catch let error {
             XCTFail("Validator threw the wrong error: \(error)")
         }
@@ -554,7 +554,7 @@ class ValidatorTests: XCTestCase {
             try Validator.validateZip(zipWrongLength)
             XCTFail("Did not throw and error")
         } catch ValidatorError.FieldInvalid(let fieldName, let message) {
-            XCTAssertEqual(fieldName, "Zip Code")
+            XCTAssertEqual(fieldName, LocalizedStrings.ZipCode)
             XCTAssertEqual(message, "Please enter a valid zip code")
         } catch let error {
             XCTFail("Threw an error: \(error)")
@@ -564,7 +564,7 @@ class ValidatorTests: XCTestCase {
             try Validator.validateZip(zipNonNumeric)
             XCTFail("Did not throw and error")
         } catch ValidatorError.FieldInvalid(let fieldName, let message) {
-            XCTAssertEqual(fieldName, "Zip Code")
+            XCTAssertEqual(fieldName, LocalizedStrings.ZipCode)
             XCTAssertEqual(message, "Please enter a valid zip code")
         } catch let error {
             XCTFail("Threw an error: \(error)")
@@ -579,7 +579,7 @@ class ValidatorTests: XCTestCase {
             try Validator.validateZip(blank)
             XCTFail("Did not throw an error")
         } catch ValidatorError.FieldBlank(let fieldName) {
-            XCTAssertEqual(fieldName, "Zip Code")
+            XCTAssertEqual(fieldName, LocalizedStrings.ZipCode)
         } catch let error {
             XCTFail("Validator threw the wrong error: \(error)")
         }
@@ -588,7 +588,7 @@ class ValidatorTests: XCTestCase {
             try Validator.validateZip(space)
             XCTFail("Did not throw an error")
         } catch ValidatorError.FieldBlank(let fieldName) {
-            XCTAssertEqual(fieldName, "Zip Code")
+            XCTAssertEqual(fieldName, LocalizedStrings.ZipCode)
         } catch let error {
             XCTFail("Validator threw the wrong error: \(error)")
         }

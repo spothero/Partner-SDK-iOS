@@ -22,7 +22,7 @@ enum CardType: String {
     Unknown
 }
 
-//TODO: Localize error messages and field names
+//TODO: Localize error messages
 enum Validator {
     
     /**
@@ -33,7 +33,7 @@ enum Validator {
      - throws: throws an error if string is empty or invalid
      */
     static func validateFullName(fullName: String) throws {
-        let fieldName = "Full Name"
+        let fieldName = LocalizedStrings.FullName
         
         // Trim trailing spaces
         let trimmedFullName = fullName.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
@@ -53,7 +53,7 @@ enum Validator {
      - throws: throws an error if string is empty or invalid
      */
     static func validateEmail(email: String) throws {
-        let fieldName = "Email"
+        let fieldName = LocalizedStrings.Email
         let message = "Please enter a valid email"
         
         // Trim trailing spaces
@@ -95,7 +95,7 @@ enum Validator {
      - throws: throws an error if string is empty or invalid
      */
     static func validatePhone(phone: String) throws {
-        let fieldName = "Phone"
+        let fieldName = LocalizedStrings.Phone
         let message = "Please enter a valid phone number"
         
         // Trim trailing spaces
@@ -124,7 +124,7 @@ enum Validator {
      - returns: Type of card
      */
     static func validateCreditCard(creditCard: String) throws -> CardType {
-        let fieldName = "Credit Card"
+        let fieldName = LocalizedStrings.CreditCard
         let trimmedCreditCard = creditCard.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
         
         if trimmedCreditCard.isEmpty {
@@ -160,7 +160,7 @@ enum Validator {
     }
     
     private static func validateCreditCard(creditCard: String, cardType: CardType) throws {
-        let fieldName = "Credit Card"
+        let fieldName = LocalizedStrings.CreditCard
         let message = "Please enter a valid credit card number"
         let numberOfDigits = (cardType == .Amex) ? 15 : 16
         
@@ -182,7 +182,7 @@ enum Validator {
      - throws: throws an error if string is empty or invalid
      */
     static func validateExpiration(month: String, year: String) throws {
-        let fieldName = "Expiration Date"
+        let fieldName = LocalizedStrings.ExpirationDate
 
         let trimmedMonth = month.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
         let trimmedYear = year.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
@@ -221,7 +221,7 @@ enum Validator {
      - throws: throws an error if string is empty or invalid
      */
     static func validateCVC(cvc: String, amex: Bool = false) throws {
-        let fieldName = "CVC"
+        let fieldName = LocalizedStrings.CVC
         let message = "Please enter a valid cvc"
         
         let trimmedCVC = cvc.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
@@ -245,7 +245,7 @@ enum Validator {
      - throws: throws an error if string is empty or invalid
      */
     static func validateZip(zip: String) throws {
-        let fieldName = "Zip Code"
+        let fieldName = LocalizedStrings.ZipCode
         let trimmedZip = zip.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
         
         if trimmedZip.isEmpty {
