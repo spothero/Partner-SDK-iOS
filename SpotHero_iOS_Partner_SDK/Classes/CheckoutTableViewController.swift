@@ -159,7 +159,10 @@ class CheckoutTableViewController: UITableViewController {
     
     //MARK: Helpers
     
-    func configureCell(cell: ReservationInfoTableViewCell, row: ReservationInfoRow, facility: Facility, rate: Rate) {
+    func configureCell(cell: ReservationInfoTableViewCell,
+                       row: ReservationInfoRow,
+                       facility: Facility,
+                       rate: Rate) {
         cell.titleLabel.text = row.title()
         
         switch row {
