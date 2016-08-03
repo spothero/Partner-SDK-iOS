@@ -22,8 +22,16 @@ enum CardType: String {
     Unknown
 }
 
-//TODO: Document methods and Localize error messages
+//TODO: Localize error messages
 enum Validator {
+    
+    /**
+     Validates that a string is a full name
+     
+     - parameter fullName: string to validate
+     
+     - throws: throws an error if string is empty or invalid
+     */
     static func validateFullName(fullName: String) throws {
         let fieldName = "Full Name"
         
@@ -37,6 +45,13 @@ enum Validator {
         }
     }
     
+    /**
+     Validates that a string is a
+     
+     - parameter email: string to validate
+     
+     - throws: throws an error if string is empty or invalid
+     */
     static func validateEmail(email: String) throws {
         let fieldName = "Email"
         let message = "Please enter a valid email"
@@ -72,6 +87,13 @@ enum Validator {
         }
     }
     
+    /**
+     Validates that a string is a
+     
+     - parameter phone: string to validate
+     
+     - throws: throws an error if string is empty or invalid
+     */
     static func validatePhone(phone: String) throws {
         let fieldName = "Phone"
         let message = "Please enter a valid phone number"
@@ -92,6 +114,15 @@ enum Validator {
         }
     }
     
+    /**
+     Validates that a string is a
+     
+     - parameter creditCard: string to validate
+     
+     - throws: throws an error if string is empty or invalid
+     
+     - returns: Type of card
+     */
     static func validateCreditCard(creditCard: String) throws -> CardType {
         let fieldName = "Credit Card"
         let trimmedCreditCard = creditCard.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
@@ -142,6 +173,14 @@ enum Validator {
         }
     }
     
+    /**
+     Validates that a string is a
+     
+     - parameter month: string to validate
+     - parameter year:  string to validate
+     
+     - throws: throws an error if string is empty or invalid
+     */
     static func validateExpiration(month: String, year: String) throws {
         let fieldName = "Expiration Date"
 
@@ -173,6 +212,14 @@ enum Validator {
         }
     }
 
+    /**
+     Validates that a string is a
+     
+     - parameter cvc:  string to validate
+     - parameter amex: whether card is an amex
+     
+     - throws: throws an error if string is empty or invalid
+     */
     static func validateCVC(cvc: String, amex: Bool = false) throws {
         let fieldName = "CVC"
         let message = "Please enter a valid cvc"
@@ -190,6 +237,13 @@ enum Validator {
         }
     }
     
+    /**
+     Validates that a string is a
+     
+     - parameter zip: string to validate
+     
+     - throws: throws an error if string is empty or invalid
+     */
     static func validateZip(zip: String) throws {
         let fieldName = "Zip Code"
         let trimmedZip = zip.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
