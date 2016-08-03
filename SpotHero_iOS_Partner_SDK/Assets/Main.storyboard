@@ -254,10 +254,10 @@
                                             <constraint firstAttribute="trailing" secondItem="OXP-P9-EfD" secondAttribute="trailing" constant="8" id="quh-kS-Wd1"/>
                                         </constraints>
                                         <connections>
-                                            <outlet property="endDateLabel" destination="rvd-oM-7oL" id="OzR-1b-ADs"/>
-                                            <outlet property="endTimeLabel" destination="hRI-UE-E7g" id="zqK-ua-8xe"/>
-                                            <outlet property="startDateLabel" destination="nXl-sc-e5R" id="wpR-gT-0wn"/>
-                                            <outlet property="startTimeLabel" destination="RuZ-vp-ds5" id="gsa-ix-ynN"/>
+                                            <outletCollection property="dateTimeLabels" destination="nXl-sc-e5R" collectionClass="NSMutableArray" id="yXW-f6-ApQ"/>
+                                            <outletCollection property="dateTimeLabels" destination="RuZ-vp-ds5" collectionClass="NSMutableArray" id="BKb-YM-sHL"/>
+                                            <outletCollection property="dateTimeLabels" destination="rvd-oM-7oL" collectionClass="NSMutableArray" id="NJi-bf-N8G"/>
+                                            <outletCollection property="dateTimeLabels" destination="hRI-UE-E7g" collectionClass="NSMutableArray" id="9wI-JN-wvm"/>
                                         </connections>
                                     </view>
                                 </subviews>
@@ -395,10 +395,10 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="reservationInfoCell" rowHeight="86" id="8mD-ew-oY8" customClass="ReservationInfoTableViewCell" customModule="SpotHero_iOS_Partner_SDK" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="114" width="600" height="86"/>
+                                <rect key="frame" x="0.0" y="113.5" width="600" height="86"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="8mD-ew-oY8" id="9kl-FT-qAM">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="86"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="85.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zva-vq-ti5">
@@ -450,10 +450,10 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="personalInfoCell" rowHeight="51" id="J7z-cJ-szY" customClass="PersonalInfoTableViewCell" customModule="SpotHero_iOS_Partner_SDK" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="200" width="600" height="51"/>
+                                <rect key="frame" x="0.0" y="199.5" width="600" height="51"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="J7z-cJ-szY" id="5oC-PN-sJo">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="51"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="50.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YfN-aw-GbW">
@@ -486,10 +486,10 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="paymentInfoCell" rowHeight="153" id="WwR-3h-HOo" customClass="PaymentInfoTableViewCell" customModule="SpotHero_iOS_Partner_SDK" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="251" width="600" height="153"/>
+                                <rect key="frame" x="0.0" y="250.5" width="600" height="153"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="WwR-3h-HOo" id="OvW-qC-rsQ">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="153"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="152.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Af1-xO-onX">
