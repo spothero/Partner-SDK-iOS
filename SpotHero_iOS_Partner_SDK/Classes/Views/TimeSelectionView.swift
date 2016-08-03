@@ -27,13 +27,13 @@ class TimeSelectionView: UIView {
     
     private var isStartView = false
     private let thirtyMins: NSTimeInterval = 1800
-    var startDate: NSDate = NSDate().shp_dateByRoundingMinutesBy30(true) {
+    private var startDate: NSDate = NSDate().shp_dateByRoundingMinutesBy30(true) {
         didSet {
             self.setDateTimeLabels(self.startDate, endDate: self.endDate)
         }
     }
     
-    var endDate: NSDate = NSDate().shp_dateByRoundingMinutesBy30(true).shp_dateByRoundingMinutesBy30(false) {
+    private var endDate: NSDate = NSDate().shp_dateByRoundingMinutesBy30(true).shp_dateByRoundingMinutesBy30(false) {
         didSet {
             self.setDateTimeLabels(self.startDate, endDate: self.endDate)
         }
