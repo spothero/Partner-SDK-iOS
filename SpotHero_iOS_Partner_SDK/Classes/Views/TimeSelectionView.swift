@@ -20,7 +20,7 @@ protocol ShowTimeSelectionViewDelegate {
 
 class TimeSelectionView: UIView {
     
-    @IBOutlet private var dateTimeLabels: Array<UILabel>?
+    @IBOutlet private var dateTimeLabels: [UILabel]?
     
     var delegate: TimeSelectionViewDelegate?
     var showTimeSelectionViewDelegate: ShowTimeSelectionViewDelegate?
