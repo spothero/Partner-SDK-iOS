@@ -2,7 +2,7 @@
 //  PredictionTableViewCell.swift
 //  Pods
 //
-//  Created by SpotHeroMatt on 7/14/16.
+//  Created by Matthew Reed on 7/14/16.
 //
 //
 
