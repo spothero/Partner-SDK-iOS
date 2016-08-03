@@ -20,10 +20,7 @@ protocol ShowTimeSelectionViewDelegate {
 
 class TimeSelectionView: UIView {
     
-    @IBOutlet weak private var startDateLabel: UILabel!
-    @IBOutlet weak private var startTimeLabel: UILabel!
-    @IBOutlet weak private var endDateLabel: UILabel!
-    @IBOutlet weak private var endTimeLabel: UILabel!
+    @IBOutlet private var dateTimeLabels: Array<UILabel>?
     
     var delegate: TimeSelectionViewDelegate?
     var showTimeSelectionViewDelegate: ShowTimeSelectionViewDelegate?
@@ -65,22 +62,22 @@ class TimeSelectionView: UIView {
      */
     func startEndViewSelected(selected: Bool) {
         if selected {
+            guard let dateTimeLabels = self.dateTimeLabels?.enumerate() else {
+                return
+            }
             if (self.isStartView) {
-                self.startDateLabel.textColor = UIColor.shp_spotHeroBlue()
-                self.startTimeLabel.textColor = UIColor.shp_spotHeroBlue()
-                self.endDateLabel.textColor = UIColor.blackColor()
-                self.endTimeLabel.textColor = UIColor.blackColor()
+                for (i, label) in dateTimeLabels {
+                    label.textColor = i < 2 ? UIColor.shp_spotHeroBlue() : UIColor.blackColor()
+                }
             } else {
-                self.endDateLabel.textColor = UIColor.shp_spotHeroBlue()
-                self.endTimeLabel.textColor = UIColor.shp_spotHeroBlue()
-                self.startDateLabel.textColor = UIColor.blackColor()
-                self.startTimeLabel.textColor = UIColor.blackColor()
+                for (i, label) in dateTimeLabels {
+                    label.textColor = i >= 2 ? UIColor.shp_spotHeroBlue() : UIColor.blackColor()
+                }
             }
         } else {
-            self.startDateLabel.textColor = UIColor.blackColor()
-            self.startTimeLabel.textColor = UIColor.blackColor()
-            self.endDateLabel.textColor = UIColor.blackColor()
-            self.endTimeLabel.textColor = UIColor.blackColor()
+            self.dateTimeLabels?.forEach({ (label) in
+                label.textColor = UIColor.blackColor()
+            })
         }
     }
     
@@ -109,10 +106,23 @@ class TimeSelectionView: UIView {
                                                               startTimeLabelText: String,
                                                               endDateLabelText: String,
                                                               endTimeLabelText: String) {
-        self.startDateLabel.text = startDateLabelText
-        self.startTimeLabel.text = startTimeLabelText
-        self.endDateLabel.text = endDateLabelText
-        self.endTimeLabel.text = endTimeLabelText
+        guard let dateTimeLabels = self.dateTimeLabels?.enumerate() else {
+            return
+        }
+        for (i, label) in dateTimeLabels {
+            switch i {
+            case 0:
+                label.text = startDateLabelText
+            case 1:
+                label.text = startTimeLabelText
+            case 2:
+                label.text = endDateLabelText
+            case 3:
+                label.text = endTimeLabelText
+            default:
+                assertionFailure("self.dateTimeLabels has more than 4 labels")
+            }
+        }
     }
     
     //MARK: Actions
