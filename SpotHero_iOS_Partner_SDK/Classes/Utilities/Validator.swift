@@ -22,7 +22,7 @@ enum CardType: String {
     Unknown
 }
 
-//TODO: Localize error messages
+//TODO: Localize error messages and field names
 enum Validator {
     
     /**
@@ -46,7 +46,7 @@ enum Validator {
     }
     
     /**
-     Validates that a string is a
+     Validates that a string is an email
      
      - parameter email: string to validate
      
@@ -88,7 +88,7 @@ enum Validator {
     }
     
     /**
-     Validates that a string is a
+     Validates that a string is a phone number
      
      - parameter phone: string to validate
      
@@ -115,7 +115,7 @@ enum Validator {
     }
     
     /**
-     Validates that a string is a
+     Validates that a string is a credit card number
      
      - parameter creditCard: string to validate
      
@@ -174,7 +174,7 @@ enum Validator {
     }
     
     /**
-     Validates that a string is a
+     Validates that a string is an expiration date
      
      - parameter month: string to validate
      - parameter year:  string to validate
@@ -213,7 +213,7 @@ enum Validator {
     }
 
     /**
-     Validates that a string is a
+     Validates that a string is a cvc
      
      - parameter cvc:  string to validate
      - parameter amex: whether card is an amex
@@ -238,7 +238,7 @@ enum Validator {
     }
     
     /**
-     Validates that a string is a
+     Validates that a string is a zip code
      
      - parameter zip: string to validate
      
