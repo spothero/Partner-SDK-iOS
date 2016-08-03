@@ -64,7 +64,7 @@ class TimeSelectionView: UIView {
             case 3:
                 label.text = DateFormatter.TimeOnly.stringFromDate(self.endDate)
             default:
-                break
+                assertionFailure("self.dateTimeLabels has more than 4 labels")
             }
         }
     }
