@@ -27,8 +27,17 @@ class TimeSelectionView: UIView {
     
     private var isStartView = false
     private let thirtyMins: NSTimeInterval = 1800
-    private var startDate: NSDate = NSDate().shp_dateByRoundingMinutesBy30(true)
-    private var endDate: NSDate = NSDate().shp_dateByRoundingMinutesBy30(true).shp_dateByRoundingMinutesBy30(false)
+    var startDate: NSDate = NSDate().shp_dateByRoundingMinutesBy30(true) {
+        didSet {
+            self.setDateTimeLabels(self.startDate, endDate: self.endDate)
+        }
+    }
+    
+    var endDate: NSDate = NSDate().shp_dateByRoundingMinutesBy30(true).shp_dateByRoundingMinutesBy30(false) {
+        didSet {
+            self.setDateTimeLabels(self.startDate, endDate: self.endDate)
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -36,10 +45,28 @@ class TimeSelectionView: UIView {
     }
     
     private func setupTimeSelectionView() {
-        self.setStartEndDateTimeLabels(startDateLabelText: DateFormatter.PrettyMonthDayDate.stringFromDate(self.startDate),
-                                       startTimeLabelText: DateFormatter.TimeOnly.stringFromDate(self.startDate),
-                                       endDateLabelText: DateFormatter.PrettyMonthDayDate.stringFromDate(self.endDate),
-                                       endTimeLabelText: DateFormatter.TimeOnly.stringFromDate(self.endDate))
+        self.startDate = NSDate().shp_dateByRoundingMinutesBy30(true)
+        self.endDate = NSDate().shp_dateByRoundingMinutesBy30(true).shp_dateByRoundingMinutesBy30(false)
+    }
+    
+    private func setDateTimeLabels(startDate: NSDate, endDate: NSDate) {
+        guard let dateTimeLabels = self.dateTimeLabels?.enumerate() else {
+            return
+        }
+        for (i, label) in dateTimeLabels {
+            switch i {
+            case 0:
+                label.text = DateFormatter.PrettyMonthDayDate.stringFromDate(self.startDate)
+            case 1:
+                label.text = DateFormatter.TimeOnly.stringFromDate(self.startDate)
+            case 2:
+                label.text = DateFormatter.PrettyMonthDayDate.stringFromDate(self.endDate)
+            case 3:
+                label.text = DateFormatter.TimeOnly.stringFromDate(self.endDate)
+            default:
+                break
+            }
+        }
     }
     
     /**
@@ -94,34 +121,6 @@ class TimeSelectionView: UIView {
             }
         } else {
             self.endDate = date
-        }
-        
-        self.setStartEndDateTimeLabels(startDateLabelText: DateFormatter.PrettyMonthDayDate.stringFromDate(self.startDate),
-                                       startTimeLabelText: DateFormatter.TimeOnly.stringFromDate(self.startDate),
-                                       endDateLabelText: DateFormatter.PrettyMonthDayDate.stringFromDate(self.endDate),
-                                       endTimeLabelText: DateFormatter.TimeOnly.stringFromDate(self.endDate))
-    }
-    
-    private func setStartEndDateTimeLabels(startDateLabelText startDateLabelText: String,
-                                                              startTimeLabelText: String,
-                                                              endDateLabelText: String,
-                                                              endTimeLabelText: String) {
-        guard let dateTimeLabels = self.dateTimeLabels?.enumerate() else {
-            return
-        }
-        for (i, label) in dateTimeLabels {
-            switch i {
-            case 0:
-                label.text = startDateLabelText
-            case 1:
-                label.text = startTimeLabelText
-            case 2:
-                label.text = endDateLabelText
-            case 3:
-                label.text = endTimeLabelText
-            default:
-                assertionFailure("self.dateTimeLabels has more than 4 labels")
-            }
         }
     }
     
