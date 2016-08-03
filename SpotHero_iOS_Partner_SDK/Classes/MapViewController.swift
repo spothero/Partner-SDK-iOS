@@ -47,7 +47,7 @@ class MapViewController: UIViewController {
     private func setupViews() {
         self.reservationContainerView.layer.cornerRadius = 5
         self.reservationContainerView.layer.masksToBounds = true
-
+        
         self.predictionController.delegate = self
         
         self.predictionTableView.dataSource = self.predictionController
@@ -57,9 +57,9 @@ class MapViewController: UIViewController {
         let bundle = NSBundle(forClass: MapViewController.self)
         
         self.predictionTableView.registerNib(UINib(nibName: String(GooglePredictionTableHeader), bundle: bundle),
-            forHeaderFooterViewReuseIdentifier: GooglePredictionTableHeader.reuseIdentifier)
+                                             forHeaderFooterViewReuseIdentifier: GooglePredictionTableHeader.reuseIdentifier)
         self.predictionTableView.registerNib(UINib(nibName: String(GooglePredictionTableFooter), bundle: bundle),
-            forHeaderFooterViewReuseIdentifier: GooglePredictionTableFooter.reuseIdentifier)
+                                             forHeaderFooterViewReuseIdentifier: GooglePredictionTableFooter.reuseIdentifier)
         
         self.searchBar.accessibilityLabel = AccessibilityStrings.SearchBar
         self.predictionTableView.accessibilityLabel = AccessibilityStrings.PredictionTableView
@@ -93,7 +93,7 @@ extension MapViewController: PredictionControllerDelegate {
     func didUpdatePredictions(predictions: [GooglePlacesPrediction]) {
         self.predictionTableView.reloadData()
         self.view.layoutIfNeeded()
-        UIView.animateWithDuration(0.3, animations: {
+        UIView.animateWithDuration(Constants.ViewAnimationDuration, animations: {
             let headerFooterHeight: CGFloat = 28
             let rowHeight: CGFloat = 60
             
@@ -123,7 +123,7 @@ extension MapViewController: PredictionControllerDelegate {
 
 extension MapViewController: ShowTimeSelectionViewDelegate {
     func timeSelectionViewShouldShow(show: Bool) {
-        UIView.animateWithDuration(0.3) {
+        UIView.animateWithDuration(Constants.ViewAnimationDuration) {
             self.reservationContainerViewHeightConstraint.constant = show ? self.reservationContainerViewHeight : self.searchBarHeight
             self.view.layoutIfNeeded()
         }

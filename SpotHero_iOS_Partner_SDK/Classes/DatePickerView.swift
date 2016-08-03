@@ -45,7 +45,7 @@ class DatePickerView: UIView {
      - parameter show: pass in true to show, false to hide
      */
     func showDatePickerView(show: Bool) {
-        UIView.animateWithDuration(0.3) {
+        UIView.animateWithDuration(Constants.ViewAnimationDuration) {
             self.datePickerViewBottomConstraint.constant = show ? 0 : -self.DatePickerViewHeight
             self.layoutIfNeeded()
         }
