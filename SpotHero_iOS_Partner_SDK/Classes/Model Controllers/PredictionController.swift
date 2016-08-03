@@ -47,7 +47,10 @@ extension PredictionController: UITableViewDataSource {
 extension PredictionController: UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let prediction = predictions[indexPath.row]
-        self.delegate?.didSelectPrediction(prediction)
+        guard let delegate = self.delegate else {
+            return assertionFailure("delegate is nil")
+        }
+        delegate.didSelectPrediction(prediction)
         self.predictions.removeAll()
         GooglePlacesWrapper.getPlaceDetails(prediction) {
             placeDetails, error in
