@@ -31,7 +31,7 @@ class CollapsedSearchBarView: UIView {
                                     self.alpha = show ? 1 : 0
         }) {
             finished in
-            self.hidden = show ? false : true
+            self.hidden = !show
         }
     }
     
