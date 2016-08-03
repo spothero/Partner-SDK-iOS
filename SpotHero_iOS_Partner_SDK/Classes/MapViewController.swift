@@ -25,6 +25,9 @@ class MapViewController: UIViewController {
     private let predictionController = PredictionController()
     private let searchBarHeight: CGFloat = 44
     private let reservationContainerViewHeight: CGFloat = 134
+    let checkoutSegueIdentifier = "showCheckout"
+    
+    var facilities = [Facility]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +48,7 @@ class MapViewController: UIViewController {
     }
     
     private func setupViews() {
-        self.reservationContainerView.layer.cornerRadius = 5
+        self.reservationContainerView.layer.cornerRadius = HeightsAndLengths.standardCornerRadius
         self.reservationContainerView.layer.masksToBounds = true
         
         self.predictionController.delegate = self
@@ -85,6 +88,28 @@ class MapViewController: UIViewController {
         }
     }
     
+    //TEMP! Only for testing
+    
+    //TODO: Remove when facility UI is done
+    @IBAction func tempCheckoutButtonPressed(sender: AnyObject) {
+        FacilityAPI.fetchFacilities(Constants.ChicagoLocation,
+                                    starts: NSDate().dateByAddingTimeInterval(60 * 60 * 2),
+                                    ends: NSDate().dateByAddingTimeInterval(60 * 60 * 5)) {
+                                        facilities, error -> (Void) in
+                                        self.facilities = facilities
+                                        NSOperationQueue.mainQueue().addOperationWithBlock() {
+                                            self.performSegueWithIdentifier(self.checkoutSegueIdentifier, sender: nil)
+                                        }
+        }
+    }
+    
+    //TODO: Remove when facility UI is done
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let vc = segue.destinationViewController as? CheckoutTableViewController {
+            vc.facility = self.facilities.first
+            vc.rate = self.facilities.first?.rates.first
+        }
+    }
 }
 
 //MARK: PredictionControllerDelegate
