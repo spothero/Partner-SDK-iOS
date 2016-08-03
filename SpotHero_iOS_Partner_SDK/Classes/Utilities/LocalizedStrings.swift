@@ -17,4 +17,8 @@ enum LocalizedStrings {
                                                comment: "Find parking view title")
     static let BestMatches = NSLocalizedString("BEST MATCHES",
                                                comment: "Places Autocomplete Title")
+    static let SetStartTime = NSLocalizedString("Set Start Time",
+                                                comment: "Set Start Time")
+    static let SetEndTime = NSLocalizedString("Set End Time",
+                                                comment: "Set End Time")
 }
