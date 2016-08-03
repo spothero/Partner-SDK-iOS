@@ -16,7 +16,7 @@ enum ValidatorError: ErrorType {
 enum CardType: String {
     case
     Visa,
-    Amex = "America Express",
+    Amex = "American Express",
     MasterCard,
     Discover,
     Unknown
