@@ -26,7 +26,7 @@ class TimeSelectionView: UIView {
     var showTimeSelectionViewDelegate: ShowTimeSelectionViewDelegate?
     
     private var isStartView = false
-    private let thirtyMins: NSTimeInterval = 1800
+    private let thirtyMinsInSeconds: NSTimeInterval = 1800
     private var startDate: NSDate = NSDate().shp_dateByRoundingMinutesBy30(roundDown: true) {
         didSet {
             self.setDateTimeLabels(self.startDate, endDate: self.endDate)
@@ -116,7 +116,7 @@ class TimeSelectionView: UIView {
     func setStartEndDateTimeLabelWithDate(date: NSDate) {
         if (self.isStartView) {
             self.startDate = date
-            if (self.endDate.timeIntervalSinceDate(date) < self.thirtyMins) {
+            if (self.endDate.timeIntervalSinceDate(date) < self.thirtyMinsInSeconds) {
                 self.endDate = date.shp_dateByRoundingMinutesBy30(roundDown: false)
             }
         } else {
