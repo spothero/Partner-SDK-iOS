@@ -59,6 +59,8 @@ class ValidatorTests: XCTestCase {
     
     //MARK: Tests
     
+    //MARK: Full Name
+    
     func testValidFullName() {
         let validFullName = "Matt Reed"
         
@@ -84,6 +86,8 @@ class ValidatorTests: XCTestCase {
             try Validator.validateFullName(self.blankSpace)
         }
     }
+    
+    //MARK: Email
     
     func testValidEmail() {
         let validEmail = "matt.reed@spothero.com"
@@ -126,6 +130,8 @@ class ValidatorTests: XCTestCase {
         }
     }
     
+    //MARK: Phone
+    
     func testValidPhone() {
         let validPhone = "312-566-7768"
         
@@ -156,6 +162,9 @@ class ValidatorTests: XCTestCase {
             try Validator.validatePhone(self.blankSpace)
         }
     }
+    
+    //MARK: Credit Card
+    //Fake credit cards from http://www.freeformatter.com/credit-card-number-generator-validator.html
     
     func testValidVisa() {
         let validVisa = "4556 6580 0837 9641"
@@ -243,6 +252,8 @@ class ValidatorTests: XCTestCase {
         }
     }
     
+    //MARK: Expiration Date
+    
     func testValidExpirationDate() {
         let date = NSDate().dateByAddingTimeInterval(60 * 60 * 24 * 365)
         let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
@@ -312,6 +323,8 @@ class ValidatorTests: XCTestCase {
         }
     }
     
+    //MARK: CVC
+    
     func testValidCVC() {
         let validCVCNonAmex = "123"
         let validCVCAmex = "1234"
@@ -356,6 +369,8 @@ class ValidatorTests: XCTestCase {
             try Validator.validateCVC(self.blankSpace)
         }
     }
+    
+    //MARK: Zip Code
     
     func testValidZip() {
         let zip = "60601"

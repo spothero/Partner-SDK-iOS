@@ -2,7 +2,7 @@
 //  Validator.swift
 //  Pods
 //
-//  Created by SpotHeroMatt on 7/29/16.
+//  Created by Matthew Reed on 7/29/16.
 //
 //
 
@@ -13,18 +13,16 @@ enum ValidatorError: ErrorType {
     case FieldInvalid(fieldName: String, message: String)
 }
 
-enum CardType: String {
+enum CardType {
     case
     Visa,
-    Amex = "American Express",
+    Amex,
     MasterCard,
     Discover,
     Unknown
 }
 
-//TODO: Localize error messages
 enum Validator {
-    
     /**
      Validates that a string is a full name
      
@@ -78,7 +76,7 @@ enum Validator {
         let domainPredicate = NSPredicate(format: "SELF MATCHES %@", "[A-Z0-9a-z.-]+")
         let tldPredicate = NSPredicate(format: "SELF MATCHES %@", "[A-Za-z][A-Z0-9a-z-]{0,22}[A-Z0-9a-z]")
         
-        if !usernamePredicate.evaluateWithObject(username) || self.usernameValid(username) {
+        if !usernamePredicate.evaluateWithObject(username) || self.usernameInvalid(username) {
             throw ValidatorError.FieldInvalid(fieldName: fieldName, message: message)
         } else if domain.isEmpty || !domainPredicate.evaluateWithObject(domain) {
             throw ValidatorError.FieldInvalid(fieldName: fieldName, message: message)
@@ -109,7 +107,7 @@ enum Validator {
         let digits = trimmedPhone.stringByReplacingOccurrencesOfString("-", withString: "")
         
         // Check there are ten digits and Check phone number is numeric
-        if digits.characters.count != 10 || Int(digits) == nil {
+        if digits.characters.count != 10 || !self.isStringNumeric(digits) {
             throw ValidatorError.FieldInvalid(fieldName: fieldName, message: message)
         }
     }
@@ -132,24 +130,21 @@ enum Validator {
             return .Unknown
         }
         
-        let firstTwoCharacters = creditCard.substringToIndex(creditCard.startIndex.advancedBy(2))
-        let firstFourCharacters = creditCard.substringToIndex(creditCard.startIndex.advancedBy(4))
-        
-        if creditCard.characters.first == "4" {
+        if trimmedCreditCard.hasPrefix("4") {
             try validateCreditCard(creditCard, cardType: .Visa)
             return .Visa
-        } else if firstTwoCharacters == "34" ||
-            firstTwoCharacters == "37" {
+        } else if trimmedCreditCard.hasPrefix("34") ||
+            trimmedCreditCard.hasPrefix("37") {
             try validateCreditCard(creditCard, cardType: .Amex)
             return .Amex
-        } else if firstTwoCharacters == "51" ||
-            firstTwoCharacters == "52" ||
-            firstTwoCharacters == "53" ||
-            firstTwoCharacters == "54" ||
-            firstTwoCharacters == "55" {
+        } else if trimmedCreditCard.hasPrefix("51") ||
+            trimmedCreditCard.hasPrefix("52") ||
+            trimmedCreditCard.hasPrefix("53") ||
+            trimmedCreditCard.hasPrefix("54") ||
+            trimmedCreditCard.hasPrefix("55") {
             try validateCreditCard(creditCard, cardType: .MasterCard)
             return .MasterCard
-        } else if firstFourCharacters == "6011" {
+        } else if trimmedCreditCard.hasPrefix("6011") {
             try validateCreditCard(creditCard, cardType: .Discover)
             return .Discover
         } else {
@@ -168,7 +163,7 @@ enum Validator {
         let digits = creditCard.stringByReplacingOccurrencesOfString(" ", withString: "")
         
         // Check if there are 15 or 16 digits and Check if numeric
-        if digits.characters.count != numberOfDigits || Int(creditCard) != nil {
+        if digits.characters.count != numberOfDigits || self.isStringNumeric(creditCard) {
             throw ValidatorError.FieldInvalid(fieldName: fieldName, message: message)
         }
     }
@@ -195,7 +190,9 @@ enum Validator {
         let dateInThePastMessage = LocalizedStrings.DateInThePastErrorMessage
         
         let dateComponents = NSDateComponents()
-        if let monthInt = Int(month), yearInt = Int(year) {
+        if let
+            monthInt = Int(trimmedMonth),
+            yearInt = Int(trimmedYear) {
             dateComponents.month = monthInt
             dateComponents.year = yearInt
             let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
@@ -206,6 +203,8 @@ enum Validator {
                 throw ValidatorError.FieldInvalid(fieldName: fieldName, message: dateInThePastMessage)
             } else if calendar?.dateFromComponents(dateComponents) == nil {
                 throw ValidatorError.FieldInvalid(fieldName: fieldName, message: invalidDateMessage)
+            } else {
+                // Date is valid. Nothing to do
             }
         } else {
             throw ValidatorError.FieldInvalid(fieldName: fieldName, message: invalidDateMessage)
@@ -234,6 +233,8 @@ enum Validator {
             throw ValidatorError.FieldInvalid(fieldName: fieldName, message: message)
         } else if !amex && cvc.characters.count != 3 {
             throw ValidatorError.FieldInvalid(fieldName: fieldName, message: message)
+        } else {
+            // CVC is valid. Nothing to do
         }
     }
     
@@ -252,7 +253,7 @@ enum Validator {
            throw ValidatorError.FieldBlank(fieldName: fieldName)
         }
         
-        if trimmedZip.characters.count != 5 || Int(trimmedZip) == nil {
+        if trimmedZip.characters.count != 5 || !self.isStringNumeric(trimmedZip) {
             throw ValidatorError.FieldInvalid(fieldName: fieldName, message: LocalizedStrings.ZipErrorMessage)
         }
     }
@@ -275,10 +276,15 @@ enum Validator {
         return [username, domain, tld]
     }
     
-    private static func usernameValid(username: String) -> Bool {
+    private static func usernameInvalid(username: String) -> Bool {
         return username.isEmpty ||
             username.hasPrefix(".") ||
             username.hasSuffix(".") ||
             username.rangeOfString("..") != nil
+    }
+    
+    static func isStringNumeric(string: String) -> Bool {
+        let allNonNumbers = NSCharacterSet.decimalDigitCharacterSet().invertedSet
+        return string.rangeOfCharacterFromSet(allNonNumbers) == nil
     }
 }
