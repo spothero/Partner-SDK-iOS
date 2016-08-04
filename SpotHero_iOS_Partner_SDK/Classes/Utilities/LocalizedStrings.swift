@@ -51,4 +51,22 @@ enum LocalizedStrings {
                                        comment: "Name of CVC field")
     static let ZipCode = NSLocalizedString("Zip Code",
                                        comment: "Name of zip code field")
+    static let FullNameErrorMessage = NSLocalizedString("Please enter a valid full name",
+                                    comment: "Error message for an invalid full name")
+    static let EmailErrorMessage = NSLocalizedString("Please enter a valid email",
+                                    comment: "Error message for an invalid email")
+    static let PhoneErrorMessage = NSLocalizedString("Please enter a valid phone number",
+                                                     comment: "Error message for an invalid phone number")
+    static let CreditCardErrorMessage = NSLocalizedString("Please enter a valid credit card",
+                                                comment: "Error message for an invalid credit card")
+    static let NonAcceptedCreditCardErrorMessage = NSLocalizedString("Please enter a Visa, Discover, MasterCard, or American Express card",
+                                                comment: "Error message for a credit card that is not a Visa, Discover, MasterCard, or American Express card")
+    static let InvalidDateErrorMessage = NSLocalizedString("Please enter a valid expiration date",
+                                                comment: "Error message for an invalid expiration date")
+    static let DateInThePastErrorMessage = NSLocalizedString("Please enter an expiration date in the future",
+                                                comment: "Error message for an expiration date in the past")
+    static let CVCErrorMessage = NSLocalizedString("Please enter a valid cvc",
+                                                comment: "Error message for an invalid cvc")
+    static let ZipErrorMessage = NSLocalizedString("Please enter a valid zip code",
+                                                comment: "Error message for an invalid zip code")
 }

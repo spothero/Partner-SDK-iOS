@@ -41,7 +41,7 @@ enum Validator {
         if trimmedFullName.isEmpty {
             throw ValidatorError.FieldBlank(fieldName: fieldName)
         } else if trimmedFullName.componentsSeparatedByString(" ").count < 2 {
-            throw ValidatorError.FieldInvalid(fieldName: fieldName, message: "Full Name must have at least 2 words")
+            throw ValidatorError.FieldInvalid(fieldName: fieldName, message: LocalizedStrings.FullNameErrorMessage)
         }
     }
     
@@ -54,7 +54,7 @@ enum Validator {
      */
     static func validateEmail(email: String) throws {
         let fieldName = LocalizedStrings.Email
-        let message = "Please enter a valid email"
+        let message = LocalizedStrings.EmailErrorMessage
         
         // Trim trailing spaces
         let trimmedEmail = email.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
@@ -96,7 +96,7 @@ enum Validator {
      */
     static func validatePhone(phone: String) throws {
         let fieldName = LocalizedStrings.Phone
-        let message = "Please enter a valid phone number"
+        let message = LocalizedStrings.PhoneErrorMessage
         
         // Trim trailing spaces
         let trimmedPhone = phone.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
@@ -153,7 +153,7 @@ enum Validator {
             try validateCreditCard(creditCard, cardType: .Discover)
             return .Discover
         } else {
-            throw ValidatorError.FieldInvalid(fieldName: fieldName, message: "Please enter a Visa, Discover, MasterCard, or American Express card.")
+            throw ValidatorError.FieldInvalid(fieldName: fieldName, message: LocalizedStrings.NonAcceptedCreditCardErrorMessage)
             return .Unknown
         }
     
@@ -161,7 +161,7 @@ enum Validator {
     
     private static func validateCreditCard(creditCard: String, cardType: CardType) throws {
         let fieldName = LocalizedStrings.CreditCard
-        let message = "Please enter a valid credit card number"
+        let message = LocalizedStrings.CreditCardErrorMessage
         let numberOfDigits = (cardType == .Amex) ? 15 : 16
         
         // Remove spaces
@@ -191,8 +191,8 @@ enum Validator {
             throw ValidatorError.FieldBlank(fieldName: fieldName)
         }
         
-        let invalidDateMessage = "Please enter a valid expiration date"
-        let dateInThePastMessage = "Please enter an expiration date in the future"
+        let invalidDateMessage = LocalizedStrings.InvalidDateErrorMessage
+        let dateInThePastMessage = LocalizedStrings.DateInThePastErrorMessage
         
         let dateComponents = NSDateComponents()
         if let monthInt = Int(month), yearInt = Int(year) {
@@ -222,7 +222,7 @@ enum Validator {
      */
     static func validateCVC(cvc: String, amex: Bool = false) throws {
         let fieldName = LocalizedStrings.CVC
-        let message = "Please enter a valid cvc"
+        let message = LocalizedStrings.CVCErrorMessage
         
         let trimmedCVC = cvc.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
         
@@ -253,7 +253,7 @@ enum Validator {
         }
         
         if trimmedZip.characters.count != 5 || Int(trimmedZip) == nil {
-            throw ValidatorError.FieldInvalid(fieldName: fieldName, message: "Please enter a valid zip code")
+            throw ValidatorError.FieldInvalid(fieldName: fieldName, message: LocalizedStrings.ZipErrorMessage)
         }
     }
     
