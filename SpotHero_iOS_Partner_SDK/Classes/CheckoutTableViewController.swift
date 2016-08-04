@@ -75,6 +75,18 @@ enum PersonalInfoRow: Int {
 
 class CheckoutTableViewController: UITableViewController {
     let reservationCellHeight: CGFloat = 86
+    let paymentButtonHeight: CGFloat = 60
+    
+    private lazy var paymentButton: UIButton = {
+        let _button = UIButton()
+        _button.addTarget(self, action: #selector(self.paymentButtonPressed), forControlEvents: .TouchUpOutside)
+        _button.backgroundColor = UIColor.shp_green()
+        _button.alpha = 0.5
+        _button.enabled = false
+        
+        _button.frame = CGRect(x: 0, y: self.navigationController!.view.frame.height - self.paymentButtonHeight, width: self.navigationController!.view.frame.width, height: self.paymentButtonHeight)
+        return _button
+    }()
     
     var facility: Facility?
     var rate: Rate?
@@ -82,6 +94,19 @@ class CheckoutTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.estimatedRowHeight = 60
+        self.setupPaymentButton()
+    }
+    
+    func setupPaymentButton() {
+        guard let rate = self.rate else {
+            return
+        }
+        
+        self.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: self.paymentButtonHeight, right: 0)
+        
+        //TODO: Number formatter
+        self.paymentButton.setTitle("Pay $\(rate.displayPrice) and Confirm Parking", forState: .Normal)
+        self.navigationController?.view.addSubview(self.paymentButton)
     }
     
     // MARK: - Table view data source
@@ -157,6 +182,12 @@ class CheckoutTableViewController: UITableViewController {
         return CGFloat.min
     }
     
+    //MARK: Actions
+    
+    func paymentButtonPressed() {
+        // Create Stripe token and reservation
+    }
+    
     //MARK: Helpers
     
     func configureCell(cell: ReservationInfoTableViewCell,
@@ -191,5 +222,10 @@ class CheckoutTableViewController: UITableViewController {
         case PersonalInfoRow.Phone:
             cell.textField.keyboardType = .PhonePad
         }
+    }
+    
+    func enablePaymentButton(enable: Bool) {
+        self.paymentButton.enabled = enable
+        self.paymentButton.alpha = enable ? 1 : 0.5
     }
 }
