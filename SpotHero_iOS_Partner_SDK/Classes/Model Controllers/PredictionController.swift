@@ -82,7 +82,7 @@ extension PredictionController: UISearchBarDelegate {
             })
         }
         
-        if (searchText.characters.count == 0) {
+        if (searchText.isEmpty) {
             self.delegate?.didTapXButton()
         }
     }
