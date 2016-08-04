@@ -358,6 +358,14 @@ class ValidatorTests: XCTestCase {
         self.validateThatFieldInvalidErrorIsThrown(LocalizedStrings.CVC, errorMessage: LocalizedStrings.CVCErrorMessage) {
             try Validator.validateCVC(invalidCVCAmex, amex: true)
         }
+        
+        self.validateThatErrorIsNotThrown { 
+            try Validator.validateCVC(invalidCVCAmex)
+        }
+        
+        self.validateThatErrorIsNotThrown { 
+            try Validator.validateCVC(invalidCVCNonAmex, amex: true)
+        }
     }
     
     func testBlankCVC() {
