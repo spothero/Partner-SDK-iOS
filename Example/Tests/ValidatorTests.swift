@@ -10,10 +10,54 @@ import XCTest
 
 @testable import SpotHero_iOS_Partner_SDK
 
-// TODO: Refactor repeated code
 class ValidatorTests: XCTestCase {
-    let blank = ""
+    let emptyString = ""
     let blankSpace = " "
+    
+    //MARK: Helpers
+    
+    private func validateThatErrorIsNotThrown(file: StaticString = #file,
+                                      line: UInt = #line,
+                                      closure: () throws -> ()) {
+        do {
+            try closure()
+            XCTAssert(true, "Did not throw an error", file: file, line: line)
+        } catch let error {
+            XCTFail("Validator threw an error: \(error)", file: file, line: line)
+        }
+    }
+    
+    private func validateThatFieldBlankErrorThrown(errorFieldName: String,
+                                           file: StaticString = #file,
+                                           line: UInt = #line,
+                                           closure: () throws -> ()) {
+        do {
+            try closure()
+            XCTFail("Did not throw an error", file: file, line: line)
+        } catch ValidatorError.FieldBlank(let fieldName) {
+            XCTAssertEqual(fieldName, errorFieldName, file: file, line: line)
+        } catch let error {
+            XCTFail("The wrong error was thrown: \(error)", file: file, line: line)
+        }
+    }
+    
+    private func validateThatFieldInvalidErrorIsThrown(errorFieldName: String,
+                                               errorMessage: String,
+                                               file: StaticString = #file,
+                                               line: UInt = #line,
+                                               closure: () throws ->()) {
+        do {
+            try closure()
+            XCTFail("Did not throw an error", file: file, line: line)
+        } catch ValidatorError.FieldInvalid(let fieldName, let message) {
+            XCTAssertEqual(fieldName, errorFieldName, file: file, line: line)
+            XCTAssertEqual(message, errorMessage, file: file, line: line)
+        } catch {
+            XCTFail("he wrong error was thrown: \(error)", file: file, line: line)
+        }
+    }
+    
+    //MARK: Tests
     
     func testValidFullName() {
         let validFullName = "Matt Reed"
@@ -33,7 +77,7 @@ class ValidatorTests: XCTestCase {
     
     func testBlankName() {
         self.validateThatFieldBlankErrorThrown(LocalizedStrings.FullName) {
-            try Validator.validateFullName(self.blank)
+            try Validator.validateFullName(self.emptyString)
         }
         
         self.validateThatFieldBlankErrorThrown(LocalizedStrings.FullName) {
@@ -74,7 +118,7 @@ class ValidatorTests: XCTestCase {
     
     func testBlankEmail() {
         self.validateThatFieldBlankErrorThrown(LocalizedStrings.Email) {
-            try Validator.validateEmail(self.blank)
+            try Validator.validateEmail(self.emptyString)
         }
         
         self.validateThatFieldBlankErrorThrown(LocalizedStrings.Email) {
@@ -105,7 +149,7 @@ class ValidatorTests: XCTestCase {
     
     func testBlankPhone() {
         self.validateThatFieldBlankErrorThrown(LocalizedStrings.Phone) { 
-            try Validator.validatePhone(self.blank)
+            try Validator.validatePhone(self.emptyString)
         }
         
         self.validateThatFieldBlankErrorThrown(LocalizedStrings.Phone) {
@@ -191,7 +235,7 @@ class ValidatorTests: XCTestCase {
     
     func testBlankCreditCard() {
         self.validateThatFieldBlankErrorThrown(LocalizedStrings.CreditCard) { 
-            try Validator.validateCreditCard(self.blank)
+            try Validator.validateCreditCard(self.emptyString)
         }
         
         self.validateThatFieldBlankErrorThrown(LocalizedStrings.CreditCard) {
@@ -207,9 +251,9 @@ class ValidatorTests: XCTestCase {
             let month = String(dateComponents.month)
             let year = String(dateComponents.year)
             
-            self.validateThatErrorIsNotThrown({ 
+            self.validateThatErrorIsNotThrown {
                 try Validator.validateExpiration(month, year: year)
-            })
+            }
         } else {
             XCTFail("Cannot get date")
         }
@@ -260,7 +304,7 @@ class ValidatorTests: XCTestCase {
     
     func testBlankExpirationDate() {
         self.validateThatFieldBlankErrorThrown(LocalizedStrings.ExpirationDate) { 
-            try Validator.validateExpiration(self.blank, year: self.blank)
+            try Validator.validateExpiration(self.emptyString, year: self.emptyString)
         }
         
         self.validateThatFieldBlankErrorThrown(LocalizedStrings.ExpirationDate) {
@@ -304,11 +348,11 @@ class ValidatorTests: XCTestCase {
     }
     
     func testBlankCVC() {
-        self.validateThatFieldBlankErrorThrown(LocalizedStrings.CVCErrorMessage) { 
-            try Validator.validateCVC(self.blank)
+        self.validateThatFieldBlankErrorThrown(LocalizedStrings.CVC) {
+            try Validator.validateCVC(self.emptyString)
         }
         
-        self.validateThatFieldBlankErrorThrown(LocalizedStrings.CVCErrorMessage) { 
+        self.validateThatFieldBlankErrorThrown(LocalizedStrings.CVC) {
             try Validator.validateCVC(self.blankSpace)
         }
     }
@@ -336,47 +380,11 @@ class ValidatorTests: XCTestCase {
     
     func testBlankZip() {
         self.validateThatFieldBlankErrorThrown(LocalizedStrings.ZipCode) { 
-            try Validator.validateZip(self.blank)
+            try Validator.validateZip(self.emptyString)
         }
         
         self.validateThatFieldBlankErrorThrown(LocalizedStrings.ZipCode) { 
             try Validator.validateZip(self.blankSpace)
-        }
-    }
-    
-    //MARK: Helpers
-
-    func validateThatErrorIsNotThrown(closure: () throws -> ()) {
-        do {
-            try closure()
-            XCTAssert(true, "Did not throw an error")
-        } catch let error {
-            XCTFail("Validator threw an error: \(error)")
-        }
-    }
-    
-    func validateThatFieldBlankErrorThrown(errorFieldName: String, closure: () throws -> ()) {
-        do {
-            try closure()
-            XCTFail("Did not throw an error")
-        } catch ValidatorError.FieldBlank(let fieldName) {
-            XCTAssertEqual(fieldName, errorFieldName)
-        } catch let error {
-            XCTFail("The wrong error was thrown: \(error)")
-        }
-    }
-    
-    func validateThatFieldInvalidErrorIsThrown(errorFieldName: String,
-                                               errorMessage: String,
-                                               closure: () throws ->()) {
-        do {
-            try closure()
-            XCTFail("Did not throw an error")
-        } catch ValidatorError.FieldInvalid(let fieldName, let message) {
-            XCTAssertEqual(fieldName, errorFieldName)
-            XCTAssertEqual(message, errorMessage)
-        } catch {
-            XCTFail("he wrong error was thrown: \(error)")
         }
     }
 }

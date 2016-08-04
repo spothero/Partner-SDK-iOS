@@ -69,4 +69,12 @@ enum LocalizedStrings {
                                                 comment: "Error message for an invalid cvc")
     static let ZipErrorMessage = NSLocalizedString("Please enter a valid zip code",
                                                 comment: "Error message for an invalid zip code")
+    static let Visa = NSLocalizedString("Visa",
+                                        comment: "A Visa Credit Card")
+    static let Amex = NSLocalizedString("American Express",
+                                        comment: "An American Express Credit Card")
+    static let MasterCard = NSLocalizedString("MasterCard",
+                                        comment: "A MasterCard Credit Card")
+    static let Discover = NSLocalizedString("Visa",
+                                        comment: "A Discover Credit Card")
 }
