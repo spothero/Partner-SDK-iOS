@@ -77,7 +77,7 @@ class TimeSelectionView: UIView {
     func showTimeSelectionView(show: Bool) {
         self.hidden = !show
         self.showTimeSelectionViewDelegate?.timeSelectionViewShouldShow(show)
-        if !show {
+        if self.hidden {
             self.delegate?.timeSelectionViewShouldHide()
         }
     }
@@ -94,16 +94,16 @@ class TimeSelectionView: UIView {
             }
             if (self.isStartView) {
                 for (i, label) in dateTimeLabels {
-                    label.textColor = i < 2 ? UIColor.shp_spotHeroBlue() : UIColor.blackColor()
+                    label.textColor = i < 2 ? .shp_spotHeroBlue() : .blackColor()
                 }
             } else {
                 for (i, label) in dateTimeLabels {
-                    label.textColor = i >= 2 ? UIColor.shp_spotHeroBlue() : UIColor.blackColor()
+                    label.textColor = i >= 2 ? .shp_spotHeroBlue() : .blackColor()
                 }
             }
         } else {
             self.dateTimeLabels?.forEach({ (label) in
-                label.textColor = UIColor.blackColor()
+                label.textColor = .blackColor()
             })
         }
     }
