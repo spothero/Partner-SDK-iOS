@@ -105,6 +105,7 @@
 		BFB1172AB19258150037DFAA00FEFB7A /* SpotHeroPartnerSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181EBBE7E74872AFCEBDCD295C7BF9DE /* SpotHeroPartnerSDK.swift */; };
 		C14992679A9ED625623F4E9DCED1C774 /* KIFUIObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D57F3D10D1B0A92A6F67BCFF816BC3C /* KIFUIObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C45BFA9E405F62417E1D379F2B36FD03 /* NSURLQueryItem+QueryParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA205B5854E0C73DBD4276BB6FFA989E /* NSURLQueryItem+QueryParams.swift */; };
+		C70AC4C41D4BF91B004F8539 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70AC4C01D4BF8BB004F8539 /* Validator.swift */; };
 		C74D07DD1D4FED170068851B /* CountableIntEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74D07DB1D4FECE00068851B /* CountableIntEnum.swift */; };
 		C74D07DF1D4FF8C40068851B /* HeightsAndLengths.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74D07DE1D4FF8C40068851B /* HeightsAndLengths.swift */; };
 		C75A299B0860D3016DF20B1A5779903C /* NSBundle-KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E0527B6F28C55DD186FE2AD382616187 /* NSBundle-KIFAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -393,6 +394,7 @@
 		C1FC901A488DCAF88E302D2C22C3AD11 /* VOKBenkode.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VOKBenkode.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C46396168959C07A5D33115CBE6924CB /* ServerEnvironment.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ServerEnvironment.swift; sourceTree = "<group>"; };
 		C46B6258C3006561FC37367145F9196E /* UIEvent+KIFAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIEvent+KIFAdditions.h"; path = "Additions/UIEvent+KIFAdditions.h"; sourceTree = "<group>"; };
+		C70AC4C01D4BF8BB004F8539 /* Validator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		C74D07DB1D4FECE00068851B /* CountableIntEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountableIntEnum.swift; sourceTree = "<group>"; };
 		C74D07DE1D4FF8C40068851B /* HeightsAndLengths.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeightsAndLengths.swift; sourceTree = "<group>"; };
 		C7FBD0B81D4960770089A53B /* CheckoutTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutTableViewController.swift; sourceTree = "<group>"; };
@@ -727,6 +729,7 @@
 				96465127DA14FD5E8F3F635098A25169 /* DLog.swift */,
 				E5AA48240A2AC5DA8A8CADD31C964CEA /* LocalizedStrings.swift */,
 				D5ACFEF4F02B67576FBEFF84D37117F7 /* StringEnum.swift */,
+				C70AC4C01D4BF8BB004F8539 /* Validator.swift */,
 				C74D07DE1D4FF8C40068851B /* HeightsAndLengths.swift */,
 			);
 			path = Utilities;
@@ -1360,6 +1363,7 @@
 				C7FBD0BD1D496ADA0089A53B /* PersonalInfoTableViewCell.swift in Sources */,
 				3CBA685F659C0AA657C245D0A3794A93 /* ServerErrorJSON.swift in Sources */,
 				9C80D4A4E3A0164A5625546510D8EAB3 /* SpotHero_iOS_Partner_SDK-dummy.m in Sources */,
+				C70AC4C41D4BF91B004F8539 /* Validator.swift in Sources */,
 				7121370C5D98534832A632617573758F /* SpotHeroPartnerAPIController.swift in Sources */,
 				BFB1172AB19258150037DFAA00FEFB7A /* SpotHeroPartnerSDK.swift in Sources */,
 				9D260760161AEE1CBD3F49C0392D796B /* StringEnum.swift in Sources */,
