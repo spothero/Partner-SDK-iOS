@@ -27,13 +27,13 @@ class TimeSelectionView: UIView {
     
     private var isStartView = false
     private let thirtyMins: NSTimeInterval = 1800
-    private var startDate: NSDate = NSDate().shp_dateByRoundingMinutesBy30(true) {
+    private var startDate: NSDate = NSDate().shp_dateByRoundingMinutesBy30(roundDown: true) {
         didSet {
             self.setDateTimeLabels(self.startDate, endDate: self.endDate)
         }
     }
     
-    private var endDate: NSDate = NSDate().shp_dateByRoundingMinutesBy30(true).shp_dateByRoundingMinutesBy30(false) {
+    private var endDate: NSDate = NSDate().shp_dateByRoundingMinutesBy30(roundDown: false) {
         didSet {
             self.setDateTimeLabels(self.startDate, endDate: self.endDate)
         }
@@ -45,8 +45,8 @@ class TimeSelectionView: UIView {
     }
     
     private func setupTimeSelectionView() {
-        self.startDate = NSDate().shp_dateByRoundingMinutesBy30(true)
-        self.endDate = NSDate().shp_dateByRoundingMinutesBy30(true).shp_dateByRoundingMinutesBy30(false)
+        self.startDate = NSDate().shp_dateByRoundingMinutesBy30(roundDown: true)
+        self.endDate = NSDate().shp_dateByRoundingMinutesBy30(roundDown: false)
     }
     
     private func setDateTimeLabels(startDate: NSDate, endDate: NSDate) {
@@ -117,7 +117,7 @@ class TimeSelectionView: UIView {
         if (self.isStartView) {
             self.startDate = date
             if (self.endDate.timeIntervalSinceDate(date) < self.thirtyMins) {
-                self.endDate = date.shp_dateByRoundingMinutesBy30(false)
+                self.endDate = date.shp_dateByRoundingMinutesBy30(roundDown: false)
             }
         } else {
             self.endDate = date

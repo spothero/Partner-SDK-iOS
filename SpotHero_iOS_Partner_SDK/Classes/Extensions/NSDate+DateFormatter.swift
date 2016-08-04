@@ -14,7 +14,7 @@ public extension NSDate {
      
      - parameter roundDown: pass in true to round down by 30 mins, false to round up
      */
-    func shp_dateByRoundingMinutesBy30(roundDown: Bool) -> NSDate {
+    func shp_dateByRoundingMinutesBy30(roundDown roundDown: Bool) -> NSDate {
         let unitFlags: NSCalendarUnit = [.Minute, .Second]
         let timeComponents = NSCalendar.currentCalendar().components(unitFlags, fromDate: self)
         let remain = timeComponents.minute % 30
