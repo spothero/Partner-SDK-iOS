@@ -102,9 +102,7 @@ class TimeSelectionView: UIView {
                 }
             }
         } else {
-            self.dateTimeLabels?.forEach({ (label) in
-                label.textColor = .blackColor()
-            })
+            self.dateTimeLabels.forEach( {$0.textColor = .blackColor()} )
         }
     }
     
