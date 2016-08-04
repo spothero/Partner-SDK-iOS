@@ -11,8 +11,8 @@ import XCTest
 @testable import SpotHero_iOS_Partner_SDK
 
 class ValidatorTests: XCTestCase {
-    let emptyString = ""
-    let blankSpace = " "
+    private let emptyString = ""
+    private let blankSpace = " "
     
     //MARK: Helpers
     
@@ -21,9 +21,13 @@ class ValidatorTests: XCTestCase {
                                       closure: () throws -> ()) {
         do {
             try closure()
-            XCTAssert(true, "Did not throw an error", file: file, line: line)
+            XCTAssert(true, "Did not throw an error",
+                      file: file,
+                      line: line)
         } catch let error {
-            XCTFail("Validator threw an error: \(error)", file: file, line: line)
+            XCTFail("Validator threw an error: \(error)",
+                    file: file,
+                    line: line)
         }
     }
     
@@ -33,11 +37,18 @@ class ValidatorTests: XCTestCase {
                                            closure: () throws -> ()) {
         do {
             try closure()
-            XCTFail("Did not throw an error", file: file, line: line)
+            XCTFail("Did not throw an error",
+                    file: file,
+                    line: line)
         } catch ValidatorError.FieldBlank(let fieldName) {
-            XCTAssertEqual(fieldName, errorFieldName, file: file, line: line)
+            XCTAssertEqual(fieldName,
+                           errorFieldName,
+                           file: file,
+                           line: line)
         } catch let error {
-            XCTFail("The wrong error was thrown: \(error)", file: file, line: line)
+            XCTFail("The wrong error was thrown: \(error)",
+                    file: file,
+                    line: line)
         }
     }
     
@@ -48,12 +59,22 @@ class ValidatorTests: XCTestCase {
                                                closure: () throws ->()) {
         do {
             try closure()
-            XCTFail("Did not throw an error", file: file, line: line)
+            XCTFail("Did not throw an error",
+                    file: file,
+                    line: line)
         } catch ValidatorError.FieldInvalid(let fieldName, let message) {
-            XCTAssertEqual(fieldName, errorFieldName, file: file, line: line)
-            XCTAssertEqual(message, errorMessage, file: file, line: line)
+            XCTAssertEqual(fieldName,
+                           errorFieldName,
+                           file: file,
+                           line: line)
+            XCTAssertEqual(message,
+                           errorMessage,
+                           file: file,
+                           line: line)
         } catch {
-            XCTFail("he wrong error was thrown: \(error)", file: file, line: line)
+            XCTFail("The wrong error was thrown: \(error)",
+                    file: file,
+                    line: line)
         }
     }
     
@@ -255,12 +276,12 @@ class ValidatorTests: XCTestCase {
     //MARK: Expiration Date
     
     func testValidExpirationDate() {
-        let date = NSDate().dateByAddingTimeInterval(60 * 60 * 24 * 365)
+        let date = NSDate()
         let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
         
         if let dateComponents = calendar?.components([.Month, .Year], fromDate: date) {
             let month = String(dateComponents.month)
-            let year = String(dateComponents.year)
+            let year = String(dateComponents.year + 1)
             
             self.validateThatErrorIsNotThrown {
                 try Validator.validateExpiration(month, year: year)
