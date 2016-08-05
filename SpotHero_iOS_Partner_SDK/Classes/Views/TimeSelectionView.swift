@@ -20,6 +20,10 @@ protocol ShowTimeSelectionViewDelegate {
 
 class TimeSelectionView: UIView {
     
+    @IBOutlet weak private var startDateLabel: UILabel!
+    @IBOutlet weak private var startTimeLabel: UILabel!
+    @IBOutlet weak private var endDateLabel: UILabel!
+    @IBOutlet weak private var endTimeLabel: UILabel!
     @IBOutlet private var dateTimeLabels: [UILabel]!
     
     var delegate: TimeSelectionViewDelegate?

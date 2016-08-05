@@ -254,6 +254,10 @@
                                             <constraint firstAttribute="trailing" secondItem="OXP-P9-EfD" secondAttribute="trailing" constant="8" id="quh-kS-Wd1"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="endDateLabel" destination="rvd-oM-7oL" id="QDB-N2-nTz"/>
+                                            <outlet property="endTimeLabel" destination="hRI-UE-E7g" id="GMc-vp-R4Y"/>
+                                            <outlet property="startDateLabel" destination="nXl-sc-e5R" id="CIM-yP-RKp"/>
+                                            <outlet property="startTimeLabel" destination="RuZ-vp-ds5" id="JcU-VJ-jIY"/>
                                             <outletCollection property="dateTimeLabels" destination="nXl-sc-e5R" collectionClass="NSMutableArray" id="yXW-f6-ApQ"/>
                                             <outletCollection property="dateTimeLabels" destination="RuZ-vp-ds5" collectionClass="NSMutableArray" id="BKb-YM-sHL"/>
                                             <outletCollection property="dateTimeLabels" destination="rvd-oM-7oL" collectionClass="NSMutableArray" id="NJi-bf-N8G"/>
