@@ -58,17 +58,14 @@ class TimeSelectionView: UIView {
             return
         }
         for (i, label) in dateTimeLabels {
-            switch i {
-            case 0:
+            if (label == self.startDateLabel) {
                 label.text = DateFormatter.PrettyMonthDayDate.stringFromDate(self.startDate)
-            case 1:
+            } else if (label == self.startTimeLabel) {
                 label.text = DateFormatter.TimeOnly.stringFromDate(self.startDate)
-            case 2:
+            } else if (label == self.endDateLabel) {
                 label.text = DateFormatter.PrettyMonthDayDate.stringFromDate(self.endDate)
-            case 3:
+            } else if (label == self.endTimeLabel) {
                 label.text = DateFormatter.TimeOnly.stringFromDate(self.endDate)
-            default:
-                assertionFailure("self.dateTimeLabels has more than 4 labels")
             }
         }
     }
