@@ -111,6 +111,8 @@
 		C74D07DF1D4FF8C40068851B /* HeightsAndLengths.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74D07DE1D4FF8C40068851B /* HeightsAndLengths.swift */; };
 		C75A299B0860D3016DF20B1A5779903C /* NSBundle-KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E0527B6F28C55DD186FE2AD382616187 /* NSBundle-KIFAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C78EF3CB4FC7369BB2E9EB62DD231C2D /* KIFUIObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 6863E13C4D9C3DA825286E26213C105A /* KIFUIObject.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		C79C65B11D54E99B001CDCA4 /* PaymentButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = C79C65B01D54E99B001CDCA4 /* PaymentButton.xib */; };
+		C79C65B31D54EB7C001CDCA4 /* PaymentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79C65B21D54EB7C001CDCA4 /* PaymentButton.swift */; };
 		C7FBD0B41D480C910089A53B /* GooglePredictionTableFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FC0802185970666C7C42C8F69891832 /* GooglePredictionTableFooter.xib */; };
 		C7FBD0B51D480C950089A53B /* GooglePredictionTableHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14ECDC384ACDBDE8F87CDC482A8D12F6 /* GooglePredictionTableHeader.xib */; };
 		C7FBD0B61D480C980089A53B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF0FD056D3177DAC24F25DA6BEC2939C /* Images.xcassets */; };
@@ -399,6 +401,8 @@
 		C70AC4C01D4BF8BB004F8539 /* Validator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		C74D07DB1D4FECE00068851B /* CountableIntEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountableIntEnum.swift; sourceTree = "<group>"; };
 		C74D07DE1D4FF8C40068851B /* HeightsAndLengths.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeightsAndLengths.swift; sourceTree = "<group>"; };
+		C79C65B01D54E99B001CDCA4 /* PaymentButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PaymentButton.xib; sourceTree = "<group>"; };
+		C79C65B21D54EB7C001CDCA4 /* PaymentButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentButton.swift; sourceTree = "<group>"; };
 		C7FBD0B81D4960770089A53B /* CheckoutTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutTableViewController.swift; sourceTree = "<group>"; };
 		C7FBD0BA1D496AC90089A53B /* ReservationInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReservationInfoTableViewCell.swift; sourceTree = "<group>"; };
 		C7FBD0BC1D496ADA0089A53B /* PersonalInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalInfoTableViewCell.swift; sourceTree = "<group>"; };
@@ -642,6 +646,7 @@
 				C7FBD0BA1D496AC90089A53B /* ReservationInfoTableViewCell.swift */,
 				C7FBD0BC1D496ADA0089A53B /* PersonalInfoTableViewCell.swift */,
 				C7FBD0BE1D496AE70089A53B /* PaymentInfoTableViewCell.swift */,
+				C79C65B21D54EB7C001CDCA4 /* PaymentButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -942,6 +947,7 @@
 				14ECDC384ACDBDE8F87CDC482A8D12F6 /* GooglePredictionTableHeader.xib */,
 				BF0FD056D3177DAC24F25DA6BEC2939C /* Images.xcassets */,
 				7048324CEF486FF30A52B07D4D35FE52 /* Main.storyboard */,
+				C79C65B01D54E99B001CDCA4 /* PaymentButton.xib */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -1308,6 +1314,7 @@
 				C7FBD0B71D480C9D0089A53B /* Main.storyboard in Resources */,
 				C7FBD0B61D480C980089A53B /* Images.xcassets in Resources */,
 				C7FBD0B41D480C910089A53B /* GooglePredictionTableFooter.xib in Resources */,
+				C79C65B11D54E99B001CDCA4 /* PaymentButton.xib in Resources */,
 				C7FBD0B51D480C950089A53B /* GooglePredictionTableHeader.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1360,6 +1367,7 @@
 				C45BFA9E405F62417E1D379F2B36FD03 /* NSURLQueryItem+QueryParams.swift in Sources */,
 				3D67362597CDE0CAE49AEEF3513C9D34 /* PredictionController.swift in Sources */,
 				B82D63AA179CDB356EA7139A91F565DD /* PredictionTableViewCell.swift in Sources */,
+				C79C65B31D54EB7C001CDCA4 /* PaymentButton.swift in Sources */,
 				F8C6DAD029FD2CDA248BB2095169453B /* Rate.swift in Sources */,
 				51C1BCF05A4ED4461AF01BA5178F4066 /* Reservation.swift in Sources */,
 				1BEF95242528A49961186488FDCBA020 /* ReservationAPI.swift in Sources */,

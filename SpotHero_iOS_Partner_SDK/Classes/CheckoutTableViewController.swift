@@ -74,15 +74,15 @@ enum PersonalInfoRow: Int {
 }
 
 class CheckoutTableViewController: UITableViewController {
-    let reservationCellHeight: CGFloat = 86
-    let paymentButtonHeight: CGFloat = 60
+    private let reservationCellHeight: CGFloat = 86
+    private let paymentButtonHeight: CGFloat = 60
+    private let paymentButtonMargin: CGFloat = 0
     
     private lazy var paymentButton: UIButton = {
-        let _button = UIButton()
+        let _button = NSBundle(forClass: CheckoutTableViewController.self).loadNibNamed(String(PaymentButton), owner: nil, options: nil).first as! UIButton
         _button.addTarget(self, action: #selector(self.paymentButtonPressed), forControlEvents: .TouchUpOutside)
         _button.backgroundColor = .shp_mutedGreen()
-        _button.enabled = false
-        _button.frame = CGRect(x: 0, y: self.navigationController!.view.frame.height - self.paymentButtonHeight, width: self.navigationController!.view.frame.width, height: self.paymentButtonHeight)
+        _button.translatesAutoresizingMaskIntoConstraints = false
         return _button
     }()
     
@@ -95,7 +95,7 @@ class CheckoutTableViewController: UITableViewController {
         self.setupPaymentButton()
     }
     
-    func setupPaymentButton() {
+    private func setupPaymentButton() {
         guard let
             rate = self.rate,
             price = NumberFormatter.dollarNoCentsStringFromCents(rate.price) else {
@@ -103,9 +103,12 @@ class CheckoutTableViewController: UITableViewController {
         }
         
         self.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: self.paymentButtonHeight, right: 0)
-        
-        self.paymentButton.setTitle("Pay \(price) and Confirm Parking", forState: .Normal)
+        self.paymentButton.setTitle(String(format: LocalizedStrings.paymentButtonTitle, price), forState: .Normal)
         self.navigationController?.view.addSubview(self.paymentButton)
+        let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("|-margin-[paymentButton]-margin-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: ["margin": paymentButtonMargin], views: ["paymentButton": paymentButton])
+        let verticalContraints = NSLayoutConstraint.constraintsWithVisualFormat("V:[paymentButton(height)]-margin-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: ["margin": paymentButtonMargin, "height": paymentButtonHeight], views: ["paymentButton": paymentButton])
+        self.navigationController?.view.addConstraints(horizontalConstraints)
+        self.navigationController?.view.addConstraints(verticalContraints)
     }
     
     // MARK: - Table view data source
@@ -189,7 +192,7 @@ class CheckoutTableViewController: UITableViewController {
     
     //MARK: Helpers
     
-    func configureCell(cell: ReservationInfoTableViewCell,
+    private func configureCell(cell: ReservationInfoTableViewCell,
                        row: ReservationInfoRow,
                        facility: Facility,
                        rate: Rate) {
@@ -208,7 +211,7 @@ class CheckoutTableViewController: UITableViewController {
         }
     }
     
-    func configureCell(cell: PersonalInfoTableViewCell, row: PersonalInfoRow) {
+    private func configureCell(cell: PersonalInfoTableViewCell, row: PersonalInfoRow) {
         cell.titleLabel.text = row.title()
         cell.textField.placeholder = row.placeholder()
         
@@ -223,7 +226,7 @@ class CheckoutTableViewController: UITableViewController {
         }
     }
     
-    func setPaymentButtonEnabled(enabled: Bool) {
+    private func setPaymentButtonEnabled(enabled: Bool) {
         self.paymentButton.enabled = enabled
         self.paymentButton.backgroundColor = enabled ? .shp_green() : .shp_mutedGreen()
     }

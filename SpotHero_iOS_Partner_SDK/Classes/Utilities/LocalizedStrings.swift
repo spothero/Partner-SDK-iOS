@@ -77,4 +77,6 @@ enum LocalizedStrings {
                                         comment: "A MasterCard Credit Card")
     static let Discover = NSLocalizedString("Visa",
                                         comment: "A Discover Credit Card")
+    static let paymentButtonTitle = NSLocalizedString("Pay %@ and Confirm Parking",
+                                                      comment: "Title of the checkout screen payment button")
 }
