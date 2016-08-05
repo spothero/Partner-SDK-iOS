@@ -15,21 +15,13 @@ protocol PersonalInfoTableViewCellDelegate {
 class PersonalInfoTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var errorLabel: UILabel!
     
     var delegate: PersonalInfoTableViewCellDelegate?
     var validationClosure: ((String) throws -> ())?
     var error: ValidatorError? {
         didSet {
-            if let
-                error = self.error,
-                delegate = self.delegate {
-                delegate.didValidateText(error)
-                //TODO: Get actual color for error state
-                self.backgroundColor = .redColor()
-            } else if let delegate = self.delegate where oldValue != nil {
-                delegate.didValidateText(nil)
-                self.backgroundColor = .whiteColor()
-            }
+            self.setErrorState(oldValue)
         }
     }
     
@@ -38,6 +30,27 @@ class PersonalInfoTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         textField.delegate = self
+    }
+    
+    private func setErrorState(oldValue: ValidatorError?) {
+        if let
+            error = self.error,
+            delegate = self.delegate {
+            delegate.didValidateText(error)
+            self.backgroundColor = .shp_errorRed()
+            self.errorLabel.hidden = false
+            switch error {
+            case .FieldBlank(let fieldName):
+                self.errorLabel.text = String(format: LocalizedStrings.blankFieldError, fieldName)
+            case .FieldInvalid(let fieldName, let message):
+                self.errorLabel.text = message
+            }
+            
+        } else if let delegate = self.delegate where oldValue != nil {
+            delegate.didValidateText(nil)
+            self.errorLabel.hidden = true
+            self.backgroundColor = .whiteColor()
+        }
     }
 }
 
