@@ -24,6 +24,7 @@ class PersonalInfoTableViewCell: UITableViewCell {
                 error = self.error,
                 delegate = self.delegate {
                 delegate.didValidateText(error)
+                //TODO: Get actual color for error state
                 self.backgroundColor = .redColor()
             } else if let delegate = self.delegate where oldValue != nil {
                 delegate.didValidateText(nil)
