@@ -54,10 +54,7 @@ class TimeSelectionView: UIView {
     }
     
     private func setDateTimeLabels(startDate: NSDate, endDate: NSDate) {
-        guard let dateTimeLabels = self.dateTimeLabels?.enumerate() else {
-            return
-        }
-        for (i, label) in dateTimeLabels {
+        for label in self.dateTimeLabels {
             if (label == self.startDateLabel) {
                 label.text = DateFormatter.PrettyMonthDayDate.stringFromDate(self.startDate)
             } else if (label == self.startTimeLabel) {
@@ -90,17 +87,16 @@ class TimeSelectionView: UIView {
      */
     func startEndViewSelected(selected: Bool) {
         if selected {
-            guard let dateTimeLabels = self.dateTimeLabels?.enumerate() else {
-                return
-            }
             if (self.isStartView) {
-                for (i, label) in dateTimeLabels {
-                    label.textColor = i < 2 ? .shp_spotHeroBlue() : .blackColor()
-                }
+                self.startDateLabel.textColor = .shp_spotHeroBlue()
+                self.startTimeLabel.textColor = .shp_spotHeroBlue()
+                self.endDateLabel.textColor = .blackColor()
+                self.endTimeLabel.textColor = .blackColor()
             } else {
-                for (i, label) in dateTimeLabels {
-                    label.textColor = i >= 2 ? .shp_spotHeroBlue() : .blackColor()
-                }
+                self.startDateLabel.textColor = .blackColor()
+                self.startTimeLabel.textColor = .blackColor()
+                self.endDateLabel.textColor = .shp_spotHeroBlue()
+                self.endTimeLabel.textColor = .shp_spotHeroBlue()
             }
         } else {
             self.dateTimeLabels.forEach( {$0.textColor = .blackColor()} )
