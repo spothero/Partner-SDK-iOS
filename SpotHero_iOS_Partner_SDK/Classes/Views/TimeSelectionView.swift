@@ -99,7 +99,7 @@ class TimeSelectionView: UIView {
                 self.endTimeLabel.textColor = .shp_spotHeroBlue()
             }
         } else {
-            self.dateTimeLabels.forEach( {$0.textColor = .blackColor()} )
+            self.dateTimeLabels.forEach { $0.textColor = .blackColor() }
         }
     }
     
