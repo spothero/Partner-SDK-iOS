@@ -32,9 +32,15 @@ public extension UIColor {
     }
     
     static func shp_green() -> UIColor {
-        return .shp_colorWithRed(38,
+        return .shp_colorWithRed(93,
                                  green: 153,
                                  blue: 3)
+    }
+    
+    static func shp_mutedGreen() -> UIColor {
+        return .shp_colorWithRed(146,
+                                 green: 204,
+                                 blue: 128)
     }
     
     static func shp_lightGray() -> UIColor {

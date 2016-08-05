@@ -80,10 +80,8 @@ class CheckoutTableViewController: UITableViewController {
     private lazy var paymentButton: UIButton = {
         let _button = UIButton()
         _button.addTarget(self, action: #selector(self.paymentButtonPressed), forControlEvents: .TouchUpOutside)
-        _button.backgroundColor = UIColor.shp_green()
-        _button.alpha = 0.5
+        _button.backgroundColor = .shp_mutedGreen()
         _button.enabled = false
-        
         _button.frame = CGRect(x: 0, y: self.navigationController!.view.frame.height - self.paymentButtonHeight, width: self.navigationController!.view.frame.width, height: self.paymentButtonHeight)
         return _button
     }()
@@ -98,14 +96,15 @@ class CheckoutTableViewController: UITableViewController {
     }
     
     func setupPaymentButton() {
-        guard let rate = self.rate else {
+        guard let
+            rate = self.rate,
+            price = NumberFormatter.dollarNoCentsStringFromCents(rate.price) else {
             return
         }
         
         self.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: self.paymentButtonHeight, right: 0)
         
-        //TODO: Number formatter
-        self.paymentButton.setTitle("Pay $\(rate.displayPrice) and Confirm Parking", forState: .Normal)
+        self.paymentButton.setTitle("Pay \(price) and Confirm Parking", forState: .Normal)
         self.navigationController?.view.addSubview(self.paymentButton)
     }
     
@@ -224,8 +223,8 @@ class CheckoutTableViewController: UITableViewController {
         }
     }
     
-    func enablePaymentButton(enable: Bool) {
-        self.paymentButton.enabled = enable
-        self.paymentButton.alpha = enable ? 1 : 0.5
+    func setPaymentButtonEnabled(enabled: Bool) {
+        self.paymentButton.enabled = enabled
+        self.paymentButton.backgroundColor = enabled ? .shp_green() : .shp_mutedGreen()
     }
 }
