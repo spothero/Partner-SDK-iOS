@@ -32,7 +32,7 @@ public extension UIColor {
     }
     
     static func shp_green() -> UIColor {
-        return .shp_colorWithRed(93,
+        return .shp_colorWithRed(38,
                                  green: 153,
                                  blue: 3)
     }
