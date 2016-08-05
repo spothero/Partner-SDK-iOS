@@ -2,7 +2,7 @@
 //  HeightsAndLengths.swift
 //  Pods
 //
-//  Created by SpotHeroMatt on 8/1/16.
+//  Created by Matthew Reed on 8/1/16.
 //  Copyright © 2016 SpotHero. All rights reserved.
 //
 
