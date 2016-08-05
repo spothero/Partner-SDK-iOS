@@ -111,8 +111,19 @@
 		BFB1172AB19258150037DFAA00FEFB7A /* SpotHeroPartnerSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181EBBE7E74872AFCEBDCD295C7BF9DE /* SpotHeroPartnerSDK.swift */; };
 		C14992679A9ED625623F4E9DCED1C774 /* KIFUIObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D57F3D10D1B0A92A6F67BCFF816BC3C /* KIFUIObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C45BFA9E405F62417E1D379F2B36FD03 /* NSURLQueryItem+QueryParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA205B5854E0C73DBD4276BB6FFA989E /* NSURLQueryItem+QueryParams.swift */; };
+		C70AC4C41D4BF91B004F8539 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70AC4C01D4BF8BB004F8539 /* Validator.swift */; };
+		C74D07DD1D4FED170068851B /* CountableIntEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74D07DB1D4FECE00068851B /* CountableIntEnum.swift */; };
+		C74D07DF1D4FF8C40068851B /* HeightsAndLengths.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74D07DE1D4FF8C40068851B /* HeightsAndLengths.swift */; };
 		C75A299B0860D3016DF20B1A5779903C /* NSBundle-KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E0527B6F28C55DD186FE2AD382616187 /* NSBundle-KIFAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C78EF3CB4FC7369BB2E9EB62DD231C2D /* KIFUIObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 6863E13C4D9C3DA825286E26213C105A /* KIFUIObject.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		C7FBD0B41D480C910089A53B /* GooglePredictionTableFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FC0802185970666C7C42C8F69891832 /* GooglePredictionTableFooter.xib */; };
+		C7FBD0B51D480C950089A53B /* GooglePredictionTableHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14ECDC384ACDBDE8F87CDC482A8D12F6 /* GooglePredictionTableHeader.xib */; };
+		C7FBD0B61D480C980089A53B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF0FD056D3177DAC24F25DA6BEC2939C /* Images.xcassets */; };
+		C7FBD0B71D480C9D0089A53B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7048324CEF486FF30A52B07D4D35FE52 /* Main.storyboard */; };
+		C7FBD0B91D4960770089A53B /* CheckoutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7FBD0B81D4960770089A53B /* CheckoutTableViewController.swift */; };
+		C7FBD0BB1D496AC90089A53B /* ReservationInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7FBD0BA1D496AC90089A53B /* ReservationInfoTableViewCell.swift */; };
+		C7FBD0BD1D496ADA0089A53B /* PersonalInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7FBD0BC1D496ADA0089A53B /* PersonalInfoTableViewCell.swift */; };
+		C7FBD0BF1D496AE70089A53B /* PaymentInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7FBD0BE1D496AE70089A53B /* PaymentInfoTableViewCell.swift */; };
 		C8D3D09E32433113799CE6FD434D6FEE /* KIF-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A4118229E82AF62B5973027C25E7FBDE /* KIF-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C97B7C0A7D47F9089B279FEB3B338A4F /* KIFUITestActor-ConditionalTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 117DC4EDDFFBE0C4A7AB0F057D7D3564 /* KIFUITestActor-ConditionalTests.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		CB567CAB623EE579448E24D486300050 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A505AC0285FE14B505B6D026D35B6DC /* QuartzCore.framework */; };
@@ -388,6 +399,13 @@
 		C1D166214B7CD4227BA16F3C79AB2CBD /* UIWindow-KIFAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIWindow-KIFAdditions.h"; path = "Additions/UIWindow-KIFAdditions.h"; sourceTree = "<group>"; };
 		C46396168959C07A5D33115CBE6924CB /* ServerEnvironment.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ServerEnvironment.swift; sourceTree = "<group>"; };
 		C46B6258C3006561FC37367145F9196E /* UIEvent+KIFAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIEvent+KIFAdditions.h"; path = "Additions/UIEvent+KIFAdditions.h"; sourceTree = "<group>"; };
+		C70AC4C01D4BF8BB004F8539 /* Validator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
+		C74D07DB1D4FECE00068851B /* CountableIntEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountableIntEnum.swift; sourceTree = "<group>"; };
+		C74D07DE1D4FF8C40068851B /* HeightsAndLengths.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeightsAndLengths.swift; sourceTree = "<group>"; };
+		C7FBD0B81D4960770089A53B /* CheckoutTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutTableViewController.swift; sourceTree = "<group>"; };
+		C7FBD0BA1D496AC90089A53B /* ReservationInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReservationInfoTableViewCell.swift; sourceTree = "<group>"; };
+		C7FBD0BC1D496ADA0089A53B /* PersonalInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalInfoTableViewCell.swift; sourceTree = "<group>"; };
+		C7FBD0BE1D496AE70089A53B /* PaymentInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentInfoTableViewCell.swift; sourceTree = "<group>"; };
 		CA205B5854E0C73DBD4276BB6FFA989E /* NSURLQueryItem+QueryParams.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "NSURLQueryItem+QueryParams.swift"; sourceTree = "<group>"; };
 		CC94D1BD3EC065C485FFBABA54E7D7B6 /* NSException-KIFAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSException-KIFAdditions.h"; path = "Additions/NSException-KIFAdditions.h"; sourceTree = "<group>"; };
 		CED353CC3F3A082AC308EE2853EFE9CB /* KIFUITestActor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KIFUITestActor.h; path = Classes/KIFUITestActor.h; sourceTree = "<group>"; };
@@ -612,6 +630,9 @@
 				79E248BADBA9ED97533D3D500FC450D2 /* CollapsedSearchBarView.swift */,
 				30EAAAD0EFE06D156D4865C321A3141B /* GooglePredictionTableFooter.swift */,
 				F9D9628D3ED5246880DCF375B23F66F2 /* GooglePredictionTableHeader.swift */,
+				C7FBD0BA1D496AC90089A53B /* ReservationInfoTableViewCell.swift */,
+				C7FBD0BC1D496ADA0089A53B /* PersonalInfoTableViewCell.swift */,
+				C7FBD0BE1D496AE70089A53B /* PaymentInfoTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -701,6 +722,8 @@
 				96465127DA14FD5E8F3F635098A25169 /* DLog.swift */,
 				E5AA48240A2AC5DA8A8CADD31C964CEA /* LocalizedStrings.swift */,
 				D5ACFEF4F02B67576FBEFF84D37117F7 /* StringEnum.swift */,
+				C70AC4C01D4BF8BB004F8539 /* Validator.swift */,
+				C74D07DE1D4FF8C40068851B /* HeightsAndLengths.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -794,7 +817,9 @@
 		B3F3A1CB46B6AFD32623EE34B8E98694 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				C74D07DA1D4FECB80068851B /* Protocols */,
 				E931C15F2E199CB6CD180DDB97DDE296 /* FaciltyAPI.swift */,
+				C7FBD0B81D4960770089A53B /* CheckoutTableViewController.swift */,
 				2595BD9E1A3D5483626A6313B1CC0F3F /* MapViewController.swift */,
 				3DC637F4B24CECAB45E2625293661B64 /* PredictionTableViewCell.swift */,
 				F9DCB44D891459E37F167DE886B1FFB3 /* ReservationAPI.swift */,
@@ -840,6 +865,14 @@
 			);
 			name = "Support Files";
 			path = "Example/Pods/Target Support Files/SpotHero_iOS_Partner_SDK";
+			sourceTree = "<group>";
+		};
+		C74D07DA1D4FECB80068851B /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				C74D07DB1D4FECE00068851B /* CountableIntEnum.swift */,
+			);
+			name = Protocols;
 			sourceTree = "<group>";
 		};
 		CFC1CC8E27E5F71DF7D155ECF49BB40E /* VOKMockUrlProtocol */ = {
@@ -1237,6 +1270,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = SpotHero;
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1307,6 +1341,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C74D07DF1D4FF8C40068851B /* HeightsAndLengths.swift in Sources */,
 				8EE314D71E21760ED889DB84D5BFCEB0 /* AccessibilityStrings.swift in Sources */,
 				7F13B756B6D08DB42EAE75C53DFF9FDD /* APIError.swift in Sources */,
 				6AAE6B3EF2E8C859FD51672B3B46649F /* APIHeaders.swift in Sources */,
@@ -1317,7 +1352,9 @@
 				EDE8E09F549AFCEE1C0045275DA37AFD /* Facility.swift in Sources */,
 				1F86D0DA96D34D29AD2A2EDFA9A7C207 /* FaciltyAPI.swift in Sources */,
 				FA3FDC863230CF5F291F7C1C14B2A59E /* GooglePlaceDetails.swift in Sources */,
+				C74D07DD1D4FED170068851B /* CountableIntEnum.swift in Sources */,
 				177954FA445DF28E0303B4FC42D77BEF /* GooglePlacesPrediction.swift in Sources */,
+				C7FBD0B91D4960770089A53B /* CheckoutTableViewController.swift in Sources */,
 				34D14769904FBE7039B55BB7E9335115 /* GooglePlacesWrapper.swift in Sources */,
 				EA1DCD1AE8981C8655B0F0EEC48DD15C /* GooglePredictionTableFooter.swift in Sources */,
 				06BAEFC121353914388D3572CF4D16FB /* GooglePredictionTableHeader.swift in Sources */,
@@ -1331,11 +1368,15 @@
 				51C1BCF05A4ED4461AF01BA5178F4066 /* Reservation.swift in Sources */,
 				1BEF95242528A49961186488FDCBA020 /* ReservationAPI.swift in Sources */,
 				BC9B3C04789B3587FE5A5DA203653C64 /* ServerEnvironment.swift in Sources */,
+				C7FBD0BD1D496ADA0089A53B /* PersonalInfoTableViewCell.swift in Sources */,
 				3CBA685F659C0AA657C245D0A3794A93 /* ServerErrorJSON.swift in Sources */,
 				9C80D4A4E3A0164A5625546510D8EAB3 /* SpotHero_iOS_Partner_SDK-dummy.m in Sources */,
+				C70AC4C41D4BF91B004F8539 /* Validator.swift in Sources */,
 				7121370C5D98534832A632617573758F /* SpotHeroPartnerAPIController.swift in Sources */,
 				BFB1172AB19258150037DFAA00FEFB7A /* SpotHeroPartnerSDK.swift in Sources */,
 				9D260760161AEE1CBD3F49C0392D796B /* StringEnum.swift in Sources */,
+				C7FBD0BB1D496AC90089A53B /* ReservationInfoTableViewCell.swift in Sources */,
+				C7FBD0BF1D496AE70089A53B /* PaymentInfoTableViewCell.swift in Sources */,
 				3AD8D1E88F5461B44EBA356157B52200 /* StripeWrapper.swift in Sources */,
 				FEAA7DD45647C79FEFBAA77F19E8D78D /* UIColor+SpotHeroPartner.swift in Sources */,
 			);
@@ -1498,6 +1539,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BB65D5FB9941D22DCFF75511D44BD252 /* ILGHttpConstants.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -1906,6 +1948,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BB65D5FB9941D22DCFF75511D44BD252 /* ILGHttpConstants.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -1925,6 +1968,7 @@
 				PRODUCT_NAME = ILGHttpConstants;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";

@@ -2,7 +2,7 @@
 //  StripeWrapper.swift
 //  Pods
 //
-//  Created by SpotHeroMatt on 7/26/16.
+//  Created by Matthew Reed on 7/26/16.
 //
 //
 
