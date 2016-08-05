@@ -86,6 +86,11 @@ class CheckoutTableViewController: UITableViewController {
         return _button
     }()
     
+    private var validationErrors = 0 {
+        didSet {
+            self.setPaymentButtonEnabled(self.validationErrors == 0)
+        }
+    }
     var facility: Facility?
     var rate: Rate?
     
@@ -214,20 +219,43 @@ class CheckoutTableViewController: UITableViewController {
     private func configureCell(cell: PersonalInfoTableViewCell, row: PersonalInfoRow) {
         cell.titleLabel.text = row.title()
         cell.textField.placeholder = row.placeholder()
+        cell.delegate = self
         
         switch row {
         case PersonalInfoRow.FullName:
             cell.textField.autocapitalizationType = .Words
+            cell.validationClosure = {
+                fullName in
+                try Validator.validateFullName(fullName)
+            }
         case PersonalInfoRow.Email:
             cell.textField.autocapitalizationType = .None
             cell.textField.keyboardType = .EmailAddress
+            cell.validationClosure = {
+                email in
+                try Validator.validateEmail(email)
+            }
         case PersonalInfoRow.Phone:
             cell.textField.keyboardType = .PhonePad
+            cell.validationClosure = {
+                phone in
+                try Validator.validatePhone(phone)
+            }
         }
     }
     
     private func setPaymentButtonEnabled(enabled: Bool) {
         self.paymentButton.enabled = enabled
         self.paymentButton.backgroundColor = enabled ? .shp_green() : .shp_mutedGreen()
+    }
+}
+
+extension CheckoutTableViewController: PersonalInfoTableViewCellDelegate {
+    func didValidateText(error: ValidatorError?) {
+        if error == nil {
+            self.validationErrors -= 1
+        } else {
+            self.validationErrors += 1
+        }
     }
 }
