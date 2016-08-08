@@ -9,6 +9,13 @@
 import Foundation
 
 enum Formatter {
+    /**
+     Formats a phone number like so: xxx-xxx-xxxx
+     
+     - parameter phone: Phone Number to format
+     
+     - returns: Formatted phone number
+     */
     static func formatPhoneNumber(phone: String) -> String {
         let unformatted = phone.stringByReplacingOccurrencesOfString("-", withString: "")
         
@@ -31,6 +38,13 @@ enum Formatter {
         return unformatted
     }
     
+    /**
+     Formats a credit card number like so: xxxx xxxx xxxx xxxx
+     
+     - parameter number: Credit card number to format
+     
+     - returns: Formatted credit card number
+     */
     static func formatCreditCard(number: String) -> String {
         let unformatted = number.stringByReplacingOccurrencesOfString(" ", withString: "")
         
@@ -58,6 +72,13 @@ enum Formatter {
         return unformatted
     }
     
+    /**
+     Formats an american express credit card number like so: xxxx xxxxxx xxxxx
+     
+     - parameter number: Credit card number to format
+     
+     - returns: Formatted credit card number
+     */
     static func formatCreditCardAmex(number: String) -> String {
         let unformatted = number.stringByReplacingOccurrencesOfString(" ", withString: "")
         
