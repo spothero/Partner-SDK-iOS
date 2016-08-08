@@ -4,4 +4,4 @@
 bundle install
 
 # Use fastlane to run all our tests. 
-fastlane test
+bundle exec fastlane test
