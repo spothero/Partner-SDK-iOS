@@ -79,8 +79,14 @@ class CheckoutTableViewController: UITableViewController {
     private let paymentButtonMargin: CGFloat = 0
     
     private lazy var paymentButton: UIButton = {
-        let _button = NSBundle(forClass: CheckoutTableViewController.self).loadNibNamed(String(PaymentButton), owner: nil, options: nil).first as! UIButton
-        _button.addTarget(self, action: #selector(self.paymentButtonPressed), forControlEvents: .TouchUpOutside)
+        let _button = NSBundle(forClass: CheckoutTableViewController.self)
+            .loadNibNamed(String(PaymentButton),
+                          owner: nil,
+                          options: nil)
+            .first as! UIButton
+        _button.addTarget(self,
+                          action: #selector(self.paymentButtonPressed),
+                          forControlEvents: .TouchUpOutside)
         _button.backgroundColor = .shp_mutedGreen()
         _button.translatesAutoresizingMaskIntoConstraints = false
         return _button
@@ -102,11 +108,20 @@ class CheckoutTableViewController: UITableViewController {
             return
         }
         
-        self.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: self.paymentButtonHeight, right: 0)
-        self.paymentButton.setTitle(String(format: LocalizedStrings.paymentButtonTitle, price), forState: .Normal)
+        self.tableView.contentInset = UIEdgeInsets(top: 0,
+                                                   left: 0,
+                                                   bottom: self.paymentButtonHeight,
+                                                   right: 0)
+        self.paymentButton.setTitle(String(format: LocalizedStrings.paymentButtonTitleFormat, price), forState: .Normal)
         self.navigationController?.view.addSubview(self.paymentButton)
-        let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("|-margin-[paymentButton]-margin-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: ["margin": paymentButtonMargin], views: ["paymentButton": paymentButton])
-        let verticalContraints = NSLayoutConstraint.constraintsWithVisualFormat("V:[paymentButton(height)]-margin-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: ["margin": paymentButtonMargin, "height": paymentButtonHeight], views: ["paymentButton": paymentButton])
+        let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("|-margin-[paymentButton]-margin-|",
+                                                                                   options: NSLayoutFormatOptions(rawValue: 0),
+                                                                                   metrics: ["margin": paymentButtonMargin],
+                                                                                   views: ["paymentButton": paymentButton])
+        let verticalContraints = NSLayoutConstraint.constraintsWithVisualFormat("V:[paymentButton(height)]-margin-|",
+                                                                                options: NSLayoutFormatOptions(rawValue: 0),
+                                                                                metrics: ["margin": paymentButtonMargin, "height": paymentButtonHeight],
+                                                                                views: ["paymentButton": paymentButton])
         self.navigationController?.view.addConstraints(horizontalConstraints)
         self.navigationController?.view.addConstraints(verticalContraints)
     }
@@ -187,7 +202,7 @@ class CheckoutTableViewController: UITableViewController {
     //MARK: Actions
     
     func paymentButtonPressed() {
-        // Create Stripe token and reservation
+        //TODO: Create Stripe token and reservation
     }
     
     //MARK: Helpers

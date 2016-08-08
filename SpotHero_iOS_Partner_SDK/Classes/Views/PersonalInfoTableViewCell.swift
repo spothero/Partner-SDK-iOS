@@ -46,7 +46,7 @@ class PersonalInfoTableViewCell: UITableViewCell {
             self.errorLabel.hidden = false
             switch error {
             case .FieldBlank(let fieldName):
-                self.errorLabel.text = String(format: LocalizedStrings.blankFieldError, fieldName)
+                self.errorLabel.text = String(format: LocalizedStrings.blankFieldErrorFormat, fieldName)
             case .FieldInvalid(let fieldName, let message):
                 self.errorLabel.text = message
             }
