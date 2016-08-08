@@ -57,7 +57,10 @@ public class SpotHeroPartnerSDK: NSObject {
             return
         }
         
-        let textAttributes = [NSForegroundColorAttributeName : self.textColor]
+        let textAttributes = [
+            NSForegroundColorAttributeName: self.textColor,
+            ]
+        
         navController.navigationBar.titleTextAttributes = textAttributes
         navController.navigationBar.tintColor = self.textColor
         navController.navigationBar.barTintColor = self.tintColor

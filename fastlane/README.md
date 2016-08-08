@@ -11,6 +11,13 @@ sudo gem install fastlane
 fastlane ios test
 ```
 Runs all the tests of the app and gathers code coverage
+### ios sample_itc
+```
+fastlane ios sample_itc
+```
+Method to run after a successful merge.
+
+Will bump/commit/tag/push the version and upload to iTunes Connect.
 
 ----
 

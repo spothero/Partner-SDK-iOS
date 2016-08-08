@@ -35,7 +35,7 @@ class PartnerAPIMockTests: BaseTests {
         super.tearDown()
     }
     
-    func getFacilities(location: CLLocation, completion: ([Facility], ErrorType?) -> Void) {
+    private func getFacilities(location: CLLocation, completion: ([Facility], ErrorType?) -> Void) {
         if let
             startDate = self.startDate,
             endDate = self.endDate {
@@ -51,7 +51,17 @@ class PartnerAPIMockTests: BaseTests {
     
     func testMockGetFacilities() {
         let expectation = self.expectationWithDescription("Got facilities")
-        self.getFacilities(Constants.ChicagoLocation) { (facilities, error) in
+        self.getFacilities(Constants.ChicagoLocation) {
+            facilities, error in
+            
+            if let returnedError = error {
+                XCTFail("Unexpected error: \(returnedError)")
+                
+                //Nothing else to wait for - fulfill and bail.
+                expectation.fulfill()
+                return
+            }
+            
             XCTAssertNil(error)
             XCTAssertEqual(facilities.count, 170)
             guard let
@@ -80,7 +90,7 @@ class PartnerAPIMockTests: BaseTests {
             expectation.fulfill()
         }
         
-        waitForExpectationsWithTimeout(self.timeoutDuration, handler: nil)
+        self.waitForExpectationsWithTimeout(self.timeoutDuration, handler: nil)
     }
     
     func testMockCreateReservation() {
@@ -88,13 +98,29 @@ class PartnerAPIMockTests: BaseTests {
         
         self.getFacilities(Constants.ChicagoLocation) {
             facilities, error in
+            if let returnedError = error {
+                XCTFail("Unexpected error fetching facilities: \(returnedError)")
+                
+                //Nothing else to wait for - fulfill and bail.
+                expectation.fulfill()
+                return
+            }
+            
             if let facility = facilities.first, rate = facility.rates.first {
                 ReservationAPI.createReservation(facility,
                                                  rate: rate,
                                                  email: self.testEmail,
                                                  completion: {
-                                                    reservation, error in
-                                                    XCTAssertNil(error)
+                                                    reservation, reservationError in
+                                                    
+                                                    if let returnedReservationError = reservationError {
+                                                        XCTFail("Unexpected error making reservation: \(returnedReservationError)")
+                                                        
+                                                        //Nothing else to wait for - fulfill and bail.
+                                                        expectation.fulfill()
+                                                        return
+                                                    }
+                                                    
                                                     XCTAssertNotNil(reservation)
                                                     XCTAssertEqual(reservation?.status, "valid")
                                                     XCTAssertEqual(reservation?.rentalID, 3559198)
@@ -112,5 +138,4 @@ class PartnerAPIMockTests: BaseTests {
         
         self.waitForExpectationsWithTimeout(self.timeoutDuration, handler: nil)
     }
-    
 }
