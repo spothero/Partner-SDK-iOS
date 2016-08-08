@@ -102,6 +102,13 @@
 		B82D63AA179CDB356EA7139A91F565DD /* PredictionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC637F4B24CECAB45E2625293661B64 /* PredictionTableViewCell.swift */; };
 		BC6C168E14C3B1B7042B897135E5245F /* UIView-KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 1456BCEA72759C60727AFF952EF591D1 /* UIView-KIFAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BC9B3C04789B3587FE5A5DA203653C64 /* ServerEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46396168959C07A5D33115CBE6924CB /* ServerEnvironment.swift */; };
+		BD04AF1E1D51E91B0027866C /* NSDate+DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD04AF1D1D51E91B0027866C /* NSDate+DateFormatter.swift */; };
+		BD3860F61D50F400001D5AE7 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3860F51D50F400001D5AE7 /* DatePickerView.swift */; };
+		BD3860F81D50F8CD001D5AE7 /* TimeSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3860F71D50F8CD001D5AE7 /* TimeSelectionView.swift */; };
+		BD7BEBB41D49111D00103E12 /* GooglePredictionTableFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FC0802185970666C7C42C8F69891832 /* GooglePredictionTableFooter.xib */; };
+		BD7BEBB51D49112300103E12 /* GooglePredictionTableHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14ECDC384ACDBDE8F87CDC482A8D12F6 /* GooglePredictionTableHeader.xib */; };
+		BD7BEBB61D49112900103E12 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF0FD056D3177DAC24F25DA6BEC2939C /* Images.xcassets */; };
+		BD7BEBB71D49112C00103E12 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7048324CEF486FF30A52B07D4D35FE52 /* Main.storyboard */; };
 		BFB1172AB19258150037DFAA00FEFB7A /* SpotHeroPartnerSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181EBBE7E74872AFCEBDCD295C7BF9DE /* SpotHeroPartnerSDK.swift */; };
 		C14992679A9ED625623F4E9DCED1C774 /* KIFUIObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D57F3D10D1B0A92A6F67BCFF816BC3C /* KIFUIObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C45BFA9E405F62417E1D379F2B36FD03 /* NSURLQueryItem+QueryParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA205B5854E0C73DBD4276BB6FFA989E /* NSURLQueryItem+QueryParams.swift */; };
@@ -384,6 +391,9 @@
 		BB4CF7A50631AF2A005CAC54E0AFE35A /* VOKBenkode.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = VOKBenkode.m; path = Pod/Classes/VOKBenkode.m; sourceTree = "<group>"; };
 		BB65D5FB9941D22DCFF75511D44BD252 /* ILGHttpConstants.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ILGHttpConstants.xcconfig; sourceTree = "<group>"; };
 		BB6A800542D3897FE795CEE01EFA95D3 /* KIFUIViewTestActor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = KIFUIViewTestActor.m; path = Classes/KIFUIViewTestActor.m; sourceTree = "<group>"; };
+		BD04AF1D1D51E91B0027866C /* NSDate+DateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+DateFormatter.swift"; sourceTree = "<group>"; };
+		BD3860F51D50F400001D5AE7 /* DatePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DatePickerView.swift; path = ../DatePickerView.swift; sourceTree = "<group>"; };
+		BD3860F71D50F8CD001D5AE7 /* TimeSelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeSelectionView.swift; sourceTree = "<group>"; };
 		BDA5C1ABC880715D3886B73E810648CF /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		BF0FD056D3177DAC24F25DA6BEC2939C /* Images.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		BF417A0AC673E17995B074801D1448EA /* VOKBenkode.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VOKBenkode.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -634,6 +644,8 @@
 		25248E8EADE5A8FE9B42D4A85232DB04 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				BD3860F71D50F8CD001D5AE7 /* TimeSelectionView.swift */,
+				BD3860F51D50F400001D5AE7 /* DatePickerView.swift */,
 				79E248BADBA9ED97533D3D500FC450D2 /* CollapsedSearchBarView.swift */,
 				30EAAAD0EFE06D156D4865C321A3141B /* GooglePredictionTableFooter.swift */,
 				F9D9628D3ED5246880DCF375B23F66F2 /* GooglePredictionTableHeader.swift */,
@@ -957,6 +969,7 @@
 		E562BCC67321A5C6A2887C673E8FAEB2 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				BD04AF1D1D51E91B0027866C /* NSDate+DateFormatter.swift */,
 				CA205B5854E0C73DBD4276BB6FFA989E /* NSURLQueryItem+QueryParams.swift */,
 				7C3DC348156FDCA547A04077786EA3A5 /* UIColor+SpotHeroPartner.swift */,
 			);
@@ -1302,10 +1315,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				531841026ABB73DA0B1357AD71CD343B /* SpotHero_iOS_Partner_SDK.bundle in Resources */,
-				C7FBD0B71D480C9D0089A53B /* Main.storyboard in Resources */,
-				C7FBD0B61D480C980089A53B /* Images.xcassets in Resources */,
-				C7FBD0B41D480C910089A53B /* GooglePredictionTableFooter.xib in Resources */,
-				C7FBD0B51D480C950089A53B /* GooglePredictionTableHeader.xib in Resources */,
+				BD7BEBB71D49112C00103E12 /* Main.storyboard in Resources */,
+				BD7BEBB61D49112900103E12 /* Images.xcassets in Resources */,
+				BD7BEBB41D49111D00103E12 /* GooglePredictionTableFooter.xib in Resources */,
+				BD7BEBB51D49112300103E12 /* GooglePredictionTableHeader.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1340,15 +1353,18 @@
 				B81B1F0DE19E6B73A74EE18FB30E1278 /* CollapsedSearchBarView.swift in Sources */,
 				0720C9A62E9485777AD390CD6B262F47 /* Constants.swift in Sources */,
 				05C57C1CD0BDFAF18E31F8A0148F1CC8 /* DateFormatter.swift in Sources */,
+				BD3860F61D50F400001D5AE7 /* DatePickerView.swift in Sources */,
 				E47BD80523CED4B6B371ECA9B1BDCD0A /* DLog.swift in Sources */,
 				EDE8E09F549AFCEE1C0045275DA37AFD /* Facility.swift in Sources */,
 				1F86D0DA96D34D29AD2A2EDFA9A7C207 /* FaciltyAPI.swift in Sources */,
 				FA3FDC863230CF5F291F7C1C14B2A59E /* GooglePlaceDetails.swift in Sources */,
 				C74D07DD1D4FED170068851B /* CountableIntEnum.swift in Sources */,
 				177954FA445DF28E0303B4FC42D77BEF /* GooglePlacesPrediction.swift in Sources */,
+				BD3860F81D50F8CD001D5AE7 /* TimeSelectionView.swift in Sources */,
 				C7FBD0B91D4960770089A53B /* CheckoutTableViewController.swift in Sources */,
 				34D14769904FBE7039B55BB7E9335115 /* GooglePlacesWrapper.swift in Sources */,
 				EA1DCD1AE8981C8655B0F0EEC48DD15C /* GooglePredictionTableFooter.swift in Sources */,
+				BD04AF1E1D51E91B0027866C /* NSDate+DateFormatter.swift in Sources */,
 				06BAEFC121353914388D3572CF4D16FB /* GooglePredictionTableHeader.swift in Sources */,
 				E60CA079D4D0390E20810E831749185F /* JSONDictionary.swift in Sources */,
 				9C12BE1F158F9078640BEC3844A0C530 /* LocalizedStrings.swift in Sources */,
