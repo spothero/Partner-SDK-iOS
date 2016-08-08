@@ -329,13 +329,29 @@
                                     <outlet property="toolbarTitleLabel" destination="q0M-iA-GXA" id="Sp9-Ss-y2Y"/>
                                 </connections>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SrH-hR-dUQ">
+                                <rect key="frame" x="228" y="214" width="145" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="145" id="YUe-44-cmq"/>
+                                    <constraint firstAttribute="height" constant="45" id="mKW-EU-iCy"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <state key="normal" title="SEARCH SPOTS">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="searchSpotsButtonPressed:" destination="Vax-OI-bt8" eventType="touchUpInside" id="SHT-vM-KKN"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="SrH-hR-dUQ" firstAttribute="top" secondItem="37V-ku-ODQ" secondAttribute="bottom" constant="8" id="4Cn-Wa-3F2"/>
                             <constraint firstItem="EcZ-Kj-xzb" firstAttribute="top" secondItem="nEN-Yc-ckc" secondAttribute="bottom" id="Eta-77-iSQ"/>
                             <constraint firstItem="nEN-Yc-ckc" firstAttribute="leading" secondItem="74f-zj-sek" secondAttribute="leading" id="Vao-aZ-gnQ"/>
                             <constraint firstItem="EcZ-Kj-xzb" firstAttribute="top" secondItem="zfM-Xw-6w1" secondAttribute="bottom" id="VzY-Ya-tjU"/>
                             <constraint firstAttribute="trailing" secondItem="37V-ku-ODQ" secondAttribute="trailing" constant="20" id="Wnb-L3-ErZ"/>
+                            <constraint firstItem="SrH-hR-dUQ" firstAttribute="centerX" secondItem="74f-zj-sek" secondAttribute="centerX" id="XaW-Dl-hiD"/>
                             <constraint firstItem="zfM-Xw-6w1" firstAttribute="leading" secondItem="74f-zj-sek" secondAttribute="leading" id="aIN-e6-wW9"/>
                             <constraint firstAttribute="trailing" secondItem="nEN-Yc-ckc" secondAttribute="trailing" id="cvr-jp-0PY"/>
                             <constraint firstItem="nEN-Yc-ckc" firstAttribute="top" secondItem="2XB-0q-QOj" secondAttribute="bottom" id="e5U-fH-ez1"/>
@@ -366,6 +382,7 @@
                         <outlet property="searchBar" destination="pgM-LO-aq0" id="Ojn-18-3IW"/>
                         <outlet property="searchContainerView" destination="lqQ-xQ-L7J" id="SIA-V9-TjC"/>
                         <outlet property="searchContainerViewHeightConstraint" destination="14r-MT-7qT" id="cw0-Qx-byZ"/>
+                        <outlet property="searchSpotsButton" destination="SrH-hR-dUQ" id="f9H-D8-iTw"/>
                         <outlet property="timeSelectionView" destination="00R-A9-LV4" id="VCz-Sm-EMU"/>
                         <segue destination="Wmp-AT-N6e" kind="show" identifier="showCheckout" id="P1X-7k-QYE"/>
                     </connections>
