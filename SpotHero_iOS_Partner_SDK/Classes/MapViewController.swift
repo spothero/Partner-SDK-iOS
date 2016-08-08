@@ -21,10 +21,12 @@ class MapViewController: UIViewController {
     @IBOutlet weak private var reservationContainerView: UIView!
     @IBOutlet weak private var reservationContainerViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak private var datePickerView: DatePickerView!
+    @IBOutlet weak var searchSpotsButton: UIButton!
     
     private let predictionController = PredictionController()
     private let searchBarHeight: CGFloat = 44
     private let reservationContainerViewHeight: CGFloat = 134
+    private var startEndDateDifferenceInSeconds: NSTimeInterval = 1800
     let checkoutSegueIdentifier = "showCheckout"
     
     var facilities = [Facility]()
@@ -38,6 +40,7 @@ class MapViewController: UIViewController {
         self.timeSelectionView.delegate = self.datePickerView
         self.timeSelectionView.showTimeSelectionViewDelegate = self
         self.datePickerView.doneButtonDelegate = self
+        self.timeSelectionView.startEndDateDelegate = self
     }
     
     private func setMapViewRegion() {
@@ -50,6 +53,11 @@ class MapViewController: UIViewController {
     private func setupViews() {
         self.reservationContainerView.layer.cornerRadius = HeightsAndLengths.standardCornerRadius
         self.reservationContainerView.layer.masksToBounds = true
+        
+        self.searchSpotsButton.hidden = true
+        self.searchSpotsButton.layer.cornerRadius = HeightsAndLengths.standardCornerRadius
+        self.searchSpotsButton.layer.masksToBounds = true
+        self.searchSpotsButton.backgroundColor = .shp_spotHeroBlue()
         
         self.predictionController.delegate = self
         
@@ -68,6 +76,17 @@ class MapViewController: UIViewController {
         self.predictionTableView.accessibilityLabel = AccessibilityStrings.PredictionTableView
     }
     
+    func showCollapsedSearchBar() {
+        guard let isEmpty = self.searchBar.text?.isEmpty else {
+            return
+        }
+        if (!isEmpty) {
+            self.searchSpotsButton.hidden = false
+        }
+    }
+    
+    //MARK: Actions
+    
     @IBAction private func closeButtonPressed(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
@@ -75,17 +94,7 @@ class MapViewController: UIViewController {
     @IBAction func collapsedSearchBarTapped(sender: AnyObject) {
         self.collapsedSearchBar.hide()
         self.timeSelectionView.showTimeSelectionView(true)
-    }
-    
-    func showCollapsedSearchBar() {
-        guard let isEmpty = self.searchBar.text?.isEmpty else {
-            return
-        }
-        if (!isEmpty) {
-            self.collapsedSearchBar.show()
-            self.timeSelectionView.showTimeSelectionView(false)
-            //TODO: Set time label
-        }
+        self.searchSpotsButton.hidden = false
     }
     
     //TEMP! Only for testing
@@ -103,6 +112,14 @@ class MapViewController: UIViewController {
         }
     }
     
+    @IBAction func searchSpotsButtonPressed(sender: AnyObject) {
+        self.searchSpotsButton.hidden = true
+        self.collapsedSearchBar.show()
+        self.timeSelectionView.showTimeSelectionView(false)
+        let hoursBetweenDates = self.startEndDateDifferenceInSeconds / 3600
+        self.collapsedSearchBar.text = String(format: "%.2f hours", hoursBetweenDates)
+    }
+    
     //TODO: Remove when facility UI is done
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let vc = segue.destinationViewController as? CheckoutTableViewController {
@@ -112,7 +129,7 @@ class MapViewController: UIViewController {
     }
 }
 
-//MARK: PredictionControllerDelegate
+//MARK: PredictionControllerDelegatehoursBetweenDates
 
 extension MapViewController: PredictionControllerDelegate {
     func didUpdatePredictions(predictions: [GooglePlacesPrediction]) {
@@ -123,6 +140,7 @@ extension MapViewController: PredictionControllerDelegate {
             let rowHeight: CGFloat = 60
             
             if predictions.count > 0 {
+                self.searchSpotsButton.hidden = true
                 self.timeSelectionView.showTimeSelectionView(false)
                 self.searchContainerViewHeightConstraint.constant = self.searchBarHeight + CGFloat(predictions.count) * rowHeight + headerFooterHeight * 2
                 self.reservationContainerViewHeightConstraint.constant = self.searchBarHeight + CGFloat(predictions.count) * rowHeight + headerFooterHeight * 2
@@ -141,6 +159,7 @@ extension MapViewController: PredictionControllerDelegate {
     
     func didTapXButton() {
         self.timeSelectionView.showTimeSelectionView(true)
+        self.searchSpotsButton.hidden = true
     }
 }
 
@@ -160,5 +179,13 @@ extension MapViewController: ShowTimeSelectionViewDelegate {
 extension MapViewController: DatePickerDoneButtonDelegate {
     func didPressDoneButton() {
         self.showCollapsedSearchBar()
+    }
+}
+
+//MARK: StartEndDateDelegate
+
+extension MapViewController: StartEndDateDelegate {
+    func didChangeStartEndDate(startDate startDate: NSDate, endDate: NSDate) {
+        self.startEndDateDifferenceInSeconds = endDate.timeIntervalSinceDate(startDate)
     }
 }
