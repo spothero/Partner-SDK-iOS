@@ -138,5 +138,4 @@ class PartnerAPIMockTests: BaseTests {
         
         self.waitForExpectationsWithTimeout(self.timeoutDuration, handler: nil)
     }
-    
 }
