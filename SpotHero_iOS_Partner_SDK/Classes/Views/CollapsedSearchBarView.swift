@@ -24,14 +24,14 @@ class CollapsedSearchBarView: UIView {
      - parameter show: pass in true to show, false to hide
      */
     func showCollapsedSearchBar(show: Bool) {
-        UIView.animateWithDuration(0.3,
+        UIView.animateWithDuration(Constants.ViewAnimationDuration,
                                    delay: 0,
                                    options: .CurveEaseOut,
                                    animations: {
-            self.alpha = show ? 1 : 0
+                                    self.alpha = show ? 1 : 0
         }) {
             finished in
-            self.hidden = show ? false : true
+            self.hidden = !show
         }
     }
     

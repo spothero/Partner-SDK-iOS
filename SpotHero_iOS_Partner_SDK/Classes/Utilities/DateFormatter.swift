@@ -33,7 +33,8 @@ class DateFormatter: NSObject {
         PrettyDayDateTime = "EEE MMM d 'at' h:mma",
         MMDDHmma = "MM/dd h:mm a",
         PrettyDayDate = "EEE, MMM d",
-        LinkDateTime = "MM-dd-yyyy hhmma"
+        LinkDateTime = "MM-dd-yyyy hhmma",
+        PrettyMonthDayDate = "MMM dd, YYYY"
     }
     
     private static func formatterWithFormat(format: StringEnum) -> NSDateFormatter {
@@ -113,6 +114,9 @@ class DateFormatter: NSObject {
     ///A formatter for translating link date times
     static let LinkDateTime: NSDateFormatter = DateFormatter.formatterWithFormat(DateFormat.LinkDateTime)
     
+    //A formatter for translating pretty month day dates
+    static let PrettyMonthDayDate: NSDateFormatter = DateFormatter.formatterWithFormat(DateFormat.PrettyMonthDayDate)
+
     ///A formatter for translating relative dates
     static let RelativeDate: NSDateFormatter = DateFormatter.relativeFormatterWithFormat()
     
