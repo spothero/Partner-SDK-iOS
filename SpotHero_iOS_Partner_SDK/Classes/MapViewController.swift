@@ -21,7 +21,7 @@ class MapViewController: UIViewController {
     @IBOutlet weak private var reservationContainerView: UIView!
     @IBOutlet weak private var reservationContainerViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak private var datePickerView: DatePickerView!
-    @IBOutlet weak var searchSpotsButton: UIButton!
+    @IBOutlet weak private var searchSpotsButton: UIButton!
     
     private let predictionController = PredictionController()
     private let searchBarHeight: CGFloat = 44
