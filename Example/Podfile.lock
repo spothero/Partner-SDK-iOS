@@ -16,12 +16,12 @@ DEPENDENCIES:
 
 EXTERNAL SOURCES:
   SpotHero_iOS_Partner_SDK:
-    :path: ../
+    :path: "../"
 
 SPEC CHECKSUMS:
   ILGHttpConstants: 715aca4c2b260527059242c0088abc748b52f98e
   KIF: b518c9831453abea5afdbbde3908ec47832d6d56
-  SpotHero_iOS_Partner_SDK: 92eca2fc21b682df7306d3a31c76e211a1fd79a2
+  SpotHero_iOS_Partner_SDK: 4726ac73a191a30ba8c4d752a8c0c52cc261630b
   VOKBenkode: 272b78425bbeca87d0e2fc0809ffc041f88f8cd1
   VOKMockUrlProtocol: ec55ad7b5dc8c759a65abf232e9e622f8b271bc2
 
