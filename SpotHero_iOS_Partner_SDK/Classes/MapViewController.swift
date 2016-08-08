@@ -26,7 +26,7 @@ class MapViewController: UIViewController {
     private let predictionController = PredictionController()
     private let searchBarHeight: CGFloat = 44
     private let reservationContainerViewHeight: CGFloat = 134
-    private var startEndDateDifferenceInSeconds: NSTimeInterval = 1800
+    private var startEndDateDifferenceInSeconds: NSTimeInterval = Constants.ThirtyMinutesInSeconds
     let checkoutSegueIdentifier = "showCheckout"
     
     var facilities = [Facility]()
@@ -80,9 +80,7 @@ class MapViewController: UIViewController {
         guard let isEmpty = self.searchBar.text?.isEmpty else {
             return
         }
-        if (!isEmpty) {
-            self.searchSpotsButton.hidden = false
-        }
+        self.searchSpotsButton.hidden = isEmpty
     }
     
     //MARK: Actions
