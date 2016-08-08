@@ -19,5 +19,5 @@ An SDK that allows your users to book SpotHero parking directly from within your
     }
 
     s.public_header_files = 'Pod/Classes/**/*.h'
-    s.frameworks = 'UIKit', 'MapKit'
+    s.frameworks = 'UIKit', 'MapKit', 'CoreLocation'
 end
