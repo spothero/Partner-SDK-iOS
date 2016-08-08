@@ -129,7 +129,7 @@ class MapViewController: UIViewController {
     }
 }
 
-//MARK: PredictionControllerDelegatehoursBetweenDates
+//MARK: PredictionControllerDelegateHoursBetweenDates
 
 extension MapViewController: PredictionControllerDelegate {
     func didUpdatePredictions(predictions: [GooglePlacesPrediction]) {
