@@ -35,7 +35,7 @@ class PartnerAPIMockTests: BaseTests {
         super.tearDown()
     }
     
-    func getFacilities(location: CLLocation, completion: ([Facility], ErrorType?) -> Void) {
+    private func getFacilities(location: CLLocation, completion: ([Facility], ErrorType?) -> Void) {
         if let
             startDate = self.startDate,
             endDate = self.endDate {
