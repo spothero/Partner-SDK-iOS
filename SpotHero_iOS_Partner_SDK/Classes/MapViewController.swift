@@ -117,7 +117,7 @@ class MapViewController: UIViewController {
         self.collapsedSearchBar.show()
         self.timeSelectionView.showTimeSelectionView(false)
         let hoursBetweenDates = self.startEndDateDifferenceInSeconds / 3600
-        self.collapsedSearchBar.text = String(format: "%.2f hours", hoursBetweenDates)
+        self.collapsedSearchBar.text = String(format: LocalizedStrings.HoursBetweenDatesFormat, hoursBetweenDates)
     }
     
     //TODO: Remove when facility UI is done
