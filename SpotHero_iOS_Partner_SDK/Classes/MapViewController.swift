@@ -56,7 +56,6 @@ class MapViewController: UIViewController {
         
         self.searchSpotsButton.hidden = true
         self.searchSpotsButton.layer.cornerRadius = HeightsAndLengths.standardCornerRadius
-        self.searchSpotsButton.layer.masksToBounds = true
         self.searchSpotsButton.backgroundColor = .shp_spotHeroBlue()
         
         self.predictionController.delegate = self
