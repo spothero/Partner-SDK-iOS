@@ -11,12 +11,15 @@ import UIKit
 protocol PredictionControllerDelegate {
     func didUpdatePredictions(predictions: [GooglePlacesPrediction])
     func didSelectPrediction(prediction: GooglePlacesPrediction)
+    func didTapXButton()
 }
 
 class PredictionController: NSObject {
     private var predictions = [GooglePlacesPrediction]() {
         didSet {
-            delegate?.didUpdatePredictions(self.predictions)
+            guard let delegate = self.delegate?.didUpdatePredictions(self.predictions) else {
+                return assertionFailure("delegate is nil")
+            }
         }
     }
     
@@ -44,8 +47,11 @@ extension PredictionController: UITableViewDataSource {
 extension PredictionController: UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let prediction = predictions[indexPath.row]
-        delegate?.didSelectPrediction(prediction)
-        predictions.removeAll()
+        guard let delegate = self.delegate else {
+            return assertionFailure("delegate is nil")
+        }
+        delegate.didSelectPrediction(prediction)
+        self.predictions.removeAll()
         GooglePlacesWrapper.getPlaceDetails(prediction) {
             placeDetails, error in
             if let placeDetails = placeDetails {
@@ -74,6 +80,10 @@ extension PredictionController: UISearchBarDelegate {
             NSOperationQueue.mainQueue().addOperationWithBlock({
                 self.predictions = predictions
             })
+        }
+        
+        if (searchText.isEmpty) {
+            self.delegate?.didTapXButton()
         }
     }
 }
