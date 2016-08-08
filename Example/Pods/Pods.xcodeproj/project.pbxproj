@@ -113,6 +113,7 @@
 		C78EF3CB4FC7369BB2E9EB62DD231C2D /* KIFUIObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 6863E13C4D9C3DA825286E26213C105A /* KIFUIObject.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		C79C65B11D54E99B001CDCA4 /* PaymentButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = C79C65B01D54E99B001CDCA4 /* PaymentButton.xib */; };
 		C79C65B31D54EB7C001CDCA4 /* PaymentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79C65B21D54EB7C001CDCA4 /* PaymentButton.swift */; };
+		C79C65B51D58EF0C001CDCA4 /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79C65B41D58EF0C001CDCA4 /* Formatter.swift */; };
 		C7FBD0B41D480C910089A53B /* GooglePredictionTableFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FC0802185970666C7C42C8F69891832 /* GooglePredictionTableFooter.xib */; };
 		C7FBD0B51D480C950089A53B /* GooglePredictionTableHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14ECDC384ACDBDE8F87CDC482A8D12F6 /* GooglePredictionTableHeader.xib */; };
 		C7FBD0B61D480C980089A53B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF0FD056D3177DAC24F25DA6BEC2939C /* Images.xcassets */; };
@@ -403,6 +404,7 @@
 		C74D07DE1D4FF8C40068851B /* HeightsAndLengths.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeightsAndLengths.swift; sourceTree = "<group>"; };
 		C79C65B01D54E99B001CDCA4 /* PaymentButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PaymentButton.xib; sourceTree = "<group>"; };
 		C79C65B21D54EB7C001CDCA4 /* PaymentButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentButton.swift; sourceTree = "<group>"; };
+		C79C65B41D58EF0C001CDCA4 /* Formatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
 		C7FBD0B81D4960770089A53B /* CheckoutTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutTableViewController.swift; sourceTree = "<group>"; };
 		C7FBD0BA1D496AC90089A53B /* ReservationInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReservationInfoTableViewCell.swift; sourceTree = "<group>"; };
 		C7FBD0BC1D496ADA0089A53B /* PersonalInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalInfoTableViewCell.swift; sourceTree = "<group>"; };
@@ -739,6 +741,7 @@
 				C70AC4C01D4BF8BB004F8539 /* Validator.swift */,
 				C74D07DE1D4FF8C40068851B /* HeightsAndLengths.swift */,
 				C706C2051D53C4F700CABCDE /* NumberFormatter.swift */,
+				C79C65B41D58EF0C001CDCA4 /* Formatter.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -1358,6 +1361,7 @@
 				C74D07DD1D4FED170068851B /* CountableIntEnum.swift in Sources */,
 				177954FA445DF28E0303B4FC42D77BEF /* GooglePlacesPrediction.swift in Sources */,
 				C7FBD0B91D4960770089A53B /* CheckoutTableViewController.swift in Sources */,
+				C79C65B51D58EF0C001CDCA4 /* Formatter.swift in Sources */,
 				34D14769904FBE7039B55BB7E9335115 /* GooglePlacesWrapper.swift in Sources */,
 				EA1DCD1AE8981C8655B0F0EEC48DD15C /* GooglePredictionTableFooter.swift in Sources */,
 				06BAEFC121353914388D3572CF4D16FB /* GooglePredictionTableHeader.swift in Sources */,
