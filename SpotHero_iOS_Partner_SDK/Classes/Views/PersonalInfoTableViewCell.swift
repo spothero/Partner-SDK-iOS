@@ -9,7 +9,7 @@
 import UIKit
 
 protocol PersonalInfoTableViewCellDelegate {
-    func didValidateText(error: ValidatorError?)
+    func didValidateText()
 }
 
 class PersonalInfoTableViewCell: UITableViewCell {
@@ -17,11 +17,19 @@ class PersonalInfoTableViewCell: UITableViewCell {
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var errorLabel: UILabel!
     
+    var type: PersonalInfoRow = .FullName
+    
     var delegate: PersonalInfoTableViewCellDelegate?
     var validationClosure: ((String) throws -> ())?
     var error: ValidatorError? {
         didSet {
             self.setErrorState(oldValue)
+            self.valid = (error == nil)
+        }
+    }
+    var valid = false {
+        didSet {
+            delegate?.didValidateText()
         }
     }
     
@@ -33,10 +41,7 @@ class PersonalInfoTableViewCell: UITableViewCell {
     }
     
     private func setErrorState(oldValue: ValidatorError?) {
-        if let
-            error = self.error,
-            delegate = self.delegate {
-            delegate.didValidateText(error)
+        if let error = self.error {
             self.backgroundColor = .shp_errorRed()
             self.errorLabel.hidden = false
             switch error {
@@ -45,9 +50,7 @@ class PersonalInfoTableViewCell: UITableViewCell {
             case .FieldInvalid(let fieldName, let message):
                 self.errorLabel.text = message
             }
-            
-        } else if let delegate = self.delegate where oldValue != nil {
-            delegate.didValidateText(nil)
+        } else {
             self.errorLabel.hidden = true
             self.backgroundColor = .whiteColor()
         }
@@ -72,5 +75,19 @@ extension PersonalInfoTableViewCell: UITextFieldDelegate {
         } catch {
             assertionFailure("Some other error was thrown")
         }
+    }
+    
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        guard let text = (textField.text as? NSString)?.stringByReplacingCharactersInRange(range, withString: string) else {
+            return true
+        }
+        
+        if self.type == .Phone {
+            let formatted = Formatter.formatPhoneNumber(text)
+            textField.text = formatted
+            return false
+        }
+        
+        return true
     }
 }

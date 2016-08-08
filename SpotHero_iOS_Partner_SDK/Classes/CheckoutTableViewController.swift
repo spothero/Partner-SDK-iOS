@@ -26,7 +26,7 @@ enum CheckoutSection: Int, CountableIntEnum {
     }
 }
 
-enum ReservationInfoRow: Int {
+enum ReservationInfoRow: Int, CountableIntEnum {
     case
     Address,
     Starts,
@@ -44,7 +44,7 @@ enum ReservationInfoRow: Int {
     }
 }
 
-enum PersonalInfoRow: Int {
+enum PersonalInfoRow: Int, CountableIntEnum {
     case
     FullName,
     Email,
@@ -86,11 +86,6 @@ class CheckoutTableViewController: UITableViewController {
         return _button
     }()
     
-    private var validationErrors = 0 {
-        didSet {
-            self.setPaymentButtonEnabled(self.validationErrors == 0)
-        }
-    }
     var facility: Facility?
     var rate: Rate?
     
@@ -220,6 +215,7 @@ class CheckoutTableViewController: UITableViewController {
         cell.titleLabel.text = row.title()
         cell.textField.placeholder = row.placeholder()
         cell.delegate = self
+        cell.type = row
         
         switch row {
         case PersonalInfoRow.FullName:
@@ -251,11 +247,15 @@ class CheckoutTableViewController: UITableViewController {
 }
 
 extension CheckoutTableViewController: PersonalInfoTableViewCellDelegate {
-    func didValidateText(error: ValidatorError?) {
-        if error == nil {
-            self.validationErrors -= 1
-        } else {
-            self.validationErrors += 1
+    func didValidateText() {
+        var invalidCells = 0
+        for i in 0..<PersonalInfoRow.AllCases.count {
+            let indexPath = NSIndexPath(forRow: i, inSection: CheckoutSection.PersonalInfo.rawValue)
+            let cell = self.tableView.cellForRowAtIndexPath(indexPath) as! PersonalInfoTableViewCell
+            if !cell.valid {
+                invalidCells += 1
+            }
         }
+        self.setPaymentButtonEnabled(invalidCells == 0)
     }
 }
