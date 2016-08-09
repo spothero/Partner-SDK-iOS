@@ -76,10 +76,7 @@ class MapViewController: UIViewController {
     }
     
     func showCollapsedSearchBar() {
-        guard let isEmpty = self.searchBar.text?.isEmpty else {
-            return
-        }
-        self.searchSpotsButton.hidden = isEmpty
+        self.searchSpotsButton.hidden = (self.searchBar.text ?? "").isEmpty
     }
     
     //MARK: Actions
