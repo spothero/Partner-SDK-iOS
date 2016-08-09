@@ -491,9 +491,17 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
+                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mcu-5S-9hy">
+                                            <rect key="frame" x="523" y="37" width="62" height="14"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" red="0.92156862745098034" green="0.0" blue="0.16078431372549018" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="YfN-aw-GbW" firstAttribute="centerY" secondItem="5oC-PN-sJo" secondAttribute="centerY" id="4La-yA-4TS"/>
+                                        <constraint firstAttribute="bottom" secondItem="mcu-5S-9hy" secondAttribute="bottom" id="Exi-en-HG6"/>
+                                        <constraint firstItem="mcu-5S-9hy" firstAttribute="trailing" secondItem="5oC-PN-sJo" secondAttribute="trailingMargin" id="Sgz-pt-PXu"/>
                                         <constraint firstItem="VNN-ZK-CiY" firstAttribute="leading" secondItem="5oC-PN-sJo" secondAttribute="leadingMargin" constant="100" id="c91-59-XIF"/>
                                         <constraint firstAttribute="bottom" secondItem="VNN-ZK-CiY" secondAttribute="bottom" id="uLF-hl-tZx"/>
                                         <constraint firstItem="VNN-ZK-CiY" firstAttribute="top" secondItem="5oC-PN-sJo" secondAttribute="top" id="xYP-xi-HxD"/>
@@ -502,6 +510,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="errorLabel" destination="mcu-5S-9hy" id="4u3-iq-sqh"/>
                                     <outlet property="textField" destination="VNN-ZK-CiY" id="rcc-co-Bcn"/>
                                     <outlet property="titleLabel" destination="YfN-aw-GbW" id="ju2-1h-OAi"/>
                                 </connections>
