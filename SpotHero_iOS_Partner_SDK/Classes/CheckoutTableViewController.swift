@@ -26,7 +26,7 @@ enum CheckoutSection: Int, CountableIntEnum {
     }
 }
 
-enum ReservationInfoRow: Int {
+enum ReservationInfoRow: Int, CountableIntEnum {
     case
     Address,
     Starts,
@@ -44,7 +44,7 @@ enum ReservationInfoRow: Int {
     }
 }
 
-enum PersonalInfoRow: Int {
+enum PersonalInfoRow: Int, CountableIntEnum {
     case
     FullName,
     Email,
@@ -74,7 +74,23 @@ enum PersonalInfoRow: Int {
 }
 
 class CheckoutTableViewController: UITableViewController {
-    let reservationCellHeight: CGFloat = 86
+    private let reservationCellHeight: CGFloat = 86
+    private let paymentButtonHeight: CGFloat = 60
+    private let paymentButtonMargin: CGFloat = 0
+    
+    private lazy var paymentButton: UIButton = {
+        let _button = NSBundle(forClass: CheckoutTableViewController.self)
+            .loadNibNamed(String(PaymentButton),
+                          owner: nil,
+                          options: nil)
+            .first as! UIButton
+        _button.addTarget(self,
+                          action: #selector(self.paymentButtonPressed),
+                          forControlEvents: .TouchUpOutside)
+        _button.backgroundColor = .shp_mutedGreen()
+        _button.translatesAutoresizingMaskIntoConstraints = false
+        return _button
+    }()
     
     var facility: Facility?
     var rate: Rate?
@@ -82,6 +98,32 @@ class CheckoutTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.estimatedRowHeight = 60
+        self.setupPaymentButton()
+    }
+    
+    private func setupPaymentButton() {
+        guard let
+            rate = self.rate,
+            price = NumberFormatter.dollarNoCentsStringFromCents(rate.price) else {
+            return
+        }
+        
+        self.tableView.contentInset = UIEdgeInsets(top: 0,
+                                                   left: 0,
+                                                   bottom: self.paymentButtonHeight,
+                                                   right: 0)
+        self.paymentButton.setTitle(String(format: LocalizedStrings.paymentButtonTitleFormat, price), forState: .Normal)
+        self.navigationController?.view.addSubview(self.paymentButton)
+        let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("|-margin-[paymentButton]-margin-|",
+                                                                                   options: NSLayoutFormatOptions(rawValue: 0),
+                                                                                   metrics: ["margin": paymentButtonMargin],
+                                                                                   views: ["paymentButton": paymentButton])
+        let verticalContraints = NSLayoutConstraint.constraintsWithVisualFormat("V:[paymentButton(height)]-margin-|",
+                                                                                options: NSLayoutFormatOptions(rawValue: 0),
+                                                                                metrics: ["margin": paymentButtonMargin, "height": paymentButtonHeight],
+                                                                                views: ["paymentButton": paymentButton])
+        self.navigationController?.view.addConstraints(horizontalConstraints)
+        self.navigationController?.view.addConstraints(verticalContraints)
     }
     
     // MARK: - Table view data source
@@ -157,9 +199,15 @@ class CheckoutTableViewController: UITableViewController {
         return CGFloat.min
     }
     
+    //MARK: Actions
+    
+    func paymentButtonPressed() {
+        //TODO: Create Stripe token and reservation
+    }
+    
     //MARK: Helpers
     
-    func configureCell(cell: ReservationInfoTableViewCell,
+    private func configureCell(cell: ReservationInfoTableViewCell,
                        row: ReservationInfoRow,
                        facility: Facility,
                        rate: Rate) {
@@ -178,18 +226,51 @@ class CheckoutTableViewController: UITableViewController {
         }
     }
     
-    func configureCell(cell: PersonalInfoTableViewCell, row: PersonalInfoRow) {
+    private func configureCell(cell: PersonalInfoTableViewCell, row: PersonalInfoRow) {
         cell.titleLabel.text = row.title()
         cell.textField.placeholder = row.placeholder()
+        cell.delegate = self
+        cell.type = row
         
         switch row {
         case PersonalInfoRow.FullName:
             cell.textField.autocapitalizationType = .Words
+            cell.validationClosure = {
+                fullName in
+                try Validator.validateFullName(fullName)
+            }
         case PersonalInfoRow.Email:
             cell.textField.autocapitalizationType = .None
             cell.textField.keyboardType = .EmailAddress
+            cell.validationClosure = {
+                email in
+                try Validator.validateEmail(email)
+            }
         case PersonalInfoRow.Phone:
             cell.textField.keyboardType = .PhonePad
+            cell.validationClosure = {
+                phone in
+                try Validator.validatePhone(phone)
+            }
         }
+    }
+    
+    private func setPaymentButtonEnabled(enabled: Bool) {
+        self.paymentButton.enabled = enabled
+        self.paymentButton.backgroundColor = enabled ? .shp_green() : .shp_mutedGreen()
+    }
+}
+
+extension CheckoutTableViewController: PersonalInfoTableViewCellDelegate {
+    func didValidateText() {
+        var invalidCells = 0
+        for i in 0..<PersonalInfoRow.AllCases.count {
+            let indexPath = NSIndexPath(forRow: i, inSection: CheckoutSection.PersonalInfo.rawValue)
+            let cell = self.tableView.cellForRowAtIndexPath(indexPath) as! PersonalInfoTableViewCell
+            if !cell.valid {
+                invalidCells += 1
+            }
+        }
+        self.setPaymentButtonEnabled(invalidCells == 0)
     }
 }
