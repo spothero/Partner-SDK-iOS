@@ -36,14 +36,36 @@ class TimeSelectionView: UIView {
     var showTimeSelectionViewDelegate: ShowTimeSelectionViewDelegate?
     var startEndDateDelegate: StartEndDateDelegate?
     
-    private var isStartView = false
+    var startViewSelected = false {
+        didSet {
+            if (self.startViewSelected) {
+                self.startDateLabel.textColor = .shp_spotHeroBlue()
+                self.startTimeLabel.textColor = .shp_spotHeroBlue()
+                self.endViewSelected = false
+            } else {
+                self.startDateLabel.textColor = .blackColor()
+                self.startTimeLabel.textColor = .blackColor()
+            }
+        }
+    }
+    var endViewSelected = false {
+        didSet {
+            if (self.endViewSelected) {
+                self.endDateLabel.textColor = .shp_spotHeroBlue()
+                self.endTimeLabel.textColor = .shp_spotHeroBlue()
+                self.startViewSelected = false
+            } else {
+                self.endDateLabel.textColor = .blackColor()
+                self.endTimeLabel.textColor = .blackColor()
+            }
+        }
+    }
     private var startDate: NSDate = NSDate().shp_dateByRoundingMinutesBy30(roundDown: true) {
         didSet {
             self.setDateTimeLabels(self.startDate, endDate: self.endDate)
             self.startEndDateDelegate?.didChangeStartEndDate(startDate: self.startDate, endDate: self.endDate)
         }
     }
-    
     private var endDate: NSDate = NSDate().shp_dateByRoundingMinutesBy30(roundDown: false) {
         didSet {
             self.setDateTimeLabels(self.startDate, endDate: self.endDate)
@@ -95,41 +117,13 @@ class TimeSelectionView: UIView {
         }
     }
     
-    /**
-     Sets the start and end view selected state
-     
-     - parameter selected: pass in true to show selected state, false to show unselected state
-     */
-    func startEndViewSelected(selected: Bool) {
-        if selected {
-            if (self.isStartView) {
-                self.startDateLabel.textColor = .shp_spotHeroBlue()
-                self.startTimeLabel.textColor = .shp_spotHeroBlue()
-                self.endDateLabel.textColor = .blackColor()
-                self.endTimeLabel.textColor = .blackColor()
-            } else {
-                self.startDateLabel.textColor = .blackColor()
-                self.startTimeLabel.textColor = .blackColor()
-                self.endDateLabel.textColor = .shp_spotHeroBlue()
-                self.endTimeLabel.textColor = .shp_spotHeroBlue()
-            }
-        } else {
-            self.dateTimeLabels.forEach { $0.textColor = .blackColor() }
-        }
-    }
-    
-    /**
-     Sets the start and end date time labels
-     
-     - parameter date: pass in date to display on label
-     */
-    func setStartEndDateTimeLabelWithDate(date: NSDate) {
-        if (self.isStartView) {
+    private func setStartEndDateTimeLabelWithDate(date: NSDate) {
+        if (self.startViewSelected) {
             self.startDate = date
             if (self.endDate.timeIntervalSinceDate(date) < Constants.ThirtyMinutesInSeconds) {
                 self.endDate = date.shp_dateByRoundingMinutesBy30(roundDown: false)
             }
-        } else {
+        } else if (self.endViewSelected) {
             self.endDate = date
         }
     }
@@ -137,14 +131,12 @@ class TimeSelectionView: UIView {
     //MARK: Actions
     
     @IBAction private func startViewTapped(sender: AnyObject) {
-        self.isStartView = true
-        self.startEndViewSelected(true)
+        self.startViewSelected = true
         self.delegate?.didTapStartView(self.startDate, endDate: self.endDate)
     }
     
     @IBAction private func endViewTapped(sender: AnyObject) {
-        self.isStartView = false
-        self.startEndViewSelected(true)
+        self.endViewSelected = true
         self.delegate?.didTapEndView(self.startDate, endDate: self.endDate)
     }
     
@@ -154,7 +146,8 @@ class TimeSelectionView: UIView {
 
 extension TimeSelectionView: DatePickerViewDelegate {
     func didPressDoneButton() {
-        self.startEndViewSelected(false)
+        self.startViewSelected = false
+        self.endViewSelected = false
     }
     
     func didChangeDatePickerValue(date: NSDate) {
