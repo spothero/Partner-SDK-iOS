@@ -18,7 +18,7 @@ enum AccessibilityStrings {
     static let Address = NSLocalizedString("Address",
                                            comment: "Accessibility label for address label of place")
     static let City = NSLocalizedString("Address",
-                                           comment: "Accessibility label for city label of place")
+                                        comment: "Accessibility label for city label of place")
     static let SpotHero = NSLocalizedString("SpotHero",
                                             comment: "SpotHero")
     static let ClearText = NSLocalizedString("Clear text",
@@ -28,7 +28,7 @@ enum AccessibilityStrings {
     static let StartsTimeSelectionView = NSLocalizedString("StartsTimeSelectionView",
                                                            comment: "Accessibility label for start time selection view")
     static let EndsTimeSelectionView = NSLocalizedString("EndsTimeSelectionView",
-                                                           comment: "Accessibility label for end time selection view")
+                                                         comment: "Accessibility label for end time selection view")
     static let StartDateLabel = NSLocalizedString("StartDateLabel",
                                                   comment: "Accessibility label for start date")
     static let EndDateLabel = NSLocalizedString("EndDateLabel",
@@ -37,4 +37,6 @@ enum AccessibilityStrings {
                                                   comment: "Accessibility label for start time")
     static let EndTimeLabel = NSLocalizedString("EndTimeLabel",
                                                 comment: "Accessibility label for end time")
+    static let CollapsedSearchBarView = NSLocalizedString("CollapsedSearchBarView",
+                                                          comment: "Accessibility label for collaped search bar view")
 }
