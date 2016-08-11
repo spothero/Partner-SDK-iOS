@@ -16,7 +16,7 @@ class GooglePlacesUITests: BaseUITests {
     
     func typeInAddress() {
         tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.SearchBar)
-        tester().enterText("325 W Huron", intoViewWithAccessibilityLabel: AccessibilityStrings.SearchBar)
+        self.enterTextIntoSearchBar("325 W Huron")
     }
     
     func testGetPredictions() {
