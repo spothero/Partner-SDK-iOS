@@ -29,6 +29,8 @@ class TimeSelectionView: UIView {
     @IBOutlet weak private var endDateLabel: UILabel!
     @IBOutlet weak private var endTimeLabel: UILabel!
     @IBOutlet private var dateTimeLabels: [UILabel]!
+    @IBOutlet weak private var startsView: UIView!
+    @IBOutlet weak private var endsView: UIView!
     
     var delegate: TimeSelectionViewDelegate?
     var showTimeSelectionViewDelegate: ShowTimeSelectionViewDelegate?
@@ -57,6 +59,13 @@ class TimeSelectionView: UIView {
     private func setupTimeSelectionView() {
         self.startDate = NSDate().shp_dateByRoundingMinutesBy30(roundDown: true)
         self.endDate = NSDate().shp_dateByRoundingMinutesBy30(roundDown: false)
+        
+        self.startDateLabel.accessibilityLabel = AccessibilityStrings.StartDateLabel
+        self.endDateLabel.accessibilityLabel = AccessibilityStrings.EndDateLabel
+        self.startTimeLabel.accessibilityLabel = AccessibilityStrings.StartTimeLabel
+        self.endTimeLabel.accessibilityLabel = AccessibilityStrings.EndTimeLabel
+        self.startsView.accessibilityLabel = AccessibilityStrings.StartsTimeSelectionView
+        self.endsView.accessibilityLabel = AccessibilityStrings.EndsTimeSelectionView
     }
     
     private func setDateTimeLabels(startDate: NSDate, endDate: NSDate) {

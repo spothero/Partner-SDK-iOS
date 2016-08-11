@@ -256,8 +256,10 @@
                                         <connections>
                                             <outlet property="endDateLabel" destination="rvd-oM-7oL" id="QDB-N2-nTz"/>
                                             <outlet property="endTimeLabel" destination="hRI-UE-E7g" id="GMc-vp-R4Y"/>
+                                            <outlet property="endsView" destination="7JF-vh-Ckv" id="IY3-jj-09d"/>
                                             <outlet property="startDateLabel" destination="nXl-sc-e5R" id="CIM-yP-RKp"/>
                                             <outlet property="startTimeLabel" destination="RuZ-vp-ds5" id="JcU-VJ-jIY"/>
+                                            <outlet property="startsView" destination="OXP-P9-EfD" id="7X4-M8-Liw"/>
                                             <outletCollection property="dateTimeLabels" destination="nXl-sc-e5R" collectionClass="NSMutableArray" id="yXW-f6-ApQ"/>
                                             <outletCollection property="dateTimeLabels" destination="RuZ-vp-ds5" collectionClass="NSMutableArray" id="BKb-YM-sHL"/>
                                             <outletCollection property="dateTimeLabels" destination="rvd-oM-7oL" collectionClass="NSMutableArray" id="NJi-bf-N8G"/>
@@ -413,7 +415,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="Je6-9C-HMp">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="reservationInfoCell" rowHeight="86" id="8mD-ew-oY8" customClass="ReservationInfoTableViewCell" customModule="SpotHero_iOS_Partner_SDK" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="113.5" width="600" height="86"/>
@@ -425,7 +427,7 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zva-vq-ti5">
                                             <rect key="frame" x="15" y="33" width="65" height="21"/>
                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H08-RR-a03">
@@ -434,13 +436,13 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chicago, IL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g3Z-5n-005">
                                                     <rect key="frame" x="0.0" y="21" width="462" height="20"/>
                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="320 West Erie" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1dn-vP-1aB">
                                                     <rect key="frame" x="0.0" y="0.0" width="462" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -480,7 +482,7 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YfN-aw-GbW">
                                             <rect key="frame" x="15" y="15" width="78" height="21"/>
                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VNN-ZK-CiY">

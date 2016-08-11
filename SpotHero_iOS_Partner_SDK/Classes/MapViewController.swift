@@ -73,6 +73,7 @@ class MapViewController: UIViewController {
         
         self.searchBar.accessibilityLabel = AccessibilityStrings.SearchBar
         self.predictionTableView.accessibilityLabel = AccessibilityStrings.PredictionTableView
+        self.timeSelectionView.accessibilityLabel = AccessibilityStrings.TimeSelectionView
     }
     
     func showCollapsedSearchBar() {

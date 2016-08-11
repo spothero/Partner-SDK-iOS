@@ -12,7 +12,7 @@ import CoreLocation
 
 class GooglePlacesTests: XCTestCase {
     let waitDuration: NSTimeInterval = 10
-    let spotheroName = "SpotHero"
+    let spotheroName = AccessibilityStrings.SpotHero
     let spotheroPrediction = GooglePlacesPrediction(description: "SpotHero, West Huron Street, Chicago, IL, United States",
                                                     placeID: "ChIJEyn6463TD4gR9Ta3uIauNyo",
                                                     terms: [])
