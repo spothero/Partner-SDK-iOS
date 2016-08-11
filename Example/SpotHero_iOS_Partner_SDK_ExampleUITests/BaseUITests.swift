@@ -26,10 +26,10 @@ class BaseUITests: KIFTestCase {
     }
     
     func enterTextIntoSearchBar(text: String) {
-        tester().enterText(text,
-                           intoViewWithAccessibilityLabel: AccessibilityStrings.SearchBar,
-                           traits: UIAccessibilityTraitNone,
-                           expectedResult: text)
+        tester().clearTextFromAndThenEnterText(text,
+                                               intoViewWithAccessibilityLabel: AccessibilityStrings.SearchBar,
+                                               traits: UIAccessibilityTraitNone,
+                                               expectedResult: text)
     }
     
 }
