@@ -215,3 +215,18 @@ extension MapViewController: StartEndDateDelegate {
         self.startEndDateDifferenceInSeconds = endDate.timeIntervalSinceDate(startDate)
     }
 }
+
+//MARK: MKMapViewDelegate
+extension MapViewController: MKMapViewDelegate {
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+        let identifier = "SpotAnnotationViewID"
+        var spotAnnotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier)
+        if (spotAnnotationView == nil) {
+            spotAnnotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            spotAnnotationView?.canShowCallout = true
+            spotAnnotationView?.image = UIImage(named: "spot-marker-default")
+        }
+        
+        return spotAnnotationView
+    }
+}
