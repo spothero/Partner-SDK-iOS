@@ -15,16 +15,18 @@ class SearchSpotsUITests: BaseUITests {
     
     private let spotHeroAddress = "SpotHero, West Huron Street, Chicago, IL"
     
-    //MARK: Test Lifecycle
+    //MARK: Helpers
     
-    override func beforeEach() {
-        super.beforeEach()
-        ShowSDKUITests().testLaunchSDKShowsMapView()
+    private func validateStartEndViewSelectedState() {
+        let timeSelectionView = tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.TimeSelectionView) as? TimeSelectionView
+        XCTAssertNotEqual(timeSelectionView?.endViewSelected, timeSelectionView?.startViewSelected)
     }
     
-    override func afterAll() {
-        tester().tapViewWithAccessibilityLabel(LocalizedStrings.Close)
-        super.afterAll()
+    private func dismissDatePickerView() {
+        let timeSelectionView = tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.TimeSelectionView) as? TimeSelectionView
+        tester().tapViewWithAccessibilityLabel(LocalizedStrings.Done)
+        XCTAssertEqual(false, timeSelectionView?.startViewSelected)
+        XCTAssertEqual(false, timeSelectionView?.endViewSelected)
     }
     
     //MARK: Tests
@@ -32,10 +34,7 @@ class SearchSpotsUITests: BaseUITests {
     func testTypingAddressHidesTimeSelectionView() {
         //GIVEN: I see the map view
         //WHEN: I tap on the search bar and type an address
-        tester().enterText(AccessibilityStrings.SpotHero,
-                           intoViewWithAccessibilityLabel: AccessibilityStrings.SearchBar,
-                           traits: UIAccessibilityTraitNone,
-                           expectedResult: AccessibilityStrings.SpotHero)
+        self.enterTextIntoSearchBar(AccessibilityStrings.SpotHero)
         
         //THEN: The time selection view is hidden
         tester().waitForAbsenceOfViewWithAccessibilityLabel(AccessibilityStrings.TimeSelectionView)
@@ -51,18 +50,9 @@ class SearchSpotsUITests: BaseUITests {
         //THEN: I see the start date picker view
         tester().waitForViewWithAccessibilityLabel(LocalizedStrings.SetStartTime)
         tester().waitForViewWithAccessibilityLabel(LocalizedStrings.Done)
+        self.validateStartEndViewSelectedState()
         
-        let startDateLabel = tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.StartDateLabel) as? UILabel
-        let startTimeLabel = tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.StartTimeLabel) as? UILabel
-        let endDateLabel = tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.EndDateLabel) as? UILabel
-        let endTimeLabel = tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.EndTimeLabel) as? UILabel
-        
-        XCTAssertEqual(startDateLabel?.textColor, .shp_spotHeroBlue())
-        XCTAssertEqual(startTimeLabel?.textColor, .shp_spotHeroBlue())
-        XCTAssertEqual(endDateLabel?.textColor, .blackColor())
-        XCTAssertEqual(endTimeLabel?.textColor, .blackColor())
-        
-        tester().tapViewWithAccessibilityLabel(LocalizedStrings.Done)
+        self.dismissDatePickerView()
     }
     
     func testTappingEndsViewShowsEndDatePickerView() {
@@ -73,27 +63,15 @@ class SearchSpotsUITests: BaseUITests {
         //THEN: I see the end date picker view
         tester().waitForViewWithAccessibilityLabel(LocalizedStrings.SetEndTime)
         tester().waitForViewWithAccessibilityLabel(LocalizedStrings.Done)
+        self.validateStartEndViewSelectedState()
         
-        let startDateLabel = tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.StartDateLabel) as? UILabel
-        let startTimeLabel = tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.StartTimeLabel) as? UILabel
-        let endDateLabel = tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.EndDateLabel) as? UILabel
-        let endTimeLabel = tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.EndTimeLabel) as? UILabel
-        
-        XCTAssertEqual(startDateLabel?.textColor, .blackColor())
-        XCTAssertEqual(startTimeLabel?.textColor, .blackColor())
-        XCTAssertEqual(endDateLabel?.textColor, .shp_spotHeroBlue())
-        XCTAssertEqual(endTimeLabel?.textColor, .shp_spotHeroBlue())
-        
-        tester().tapViewWithAccessibilityLabel(LocalizedStrings.Done)
+        self.dismissDatePickerView()
     }
     
     func testSelectingAddressShowsSearchSpotsButton() {
         //GIVEN: I see the map view
         //WHEN: I search for an address
-        tester().enterText(AccessibilityStrings.SpotHero,
-                           intoViewWithAccessibilityLabel: AccessibilityStrings.SearchBar,
-                           traits: UIAccessibilityTraitNone,
-                           expectedResult: AccessibilityStrings.SpotHero)
+        self.enterTextIntoSearchBar(AccessibilityStrings.SpotHero)
         tester().tapViewWithAccessibilityLabel(self.spotHeroAddress)
         
         //THEN: I see the search spots button
@@ -105,10 +83,7 @@ class SearchSpotsUITests: BaseUITests {
     func testClearingTextHidesSearchSpotsButton() {
         //GIVEN: I see the map view
         //WHEN: I search for an address
-        tester().enterText(AccessibilityStrings.SpotHero,
-                           intoViewWithAccessibilityLabel: AccessibilityStrings.SearchBar,
-                           traits: UIAccessibilityTraitNone,
-                           expectedResult: AccessibilityStrings.SpotHero)
+        self.enterTextIntoSearchBar(AccessibilityStrings.SpotHero)
         tester().tapViewWithAccessibilityLabel(self.spotHeroAddress)
         tester().waitForViewWithAccessibilityLabel(LocalizedStrings.SearchSpots)
         
@@ -116,6 +91,45 @@ class SearchSpotsUITests: BaseUITests {
         tester().tapViewWithAccessibilityLabel(AccessibilityStrings.ClearText)
         
         //THEN: The search spots button is hidden
+        tester().waitForAbsenceOfViewWithAccessibilityLabel(LocalizedStrings.SearchSpots)
+    }
+    
+    func testTappingSearchSpotsShowsCollapsedSearchBar() {
+        //GIVEN: I see the map view
+        //WHEN: I search for an address
+        self.enterTextIntoSearchBar(AccessibilityStrings.SpotHero)
+        tester().tapViewWithAccessibilityLabel(self.spotHeroAddress)
+        
+        //WHEN: I tap the search spots button
+        tester().tapViewWithAccessibilityLabel(LocalizedStrings.SearchSpots)
+        
+        //THEN: I see the collapsed search bar
+        tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.CollapsedSearchBarView)
+        tester().waitForAbsenceOfViewWithAccessibilityLabel(AccessibilityStrings.TimeSelectionView)
+        tester().waitForAbsenceOfViewWithAccessibilityLabel(LocalizedStrings.SearchSpots)
+        
+        //reset state
+        tester().tapViewWithAccessibilityLabel(AccessibilityStrings.CollapsedSearchBarView)
+        tester().tapViewWithAccessibilityLabel(AccessibilityStrings.ClearText)
+        tester().waitForAbsenceOfViewWithAccessibilityLabel(LocalizedStrings.SearchSpots)
+    }
+    
+    func testTappingCollapsedSearchBarShowsTimeSelectionView() {
+        //GIVEN: I see the collapsed search bar view
+        self.enterTextIntoSearchBar(AccessibilityStrings.SpotHero)
+        tester().tapViewWithAccessibilityLabel(self.spotHeroAddress)
+        tester().tapViewWithAccessibilityLabel(LocalizedStrings.SearchSpots)
+        tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.CollapsedSearchBarView)
+        
+        //WHEN: I tap the collapsed search bar view
+        tester().tapViewWithAccessibilityLabel(AccessibilityStrings.CollapsedSearchBarView)
+        
+        //THEN: I see the time selection view
+        tester().waitForAbsenceOfViewWithAccessibilityLabel(AccessibilityStrings.CollapsedSearchBarView)
+        tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.TimeSelectionView)
+        
+        //reset state
+        tester().tapViewWithAccessibilityLabel(AccessibilityStrings.ClearText)
         tester().waitForAbsenceOfViewWithAccessibilityLabel(LocalizedStrings.SearchSpots)
     }
 }
