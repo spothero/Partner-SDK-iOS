@@ -52,12 +52,6 @@ extension PredictionController: UITableViewDelegate {
         }
         delegate.didSelectPrediction(prediction)
         self.predictions.removeAll()
-        GooglePlacesWrapper.getPlaceDetails(prediction) {
-            placeDetails, error in
-            if let placeDetails = placeDetails {
-                //TODO: Search place for spots
-            }
-        }
     }
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

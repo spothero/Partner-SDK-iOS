@@ -23,7 +23,10 @@ class MapViewController: UIViewController {
     @IBOutlet weak private var datePickerView: DatePickerView!
     @IBOutlet weak private var searchSpotsButton: UIButton!
     
+    private var prediction: GooglePlacesPrediction?
     private let predictionController = PredictionController()
+    private var startDate: NSDate = NSDate().shp_dateByRoundingMinutesBy30(roundDown: true)
+    private var endDate: NSDate = NSDate().shp_dateByRoundingMinutesBy30(roundDown: false)
     private let searchBarHeight: CGFloat = 44
     private let reservationContainerViewHeight: CGFloat = 134
     private var startEndDateDifferenceInSeconds: NSTimeInterval = Constants.ThirtyMinutesInSeconds
@@ -79,6 +82,31 @@ class MapViewController: UIViewController {
         self.searchSpotsButton.hidden = (self.searchBar.text ?? "").isEmpty
     }
     
+    func fetchFacilities() {
+        guard let prediction = self.prediction else {
+            return
+        }
+        //TODO: Show progress HUD
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+        GooglePlacesWrapper.getPlaceDetails(prediction) {
+            placeDetails, error in
+            if let placeDetails = placeDetails {
+                FacilityAPI.fetchFacilities(placeDetails.location,
+                                            starts: self.startDate,
+                                            ends: self.endDate,
+                                            completion: { [weak self] (facilities, error) -> (Void) in
+                                                for facility in facilities {
+                                                    let facilityAnnotation = FacilityAnnotation(title: facility.title, coordinate: facility.location.coordinate)
+                                                    self?.mapView.addAnnotation(facilityAnnotation)
+                                                }
+                                                self?.mapView.showAnnotations((self?.mapView.annotations)!, animated: true)
+                                                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+                                                //TODO: Hide progress HUD
+                    })
+            }
+        }
+    }
+    
     //MARK: Actions
     
     @IBAction private func closeButtonPressed(sender: AnyObject) {
@@ -112,6 +140,7 @@ class MapViewController: UIViewController {
         self.timeSelectionView.showTimeSelectionView(false)
         let hoursBetweenDates = self.startEndDateDifferenceInSeconds / Constants.SecondsInHour
         self.collapsedSearchBar.text = String(format: LocalizedStrings.HoursBetweenDatesFormat, hoursBetweenDates)
+        self.fetchFacilities()
     }
     
     //TODO: Remove when facility UI is done
@@ -146,6 +175,7 @@ extension MapViewController: PredictionControllerDelegate {
     }
     
     func didSelectPrediction(prediction: GooglePlacesPrediction) {
+        self.prediction = prediction
         self.searchBar.text = prediction.description
         self.timeSelectionView.showTimeSelectionView(true)
         self.showCollapsedSearchBar()
@@ -180,6 +210,8 @@ extension MapViewController: DatePickerDoneButtonDelegate {
 
 extension MapViewController: StartEndDateDelegate {
     func didChangeStartEndDate(startDate startDate: NSDate, endDate: NSDate) {
+        self.startDate = startDate
+        self.endDate = endDate
         self.startEndDateDifferenceInSeconds = endDate.timeIntervalSinceDate(startDate)
     }
 }
