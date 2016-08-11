@@ -83,7 +83,7 @@ extension PersonalInfoTableViewCell: UITextFieldDelegate {
         }
         
         if self.type == .Phone {
-            let formatted = Formatter.formatPhoneNumber(text)
+            let formatted = Formatter.formatPhoneNumber(text).formatted
             textField.text = formatted
             return false
         }

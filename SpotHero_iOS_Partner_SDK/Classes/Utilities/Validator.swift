@@ -20,6 +20,22 @@ enum CardType {
     MasterCard,
     Discover,
     Unknown
+    
+    func image() -> UIImage? {
+        let bundle = NSBundle(forClass: CheckoutTableViewController.self)
+        switch self {
+        case .Visa:
+            return UIImage(named: "Visa", inBundle: bundle, compatibleWithTraitCollection: nil)
+        case .Amex:
+            return UIImage(named: "AExp", inBundle: bundle, compatibleWithTraitCollection: nil)
+        case .MasterCard:
+            return UIImage(named: "Mastercard", inBundle: bundle, compatibleWithTraitCollection: nil)
+        case .Discover:
+            return UIImage(named: "Discover", inBundle: bundle, compatibleWithTraitCollection: nil)
+        case .Unknown:
+            return UIImage(named: "credit_card", inBundle: bundle, compatibleWithTraitCollection: nil)
+        }
+    }
 }
 
 enum Validator {
@@ -113,51 +129,64 @@ enum Validator {
     }
     
     /**
-     Validates that a string is a credit card number
+     Returns the type of credit card
      
-     - parameter creditCard: string to validate
-     
-     - throws: throws an error if string is empty or invalid
+     - parameter creditCard: Credit card number
      
      - returns: Type of card
      */
-    static func validateCreditCard(creditCard: String) throws -> CardType {
-        let fieldName = LocalizedStrings.CreditCard
+    static func getCardType(creditCard: String) -> CardType {
         let trimmedCreditCard = creditCard.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
         
         if trimmedCreditCard.isEmpty {
-            throw ValidatorError.FieldBlank(fieldName: fieldName)
             return .Unknown
         }
         
         if trimmedCreditCard.hasPrefix("4") {
-            try validateCreditCard(creditCard, cardType: .Visa)
             return .Visa
         } else if trimmedCreditCard.hasPrefix("34") ||
             trimmedCreditCard.hasPrefix("37") {
-            try validateCreditCard(creditCard, cardType: .Amex)
             return .Amex
         } else if trimmedCreditCard.hasPrefix("51") ||
             trimmedCreditCard.hasPrefix("52") ||
             trimmedCreditCard.hasPrefix("53") ||
             trimmedCreditCard.hasPrefix("54") ||
             trimmedCreditCard.hasPrefix("55") {
-            try validateCreditCard(creditCard, cardType: .MasterCard)
             return .MasterCard
         } else if trimmedCreditCard.hasPrefix("6011") {
-            try validateCreditCard(creditCard, cardType: .Discover)
             return .Discover
         } else {
-            throw ValidatorError.FieldInvalid(fieldName: fieldName, message: LocalizedStrings.NonAcceptedCreditCardErrorMessage)
             return .Unknown
         }
-    
     }
     
-    private static func validateCreditCard(creditCard: String, cardType: CardType) throws {
+    /**
+     Validates that a string is a credit card number
+     
+     - parameter creditCard: string to validate
+     
+     - throws: throws an error if string is empty or invalid
+    */
+    static func validateCreditCard(creditCard: String) throws {
+        let fieldName = LocalizedStrings.CreditCard
+        let trimmedCreditCard = creditCard.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        let cardType = self.getCardType(trimmedCreditCard)
+        
+        if trimmedCreditCard.isEmpty {
+            throw ValidatorError.FieldBlank(fieldName: fieldName)
+        }
+        
+        if cardType == .Unknown {
+            throw ValidatorError.FieldInvalid(fieldName: fieldName, message: LocalizedStrings.NonAcceptedCreditCardErrorMessage)
+        }
+        
+        try self.validateCreditCard(trimmedCreditCard, isAmex: cardType == .Amex)
+    }
+    
+    private static func validateCreditCard(creditCard: String, isAmex: Bool) throws {
         let fieldName = LocalizedStrings.CreditCard
         let message = LocalizedStrings.CreditCardErrorMessage
-        let numberOfDigits = (cardType == .Amex) ? 15 : 16
+        let numberOfDigits = isAmex ? 15 : 16
         
         // Remove spaces
         let digits = creditCard.stringByReplacingOccurrencesOfString(" ", withString: "")

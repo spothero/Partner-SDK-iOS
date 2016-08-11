@@ -36,7 +36,7 @@
                                                         <rect key="frame" x="0.0" y="28" width="560" height="60"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="gny-aK-qke" id="DsV-UZ-K9d">
-                                                            <rect key="frame" x="0.0" y="0.0" width="560" height="59.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="560" height="60"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chicago IL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Oq9-B0-NHM">
@@ -294,7 +294,7 @@
                                         </items>
                                     </toolbar>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set Start Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q0M-iA-GXA">
-                                        <rect key="frame" x="245" y="12" width="110" height="20.5"/>
+                                        <rect key="frame" x="245" y="12" width="110" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -399,10 +399,10 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="reservationInfoCell" rowHeight="86" id="8mD-ew-oY8" customClass="ReservationInfoTableViewCell" customModule="SpotHero_iOS_Partner_SDK" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="113.5" width="600" height="86"/>
+                                <rect key="frame" x="0.0" y="114" width="600" height="86"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="8mD-ew-oY8" id="9kl-FT-qAM">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="85.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="86"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zva-vq-ti5">
@@ -454,10 +454,10 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="personalInfoCell" rowHeight="51" id="J7z-cJ-szY" customClass="PersonalInfoTableViewCell" customModule="SpotHero_iOS_Partner_SDK" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="199.5" width="600" height="51"/>
+                                <rect key="frame" x="0.0" y="200" width="600" height="51"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="J7z-cJ-szY" id="5oC-PN-sJo">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="50.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="51"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YfN-aw-GbW">
@@ -499,10 +499,10 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="paymentInfoCell" rowHeight="153" id="WwR-3h-HOo" customClass="PaymentInfoTableViewCell" customModule="SpotHero_iOS_Partner_SDK" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="250.5" width="600" height="153"/>
+                                <rect key="frame" x="0.0" y="251" width="600" height="153"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="WwR-3h-HOo" id="OvW-qC-rsQ">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="152.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="153"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Af1-xO-onX">
@@ -511,7 +511,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YZs-t6-1Oa">
                                                     <rect key="frame" x="8" y="8" width="59" height="44"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6MB-Ib-SHr">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="credit_card" translatesAutoresizingMaskIntoConstraints="NO" id="6MB-Ib-SHr">
                                                             <rect key="frame" x="8" y="8" width="43" height="28"/>
                                                         </imageView>
                                                     </subviews>
@@ -524,23 +524,61 @@
                                                         <constraint firstItem="6MB-Ib-SHr" firstAttribute="top" secondItem="YZs-t6-1Oa" secondAttribute="top" constant="8" id="i3P-P6-BdS"/>
                                                     </constraints>
                                                 </view>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="1234 5678 1234 5678" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gSa-XS-aCx">
-                                                    <rect key="frame" x="87" y="0.0" width="475" height="60"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                                                </textField>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b06-Un-ehi">
+                                                    <rect key="frame" x="82" y="0.0" width="488" height="60"/>
+                                                    <subviews>
+                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="1234 5678 1234 5678" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gSa-XS-aCx">
+                                                            <rect key="frame" x="0.0" y="0.0" width="488" height="60"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                        </textField>
+                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="CVC" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8Kh-qd-3jA">
+                                                            <rect key="frame" x="488" y="0.0" width="0.0" height="60"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" id="4jY-bQ-pAC"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                        </textField>
+                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="MM/YY" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Znu-wK-kw4">
+                                                            <rect key="frame" x="488" y="0.0" width="0.0" height="60"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                        </textField>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstItem="8Kh-qd-3jA" firstAttribute="leading" secondItem="Znu-wK-kw4" secondAttribute="trailing" id="Jqi-Mt-uzU"/>
+                                                        <constraint firstAttribute="bottom" secondItem="gSa-XS-aCx" secondAttribute="bottom" id="OIp-SK-dpW"/>
+                                                        <constraint firstItem="Znu-wK-kw4" firstAttribute="top" secondItem="b06-Un-ehi" secondAttribute="top" id="OPk-VL-jUV"/>
+                                                        <constraint firstItem="Znu-wK-kw4" firstAttribute="width" secondItem="8Kh-qd-3jA" secondAttribute="width" id="PbL-5Z-L3h"/>
+                                                        <constraint firstItem="8Kh-qd-3jA" firstAttribute="top" secondItem="b06-Un-ehi" secondAttribute="top" id="VYa-eQ-HXu"/>
+                                                        <constraint firstItem="gSa-XS-aCx" firstAttribute="width" secondItem="Znu-wK-kw4" secondAttribute="width" id="YPp-hw-z2i"/>
+                                                        <constraint firstAttribute="bottom" secondItem="Znu-wK-kw4" secondAttribute="bottom" id="Zk8-hK-y8V"/>
+                                                        <constraint firstAttribute="trailing" secondItem="8Kh-qd-3jA" secondAttribute="trailing" id="a9u-w6-Pl9"/>
+                                                        <constraint firstItem="gSa-XS-aCx" firstAttribute="top" secondItem="b06-Un-ehi" secondAttribute="top" id="fzN-xP-ioS"/>
+                                                        <constraint firstItem="gSa-XS-aCx" firstAttribute="leading" secondItem="b06-Un-ehi" secondAttribute="leading" id="jjG-EI-tkg"/>
+                                                        <constraint firstAttribute="bottom" secondItem="8Kh-qd-3jA" secondAttribute="bottom" id="qfh-N7-EMX"/>
+                                                        <constraint firstItem="Znu-wK-kw4" firstAttribute="leading" secondItem="gSa-XS-aCx" secondAttribute="trailing" id="vsr-px-Vqq"/>
+                                                    </constraints>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="YPp-hw-z2i"/>
+                                                        </mask>
+                                                    </variation>
+                                                </view>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <gestureRecognizers/>
                                             <constraints>
-                                                <constraint firstItem="gSa-XS-aCx" firstAttribute="top" secondItem="Af1-xO-onX" secondAttribute="top" id="4nB-rg-7PY"/>
                                                 <constraint firstAttribute="bottom" secondItem="YZs-t6-1Oa" secondAttribute="bottom" constant="8" id="93c-Zf-YsD"/>
                                                 <constraint firstItem="YZs-t6-1Oa" firstAttribute="leading" secondItem="Af1-xO-onX" secondAttribute="leading" constant="8" id="HHF-WH-coT"/>
-                                                <constraint firstItem="gSa-XS-aCx" firstAttribute="leading" secondItem="YZs-t6-1Oa" secondAttribute="trailing" constant="20" id="QN1-cq-sRE"/>
+                                                <constraint firstItem="b06-Un-ehi" firstAttribute="top" secondItem="Af1-xO-onX" secondAttribute="top" id="NcO-NH-GCX"/>
+                                                <constraint firstItem="b06-Un-ehi" firstAttribute="leading" secondItem="YZs-t6-1Oa" secondAttribute="trailing" constant="15" id="OkE-pg-NJY"/>
+                                                <constraint firstAttribute="trailing" secondItem="b06-Un-ehi" secondAttribute="trailing" id="U28-e2-B07"/>
                                                 <constraint firstItem="YZs-t6-1Oa" firstAttribute="top" secondItem="Af1-xO-onX" secondAttribute="top" constant="8" id="i05-oa-BVc"/>
-                                                <constraint firstAttribute="bottom" secondItem="gSa-XS-aCx" secondAttribute="bottom" id="kez-rF-qMi"/>
                                                 <constraint firstAttribute="height" constant="60" id="sR7-oF-gRd"/>
-                                                <constraint firstAttribute="trailing" secondItem="gSa-XS-aCx" secondAttribute="trailing" constant="8" id="xBh-Rn-ZKK"/>
+                                                <constraint firstAttribute="bottom" secondItem="b06-Un-ehi" secondAttribute="bottom" id="sWw-y6-ciA"/>
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A credit card is required to guarantee your reservation. It will not be charged until the reservation starts." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Era-LR-Uob">
@@ -565,7 +603,12 @@
                                     <outlet property="cardImage" destination="6MB-Ib-SHr" id="ENA-Vj-gr7"/>
                                     <outlet property="creditCardContainerView" destination="Af1-xO-onX" id="HPe-gg-S1f"/>
                                     <outlet property="creditCardTextField" destination="gSa-XS-aCx" id="XjJ-qC-YYj"/>
+                                    <outlet property="creditCardTextFieldWidthConstraint" destination="YPp-hw-z2i" id="KzI-Cj-GNB"/>
                                     <outlet property="creditCardView" destination="YZs-t6-1Oa" id="viF-Jb-ZWe"/>
+                                    <outlet property="cvcTextField" destination="8Kh-qd-3jA" id="tbE-e4-Zam"/>
+                                    <outlet property="cvcTextFieldWidthConstraint" destination="4jY-bQ-pAC" id="AAj-XS-prK"/>
+                                    <outlet property="expirationDateTextField" destination="Znu-wK-kw4" id="z0f-H7-gnu"/>
+                                    <outlet property="textFieldContainer" destination="b06-Un-ehi" id="rWz-LT-0qD"/>
                                     <outlet property="warningLabel" destination="Era-LR-Uob" id="Z0o-QZ-N7b"/>
                                 </connections>
                             </tableViewCell>
@@ -580,7 +623,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gRf-TW-DFF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1852" y="467"/>
+            <point key="canvasLocation" x="1762" y="461"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="c9i-ca-sqo">
@@ -602,6 +645,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="credit_card" width="32" height="23"/>
         <image name="ic_expand_more_36pt" width="36" height="36"/>
     </resources>
 </document>
