@@ -191,8 +191,8 @@ enum Validator {
         // Remove spaces
         let digits = creditCard.stringByReplacingOccurrencesOfString(" ", withString: "")
         
-        // Check if there are 15 or 16 digits and Check if numeric
-        if digits.characters.count != numberOfDigits || self.isStringNumeric(creditCard) {
+        // Check if there are an incorrect number of digits and Check if non numeric
+        if digits.characters.count != numberOfDigits || !self.isStringNumeric(digits) {
             throw ValidatorError.FieldInvalid(fieldName: fieldName, message: message)
         }
     }

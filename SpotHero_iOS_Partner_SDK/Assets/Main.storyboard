@@ -540,6 +540,12 @@
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                         </textField>
+                                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error Label" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ei-PZ-xaZ">
+                                                            <rect key="frame" x="0.0" y="46" width="480" height="14"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                            <color key="textColor" red="0.92156862750000001" green="0.0" blue="0.16078431369999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="MM/YY" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Znu-wK-kw4">
                                                             <rect key="frame" x="488" y="0.0" width="0.0" height="60"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -548,10 +554,13 @@
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
+                                                        <constraint firstItem="7ei-PZ-xaZ" firstAttribute="leading" secondItem="b06-Un-ehi" secondAttribute="leading" id="73L-DX-Ffl"/>
                                                         <constraint firstItem="8Kh-qd-3jA" firstAttribute="leading" secondItem="Znu-wK-kw4" secondAttribute="trailing" id="Jqi-Mt-uzU"/>
+                                                        <constraint firstAttribute="trailing" secondItem="7ei-PZ-xaZ" secondAttribute="trailing" constant="8" id="KLH-8G-cM4"/>
                                                         <constraint firstAttribute="bottom" secondItem="gSa-XS-aCx" secondAttribute="bottom" id="OIp-SK-dpW"/>
                                                         <constraint firstItem="Znu-wK-kw4" firstAttribute="top" secondItem="b06-Un-ehi" secondAttribute="top" id="OPk-VL-jUV"/>
                                                         <constraint firstItem="Znu-wK-kw4" firstAttribute="width" secondItem="8Kh-qd-3jA" secondAttribute="width" id="PbL-5Z-L3h"/>
+                                                        <constraint firstAttribute="bottom" secondItem="7ei-PZ-xaZ" secondAttribute="bottom" id="QXI-FD-pAk"/>
                                                         <constraint firstItem="8Kh-qd-3jA" firstAttribute="top" secondItem="b06-Un-ehi" secondAttribute="top" id="VYa-eQ-HXu"/>
                                                         <constraint firstItem="gSa-XS-aCx" firstAttribute="width" secondItem="Znu-wK-kw4" secondAttribute="width" id="YPp-hw-z2i"/>
                                                         <constraint firstAttribute="bottom" secondItem="Znu-wK-kw4" secondAttribute="bottom" id="Zk8-hK-y8V"/>
@@ -607,6 +616,7 @@
                                     <outlet property="creditCardView" destination="YZs-t6-1Oa" id="viF-Jb-ZWe"/>
                                     <outlet property="cvcTextField" destination="8Kh-qd-3jA" id="tbE-e4-Zam"/>
                                     <outlet property="cvcTextFieldWidthConstraint" destination="4jY-bQ-pAC" id="AAj-XS-prK"/>
+                                    <outlet property="errorLabel" destination="7ei-PZ-xaZ" id="VFN-iP-vIR"/>
                                     <outlet property="expirationDateTextField" destination="Znu-wK-kw4" id="z0f-H7-gnu"/>
                                     <outlet property="textFieldContainer" destination="b06-Un-ehi" id="rWz-LT-0qD"/>
                                     <outlet property="warningLabel" destination="Era-LR-Uob" id="Z0o-QZ-N7b"/>
