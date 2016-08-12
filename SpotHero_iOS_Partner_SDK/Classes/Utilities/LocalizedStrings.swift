@@ -11,6 +11,8 @@ import Foundation
 enum LocalizedStrings {
     static let Close = NSLocalizedString("Close",
                                          comment: "Close bar button title")
+    static let Done = NSLocalizedString("Done",
+                                        comment: "Done bar button title")
     static let LaunchSDK = NSLocalizedString("Launch SDK",
                                              comment: "Launch SDK button title")
     static let FindParking = NSLocalizedString("Find Parking",
@@ -87,4 +89,6 @@ enum LocalizedStrings {
                                                       comment: "Title of the checkout screen payment button")
     static let blankFieldErrorFormat = NSLocalizedString("Please enter your %@",
                                                    comment: "Error message for a blank field")
+    static let SearchSpots = NSLocalizedString("SEARCH SPOTS",
+                                               comment: "Button title for search spots button")
 }
