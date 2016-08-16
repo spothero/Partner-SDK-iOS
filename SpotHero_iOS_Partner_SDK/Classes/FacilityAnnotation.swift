@@ -12,10 +12,12 @@ import MapKit
 class FacilityAnnotation: NSObject, MKAnnotation {
     let title: String?
     let coordinate: CLLocationCoordinate2D
+    let facility: Facility?
     
-    init(title: String, coordinate: CLLocationCoordinate2D) {
+    init(title: String, coordinate: CLLocationCoordinate2D, facility: Facility) {
         self.title = title
         self.coordinate = coordinate
+        self.facility = facility
         
         super.init()
     }
