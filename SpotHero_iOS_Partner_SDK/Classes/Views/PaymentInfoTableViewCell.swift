@@ -113,7 +113,9 @@ class PaymentInfoTableViewCell: UITableViewCell, ValidatorCell {
 }
 
 extension PaymentInfoTableViewCell: UITextFieldDelegate {
-    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+    func textField(textField: UITextField,
+                   shouldChangeCharactersInRange range: NSRange,
+                   replacementString string: String) -> Bool {
         guard let text = (textField.text as? NSString)?.stringByReplacingCharactersInRange(range, withString: string) else {
             return true
         }
