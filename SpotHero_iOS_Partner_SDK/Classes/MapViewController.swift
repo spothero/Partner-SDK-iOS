@@ -96,7 +96,9 @@ class MapViewController: UIViewController {
                                             ends: self.endDate,
                                             completion: { [weak self] (facilities, error) -> (Void) in
                                                 for facility in facilities {
-                                                    let facilityAnnotation = FacilityAnnotation(title: facility.title, coordinate: facility.location.coordinate, facility: facility)
+                                                    let facilityAnnotation = FacilityAnnotation(title: facility.title,
+                                                        coordinate: facility.location.coordinate,
+                                                        facility: facility)
                                                     //SWIFT3: DispatchQueue.main.async
                                                     dispatch_async(dispatch_get_main_queue(),{
                                                         self?.mapView.addAnnotation(facilityAnnotation)
