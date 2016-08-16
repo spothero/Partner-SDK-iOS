@@ -106,7 +106,10 @@ class MapViewController: UIViewController {
                                                 }
                                                 //SWIFT3: DispatchQueue.main.async
                                                 dispatch_async(dispatch_get_main_queue(),{
-                                                    self?.mapView.showAnnotations((self?.mapView.annotations)!, animated: true)
+                                                    guard let annotations = self?.mapView.annotations else {
+                                                        return
+                                                    }
+                                                    self?.mapView.showAnnotations(annotations, animated: true)
                                                     UIApplication.sharedApplication().networkActivityIndicatorVisible = false
                                                     //TODO: Hide progress HUD
                                                 })
