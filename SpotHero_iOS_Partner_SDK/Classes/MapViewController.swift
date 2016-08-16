@@ -96,12 +96,18 @@ class MapViewController: UIViewController {
                                             ends: self.endDate,
                                             completion: { [weak self] (facilities, error) -> (Void) in
                                                 for facility in facilities {
-                                                    let facilityAnnotation = FacilityAnnotation(title: facility.title, coordinate: facility.location.coordinate)
-                                                    self?.mapView.addAnnotation(facilityAnnotation)
+                                                    let facilityAnnotation = FacilityAnnotation(title: facility.title, coordinate: facility.location.coordinate, facility: facility)
+                                                    //SWIFT3: DispatchQueue.main.async
+                                                    dispatch_async(dispatch_get_main_queue(),{
+                                                        self?.mapView.addAnnotation(facilityAnnotation)
+                                                    })
                                                 }
-                                                self?.mapView.showAnnotations((self?.mapView.annotations)!, animated: true)
-                                                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-                                                //TODO: Hide progress HUD
+                                                //SWIFT3: DispatchQueue.main.async
+                                                dispatch_async(dispatch_get_main_queue(),{
+                                                    self?.mapView.showAnnotations((self?.mapView.annotations)!, animated: true)
+                                                    UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+                                                    //TODO: Hide progress HUD
+                                                })
                     })
             }
         }
@@ -217,16 +223,17 @@ extension MapViewController: StartEndDateDelegate {
 }
 
 //MARK: MKMapViewDelegate
+
 extension MapViewController: MKMapViewDelegate {
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
-        let identifier = "SpotAnnotationViewID"
-        var spotAnnotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier)
-        if (spotAnnotationView == nil) {
-            spotAnnotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-            spotAnnotationView?.canShowCallout = true
-            spotAnnotationView?.image = UIImage(named: "spot-marker-default")
+        let identifier = "FacilityAnnotationViewIdentifier"
+        var facilityAnnotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier)
+        
+        guard let annotationView = facilityAnnotationView else {
+            facilityAnnotationView = FacilityAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            return facilityAnnotationView
         }
         
-        return spotAnnotationView
+        return facilityAnnotationView
     }
 }
