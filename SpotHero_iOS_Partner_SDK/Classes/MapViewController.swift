@@ -231,11 +231,10 @@ extension MapViewController: StartEndDateDelegate {
 
 extension MapViewController: MKMapViewDelegate {
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
-        let identifier = "FacilityAnnotationViewIdentifier"
-        var facilityAnnotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier)
+        var facilityAnnotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(FacilityAnnotationView.Identifier)
         
         guard let annotationView = facilityAnnotationView else {
-            facilityAnnotationView = FacilityAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            facilityAnnotationView = FacilityAnnotationView(annotation: annotation, reuseIdentifier: FacilityAnnotationView.Identifier)
             return facilityAnnotationView
         }
         

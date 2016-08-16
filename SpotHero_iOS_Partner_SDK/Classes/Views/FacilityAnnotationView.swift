@@ -11,6 +11,8 @@ import MapKit
 
 class FacilityAnnotationView: MKAnnotationView {
     
+    static let Identifier = "FacilityAnnotationViewIdentifier"
+    
     private let growDuration: NSTimeInterval = 0.4
     private let facilityGrowScale: CGFloat = 1.5
     private let facilityUnscaledWidth: CGFloat = 30
