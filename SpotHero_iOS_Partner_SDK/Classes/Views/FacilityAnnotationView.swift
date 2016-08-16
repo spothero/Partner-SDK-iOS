@@ -43,7 +43,11 @@ class FacilityAnnotationView: MKAnnotationView {
         
         self.backgroundImageView = UIImageView(frame: self.bounds)
         self.backgroundImageView?.image = self.facilityPinImageDefault
-        self.backgroundImageView?.autoresizingMask = [.FlexibleTopMargin, .FlexibleLeftMargin, .FlexibleRightMargin]
+        self.backgroundImageView?.autoresizingMask = [
+            .FlexibleTopMargin,
+            .FlexibleLeftMargin,
+            .FlexibleRightMargin,
+        ]
         guard let imageView = self.backgroundImageView else {
             return
         }
@@ -56,7 +60,11 @@ class FacilityAnnotationView: MKAnnotationView {
         self.priceLabel?.text = "$\(price)"
         self.priceLabel?.textColor = .shp_spotHeroBlue()
         self.priceLabel?.font = UIFont.systemFontOfSize(self.priceLabel?.text?.characters.count > 3 ? 7 : 10)
-        self.priceLabel?.autoresizingMask = [.FlexibleTopMargin, .FlexibleLeftMargin, .FlexibleRightMargin]
+        self.priceLabel?.autoresizingMask = [
+            .FlexibleTopMargin,
+            .FlexibleLeftMargin,
+            .FlexibleRightMargin
+        ]
         guard let priceLabel = self.priceLabel else {
             return
         }
@@ -120,6 +128,7 @@ class AnnotationLabel: UILabel {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
         self.initialWidth = self.frame.size.width
         self.backgroundColor = .clearColor()
     }
