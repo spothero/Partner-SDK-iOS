@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PaymentInfoTableViewCell: UITableViewCell {
+class PaymentInfoTableViewCell: UITableViewCell, ValidatorCell {
     @IBOutlet weak var creditCardView: UIView!
     @IBOutlet weak var cardImage: UIImageView!
     @IBOutlet weak var creditCardTextField: UITextField!
@@ -21,11 +21,37 @@ class PaymentInfoTableViewCell: UITableViewCell {
     @IBOutlet weak var textFieldContainer: UIView!
     @IBOutlet weak var errorLabel: UILabel!
     
+    var delegate: ValidatorCellDelegate?
     var cardNumber = ""
     var cardType: CardType = .Unknown {
         didSet {
             self.cardImage.image = self.cardType.image()
         }
+    }
+    
+    var creditCardValid: Bool? {
+        didSet {
+            self.fieldValidChanged()
+        }
+    }
+    
+    var expirationDateValid: Bool? {
+        didSet {
+            self.fieldValidChanged()
+        }
+    }
+    
+    var cvcValid: Bool? {
+        didSet {
+            self.fieldValidChanged()
+        }
+    }
+    
+    var valid: Bool {
+        if let creditCardValid = self.creditCardValid, expirationDateValid = self.expirationDateValid, cvcValid = self.cvcValid {
+            return creditCardValid && expirationDateValid && cvcValid
+        }
+        return false
     }
     
     static let reuseIdentifier = "paymentInfoCell"
@@ -41,6 +67,46 @@ class PaymentInfoTableViewCell: UITableViewCell {
         self.creditCardTextField.delegate = self
         self.expirationDateTextField.delegate = self
         self.cvcTextField.delegate = self
+    }
+    
+    func showExpirationDateAndCVCTextFields(show show: Bool) {
+        let width: CGFloat = show ? (self.textFieldContainer.frame.width / 3) : 0
+        
+        if !show {
+            self.expirationDateTextField.resignFirstResponder()
+            self.cvcTextField.resignFirstResponder()
+        }
+        
+        UIView.animateWithDuration(Constants.ViewAnimationDuration) {
+            self.creditCardTextFieldWidthConstraint.active = show
+            self.creditCardTextField.textAlignment = show ? .Center : .Left
+            self.cvcTextFieldWidthConstraint.constant = width
+            self.layoutIfNeeded()
+        }
+    }
+    
+    func lastFourDigits(digits: String) -> String {
+        let endIndex = digits.endIndex
+        return digits.substringWithRange(endIndex.advancedBy(-4)..<endIndex)
+    }
+    
+    func setErrorState(error: ValidatorError) {
+        guard self.creditCardValid != nil && self.expirationDateValid != nil && self.cvcValid != nil else {
+            return
+        }
+        
+        self.errorLabel.hidden = false
+
+        switch error {
+        case .FieldBlank(let fieldName):
+            self.errorLabel.text = String(format: LocalizedStrings.blankFieldErrorFormat, fieldName)
+        case .FieldInvalid(let fieldName, let message):
+            self.errorLabel.text = message
+        }
+    }
+    
+    func fieldValidChanged() {
+        self.delegate?.didValidateText()
     }
 }
 
@@ -134,69 +200,41 @@ extension PaymentInfoTableViewCell: UITextFieldDelegate {
             return
         }
         
-        if textField === self.creditCardTextField {
-            do {
+        do {
+            if textField === self.creditCardTextField {
                 self.cardType = Validator.getCardType(text)
                 try Validator.validateCreditCard(self.cardNumber)
-            } catch let error as ValidatorError {
-                self.handleValidationError(error)
-            } catch {
-                assertionFailure("Some other error was thrown")
-            }
-        } else if textField === self.expirationDateTextField {
-            do {
+                self.creditCardValid = true
+            } else if textField === self.expirationDateTextField {
                 let parts = text.componentsSeparatedByString("/")
                 if let month = parts.first, year = parts.last {
-                    try Validator.validateExpiration(month, year: year)
+                    try Validator.validateExpiration(month, year: "20\(year)")
                 } else {
                     throw ValidatorError.FieldInvalid(fieldName: LocalizedStrings.ExpirationDate, message: LocalizedStrings.InvalidDateErrorMessage)
                 }
-            } catch let error as ValidatorError {
-                print("CARD NUMBER: \(self.cardNumber)")
-                self.handleValidationError(error)
-            } catch {
-                assertionFailure("Some other error was thrown")
+                self.expirationDateValid = true
+            } else if textField === self.cvcTextField {
+                if cardType == .Amex {
+                    try Validator.validateCVC(text, amex: true)
+                } else {
+                    try Validator.validateCVC(text)
+                }
+                self.cvcValid = true
             }
-        } else if textField === self.cvcTextField {
-            do {
-                try Validator.validateCVC(text)
-            } catch let error as ValidatorError {
-                self.handleValidationError(error)
-            } catch {
-                assertionFailure("Some other error was thrown")
+        } catch let error as ValidatorError {
+            self.setErrorState(error)
+            switch textField {
+            case self.creditCardTextField:
+                self.creditCardValid = false
+            case self.expirationDateTextField:
+                self.expirationDateValid = false
+            case self.cvcTextField:
+                self.cvcValid = false
+            default:
+                break
             }
-        }
-    }
-    
-    func showExpirationDateAndCVCTextFields(show show: Bool) {
-        let width: CGFloat = show ? (self.textFieldContainer.frame.width / 3) : 0
-        
-        if !show {
-            self.expirationDateTextField.resignFirstResponder()
-            self.cvcTextField.resignFirstResponder()
-        }
-        
-        UIView.animateWithDuration(Constants.ViewAnimationDuration) {
-            self.creditCardTextFieldWidthConstraint.active = show
-            self.creditCardTextField.textAlignment = show ? .Center : .Left
-            self.cvcTextFieldWidthConstraint.constant = width
-            self.layoutIfNeeded()
-        }
-    }
-    
-    func lastFourDigits(digits: String) -> String {
-        let endIndex = digits.endIndex
-        return digits.substringWithRange(endIndex.advancedBy(-4)..<endIndex)
-    }
-    
-    func handleValidationError(error: ValidatorError) {
-        self.errorLabel.hidden = false
-        
-        switch error {
-        case .FieldBlank(let fieldName):
-            self.errorLabel.text = String(format: LocalizedStrings.blankFieldErrorFormat, fieldName)
-        case .FieldInvalid(let fieldName, let message):
-            self.errorLabel.text = message
+        } catch {
+            assertionFailure("Some other error was thrown")
         }
     }
 }

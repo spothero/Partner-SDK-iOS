@@ -73,7 +73,9 @@ enum PersonalInfoRow: Int, CountableIntEnum {
     }
 }
 
-class CheckoutTableViewController: UITableViewController {
+class CheckoutTableViewController: UIViewController {
+    @IBOutlet private weak var tableView: UITableView!
+    
     private let reservationCellHeight: CGFloat = 86
     private let paymentButtonHeight: CGFloat = 60
     private let paymentButtonMargin: CGFloat = 0
@@ -94,6 +96,7 @@ class CheckoutTableViewController: UITableViewController {
     
     var facility: Facility?
     var rate: Rate?
+    var indexPathsToValidate = [NSIndexPath]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -113,7 +116,7 @@ class CheckoutTableViewController: UITableViewController {
                                                    bottom: self.paymentButtonHeight,
                                                    right: 0)
         self.paymentButton.setTitle(String(format: LocalizedStrings.paymentButtonTitleFormat, price), forState: .Normal)
-        self.navigationController?.view.addSubview(self.paymentButton)
+        self.view.addSubview(self.paymentButton)
         let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("|-margin-[paymentButton]-margin-|",
                                                                                    options: NSLayoutFormatOptions(rawValue: 0),
                                                                                    metrics: ["margin": paymentButtonMargin],
@@ -122,81 +125,8 @@ class CheckoutTableViewController: UITableViewController {
                                                                                 options: NSLayoutFormatOptions(rawValue: 0),
                                                                                 metrics: ["margin": paymentButtonMargin, "height": paymentButtonHeight],
                                                                                 views: ["paymentButton": paymentButton])
-        self.navigationController?.view.addConstraints(horizontalConstraints)
-        self.navigationController?.view.addConstraints(verticalContraints)
-    }
-    
-    // MARK: - Table view data source
-    
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return CheckoutSection.AllCases.count
-    }
-    
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case CheckoutSection.ReservationInfo.rawValue,
-             CheckoutSection.PersonalInfo.rawValue:
-            return 3
-        default:
-            return 1
-        }
-    }
-    
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell: UITableViewCell
-        if let section = CheckoutSection(rawValue: indexPath.section) {
-            cell = tableView.dequeueReusableCellWithIdentifier(section.reuseIdentifier(), forIndexPath: indexPath)
-        } else {
-            assertionFailure("Cannot get the section")
-            cell = UITableViewCell()
-        }
-        
-        if let
-            cell = cell as? ReservationInfoTableViewCell,
-            facility = self.facility,
-            rate = self.rate,
-            row = ReservationInfoRow(rawValue: indexPath.row) {
-            
-            self.configureCell(cell,
-                               row: row,
-                               facility: facility,
-                               rate: rate)
-        } else if let
-            cell = cell as? PersonalInfoTableViewCell,
-            row = PersonalInfoRow(rawValue: indexPath.row) {
-            
-            self.configureCell(cell, row: row)
-        }
-        
-        return cell
-    }
-    
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        switch indexPath.section {
-        case CheckoutSection.ReservationInfo.rawValue:
-            return self.reservationCellHeight
-        default:
-            return UITableViewAutomaticDimension
-        }
-    }
-    
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        guard let checkoutSection = CheckoutSection(rawValue: section) else {
-            return nil
-        }
-        
-        switch checkoutSection {
-        case CheckoutSection.ReservationInfo:
-            return LocalizedStrings.ReservationInfo
-        case CheckoutSection.PersonalInfo:
-            return LocalizedStrings.PersonalInfo
-        case CheckoutSection.PaymentInfo:
-            return LocalizedStrings.PaymentInfo
-        }
-    }
-    
-    override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return CGFloat.min
+        self.view.addConstraints(horizontalConstraints)
+        self.view.addConstraints(verticalContraints)
     }
     
     //MARK: Actions
@@ -261,12 +191,96 @@ class CheckoutTableViewController: UITableViewController {
     }
 }
 
-extension CheckoutTableViewController: PersonalInfoTableViewCellDelegate {
+//MARK: UITableViewDataSource
+
+extension CheckoutTableViewController: UITableViewDataSource {
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return CheckoutSection.AllCases.count
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        switch section {
+        case CheckoutSection.ReservationInfo.rawValue,
+             CheckoutSection.PersonalInfo.rawValue:
+            return 3
+        default:
+            return 1
+        }
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell: UITableViewCell
+        if let section = CheckoutSection(rawValue: indexPath.section) {
+            cell = tableView.dequeueReusableCellWithIdentifier(section.reuseIdentifier(), forIndexPath: indexPath)
+        } else {
+            assertionFailure("Cannot get the section")
+            cell = UITableViewCell()
+        }
+        
+        if let
+            cell = cell as? ReservationInfoTableViewCell,
+            facility = self.facility,
+            rate = self.rate,
+            row = ReservationInfoRow(rawValue: indexPath.row) {
+            
+            self.configureCell(cell,
+                               row: row,
+                               facility: facility,
+                               rate: rate)
+        } else if let
+            cell = cell as? PersonalInfoTableViewCell,
+            row = PersonalInfoRow(rawValue: indexPath.row) {
+            
+            self.configureCell(cell, row: row)
+        }
+        
+        if cell is ValidatorCell {
+            self.indexPathsToValidate.append(indexPath)
+        }
+        
+        return cell
+    }
+}
+
+//MARK: UITableViewDelegate
+
+extension CheckoutTableViewController: UITableViewDelegate {
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        switch indexPath.section {
+        case CheckoutSection.ReservationInfo.rawValue:
+            return self.reservationCellHeight
+        default:
+            return UITableViewAutomaticDimension
+        }
+    }
+    
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        guard let checkoutSection = CheckoutSection(rawValue: section) else {
+            return nil
+        }
+        
+        switch checkoutSection {
+        case CheckoutSection.ReservationInfo:
+            return LocalizedStrings.ReservationInfo
+        case CheckoutSection.PersonalInfo:
+            return LocalizedStrings.PersonalInfo
+        case CheckoutSection.PaymentInfo:
+            return LocalizedStrings.PaymentInfo
+        }
+    }
+    
+    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return CGFloat.min
+    }
+}
+
+//MARK: ValidatorCellDelegate
+
+extension CheckoutTableViewController: ValidatorCellDelegate {
     func didValidateText() {
         var invalidCells = 0
-        for i in 0..<PersonalInfoRow.AllCases.count {
-            let indexPath = NSIndexPath(forRow: i, inSection: CheckoutSection.PersonalInfo.rawValue)
-            let cell = self.tableView.cellForRowAtIndexPath(indexPath) as! PersonalInfoTableViewCell
+        for indexPath in self.indexPathsToValidate {
+            let cell = self.tableView.cellForRowAtIndexPath(indexPath) as! ValidatorCell
             if !cell.valid {
                 invalidCells += 1
             }

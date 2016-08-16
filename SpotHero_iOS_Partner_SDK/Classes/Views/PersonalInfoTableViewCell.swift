@@ -8,25 +8,15 @@
 
 import UIKit
 
-protocol PersonalInfoTableViewCellDelegate {
-    func didValidateText()
-}
-
-class PersonalInfoTableViewCell: UITableViewCell {
+class PersonalInfoTableViewCell: UITableViewCell, ValidatorCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var errorLabel: UILabel!
     
     var type: PersonalInfoRow = .FullName
     
-    var delegate: PersonalInfoTableViewCellDelegate?
+    var delegate: ValidatorCellDelegate?
     var validationClosure: ((String) throws -> ())?
-    var error: ValidatorError? {
-        didSet {
-            self.setErrorState(oldValue)
-            self.valid = (error == nil)
-        }
-    }
     var valid = false {
         didSet {
             delegate?.didValidateText()
@@ -40,19 +30,14 @@ class PersonalInfoTableViewCell: UITableViewCell {
         textField.delegate = self
     }
     
-    private func setErrorState(oldValue: ValidatorError?) {
-        if let error = self.error {
-            self.backgroundColor = .shp_errorRed()
-            self.errorLabel.hidden = false
-            switch error {
-            case .FieldBlank(let fieldName):
-                self.errorLabel.text = String(format: LocalizedStrings.blankFieldErrorFormat, fieldName)
-            case .FieldInvalid(let fieldName, let message):
-                self.errorLabel.text = message
-            }
-        } else {
-            self.errorLabel.hidden = true
-            self.backgroundColor = .whiteColor()
+    func setErrorState(error: ValidatorError) {
+        self.backgroundColor = .shp_errorRed()
+        self.errorLabel.hidden = false
+        switch error {
+        case .FieldBlank(let fieldName):
+            self.errorLabel.text = String(format: LocalizedStrings.blankFieldErrorFormat, fieldName)
+        case .FieldInvalid(let fieldName, let message):
+            self.errorLabel.text = message
         }
     }
 }
@@ -69,9 +54,10 @@ extension PersonalInfoTableViewCell: UITextFieldDelegate {
             } else {
                 assertionFailure("Validation closure not set")
             }
-            self.error = nil
+            self.valid = true
         } catch let error as ValidatorError {
-            self.error = error
+            self.setErrorState(error)
+            self.valid = false
         } catch {
             assertionFailure("Some other error was thrown")
         }
