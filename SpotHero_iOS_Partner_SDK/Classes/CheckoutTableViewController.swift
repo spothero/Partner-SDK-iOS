@@ -159,7 +159,6 @@ class CheckoutTableViewController: UIViewController {
     private func configureCell(cell: PersonalInfoTableViewCell, row: PersonalInfoRow) {
         cell.titleLabel.text = row.title()
         cell.textField.placeholder = row.placeholder()
-        cell.delegate = self
         cell.type = row
         
         switch row {
@@ -234,8 +233,9 @@ extension CheckoutTableViewController: UITableViewDataSource {
             self.configureCell(cell, row: row)
         }
         
-        if cell is ValidatorCell {
+        if let cell = cell as? ValidatorCell {
             self.indexPathsToValidate.append(indexPath)
+            cell.delegate = self
         }
         
         return cell

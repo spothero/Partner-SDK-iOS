@@ -90,18 +90,20 @@ class PaymentInfoTableViewCell: UITableViewCell, ValidatorCell {
         return digits.substringWithRange(endIndex.advancedBy(-4)..<endIndex)
     }
     
-    func setErrorState(error: ValidatorError) {
+    func setErrorState(valid: Bool, error: ValidatorError?) {
         guard self.creditCardValid != nil && self.expirationDateValid != nil && self.cvcValid != nil else {
             return
         }
         
-        self.errorLabel.hidden = false
-
-        switch error {
-        case .FieldBlank(let fieldName):
-            self.errorLabel.text = String(format: LocalizedStrings.blankFieldErrorFormat, fieldName)
-        case .FieldInvalid(let fieldName, let message):
-            self.errorLabel.text = message
+        self.errorLabel.hidden = valid
+        
+        if let error = error {
+            switch error {
+            case .FieldBlank(let fieldName):
+                self.errorLabel.text = String(format: LocalizedStrings.blankFieldErrorFormat, fieldName)
+            case .FieldInvalid(let fieldName, let message):
+                self.errorLabel.text = message
+            }
         }
     }
     
@@ -155,7 +157,6 @@ extension PaymentInfoTableViewCell: UITextFieldDelegate {
                 if unformatted.characters.count == cardLength {
                     self.showExpirationDateAndCVCTextFields(show: true)
                     textField.text = self.lastFourDigits(unformatted)
-                    textField.resignFirstResponder()
                     self.expirationDateTextField.becomeFirstResponder()
                 }
             }
@@ -172,11 +173,19 @@ extension PaymentInfoTableViewCell: UITextFieldDelegate {
             if unformatted.characters.count <= 4 {
                 textField.text = formatted
             }
+            if unformatted.characters.count == 4 {
+                self.cvcTextField.becomeFirstResponder()
+            }
             return false
         } else if textField === self.cvcTextField {
             let cvcLength = self.cardType == .Amex ? 4 : 3
             if text.characters.count > cvcLength {
                 return false
+            }
+            
+            if text.characters.count == cvcLength {
+                textField.text = text
+                textField.resignFirstResponder()
             }
         }
         
@@ -221,8 +230,9 @@ extension PaymentInfoTableViewCell: UITextFieldDelegate {
                 }
                 self.cvcValid = true
             }
+            self.setErrorState(true, error: nil)
         } catch let error as ValidatorError {
-            self.setErrorState(error)
+            self.setErrorState(false, error: error)
             switch textField {
             case self.creditCardTextField:
                 self.creditCardValid = false

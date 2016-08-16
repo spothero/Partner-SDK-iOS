@@ -19,6 +19,8 @@ class PersonalInfoTableViewCell: UITableViewCell, ValidatorCell {
     var validationClosure: ((String) throws -> ())?
     var valid = false {
         didSet {
+            self.backgroundColor = self.valid ? .whiteColor() : .shp_errorRed()
+            self.errorLabel.hidden = self.valid
             delegate?.didValidateText()
         }
     }
@@ -30,15 +32,17 @@ class PersonalInfoTableViewCell: UITableViewCell, ValidatorCell {
         textField.delegate = self
     }
     
-    func setErrorState(error: ValidatorError) {
-        self.backgroundColor = .shp_errorRed()
-        self.errorLabel.hidden = false
-        switch error {
-        case .FieldBlank(let fieldName):
-            self.errorLabel.text = String(format: LocalizedStrings.blankFieldErrorFormat, fieldName)
-        case .FieldInvalid(let fieldName, let message):
-            self.errorLabel.text = message
+    func setErrorState(valid: Bool, error: ValidatorError?) {
+        if let error = error {
+            switch error {
+            case .FieldBlank(let fieldName):
+                self.errorLabel.text = String(format: LocalizedStrings.blankFieldErrorFormat, fieldName)
+            case .FieldInvalid(let fieldName, let message):
+                self.errorLabel.text = message
+            }
         }
+        
+        self.valid = valid
     }
 }
 
@@ -54,10 +58,9 @@ extension PersonalInfoTableViewCell: UITextFieldDelegate {
             } else {
                 assertionFailure("Validation closure not set")
             }
-            self.valid = true
+            self.setErrorState(true, error: nil)
         } catch let error as ValidatorError {
-            self.setErrorState(error)
-            self.valid = false
+            self.setErrorState(false, error: error)
         } catch {
             assertionFailure("Some other error was thrown")
         }
@@ -69,8 +72,13 @@ extension PersonalInfoTableViewCell: UITextFieldDelegate {
         }
         
         if self.type == .Phone {
-            let formatted = Formatter.formatPhoneNumber(text).formatted
+            let (formatted, unformatted) = Formatter.formatPhoneNumber(text)
             textField.text = formatted
+            
+            if unformatted.characters.count == 10 {
+                textField.resignFirstResponder()
+            }
+            
             return false
         }
         
