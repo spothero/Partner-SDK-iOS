@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		12794D581D5BC9DB0074E246 /* SearchSpotsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12794D561D5BC9B30074E246 /* SearchSpotsUITests.swift */; };
 		234673EB15066D4EC9DC8FC8 /* Pods_SpotHero_iOS_Partner_SDK_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F26D5251B78585BF5881D75 /* Pods_SpotHero_iOS_Partner_SDK_Example.framework */; };
 		3361782E1D249B1A00AF7AD6 /* ShowSDKUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3361782D1D249B1A00AF7AD6 /* ShowSDKUITests.swift */; };
 		336178381D24A8BB00AF7AD6 /* XCTestCase+KIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336178371D24A8BB00AF7AD6 /* XCTestCase+KIF.swift */; };
@@ -49,6 +50,7 @@
 
 /* Begin PBXFileReference section */
 		0E872C07734ECBB92B5B34F8 /* Pods_SpotHero_iOS_Partner_SDK_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpotHero_iOS_Partner_SDK_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		12794D561D5BC9B30074E246 /* SearchSpotsUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchSpotsUITests.swift; sourceTree = "<group>"; };
 		12CA9BC8F524B1855D4E8554 /* Pods-SpotHero_iOS_Partner_SDK_ExampleUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpotHero_iOS_Partner_SDK_ExampleUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SpotHero_iOS_Partner_SDK_ExampleUITests/Pods-SpotHero_iOS_Partner_SDK_ExampleUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		1F26D5251B78585BF5881D75 /* Pods_SpotHero_iOS_Partner_SDK_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpotHero_iOS_Partner_SDK_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EA8833E3E8B61B4E0E4DBA1 /* Pods-SpotHero_iOS_Partner_SDK_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpotHero_iOS_Partner_SDK_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SpotHero_iOS_Partner_SDK_Tests/Pods-SpotHero_iOS_Partner_SDK_Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 				3361782D1D249B1A00AF7AD6 /* ShowSDKUITests.swift */,
 				3361782F1D249B1A00AF7AD6 /* Info.plist */,
 				C70AA21C1D397E2C004C7BDE /* GooglePlacesUITests.swift */,
+				12794D561D5BC9B30074E246 /* SearchSpotsUITests.swift */,
 				C70AA21F1D398432004C7BDE /* BaseUITests.swift */,
 			);
 			name = UITests;
@@ -559,6 +562,7 @@
 				3361782E1D249B1A00AF7AD6 /* ShowSDKUITests.swift in Sources */,
 				336178381D24A8BB00AF7AD6 /* XCTestCase+KIF.swift in Sources */,
 				C70AA21E1D397E75004C7BDE /* GooglePlacesUITests.swift in Sources */,
+				12794D581D5BC9DB0074E246 /* SearchSpotsUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
