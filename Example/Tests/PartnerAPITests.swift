@@ -62,23 +62,36 @@ class PartnerAPITests: BaseTests {
         self.getFacilities(Constants.ChicagoLocation) {
             facilities, error in
             if let facility = facilities.first, rate = facility.rates.first {
-                ReservationAPI.createReservation(facility,
-                                                 rate: rate,
-                                                 email: self.testEmail,
-                                                 completion: {
-                                                    reservation, error in
-                                                    XCTAssertNil(error)
-                                                    XCTAssertNotNil(reservation)
-                                                    if let reservation = reservation {
-                                                        // Cancel Reservation so spots don't run out
-                                                        ReservationAPI.cancelReservation(reservation, completion: { (error) -> (Void) in
-                                                            XCTAssertNil(error)
-                                                            expectation.fulfill()
-                                                        })
-                                                    } else {
-                                                        XCTFail("Could not get reservation")
-                                                    }
-                })
+                StripeWrapper.getToken("4242424242424242",
+                                       expirationMonth: "12",
+                                       expirationYear: "2017",
+                                       cvc: "123") {
+                                        token, error in
+                                        guard let token = token else {
+                                            XCTFail("Failed to get token")
+                                            return
+                                        }
+                                        
+                                        ReservationAPI.createReservation(facility,
+                                                                         rate: rate,
+                                                                         email: self.testEmail,
+                                                                         stripeToken: token,
+                                                                         completion: {
+                                                                            reservation, error in
+                                                                            XCTAssertNil(error)
+                                                                            XCTAssertNotNil(reservation)
+                                                                            if let reservation = reservation {
+                                                                                // Cancel Reservation so spots don't run out
+                                                                                ReservationAPI.cancelReservation(reservation, completion: { (error) -> (Void) in
+                                                                                    XCTAssertNil(error)
+                                                                                    expectation.fulfill()
+                                                                                })
+                                                                            } else {
+                                                                                XCTFail("Could not get reservation")
+                                                                            }
+                                        })
+                }
+                
             } else {
                 XCTFail("Cannot get facility and rate")
             }
