@@ -2,7 +2,7 @@
 //  GooglePlacesUITests.swift
 //  SpotHero_iOS_Partner_SDK
 //
-//  Created by SpotHeroMatt on 7/15/16.
+//  Created by Matthew Reed on 7/15/16.
 //  Copyright © 2016 SpotHero, Inc. All rights reserved.
 //
 
@@ -14,15 +14,13 @@ import KIF
 class GooglePlacesUITests: BaseUITests {
     let indexPath = NSIndexPath(forRow: 0, inSection: 0)
     
-    func typeInAddress() {
-        tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.SearchBar)
-        tester().enterText("325 W Huron", intoViewWithAccessibilityLabel: AccessibilityStrings.SearchBar)
+    override func beforeEach() {
+        super.beforeEach()
+        self.enterTextIntoSearchBar(AccessibilityStrings.SpotHero)
     }
     
     func testGetPredictions() {
         //GIVEN: I see the search bar and type in an address
-        self.typeInAddress()
-        
         //THEN: I see a table with predictions
         guard let tableView = tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.PredictionTableView) as? UITableView else {
             XCTFail("No Prediction table view")
@@ -41,8 +39,6 @@ class GooglePlacesUITests: BaseUITests {
     
     func testTapAPlace() {
         //GIVEN: I see the search bar and type in an address
-        self.typeInAddress()
-        
         //WHEN: I see a table with predictions and tap a row
         guard let tableView = tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.PredictionTableView) as? UITableView else {
             XCTFail("No Prediction table view")

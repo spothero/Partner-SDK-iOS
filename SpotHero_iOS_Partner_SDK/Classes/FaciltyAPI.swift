@@ -2,7 +2,7 @@
 //  FaciltyAPI.swift
 //  Pods
 //
-//  Created by SpotHeroMatt on 7/20/16.
+//  Created by Matthew Reed on 7/20/16.
 //
 //
 
@@ -38,7 +38,8 @@ struct FacilityAPI {
             "longitude" : longitude,
             "latitude" : latitude,
             "starts" : startsString,
-            "ends" : endsString
+            "ends" : endsString,
+            "include" : "facility"
         ]
         
         SpotHeroPartnerAPIController.getJSONFromEndpoint("partner/v1/facilities/rates",

@@ -2,7 +2,7 @@
 //  GooglePlacesTests.swift
 //  SpotHero_iOS_Partner_SDK
 //
-//  Created by SpotHeroMatt on 7/12/16.
+//  Created by Matthew Reed on 7/12/16.
 //  Copyright © 2016 SpotHero, Inc. All rights reserved.
 //
 
@@ -12,7 +12,6 @@ import CoreLocation
 
 class GooglePlacesTests: XCTestCase {
     let waitDuration: NSTimeInterval = 10
-    let spotheroName = "SpotHero"
     let spotheroPrediction = GooglePlacesPrediction(description: "SpotHero, West Huron Street, Chicago, IL, United States",
                                                     placeID: "ChIJEyn6463TD4gR9Ta3uIauNyo",
                                                     terms: [])
@@ -38,7 +37,7 @@ class GooglePlacesTests: XCTestCase {
     func testGetPredictionsWithPlaceName() {
         let expectation = self.expectationWithDescription("testGetPredictionsWithPlaceName")
         
-        GooglePlacesWrapper.getPredictions(self.spotheroName,
+        GooglePlacesWrapper.getPredictions(AccessibilityStrings.SpotHero,
                                            location: Constants.ChicagoLocation) {
                                             predictions, error in
                                             XCTAssertNil(error)
@@ -74,7 +73,7 @@ class GooglePlacesTests: XCTestCase {
             XCTAssertNil(error)
             XCTAssertNotNil(placeDetails)
             if let placeDetails = placeDetails {
-                XCTAssertEqual(placeDetails.name, self.spotheroName)
+                XCTAssertEqual(placeDetails.name, AccessibilityStrings.SpotHero)
                 XCTAssertEqual(placeDetails.placeID, self.spotheroPrediction.placeID)
                 XCTAssertEqualWithAccuracy(placeDetails.location.coordinate.latitude, Constants.ChicagoLocation.coordinate.latitude, accuracy: 0.001, "The two locacations are not within 0.001")
                 XCTAssertEqualWithAccuracy(placeDetails.location.coordinate.longitude, Constants.ChicagoLocation.coordinate.longitude, accuracy: 0.001, "The two locacations are not within 0.001")

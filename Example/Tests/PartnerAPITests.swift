@@ -10,13 +10,12 @@ import XCTest
 import CoreLocation
 @testable import SpotHero_iOS_Partner_SDK
 
-class PartnerAPITests: XCTestCase {
+class PartnerAPITests: BaseTests {
     let timeoutDuration: NSTimeInterval = 60
-    let testEmail = "matt@test.com"
     
     override func setUp() {
         super.setUp()
-        SpotHeroPartnerSDK.SharedInstance.partnerApplicationKey = "6b8382b154d9527c1f97341247708bfe7855207a"
+        SpotHeroPartnerSDK.SharedInstance.partnerApplicationKey = "a92bcb5001fec54e57aa7224be4f88f4f28b5d4a"
     }
     
     func getFacilities(location: CLLocation, completion: ([Facility], ErrorType?) -> Void) {

@@ -2,7 +2,7 @@
 //  CollapsedSearchBarView.swift
 //  Pods
 //
-//  Created by SpotHeroMatt on 7/18/16.
+//  Created by Matthew Reed on 7/18/16.
 //
 //
 
@@ -18,20 +18,25 @@ class CollapsedSearchBarView: UIView {
         }
     }
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.accessibilityLabel = AccessibilityStrings.CollapsedSearchBarView
+    }
+    
     /**
      Show or hide collapsed search bar
      
      - parameter show: pass in true to show, false to hide
      */
     func showCollapsedSearchBar(show: Bool) {
-        UIView.animateWithDuration(0.3,
+        UIView.animateWithDuration(Constants.ViewAnimationDuration,
                                    delay: 0,
                                    options: .CurveEaseOut,
                                    animations: {
-            self.alpha = show ? 1 : 0
+                                    self.alpha = show ? 1 : 0
         }) {
             finished in
-            self.hidden = show ? false : true
+            self.hidden = !show
         }
     }
     
