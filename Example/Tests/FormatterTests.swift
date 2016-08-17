@@ -21,9 +21,9 @@ class FormatterTests: XCTestCase {
         let formattedPartialNumber = Formatter.formatPhoneNumber(partialPhoneNumber)
         let formattedAreaCode = Formatter.formatPhoneNumber(areaCode)
         
-        XCTAssertEqual(formattedFullNumber, "312-566-7768")
-        XCTAssertEqual(formattedPartialNumber, "312-566")
-        XCTAssertEqual(formattedAreaCode, areaCode)
+        XCTAssertEqual(formattedFullNumber.formatted, "312-566-7768")
+        XCTAssertEqual(formattedPartialNumber.formatted, "312-566")
+        XCTAssertEqual(formattedAreaCode.formatted, areaCode)
     }
 
     func testFormatCreditCard() {
@@ -35,9 +35,9 @@ class FormatterTests: XCTestCase {
         let formattedPartialCreditCard = Formatter.formatCreditCard(partialCreditCard)
         let formattedFirstFour = Formatter.formatCreditCard(firstFour)
         
-        XCTAssertEqual(formattedFullCreditCard, "4245 3556 4554 4354")
-        XCTAssertEqual(formattedPartialCreditCard, "4242 4242 424")
-        XCTAssertEqual(formattedFirstFour, firstFour)
+        XCTAssertEqual(formattedFullCreditCard.formatted, "4245 3556 4554 4354")
+        XCTAssertEqual(formattedPartialCreditCard.formatted, "4242 4242 424")
+        XCTAssertEqual(formattedFirstFour.formatted, firstFour)
     }
     
     func testFormatCreditCardAmex() {
@@ -49,8 +49,8 @@ class FormatterTests: XCTestCase {
         let formattedPartialCreditCard = Formatter.formatCreditCardAmex(partialCreditCard)
         let formattedFirstFour = Formatter.formatCreditCardAmex(firstFour)
         
-        XCTAssertEqual(formattedFullCreditCard, "3456 318993 86110")
-        XCTAssertEqual(formattedPartialCreditCard, "3456 31899")
-        XCTAssertEqual(formattedFirstFour, firstFour)
+        XCTAssertEqual(formattedFullCreditCard.formatted, "3456 318993 86110")
+        XCTAssertEqual(formattedPartialCreditCard.formatted, "3456 31899")
+        XCTAssertEqual(formattedFirstFour.formatted, firstFour)
     }
 }

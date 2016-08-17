@@ -13,14 +13,23 @@ import KIF
 
 class BaseUITests: KIFTestCase {
         
-    override func beforeEach() {
-        super.beforeEach()
+    override func beforeAll() {
+        super.beforeAll()
         tester().tapViewWithAccessibilityLabel(LocalizedStrings.LaunchSDK)
+        tester().waitForViewWithAccessibilityLabel(LocalizedStrings.FindParking)
     }
     
-    override func afterEach() {
-        super.afterEach()
+    override func afterAll() {
+        super.afterAll()
         tester().tapViewWithAccessibilityLabel(LocalizedStrings.Close)
+        tester().waitForViewWithAccessibilityLabel(LocalizedStrings.LaunchSDK)
+    }
+    
+    func enterTextIntoSearchBar(text: String) {
+        tester().clearTextFromAndThenEnterText(text,
+                                               intoViewWithAccessibilityLabel: AccessibilityStrings.SearchBar,
+                                               traits: UIAccessibilityTraitNone,
+                                               expectedResult: text)
     }
     
 }

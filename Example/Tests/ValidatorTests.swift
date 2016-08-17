@@ -191,7 +191,8 @@ class ValidatorTests: XCTestCase {
         let validVisa = "4556 6580 0837 9641"
         
         self.validateThatErrorIsNotThrown { 
-            let cardType = try Validator.validateCreditCard(validVisa)
+            let cardType = Validator.getCardType(validVisa)
+            try Validator.validateCreditCard(validVisa)
             XCTAssertEqual(cardType, CardType.Visa)
         }
     }
@@ -200,7 +201,8 @@ class ValidatorTests: XCTestCase {
         let validDiscover = "6011 2313 8733 6725"
         
         self.validateThatErrorIsNotThrown {
-            let cardType = try Validator.validateCreditCard(validDiscover)
+            let cardType = Validator.getCardType(validDiscover)
+            try Validator.validateCreditCard(validDiscover)
             XCTAssertEqual(cardType, CardType.Discover)
         }
     }
@@ -209,7 +211,8 @@ class ValidatorTests: XCTestCase {
         let validMasterCard = "5459 4943 0766 9580"
         
         self.validateThatErrorIsNotThrown {
-            let cardType = try Validator.validateCreditCard(validMasterCard)
+            let cardType = Validator.getCardType(validMasterCard)
+            try Validator.validateCreditCard(validMasterCard)
             XCTAssertEqual(cardType, CardType.MasterCard)
         }
     }
@@ -218,7 +221,8 @@ class ValidatorTests: XCTestCase {
         let validAmex = "3456 318993 86110"
         
         self.validateThatErrorIsNotThrown {
-            let cardType = try Validator.validateCreditCard(validAmex)
+            let cardType = Validator.getCardType(validAmex)
+            try Validator.validateCreditCard(validAmex)
             XCTAssertEqual(cardType, CardType.Amex)
         }
     }

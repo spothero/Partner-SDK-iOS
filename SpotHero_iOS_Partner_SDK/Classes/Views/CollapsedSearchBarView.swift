@@ -18,6 +18,11 @@ class CollapsedSearchBarView: UIView {
         }
     }
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.accessibilityLabel = AccessibilityStrings.CollapsedSearchBarView
+    }
+    
     /**
      Show or hide collapsed search bar
      

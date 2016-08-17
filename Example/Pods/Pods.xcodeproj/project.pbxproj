@@ -32,10 +32,6 @@
 		2F3A34375696851FF376DA46EC068B80 /* KIFTestActor.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F9834255F1AD996A87768E97EF1B473 /* KIFTestActor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		31AA341E7EDFBE3669985A45EDB7E804 /* UIView-KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FCA36D95D527363F166C3A8F1861A1A /* UIView-KIFAdditions.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		333BA472101F58E064B1460B2A1B5FD0 /* VOKBenkode.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4CF7A50631AF2A005CAC54E0AFE35A /* VOKBenkode.m */; };
-		338EC64E1D54EF1800C2574A /* GooglePredictionTableFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FC0802185970666C7C42C8F69891832 /* GooglePredictionTableFooter.xib */; };
-		338EC64F1D54EF1800C2574A /* GooglePredictionTableHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14ECDC384ACDBDE8F87CDC482A8D12F6 /* GooglePredictionTableHeader.xib */; };
-		338EC6501D54EF1800C2574A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF0FD056D3177DAC24F25DA6BEC2939C /* Images.xcassets */; };
-		338EC6511D54EF1800C2574A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7048324CEF486FF30A52B07D4D35FE52 /* Main.storyboard */; };
 		349E3EACBE9B962B4B7D1E8CECBF382F /* IOHIDEvent+KIF.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B846D8DAD5EA51B03E71CD54AFAB26D /* IOHIDEvent+KIF.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		34D14769904FBE7039B55BB7E9335115 /* GooglePlacesWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217DDC70CF1CF9EB1BB8FA5E127DCA4D /* GooglePlacesWrapper.swift */; };
 		36DFA0C24074B24B2339CC6AC599D497 /* UIAutomationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 07BFFA364566EBAF20725705610903D5 /* UIAutomationHelper.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
@@ -113,15 +109,12 @@
 		BD04AF1E1D51E91B0027866C /* NSDate+DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD04AF1D1D51E91B0027866C /* NSDate+DateFormatter.swift */; };
 		BD3860F61D50F400001D5AE7 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3860F51D50F400001D5AE7 /* DatePickerView.swift */; };
 		BD3860F81D50F8CD001D5AE7 /* TimeSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3860F71D50F8CD001D5AE7 /* TimeSelectionView.swift */; };
-		BD7BEBB41D49111D00103E12 /* GooglePredictionTableFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FC0802185970666C7C42C8F69891832 /* GooglePredictionTableFooter.xib */; };
-		BD7BEBB51D49112300103E12 /* GooglePredictionTableHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14ECDC384ACDBDE8F87CDC482A8D12F6 /* GooglePredictionTableHeader.xib */; };
-		BD7BEBB61D49112900103E12 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF0FD056D3177DAC24F25DA6BEC2939C /* Images.xcassets */; };
-		BD7BEBB71D49112C00103E12 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7048324CEF486FF30A52B07D4D35FE52 /* Main.storyboard */; };
 		BFB1172AB19258150037DFAA00FEFB7A /* SpotHeroPartnerSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181EBBE7E74872AFCEBDCD295C7BF9DE /* SpotHeroPartnerSDK.swift */; };
 		C14992679A9ED625623F4E9DCED1C774 /* KIFUIObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D57F3D10D1B0A92A6F67BCFF816BC3C /* KIFUIObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C45BFA9E405F62417E1D379F2B36FD03 /* NSURLQueryItem+QueryParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA205B5854E0C73DBD4276BB6FFA989E /* NSURLQueryItem+QueryParams.swift */; };
 		C706C2071D53C53000CABCDE /* NumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C706C2051D53C4F700CABCDE /* NumberFormatter.swift */; };
 		C70AC4C41D4BF91B004F8539 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70AC4C01D4BF8BB004F8539 /* Validator.swift */; };
+		C74A36FD1D5E6D3A0011710A /* ValidatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74A36FB1D5E6D170011710A /* ValidatorCell.swift */; };
 		C74D07DD1D4FED170068851B /* CountableIntEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74D07DB1D4FECE00068851B /* CountableIntEnum.swift */; };
 		C74D07DF1D4FF8C40068851B /* HeightsAndLengths.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74D07DE1D4FF8C40068851B /* HeightsAndLengths.swift */; };
 		C75A299B0860D3016DF20B1A5779903C /* NSBundle-KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E0527B6F28C55DD186FE2AD382616187 /* NSBundle-KIFAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -409,7 +402,6 @@
 		BD04AF1D1D51E91B0027866C /* NSDate+DateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+DateFormatter.swift"; sourceTree = "<group>"; };
 		BD3860F51D50F400001D5AE7 /* DatePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DatePickerView.swift; path = ../DatePickerView.swift; sourceTree = "<group>"; };
 		BD3860F71D50F8CD001D5AE7 /* TimeSelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeSelectionView.swift; sourceTree = "<group>"; };
-		BDA5C1ABC880715D3886B73E810648CF /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		BF0FD056D3177DAC24F25DA6BEC2939C /* Images.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		BF417A0AC673E17995B074801D1448EA /* VOKBenkode.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VOKBenkode.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFB888D7AF57F531266DD178438689EB /* Pods-SpotHero_iOS_Partner_SDK_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SpotHero_iOS_Partner_SDK_Example-dummy.m"; sourceTree = "<group>"; };
@@ -420,6 +412,7 @@
 		C46B6258C3006561FC37367145F9196E /* UIEvent+KIFAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIEvent+KIFAdditions.h"; path = "Additions/UIEvent+KIFAdditions.h"; sourceTree = "<group>"; };
 		C706C2051D53C4F700CABCDE /* NumberFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberFormatter.swift; sourceTree = "<group>"; };
 		C70AC4C01D4BF8BB004F8539 /* Validator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
+		C74A36FB1D5E6D170011710A /* ValidatorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidatorCell.swift; sourceTree = "<group>"; };
 		C74D07DB1D4FECE00068851B /* CountableIntEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountableIntEnum.swift; sourceTree = "<group>"; };
 		C74D07DE1D4FF8C40068851B /* HeightsAndLengths.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeightsAndLengths.swift; sourceTree = "<group>"; };
 		C79C65B01D54E99B001CDCA4 /* PaymentButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PaymentButton.xib; sourceTree = "<group>"; };
@@ -901,6 +894,7 @@
 			isa = PBXGroup;
 			children = (
 				C74D07DB1D4FECE00068851B /* CountableIntEnum.swift */,
+				C74A36FB1D5E6D170011710A /* ValidatorCell.swift */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -1392,6 +1386,7 @@
 				C74D07DD1D4FED170068851B /* CountableIntEnum.swift in Sources */,
 				177954FA445DF28E0303B4FC42D77BEF /* GooglePlacesPrediction.swift in Sources */,
 				BD3860F81D50F8CD001D5AE7 /* TimeSelectionView.swift in Sources */,
+				C74A36FD1D5E6D3A0011710A /* ValidatorCell.swift in Sources */,
 				C7FBD0B91D4960770089A53B /* CheckoutTableViewController.swift in Sources */,
 				C79C65B51D58EF0C001CDCA4 /* Formatter.swift in Sources */,
 				34D14769904FBE7039B55BB7E9335115 /* GooglePlacesWrapper.swift in Sources */,
