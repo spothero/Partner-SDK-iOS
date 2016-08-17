@@ -25,15 +25,25 @@ enum CardType {
         let bundle = NSBundle(forClass: CheckoutTableViewController.self)
         switch self {
         case .Visa:
-            return UIImage(named: "Visa", inBundle: bundle, compatibleWithTraitCollection: nil)
+            return UIImage(named: "Visa",
+                           inBundle: bundle,
+                           compatibleWithTraitCollection: nil)
         case .Amex:
-            return UIImage(named: "AExp", inBundle: bundle, compatibleWithTraitCollection: nil)
+            return UIImage(named: "AExp",
+                           inBundle: bundle,
+                           compatibleWithTraitCollection: nil)
         case .MasterCard:
-            return UIImage(named: "Mastercard", inBundle: bundle, compatibleWithTraitCollection: nil)
+            return UIImage(named: "Mastercard",
+                           inBundle: bundle,
+                           compatibleWithTraitCollection: nil)
         case .Discover:
-            return UIImage(named: "Discover", inBundle: bundle, compatibleWithTraitCollection: nil)
+            return UIImage(named: "Discover",
+                           inBundle: bundle,
+                           compatibleWithTraitCollection: nil)
         case .Unknown:
-            return UIImage(named: "credit_card", inBundle: bundle, compatibleWithTraitCollection: nil)
+            return UIImage(named: "credit_card",
+                           inBundle: bundle,
+                           compatibleWithTraitCollection: nil)
         }
     }
 }

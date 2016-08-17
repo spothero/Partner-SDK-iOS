@@ -280,8 +280,7 @@ extension CheckoutTableViewController: ValidatorCellDelegate {
     func didValidateText() {
         var invalidCells = 0
         for indexPath in self.indexPathsToValidate {
-            let cell = self.tableView.cellForRowAtIndexPath(indexPath) as! ValidatorCell
-            if !cell.valid {
+            if let cell = self.tableView.cellForRowAtIndexPath(indexPath) as? ValidatorCell where !cell.valid {
                 invalidCells += 1
             }
         }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PaymentInfoTableViewCell: UITableViewCell, ValidatorCell {
+class PaymentInfoTableViewCell: UITableViewCell {
     @IBOutlet weak var creditCardView: UIView!
     @IBOutlet weak var cardImage: UIImageView!
     @IBOutlet weak var creditCardTextField: UITextField!
@@ -85,11 +85,185 @@ class PaymentInfoTableViewCell: UITableViewCell, ValidatorCell {
         }
     }
     
+    //MARK: Helpers
+    
     func lastFourDigits(digits: String) -> String {
         let endIndex = digits.endIndex
         return digits.substringWithRange(endIndex.advancedBy(-4)..<endIndex)
     }
     
+    func fieldValidChanged() {
+        self.delegate?.didValidateText()
+    }
+    
+    func formatCreditCard(text: String) -> Bool {
+        if text.isEmpty {
+            self.cardType = .Unknown
+        }
+        
+        let cardLength = self.cardType == .Amex ? 15 : 16
+        
+        switch self.cardType {
+        case .Amex:
+            let (formatted, unformatted) = Formatter.formatCreditCardAmex(text)
+            
+            if unformatted.characters.count <= cardLength {
+                self.creditCardTextField.text = formatted
+            } else {
+                return false
+            }
+            
+            self.cardNumber = unformatted
+            
+            if unformatted.characters.count == cardLength {
+                self.showExpirationDateAndCVCTextFields(show: true)
+                self.creditCardTextField.text = self.lastFourDigits(text)
+                self.creditCardTextField.resignFirstResponder()
+                self.expirationDateTextField.becomeFirstResponder()
+            }
+        default:
+            let (formatted, unformatted) = Formatter.formatCreditCard(text)
+            
+            if unformatted.characters.count <= cardLength {
+                self.creditCardTextField.text = formatted
+            } else {
+                return false
+            }
+            
+            self.cardNumber = unformatted
+            
+            if unformatted.characters.count == cardLength {
+                self.showExpirationDateAndCVCTextFields(show: true)
+                self.creditCardTextField.text = self.lastFourDigits(unformatted)
+                self.expirationDateTextField.becomeFirstResponder()
+            }
+        }
+        
+        if self.cardNumber.isEmpty {
+            self.cardType = Validator.getCardType(text)
+        } else {
+            self.cardType = Validator.getCardType(self.cardNumber)
+        }
+        
+        return false
+    }
+    
+    func formatExpirationDate(text: String) -> Bool {
+        let (formatted, unformatted) = Formatter.formatExpirationDate(text)
+        if unformatted.characters.count <= 4 {
+            self.expirationDateTextField.text = formatted
+        }
+        
+        if unformatted.characters.count == 4 {
+            self.cvcTextField.becomeFirstResponder()
+        }
+        
+        return false
+    }
+    
+    func formatCVC(text: String) -> Bool {
+        let cvcLength = self.cardType == .Amex ? 4 : 3
+        if text.characters.count > cvcLength {
+            return false
+        }
+        
+        if text.characters.count == cvcLength {
+            self.cvcTextField.text = text
+            self.cvcTextField.resignFirstResponder()
+        }
+        
+        return true
+    }
+}
+
+// MARK: - UITextFieldDelegate
+
+extension PaymentInfoTableViewCell: UITextFieldDelegate {
+    func textField(textField: UITextField,
+                   shouldChangeCharactersInRange range: NSRange,
+                   replacementString string: String) -> Bool {
+        guard let text = (textField.text as? NSString)?.stringByReplacingCharactersInRange(range, withString: string) else {
+            return true
+        }
+        
+        switch textField {
+        case self.creditCardTextField:
+            return self.formatCreditCard(text)
+        case self.expirationDateTextField:
+            return self.formatExpirationDate(text)
+        case self.cvcTextField:
+            return self.formatCVC(text)
+        default:
+            return true
+        }
+    }
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        guard textField === self.creditCardTextField && !self.cardNumber.isEmpty else {
+            return
+        }
+        
+        switch self.cardType {
+        case .Amex:
+            textField.text = Formatter.formatCreditCardAmex(self.cardNumber).formatted
+        default:
+            textField.text = Formatter.formatCreditCard(self.cardNumber).formatted
+        }
+        self.showExpirationDateAndCVCTextFields(show: false)
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        guard let text = textField.text else {
+            return
+        }
+        
+        do {
+            switch textField {
+            case self.creditCardTextField:
+                self.cardType = Validator.getCardType(text)
+                try Validator.validateCreditCard(self.cardNumber)
+                self.creditCardValid = true
+            case self.expirationDateTextField:
+                let parts = text.componentsSeparatedByString("/")
+                if let month = parts.first, year = parts.last {
+                    try Validator.validateExpiration(month, year: "20\(year)")
+                } else {
+                    throw ValidatorError.FieldInvalid(fieldName: LocalizedStrings.ExpirationDate, message: LocalizedStrings.InvalidDateErrorMessage)
+                }
+                self.expirationDateValid = true
+            case self.cvcTextField:
+                if cardType == .Amex {
+                    try Validator.validateCVC(text, amex: true)
+                } else {
+                    try Validator.validateCVC(text)
+                }
+                self.cvcValid = true
+            default:
+                break
+            }
+
+            self.setErrorState(true, error: nil)
+        } catch let error as ValidatorError {
+            self.setErrorState(false, error: error)
+            switch textField {
+            case self.creditCardTextField:
+                self.creditCardValid = false
+            case self.expirationDateTextField:
+                self.expirationDateValid = false
+            case self.cvcTextField:
+                self.cvcValid = false
+            default:
+                break
+            }
+        } catch let error {
+            assertionFailure("Some other error was thrown: \(error)")
+        }
+    }
+}
+
+// MARK: - ValidatorCell
+
+extension PaymentInfoTableViewCell: ValidatorCell {
     func setErrorState(valid: Bool, error: ValidatorError?) {
         guard self.creditCardValid != nil && self.expirationDateValid != nil && self.cvcValid != nil else {
             return
@@ -104,149 +278,6 @@ class PaymentInfoTableViewCell: UITableViewCell, ValidatorCell {
             case .FieldInvalid(let fieldName, let message):
                 self.errorLabel.text = message
             }
-        }
-    }
-    
-    func fieldValidChanged() {
-        self.delegate?.didValidateText()
-    }
-}
-
-extension PaymentInfoTableViewCell: UITextFieldDelegate {
-    func textField(textField: UITextField,
-                   shouldChangeCharactersInRange range: NSRange,
-                   replacementString string: String) -> Bool {
-        guard let text = (textField.text as? NSString)?.stringByReplacingCharactersInRange(range, withString: string) else {
-            return true
-        }
-        
-        if textField === self.creditCardTextField {
-            if text.isEmpty {
-                self.cardType = .Unknown
-            }
-            
-            let cardLength = self.cardType == .Amex ? 15 : 16
-            
-            switch self.cardType {
-            case .Amex:
-                let (formatted, unformatted) = Formatter.formatCreditCardAmex(text)
-                
-                if unformatted.characters.count <= cardLength {
-                    textField.text = formatted
-                } else {
-                    return false
-                }
-                
-                self.cardNumber = unformatted
-
-                if unformatted.characters.count == cardLength {
-                    self.showExpirationDateAndCVCTextFields(show: true)
-                    textField.text = self.lastFourDigits(text)
-                    textField.resignFirstResponder()
-                    self.expirationDateTextField.becomeFirstResponder()
-                }
-            default:
-                let (formatted, unformatted) = Formatter.formatCreditCard(text)
-                
-                if unformatted.characters.count <= cardLength {
-                    textField.text = formatted
-                } else {
-                    return false
-                }
-                
-                self.cardNumber = unformatted
-                
-                if unformatted.characters.count == cardLength {
-                    self.showExpirationDateAndCVCTextFields(show: true)
-                    textField.text = self.lastFourDigits(unformatted)
-                    self.expirationDateTextField.becomeFirstResponder()
-                }
-            }
-            
-            if self.cardNumber.isEmpty {
-                self.cardType = Validator.getCardType(text)
-            } else {
-                self.cardType = Validator.getCardType(self.cardNumber)
-            }
-            
-            return false
-        } else if textField === self.expirationDateTextField {
-            let (formatted, unformatted) = Formatter.formatExpirationDate(text)
-            if unformatted.characters.count <= 4 {
-                textField.text = formatted
-            }
-            if unformatted.characters.count == 4 {
-                self.cvcTextField.becomeFirstResponder()
-            }
-            return false
-        } else if textField === self.cvcTextField {
-            let cvcLength = self.cardType == .Amex ? 4 : 3
-            if text.characters.count > cvcLength {
-                return false
-            }
-            
-            if text.characters.count == cvcLength {
-                textField.text = text
-                textField.resignFirstResponder()
-            }
-        }
-        
-        return true
-    }
-    
-    func textFieldDidBeginEditing(textField: UITextField) {
-        if textField === self.creditCardTextField && !self.cardNumber.isEmpty {
-            switch self.cardType {
-            case .Amex:
-                textField.text = Formatter.formatCreditCardAmex(self.cardNumber).formatted
-            default:
-                textField.text = Formatter.formatCreditCard(self.cardNumber).formatted
-            }
-            self.showExpirationDateAndCVCTextFields(show: false)
-        }
-    }
-    
-    func textFieldDidEndEditing(textField: UITextField) {
-        guard let text = textField.text else {
-            return
-        }
-        
-        do {
-            if textField === self.creditCardTextField {
-                self.cardType = Validator.getCardType(text)
-                try Validator.validateCreditCard(self.cardNumber)
-                self.creditCardValid = true
-            } else if textField === self.expirationDateTextField {
-                let parts = text.componentsSeparatedByString("/")
-                if let month = parts.first, year = parts.last {
-                    try Validator.validateExpiration(month, year: "20\(year)")
-                } else {
-                    throw ValidatorError.FieldInvalid(fieldName: LocalizedStrings.ExpirationDate, message: LocalizedStrings.InvalidDateErrorMessage)
-                }
-                self.expirationDateValid = true
-            } else if textField === self.cvcTextField {
-                if cardType == .Amex {
-                    try Validator.validateCVC(text, amex: true)
-                } else {
-                    try Validator.validateCVC(text)
-                }
-                self.cvcValid = true
-            }
-            self.setErrorState(true, error: nil)
-        } catch let error as ValidatorError {
-            self.setErrorState(false, error: error)
-            switch textField {
-            case self.creditCardTextField:
-                self.creditCardValid = false
-            case self.expirationDateTextField:
-                self.expirationDateValid = false
-            case self.cvcTextField:
-                self.cvcValid = false
-            default:
-                break
-            }
-        } catch {
-            assertionFailure("Some other error was thrown")
         }
     }
 }
