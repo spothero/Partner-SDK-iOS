@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PersonalInfoTableViewCell: UITableViewCell, ValidatorCell {
+class PersonalInfoTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var errorLabel: UILabel!
@@ -30,19 +30,6 @@ class PersonalInfoTableViewCell: UITableViewCell, ValidatorCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         textField.delegate = self
-    }
-    
-    func setErrorState(valid: Bool, error: ValidatorError?) {
-        if let error = error {
-            switch error {
-            case .FieldBlank(let fieldName):
-                self.errorLabel.text = String(format: LocalizedStrings.blankFieldErrorFormat, fieldName)
-            case .FieldInvalid(let fieldName, let message):
-                self.errorLabel.text = message
-            }
-        }
-        
-        self.valid = valid
     }
 }
 
@@ -85,5 +72,20 @@ extension PersonalInfoTableViewCell: UITextFieldDelegate {
         }
         
         return true
+    }
+}
+
+extension PersonalInfoTableViewCell: ValidatorCell {
+    func setErrorState(valid: Bool, error: ValidatorError?) {
+        if let error = error {
+            switch error {
+            case .FieldBlank(let fieldName):
+                self.errorLabel.text = String(format: LocalizedStrings.blankFieldErrorFormat, fieldName)
+            case .FieldInvalid(let fieldName, let message):
+                self.errorLabel.text = message
+            }
+        }
+        
+        self.valid = valid
     }
 }

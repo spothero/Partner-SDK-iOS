@@ -8,6 +8,8 @@
 
 import Foundation
 
+typealias Formatted = (formatted: String, unformatted: String)
+
 enum Formatter {
     /**
      Formats a phone number like so: xxx-xxx-xxxx
@@ -16,7 +18,7 @@ enum Formatter {
      
      - returns: Tuple with formatted phone number and unformatted phone number
      */
-    static func formatPhoneNumber(phone: String) -> (formatted: String, unformatted: String) {
+    static func formatPhoneNumber(phone: String) -> Formatted {
         let unformatted = phone.stringByReplacingOccurrencesOfString("-", withString: "")
         
         if unformatted.characters.count > 3 {
@@ -45,7 +47,7 @@ enum Formatter {
      
      - returns: Tuple with formatted credit card number and unformatted credit card number
      */
-    static func formatCreditCard(number: String) -> (formatted: String, unformatted: String) {
+    static func formatCreditCard(number: String) -> Formatted {
         let unformatted = number.stringByReplacingOccurrencesOfString(" ", withString: "")
         
         if unformatted.characters.count > 4 {
@@ -79,7 +81,7 @@ enum Formatter {
      
      - returns: Tuple with formatted credit card number and unformatted credit card number
      */
-    static func formatCreditCardAmex(number: String) -> (formatted: String, unformatted: String) {
+    static func formatCreditCardAmex(number: String) -> Formatted {
         let unformatted = number.stringByReplacingOccurrencesOfString(" ", withString: "")
         
         if unformatted.characters.count > 4 {
@@ -108,7 +110,7 @@ enum Formatter {
      
      - returns: Formatted date string
      */
-    static func formatExpirationDate(date: String) -> (formatted: String, unformatted: String) {
+    static func formatExpirationDate(date: String) -> Formatted {
         let unformatted = date.stringByReplacingOccurrencesOfString("/", withString: "")
         if unformatted.characters.count > 2 {
             let startIndex = unformatted.startIndex
