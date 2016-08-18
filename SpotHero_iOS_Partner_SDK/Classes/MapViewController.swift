@@ -95,7 +95,9 @@ class MapViewController: UIViewController {
                 FacilityAPI.fetchFacilities(placeDetails.location,
                                             starts: self.startDate,
                                             ends: self.endDate,
-                                            completion: { [weak self] (facilities, error) -> (Void) in
+                                            completion: {
+                                                [weak self]
+                                                facilities, error in
                                                 for facility in facilities {
                                                     let facilityAnnotation = FacilityAnnotation(title: facility.title,
                                                         coordinate: facility.location.coordinate,
