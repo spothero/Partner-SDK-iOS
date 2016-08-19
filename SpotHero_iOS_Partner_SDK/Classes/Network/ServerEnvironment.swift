@@ -50,7 +50,7 @@ public enum ServerEnvironment {
             // TODO Get production API key
             return ""
         case .Staging:
-            return "sk_test_BQokikJOvBiI2HlWgH4olfQ2"
+            return "pk_pVrZECFdsvN2AS2UpLXO4CCPnziai"
         default:
             return ""
         }
