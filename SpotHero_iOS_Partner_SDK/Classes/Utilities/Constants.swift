@@ -14,4 +14,8 @@ enum Constants {
     static let ViewAnimationDuration: NSTimeInterval = 0.3
     static let ThirtyMinutesInSeconds: NSTimeInterval = 1800
     static let SecondsInHour: NSTimeInterval = 3600
+    static let TestCreditCardNumber = "4242424242424242"
+    static let TestExpirationMonth = "12"
+    static let TestExpirationYear = "2020"
+    static let TestCVC = "123"
 }

@@ -15,7 +15,7 @@ class PartnerAPITests: BaseTests {
     
     override func setUp() {
         super.setUp()
-        SpotHeroPartnerSDK.SharedInstance.partnerApplicationKey = "a92bcb5001fec54e57aa7224be4f88f4f28b5d4a"
+        SpotHeroPartnerSDK.SharedInstance.partnerApplicationKey = "246691fb79c08b02c36d4a265a359c639ed75578"
     }
     
     func getFacilities(location: CLLocation, completion: ([Facility], ErrorType?) -> Void) {
@@ -62,23 +62,39 @@ class PartnerAPITests: BaseTests {
         self.getFacilities(Constants.ChicagoLocation) {
             facilities, error in
             if let facility = facilities.first, rate = facility.rates.first {
-                ReservationAPI.createReservation(facility,
-                                                 rate: rate,
-                                                 email: self.testEmail,
-                                                 completion: {
-                                                    reservation, error in
-                                                    XCTAssertNil(error)
-                                                    XCTAssertNotNil(reservation)
-                                                    if let reservation = reservation {
-                                                        // Cancel Reservation so spots don't run out
-                                                        ReservationAPI.cancelReservation(reservation, completion: { (error) -> (Void) in
-                                                            XCTAssertNil(error)
-                                                            expectation.fulfill()
-                                                        })
-                                                    } else {
-                                                        XCTFail("Could not get reservation")
-                                                    }
-                })
+                StripeWrapper.getToken(Constants.TestCreditCardNumber,
+                                       expirationMonth: Constants.TestExpirationMonth,
+                                       expirationYear: Constants.TestExpirationYear,
+                                       cvc: Constants.TestCVC) {
+                                        token, error in
+                                        guard let token = token else {
+                                            XCTFail("Failed to get token")
+                                            expectation.fulfill()
+                                            return
+                                        }
+                                        
+                                        ReservationAPI.createReservation(facility,
+                                                                         rate: rate,
+                                                                         email: self.testEmail,
+                                                                         stripeToken: token,
+                                                                         completion: {
+                                                                            reservation, error in
+                                                                            XCTAssertNil(error)
+                                                                            XCTAssertNotNil(reservation)
+                                                                            if let reservation = reservation {
+                                                                                // Cancel Reservation so spots don't run out
+                                                                                ReservationAPI.cancelReservation(reservation) {
+                                                                                    error in
+                                                                                    XCTAssertNil(error)
+                                                                                    expectation.fulfill()
+                                                                                }
+                                                                            } else {
+                                                                                XCTFail("Could not get reservation")
+                                                                                expectation.fulfill()
+                                                                            }
+                                        })
+                }
+                
             } else {
                 XCTFail("Cannot get facility and rate")
             }

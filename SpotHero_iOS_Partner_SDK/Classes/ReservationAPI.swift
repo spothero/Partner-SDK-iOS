@@ -12,6 +12,7 @@ struct ReservationAPI {
     static func createReservation(facility: Facility,
                                   rate: Rate,
                                   email: String,
+                                  stripeToken: String,
                                   completion: (Reservation?, ErrorType?) -> (Void))  {
         
         let starts = DateFormatter.ISO8601NoSeconds.stringFromDate(rate.starts)
@@ -23,7 +24,8 @@ struct ReservationAPI {
             "email" : email,
             "starts" : starts,
             "ends" : ends,
-            "price" : rate.price
+            "price" : rate.price,
+            "stripe_token" : stripeToken
         ]
         
         let headers = APIHeaders.defaultHeaders()
