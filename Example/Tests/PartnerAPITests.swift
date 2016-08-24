@@ -69,6 +69,7 @@ class PartnerAPITests: BaseTests {
                                         token, error in
                                         guard let token = token else {
                                             XCTFail("Failed to get token")
+                                            expectation.fulfill()
                                             return
                                         }
                                         
@@ -88,6 +89,7 @@ class PartnerAPITests: BaseTests {
                                                                                 })
                                                                             } else {
                                                                                 XCTFail("Could not get reservation")
+                                                                                expectation.fulfill()
                                                                             }
                                         })
                 }
