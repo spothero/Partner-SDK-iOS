@@ -83,10 +83,11 @@ class PartnerAPITests: BaseTests {
                                                                             XCTAssertNotNil(reservation)
                                                                             if let reservation = reservation {
                                                                                 // Cancel Reservation so spots don't run out
-                                                                                ReservationAPI.cancelReservation(reservation, completion: { (error) -> (Void) in
+                                                                                ReservationAPI.cancelReservation(reservation) {
+                                                                                    error in
                                                                                     XCTAssertNil(error)
                                                                                     expectation.fulfill()
-                                                                                })
+                                                                                }
                                                                             } else {
                                                                                 XCTFail("Could not get reservation")
                                                                                 expectation.fulfill()
