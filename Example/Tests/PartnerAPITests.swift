@@ -62,10 +62,10 @@ class PartnerAPITests: BaseTests {
         self.getFacilities(Constants.ChicagoLocation) {
             facilities, error in
             if let facility = facilities.first, rate = facility.rates.first {
-                StripeWrapper.getToken("4242424242424242",
-                                       expirationMonth: "12",
-                                       expirationYear: "2017",
-                                       cvc: "123") {
+                StripeWrapper.getToken(Constants.TestCreditCardNumber,
+                                       expirationMonth: Constants.TestExpirationMonth,
+                                       expirationYear: Constants.TestExpirationYear,
+                                       cvc: Constants.TestCVC) {
                                         token, error in
                                         guard let token = token else {
                                             XCTFail("Failed to get token")

@@ -15,10 +15,10 @@ class StripeWrapperTests: XCTestCase {
     func testGetToken() {
         let expectation = self.expectationWithDescription("testGetToken")
         
-        StripeWrapper.getToken("4242424242424242",
-                               expirationMonth: "12",
-                               expirationYear: "2017",
-                               cvc: "123") {
+        StripeWrapper.getToken(Constants.TestCreditCardNumber,
+                               expirationMonth: Constants.TestExpirationMonth,
+                               expirationYear: Constants.TestExpirationYear,
+                               cvc: Constants.TestCVC) {
                                 token, error in
                                 XCTAssertNil(error)
                                 XCTAssertNotNil(token)
