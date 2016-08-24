@@ -25,7 +25,8 @@ extension NSURLQueryItem {
             queryItems.append(queryItem)
         }
         
-        return queryItems.sort({ (item1, item2) -> Bool in
+        return queryItems.sort({
+            (item1, item2) -> Bool in
             return item1.name < item2.name
         })
     }
