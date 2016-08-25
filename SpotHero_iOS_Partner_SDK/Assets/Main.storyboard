@@ -36,7 +36,7 @@
                                                         <rect key="frame" x="0.0" y="28" width="560" height="60"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="gny-aK-qke" id="DsV-UZ-K9d">
-                                                            <rect key="frame" x="0.0" y="0.0" width="560" height="60"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="560" height="59.5"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chicago IL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Oq9-B0-NHM">
@@ -428,27 +428,27 @@
                                         <rect key="frame" x="0.0" y="114" width="600" height="86"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="XFy-AB-cG3" id="afe-AS-BCS">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="85.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="86"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EnR-Cz-Rin">
-                                                    <rect key="frame" x="15" y="32" width="65" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                                    <rect key="frame" x="15" y="34" width="58" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yuh-Ex-pr7">
-                                                    <rect key="frame" x="115" y="22" width="470" height="41"/>
+                                                    <rect key="frame" x="125" y="25" width="460" height="36"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chicago, IL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IcL-Ui-in6">
-                                                            <rect key="frame" x="0.0" y="21" width="470" height="20"/>
-                                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                                            <rect key="frame" x="0.0" y="18" width="460" height="18"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
                                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="320 West Erie" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3iR-QM-UK7">
-                                                            <rect key="frame" x="0.0" y="0.0" width="470" height="21"/>
-                                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="460" height="18"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -468,7 +468,7 @@
                                             <constraints>
                                                 <constraint firstItem="EnR-Cz-Rin" firstAttribute="centerY" secondItem="afe-AS-BCS" secondAttribute="centerY" id="8fl-sA-pNC"/>
                                                 <constraint firstItem="yuh-Ex-pr7" firstAttribute="centerY" secondItem="afe-AS-BCS" secondAttribute="centerY" id="eMB-Gt-z6P"/>
-                                                <constraint firstItem="yuh-Ex-pr7" firstAttribute="leading" secondItem="afe-AS-BCS" secondAttribute="leadingMargin" constant="100" id="fFk-C3-fIc"/>
+                                                <constraint firstItem="yuh-Ex-pr7" firstAttribute="leading" secondItem="afe-AS-BCS" secondAttribute="leadingMargin" constant="110" id="fFk-C3-fIc"/>
                                                 <constraint firstItem="yuh-Ex-pr7" firstAttribute="trailing" secondItem="afe-AS-BCS" secondAttribute="trailingMargin" id="hdm-Uy-oKe"/>
                                                 <constraint firstItem="EnR-Cz-Rin" firstAttribute="leading" secondItem="afe-AS-BCS" secondAttribute="leadingMargin" id="tpm-bR-ESR"/>
                                             </constraints>
@@ -483,12 +483,12 @@
                                         <rect key="frame" x="0.0" y="200" width="600" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="yHh-3E-J0x" id="UXm-Fc-DTh">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="49.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fDk-Eb-01W">
-                                                    <rect key="frame" x="15" y="14" width="78" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                                    <rect key="frame" x="15" y="16" width="70" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -499,11 +499,11 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5Ua-2v-LnK">
-                                                    <rect key="frame" x="115" y="0.0" width="477" height="50"/>
+                                                    <rect key="frame" x="125" y="0.0" width="467" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="LyR-Nh-ds6"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
@@ -512,7 +512,7 @@
                                                 <constraint firstItem="5Ua-2v-LnK" firstAttribute="top" secondItem="UXm-Fc-DTh" secondAttribute="top" id="K7b-kj-71o"/>
                                                 <constraint firstAttribute="bottom" secondItem="5Ua-2v-LnK" secondAttribute="bottom" id="RKP-Pn-NGq"/>
                                                 <constraint firstAttribute="bottom" secondItem="jgN-NF-9GF" secondAttribute="bottom" id="TMw-lR-T6j"/>
-                                                <constraint firstItem="5Ua-2v-LnK" firstAttribute="leading" secondItem="UXm-Fc-DTh" secondAttribute="leadingMargin" constant="100" id="j4v-cF-uiz"/>
+                                                <constraint firstItem="5Ua-2v-LnK" firstAttribute="leading" secondItem="UXm-Fc-DTh" secondAttribute="leadingMargin" constant="110" id="j4v-cF-uiz"/>
                                                 <constraint firstItem="fDk-Eb-01W" firstAttribute="centerY" secondItem="UXm-Fc-DTh" secondAttribute="centerY" id="kKr-i2-LjE"/>
                                                 <constraint firstAttribute="trailing" secondItem="jgN-NF-9GF" secondAttribute="trailing" constant="8" id="oLm-Ug-j4P"/>
                                                 <constraint firstAttribute="trailing" secondItem="5Ua-2v-LnK" secondAttribute="trailing" constant="8" id="pnv-2d-odU"/>
@@ -528,7 +528,7 @@
                                         <rect key="frame" x="0.0" y="250" width="600" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="HL8-1Q-tXC" id="7GP-Dw-1MG">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="149.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="150"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eha-tc-NKv">

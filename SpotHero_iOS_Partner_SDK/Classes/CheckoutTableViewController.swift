@@ -48,7 +48,8 @@ enum PersonalInfoRow: Int, CountableIntEnum {
     case
     FullName,
     Email,
-    Phone
+    Phone,
+    License
     
     func title() -> String {
         switch self {
@@ -58,6 +59,8 @@ enum PersonalInfoRow: Int, CountableIntEnum {
             return LocalizedStrings.Email
         case .Phone:
             return LocalizedStrings.Phone
+        case .License:
+            return LocalizedStrings.LicensePlate
         }
     }
     
@@ -69,6 +72,8 @@ enum PersonalInfoRow: Int, CountableIntEnum {
             return LocalizedStrings.EnterEmailAddress
         case .Phone:
             return LocalizedStrings.EnterPhoneNumber
+        case .License:
+            return LocalizedStrings.EnterLicensePlate
         }
     }
 }
@@ -181,6 +186,8 @@ class CheckoutTableViewController: UIViewController {
                 phone in
                 try Validator.validatePhone(phone)
             }
+        case PersonalInfoRow.License:
+            break
         }
     }
     
@@ -199,9 +206,13 @@ extension CheckoutTableViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
-        case CheckoutSection.ReservationInfo.rawValue,
-             CheckoutSection.PersonalInfo.rawValue:
+        case CheckoutSection.ReservationInfo.rawValue:
             return 3
+        case CheckoutSection.PersonalInfo.rawValue:
+            guard let licensePlateRequired = facility?.licensePlateRequired else {
+                return 3
+            }
+            return licensePlateRequired ? 4 : 3
         default:
             return 1
         }

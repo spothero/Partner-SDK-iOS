@@ -13,6 +13,7 @@ struct ReservationAPI {
                                   rate: Rate,
                                   email: String,
                                   stripeToken: String,
+                                  license: String? = nil,
                                   completion: (Reservation?, ErrorType?) -> (Void))  {
         
         let starts = DateFormatter.ISO8601NoSeconds.stringFromDate(rate.starts)
@@ -25,9 +26,10 @@ struct ReservationAPI {
             "starts" : starts,
             "ends" : ends,
             "price" : rate.price,
-            "stripe_token" : stripeToken
+            "stripe_token" : stripeToken,
+            "license_plate" : license ?? "RENTAL"
         ]
-        
+
         let headers = APIHeaders.defaultHeaders()
         
         SpotHeroPartnerAPIController.postJSONtoEndpoint("partner/v1/reservations",
