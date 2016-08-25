@@ -205,15 +205,18 @@ extension CheckoutTableViewController: UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case CheckoutSection.ReservationInfo.rawValue:
-            return 3
-        case CheckoutSection.PersonalInfo.rawValue:
-            guard let licensePlateRequired = facility?.licensePlateRequired else {
-                return 3
+        guard let checkoutSection = CheckoutSection(rawValue: section) else {
+            return 1
+        }
+        switch checkoutSection {
+        case .ReservationInfo:
+            return ReservationInfoRow.AllCases.count
+        case .PersonalInfo:
+            guard let licensePlateRequired = facility?.licensePlateRequired where licensePlateRequired else {
+                return PersonalInfoRow.AllCases.count - 1
             }
-            return licensePlateRequired ? 4 : 3
-        default:
+            return PersonalInfoRow.AllCases.count
+        case .PaymentInfo:
             return 1
         }
     }
