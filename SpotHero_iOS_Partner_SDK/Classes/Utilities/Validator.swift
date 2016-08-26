@@ -297,6 +297,33 @@ enum Validator {
         }
     }
     
+    /**
+     Validates that a string is a license plate number
+     
+     - parameter license: string to validate
+     
+     - throws: throws an error if string is blank or in valid
+     */
+    static func validateLicense(license: String) throws {
+        let trimmedLicense = license.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        
+        let fieldName = LocalizedStrings.LicensePlate
+        let message = LocalizedStrings.LicensePlateErrorMessage
+        
+        if trimmedLicense.isEmpty {
+            throw ValidatorError.FieldBlank(fieldName: fieldName)
+        }
+        
+        let validLicensePlateCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890 "
+        let maxPlateCharacters = 12
+        
+        let invalidPlateCharacters = NSCharacterSet(charactersInString: validLicensePlateCharacters).invertedSet
+        
+        if trimmedLicense.rangeOfCharacterFromSet(invalidPlateCharacters) != nil || trimmedLicense.characters.count > maxPlateCharacters {
+            throw ValidatorError.FieldInvalid(fieldName: fieldName, message: message)
+        }
+    }
+    
     // MARK: Helpers
     
     private static func emailParts(email: String) -> [String] {

@@ -17,7 +17,7 @@ struct ReservationAPI {
      - parameter rate:        Rate for the facility
      - parameter email:       User's email address
      - parameter stripeToken: Stripe token for user's credit card
-     - parameter license:     User's license plate number. (optional) If left blank "RENTAL" will be sent to backend
+     - parameter license:     User's license plate number. (optional) 
      - parameter completion:  Completion that passes in either a reservation or error
      */
     static func createReservation(facility: Facility,
@@ -29,8 +29,8 @@ struct ReservationAPI {
         
         let starts = DateFormatter.ISO8601NoSeconds.stringFromDate(rate.starts)
         let ends = DateFormatter.ISO8601NoSeconds.stringFromDate(rate.ends)
-        
-        let params: [String: AnyObject] = [
+                
+        var params: [String: AnyObject] = [
             "facility_id" : facility.parkingSpotID,
             "rule_group_id" : rate.ruleGroupID,
             "email" : email,
@@ -38,8 +38,11 @@ struct ReservationAPI {
             "ends" : ends,
             "price" : rate.price,
             "stripe_token" : stripeToken,
-            "license_plate" : license ?? "RENTAL"
         ]
+        
+        if let license = license {
+            params["license_plate"] = license
+        }
 
         let headers = APIHeaders.defaultHeaders()
         

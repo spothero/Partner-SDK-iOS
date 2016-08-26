@@ -187,7 +187,11 @@ class CheckoutTableViewController: UIViewController {
                 try Validator.validatePhone(phone)
             }
         case PersonalInfoRow.License:
-            break
+            cell.textField.autocapitalizationType = .AllCharacters
+            cell.validationClosure = {
+                license in
+                try Validator.validateLicense(license)
+            }
         }
     }
     
@@ -206,7 +210,8 @@ extension CheckoutTableViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let checkoutSection = CheckoutSection(rawValue: section) else {
-            return 1
+            assertionFailure("Could not create a checkout section. Section number: \(section)")
+            return 0
         }
         switch checkoutSection {
         case .ReservationInfo:
