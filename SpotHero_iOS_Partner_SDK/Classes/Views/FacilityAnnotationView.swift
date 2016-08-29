@@ -42,6 +42,7 @@ class FacilityAnnotationView: MKAnnotationView {
         self.canShowCallout = false
         
         self.backgroundImageView = UIImageView(frame: self.bounds)
+        self.backgroundImageView?.image = nil
         self.backgroundImageView?.image = self.facilityPinImageDefault
         self.backgroundImageView?.autoresizingMask = [
             .FlexibleTopMargin,
@@ -103,10 +104,12 @@ class FacilityAnnotationView: MKAnnotationView {
             UIView.animateWithDuration(self.growDuration, animations: {
                 self.backgroundImageView?.frame = self.bounds
                 self.priceLabel?.frame = self.labelBoundsWithScale(selected ? self.facilityGrowScale : 1)
-                }, completion: { (_) in
+                }, completion: {
+                    _ in
                     self.priceLabel?.setNeedsDisplay()
             })
             
+            self.backgroundImageView?.image = nil
             self.backgroundImageView?.image = selected ? self.facilityPinImageActive : self.facilityPinImageDefault
             self.priceLabel?.textColor = selected ? self.priceTextColorActive : self.priceTextColorDefault
         }
