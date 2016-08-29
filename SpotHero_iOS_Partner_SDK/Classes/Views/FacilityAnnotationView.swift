@@ -122,11 +122,7 @@ class AnnotationLabel: UILabel {
             self.setNeedsLayout()
         }
     }
-    override var textColor: UIColor! {
-        didSet {
-            self.setNeedsLayout()
-        }
-    }
+    
     private var initialWidth: CGFloat?
     
     override init(frame: CGRect) {
