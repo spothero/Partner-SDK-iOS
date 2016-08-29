@@ -164,20 +164,22 @@ extension MapViewController: PredictionControllerDelegate {
     func didUpdatePredictions(predictions: [GooglePlacesPrediction]) {
         self.predictionTableView.reloadData()
         self.view.layoutIfNeeded()
-        UIView.animateWithDuration(Constants.ViewAnimationDuration, animations: {
-            let headerFooterHeight: CGFloat = 28
-            let rowHeight: CGFloat = 60
-            
-            if predictions.count > 0 {
-                self.searchSpotsButton.hidden = true
-                self.timeSelectionView.showTimeSelectionView(false)
-                self.searchContainerViewHeightConstraint.constant = self.searchBarHeight + CGFloat(predictions.count) * rowHeight + headerFooterHeight * 2
-                self.reservationContainerViewHeightConstraint.constant = self.searchBarHeight + CGFloat(predictions.count) * rowHeight + headerFooterHeight * 2
-            } else {
-                self.searchContainerViewHeightConstraint.constant = self.searchBarHeight
-            }
-            self.view.layoutIfNeeded()
-            }, completion: nil)
+        UIView.animateWithDuration(Constants.ViewAnimationDuration,
+                                   animations: {
+                                    let headerFooterHeight: CGFloat = 28
+                                    let rowHeight: CGFloat = 60
+                                    
+                                    if predictions.count > 0 {
+                                        self.searchSpotsButton.hidden = true
+                                        self.timeSelectionView.showTimeSelectionView(false)
+                                        self.searchContainerViewHeightConstraint.constant = self.searchBarHeight + CGFloat(predictions.count) * rowHeight + headerFooterHeight * 2
+                                        self.reservationContainerViewHeightConstraint.constant = self.searchBarHeight + CGFloat(predictions.count) * rowHeight + headerFooterHeight * 2
+                                    } else {
+                                        self.searchContainerViewHeightConstraint.constant = self.searchBarHeight
+                                    }
+                                    self.view.layoutIfNeeded()
+            },
+                                   completion: nil)
     }
     
     func didSelectPrediction(prediction: GooglePlacesPrediction) {
