@@ -88,7 +88,6 @@ class MapViewController: UIViewController {
             return
         }
         //TODO: Show progress HUD
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         GooglePlacesWrapper.getPlaceDetails(prediction) {
             placeDetails, error in
             if let placeDetails = placeDetails {
@@ -102,20 +101,13 @@ class MapViewController: UIViewController {
                                                     let facilityAnnotation = FacilityAnnotation(title: facility.title,
                                                         coordinate: facility.location.coordinate,
                                                         facility: facility)
-                                                    //SWIFT3: DispatchQueue.main.async
-                                                    dispatch_async(dispatch_get_main_queue(),{
-                                                        self?.mapView.addAnnotation(facilityAnnotation)
-                                                    })
+                                                    self?.mapView.addAnnotation(facilityAnnotation)
                                                 }
-                                                //SWIFT3: DispatchQueue.main.async
-                                                dispatch_async(dispatch_get_main_queue(),{
-                                                    guard let annotations = self?.mapView.annotations else {
-                                                        return
-                                                    }
-                                                    self?.mapView.showAnnotations(annotations, animated: true)
-                                                    UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-                                                    //TODO: Hide progress HUD
-                                                })
+                                                guard let annotations = self?.mapView.annotations else {
+                                                    return
+                                                }
+                                                self?.mapView.showAnnotations(annotations, animated: true)
+                                                //TODO: Hide progress HUD
                     })
             }
         }
