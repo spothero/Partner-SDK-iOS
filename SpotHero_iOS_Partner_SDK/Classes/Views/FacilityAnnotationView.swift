@@ -60,7 +60,7 @@ class FacilityAnnotationView: MKAnnotationView {
         }
         self.priceLabel?.text = "$\(price)"
         self.priceLabel?.textColor = .shp_spotHeroBlue()
-        self.priceLabel?.font = UIFont.systemFontOfSize(self.priceLabel?.text?.characters.count > 3 ? 7 : 10)
+        self.priceLabel?.font = UIFont.systemFontOfSize(self.priceLabel?.text?.characters.count > 3 ? AnnotationLabel.minLabelFontSize : AnnotationLabel.maxLabelFontSize)
         self.priceLabel?.autoresizingMask = [
             .FlexibleTopMargin,
             .FlexibleLeftMargin,
@@ -117,6 +117,9 @@ class FacilityAnnotationView: MKAnnotationView {
 }
 
 class AnnotationLabel: UILabel {
+    static let maxLabelFontSize: CGFloat = 10
+    static let minLabelFontSize: CGFloat = 7
+    
     override var text: String? {
         didSet {
             self.setNeedsLayout()
@@ -137,7 +140,7 @@ class AnnotationLabel: UILabel {
     }
     
     override func drawRect(rect: CGRect) {
-        let fontSize: CGFloat = self.text?.characters.count > 3 ? 7 : 10
+        let fontSize: CGFloat = self.text?.characters.count > 3 ? AnnotationLabel.minLabelFontSize : AnnotationLabel.maxLabelFontSize
         guard let width = self.initialWidth else {
             return
         }
@@ -148,8 +151,10 @@ class AnnotationLabel: UILabel {
             return
         }
         let textSize: CGSize = labelText.sizeWithAttributes([NSFontAttributeName : font])
+        let halfHeightOfAnnotationLabel = rect.size.height / 2
+        let fontSizeAdjustment: CGFloat = fontSize == AnnotationLabel.minLabelFontSize ? 3 : 0
         let textBounds = CGRect(x: centerX - textSize.width / 2,
-                                y: rect.size.height / 2 - 6 * scale + (labelText.characters.count > 3 ? 3 : 0),
+                                y: halfHeightOfAnnotationLabel - 6 * scale + (fontSizeAdjustment),
                                 width: textSize.width,
                                 height: 20)
         labelText.drawInRect(textBounds, withAttributes: [NSFontAttributeName : font, NSForegroundColorAttributeName: self.textColor])
