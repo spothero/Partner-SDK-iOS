@@ -310,10 +310,6 @@ enum Validator {
         let fieldName = LocalizedStrings.LicensePlate
         let message = LocalizedStrings.LicensePlateErrorMessage
         
-        if trimmedLicense.isEmpty {
-            throw ValidatorError.FieldBlank(fieldName: fieldName)
-        }
-        
         let validLicensePlateCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890 "
         let maxPlateCharacters = 12
         

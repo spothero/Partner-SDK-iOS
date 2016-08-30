@@ -460,11 +460,11 @@ class ValidatorTests: XCTestCase {
     }
     
     func testBlankLicense() {
-        self.validateThatFieldBlankErrorThrown(LocalizedStrings.LicensePlate) { 
+        self.validateThatErrorIsNotThrown {
             try Validator.validateLicense(self.emptyString)
         }
         
-        self.validateThatFieldBlankErrorThrown(LocalizedStrings.LicensePlate) { 
+        self.validateThatErrorIsNotThrown {
             try Validator.validateLicense(self.blankSpace)
         }
     }

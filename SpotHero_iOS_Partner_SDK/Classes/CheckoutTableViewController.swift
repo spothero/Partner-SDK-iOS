@@ -188,6 +188,7 @@ class CheckoutTableViewController: UIViewController {
             }
         case PersonalInfoRow.License:
             cell.textField.autocapitalizationType = .AllCharacters
+            cell.valid = true
             cell.validationClosure = {
                 license in
                 try Validator.validateLicense(license)
