@@ -40,8 +40,10 @@ struct ReservationAPI {
             "stripe_token" : stripeToken,
         ]
         
-        if let license = license {
+        if let license = license where !license.isEmpty {
             params["license_plate"] = license
+        } else if let license = license where license.isEmpty {
+            params["license_plate"] = "UNKNOWN"
         }
 
         let headers = APIHeaders.defaultHeaders()
