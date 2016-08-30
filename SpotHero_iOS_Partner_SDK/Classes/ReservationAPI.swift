@@ -42,7 +42,7 @@ struct ReservationAPI {
         
         if let license = license where !license.isEmpty {
             params["license_plate"] = license
-        } else if let license = license where license.isEmpty {
+        } else if license != nil {
             params["license_plate"] = "UNKNOWN"
         }
 
