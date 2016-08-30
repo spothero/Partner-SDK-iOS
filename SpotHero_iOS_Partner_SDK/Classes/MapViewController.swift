@@ -67,7 +67,7 @@ class MapViewController: UIViewController {
         self.predictionTableView.delegate = self.predictionController
         self.searchBar.delegate = self.predictionController
         
-        let bundle = NSBundle(forClass: MapViewController.self)
+        let bundle = NSBundle.shp_resourceBundle()
         
         self.predictionTableView.registerNib(UINib(nibName: String(GooglePredictionTableHeader), bundle: bundle),
                                              forHeaderFooterViewReuseIdentifier: GooglePredictionTableHeader.reuseIdentifier)

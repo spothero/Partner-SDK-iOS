@@ -16,7 +16,7 @@ DEPENDENCIES:
 
 EXTERNAL SOURCES:
   SpotHero_iOS_Partner_SDK:
-    :path: "../"
+    :path: ../
 
 SPEC CHECKSUMS:
   ILGHttpConstants: 715aca4c2b260527059242c0088abc748b52f98e
