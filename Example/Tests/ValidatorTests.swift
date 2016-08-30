@@ -435,4 +435,37 @@ class ValidatorTests: XCTestCase {
             try Validator.validateZip(self.blankSpace)
         }
     }
+    
+    // MARK: License Plate
+    
+    func testValidLicensePlate() {
+        let validLicense = "A1phaNum3ric"
+        self.validateThatErrorIsNotThrown { 
+            try Validator.validateLicense(validLicense)
+        }
+    }
+    
+    func testInvalidLicensePlate() {
+        let tooLong = "123456789012345"
+        
+        self.validateThatFieldInvalidErrorIsThrown(LocalizedStrings.LicensePlate, errorMessage: LocalizedStrings.LicensePlateErrorMessage) { 
+            try Validator.validateLicense(tooLong)
+        }
+        
+        let nonAlphaNumeric = "dskf#dd&ns"
+        
+        self.validateThatFieldInvalidErrorIsThrown(LocalizedStrings.LicensePlate, errorMessage: LocalizedStrings.LicensePlateErrorMessage) {
+            try Validator.validateLicense(nonAlphaNumeric)
+        }
+    }
+    
+    func testBlankLicense() {
+        self.validateThatErrorIsNotThrown {
+            try Validator.validateLicense(self.emptyString)
+        }
+        
+        self.validateThatErrorIsNotThrown {
+            try Validator.validateLicense(self.blankSpace)
+        }
+    }
 }
