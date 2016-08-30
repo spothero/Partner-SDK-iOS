@@ -17,7 +17,7 @@ struct ReservationAPI {
      - parameter rate:        Rate for the facility
      - parameter email:       User's email address
      - parameter stripeToken: Stripe token for user's credit card
-     - parameter license:     User's license plate number. (optional) 
+     - parameter license:     User's license plate number. (optional) Pass in nil or nothing is license is not required. If license plate is required and user does not pass it in, pass an empty string
      - parameter completion:  Completion that passes in either a reservation or error
      */
     static func createReservation(facility: Facility,
