@@ -9,7 +9,7 @@
 import Foundation
 
 extension NSBundle {
-    static func resourceBundle() -> NSBundle {
+    static func shp_resourceBundle() -> NSBundle {
         let frameworkBundle = NSBundle(forClass: SpotHeroPartnerSDK.self)
         let resourceUrl = frameworkBundle.resourceURL?.URLByAppendingPathComponent("SpotHero_iOS_Partner_SDK.bundle")
         if let resourceUrl = resourceUrl, resourceBundle = NSBundle(URL: resourceUrl) {

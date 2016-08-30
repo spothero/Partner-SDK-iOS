@@ -81,7 +81,7 @@ class CheckoutTableViewController: UIViewController {
     private let paymentButtonMargin: CGFloat = 0
     
     private lazy var paymentButton: UIButton = {
-        let _button = NSBundle.resourceBundle()
+        let _button = NSBundle.shp_resourceBundle()
             .loadNibNamed(String(PaymentButton),
                           owner: nil,
                           options: nil)

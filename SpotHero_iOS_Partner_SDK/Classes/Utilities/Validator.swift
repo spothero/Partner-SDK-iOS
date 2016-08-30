@@ -22,7 +22,7 @@ enum CardType {
     Unknown
     
     func image() -> UIImage? {
-        let bundle = NSBundle.resourceBundle()
+        let bundle = NSBundle.shp_resourceBundle()
         switch self {
         case .Visa:
             return UIImage(named: "Visa",

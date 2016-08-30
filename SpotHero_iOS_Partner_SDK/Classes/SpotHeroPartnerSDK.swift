@@ -45,7 +45,7 @@ public class SpotHeroPartnerSDK: NSObject {
      - parameter completion:     A completion block to be passed through to `presentViewController`, or nil. Defaults to nil.
      */
     public func launchSDKFromViewController(viewController: UIViewController, completion: (() -> Void)? = nil) {
-        let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.resourceBundle())
+        let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.shp_resourceBundle())
         guard let navController = storyboard.instantiateInitialViewController() as? UINavigationController else {
             return
         }
