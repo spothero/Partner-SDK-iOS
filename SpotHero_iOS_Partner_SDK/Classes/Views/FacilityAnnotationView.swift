@@ -17,8 +17,12 @@ class FacilityAnnotationView: MKAnnotationView {
     private let facilityGrowScale: CGFloat = 1.5
     private let priceTextColorActive = UIColor.shp_green()
     private let priceTextColorDefault = UIColor.shp_spotHeroBlue()
-    private let facilityPinImageDefault = UIImage(named: "spot-marker-default")
-    private let facilityPinImageActive = UIImage(named: "spot-marker-active")
+    private let facilityPinImageDefault = UIImage(named: "spot-marker-default",
+                                                  inBundle: NSBundle.shp_resourceBundle(),
+                                                  compatibleWithTraitCollection: nil)
+    private let facilityPinImageActive = UIImage(named: "spot-marker-active",
+                                                 inBundle: NSBundle.shp_resourceBundle(),
+                                                 compatibleWithTraitCollection: nil)
     private let imageSize: CGSize = {
         guard let size = UIImage(named: "spot-marker-default")?.size else {
             assertionFailure("cannot get size from image")
