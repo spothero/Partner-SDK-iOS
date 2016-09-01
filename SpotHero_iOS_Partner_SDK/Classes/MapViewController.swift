@@ -87,7 +87,7 @@ class MapViewController: UIViewController {
         guard let prediction = self.prediction else {
             return
         }
-        //TODO: Show progress HUD
+        SHProgressHUD.showHUDAddedTo(self.view, withText: LocalizedStrings.Loading)
         GooglePlacesWrapper.getPlaceDetails(prediction) {
             placeDetails, error in
             if let placeDetails = placeDetails {
@@ -107,7 +107,10 @@ class MapViewController: UIViewController {
                                                     return
                                                 }
                                                 self?.mapView.showAnnotations(annotations, animated: true)
-                                                //TODO: Hide progress HUD
+                                                guard let view = self?.view else {
+                                                    return
+                                                }
+                                                SHProgressHUD.hideHUDForView(view)
                     })
             }
         }
