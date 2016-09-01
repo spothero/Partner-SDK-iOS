@@ -48,7 +48,8 @@ enum PersonalInfoRow: Int, CountableIntEnum {
     case
     FullName,
     Email,
-    Phone
+    Phone,
+    License
     
     func title() -> String {
         switch self {
@@ -58,6 +59,8 @@ enum PersonalInfoRow: Int, CountableIntEnum {
             return LocalizedStrings.Email
         case .Phone:
             return LocalizedStrings.Phone
+        case .License:
+            return LocalizedStrings.LicensePlate
         }
     }
     
@@ -69,6 +72,8 @@ enum PersonalInfoRow: Int, CountableIntEnum {
             return LocalizedStrings.EnterEmailAddress
         case .Phone:
             return LocalizedStrings.EnterPhoneNumber
+        case .License:
+            return LocalizedStrings.EnterLicensePlate
         }
     }
 }
@@ -181,6 +186,13 @@ class CheckoutTableViewController: UIViewController {
                 phone in
                 try Validator.validatePhone(phone)
             }
+        case PersonalInfoRow.License:
+            cell.textField.autocapitalizationType = .AllCharacters
+            cell.valid = true
+            cell.validationClosure = {
+                license in
+                try Validator.validateLicense(license)
+            }
         }
     }
     
@@ -198,11 +210,19 @@ extension CheckoutTableViewController: UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case CheckoutSection.ReservationInfo.rawValue,
-             CheckoutSection.PersonalInfo.rawValue:
-            return 3
-        default:
+        guard let checkoutSection = CheckoutSection(rawValue: section) else {
+            assertionFailure("Could not create a checkout section. Section number: \(section)")
+            return 0
+        }
+        switch checkoutSection {
+        case .ReservationInfo:
+            return ReservationInfoRow.AllCases.count
+        case .PersonalInfo:
+            guard let licensePlateRequired = facility?.licensePlateRequired where licensePlateRequired else {
+                return PersonalInfoRow.AllCases.count - 1
+            }
+            return PersonalInfoRow.AllCases.count
+        case .PaymentInfo:
             return 1
         }
     }
