@@ -23,13 +23,6 @@ class FacilityAnnotationView: MKAnnotationView {
     private let facilityPinImageActive = UIImage(named: "spot-marker-active",
                                                  inBundle: NSBundle.shp_resourceBundle(),
                                                  compatibleWithTraitCollection: nil)
-    private let imageSize: CGSize = {
-        guard let size = UIImage(named: "spot-marker-default")?.size else {
-            assertionFailure("cannot get size from image")
-            return CGSize(width: 38, height: 30)
-        }
-        return size
-    }()
     private var priceLabel: AnnotationLabel?
     private var backgroundImageView: UIImageView?
     override var selected: Bool {
@@ -43,9 +36,13 @@ class FacilityAnnotationView: MKAnnotationView {
         
         let facilityAnnotation  = annotation as? FacilityAnnotation
         
-        self.frame.size = self.imageSize
+        guard let imageSize = self.facilityPinImageDefault?.size else {
+            assertionFailure("cannot get image size")
+            return
+        }
+        self.frame.size = imageSize
         self.backgroundColor = .clearColor()
-        self.centerOffset = CGPoint(x: 0, y: -self.imageSize.height / 2)
+        self.centerOffset = CGPoint(x: 0, y: -imageSize.height / 2)
         self.canShowCallout = false
         
         self.backgroundImageView = UIImageView(frame: self.bounds)
@@ -99,8 +96,12 @@ class FacilityAnnotationView: MKAnnotationView {
         let oldWidth: CGFloat = self.bounds.size.width
         let oldHeight: CGFloat = self.bounds.size.height
         
-        let newWidth: CGFloat = selected ? self.imageSize.width * self.facilityGrowScale : self.imageSize.width
-        let newHeight: CGFloat = selected ? self.imageSize.height * self.facilityGrowScale : self.imageSize.height
+        guard let imageSize = self.facilityPinImageDefault?.size else {
+            assertionFailure("cannot get image size")
+            return
+        }
+        let newWidth: CGFloat = selected ? imageSize.width * self.facilityGrowScale : imageSize.width
+        let newHeight: CGFloat = selected ? imageSize.height * self.facilityGrowScale : imageSize.height
         
         if (oldWidth != newWidth) {
             self.frame = CGRect(x: self.frame.origin.x - (newWidth - oldWidth) / 2,
