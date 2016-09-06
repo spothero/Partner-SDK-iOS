@@ -23,7 +23,10 @@ class MapViewController: UIViewController {
     @IBOutlet weak private var datePickerView: DatePickerView!
     @IBOutlet weak private var searchSpotsButton: UIButton!
     
+    private var prediction: GooglePlacesPrediction?
     private let predictionController = PredictionController()
+    private var startDate: NSDate = NSDate().shp_dateByRoundingMinutesBy30(roundDown: true)
+    private var endDate: NSDate = NSDate().shp_dateByRoundingMinutesBy30(roundDown: false)
     private let searchBarHeight: CGFloat = 44
     private let reservationContainerViewHeight: CGFloat = 134
     private var startEndDateDifferenceInSeconds: NSTimeInterval = Constants.ThirtyMinutesInSeconds
@@ -80,6 +83,36 @@ class MapViewController: UIViewController {
         self.searchSpotsButton.hidden = (self.searchBar.text ?? "").isEmpty
     }
     
+    func fetchFacilities() {
+        guard let prediction = self.prediction else {
+            return
+        }
+        //TODO: Show progress HUD
+        GooglePlacesWrapper.getPlaceDetails(prediction) {
+            placeDetails, error in
+            if let placeDetails = placeDetails {
+                FacilityAPI.fetchFacilities(placeDetails.location,
+                                            starts: self.startDate,
+                                            ends: self.endDate,
+                                            completion: {
+                                                [weak self]
+                                                facilities, error in
+                                                for facility in facilities {
+                                                    let facilityAnnotation = FacilityAnnotation(title: facility.title,
+                                                        coordinate: facility.location.coordinate,
+                                                        facility: facility)
+                                                    self?.mapView.addAnnotation(facilityAnnotation)
+                                                }
+                                                guard let annotations = self?.mapView.annotations else {
+                                                    return
+                                                }
+                                                self?.mapView.showAnnotations(annotations, animated: true)
+                                                //TODO: Hide progress HUD
+                    })
+            }
+        }
+    }
+    
     //MARK: Actions
     
     @IBAction private func closeButtonPressed(sender: AnyObject) {
@@ -113,6 +146,7 @@ class MapViewController: UIViewController {
         self.timeSelectionView.showTimeSelectionView(false)
         let hoursBetweenDates = self.startEndDateDifferenceInSeconds / Constants.SecondsInHour
         self.collapsedSearchBar.text = String(format: LocalizedStrings.HoursBetweenDatesFormat, hoursBetweenDates)
+        self.fetchFacilities()
     }
     
     //TODO: Remove when facility UI is done
@@ -130,23 +164,26 @@ extension MapViewController: PredictionControllerDelegate {
     func didUpdatePredictions(predictions: [GooglePlacesPrediction]) {
         self.predictionTableView.reloadData()
         self.view.layoutIfNeeded()
-        UIView.animateWithDuration(Constants.ViewAnimationDuration, animations: {
-            let headerFooterHeight: CGFloat = 28
-            let rowHeight: CGFloat = 60
-            
-            if predictions.count > 0 {
-                self.searchSpotsButton.hidden = true
-                self.timeSelectionView.showTimeSelectionView(false)
-                self.searchContainerViewHeightConstraint.constant = self.searchBarHeight + CGFloat(predictions.count) * rowHeight + headerFooterHeight * 2
-                self.reservationContainerViewHeightConstraint.constant = self.searchBarHeight + CGFloat(predictions.count) * rowHeight + headerFooterHeight * 2
-            } else {
-                self.searchContainerViewHeightConstraint.constant = self.searchBarHeight
-            }
-            self.view.layoutIfNeeded()
-            }, completion: nil)
+        UIView.animateWithDuration(Constants.ViewAnimationDuration,
+                                   animations: {
+                                    let headerFooterHeight: CGFloat = 28
+                                    let rowHeight: CGFloat = 60
+                                    
+                                    if predictions.count > 0 {
+                                        self.searchSpotsButton.hidden = true
+                                        self.timeSelectionView.showTimeSelectionView(false)
+                                        self.searchContainerViewHeightConstraint.constant = self.searchBarHeight + CGFloat(predictions.count) * rowHeight + headerFooterHeight * 2
+                                        self.reservationContainerViewHeightConstraint.constant = self.searchBarHeight + CGFloat(predictions.count) * rowHeight + headerFooterHeight * 2
+                                    } else {
+                                        self.searchContainerViewHeightConstraint.constant = self.searchBarHeight
+                                    }
+                                    self.view.layoutIfNeeded()
+            },
+                                   completion: nil)
     }
     
     func didSelectPrediction(prediction: GooglePlacesPrediction) {
+        self.prediction = prediction
         self.searchBar.text = prediction.description
         self.timeSelectionView.showTimeSelectionView(true)
         self.showCollapsedSearchBar()
@@ -181,6 +218,20 @@ extension MapViewController: DatePickerDoneButtonDelegate {
 
 extension MapViewController: StartEndDateDelegate {
     func didChangeStartEndDate(startDate startDate: NSDate, endDate: NSDate) {
+        self.startDate = startDate
+        self.endDate = endDate
         self.startEndDateDifferenceInSeconds = endDate.timeIntervalSinceDate(startDate)
+    }
+}
+
+//MARK: MKMapViewDelegate
+
+extension MapViewController: MKMapViewDelegate {
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+        guard let annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(FacilityAnnotationView.Identifier) else {
+            return FacilityAnnotationView(annotation: annotation, reuseIdentifier: FacilityAnnotationView.Identifier)
+        }
+        
+        return annotationView
     }
 }
