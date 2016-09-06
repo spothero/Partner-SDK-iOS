@@ -701,8 +701,8 @@
                                     <action selector="doneButtonPressed:" destination="zS2-IA-i1X" eventType="touchUpInside" id="w2h-BE-4OY"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zui-VC-sSC">
-                                <rect key="frame" x="40" y="215" width="520" height="127"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zui-VC-sSC">
+                                <rect key="frame" x="40" y="237" width="520" height="127"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Success! Your spot is confirmed." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3lV-Yt-SMl">
                                         <rect key="frame" x="0.0" y="44" width="520" height="34"/>
@@ -733,15 +733,9 @@
                                     <constraint firstAttribute="bottom" secondItem="VuP-ue-hJ2" secondAttribute="bottom" id="Pay-mc-D7T"/>
                                     <constraint firstItem="VuP-ue-hJ2" firstAttribute="leading" secondItem="zui-VC-sSC" secondAttribute="leading" id="bQJ-nL-lQo"/>
                                     <constraint firstItem="VuP-ue-hJ2" firstAttribute="top" secondItem="3lV-Yt-SMl" secondAttribute="bottom" constant="8" id="lKT-m5-WgI"/>
-                                    <constraint firstItem="3lV-Yt-SMl" firstAttribute="top" secondItem="zui-VC-sSC" secondAttribute="top" id="nTi-pB-K3O"/>
                                     <constraint firstAttribute="trailing" secondItem="VuP-ue-hJ2" secondAttribute="trailing" id="sg5-hS-OEG"/>
                                     <constraint firstItem="3lV-Yt-SMl" firstAttribute="top" secondItem="Y5A-O2-eTp" secondAttribute="bottom" constant="8" id="u9Y-BG-eUS"/>
                                 </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="nTi-pB-K3O"/>
-                                    </mask>
-                                </variation>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gy0-KZ-kUt">
                                 <rect key="frame" x="20" y="484" width="560" height="44"/>
