@@ -56,8 +56,7 @@ struct StripeWrapper {
                         })
                     } else {
                         NSOperationQueue.mainQueue().addOperationWithBlock({
-                            // TODO: Localize
-                            completion(nil, StripeAPIError.CannotGetToken(message: "Unknown Error"))
+                            completion(nil, StripeAPIError.CannotGetToken(message: LocalizedStrings.UnknownError))
                         })
                     }
                 } catch let error {

@@ -99,4 +99,6 @@ enum LocalizedStrings {
                                                             comment: "Message to indicate that a license plate number is invalid")
     static let CreateReservationErrorMessage = NSLocalizedString("Something went wrong with creating the reservation. Please try again.",
                                                                  comment: "Error message for when a reservation could not be created")
+    static let UnknownError = NSLocalizedString( "Unknown Error",
+                                                 comment: "Error message when an unknown issue has occured")
 }
