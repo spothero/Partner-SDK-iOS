@@ -146,10 +146,11 @@ class CheckoutTableViewController: UIViewController {
                                expirationMonth: paymentCell.expirationMonth,
                                expirationYear: paymentCell.expirationYear,
                                cvc: paymentCell.cvc) {
+                                [weak self]
                                 token, error in
                                 guard let
-                                    facility = self.facility,
-                                    rate = self.rate else {
+                                    facility = self?.facility,
+                                    rate = self?.rate else {
                                         assertionFailure("No facility or rate")
                                         return
                                 }
@@ -168,16 +169,16 @@ class CheckoutTableViewController: UIViewController {
                                 }
 
                                 guard let
-                                    emailCell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: PersonalInfoRow.Email.rawValue, inSection: CheckoutSection.PersonalInfo.rawValue)) as? PersonalInfoTableViewCell,
+                                    emailCell = self?.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: PersonalInfoRow.Email.rawValue, inSection: CheckoutSection.PersonalInfo.rawValue)) as? PersonalInfoTableViewCell,
                                     email = emailCell.textField.text else {
                                         assertionFailure("Cannot get email cell")
                                         return
                                 }
                                 
-                                var license: String? = nil
+                                var license: String? 
                                 
                                 if let
-                                    licenseCell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: PersonalInfoRow.Email.rawValue, inSection: CheckoutSection.PersonalInfo.rawValue)) as? PersonalInfoTableViewCell
+                                    licenseCell = self?.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: PersonalInfoRow.Email.rawValue, inSection: CheckoutSection.PersonalInfo.rawValue)) as? PersonalInfoTableViewCell
                                     where facility.licensePlateRequired {
                                     license = licenseCell.textField.text
                                 }
@@ -194,7 +195,7 @@ class CheckoutTableViewController: UIViewController {
                                                                         return
                                                                     }
 
-                                                                    self.performSegueWithIdentifier("confirmation", sender: nil)
+                                                                    self?.performSegueWithIdentifier(Constants.Segue.Confirmation, sender: nil)
                                 })
         }
     }

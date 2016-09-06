@@ -36,34 +36,27 @@ struct StripeWrapper {
             
             NSURLSession.sharedSession().dataTaskWithRequest(request, completionHandler: {
                 data, response, error in
-                guard let data = data else {
-                    NSOperationQueue.mainQueue().addOperationWithBlock {
+                NSOperationQueue.mainQueue().addOperationWithBlock({ 
+                    guard let data = data else {
                         completion(nil, error)
+                        return
                     }
-                    return
-                }
-                
-                do {
-                    let jsonDictionary = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions()) as? JSONDictionary
-                    print(jsonDictionary)
-                    if let token = jsonDictionary?["id"] as? String {
-                        NSOperationQueue.mainQueue().addOperationWithBlock({ 
+                    
+                    do {
+                        let jsonDictionary = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions()) as? JSONDictionary
+                        if let token = jsonDictionary?["id"] as? String {
                             completion(token, nil)
-                        })
-                    } else if let errorDictionary = jsonDictionary?["error"] as? JSONDictionary, errorMessage = errorDictionary["message"] as? String {
-                        NSOperationQueue.mainQueue().addOperationWithBlock({ 
-                            completion(nil, StripeAPIError.CannotGetToken(message: errorMessage))
-                        })
-                    } else {
-                        NSOperationQueue.mainQueue().addOperationWithBlock({
+                        } else if let
+                            errorDictionary = jsonDictionary?["error"] as? JSONDictionary,
+                            errorMessage = errorDictionary["message"] as? String {
+                                completion(nil, StripeAPIError.CannotGetToken(message: errorMessage))
+                        } else {
                             completion(nil, StripeAPIError.CannotGetToken(message: LocalizedStrings.UnknownError))
-                        })
-                    }
-                } catch let error {
-                    NSOperationQueue.mainQueue().addOperationWithBlock({ 
+                        }
+                    } catch let error {
                         completion(nil, error)
-                    })
-                }
+                    }
+                })
             }).resume()
         }
     }
