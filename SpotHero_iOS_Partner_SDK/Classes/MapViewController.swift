@@ -106,6 +106,8 @@ class MapViewController: UIViewController {
     }
     
     func addAndShowFacilityAnnotations(facilities: [Facility]?) {
+        //TODO: Look into caching annotations like the main app
+        self.mapView.removeAnnotations(self.mapView.annotations)
         guard let facilities = facilities else {
             return
         }
