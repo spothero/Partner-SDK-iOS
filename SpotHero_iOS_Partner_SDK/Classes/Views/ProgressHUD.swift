@@ -45,7 +45,7 @@ class ProgressHUD: UIView {
         for subView in view.subviews {
             if subView.isKindOfClass(ProgressHUD) {
                 subView.removeFromSuperview()
-                break
+                return
             }
         }
     }
