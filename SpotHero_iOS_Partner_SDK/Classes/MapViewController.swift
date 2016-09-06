@@ -87,7 +87,7 @@ class MapViewController: UIViewController {
         guard let prediction = self.prediction else {
             return
         }
-        SHProgressHUD.showHUDAddedTo(self.view, withText: LocalizedStrings.Loading)
+        ProgressHUD.showHUDAddedTo(self.view, withText: LocalizedStrings.Loading)
         GooglePlacesWrapper.getPlaceDetails(prediction) {
             placeDetails, error in
             if let placeDetails = placeDetails {
@@ -110,7 +110,7 @@ class MapViewController: UIViewController {
                                                 guard let view = self?.view else {
                                                     return
                                                 }
-                                                SHProgressHUD.hideHUDForView(view)
+                                                ProgressHUD.hideHUDForView(view)
                     })
             }
         }

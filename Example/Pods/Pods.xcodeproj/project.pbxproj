@@ -14,8 +14,8 @@
 		0E696E98B16C59A6AD10807E246A5511 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44EE72E22B15FDAF57F9EE6D2EE224D5 /* Foundation.framework */; };
 		11CBC743A1E25DBC3630EA04C33F9623 /* GooglePredictionTableHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A5D1ADEF3C4E0B189728E3E3D8805C /* GooglePredictionTableHeader.swift */; };
 		11D33A46A0F3465F092A4F81EC83377A /* FaciltyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD056EA5C9C9EFF05A91861D47230134 /* FaciltyAPI.swift */; };
-		12814C731D78A165009899D2 /* SHProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12814C711D78A160009899D2 /* SHProgressHUD.swift */; };
-		12814C751D78AEB2009899D2 /* SHProgressHUD.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12814C741D78AEB2009899D2 /* SHProgressHUD.xib */; };
+		12814C731D78A165009899D2 /* ProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12814C711D78A160009899D2 /* ProgressHUD.swift */; };
+		12814C751D78AEB2009899D2 /* ProgressHUD.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12814C741D78AEB2009899D2 /* ProgressHUD.xib */; };
 		12AC30A8BBD2D158AE154DD3E358D754 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44EE72E22B15FDAF57F9EE6D2EE224D5 /* Foundation.framework */; };
 		1884983D6D196A42E1BC81DC044F29D0 /* HTTPHeaderFields.m in Sources */ = {isa = PBXBuildFile; fileRef = 33475DCFAD041DE4DE25A6AEB9C41CCF /* HTTPHeaderFields.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		193A81B1776D2369F4FC9E6286795DA8 /* Pods-SpotHero_iOS_Partner_SDK_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2684D36E1DF39EED96E5B6EA84EDF8CF /* Pods-SpotHero_iOS_Partner_SDK_Tests-dummy.m */; };
@@ -269,8 +269,8 @@
 		117DC4EDDFFBE0C4A7AB0F057D7D3564 /* KIFUITestActor-ConditionalTests.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "KIFUITestActor-ConditionalTests.m"; path = "Classes/KIFUITestActor-ConditionalTests.m"; sourceTree = "<group>"; };
 		1222364E3A700B5758D29982D366C807 /* CollapsedSearchBarView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CollapsedSearchBarView.swift; sourceTree = "<group>"; };
 		127E01E5A45C4F58FE75BA91DE539413 /* Pods_SpotHero_iOS_Partner_SDK_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpotHero_iOS_Partner_SDK_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		12814C711D78A160009899D2 /* SHProgressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHProgressHUD.swift; sourceTree = "<group>"; };
-		12814C741D78AEB2009899D2 /* SHProgressHUD.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHProgressHUD.xib; sourceTree = "<group>"; };
+		12814C711D78A160009899D2 /* ProgressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressHUD.swift; sourceTree = "<group>"; };
+		12814C741D78AEB2009899D2 /* ProgressHUD.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProgressHUD.xib; sourceTree = "<group>"; };
 		12F419EB9D92785AAE0A8749F7D453D3 /* Pods-SpotHero_iOS_Partner_SDK_ExampleUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SpotHero_iOS_Partner_SDK_ExampleUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		13BE74C806B6FDC81630F6836EB27D41 /* KIFTestActor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = KIFTestActor.m; path = Classes/KIFTestActor.m; sourceTree = "<group>"; };
 		1456BCEA72759C60727AFF952EF591D1 /* UIView-KIFAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIView-KIFAdditions.h"; path = "Additions/UIView-KIFAdditions.h"; sourceTree = "<group>"; };
@@ -553,7 +553,7 @@
 				50202AB41EA0CB375709AA2A3F7E310E /* Images.xcassets */,
 				48B78F4A3675531A1FF53718103600B6 /* Main.storyboard */,
 				7505804B48803B84BC574E39C7FA7536 /* PaymentButton.xib */,
-				12814C741D78AEB2009899D2 /* SHProgressHUD.xib */,
+				12814C741D78AEB2009899D2 /* ProgressHUD.xib */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -882,7 +882,7 @@
 			children = (
 				1222364E3A700B5758D29982D366C807 /* CollapsedSearchBarView.swift */,
 				5C3950CFC6A8DDB685BD7785A4B9047D /* FacilityAnnotationView.swift */,
-				12814C711D78A160009899D2 /* SHProgressHUD.swift */,
+				12814C711D78A160009899D2 /* ProgressHUD.swift */,
 				D9996AA7381D0B191E0EDBD9CED3C321 /* GooglePredictionTableFooter.swift */,
 				23A5D1ADEF3C4E0B189728E3E3D8805C /* GooglePredictionTableHeader.swift */,
 				5E0685AD6F4D130BE1AEB62CF1852F38 /* PaymentButton.swift */,
@@ -1341,7 +1341,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				531841026ABB73DA0B1357AD71CD343B /* SpotHero_iOS_Partner_SDK.bundle in Resources */,
-				12814C751D78AEB2009899D2 /* SHProgressHUD.xib in Resources */,
+				12814C751D78AEB2009899D2 /* ProgressHUD.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1399,7 +1399,7 @@
 				1F5572FF7941E5F42D8FE9C42354DC97 /* ReservationAPI.swift in Sources */,
 				020885E2A08C90FC3D47AF569DC7E3FD /* ReservationInfoTableViewCell.swift in Sources */,
 				53453D7574EF526876FDB4CE60C4B311 /* ServerEnvironment.swift in Sources */,
-				12814C731D78A165009899D2 /* SHProgressHUD.swift in Sources */,
+				12814C731D78A165009899D2 /* ProgressHUD.swift in Sources */,
 				B1088BFE371699DE841B9F486CEB1801 /* ServerErrorJSON.swift in Sources */,
 				89CE1CA5C75D589A106E955ACE405292 /* SpotHero_iOS_Partner_SDK-dummy.m in Sources */,
 				BB3BCF0361CF82D01A4F0D50C501A9FA /* SpotHeroPartnerAPIController.swift in Sources */,

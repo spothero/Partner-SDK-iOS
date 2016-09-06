@@ -8,7 +8,7 @@
 
 import Foundation
 
-class SHProgressHUD: UIView {
+class ProgressHUD: UIView {
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var progressLabel: UILabel!
@@ -20,10 +20,10 @@ class SHProgressHUD: UIView {
      - parameter text: The text that will be displayed under the activity indicator.
      */
     static func showHUDAddedTo(view: UIView, withText text: String = "") {
-        guard let progressView = NSBundle(forClass: SHProgressHUD.self).loadNibNamed(String(SHProgressHUD),
-                                                                               owner: self,
-                                                                               options: nil).first as? SHProgressHUD else {
-                                                                                return
+        guard let progressView = NSBundle(forClass: ProgressHUD.self).loadNibNamed(String(ProgressHUD),
+                                                                                   owner: self,
+                                                                                   options: nil).first as? ProgressHUD else {
+                                                                                    return
         }
         
         progressView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
@@ -43,7 +43,7 @@ class SHProgressHUD: UIView {
      */
     static func hideHUDForView(view: UIView) {
         for subView in view.subviews {
-            if subView.isKindOfClass(SHProgressHUD) {
+            if subView.isKindOfClass(ProgressHUD) {
                 subView.removeFromSuperview()
                 break
             }
