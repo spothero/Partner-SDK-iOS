@@ -41,7 +41,10 @@ class ProgressHUD: UIView {
      
      - parameter view: The view that is going to be searched for a SHProgressHUD subview.
      */
-    static func hideHUDForView(view: UIView) {
+    static func hideHUDForView(view: UIView?) {
+        guard let view = view else {
+            return
+        }
         for subView in view.subviews {
             if subView.isKindOfClass(ProgressHUD) {
                 subView.removeFromSuperview()

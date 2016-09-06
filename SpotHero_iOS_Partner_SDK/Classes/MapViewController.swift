@@ -97,23 +97,26 @@ class MapViewController: UIViewController {
                                             completion: {
                                                 [weak self]
                                                 facilities, error in
-                                                for facility in facilities {
-                                                    let facilityAnnotation = FacilityAnnotation(title: facility.title,
-                                                        coordinate: facility.location.coordinate,
-                                                        facility: facility)
-                                                    self?.mapView.addAnnotation(facilityAnnotation)
-                                                }
-                                                guard let annotations = self?.mapView.annotations else {
-                                                    return
-                                                }
-                                                self?.mapView.showAnnotations(annotations, animated: true)
-                                                guard let view = self?.view else {
-                                                    return
-                                                }
-                                                ProgressHUD.hideHUDForView(view)
+                                                self?.addAndShowFacilityAnnotations(facilities)
+                                                //TODO: Show alert if request fails
+                                                ProgressHUD.hideHUDForView(self?.view)
                     })
             }
         }
+    }
+    
+    func addAndShowFacilityAnnotations(facilities: [Facility]?) {
+        guard let facilities = facilities else {
+            return
+        }
+        for facility in facilities {
+            let facilityAnnotation = FacilityAnnotation(title: facility.title,
+                                                        coordinate: facility.location.coordinate,
+                                                        facility: facility)
+            self.mapView.addAnnotation(facilityAnnotation)
+        }
+        let annotations = self.mapView.annotations
+        self.mapView.showAnnotations(annotations, animated: true)
     }
     
     //MARK: Actions
