@@ -36,7 +36,7 @@
                                                         <rect key="frame" x="0.0" y="28" width="560" height="60"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="gny-aK-qke" id="DsV-UZ-K9d">
-                                                            <rect key="frame" x="0.0" y="0.0" width="560" height="59.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="560" height="60"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chicago IL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Oq9-B0-NHM">
@@ -666,11 +666,120 @@
                     <navigationItem key="navigationItem" title="Checkout" id="WCZ-yy-K5c"/>
                     <connections>
                         <outlet property="tableView" destination="EGU-Jr-LbH" id="zx3-Hb-vc4"/>
+                        <segue destination="zS2-IA-i1X" kind="show" identifier="confirmation" id="8M0-Ns-u0Q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rVA-eg-c4O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1707" y="461"/>
+        </scene>
+        <!--Confirmation-->
+        <scene sceneID="e8O-ei-MLs">
+            <objects>
+                <viewController id="zS2-IA-i1X" customClass="ConfirmationViewController" customModule="SpotHero_iOS_Partner_SDK" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Z5F-W4-DrU"/>
+                        <viewControllerLayoutGuide type="bottom" id="h06-eT-4IK"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="XFJ-sf-1Gt">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mS2-Mx-PRQ">
+                                <rect key="frame" x="20" y="536" width="560" height="44"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="6DX-Mn-wvq"/>
+                                </constraints>
+                                <state key="normal" title="Done">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="doneButtonPressed:" destination="zS2-IA-i1X" eventType="touchUpInside" id="w2h-BE-4OY"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zui-VC-sSC">
+                                <rect key="frame" x="40" y="215" width="520" height="127"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Success! Your spot is confirmed." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3lV-Yt-SMl">
+                                        <rect key="frame" x="0.0" y="44" width="520" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="28"/>
+                                        <color key="textColor" red="0.078431372550000003" green="0.34901960780000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Check your email for your parking pass and other helpful details about the space." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VuP-ue-hJ2">
+                                        <rect key="frame" x="0.0" y="86" width="520" height="41"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Success Icon" translatesAutoresizingMaskIntoConstraints="NO" id="Y5A-O2-eTp">
+                                        <rect key="frame" x="242" y="0.0" width="36" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="36" id="Ed6-BF-e8D"/>
+                                            <constraint firstAttribute="width" secondItem="Y5A-O2-eTp" secondAttribute="height" multiplier="1:1" id="nYk-OG-AxB"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="Y5A-O2-eTp" firstAttribute="top" secondItem="zui-VC-sSC" secondAttribute="top" id="B8S-YY-b1f"/>
+                                    <constraint firstItem="Y5A-O2-eTp" firstAttribute="centerX" secondItem="zui-VC-sSC" secondAttribute="centerX" id="BLW-0R-GbE"/>
+                                    <constraint firstAttribute="trailing" secondItem="3lV-Yt-SMl" secondAttribute="trailing" id="EKb-Zu-t1w"/>
+                                    <constraint firstItem="3lV-Yt-SMl" firstAttribute="leading" secondItem="zui-VC-sSC" secondAttribute="leading" id="IPN-K4-pPZ"/>
+                                    <constraint firstAttribute="bottom" secondItem="VuP-ue-hJ2" secondAttribute="bottom" id="Pay-mc-D7T"/>
+                                    <constraint firstItem="VuP-ue-hJ2" firstAttribute="leading" secondItem="zui-VC-sSC" secondAttribute="leading" id="bQJ-nL-lQo"/>
+                                    <constraint firstItem="VuP-ue-hJ2" firstAttribute="top" secondItem="3lV-Yt-SMl" secondAttribute="bottom" constant="8" id="lKT-m5-WgI"/>
+                                    <constraint firstItem="3lV-Yt-SMl" firstAttribute="top" secondItem="zui-VC-sSC" secondAttribute="top" id="nTi-pB-K3O"/>
+                                    <constraint firstAttribute="trailing" secondItem="VuP-ue-hJ2" secondAttribute="trailing" id="sg5-hS-OEG"/>
+                                    <constraint firstItem="3lV-Yt-SMl" firstAttribute="top" secondItem="Y5A-O2-eTp" secondAttribute="bottom" constant="8" id="u9Y-BG-eUS"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="nTi-pB-K3O"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gy0-KZ-kUt">
+                                <rect key="frame" x="20" y="484" width="560" height="44"/>
+                                <color key="backgroundColor" red="0.078431372550000003" green="0.34901960780000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="sLJ-Vh-mX1"/>
+                                </constraints>
+                                <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="8" maxY="0.0"/>
+                                <state key="normal" title="Book Another" image="Rebook White">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="bookAnotherButtonPressed:" destination="zS2-IA-i1X" eventType="touchUpInside" id="gE6-rs-Chv"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="zui-VC-sSC" firstAttribute="centerY" secondItem="XFJ-sf-1Gt" secondAttribute="centerY" id="4HQ-69-K18"/>
+                            <constraint firstItem="zui-VC-sSC" firstAttribute="leading" secondItem="XFJ-sf-1Gt" secondAttribute="leading" constant="40" id="AHI-xY-Hr3"/>
+                            <constraint firstAttribute="trailing" secondItem="mS2-Mx-PRQ" secondAttribute="trailing" constant="20" id="Dh7-rh-UGp"/>
+                            <constraint firstItem="Gy0-KZ-kUt" firstAttribute="leading" secondItem="XFJ-sf-1Gt" secondAttribute="leading" constant="20" id="EG6-IO-d8j"/>
+                            <constraint firstAttribute="trailing" secondItem="Gy0-KZ-kUt" secondAttribute="trailing" constant="20" id="FDB-Kp-4Ty"/>
+                            <constraint firstItem="mS2-Mx-PRQ" firstAttribute="top" secondItem="Gy0-KZ-kUt" secondAttribute="bottom" constant="8" id="G4f-wV-LhJ"/>
+                            <constraint firstAttribute="trailing" secondItem="zui-VC-sSC" secondAttribute="trailing" constant="40" id="V0N-pf-1Fr"/>
+                            <constraint firstItem="mS2-Mx-PRQ" firstAttribute="leading" secondItem="XFJ-sf-1Gt" secondAttribute="leading" constant="20" id="xPn-5N-FB1"/>
+                            <constraint firstItem="h06-eT-4IK" firstAttribute="top" secondItem="mS2-Mx-PRQ" secondAttribute="bottom" constant="20" id="xfG-iv-aBv"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Confirmation" id="Txt-Xs-Tma">
+                        <barButtonItem key="rightBarButtonItem" title="Close" id="njw-HV-vTo">
+                            <connections>
+                                <action selector="closeButtonPressed:" destination="zS2-IA-i1X" id="CME-tm-WOa"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tx8-pg-d91" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2394" y="461"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="c9i-ca-sqo">
@@ -692,6 +801,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Rebook White" width="35" height="35"/>
+        <image name="Success Icon" width="41" height="41"/>
         <image name="credit_card" width="32" height="23"/>
         <image name="ic_expand_more_36pt" width="36" height="36"/>
     </resources>

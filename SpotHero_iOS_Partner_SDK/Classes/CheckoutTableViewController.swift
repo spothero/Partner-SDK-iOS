@@ -93,7 +93,7 @@ class CheckoutTableViewController: UIViewController {
             .first as! UIButton
         _button.addTarget(self,
                           action: #selector(self.paymentButtonPressed),
-                          forControlEvents: .TouchUpOutside)
+                          forControlEvents: .TouchUpInside)
         _button.backgroundColor = .shp_mutedGreen()
         _button.translatesAutoresizingMaskIntoConstraints = false
         return _button
@@ -137,7 +137,66 @@ class CheckoutTableViewController: UIViewController {
     //MARK: Actions
     
     func paymentButtonPressed() {
-        //TODO: Create Stripe token and reservation
+        guard let paymentCell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: CheckoutSection.PaymentInfo.rawValue)) as? PaymentInfoTableViewCell else {
+            assertionFailure("Cannot get payment cell")
+            return
+        }
+        
+        StripeWrapper.getToken(paymentCell.cardNumber,
+                               expirationMonth: paymentCell.expirationMonth,
+                               expirationYear: paymentCell.expirationYear,
+                               cvc: paymentCell.cvc) {
+                                token, error in
+                                guard let
+                                    facility = self.facility,
+                                    rate = self.rate else {
+                                        assertionFailure("No facility or rate")
+                                        return
+                                }
+                                
+                                guard let token = token else {
+                                    if let error = error as? StripeAPIError {
+                                        switch error {
+                                        case .CannotGetToken(let message):
+                                            AlertView.presentErrorAlertView(message, from: self)
+                                        }
+                                    } else {
+                                        AlertView.presentErrorAlertView(LocalizedStrings.CreateReservationErrorMessage, from: self)
+                                    }
+                                    
+                                    return
+                                }
+
+                                guard let
+                                    emailCell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: PersonalInfoRow.Email.rawValue, inSection: CheckoutSection.PersonalInfo.rawValue)) as? PersonalInfoTableViewCell,
+                                    email = emailCell.textField.text else {
+                                        assertionFailure("Cannot get email cell")
+                                        return
+                                }
+                                
+                                var license: String? = nil
+                                
+                                if let
+                                    licenseCell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: PersonalInfoRow.Email.rawValue, inSection: CheckoutSection.PersonalInfo.rawValue)) as? PersonalInfoTableViewCell
+                                    where facility.licensePlateRequired {
+                                    license = licenseCell.textField.text
+                                }
+                                
+                                ReservationAPI.createReservation(facility,
+                                                                 rate: rate,
+                                                                 email: email,
+                                                                 stripeToken: token,
+                                                                 license: license,
+                                                                 completion: {
+                                                                    reservation, error in
+                                                                    guard let reservation = reservation else {
+                                                                        AlertView.presentErrorAlertView(LocalizedStrings.CreateReservationErrorMessage, from: self)
+                                                                        return
+                                                                    }
+
+                                                                    self.performSegueWithIdentifier("confirmation", sender: nil)
+                                })
+        }
     }
     
     //MARK: Helpers

@@ -123,6 +123,8 @@
 		C71DFD4EA94C5FC5C3368C1DCD53B5F7 /* Reservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34E7CC00AA9EC0E340248D02A9E1F82 /* Reservation.swift */; };
 		C75A299B0860D3016DF20B1A5779903C /* NSBundle-KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E0527B6F28C55DD186FE2AD382616187 /* NSBundle-KIFAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C78EF3CB4FC7369BB2E9EB62DD231C2D /* KIFUIObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 6863E13C4D9C3DA825286E26213C105A /* KIFUIObject.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		C7B23A241D773D8C006E81A0 /* ConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B23A231D773D8C006E81A0 /* ConfirmationViewController.swift */; };
+		C7B23A261D776C6C006E81A0 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B23A251D776C6C006E81A0 /* AlertView.swift */; };
 		C8D3D09E32433113799CE6FD434D6FEE /* KIF-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A4118229E82AF62B5973027C25E7FBDE /* KIF-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C97B7C0A7D47F9089B279FEB3B338A4F /* KIFUITestActor-ConditionalTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 117DC4EDDFFBE0C4A7AB0F057D7D3564 /* KIFUITestActor-ConditionalTests.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		CB567CAB623EE579448E24D486300050 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A505AC0285FE14B505B6D026D35B6DC /* QuartzCore.framework */; };
@@ -418,6 +420,8 @@
 		C1D166214B7CD4227BA16F3C79AB2CBD /* UIWindow-KIFAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIWindow-KIFAdditions.h"; path = "Additions/UIWindow-KIFAdditions.h"; sourceTree = "<group>"; };
 		C46B6258C3006561FC37367145F9196E /* UIEvent+KIFAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIEvent+KIFAdditions.h"; path = "Additions/UIEvent+KIFAdditions.h"; sourceTree = "<group>"; };
 		C711F7DF1D70F5BF0016B44A /* NSBundle+SpotHeroPartner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSBundle+SpotHeroPartner.swift"; sourceTree = "<group>"; };
+		C7B23A231D773D8C006E81A0 /* ConfirmationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmationViewController.swift; sourceTree = "<group>"; };
+		C7B23A251D776C6C006E81A0 /* AlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		CC94D1BD3EC065C485FFBABA54E7D7B6 /* NSException-KIFAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSException-KIFAdditions.h"; path = "Additions/NSException-KIFAdditions.h"; sourceTree = "<group>"; };
 		CD83BDADD1EF6113388DB8CC50916402 /* ValidatorCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ValidatorCell.swift; sourceTree = "<group>"; };
 		CE89F7FA8E9152B3BB62DEC89FC3E565 /* UIColor+SpotHeroPartner.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIColor+SpotHeroPartner.swift"; sourceTree = "<group>"; };
@@ -693,6 +697,7 @@
 				DF21268AFD4F82AD587FFF0A7CBE7CBB /* NumberFormatter.swift */,
 				80EC3F0BB6441E18AC69A95AE797629C /* StringEnum.swift */,
 				796A6B39D135BDC7EC287A03DC21B027 /* Validator.swift */,
+				C7B23A251D776C6C006E81A0 /* AlertView.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -804,6 +809,7 @@
 				CFE9D96790FF2A5BE5AFA9B35CBCE159 /* Network */,
 				344486A8F32034D3EDE323C31FD8C4A0 /* Utilities */,
 				FA3134B41C11401968196EF36A4F61A1 /* Views */,
+				C7B23A231D773D8C006E81A0 /* ConfirmationViewController.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -1381,6 +1387,7 @@
 				AA570AB97E7EC7036DDDB24276624ED8 /* Constants.swift in Sources */,
 				50B90E72470E5244E62A0E8B29FCB5F9 /* CountableIntEnum.swift in Sources */,
 				FB544CF9FF4E7627DA7CA7F680B9FF89 /* DateFormatter.swift in Sources */,
+				C7B23A241D773D8C006E81A0 /* ConfirmationViewController.swift in Sources */,
 				3C39B32E0943A39AE71CD084844AF117 /* DatePickerView.swift in Sources */,
 				4965BEFD2202690BCA698BD04A65A725 /* DLog.swift in Sources */,
 				5ED8AEF82DB6638404B1E142B05AA221 /* Facility.swift in Sources */,
@@ -1401,6 +1408,7 @@
 				9AF94CAC81CEF2F119F91AFD5E080E5D /* NumberFormatter.swift in Sources */,
 				8DA977731940DF4F97EB3B6595B11A0B /* PaymentButton.swift in Sources */,
 				9C0BCB1404FA86D7617586B261F6321B /* PaymentInfoTableViewCell.swift in Sources */,
+				C7B23A261D776C6C006E81A0 /* AlertView.swift in Sources */,
 				A0E1E3011A957210090DF3C938F03C61 /* PersonalInfoTableViewCell.swift in Sources */,
 				7B2F4A6BC3BFD4368FC786ED212BB168 /* PredictionController.swift in Sources */,
 				E119C5E2E9B7A2BD8D266B1446BFB1C9 /* PredictionTableViewCell.swift in Sources */,
