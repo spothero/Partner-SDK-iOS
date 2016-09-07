@@ -81,7 +81,7 @@ enum LocalizedStrings {
                                         comment: "An American Express Credit Card")
     static let MasterCard = NSLocalizedString("MasterCard",
                                         comment: "A MasterCard Credit Card")
-    static let Discover = NSLocalizedString("Visa",
+    static let Discover = NSLocalizedString("Discover",
                                         comment: "A Discover Credit Card")
     static let HoursBetweenDatesFormat = NSLocalizedString("%.2f hours",
                                                            comment: "Hours between dates format")
@@ -104,4 +104,6 @@ enum LocalizedStrings {
     static let Error = NSLocalizedString("Error",
                                          comment: "Title for an Error message")
     static let OK = NSLocalizedString("OK", comment: "Title for button to dismiss an error")
+    static let Loading = NSLocalizedString("Loading...",
+                                           comment: "Loading progress HUD")
 }

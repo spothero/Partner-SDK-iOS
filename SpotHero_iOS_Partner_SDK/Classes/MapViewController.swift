@@ -87,7 +87,7 @@ class MapViewController: UIViewController {
         guard let prediction = self.prediction else {
             return
         }
-        //TODO: Show progress HUD
+        ProgressHUD.showHUDAddedTo(self.view, withText: LocalizedStrings.Loading)
         GooglePlacesWrapper.getPlaceDetails(prediction) {
             placeDetails, error in
             if let placeDetails = placeDetails {
@@ -97,20 +97,28 @@ class MapViewController: UIViewController {
                                             completion: {
                                                 [weak self]
                                                 facilities, error in
-                                                for facility in facilities {
-                                                    let facilityAnnotation = FacilityAnnotation(title: facility.title,
-                                                        coordinate: facility.location.coordinate,
-                                                        facility: facility)
-                                                    self?.mapView.addAnnotation(facilityAnnotation)
-                                                }
-                                                guard let annotations = self?.mapView.annotations else {
-                                                    return
-                                                }
-                                                self?.mapView.showAnnotations(annotations, animated: true)
-                                                //TODO: Hide progress HUD
+                                                self?.addAndShowFacilityAnnotations(facilities)
+                                                //TODO: Show alert if request fails
+                                                ProgressHUD.hideHUDForView(self?.view)
                     })
             }
         }
+    }
+    
+    func addAndShowFacilityAnnotations(facilities: [Facility]?) {
+        //TODO: Look into caching annotations like the main app
+        self.mapView.removeAnnotations(self.mapView.annotations)
+        guard let facilities = facilities else {
+            return
+        }
+        for facility in facilities {
+            let facilityAnnotation = FacilityAnnotation(title: facility.title,
+                                                        coordinate: facility.location.coordinate,
+                                                        facility: facility)
+            self.mapView.addAnnotation(facilityAnnotation)
+        }
+        let annotations = self.mapView.annotations
+        self.mapView.showAnnotations(annotations, animated: true)
     }
     
     //MARK: Actions
