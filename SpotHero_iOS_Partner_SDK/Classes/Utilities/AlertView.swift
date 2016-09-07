@@ -11,14 +11,13 @@ import UIKit
 enum AlertView {
     static func presentErrorAlertView(message: String, from viewController: UIViewController?) {
         guard let viewController = viewController else {
-            // TODO: Present from top window vc
             return
         }
         
-        let alert = UIAlertController(title: "Error",
+        let alert = UIAlertController(title: LocalizedStrings.Error,
                                       message: message,
                                       preferredStyle: .Alert)
-        alert.addAction(UIAlertAction(title: "OK",
+        alert.addAction(UIAlertAction(title: LocalizedStrings.OK,
                                       style: .Default,
                                       handler: nil))
         viewController.presentViewController(alert,

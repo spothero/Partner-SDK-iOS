@@ -101,4 +101,7 @@ enum LocalizedStrings {
                                                                  comment: "Error message for when a reservation could not be created")
     static let UnknownError = NSLocalizedString( "Unknown Error",
                                                  comment: "Error message when an unknown issue has occured")
+    static let Error = NSLocalizedString("Error",
+                                         comment: "Title for an Error message")
+    static let OK = NSLocalizedString("OK", comment: "Title for button to dismiss an error")
 }
