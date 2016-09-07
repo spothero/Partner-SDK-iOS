@@ -32,7 +32,6 @@ class PaymentInfoTableViewCell: UITableViewCell {
         }
     }
     
-    
     var creditCardValid: Bool? {
         didSet {
             self.fieldValidChanged()
