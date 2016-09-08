@@ -137,16 +137,20 @@ class CheckoutTableViewController: UIViewController {
     //MARK: Actions
     
     func paymentButtonPressed() {
-        getStripeToken {
+        ProgressHUD.showHUDAddedTo(self.view, withText: LocalizedStrings.Loading)
+        self.getStripeToken {
             [weak self]
             token in
-            self?.createReservation(token)
+            self?.createReservation(token) {
+                ProgressHUD.hideHUDForView(self?.view)
+                self?.performSegueWithIdentifier(Constants.Segue.Confirmation, sender: nil)
+            }
         }
     }
     
     //MARK: Helpers
     
-    func getStripeToken(completion: (String)->()) {
+    func getStripeToken(completion: (String) -> ()) {
         guard let paymentCell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: CheckoutSection.PaymentInfo.rawValue)) as? PaymentInfoTableViewCell else {
             assertionFailure("Cannot get payment cell")
             return
@@ -175,7 +179,7 @@ class CheckoutTableViewController: UIViewController {
         }
     }
     
-    func createReservation(token: String) {
+    func createReservation(token: String, completion: () -> ()) {
         guard let
             facility = self.facility,
             rate = self.rate else {
@@ -204,14 +208,13 @@ class CheckoutTableViewController: UIViewController {
                                          stripeToken: token,
                                          license: license,
                                          completion: {
-                                            [weak self]
                                             reservation, error in
                                             guard let reservation = reservation else {
                                                 AlertView.presentErrorAlertView(LocalizedStrings.CreateReservationErrorMessage, from: self)
                                                 return
                                             }
                                             
-                                            self?.performSegueWithIdentifier(Constants.Segue.Confirmation, sender: nil)
+                                            completion()
         })
     }
     
