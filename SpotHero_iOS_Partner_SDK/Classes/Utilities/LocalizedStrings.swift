@@ -97,6 +97,13 @@ enum LocalizedStrings {
                                                      comment: "Enter License Plate Number")
     static let LicensePlateErrorMessage = NSLocalizedString("Please enter a valid license plate number",
                                                             comment: "Message to indicate that a license plate number is invalid")
+    static let CreateReservationErrorMessage = NSLocalizedString("Something went wrong with creating the reservation. Please try again.",
+                                                                 comment: "Error message for when a reservation could not be created")
+    static let UnknownError = NSLocalizedString( "Unknown Error",
+                                                 comment: "Error message when an unknown issue has occured")
+    static let Error = NSLocalizedString("Error",
+                                         comment: "Title for an Error message")
+    static let OK = NSLocalizedString("OK", comment: "Title for button to dismiss an error")
     static let Loading = NSLocalizedString("Loading...",
                                            comment: "Loading progress HUD")
 }

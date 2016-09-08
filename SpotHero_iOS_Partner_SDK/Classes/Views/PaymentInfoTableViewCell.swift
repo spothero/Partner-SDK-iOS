@@ -23,6 +23,9 @@ class PaymentInfoTableViewCell: UITableViewCell {
     
     var delegate: ValidatorCellDelegate?
     var cardNumber = ""
+    var expirationMonth = ""
+    var expirationYear = ""
+    var cvc = ""
     var cardType: CardType = .Unknown {
         didSet {
             self.cardImage.image = self.cardType.image()
@@ -226,7 +229,9 @@ extension PaymentInfoTableViewCell: UITextFieldDelegate {
             case self.expirationDateTextField:
                 let parts = text.componentsSeparatedByString("/")
                 if let month = parts.first, year = parts.last {
-                    try Validator.validateExpiration(month, year: "20\(year)")
+                    self.expirationMonth = month
+                    self.expirationYear = "20\(year)"
+                    try Validator.validateExpiration(self.expirationMonth, year: self.expirationYear)
                 } else {
                     throw ValidatorError.FieldInvalid(fieldName: LocalizedStrings.ExpirationDate, message: LocalizedStrings.InvalidDateErrorMessage)
                 }
@@ -238,6 +243,7 @@ extension PaymentInfoTableViewCell: UITextFieldDelegate {
                     try Validator.validateCVC(text)
                 }
                 self.cvcValid = true
+                self.cvc = text
             default:
                 break
             }

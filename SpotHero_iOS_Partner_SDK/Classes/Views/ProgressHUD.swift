@@ -1,5 +1,5 @@
 //
-//  SHProgressHUD.swift
+//  ProgressHUD.swift
 //  Pods
 //
 //  Created by Husein Kareem on 9/1/16.
@@ -20,7 +20,7 @@ class ProgressHUD: UIView {
      - parameter text: The text that will be displayed under the activity indicator.
      */
     static func showHUDAddedTo(view: UIView, withText text: String = "") {
-        guard let progressView = NSBundle(forClass: ProgressHUD.self).loadNibNamed(String(ProgressHUD),
+        guard let progressView = NSBundle.shp_resourceBundle().loadNibNamed(String(ProgressHUD),
                                                                                    owner: self,
                                                                                    options: nil).first as? ProgressHUD else {
                                                                                     return
