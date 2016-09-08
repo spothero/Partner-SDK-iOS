@@ -141,18 +141,31 @@ class CheckoutTableViewController: UIViewController {
         self.getStripeToken {
             [weak self]
             token in
-            self?.createReservation(token) {
+            guard let token = token else {
                 ProgressHUD.hideHUDForView(self?.view)
-                self?.performSegueWithIdentifier(Constants.Segue.Confirmation, sender: nil)
+                return
+            }
+            
+            self?.createReservation(token) { success in
+                ProgressHUD.hideHUDForView(self?.view)
+                if success {
+                    self?.performSegueWithIdentifier(Constants.Segue.Confirmation, sender: nil)
+                }
             }
         }
     }
     
     //MARK: Helpers
     
-    func getStripeToken(completion: (String) -> ()) {
+    /**
+     Gets a stripe token for the user's credit card
+     
+     - parameter completion: Passes in stripe token if it is able to create it. Otherwise nil is passed in.
+     */
+    func getStripeToken(completion: (String?) -> ()) {
         guard let paymentCell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: CheckoutSection.PaymentInfo.rawValue)) as? PaymentInfoTableViewCell else {
             assertionFailure("Cannot get payment cell")
+            completion(nil)
             return
         }
         
@@ -171,7 +184,7 @@ class CheckoutTableViewController: UIViewController {
                                     } else {
                                         AlertView.presentErrorAlertView(LocalizedStrings.CreateReservationErrorMessage, from: self)
                                     }
-                                    
+                                    completion(nil)
                                     return
                                 }
                                 
@@ -179,11 +192,18 @@ class CheckoutTableViewController: UIViewController {
         }
     }
     
-    func createReservation(token: String, completion: () -> ()) {
+    /**
+     creates the reservation. ONLY CALL AFTER GETTING STRIPE TOKEN
+     
+     - parameter token:      Stripe Token
+     - parameter completion: Passing in a bool. True if reservation was successfully created, false if an error occured
+     */
+    func createReservation(token: String, completion: (Bool) -> ()) {
         guard let
             facility = self.facility,
             rate = self.rate else {
                 assertionFailure("No facility or rate")
+                completion(false)
                 return
         }
         
@@ -191,6 +211,7 @@ class CheckoutTableViewController: UIViewController {
             emailCell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: PersonalInfoRow.Email.rawValue, inSection: CheckoutSection.PersonalInfo.rawValue)) as? PersonalInfoTableViewCell,
             email = emailCell.textField.text else {
                 assertionFailure("Cannot get email cell")
+                completion(false)
                 return
         }
         
@@ -211,10 +232,11 @@ class CheckoutTableViewController: UIViewController {
                                             reservation, error in
                                             guard let reservation = reservation else {
                                                 AlertView.presentErrorAlertView(LocalizedStrings.CreateReservationErrorMessage, from: self)
+                                                completion(false)
                                                 return
                                             }
                                             
-                                            completion()
+                                            completion(true)
         })
     }
     
