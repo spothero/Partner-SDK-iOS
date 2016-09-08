@@ -1,5 +1,5 @@
 //
-//  SHProgressHUD.swift
+//  ProgressHUD.swift
 //  Pods
 //
 //  Created by Husein Kareem on 9/1/16.

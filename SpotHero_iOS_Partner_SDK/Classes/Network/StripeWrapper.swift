@@ -36,7 +36,7 @@ struct StripeWrapper {
             
             NSURLSession.sharedSession().dataTaskWithRequest(request, completionHandler: {
                 data, response, error in
-                NSOperationQueue.mainQueue().addOperationWithBlock({ 
+                NSOperationQueue.mainQueue().addOperationWithBlock {
                     guard let data = data else {
                         completion(nil, error)
                         return
@@ -56,7 +56,7 @@ struct StripeWrapper {
                     } catch let error {
                         completion(nil, error)
                     }
-                })
+                }
             }).resume()
         }
     }

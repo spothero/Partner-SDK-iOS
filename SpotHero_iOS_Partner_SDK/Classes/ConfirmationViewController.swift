@@ -17,6 +17,7 @@ class ConfirmationViewController: UIViewController {
     }
     
     @IBAction func bookAnotherButtonPressed(sender: AnyObject) {
+        // Got first ViewController to be able to start the rental process over again
         self.navigationController?.popToRootViewControllerAnimated(true)
     }
     

@@ -56,14 +56,14 @@ struct ReservationAPI {
                                                             completion(nil, error)
         }) {
             JSON in
-            NSOperationQueue.mainQueue().addOperationWithBlock({
+            NSOperationQueue.mainQueue().addOperationWithBlock {
                 do {
                     let reservation  = try Reservation(json: JSON)
                     completion(reservation, nil)
                 } catch let error {
                     completion(nil, error)
                 }
-            })
+            }
         }
     }
     

@@ -137,6 +137,16 @@ class CheckoutTableViewController: UIViewController {
     //MARK: Actions
     
     func paymentButtonPressed() {
+        getStripeToken {
+            [weak self]
+            token in
+            self?.createReservation(token)
+        }
+    }
+    
+    //MARK: Helpers
+    
+    func getStripeToken(completion: (String)->()) {
         guard let paymentCell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: CheckoutSection.PaymentInfo.rawValue)) as? PaymentInfoTableViewCell else {
             assertionFailure("Cannot get payment cell")
             return
@@ -148,13 +158,6 @@ class CheckoutTableViewController: UIViewController {
                                cvc: paymentCell.cvc) {
                                 [weak self]
                                 token, error in
-                                guard let
-                                    facility = self?.facility,
-                                    rate = self?.rate else {
-                                        assertionFailure("No facility or rate")
-                                        return
-                                }
-                                
                                 guard let token = token else {
                                     if let error = error as? StripeAPIError {
                                         switch error {
@@ -167,40 +170,50 @@ class CheckoutTableViewController: UIViewController {
                                     
                                     return
                                 }
-
-                                guard let
-                                    emailCell = self?.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: PersonalInfoRow.Email.rawValue, inSection: CheckoutSection.PersonalInfo.rawValue)) as? PersonalInfoTableViewCell,
-                                    email = emailCell.textField.text else {
-                                        assertionFailure("Cannot get email cell")
-                                        return
-                                }
                                 
-                                var license: String? 
-                                
-                                if let
-                                    licenseCell = self?.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: PersonalInfoRow.Email.rawValue, inSection: CheckoutSection.PersonalInfo.rawValue)) as? PersonalInfoTableViewCell
-                                    where facility.licensePlateRequired {
-                                    license = licenseCell.textField.text
-                                }
-                                
-                                ReservationAPI.createReservation(facility,
-                                                                 rate: rate,
-                                                                 email: email,
-                                                                 stripeToken: token,
-                                                                 license: license,
-                                                                 completion: {
-                                                                    reservation, error in
-                                                                    guard let reservation = reservation else {
-                                                                        AlertView.presentErrorAlertView(LocalizedStrings.CreateReservationErrorMessage, from: self)
-                                                                        return
-                                                                    }
-
-                                                                    self?.performSegueWithIdentifier(Constants.Segue.Confirmation, sender: nil)
-                                })
+                                completion(token)
         }
     }
     
-    //MARK: Helpers
+    func createReservation(token: String) {
+        guard let
+            facility = self.facility,
+            rate = self.rate else {
+                assertionFailure("No facility or rate")
+                return
+        }
+        
+        guard let
+            emailCell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: PersonalInfoRow.Email.rawValue, inSection: CheckoutSection.PersonalInfo.rawValue)) as? PersonalInfoTableViewCell,
+            email = emailCell.textField.text else {
+                assertionFailure("Cannot get email cell")
+                return
+        }
+        
+        var license: String?
+        
+        if let
+            licenseCell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: PersonalInfoRow.Email.rawValue, inSection: CheckoutSection.PersonalInfo.rawValue)) as? PersonalInfoTableViewCell
+            where facility.licensePlateRequired {
+            license = licenseCell.textField.text
+        }
+        
+        ReservationAPI.createReservation(facility,
+                                         rate: rate,
+                                         email: email,
+                                         stripeToken: token,
+                                         license: license,
+                                         completion: {
+                                            [weak self]
+                                            reservation, error in
+                                            guard let reservation = reservation else {
+                                                AlertView.presentErrorAlertView(LocalizedStrings.CreateReservationErrorMessage, from: self)
+                                                return
+                                            }
+                                            
+                                            self?.performSegueWithIdentifier(Constants.Segue.Confirmation, sender: nil)
+        })
+    }
     
     private func configureCell(cell: ReservationInfoTableViewCell,
                        row: ReservationInfoRow,
