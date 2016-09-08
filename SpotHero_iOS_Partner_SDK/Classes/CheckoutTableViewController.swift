@@ -146,10 +146,13 @@ class CheckoutTableViewController: UIViewController {
                 return
             }
             
-            self?.createReservation(token) { success in
+            self?.createReservation(token) {
+                success in
                 ProgressHUD.hideHUDForView(self?.view)
                 if success {
                     self?.performSegueWithIdentifier(Constants.Segue.Confirmation, sender: nil)
+                } else {
+                    AlertView.presentErrorAlertView(LocalizedStrings.CreateReservationErrorMessage, from: self)
                 }
             }
         }
@@ -231,7 +234,6 @@ class CheckoutTableViewController: UIViewController {
                                          completion: {
                                             reservation, error in
                                             guard let reservation = reservation else {
-                                                AlertView.presentErrorAlertView(LocalizedStrings.CreateReservationErrorMessage, from: self)
                                                 completion(false)
                                                 return
                                             }
