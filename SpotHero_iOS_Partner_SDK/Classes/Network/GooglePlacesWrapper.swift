@@ -51,31 +51,34 @@ struct GooglePlacesWrapper {
         if let url = urlComponents.URL {
             NSURLSession.sharedSession().dataTaskWithURL(url, completionHandler: {
                 data, response, error in
-                guard let data = data else {
-                    completion([], error)
-                    return
-                }
-                
-                do {
-                    let responseDictionary = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions()) as? JSONDictionary
-                    if let predictionDictionaries = responseDictionary?["predictions"] as? [JSONDictionary] where predictionDictionaries.count > 0 {
-                        var predictions = [GooglePlacesPrediction]()
-                        for predictionDictionary in predictionDictionaries {
-                            let predition = try GooglePlacesPrediction(json: predictionDictionary)
-                            predictions.append(predition)
-                        }
-                        completion(predictions, nil)
-                    } else {
-                        completion([], GooglePlacesError.NoPredictions)
+                NSOperationQueue.mainQueue().addOperationWithBlock {
+                    guard let data = data else {
+                        completion([], error)
+                        return
                     }
-                } catch let error {
-                    completion([], error)
+                    
+                    do {
+                        let responseDictionary = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions()) as? JSONDictionary
+                        if let predictionDictionaries = responseDictionary?["predictions"] as? [JSONDictionary] where predictionDictionaries.count > 0 {
+                            var predictions = [GooglePlacesPrediction]()
+                            for predictionDictionary in predictionDictionaries {
+                                let predition = try GooglePlacesPrediction(json: predictionDictionary)
+                                predictions.append(predition)
+                            }
+                            completion(predictions, nil)
+                        } else {
+                            completion([], GooglePlacesError.NoPredictions)
+                        }
+                    } catch let error {
+                        completion([], error)
+                    }
                 }
             }).resume()
         } else {
             assertionFailure("Unable to form URL")
             completion([], GooglePlacesError.CannotFormURL)
         }
+            
     }
     
     /**
