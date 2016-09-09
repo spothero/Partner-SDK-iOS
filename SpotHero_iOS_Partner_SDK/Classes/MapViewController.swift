@@ -155,6 +155,7 @@ class MapViewController: UIViewController {
         let hoursBetweenDates = self.startEndDateDifferenceInSeconds / Constants.SecondsInHour
         self.collapsedSearchBar.text = String(format: LocalizedStrings.HoursBetweenDatesFormat, hoursBetweenDates)
         self.fetchFacilities()
+        self.searchBar.resignFirstResponder()
     }
     
     //TODO: Remove when facility UI is done
@@ -195,11 +196,13 @@ extension MapViewController: PredictionControllerDelegate {
         self.searchBar.text = prediction.description
         self.timeSelectionView.showTimeSelectionView(true)
         self.showCollapsedSearchBar()
+        self.searchBar.resignFirstResponder()
     }
     
     func didTapXButton() {
         self.timeSelectionView.showTimeSelectionView(true)
         self.searchSpotsButton.hidden = true
+        self.searchBar.resignFirstResponder()
     }
 }
 
