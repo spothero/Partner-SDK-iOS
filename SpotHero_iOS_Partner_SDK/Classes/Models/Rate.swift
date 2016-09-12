@@ -49,4 +49,16 @@ extension Rate {
             self.ends = NSDate()
         }
     }
+    
+    func isWheelchairAccessible() -> Bool {
+        if let wheelchairDict = self.amenities["wheelchair"] {
+            if let visible = wheelchairDict["visible"] as? Bool {
+                return visible
+            } else {
+                return false
+            }
+        } else {
+            return false
+        }
+    }
 }
