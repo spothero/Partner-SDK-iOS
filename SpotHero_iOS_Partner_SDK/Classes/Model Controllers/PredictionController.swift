@@ -12,10 +12,12 @@ protocol PredictionControllerDelegate {
     func didUpdatePredictions(predictions: [GooglePlacesPrediction])
     func didSelectPrediction(prediction: GooglePlacesPrediction)
     func didTapXButton()
+    func didTapSearchButton()
+    func shouldSelectFirstPrediction()
 }
 
 class PredictionController: NSObject {
-    private var predictions = [GooglePlacesPrediction]() {
+    var predictions = [GooglePlacesPrediction]() {
         didSet {
             guard let delegate = self.delegate?.didUpdatePredictions(self.predictions) else {
                 return assertionFailure("delegate is nil")
@@ -70,14 +72,19 @@ extension PredictionController: UITableViewDelegate {
 
 extension PredictionController: UISearchBarDelegate {
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        GooglePlacesWrapper.getPredictions(searchText) { (predictions, error) -> (Void) in
-            NSOperationQueue.mainQueue().addOperationWithBlock({
-                self.predictions = predictions
-            })
+        GooglePlacesWrapper.getPredictions(searchText) {
+            [weak self]
+            predictions, error in
+            self?.predictions = predictions
+            self?.delegate?.shouldSelectFirstPrediction()
         }
         
         if (searchText.isEmpty) {
             self.delegate?.didTapXButton()
         }
+    }
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        self.delegate?.didTapSearchButton()
     }
 }

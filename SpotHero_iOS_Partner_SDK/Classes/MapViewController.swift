@@ -204,6 +204,24 @@ extension MapViewController: PredictionControllerDelegate {
         self.searchSpotsButton.hidden = true
         self.searchBar.resignFirstResponder()
     }
+    
+    func didTapSearchButton() {
+        guard self.predictionController.predictions.count > 0 else {
+            return
+        }
+        
+        let indexPath = NSIndexPath(forRow: 0, inSection: 0)
+        self.predictionController.tableView(self.predictionTableView, didSelectRowAtIndexPath: indexPath)
+    }
+    
+    func shouldSelectFirstPrediction() {
+        guard self.predictionController.predictions.count > 0 else {
+            return
+        }
+        
+        let indexPath = NSIndexPath(forRow: 0, inSection: 0)
+        self.predictionTableView.selectRowAtIndexPath(indexPath, animated: true, scrollPosition: .None)
+    }
 }
 
 //MARK: ShowTimeSelectionViewDelegate
