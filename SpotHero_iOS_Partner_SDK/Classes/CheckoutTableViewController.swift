@@ -111,7 +111,7 @@ class CheckoutTableViewController: UIViewController {
     }
     
     func registerForKeyboardNotifications() {
-        NSNotificationCenter.defaultCenter().addObserverForName(UIKeyboardDidShowNotification,
+        NSNotificationCenter.defaultCenter().addObserverForName(UIKeyboardWillShowNotification,
                                                                 object: nil,
                                                                 queue: nil) {
                                                                     [weak self]
@@ -126,7 +126,7 @@ class CheckoutTableViewController: UIViewController {
                                                                     self?.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: rect.height, right: 0)
         }
         
-        NSNotificationCenter.defaultCenter().addObserverForName(UIKeyboardDidHideNotification,
+        NSNotificationCenter.defaultCenter().addObserverForName(UIKeyboardWillHideNotification,
                                                                 object: nil,
                                                                 queue: nil) {
                                                                     [weak self]
