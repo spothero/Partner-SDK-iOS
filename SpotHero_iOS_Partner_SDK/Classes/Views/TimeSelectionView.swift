@@ -20,6 +20,7 @@ protocol ShowTimeSelectionViewDelegate {
 
 protocol StartEndDateDelegate {
     func didChangeStartEndDate(startDate startDate: NSDate, endDate: NSDate)
+    func didSelectStartEndView()
 }
 
 class TimeSelectionView: UIView {
@@ -42,6 +43,7 @@ class TimeSelectionView: UIView {
                 self.startDateLabel.textColor = .shp_spotHeroBlue()
                 self.startTimeLabel.textColor = .shp_spotHeroBlue()
                 self.endViewSelected = false
+                self.startEndDateDelegate?.didSelectStartEndView()
             } else {
                 self.startDateLabel.textColor = .blackColor()
                 self.startTimeLabel.textColor = .blackColor()
@@ -54,6 +56,7 @@ class TimeSelectionView: UIView {
                 self.endDateLabel.textColor = .shp_spotHeroBlue()
                 self.endTimeLabel.textColor = .shp_spotHeroBlue()
                 self.startViewSelected = false
+                self.startEndDateDelegate?.didSelectStartEndView()
             } else {
                 self.endDateLabel.textColor = .blackColor()
                 self.endTimeLabel.textColor = .blackColor()

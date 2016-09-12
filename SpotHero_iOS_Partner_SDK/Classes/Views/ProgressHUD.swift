@@ -34,6 +34,7 @@ class ProgressHUD: UIView {
         
         view.addSubview(progressView)
         view.bringSubviewToFront(progressView)
+        view.userInteractionEnabled = false
     }
     
     /**
@@ -45,6 +46,9 @@ class ProgressHUD: UIView {
         guard let view = view else {
             return
         }
+        
+        view.userInteractionEnabled = true
+        
         for subView in view.subviews {
             if subView.isKindOfClass(ProgressHUD) {
                 subView.removeFromSuperview()
