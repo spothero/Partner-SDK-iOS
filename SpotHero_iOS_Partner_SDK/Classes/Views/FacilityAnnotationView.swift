@@ -59,10 +59,10 @@ class FacilityAnnotationView: MKAnnotationView {
         self.addSubview(imageView)
         
         self.priceLabel = AnnotationLabel(frame: self.labelBoundsWithScale(1))
-        guard let price = facilityAnnotation?.facility?.rates.first?.displayPrice else {
+        guard let displayPrice = facilityAnnotation?.facility?.displayPrice() else {
             return
         }
-        self.priceLabel?.text = "$\(price)"
+        self.priceLabel?.text = "$\(displayPrice)"
         self.priceLabel?.textColor = .shp_spotHeroBlue()
         self.priceLabel?.font = UIFont.systemFontOfSize(self.priceLabel?.text?.characters.count > 3 ? AnnotationLabel.minLabelFontSize : AnnotationLabel.maxLabelFontSize)
         self.priceLabel?.autoresizingMask = [
