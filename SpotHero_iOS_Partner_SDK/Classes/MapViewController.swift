@@ -149,13 +149,7 @@ class MapViewController: UIViewController {
     }
     
     @IBAction func searchSpotsButtonPressed(sender: AnyObject) {
-        self.searchSpotsButton.hidden = true
-        self.collapsedSearchBar.show()
-        self.timeSelectionView.showTimeSelectionView(false)
-        let hoursBetweenDates = self.startEndDateDifferenceInSeconds / Constants.SecondsInHour
-        self.collapsedSearchBar.text = String(format: LocalizedStrings.HoursBetweenDatesFormat, hoursBetweenDates)
-        self.fetchFacilities()
-        self.searchBar.resignFirstResponder()
+        self.searchSpots()
     }
     
     //TODO: Remove when facility UI is done
@@ -164,6 +158,16 @@ class MapViewController: UIViewController {
             vc.facility = self.facilities.first
             vc.rate = self.facilities.first?.rates.first
         }
+    }
+    
+    func searchSpots() {
+        self.searchSpotsButton.hidden = true
+        self.collapsedSearchBar.show()
+        self.timeSelectionView.showTimeSelectionView(false)
+        let hoursBetweenDates = self.startEndDateDifferenceInSeconds / Constants.SecondsInHour
+        self.collapsedSearchBar.text = String(format: LocalizedStrings.HoursBetweenDatesFormat, hoursBetweenDates)
+        self.fetchFacilities()
+        self.searchBar.resignFirstResponder()
     }
 }
 
@@ -207,11 +211,13 @@ extension MapViewController: PredictionControllerDelegate {
     
     func didTapSearchButton() {
         guard self.predictionController.predictions.count > 0 else {
+            self.fetchFacilities()
             return
         }
         
         let indexPath = NSIndexPath(forRow: 0, inSection: 0)
         self.predictionController.tableView(self.predictionTableView, didSelectRowAtIndexPath: indexPath)
+        self.searchSpots()
     }
     
     func shouldSelectFirstPrediction() {
@@ -250,6 +256,10 @@ extension MapViewController: StartEndDateDelegate {
         self.startDate = startDate
         self.endDate = endDate
         self.startEndDateDifferenceInSeconds = endDate.timeIntervalSinceDate(startDate)
+    }
+    
+    func didSelectStartEndView() {
+        searchBar.resignFirstResponder()
     }
 }
 
