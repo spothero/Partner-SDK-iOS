@@ -32,8 +32,8 @@ class SpotCardCollectionViewCell: UICollectionViewCell {
         
         self.layer.cornerRadius = HeightsAndLengths.standardCornerRadius
         self.backgroundColor = .whiteColor()
-        
-        self.buyButton.backgroundColor = .shp_spotHeroBlue()
+        self.layer.borderWidth = 1.0
+        self.layer.borderColor = UIColor.grayColor().CGColor
     }
     
     @IBAction func didTapBuyButton(button: UIButton) {
