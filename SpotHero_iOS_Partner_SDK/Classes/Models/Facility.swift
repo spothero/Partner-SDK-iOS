@@ -50,4 +50,13 @@ extension Facility {
         self.state = try details.shp_string("state")
         self.streetAddress = try details.shp_string("street_address")
     }
+    
+    func displayPrice() -> String {
+        guard let rate = self.rates.first else {
+            assertionFailure("facility has no rates")
+            return ""
+        }
+        
+        return String(rate.displayPrice)
+    }
 }
