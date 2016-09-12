@@ -78,7 +78,6 @@ struct GooglePlacesWrapper {
             assertionFailure("Unable to form URL")
             completion([], GooglePlacesError.CannotFormURL)
         }
-            
     }
     
     /**
