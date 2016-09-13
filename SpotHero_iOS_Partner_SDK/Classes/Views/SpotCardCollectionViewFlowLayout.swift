@@ -27,6 +27,7 @@ class SpotCardCollectionViewFlowLayout: UICollectionViewFlowLayout {
     }
     
     override func targetContentOffsetForProposedContentOffset(proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
+        //this logic is for centering the cell when paging 
         var offsetAdjustment = CGFloat.max
         let horizontalOffset = proposedContentOffset.x + ((self.screenWidth - self.itemSize.width) / 2)
         let targetRect = CGRect(x: proposedContentOffset.x,
