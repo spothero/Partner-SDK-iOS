@@ -29,16 +29,20 @@ class SpotCardCollectionViewFlowLayout: UICollectionViewFlowLayout {
     override func targetContentOffsetForProposedContentOffset(proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
         var offsetAdjustment = CGFloat.max
         let horizontalOffset = proposedContentOffset.x + ((self.screenWidth - self.itemSize.width) / 2)
-        let targetRect = CGRect(x: proposedContentOffset.x, y: 0, width: self.screenWidth, height: self.collectionViewHeight)
+        let targetRect = CGRect(x: proposedContentOffset.x,
+                                y: 0,
+                                width: self.screenWidth,
+                                height: self.collectionViewHeight)
         
-        var array = super.layoutAttributesForElementsInRect(targetRect)
-        for layoutAttributes in array! {
-            let itemOffset = layoutAttributes.frame.origin.x
-            if (abs(itemOffset - horizontalOffset) < abs(offsetAdjustment)) {
-                offsetAdjustment = itemOffset - horizontalOffset
+        if let layoutAttributesForElements = super.layoutAttributesForElementsInRect(targetRect) {
+            for layoutAttributes in layoutAttributesForElements {
+                let itemOffset = layoutAttributes.frame.origin.x
+                if (abs(itemOffset - horizontalOffset) < abs(offsetAdjustment)) {
+                    offsetAdjustment = itemOffset - horizontalOffset
+                }
             }
         }
-        
+
         return CGPoint(x: proposedContentOffset.x + offsetAdjustment, y: proposedContentOffset.y)
     }
 }
