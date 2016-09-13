@@ -296,9 +296,9 @@ extension MapViewController: UICollectionViewDataSource {
         
         if let rate = facility.rates.first {
             if rate.isWheelchairAccessible() {
-                cell.accessibleParkingImageView.image = SpotCardCollectionViewCell.AccessibilityImage
+                cell.accessibleParkingImageView.hidden = false
             } else {
-                cell.accessibleParkingImageView.image = nil
+                cell.accessibleParkingImageView.hidden = true
             }
         }
         
