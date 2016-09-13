@@ -25,6 +25,7 @@ class MapViewController: UIViewController {
     
     private var prediction: GooglePlacesPrediction?
     private let predictionController = PredictionController()
+    private var predictionPlaceDetails: GooglePlaceDetails?
     private var startDate: NSDate = NSDate().shp_dateByRoundingMinutesBy30(roundDown: true)
     private var endDate: NSDate = NSDate().shp_dateByRoundingMinutesBy30(roundDown: false)
     private let searchBarHeight: CGFloat = 44
@@ -91,6 +92,7 @@ class MapViewController: UIViewController {
         GooglePlacesWrapper.getPlaceDetails(prediction) {
             placeDetails, error in
             if let placeDetails = placeDetails {
+                self.predictionPlaceDetails = placeDetails
                 FacilityAPI.fetchFacilities(placeDetails.location,
                                             starts: self.startDate,
                                             ends: self.endDate,
@@ -107,6 +109,11 @@ class MapViewController: UIViewController {
     
     func addAndShowFacilityAnnotations(facilities: [Facility]?) {
         //TODO: Look into caching annotations like the main app
+        if let placeDetails = self.predictionPlaceDetails {
+            let locationAnnotation = MKPointAnnotation()
+            locationAnnotation.coordinate = placeDetails.location.coordinate
+            self.mapView.addAnnotation(locationAnnotation)
+        }
         self.mapView.removeAnnotations(self.mapView.annotations)
         guard let facilities = facilities else {
             return
