@@ -51,12 +51,11 @@ extension Rate {
     }
     
     func isWheelchairAccessible() -> Bool {
-        if let wheelchairDict = self.amenities["wheelchair"] {
-            if let visible = wheelchairDict["visible"] as? Bool {
-                return visible
-            }
+        guard let wheelchairDict = self.amenities["wheelchair"],
+            visible = wheelchairDict["visible"] as? Bool else {
+                return false
         }
         
-        return false
+        return visible
     }
 }
