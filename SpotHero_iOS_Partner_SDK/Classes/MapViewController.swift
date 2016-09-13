@@ -332,6 +332,7 @@ extension MapViewController: SpotCardCollectionViewDelegate {
         guard
             let cell = button.superview?.superview as? SpotCardCollectionViewCell,
             let indexPath = self.spotCardCollectionView.indexPathForCell(cell) else {
+                assertionFailure("cannot find spot card cell")
                 return
         }
         self.selectedFacility = self.facilities[indexPath.row]
