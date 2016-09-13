@@ -35,15 +35,17 @@ class SpotCardCollectionViewFlowLayout: UICollectionViewFlowLayout {
                                 width: self.screenWidth,
                                 height: self.collectionViewHeight)
         
-        if let layoutAttributesForElements = super.layoutAttributesForElementsInRect(targetRect) {
-            for layoutAttributes in layoutAttributesForElements {
-                let itemOffset = layoutAttributes.frame.origin.x
-                if (abs(itemOffset - horizontalOffset) < abs(offsetAdjustment)) {
-                    offsetAdjustment = itemOffset - horizontalOffset
-                }
+        guard let layoutAttributesForElements = super.layoutAttributesForElementsInRect(targetRect) else {
+            return CGPoint(x: proposedContentOffset.x + offsetAdjustment, y: proposedContentOffset.y)
+        }
+        
+        for layoutAttributes in layoutAttributesForElements {
+            let itemOffset = layoutAttributes.frame.origin.x
+            if (abs(itemOffset - horizontalOffset) < abs(offsetAdjustment)) {
+                offsetAdjustment = itemOffset - horizontalOffset
             }
         }
-
+        
         return CGPoint(x: proposedContentOffset.x + offsetAdjustment, y: proposedContentOffset.y)
     }
 }
