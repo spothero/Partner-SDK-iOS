@@ -143,12 +143,7 @@ class MapViewController: UIViewController {
     }
     
     @IBAction func searchSpotsButtonPressed(sender: AnyObject) {
-        self.searchSpotsButton.hidden = true
-        self.collapsedSearchBar.show()
-        self.timeSelectionView.showTimeSelectionView(false)
-        let hoursBetweenDates = self.startEndDateDifferenceInSeconds / Constants.SecondsInHour
-        self.collapsedSearchBar.text = String(format: LocalizedStrings.HoursBetweenDatesFormat, hoursBetweenDates)
-        self.fetchFacilities()
+        self.searchSpots()
     }
     
     //TODO: Remove when facility UI is done
@@ -157,6 +152,16 @@ class MapViewController: UIViewController {
             vc.facility = self.selectedFacility
             vc.rate = self.selectedFacility?.rates.first
         }
+    }
+    
+    func searchSpots() {
+        self.searchSpotsButton.hidden = true
+        self.collapsedSearchBar.show()
+        self.timeSelectionView.showTimeSelectionView(false)
+        let hoursBetweenDates = self.startEndDateDifferenceInSeconds / Constants.SecondsInHour
+        self.collapsedSearchBar.text = String(format: LocalizedStrings.HoursBetweenDatesFormat, hoursBetweenDates)
+        self.fetchFacilities()
+        self.searchBar.resignFirstResponder()
     }
 }
 
@@ -189,11 +194,33 @@ extension MapViewController: PredictionControllerDelegate {
         self.searchBar.text = prediction.description
         self.timeSelectionView.showTimeSelectionView(true)
         self.showCollapsedSearchBar()
+        self.searchBar.resignFirstResponder()
     }
     
     func didTapXButton() {
         self.timeSelectionView.showTimeSelectionView(true)
         self.searchSpotsButton.hidden = true
+        self.searchBar.resignFirstResponder()
+    }
+    
+    func didTapSearchButton() {
+        guard self.predictionController.predictions.count > 0 else {
+            self.fetchFacilities()
+            return
+        }
+        
+        let indexPath = NSIndexPath(forRow: 0, inSection: 0)
+        self.predictionController.tableView(self.predictionTableView, didSelectRowAtIndexPath: indexPath)
+        self.searchSpots()
+    }
+    
+    func shouldSelectFirstPrediction() {
+        guard self.predictionController.predictions.count > 0 else {
+            return
+        }
+        
+        let indexPath = NSIndexPath(forRow: 0, inSection: 0)
+        self.predictionTableView.selectRowAtIndexPath(indexPath, animated: true, scrollPosition: .None)
     }
 }
 
@@ -223,6 +250,10 @@ extension MapViewController: StartEndDateDelegate {
         self.startDate = startDate
         self.endDate = endDate
         self.startEndDateDifferenceInSeconds = endDate.timeIntervalSinceDate(startDate)
+    }
+    
+    func didSelectStartEndView() {
+        searchBar.resignFirstResponder()
     }
 }
 
