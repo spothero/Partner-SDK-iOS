@@ -146,7 +146,6 @@ class MapViewController: UIViewController {
         self.searchSpots()
     }
     
-    //TODO: Remove when facility UI is done
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let vc = segue.destinationViewController as? CheckoutTableViewController {
             vc.facility = self.selectedFacility
