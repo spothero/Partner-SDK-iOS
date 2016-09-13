@@ -317,8 +317,11 @@ extension MapViewController: UICollectionViewDataSource {
 
 extension MapViewController: UICollectionViewDelegate {
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
-        self.centerCell = self.spotCardCollectionView.visibleCells()[1] as? SpotCardCollectionViewCell
-        self.spotCardCollectionView.reloadData()
+        // this will only work if there are 3 visible cells, tested on iPhone 4 - 6s+
+        if self.spotCardCollectionView.visibleCells().count == 3 {
+            self.centerCell = self.spotCardCollectionView.visibleCells()[1] as? SpotCardCollectionViewCell
+            self.spotCardCollectionView.reloadData()
+        }
     }
 }
 
