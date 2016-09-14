@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name             = 'SpotHero_iOS_Partner_SDK'
-    s.ios.deployment_target = '8.0'
+    s.ios.deployment_target = '9.0'
     s.version          = '0.1.0'
     s.summary          = 'An SDK for simple integration with SpotHero.'
     s.description      = <<-DESC
