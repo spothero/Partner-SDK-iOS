@@ -122,12 +122,14 @@ class MapViewController: UIViewController {
                                                                     guard
                                                                         let userInfo = notification.userInfo,
                                                                         let frame = userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue,
-                                                                        let viewHeight = self?.view.frame.height else {
+                                                                        let viewHeight = self?.view.frame.height,
+                                                                        let searchBarHeight = self?.searchBarHeight else {
                                                                             return
                                                                     }
                                                                     
                                                                     let rect = frame.CGRectValue()
-                                                                    self?.maxTableHeight = viewHeight - rect.height - 40 - self!.searchBarHeight
+                                                                    let totalPadding: CGFloat = 40
+                                                                    self?.maxTableHeight = viewHeight - rect.height - totalPadding - searchBarHeight
         }
     }
     
@@ -199,7 +201,7 @@ extension MapViewController: PredictionControllerDelegate {
                                         self.searchSpotsButton.hidden = true
                                         self.timeSelectionView.showTimeSelectionView(false)
                                         let dynamicHeight = self.searchBarHeight + CGFloat(predictions.count) * rowHeight + headerFooterHeight * 2
-                                        let height = (dynamicHeight < self.maxTableHeight) ? dynamicHeight : self.maxTableHeight
+                                        let height = min(dynamicHeight, self.maxTableHeight)
                                         self.searchContainerViewHeightConstraint.constant = height
                                         self.reservationContainerViewHeightConstraint.constant = height
                                     } else {
