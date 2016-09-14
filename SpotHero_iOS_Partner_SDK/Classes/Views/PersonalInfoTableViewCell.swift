@@ -76,7 +76,7 @@ extension PersonalInfoTableViewCell: UITextFieldDelegate {
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        return true
+        return false
     }
 }
 
