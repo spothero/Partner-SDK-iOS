@@ -34,6 +34,7 @@ class MapViewController: UIViewController {
     private var centerCell: SpotCardCollectionViewCell?
     let checkoutSegueIdentifier = "showCheckout"
     private var selectedFacility: Facility?
+    private var maxTableHeight: CGFloat = 0
     
     var facilities = [Facility]()
     
@@ -41,6 +42,7 @@ class MapViewController: UIViewController {
         super.viewDidLoad()
         self.setMapViewRegion()
         self.setupViews()
+        self.registerForKeyboardNotifications()
         
         self.datePickerView.delegate = self.timeSelectionView
         self.timeSelectionView.delegate = self.datePickerView
@@ -111,6 +113,24 @@ class MapViewController: UIViewController {
         }
     }
     
+    func registerForKeyboardNotifications() {
+        NSNotificationCenter.defaultCenter().addObserverForName(UIKeyboardWillShowNotification,
+                                                                object: nil,
+                                                                queue: nil) {
+                                                                    [weak self]
+                                                                    notification in
+                                                                    guard
+                                                                        let userInfo = notification.userInfo,
+                                                                        let frame = userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue,
+                                                                        let viewHeight = self?.view.frame.height else {
+                                                                            return
+                                                                    }
+                                                                    
+                                                                    let rect = frame.CGRectValue()
+                                                                    self?.maxTableHeight = viewHeight - rect.height - 40 - self!.searchBarHeight
+        }
+    }
+    
     func addAndShowFacilityAnnotations() {
         //TODO: Look into caching annotations like the main app
         self.mapView.removeAnnotations(self.mapView.annotations)
@@ -178,8 +198,10 @@ extension MapViewController: PredictionControllerDelegate {
                                     if predictions.count > 0 {
                                         self.searchSpotsButton.hidden = true
                                         self.timeSelectionView.showTimeSelectionView(false)
-                                        self.searchContainerViewHeightConstraint.constant = self.searchBarHeight + CGFloat(predictions.count) * rowHeight + headerFooterHeight * 2
-                                        self.reservationContainerViewHeightConstraint.constant = self.searchBarHeight + CGFloat(predictions.count) * rowHeight + headerFooterHeight * 2
+                                        let dynamicHeight = self.searchBarHeight + CGFloat(predictions.count) * rowHeight + headerFooterHeight * 2
+                                        let height = (dynamicHeight < self.maxTableHeight) ? dynamicHeight : self.maxTableHeight
+                                        self.searchContainerViewHeightConstraint.constant = height
+                                        self.reservationContainerViewHeightConstraint.constant = height
                                     } else {
                                         self.searchContainerViewHeightConstraint.constant = self.searchBarHeight
                                     }
