@@ -106,4 +106,6 @@ enum LocalizedStrings {
     static let OK = NSLocalizedString("OK", comment: "Title for button to dismiss an error")
     static let Loading = NSLocalizedString("Loading...",
                                            comment: "Loading progress HUD")
+    static let BookIt = NSLocalizedString("Book It!",
+                                          comment: "Book it button title")
 }

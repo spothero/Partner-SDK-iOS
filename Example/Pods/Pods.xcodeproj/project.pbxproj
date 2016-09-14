@@ -18,6 +18,8 @@
 		0E6AFFAE0B7E520C63BB5A39E29A8530 /* LocalizedStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6413F5016835D35E981873D06AC7814D /* LocalizedStrings.swift */; };
 		0EF247EE1A34BB63147FA38EED147F36 /* GooglePlacesPrediction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DEF936D2AA1C6E9053ED701C38308B6 /* GooglePlacesPrediction.swift */; };
 		11B72DF1DF5F6EF43FA7715CA8AE6320 /* NSDate+DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D837808C48A3AB58A2B88BFEB8F986 /* NSDate+DateFormatter.swift */; };
+		1252DE7B1D83610800A15F32 /* SpotCardCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1252DE7A1D83610800A15F32 /* SpotCardCollectionViewFlowLayout.swift */; };
+		129228A71D833CA400B8DA2A /* SpotCardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129228A61D833CA400B8DA2A /* SpotCardCollectionViewCell.swift */; };
 		12AC30A8BBD2D158AE154DD3E358D754 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44EE72E22B15FDAF57F9EE6D2EE224D5 /* Foundation.framework */; };
 		13D168CE944136C5C0928938A849E6AE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E744D448388B9746F79CF8041F078F /* Constants.swift */; };
 		1884983D6D196A42E1BC81DC044F29D0 /* HTTPHeaderFields.m in Sources */ = {isa = PBXBuildFile; fileRef = 33475DCFAD041DE4DE25A6AEB9C41CCF /* HTTPHeaderFields.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -271,7 +273,9 @@
 		108DBB169E266E6EC3FDB9CBDDF95C03 /* ILGHttpConstants-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ILGHttpConstants-dummy.m"; sourceTree = "<group>"; };
 		10FB630A2699946E09F3D27C1D7D1708 /* PaymentButton.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = PaymentButton.xib; sourceTree = "<group>"; };
 		117DC4EDDFFBE0C4A7AB0F057D7D3564 /* KIFUITestActor-ConditionalTests.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "KIFUITestActor-ConditionalTests.m"; path = "Classes/KIFUITestActor-ConditionalTests.m"; sourceTree = "<group>"; };
+		1252DE7A1D83610800A15F32 /* SpotCardCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotCardCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		127E01E5A45C4F58FE75BA91DE539413 /* Pods_SpotHero_iOS_Partner_SDK_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpotHero_iOS_Partner_SDK_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		129228A61D833CA400B8DA2A /* SpotCardCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotCardCollectionViewCell.swift; sourceTree = "<group>"; };
 		12F419EB9D92785AAE0A8749F7D453D3 /* Pods-SpotHero_iOS_Partner_SDK_ExampleUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SpotHero_iOS_Partner_SDK_ExampleUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		13BE74C806B6FDC81630F6836EB27D41 /* KIFTestActor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = KIFTestActor.m; path = Classes/KIFTestActor.m; sourceTree = "<group>"; };
 		142FEAC949C864AA94A825CBFAEE7574 /* PaymentInfoTableViewCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PaymentInfoTableViewCell.swift; sourceTree = "<group>"; };
@@ -714,6 +718,8 @@
 			children = (
 				1ADF2A28D23F65D23872CE8D83BF9131 /* CollapsedSearchBarView.swift */,
 				CCF917BCFC4ABBD913131AA9B5DAF7CC /* FacilityAnnotationView.swift */,
+				129228A61D833CA400B8DA2A /* SpotCardCollectionViewCell.swift */,
+				1252DE7A1D83610800A15F32 /* SpotCardCollectionViewFlowLayout.swift */,
 				F808E3151B1E53551E8A3EFC57DB12C8 /* GooglePredictionTableFooter.swift */,
 				AEC302E5D19B5132A7C8955D2A5ACECE /* GooglePredictionTableHeader.swift */,
 				4E008FFD54B5FA3111BF14E24A5825CC /* PaymentButton.swift */,
@@ -1399,6 +1405,7 @@
 				949F12CDE3EDD1CC94254275B13946C7 /* GooglePredictionTableHeader.swift in Sources */,
 				1A42A94D39550C0712BEE3F70AA50044 /* HeightsAndLengths.swift in Sources */,
 				6519C1F50A641858485CAFFA065EBED9 /* JSONDictionary.swift in Sources */,
+				129228A71D833CA400B8DA2A /* SpotCardCollectionViewCell.swift in Sources */,
 				0E6AFFAE0B7E520C63BB5A39E29A8530 /* LocalizedStrings.swift in Sources */,
 				446A733A734AE4777D4E67C9728A7A44 /* MapViewController.swift in Sources */,
 				1C02D75991797A2772DF264DE052D40B /* NSBundle+SpotHeroPartner.swift in Sources */,
@@ -1419,6 +1426,7 @@
 				48985D73AD8265C5602D5AC22664A9F9 /* ServerErrorJSON.swift in Sources */,
 				FA3FD5986087DDE9645315F014351F10 /* SpotHero_iOS_Partner_SDK-dummy.m in Sources */,
 				1BAACCECC9E1A838AC52649558F130B1 /* SpotHeroPartnerAPIController.swift in Sources */,
+				1252DE7B1D83610800A15F32 /* SpotCardCollectionViewFlowLayout.swift in Sources */,
 				FBEB96C5FB0CC9FB9C4EEA3F7E8474B3 /* SpotHeroPartnerSDK.swift in Sources */,
 				071D7F4090A36365942D93A4BB27239E /* StringEnum.swift in Sources */,
 				97ABF4BE7E3BD36A4B1193C715B97A22 /* StripeWrapper.swift in Sources */,
