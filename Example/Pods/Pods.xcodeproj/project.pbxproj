@@ -137,6 +137,7 @@
 		C14992679A9ED625623F4E9DCED1C774 /* KIFUIObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D57F3D10D1B0A92A6F67BCFF816BC3C /* KIFUIObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C75A299B0860D3016DF20B1A5779903C /* NSBundle-KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E0527B6F28C55DD186FE2AD382616187 /* NSBundle-KIFAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C78EF3CB4FC7369BB2E9EB62DD231C2D /* KIFUIObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 6863E13C4D9C3DA825286E26213C105A /* KIFUIObject.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		C79BAE141D8A12A4009B44FF /* KeyboardNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79BAE131D8A12A4009B44FF /* KeyboardNotification.swift */; };
 		C8D3D09E32433113799CE6FD434D6FEE /* KIF-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A4118229E82AF62B5973027C25E7FBDE /* KIF-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C97B7C0A7D47F9089B279FEB3B338A4F /* KIFUITestActor-ConditionalTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 117DC4EDDFFBE0C4A7AB0F057D7D3564 /* KIFUITestActor-ConditionalTests.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		CB567CAB623EE579448E24D486300050 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A505AC0285FE14B505B6D026D35B6DC /* QuartzCore.framework */; };
@@ -430,6 +431,7 @@
 		C1D166214B7CD4227BA16F3C79AB2CBD /* UIWindow-KIFAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIWindow-KIFAdditions.h"; path = "Additions/UIWindow-KIFAdditions.h"; sourceTree = "<group>"; };
 		C46B6258C3006561FC37367145F9196E /* UIEvent+KIFAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIEvent+KIFAdditions.h"; path = "Additions/UIEvent+KIFAdditions.h"; sourceTree = "<group>"; };
 		C79B28A51C2E4CAE22F70E4E5D09112C /* Images.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		C79BAE131D8A12A4009B44FF /* KeyboardNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardNotification.swift; sourceTree = "<group>"; };
 		C7BF4EB2935B2144FC1C2A5F18C96D3C /* SpotHeroPartnerSDK.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SpotHeroPartnerSDK.swift; sourceTree = "<group>"; };
 		C9E7BE67D706D7BF62FFDFA0FA63E6D9 /* APIError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		CA4AE243517A067A9DB9B485F8E9C773 /* ServerEnvironment.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ServerEnvironment.swift; sourceTree = "<group>"; };
@@ -851,6 +853,7 @@
 				C58CC0653DFC7DF94CFD7DE25D583536 /* Network */,
 				28D4056AA20604AADC73104718A2F2BF /* Utilities */,
 				3201764D8343E777456A0212453C942B /* Views */,
+				C79BAE131D8A12A4009B44FF /* KeyboardNotification.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -1408,6 +1411,7 @@
 				129228A71D833CA400B8DA2A /* SpotCardCollectionViewCell.swift in Sources */,
 				0E6AFFAE0B7E520C63BB5A39E29A8530 /* LocalizedStrings.swift in Sources */,
 				446A733A734AE4777D4E67C9728A7A44 /* MapViewController.swift in Sources */,
+				C79BAE141D8A12A4009B44FF /* KeyboardNotification.swift in Sources */,
 				1C02D75991797A2772DF264DE052D40B /* NSBundle+SpotHeroPartner.swift in Sources */,
 				11B72DF1DF5F6EF43FA7715CA8AE6320 /* NSDate+DateFormatter.swift in Sources */,
 				8A62FD079B4CEFA8F7D390CC1B5F6B6B /* NSURLQueryItem+QueryParams.swift in Sources */,

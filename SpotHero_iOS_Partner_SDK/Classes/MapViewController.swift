@@ -113,26 +113,6 @@ class MapViewController: UIViewController {
         }
     }
     
-    func registerForKeyboardNotifications() {
-        NSNotificationCenter.defaultCenter().addObserverForName(UIKeyboardWillShowNotification,
-                                                                object: nil,
-                                                                queue: nil) {
-                                                                    [weak self]
-                                                                    notification in
-                                                                    guard
-                                                                        let userInfo = notification.userInfo,
-                                                                        let frame = userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue,
-                                                                        let viewHeight = self?.view.frame.height,
-                                                                        let searchBarHeight = self?.searchBarHeight else {
-                                                                            return
-                                                                    }
-                                                                    
-                                                                    let rect = frame.CGRectValue()
-                                                                    let totalPadding: CGFloat = 40
-                                                                    self?.maxTableHeight = viewHeight - rect.height - totalPadding - searchBarHeight
-        }
-    }
-    
     func addAndShowFacilityAnnotations() {
         //TODO: Look into caching annotations like the main app
         self.mapView.removeAnnotations(self.mapView.annotations)
@@ -360,5 +340,29 @@ extension MapViewController: SpotCardCollectionViewDelegate {
         }
         self.selectedFacility = self.facilities[indexPath.row]
         self.performSegueWithIdentifier(self.checkoutSegueIdentifier, sender: nil)
+    }
+}
+
+// MARK: - KeyboardNotification
+
+extension MapViewController: KeyboardNotification {
+    func registerForKeyboardNotifications() {
+        NSNotificationCenter.defaultCenter().addObserverForName(UIKeyboardWillShowNotification,
+                                                                object: nil,
+                                                                queue: nil) {
+                                                                    [weak self]
+                                                                    notification in
+                                                                    guard
+                                                                        let userInfo = notification.userInfo,
+                                                                        let frame = userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue,
+                                                                        let viewHeight = self?.view.frame.height,
+                                                                        let searchBarHeight = self?.searchBarHeight else {
+                                                                            return
+                                                                    }
+                                                                    
+                                                                    let rect = frame.CGRectValue()
+                                                                    let totalPadding: CGFloat = 40
+                                                                    self?.maxTableHeight = viewHeight - rect.height - totalPadding - searchBarHeight
+        }
     }
 }
