@@ -22,6 +22,7 @@ class MapViewController: UIViewController {
     @IBOutlet weak private var reservationContainerViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak private var datePickerView: DatePickerView!
     @IBOutlet weak private var searchSpotsButton: UIButton!
+    @IBOutlet weak private var spotCardCollectionView: UICollectionView!
     
     private var prediction: GooglePlacesPrediction?
     private let predictionController = PredictionController()
@@ -31,7 +32,9 @@ class MapViewController: UIViewController {
     private let searchBarHeight: CGFloat = 44
     private let reservationContainerViewHeight: CGFloat = 134
     private var startEndDateDifferenceInSeconds: NSTimeInterval = Constants.ThirtyMinutesInSeconds
+    private var centerCell: SpotCardCollectionViewCell?
     let checkoutSegueIdentifier = "showCheckout"
+    private var selectedFacility: Facility?
     
     var facilities = [Facility]()
     
@@ -63,6 +66,8 @@ class MapViewController: UIViewController {
         self.searchSpotsButton.backgroundColor = .shp_spotHeroBlue()
         
         self.predictionController.delegate = self
+        
+        self.spotCardCollectionView.hidden = true
         
         self.predictionTableView.dataSource = self.predictionController
         self.predictionTableView.delegate = self.predictionController
@@ -99,7 +104,8 @@ class MapViewController: UIViewController {
                                             completion: {
                                                 [weak self]
                                                 facilities, error in
-                                                self?.addAndShowFacilityAnnotations(facilities)
+                                                self?.facilities = facilities
+                                                self?.addAndShowFacilityAnnotations()
                                                 //TODO: Show alert if request fails
                                                 ProgressHUD.hideHUDForView(self?.view)
                     })
@@ -107,7 +113,7 @@ class MapViewController: UIViewController {
         }
     }
     
-    func addAndShowFacilityAnnotations(facilities: [Facility]?) {
+    func addAndShowFacilityAnnotations() {
         //TODO: Look into caching annotations like the main app
         if let placeDetails = self.predictionPlaceDetails {
             let locationAnnotation = MKPointAnnotation()
@@ -115,10 +121,7 @@ class MapViewController: UIViewController {
             self.mapView.addAnnotation(locationAnnotation)
         }
         self.mapView.removeAnnotations(self.mapView.annotations)
-        guard let facilities = facilities else {
-            return
-        }
-        for facility in facilities {
+        for facility in self.facilities {
             let facilityAnnotation = FacilityAnnotation(title: facility.title,
                                                         coordinate: facility.location.coordinate,
                                                         facility: facility)
@@ -126,6 +129,12 @@ class MapViewController: UIViewController {
         }
         let annotations = self.mapView.annotations
         self.mapView.showAnnotations(annotations, animated: true)
+        self.showSpotCardCollectionView()
+    }
+    
+    func showSpotCardCollectionView() {
+        self.spotCardCollectionView.hidden = false
+        self.spotCardCollectionView.reloadData()
     }
     
     //MARK: Actions
@@ -140,30 +149,14 @@ class MapViewController: UIViewController {
         self.searchSpotsButton.hidden = false
     }
     
-    //TEMP! Only for testing
-    
-    //TODO: Remove when facility UI is done
-    @IBAction func tempCheckoutButtonPressed(sender: AnyObject) {
-        FacilityAPI.fetchFacilities(Constants.ChicagoLocation,
-                                    starts: NSDate().dateByAddingTimeInterval(60 * 60 * 2),
-                                    ends: NSDate().dateByAddingTimeInterval(60 * 60 * 5)) {
-                                        facilities, error -> (Void) in
-                                        self.facilities = facilities
-                                        NSOperationQueue.mainQueue().addOperationWithBlock() {
-                                            self.performSegueWithIdentifier(self.checkoutSegueIdentifier, sender: nil)
-                                        }
-        }
-    }
-    
     @IBAction func searchSpotsButtonPressed(sender: AnyObject) {
         self.searchSpots()
     }
     
-    //TODO: Remove when facility UI is done
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let vc = segue.destinationViewController as? CheckoutTableViewController {
-            vc.facility = self.facilities.first
-            vc.rate = self.facilities.first?.rates.first
+            vc.facility = self.selectedFacility
+            vc.rate = self.selectedFacility?.rates.first
         }
     }
     
@@ -279,5 +272,76 @@ extension MapViewController: MKMapViewDelegate {
         }
         
         return annotationView
+    }
+    
+    func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
+        guard let facilityAnnotation = view.annotation as? FacilityAnnotation else {
+            return
+        }
+        
+        //TODO: link up annotation to card
+    }
+}
+
+//MARK: UICollectionViewDataSource 
+
+extension MapViewController: UICollectionViewDataSource {
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.facilities.count
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCellWithReuseIdentifier(SpotCardCollectionViewCell.Identifier, forIndexPath: indexPath) as? SpotCardCollectionViewCell else {
+            return UICollectionViewCell()
+        }
+        
+        let facility = self.facilities[indexPath.row]
+        cell.buyButton.setTitle(LocalizedStrings.BookIt + " | $\(facility.displayPrice())", forState: .Normal)
+        cell.streetAddressLabel.text = facility.streetAddress
+        cell.spotInfoLabel.text = facility.title
+        
+        if let rate = facility.rates.first {
+            if rate.isWheelchairAccessible() {
+                cell.accessibleParkingImageView.hidden = false
+            } else {
+                cell.accessibleParkingImageView.hidden = true
+            }
+        }
+        
+        if cell == self.centerCell {
+            cell.buyButton.backgroundColor = .shp_green()
+        } else {
+            cell.buyButton.backgroundColor = .shp_spotHeroBlue()
+        }
+        
+        cell.delegate = self
+        return cell
+    }
+}
+
+//MARK: UICollectionViewDelegate
+
+extension MapViewController: UICollectionViewDelegate {
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        // this will only work if there are 3 visible cells, tested on iPhone 4 - 6s+
+        if self.spotCardCollectionView.visibleCells().count == 3 {
+            self.centerCell = self.spotCardCollectionView.visibleCells()[1] as? SpotCardCollectionViewCell
+            self.spotCardCollectionView.reloadData()
+        }
+    }
+}
+
+//MARK: SpotCardCollectionViewDelegate
+
+extension MapViewController: SpotCardCollectionViewDelegate {
+    func didTapDoneButton(button: UIButton) {
+        guard
+            let cell = button.superview?.superview as? SpotCardCollectionViewCell,
+            let indexPath = self.spotCardCollectionView.indexPathForCell(cell) else {
+                assertionFailure("cannot find spot card cell")
+                return
+        }
+        self.selectedFacility = self.facilities[indexPath.row]
+        self.performSegueWithIdentifier(self.checkoutSegueIdentifier, sender: nil)
     }
 }
