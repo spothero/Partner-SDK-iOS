@@ -9,5 +9,5 @@
 import XCTest
 
 class BaseTests: XCTestCase {
-    let testEmail = "matt1@test.com"
+    let testEmail = "matt@gmail.com"
 }
