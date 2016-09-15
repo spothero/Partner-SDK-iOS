@@ -8,7 +8,13 @@
 
 import UIKit
 
+protocol SpotCardCollectionViewFlowLayoutDelegate {
+    func didSwipeCollectionView(index: Int)
+}
+
 class SpotCardCollectionViewFlowLayout: UICollectionViewFlowLayout {
+    var delegate: SpotCardCollectionViewFlowLayoutDelegate?
+    
     private let collectionViewHeight: CGFloat = 200.0
     private let screenWidth: CGFloat = UIScreen.mainScreen().bounds.width
     
@@ -24,6 +30,12 @@ class SpotCardCollectionViewFlowLayout: UICollectionViewFlowLayout {
                                                          left: inset,
                                                          bottom: 0,
                                                          right: inset)
+        var swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
+        swipeRight.direction = UISwipeGestureRecognizerDirection.Right
+        self.collectionView?.addGestureRecognizer(swipeRight)
+        var swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
+        swipeLeft.direction = UISwipeGestureRecognizerDirection.Left
+        self.collectionView?.addGestureRecognizer(swipeLeft)
     }
     
     override func targetContentOffsetForProposedContentOffset(proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
@@ -45,5 +57,16 @@ class SpotCardCollectionViewFlowLayout: UICollectionViewFlowLayout {
         }
         
         return CGPoint(x: proposedContentOffset.x + offsetAdjustment, y: proposedContentOffset.y)
+    }
+    
+    func respondToSwipeGesture(recognizer: UISwipeGestureRecognizer) {
+        switch recognizer.direction {
+        case UISwipeGestureRecognizerDirection.Left:
+            self.delegate?.didSwipeCollectionView(1)
+        case UISwipeGestureRecognizerDirection.Right:
+            self.delegate?.didSwipeCollectionView(-1)
+        default:
+            return
+        }
     }
 }
