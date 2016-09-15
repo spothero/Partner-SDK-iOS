@@ -364,5 +364,20 @@ extension MapViewController: KeyboardNotification {
                                                                     let totalPadding: CGFloat = 40
                                                                     self?.maxTableHeight = viewHeight - rect.height - totalPadding - searchBarHeight
         }
+        
+        NSNotificationCenter.defaultCenter().addObserverForName(UIKeyboardWillHideNotification,
+                                                                object: nil,
+                                                                queue: nil) {
+                                                                    [weak self]
+                                                                    notification in
+                                                                    guard
+                                                                        let viewHeight = self?.view.frame.height,
+                                                                        let searchBarHeight = self?.searchBarHeight else {
+                                                                            return
+                                                                    }
+                                                                    
+                                                                    let totalPadding: CGFloat = 40
+                                                                    self?.maxTableHeight = viewHeight - totalPadding - searchBarHeight
+        }
     }
 }
