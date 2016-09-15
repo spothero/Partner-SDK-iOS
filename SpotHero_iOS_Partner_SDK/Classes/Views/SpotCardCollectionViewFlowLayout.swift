@@ -9,13 +9,15 @@
 import UIKit
 
 class SpotCardCollectionViewFlowLayout: UICollectionViewFlowLayout {
-    private let collectionViewHeight: CGFloat = 200.0
+    private let collectionViewHeight: CGFloat = SpotCardCollectionViewCell.ItemHeight
     private let screenWidth: CGFloat = UIScreen.mainScreen().bounds.width
+    
+    var itemWidth: CGFloat = 275
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        self.itemSize = CGSize(width: SpotCardCollectionViewCell.ItemWidth, height: SpotCardCollectionViewCell.ItemHeight)
+        self.itemWidth = screenWidth - 40
+        self.itemSize = CGSize(width: self.itemWidth, height: SpotCardCollectionViewCell.ItemHeight)
         self.minimumInteritemSpacing = SpotCardCollectionViewCell.ItemSpacing
         self.scrollDirection = .Horizontal
         self.collectionView?.backgroundColor = .clearColor()
