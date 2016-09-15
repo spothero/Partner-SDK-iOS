@@ -110,35 +110,6 @@ class CheckoutTableViewController: UIViewController {
         self.registerForKeyboardNotifications()
     }
     
-    func registerForKeyboardNotifications() {
-        NSNotificationCenter.defaultCenter().addObserverForName(UIKeyboardWillShowNotification,
-                                                                object: nil,
-                                                                queue: nil) {
-                                                                    [weak self]
-                                                                    notification in
-                                                                    guard let
-                                                                        userInfo = notification.userInfo,
-                                                                        frame = userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue else {
-                                                                            return
-                                                                    }
-                                                                    
-                                                                    let rect = frame.CGRectValue()
-                                                                    self?.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: rect.height, right: 0)
-        }
-        
-        NSNotificationCenter.defaultCenter().addObserverForName(UIKeyboardWillHideNotification,
-                                                                object: nil,
-                                                                queue: nil) {
-                                                                    [weak self]
-                                                                    notification in
-                                                                    guard let paymentButtonHeight = self?.paymentButtonHeight else {
-                                                                        return
-                                                                    }
-                                                                    
-                                                                    self?.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: paymentButtonHeight, right: 0)
-        }
-    }
-    
     private func setupPaymentButton() {
         guard let
             rate = self.rate,
@@ -435,5 +406,38 @@ extension CheckoutTableViewController: ValidatorCellDelegate {
             }
         }
         self.setPaymentButtonEnabled(invalidCells == 0)
+    }
+}
+
+// MARK: - KeyboardNotification
+
+extension CheckoutTableViewController: KeyboardNotification {
+    func registerForKeyboardNotifications() {
+        NSNotificationCenter.defaultCenter().addObserverForName(UIKeyboardWillShowNotification,
+                                                                object: nil,
+                                                                queue: nil) {
+                                                                    [weak self]
+                                                                    notification in
+                                                                    guard let
+                                                                        userInfo = notification.userInfo,
+                                                                        frame = userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue else {
+                                                                            return
+                                                                    }
+                                                                    
+                                                                    let rect = frame.CGRectValue()
+                                                                    self?.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: rect.height, right: 0)
+        }
+        
+        NSNotificationCenter.defaultCenter().addObserverForName(UIKeyboardWillHideNotification,
+                                                                object: nil,
+                                                                queue: nil) {
+                                                                    [weak self]
+                                                                    notification in
+                                                                    guard let paymentButtonHeight = self?.paymentButtonHeight else {
+                                                                        return
+                                                                    }
+                                                                    
+                                                                    self?.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: paymentButtonHeight, right: 0)
+        }
     }
 }
