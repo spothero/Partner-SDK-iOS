@@ -48,7 +48,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="320 W Erie" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NTj-8v-LEs">
-                                                                    <rect key="frame" x="15" y="10" width="88" height="21"/>
+                                                                    <rect key="frame" x="15" y="10" width="530" height="21"/>
                                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -57,6 +57,7 @@
                                                             <constraints>
                                                                 <constraint firstItem="Oq9-B0-NHM" firstAttribute="leading" secondItem="DsV-UZ-K9d" secondAttribute="leadingMargin" id="34J-wl-p1S"/>
                                                                 <constraint firstItem="Oq9-B0-NHM" firstAttribute="trailing" secondItem="DsV-UZ-K9d" secondAttribute="trailingMargin" id="TTY-73-pk3"/>
+                                                                <constraint firstItem="NTj-8v-LEs" firstAttribute="trailing" secondItem="DsV-UZ-K9d" secondAttribute="trailingMargin" id="XyD-ym-Ucj"/>
                                                                 <constraint firstItem="Oq9-B0-NHM" firstAttribute="bottom" secondItem="DsV-UZ-K9d" secondAttribute="bottomMargin" id="ZbQ-s7-GZQ"/>
                                                                 <constraint firstItem="NTj-8v-LEs" firstAttribute="leading" secondItem="DsV-UZ-K9d" secondAttribute="leadingMargin" id="h51-I7-rSm"/>
                                                                 <constraint firstItem="NTj-8v-LEs" firstAttribute="top" secondItem="DsV-UZ-K9d" secondAttribute="topMargin" id="k88-XG-N7y"/>
