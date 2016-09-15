@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="16A320" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="mRm-nn-PCg">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -859,10 +858,10 @@
             </objects>
             <point key="canvasLocation" x="2394" y="461"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Spot Hero Partner Navigation Controller-->
         <scene sceneID="c9i-ca-sqo">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mRm-nn-PCg" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mRm-nn-PCg" customClass="SpotHeroPartnerNavigationController" customModule="SpotHero_iOS_Partner_SDK" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="fCb-PX-d6L">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -875,7 +874,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fhw-df-Nc0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="343" y="467"/>
+            <point key="canvasLocation" x="336" y="484"/>
         </scene>
     </scenes>
     <resources>
