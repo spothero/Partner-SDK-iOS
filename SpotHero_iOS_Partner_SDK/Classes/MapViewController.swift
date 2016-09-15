@@ -335,12 +335,6 @@ extension MapViewController: UICollectionViewDataSource {
             }
         }
         
-        if cell == self.centerCell {
-            cell.buyButton.backgroundColor = .shp_green()
-        } else {
-            cell.buyButton.backgroundColor = .shp_spotHeroBlue()
-        }
-        
         cell.delegate = self
         return cell
     }
