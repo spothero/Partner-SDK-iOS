@@ -73,6 +73,11 @@ extension PersonalInfoTableViewCell: UITextFieldDelegate {
         
         return true
     }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return false
+    }
 }
 
 extension PersonalInfoTableViewCell: ValidatorCell {
