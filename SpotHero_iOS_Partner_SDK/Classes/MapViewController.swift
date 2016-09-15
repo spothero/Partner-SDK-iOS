@@ -26,6 +26,7 @@ class MapViewController: UIViewController {
     
     private var prediction: GooglePlacesPrediction?
     private let predictionController = PredictionController()
+    private var predictionPlaceDetails: GooglePlaceDetails?
     private var startDate: NSDate = NSDate().shp_dateByRoundingMinutesBy30(roundDown: true)
     private var endDate: NSDate = NSDate().shp_dateByRoundingMinutesBy30(roundDown: false)
     private let searchBarHeight: CGFloat = 44
@@ -98,6 +99,7 @@ class MapViewController: UIViewController {
         GooglePlacesWrapper.getPlaceDetails(prediction) {
             placeDetails, error in
             if let placeDetails = placeDetails {
+                self.predictionPlaceDetails = placeDetails
                 FacilityAPI.fetchFacilities(placeDetails.location,
                                             starts: self.startDate,
                                             ends: self.endDate,
@@ -116,6 +118,12 @@ class MapViewController: UIViewController {
     func addAndShowFacilityAnnotations() {
         //TODO: Look into caching annotations like the main app
         self.mapView.removeAnnotations(self.mapView.annotations)
+        if let placeDetails = self.predictionPlaceDetails {
+            let locationAnnotation = MKPointAnnotation()
+            locationAnnotation.coordinate = placeDetails.location.coordinate
+            locationAnnotation.title = self.facilities.isEmpty ? LocalizedStrings.NoSpotsAvailable : ""
+            self.mapView.addAnnotation(locationAnnotation)
+        }
         for facility in self.facilities {
             let facilityAnnotation = FacilityAnnotation(title: facility.title,
                                                         coordinate: facility.location.coordinate,
@@ -264,6 +272,15 @@ extension MapViewController: StartEndDateDelegate {
 
 extension MapViewController: MKMapViewDelegate {
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+        if let placeDetails = self.predictionPlaceDetails {
+            if annotation.coordinate.latitude == placeDetails.location.coordinate.latitude &&
+                annotation.coordinate.longitude == placeDetails.location.coordinate.longitude {
+                let annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "LocationAnnotation")
+                annotationView.canShowCallout = self.facilities.isEmpty
+                annotationView.pinTintColor = self.facilities.isEmpty ? .redColor() : .greenColor()
+                return annotationView
+            }
+        }
         guard let annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(FacilityAnnotationView.Identifier) else {
             return FacilityAnnotationView(annotation: annotation, reuseIdentifier: FacilityAnnotationView.Identifier)
         }

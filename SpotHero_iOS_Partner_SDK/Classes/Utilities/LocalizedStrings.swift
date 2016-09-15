@@ -108,4 +108,6 @@ enum LocalizedStrings {
                                            comment: "Loading progress HUD")
     static let BookIt = NSLocalizedString("Book It!",
                                           comment: "Book it button title")
+    static let NoSpotsAvailable = NSLocalizedString("No spots available",
+                                                    comment: "No spots available")
 }

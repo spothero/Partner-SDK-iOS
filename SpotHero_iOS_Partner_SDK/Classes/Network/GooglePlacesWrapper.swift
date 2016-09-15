@@ -83,7 +83,7 @@ struct GooglePlacesWrapper {
     /**
      Finds the place details based on a prediction
      
-     - parameter predition:  Prediction to find the details for
+     - parameter prediction:  Prediction to find the details for
      - parameter completion: Completion closure. Passing in either the details or an error
      */
     static func getPlaceDetails(predition: GooglePlacesPrediction, completion: GooglePlaceDetailsCompletion) {
