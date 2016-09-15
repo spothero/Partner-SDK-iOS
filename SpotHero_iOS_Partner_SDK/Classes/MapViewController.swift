@@ -115,12 +115,13 @@ class MapViewController: UIViewController {
     
     func addAndShowFacilityAnnotations() {
         //TODO: Look into caching annotations like the main app
+        self.mapView.removeAnnotations(self.mapView.annotations)
         if let placeDetails = self.predictionPlaceDetails {
             let locationAnnotation = MKPointAnnotation()
             locationAnnotation.coordinate = placeDetails.location.coordinate
+            locationAnnotation.title = self.facilities.isEmpty ? LocalizedStrings.NoSpotsAvailable : ""
             self.mapView.addAnnotation(locationAnnotation)
         }
-        self.mapView.removeAnnotations(self.mapView.annotations)
         for facility in self.facilities {
             let facilityAnnotation = FacilityAnnotation(title: facility.title,
                                                         coordinate: facility.location.coordinate,
@@ -267,6 +268,15 @@ extension MapViewController: StartEndDateDelegate {
 
 extension MapViewController: MKMapViewDelegate {
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+        if let placeDetails = self.predictionPlaceDetails {
+            if annotation.coordinate.latitude == placeDetails.location.coordinate.latitude &&
+                annotation.coordinate.longitude == placeDetails.location.coordinate.longitude {
+                let annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "LocationAnnotation")
+                annotationView.canShowCallout = self.facilities.isEmpty
+                annotationView.pinTintColor = self.facilities.isEmpty ? .redColor() : .greenColor()
+                return annotationView
+            }
+        }
         guard let annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(FacilityAnnotationView.Identifier) else {
             return FacilityAnnotationView(annotation: annotation, reuseIdentifier: FacilityAnnotationView.Identifier)
         }
