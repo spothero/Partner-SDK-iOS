@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="16A320" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="mRm-nn-PCg">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -294,7 +293,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SpotCardCellID" id="pFA-jL-zmI" customClass="SpotCardCollectionViewCell" customModule="SpotHero_iOS_Partner_SDK" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="43" width="225" height="115"/>
+                                        <rect key="frame" x="0.0" y="42.5" width="225" height="115"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="225" height="115"/>
@@ -303,7 +302,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uoX-5v-crH">
                                                     <rect key="frame" x="8" y="8" width="161" height="27"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lGu-UY-rpK">
@@ -509,7 +508,7 @@
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="reservationInfoCell" rowHeight="86" id="XFy-AB-cG3" customClass="ReservationInfoTableViewCell" customModule="SpotHero_iOS_Partner_SDK" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="49.5" width="600" height="86"/>
+                                        <rect key="frame" x="0.0" y="50" width="600" height="86"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="XFy-AB-cG3" id="afe-AS-BCS">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="85"/>
@@ -564,7 +563,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="personalInfoCell" rowHeight="50" id="yHh-3E-J0x" customClass="PersonalInfoTableViewCell" customModule="SpotHero_iOS_Partner_SDK" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="135.5" width="600" height="50"/>
+                                        <rect key="frame" x="0.0" y="136" width="600" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="yHh-3E-J0x" id="UXm-Fc-DTh">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="49"/>
@@ -609,7 +608,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="paymentInfoCell" rowHeight="150" id="HL8-1Q-tXC" customClass="PaymentInfoTableViewCell" customModule="SpotHero_iOS_Partner_SDK" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="185.5" width="600" height="150"/>
+                                        <rect key="frame" x="0.0" y="186" width="600" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="HL8-1Q-tXC" id="7GP-Dw-1MG">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="149"/>
@@ -859,10 +858,10 @@
             </objects>
             <point key="canvasLocation" x="2394" y="461"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Spot Hero Partner Navigation Controller-->
         <scene sceneID="c9i-ca-sqo">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mRm-nn-PCg" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mRm-nn-PCg" customClass="SpotHeroPartnerNavigationController" customModule="SpotHero_iOS_Partner_SDK" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="fCb-PX-d6L">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -875,7 +874,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fhw-df-Nc0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="343" y="467"/>
+            <point key="canvasLocation" x="336" y="484"/>
         </scene>
     </scenes>
     <resources>
