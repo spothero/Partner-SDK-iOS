@@ -106,7 +106,7 @@ class MapViewController: UIViewController {
                                             completion: {
                                                 [weak self]
                                                 facilities, error in
-                                                if facilities.count == 0 {
+                                                if facilities.isEmpty {
                                                     AlertView.presentErrorAlertView(LocalizedStrings.NoSpotsFound, from: self)
                                                 }
                                                 
