@@ -1,7 +1,7 @@
 {
   "name": "SpotHero_iOS_Partner_SDK",
   "platforms": {
-    "ios": "8.0"
+    "ios": "9.0"
   },
   "version": "0.1.0",
   "summary": "An SDK for simple integration with SpotHero.",
