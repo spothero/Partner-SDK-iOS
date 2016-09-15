@@ -35,6 +35,7 @@ class SpotCardCollectionViewCell: UICollectionViewCell {
         self.accessibleParkingImageView.image = UIImage(named: "accessibility",
                                                         inBundle: NSBundle.shp_resourceBundle(),
                                                         compatibleWithTraitCollection: nil)
+        self.buyButton.backgroundColor = .shp_spotHeroBlue()
     }
     
     @IBAction func didTapBuyButton(button: UIButton) {

@@ -280,8 +280,9 @@
                                     <constraint firstAttribute="trailing" secondItem="00R-A9-LV4" secondAttribute="trailing" id="ulT-LG-tob"/>
                                 </constraints>
                             </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="64R-U6-acf">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="64R-U6-acf">
                                 <rect key="frame" x="0.0" y="400" width="600" height="200"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="s1r-pB-kPa"/>
                                 </constraints>
@@ -293,7 +294,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SpotCardCellID" id="pFA-jL-zmI" customClass="SpotCardCollectionViewCell" customModule="SpotHero_iOS_Partner_SDK" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="42.5" width="225" height="115"/>
+                                        <rect key="frame" x="0.0" y="43" width="225" height="115"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="225" height="115"/>
@@ -333,6 +334,7 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstItem="lYi-oY-Q5A" firstAttribute="leading" secondItem="uoX-5v-crH" secondAttribute="trailing" constant="8" id="2Em-xI-brz"/>
                                             <constraint firstAttribute="trailing" secondItem="3jD-ib-d5I" secondAttribute="trailing" id="GQk-ll-mo9"/>

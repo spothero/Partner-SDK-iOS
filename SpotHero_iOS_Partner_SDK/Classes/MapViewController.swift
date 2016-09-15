@@ -36,6 +36,7 @@ class MapViewController: UIViewController {
     let checkoutSegueIdentifier = "showCheckout"
     private var selectedFacility: Facility?
     private var maxTableHeight: CGFloat = 0
+    private var currentIndex: Int = 0
     
     var facilities = [Facility]()
     
@@ -50,6 +51,12 @@ class MapViewController: UIViewController {
         self.timeSelectionView.showTimeSelectionViewDelegate = self
         self.datePickerView.doneButtonDelegate = self
         self.timeSelectionView.startEndDateDelegate = self
+        
+        guard let layout = self.spotCardCollectionView.collectionViewLayout as? SpotCardCollectionViewFlowLayout else {
+            return
+        }
+        
+        layout.delegate = self
     }
     
     private func setMapViewRegion() {
@@ -294,11 +301,16 @@ extension MapViewController: MKMapViewDelegate {
             return
         }
         
-        //TODO: link up annotation to card
+        let itemIndex = NSIndexPath(forItem: facilityAnnotation.index, inSection: 0)
+        self.currentIndex = itemIndex.row
+        self.centerCell = self.spotCardCollectionView.cellForItemAtIndexPath(itemIndex) as? SpotCardCollectionViewCell
+        self.spotCardCollectionView.scrollToItemAtIndexPath(itemIndex,
+                                                            atScrollPosition: .None,
+                                                            animated: true)
     }
 }
 
-//MARK: UICollectionViewDataSource 
+//MARK: UICollectionViewDataSource
 
 extension MapViewController: UICollectionViewDataSource {
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -331,18 +343,6 @@ extension MapViewController: UICollectionViewDataSource {
         
         cell.delegate = self
         return cell
-    }
-}
-
-//MARK: UICollectionViewDelegate
-
-extension MapViewController: UICollectionViewDelegate {
-    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
-        // this will only work if there are 3 visible cells, tested on iPhone 4 - 6s+
-        if self.spotCardCollectionView.visibleCells().count == 3 {
-            self.centerCell = self.spotCardCollectionView.visibleCells()[1] as? SpotCardCollectionViewCell
-            self.spotCardCollectionView.reloadData()
-        }
     }
 }
 
@@ -396,6 +396,28 @@ extension MapViewController: KeyboardNotification {
                                                                     
                                                                     let totalPadding: CGFloat = 40
                                                                     self?.maxTableHeight = viewHeight - totalPadding - searchBarHeight
+        }
+    }
+}
+
+//MARK: SpotCardCollectionViewFlowLayoutDelegate
+
+extension MapViewController: SpotCardCollectionViewFlowLayoutDelegate {
+    func didSwipeCollectionView(index: Int) {
+        if !(self.currentIndex + index < 0) && !(self.currentIndex + index == self.facilities.count) {
+            self.currentIndex += index
+            let itemIndex = NSIndexPath(forItem: self.currentIndex, inSection: 0)
+            self.centerCell = self.spotCardCollectionView.cellForItemAtIndexPath(itemIndex) as? SpotCardCollectionViewCell
+            self.spotCardCollectionView.scrollToItemAtIndexPath(itemIndex,
+                                                                atScrollPosition: .None,
+                                                                animated: true)
+            
+            guard
+                let annotations = self.mapView.annotations.filter({$0.isKindOfClass(FacilityAnnotation)}) as? [FacilityAnnotation],
+                let annotation = annotations.filter({$0.index == itemIndex.row}).first else {
+                    return
+            }
+            self.mapView.selectAnnotation(annotation, animated: true)
         }
     }
 }
