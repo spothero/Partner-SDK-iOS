@@ -34,6 +34,7 @@ class MapViewController: UIViewController {
     private var centerCell: SpotCardCollectionViewCell?
     let checkoutSegueIdentifier = "showCheckout"
     private var selectedFacility: Facility?
+    private var maxTableHeight: CGFloat = 0
     
     var facilities = [Facility]()
     
@@ -41,6 +42,7 @@ class MapViewController: UIViewController {
         super.viewDidLoad()
         self.setMapViewRegion()
         self.setupViews()
+        self.registerForKeyboardNotifications()
         
         self.datePickerView.delegate = self.timeSelectionView
         self.timeSelectionView.delegate = self.datePickerView
@@ -178,8 +180,10 @@ extension MapViewController: PredictionControllerDelegate {
                                     if predictions.count > 0 {
                                         self.searchSpotsButton.hidden = true
                                         self.timeSelectionView.showTimeSelectionView(false)
-                                        self.searchContainerViewHeightConstraint.constant = self.searchBarHeight + CGFloat(predictions.count) * rowHeight + headerFooterHeight * 2
-                                        self.reservationContainerViewHeightConstraint.constant = self.searchBarHeight + CGFloat(predictions.count) * rowHeight + headerFooterHeight * 2
+                                        let dynamicHeight = self.searchBarHeight + CGFloat(predictions.count) * rowHeight + headerFooterHeight * 2
+                                        let height = min(dynamicHeight, self.maxTableHeight)
+                                        self.searchContainerViewHeightConstraint.constant = height
+                                        self.reservationContainerViewHeightConstraint.constant = height
                                     } else {
                                         self.searchContainerViewHeightConstraint.constant = self.searchBarHeight
                                     }
@@ -336,5 +340,44 @@ extension MapViewController: SpotCardCollectionViewDelegate {
         }
         self.selectedFacility = self.facilities[indexPath.row]
         self.performSegueWithIdentifier(self.checkoutSegueIdentifier, sender: nil)
+    }
+}
+
+// MARK: - KeyboardNotification
+
+extension MapViewController: KeyboardNotification {
+    func registerForKeyboardNotifications() {
+        NSNotificationCenter.defaultCenter().addObserverForName(UIKeyboardWillShowNotification,
+                                                                object: nil,
+                                                                queue: nil) {
+                                                                    [weak self]
+                                                                    notification in
+                                                                    guard
+                                                                        let userInfo = notification.userInfo,
+                                                                        let frame = userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue,
+                                                                        let viewHeight = self?.view.frame.height,
+                                                                        let searchBarHeight = self?.searchBarHeight else {
+                                                                            return
+                                                                    }
+                                                                    
+                                                                    let rect = frame.CGRectValue()
+                                                                    let totalPadding: CGFloat = 40
+                                                                    self?.maxTableHeight = viewHeight - rect.height - totalPadding - searchBarHeight
+        }
+        
+        NSNotificationCenter.defaultCenter().addObserverForName(UIKeyboardWillHideNotification,
+                                                                object: nil,
+                                                                queue: nil) {
+                                                                    [weak self]
+                                                                    notification in
+                                                                    guard
+                                                                        let viewHeight = self?.view.frame.height,
+                                                                        let searchBarHeight = self?.searchBarHeight else {
+                                                                            return
+                                                                    }
+                                                                    
+                                                                    let totalPadding: CGFloat = 40
+                                                                    self?.maxTableHeight = viewHeight - totalPadding - searchBarHeight
+        }
     }
 }
