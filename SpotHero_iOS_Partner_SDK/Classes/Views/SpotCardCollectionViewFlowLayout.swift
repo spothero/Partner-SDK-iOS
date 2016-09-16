@@ -12,7 +12,7 @@ class SpotCardCollectionViewFlowLayout: UICollectionViewFlowLayout {
     private let collectionViewHeight: CGFloat = SpotCardCollectionViewCell.ItemHeight
     private let screenWidth: CGFloat = UIScreen.mainScreen().bounds.width
     
-    var itemWidth: CGFloat = 275
+    var itemWidth: CGFloat = 0
     
     override func awakeFromNib() {
         super.awakeFromNib()
