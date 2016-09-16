@@ -406,12 +406,17 @@ extension MapViewController: SpotCardCollectionViewFlowLayoutDelegate {
                                                                 atScrollPosition: .None,
                                                                 animated: true)
             
-            guard
-                let annotations = self.mapView.annotations.filter({$0.isKindOfClass(FacilityAnnotation)}) as? [FacilityAnnotation],
-                let annotation = annotations.filter({$0.index == itemIndex.row}).first else {
-                    return
+            let annotation = self.mapView.annotations.flatMap {
+                annotation in
+                return annotation as? FacilityAnnotation
+                }.filter { //Filters the array returned by flatmap
+                    typed in
+                    return typed.index == itemIndex.row
+                }.first //takes the first object returned by the filter
+            
+            if let annotation = annotation {
+                self.mapView.selectAnnotation(annotation, animated: true)
             }
-            self.mapView.selectAnnotation(annotation, animated: true)
         }
     }
 }
