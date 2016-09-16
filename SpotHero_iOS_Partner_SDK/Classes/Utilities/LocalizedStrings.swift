@@ -23,7 +23,7 @@ enum LocalizedStrings {
                                                 comment: "Set Start Time")
     static let SetEndTime = NSLocalizedString("Set End Time",
                                                 comment: "Set End Time")
-    static let Address = NSLocalizedString("Addess",
+    static let Address = NSLocalizedString("Address",
                                            comment: "Title for address row of checkout screen")
     static let Starts = NSLocalizedString("Starts",
                                           comment: "Title for start date row of checkout screen")
