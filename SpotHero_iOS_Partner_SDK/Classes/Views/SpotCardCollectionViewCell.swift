@@ -15,10 +15,16 @@ protocol SpotCardCollectionViewDelegate {
 class SpotCardCollectionViewCell: UICollectionViewCell {
     var delegate: SpotCardCollectionViewDelegate?
     
+    override var selected: Bool {
+        didSet {
+            self.buyButton.backgroundColor = self.selected ? .shp_green() : .shp_spotHeroBlue()
+        }
+    }
+    
     static let Identifier = "SpotCardCellID"
-    static let ItemWidth: CGFloat = 275.0
-    static let ItemHeight: CGFloat = 100.0
-    static let ItemSpacing: CGFloat = 10.0
+    static let ItemWidth: CGFloat = 275
+    static let ItemHeight: CGFloat = 120
+    static let ItemSpacing: CGFloat = 10
     @IBOutlet weak var buyButton: UIButton!
     @IBOutlet weak var streetAddressLabel: UILabel!
     @IBOutlet weak var spotInfoLabel: UILabel!
@@ -30,8 +36,8 @@ class SpotCardCollectionViewCell: UICollectionViewCell {
         self.layer.cornerRadius = HeightsAndLengths.standardCornerRadius
         self.backgroundColor = .whiteColor()
         self.layer.borderWidth = 1.0
-        self.layer.borderColor = UIColor.grayColor().CGColor
-        
+        self.layer.borderColor = UIColor.shp_lightGray().CGColor
+    
         self.accessibleParkingImageView.image = UIImage(named: "accessibility",
                                                         inBundle: NSBundle.shp_resourceBundle(),
                                                         compatibleWithTraitCollection: nil)
