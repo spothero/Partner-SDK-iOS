@@ -48,7 +48,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="320 W Erie" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NTj-8v-LEs">
-                                                                    <rect key="frame" x="15" y="10" width="88" height="21"/>
+                                                                    <rect key="frame" x="15" y="10" width="530" height="21"/>
                                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -57,6 +57,7 @@
                                                             <constraints>
                                                                 <constraint firstItem="Oq9-B0-NHM" firstAttribute="leading" secondItem="DsV-UZ-K9d" secondAttribute="leadingMargin" id="34J-wl-p1S"/>
                                                                 <constraint firstItem="Oq9-B0-NHM" firstAttribute="trailing" secondItem="DsV-UZ-K9d" secondAttribute="trailingMargin" id="TTY-73-pk3"/>
+                                                                <constraint firstItem="NTj-8v-LEs" firstAttribute="trailing" secondItem="DsV-UZ-K9d" secondAttribute="trailingMargin" id="XyD-ym-Ucj"/>
                                                                 <constraint firstItem="Oq9-B0-NHM" firstAttribute="bottom" secondItem="DsV-UZ-K9d" secondAttribute="bottomMargin" id="ZbQ-s7-GZQ"/>
                                                                 <constraint firstItem="NTj-8v-LEs" firstAttribute="leading" secondItem="DsV-UZ-K9d" secondAttribute="leadingMargin" id="h51-I7-rSm"/>
                                                                 <constraint firstItem="NTj-8v-LEs" firstAttribute="top" secondItem="DsV-UZ-K9d" secondAttribute="topMargin" id="k88-XG-N7y"/>
@@ -749,10 +750,23 @@
                     <navigationItem key="navigationItem" title="Checkout" id="WCZ-yy-K5c"/>
                     <connections>
                         <outlet property="tableView" destination="EGU-Jr-LbH" id="zx3-Hb-vc4"/>
+                        <outlet property="toolbar" destination="9nO-QP-wXD" id="ZfR-j6-Z8F"/>
                         <segue destination="zS2-IA-i1X" kind="show" identifier="confirmation" id="8M0-Ns-u0Q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rVA-eg-c4O" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="9nO-QP-wXD">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <items>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="YKW-uI-Yoy"/>
+                        <barButtonItem systemItem="done" id="fKy-Wa-HSn">
+                            <connections>
+                                <action selector="doneButtonPressed:" destination="tyi-hk-4VD" id="Xpn-aj-QV1"/>
+                            </connections>
+                        </barButtonItem>
+                    </items>
+                </toolbar>
             </objects>
             <point key="canvasLocation" x="1707" y="461"/>
         </scene>

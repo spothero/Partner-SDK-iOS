@@ -9,5 +9,11 @@
 import XCTest
 
 class BaseTests: XCTestCase {
-    let testEmail = "matt1@test.com"
+    let testEmail = "matt@gmail.com"
+    
+    // Create random email to deal with rate limiting emails
+    var testEmailRandom: String {
+        let rand = arc4random_uniform(100000)
+        return "matt\(rand)@test.com"
+    }
 }
