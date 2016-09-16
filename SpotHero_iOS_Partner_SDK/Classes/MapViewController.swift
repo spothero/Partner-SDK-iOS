@@ -106,14 +106,13 @@ class MapViewController: UIViewController {
                                             completion: {
                                                 [weak self]
                                                 facilities, error in
+                                                ProgressHUD.hideHUDForView(self?.view)
                                                 if facilities.isEmpty {
                                                     AlertView.presentErrorAlertView(LocalizedStrings.NoSpotsFound, from: self)
                                                 }
                                                 
                                                 self?.facilities = facilities
                                                 self?.addAndShowFacilityAnnotations()
-                                                //TODO: Show alert if request fails
-                                                ProgressHUD.hideHUDForView(self?.view)
                     })
             }
         }
