@@ -80,6 +80,7 @@ enum PersonalInfoRow: Int, CountableIntEnum {
 
 class CheckoutTableViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet var toolbar: UIToolbar!
     
     private let reservationCellHeight: CGFloat = 86
     private let paymentButtonHeight: CGFloat = 60
@@ -157,6 +158,9 @@ class CheckoutTableViewController: UIViewController {
                 }
             }
         }
+    }
+    @IBAction func doneButtonPressed(sender: AnyObject) {
+        self.view.endEditing(true)
     }
     
     //MARK: Helpers
@@ -265,6 +269,7 @@ class CheckoutTableViewController: UIViewController {
     private func configureCell(cell: PersonalInfoTableViewCell, row: PersonalInfoRow) {
         cell.titleLabel.text = row.title()
         cell.textField.placeholder = row.placeholder()
+        cell.textField.inputAccessoryView = self.toolbar
         cell.type = row
         
         switch row {
@@ -352,6 +357,10 @@ extension CheckoutTableViewController: UITableViewDataSource {
             row = PersonalInfoRow(rawValue: indexPath.row) {
             
             self.configureCell(cell, row: row)
+        } else if let cell = cell as? PaymentInfoTableViewCell {
+            cell.creditCardTextField.inputAccessoryView = self.toolbar
+            cell.expirationDateTextField.inputAccessoryView = self.toolbar
+            cell.cvcTextField.inputAccessoryView = self.toolbar
         }
         
         if let cell = cell as? ValidatorCell {
