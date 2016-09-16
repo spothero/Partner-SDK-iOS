@@ -75,7 +75,7 @@ class PartnerAPITests: BaseTests {
                                         
                                         ReservationAPI.createReservation(facility,
                                                                          rate: rate,
-                                                                         email: self.testEmail,
+                                                                         email: self.testEmailRandom,
                                                                          stripeToken: token,
                                                                          completion: {
                                                                             reservation, error in
