@@ -110,4 +110,6 @@ enum LocalizedStrings {
                                           comment: "Book it button title")
     static let NoSpotsAvailable = NSLocalizedString("No spots available",
                                                     comment: "No spots available")
+    static let NoSpotsFound = NSLocalizedString("No spots found.",
+                                                     comment: "Error message for when no spots are found")
 }
