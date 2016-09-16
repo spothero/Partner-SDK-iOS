@@ -15,12 +15,6 @@ protocol SpotCardCollectionViewDelegate {
 class SpotCardCollectionViewCell: UICollectionViewCell {
     var delegate: SpotCardCollectionViewDelegate?
     
-    override var selected: Bool {
-        didSet {
-            self.buyButton.backgroundColor = self.selected ? .shp_green() : .shp_spotHeroBlue()
-        }
-    }
-    
     static let Identifier = "SpotCardCellID"
     static let ItemWidth: CGFloat = 275
     static let ItemHeight: CGFloat = 120
