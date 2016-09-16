@@ -750,10 +750,23 @@
                     <navigationItem key="navigationItem" title="Checkout" id="WCZ-yy-K5c"/>
                     <connections>
                         <outlet property="tableView" destination="EGU-Jr-LbH" id="zx3-Hb-vc4"/>
+                        <outlet property="toolbar" destination="9nO-QP-wXD" id="ZfR-j6-Z8F"/>
                         <segue destination="zS2-IA-i1X" kind="show" identifier="confirmation" id="8M0-Ns-u0Q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rVA-eg-c4O" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="9nO-QP-wXD">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <items>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="YKW-uI-Yoy"/>
+                        <barButtonItem systemItem="done" id="fKy-Wa-HSn">
+                            <connections>
+                                <action selector="doneButtonPressed:" destination="tyi-hk-4VD" id="Xpn-aj-QV1"/>
+                            </connections>
+                        </barButtonItem>
+                    </items>
+                </toolbar>
             </objects>
             <point key="canvasLocation" x="1707" y="461"/>
         </scene>
