@@ -403,11 +403,11 @@ extension MapViewController: SpotCardCollectionViewFlowLayoutDelegate {
     func didSwipeCollectionView(direction: UISwipeGestureRecognizerDirection) {
         switch direction {
         case UISwipeGestureRecognizerDirection.Left:
-            if !(self.currentIndex + 1 == self.facilities.count) {
+            if self.currentIndex + 1 < self.facilities.count {
                 self.currentIndex += 1
             }
         case UISwipeGestureRecognizerDirection.Right:
-            if !(self.currentIndex - 1 < 0) {
+            if self.currentIndex > 0 {
                 self.currentIndex -= 1
             }
         default:
