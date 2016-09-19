@@ -13,13 +13,16 @@ class FacilityAnnotation: NSObject, MKAnnotation {
     let title: String?
     let coordinate: CLLocationCoordinate2D
     let facility: Facility?
+    let index: Int
     
     init(title: String,
          coordinate: CLLocationCoordinate2D,
-         facility: Facility) {
+         facility: Facility,
+         index: Int) {
         self.title = title
         self.coordinate = coordinate
         self.facility = facility
+        self.index = index
         
         super.init()
     }

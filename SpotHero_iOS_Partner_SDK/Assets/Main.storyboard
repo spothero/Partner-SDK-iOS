@@ -281,7 +281,7 @@
                                     <constraint firstAttribute="trailing" secondItem="00R-A9-LV4" secondAttribute="trailing" id="ulT-LG-tob"/>
                                 </constraints>
                             </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="64R-U6-acf">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="64R-U6-acf">
                                 <rect key="frame" x="0.0" y="430" width="600" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="s1r-pB-kPa"/>

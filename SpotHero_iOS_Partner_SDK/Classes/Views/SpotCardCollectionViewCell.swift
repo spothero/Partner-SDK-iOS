@@ -15,12 +15,6 @@ protocol SpotCardCollectionViewDelegate {
 class SpotCardCollectionViewCell: UICollectionViewCell {
     var delegate: SpotCardCollectionViewDelegate?
     
-    override var selected: Bool {
-        didSet {
-            self.buyButton.backgroundColor = self.selected ? .shp_green() : .shp_spotHeroBlue()
-        }
-    }
-    
     static let Identifier = "SpotCardCellID"
     static let ItemWidth: CGFloat = 275
     static let ItemHeight: CGFloat = 120
@@ -41,6 +35,7 @@ class SpotCardCollectionViewCell: UICollectionViewCell {
         self.accessibleParkingImageView.image = UIImage(named: "accessibility",
                                                         inBundle: NSBundle.shp_resourceBundle(),
                                                         compatibleWithTraitCollection: nil)
+        self.buyButton.backgroundColor = .shp_spotHeroBlue()
     }
     
     @IBAction func didTapBuyButton(button: UIButton) {
