@@ -36,6 +36,7 @@ class SpotCardCollectionViewCell: UICollectionViewCell {
                                                         inBundle: NSBundle.shp_resourceBundle(),
                                                         compatibleWithTraitCollection: nil)
         self.buyButton.backgroundColor = .shp_spotHeroBlue()
+        self.buyButton.enabled = false
     }
     
     @IBAction func didTapBuyButton(button: UIButton) {

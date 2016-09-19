@@ -32,7 +32,14 @@ class MapViewController: UIViewController {
     private let searchBarHeight: CGFloat = 44
     private let reservationContainerViewHeight: CGFloat = 134
     private var startEndDateDifferenceInSeconds: NSTimeInterval = Constants.ThirtyMinutesInSeconds
-    private var centerCell: SpotCardCollectionViewCell?
+    private var centerCell: SpotCardCollectionViewCell? {
+        willSet {
+            self.centerCell?.buyButton.enabled = false
+        }
+        didSet {
+            self.centerCell?.buyButton.enabled = true
+        }
+    }
     let checkoutSegueIdentifier = "showCheckout"
     private var selectedFacility: Facility?
     private var maxTableHeight: CGFloat = 0
