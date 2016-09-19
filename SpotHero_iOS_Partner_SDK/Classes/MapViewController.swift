@@ -400,26 +400,36 @@ extension MapViewController: KeyboardNotification {
 //MARK: SpotCardCollectionViewFlowLayoutDelegate
 
 extension MapViewController: SpotCardCollectionViewFlowLayoutDelegate {
-    func didSwipeCollectionView(index: Int) {
-        if !(self.currentIndex + index < 0) && !(self.currentIndex + index == self.facilities.count) {
-            self.currentIndex += index
-            let itemIndex = NSIndexPath(forItem: self.currentIndex, inSection: 0)
-            self.centerCell = self.spotCardCollectionView.cellForItemAtIndexPath(itemIndex) as? SpotCardCollectionViewCell
-            self.spotCardCollectionView.scrollToItemAtIndexPath(itemIndex,
-                                                                atScrollPosition: .None,
-                                                                animated: true)
-            
-            let annotation = self.mapView.annotations.flatMap {
-                annotation in
-                return annotation as? FacilityAnnotation
-                }.filter { //Filters the array returned by flatmap
-                    typed in
-                    return typed.index == itemIndex.row
-                }.first //takes the first object returned by the filter
-            
-            if let annotation = annotation {
-                self.mapView.selectAnnotation(annotation, animated: true)
+    func didSwipeCollectionView(direction: UISwipeGestureRecognizerDirection) {
+        switch direction {
+        case UISwipeGestureRecognizerDirection.Left:
+            if !(self.currentIndex + 1 == self.facilities.count) {
+                self.currentIndex += 1
             }
+        case UISwipeGestureRecognizerDirection.Right:
+            if !(self.currentIndex - 1 < 0) {
+                self.currentIndex -= 1
+            }
+        default:
+            return
+        }
+        
+        let itemIndex = NSIndexPath(forItem: self.currentIndex, inSection: 0)
+        self.centerCell = self.spotCardCollectionView.cellForItemAtIndexPath(itemIndex) as? SpotCardCollectionViewCell
+        self.spotCardCollectionView.scrollToItemAtIndexPath(itemIndex,
+                                                            atScrollPosition: .None,
+                                                            animated: true)
+        
+        let annotation = self.mapView.annotations.flatMap {
+            annotation in
+            return annotation as? FacilityAnnotation
+            }.filter { //Filters the array returned by flatmap
+                typed in
+                return typed.index == itemIndex.row
+            }.first //takes the first object returned by the filter
+        
+        if let annotation = annotation {
+            self.mapView.selectAnnotation(annotation, animated: true)
         }
     }
 }

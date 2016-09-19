@@ -9,7 +9,7 @@
 import UIKit
 
 protocol SpotCardCollectionViewFlowLayoutDelegate {
-    func didSwipeCollectionView(index: Int)
+    func didSwipeCollectionView(direction: UISwipeGestureRecognizerDirection)
 }
 
 class SpotCardCollectionViewFlowLayout: UICollectionViewFlowLayout {
@@ -61,13 +61,6 @@ class SpotCardCollectionViewFlowLayout: UICollectionViewFlowLayout {
     }
     
     func respondToSwipeGesture(recognizer: UISwipeGestureRecognizer) {
-        switch recognizer.direction {
-        case UISwipeGestureRecognizerDirection.Left:
-            self.delegate?.didSwipeCollectionView(1)
-        case UISwipeGestureRecognizerDirection.Right:
-            self.delegate?.didSwipeCollectionView(-1)
-        default:
-            return
-        }
+        self.delegate?.didSwipeCollectionView(recognizer.direction)
     }
 }
