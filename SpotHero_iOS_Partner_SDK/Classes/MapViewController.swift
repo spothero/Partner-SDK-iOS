@@ -32,7 +32,14 @@ class MapViewController: UIViewController {
     private let searchBarHeight: CGFloat = 44
     private let reservationContainerViewHeight: CGFloat = 134
     private var startEndDateDifferenceInSeconds: NSTimeInterval = Constants.ThirtyMinutesInSeconds
-    private var centerCell: SpotCardCollectionViewCell?
+    private var centerCell: SpotCardCollectionViewCell? {
+        willSet {
+            self.centerCell?.buyButton.enabled = false
+        }
+        didSet {
+            self.centerCell?.buyButton.enabled = true
+        }
+    }
     let checkoutSegueIdentifier = "showCheckout"
     private var selectedFacility: Facility?
     private var maxTableHeight: CGFloat = 0
@@ -349,6 +356,15 @@ extension MapViewController: UICollectionViewDataSource {
         
         cell.delegate = self
         return cell
+    }
+}
+
+//MARK: UICollectionViewDelegate
+
+extension MapViewController: UICollectionViewDelegate {
+    func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
+        let itemIndex = NSIndexPath(forItem: self.currentIndex, inSection: 0)
+        self.centerCell = self.spotCardCollectionView.cellForItemAtIndexPath(itemIndex) as? SpotCardCollectionViewCell
     }
 }
 
