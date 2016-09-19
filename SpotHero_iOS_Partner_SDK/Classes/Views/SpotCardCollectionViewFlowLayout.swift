@@ -32,10 +32,10 @@ class SpotCardCollectionViewFlowLayout: UICollectionViewFlowLayout {
                                                          bottom: 0,
                                                          right: inset)
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
-        swipeRight.direction = UISwipeGestureRecognizerDirection.Right
+        swipeRight.direction = .Right
         self.collectionView?.addGestureRecognizer(swipeRight)
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
-        swipeLeft.direction = UISwipeGestureRecognizerDirection.Left
+        swipeLeft.direction = .Left
         self.collectionView?.addGestureRecognizer(swipeLeft)
     }
     
