@@ -359,6 +359,15 @@ extension MapViewController: UICollectionViewDataSource {
     }
 }
 
+//MARK: UICollectionViewDelegate
+
+extension MapViewController: UICollectionViewDelegate {
+    func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
+        let itemIndex = NSIndexPath(forItem: self.currentIndex, inSection: 0)
+        self.centerCell = self.spotCardCollectionView.cellForItemAtIndexPath(itemIndex) as? SpotCardCollectionViewCell
+    }
+}
+
 //MARK: SpotCardCollectionViewDelegate
 
 extension MapViewController: SpotCardCollectionViewDelegate {
