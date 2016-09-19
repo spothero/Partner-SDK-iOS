@@ -141,16 +141,26 @@ class MapViewController: UIViewController {
             locationAnnotation.title = self.facilities.isEmpty ? LocalizedStrings.NoSpotsAvailable : ""
             self.mapView.addAnnotation(locationAnnotation)
         }
+        
+        var firstAnnotation: FacilityAnnotation?
         for (i, facility) in self.facilities.enumerate() {
             let facilityAnnotation = FacilityAnnotation(title: facility.title,
                                                         coordinate: facility.location.coordinate,
                                                         facility: facility,
                                                         index: i)
+            if i == 0 {
+                firstAnnotation = facilityAnnotation
+            }
             self.mapView.addAnnotation(facilityAnnotation)
         }
         let annotations = self.mapView.annotations
         self.mapView.showAnnotations(annotations, animated: true)
+        self.currentIndex = 0
         self.showSpotCardCollectionView()
+        guard let annotation = firstAnnotation else {
+            return
+        }
+        self.mapView.selectAnnotation(annotation, animated: true)
     }
     
     func showSpotCardCollectionView() {
