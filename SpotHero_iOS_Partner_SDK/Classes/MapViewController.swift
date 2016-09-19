@@ -222,7 +222,6 @@ extension MapViewController: PredictionControllerDelegate {
     func didTapXButton() {
         self.timeSelectionView.showTimeSelectionView(true)
         self.searchSpotsButton.hidden = true
-        self.searchBar.resignFirstResponder()
     }
     
     func didTapSearchButton() {
