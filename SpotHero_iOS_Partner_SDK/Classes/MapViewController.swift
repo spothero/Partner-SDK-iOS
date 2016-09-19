@@ -35,9 +35,11 @@ class MapViewController: UIViewController {
     private var centerCell: SpotCardCollectionViewCell? {
         willSet {
             self.centerCell?.buyButton.enabled = false
+            self.centerCell?.buyButton.backgroundColor = .shp_spotHeroBlue()
         }
         didSet {
             self.centerCell?.buyButton.enabled = true
+            self.centerCell?.buyButton.backgroundColor = .shp_green()
         }
     }
     let checkoutSegueIdentifier = "showCheckout"
