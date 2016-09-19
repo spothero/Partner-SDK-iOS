@@ -306,6 +306,7 @@ extension MapViewController: MKMapViewDelegate {
                 annotation.coordinate.longitude == placeDetails.location.coordinate.longitude {
                 let annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "LocationAnnotation")
                 annotationView.canShowCallout = self.facilities.isEmpty
+                annotationView.enabled = self.facilities.isEmpty
                 annotationView.pinTintColor = self.facilities.isEmpty ? .redColor() : .greenColor()
                 return annotationView
             }
