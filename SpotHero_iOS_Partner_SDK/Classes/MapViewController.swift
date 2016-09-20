@@ -32,7 +32,16 @@ class MapViewController: UIViewController {
     private let searchBarHeight: CGFloat = 44
     private let reservationContainerViewHeight: CGFloat = 134
     private var startEndDateDifferenceInSeconds: NSTimeInterval = Constants.ThirtyMinutesInSeconds
-    private var centerCell: SpotCardCollectionViewCell?
+    private var centerCell: SpotCardCollectionViewCell? {
+        willSet {
+            self.centerCell?.buyButton.enabled = false
+            self.centerCell?.buyButton.backgroundColor = .shp_spotHeroBlue()
+        }
+        didSet {
+            self.centerCell?.buyButton.enabled = true
+            self.centerCell?.buyButton.backgroundColor = .shp_green()
+        }
+    }
     let checkoutSegueIdentifier = "showCheckout"
     private var selectedFacility: Facility?
     private var maxTableHeight: CGFloat = 0
@@ -134,16 +143,26 @@ class MapViewController: UIViewController {
             locationAnnotation.title = self.facilities.isEmpty ? LocalizedStrings.NoSpotsAvailable : ""
             self.mapView.addAnnotation(locationAnnotation)
         }
+        
+        var firstAnnotation: FacilityAnnotation?
         for (i, facility) in self.facilities.enumerate() {
             let facilityAnnotation = FacilityAnnotation(title: facility.title,
                                                         coordinate: facility.location.coordinate,
                                                         facility: facility,
                                                         index: i)
+            if i == 0 {
+                firstAnnotation = facilityAnnotation
+            }
             self.mapView.addAnnotation(facilityAnnotation)
         }
         let annotations = self.mapView.annotations
         self.mapView.showAnnotations(annotations, animated: true)
+        self.currentIndex = 0
         self.showSpotCardCollectionView()
+        guard let annotation = firstAnnotation else {
+            return
+        }
+        self.mapView.selectAnnotation(annotation, animated: true)
     }
     
     func showSpotCardCollectionView() {
@@ -222,7 +241,6 @@ extension MapViewController: PredictionControllerDelegate {
     func didTapXButton() {
         self.timeSelectionView.showTimeSelectionView(true)
         self.searchSpotsButton.hidden = true
-        self.searchBar.resignFirstResponder()
     }
     
     func didTapSearchButton() {
@@ -288,6 +306,7 @@ extension MapViewController: MKMapViewDelegate {
                 annotation.coordinate.longitude == placeDetails.location.coordinate.longitude {
                 let annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "LocationAnnotation")
                 annotationView.canShowCallout = self.facilities.isEmpty
+                annotationView.enabled = self.facilities.isEmpty
                 annotationView.pinTintColor = self.facilities.isEmpty ? .redColor() : .greenColor()
                 return annotationView
             }
@@ -340,6 +359,15 @@ extension MapViewController: UICollectionViewDataSource {
         
         cell.delegate = self
         return cell
+    }
+}
+
+//MARK: UICollectionViewDelegate
+
+extension MapViewController: UICollectionViewDelegate {
+    func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
+        let itemIndex = NSIndexPath(forItem: self.currentIndex, inSection: 0)
+        self.centerCell = self.spotCardCollectionView.cellForItemAtIndexPath(itemIndex) as? SpotCardCollectionViewCell
     }
 }
 
