@@ -65,6 +65,7 @@ class FacilityAnnotationView: MKAnnotationView {
         self.priceLabel?.text = "$\(displayPrice)"
         self.priceLabel?.textColor = .shp_spotHeroBlue()
         self.priceLabel?.font = UIFont.systemFontOfSize(self.priceLabel?.text?.characters.count > 3 ? AnnotationLabel.minLabelFontSize : AnnotationLabel.maxLabelFontSize)
+        self.priceLabel?.contentMode = .Center
         self.priceLabel?.autoresizingMask = [
             .FlexibleTopMargin,
             .FlexibleLeftMargin,
@@ -104,13 +105,14 @@ class FacilityAnnotationView: MKAnnotationView {
         let newHeight: CGFloat = selected ? imageSize.height * self.facilityGrowScale : imageSize.height
         
         if (oldWidth != newWidth) {
-            self.frame = CGRect(x: self.frame.origin.x - (newWidth - oldWidth) / 2,
-                                y: self.frame.origin.y - (newHeight - oldHeight),
-                                width: newWidth,
-                                height: newHeight)
+            
             self.centerOffset = CGPoint(x: 0, y: -newHeight / 2)
             
             UIView.animateWithDuration(self.growDuration, animations: {
+                self.frame = CGRect(x: self.frame.origin.x - (newWidth - oldWidth) / 2,
+                    y: self.frame.origin.y - (newHeight - oldHeight),
+                    width: newWidth,
+                    height: newHeight)
                 self.backgroundImageView?.frame = self.bounds
                 self.priceLabel?.frame = self.labelBoundsWithScale(selected ? self.facilityGrowScale : 1)
                 }, completion: {
@@ -131,7 +133,7 @@ class AnnotationLabel: UILabel {
     
     override var text: String? {
         didSet {
-            self.setNeedsLayout()
+            self.setNeedsDisplay()
         }
     }
     
@@ -167,6 +169,5 @@ class AnnotationLabel: UILabel {
                                 width: textSize.width,
                                 height: 20)
         labelText.drawInRect(textBounds, withAttributes: [NSFontAttributeName : font, NSForegroundColorAttributeName: self.textColor])
-        self.text = labelText
     }
 }
