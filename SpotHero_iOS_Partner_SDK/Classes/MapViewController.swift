@@ -317,7 +317,7 @@ extension MapViewController: MKMapViewDelegate {
         }
         
         if let facilityAnnotation = annotation as? FacilityAnnotation {
-           annotationView.setAnnotationAndUpdatePriceLabel(facilityAnnotation)
+           annotationView.annotation = facilityAnnotation
         }
         return annotationView
     }

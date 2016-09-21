@@ -25,6 +25,19 @@ class FacilityAnnotationView: MKAnnotationView {
                                                  compatibleWithTraitCollection: nil)
     private var priceLabel: AnnotationLabel?
     private var backgroundImageView: UIImageView?
+    override var annotation: MKAnnotation? {
+        didSet {
+            guard let facilityAnnotation = annotation as? FacilityAnnotation else {
+                return
+            }
+            guard let displayPrice = facilityAnnotation.facility?.displayPrice() else {
+                self.priceLabel?.text = ""
+                return
+            }
+            self.priceLabel?.font = UIFont.systemFontOfSize(self.priceLabel?.text?.characters.count > 3 ? AnnotationLabel.minLabelFontSize : AnnotationLabel.maxLabelFontSize)
+            self.priceLabel?.text = "$\(displayPrice)"
+        }
+    }
     override var selected: Bool {
         didSet {
             self.animate(selected)
@@ -55,13 +68,8 @@ class FacilityAnnotationView: MKAnnotationView {
             return
         }
         self.addSubview(imageView)
-        
-        guard let facilityAnnotation  = annotation as? FacilityAnnotation else {
-            assertionFailure("cannot get facility annotation")
-            return
-        }
+
         self.priceLabel = AnnotationLabel(frame: self.labelBoundsWithScale(1))
-        self.setAnnotationAndUpdatePriceLabel(facilityAnnotation)
         self.priceLabel?.textColor = .shp_spotHeroBlue()
         self.priceLabel?.contentMode = .Center
         self.priceLabel?.autoresizingMask = [
@@ -81,16 +89,6 @@ class FacilityAnnotationView: MKAnnotationView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-    }
-    
-    func setAnnotationAndUpdatePriceLabel(annotation: FacilityAnnotation) {
-        self.annotation = annotation
-        guard let displayPrice = annotation.facility?.displayPrice() else {
-            self.priceLabel?.text = ""
-            return
-        }
-        self.priceLabel?.font = UIFont.systemFontOfSize(self.priceLabel?.text?.characters.count > 3 ? AnnotationLabel.minLabelFontSize : AnnotationLabel.maxLabelFontSize)
-        self.priceLabel?.text = "$\(displayPrice)"
     }
     
     private func labelBoundsWithScale(scale: CGFloat) -> CGRect {
