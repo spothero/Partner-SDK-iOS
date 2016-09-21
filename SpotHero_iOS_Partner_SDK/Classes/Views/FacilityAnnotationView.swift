@@ -70,6 +70,7 @@ class FacilityAnnotationView: MKAnnotationView {
         self.addSubview(imageView)
 
         self.priceLabel = AnnotationLabel(frame: self.labelBoundsWithScale(1))
+        self.annotation = annotation
         self.priceLabel?.textColor = .shp_spotHeroBlue()
         self.priceLabel?.contentMode = .Center
         self.priceLabel?.autoresizingMask = [
