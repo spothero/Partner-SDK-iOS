@@ -239,7 +239,6 @@ class MapViewController: UIViewController {
         }
     }
     
-    
     @IBAction func didTapMapView(sender: AnyObject) {
         self.searchBar.resignFirstResponder()
     }
@@ -259,7 +258,6 @@ class MapViewController: UIViewController {
             ProgressHUD.hideHUDForView(self.view)
         }
     }
-    
 }
 
 //MARK: PredictionControllerDelegateHoursBetweenDates
