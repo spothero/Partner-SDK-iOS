@@ -311,10 +311,14 @@ extension MapViewController: MKMapViewDelegate {
                 return annotationView
             }
         }
-        guard let annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(FacilityAnnotationView.Identifier) else {
+        
+        guard let annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(FacilityAnnotationView.Identifier) as? FacilityAnnotationView else {
             return FacilityAnnotationView(annotation: annotation, reuseIdentifier: FacilityAnnotationView.Identifier)
         }
         
+        if let facilityAnnotation = annotation as? FacilityAnnotation {
+           annotationView.setAnnotationAndUpdatePriceLabel(facilityAnnotation)
+        }
         return annotationView
     }
     

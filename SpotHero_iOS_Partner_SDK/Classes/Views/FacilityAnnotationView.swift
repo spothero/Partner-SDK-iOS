@@ -34,8 +34,6 @@ class FacilityAnnotationView: MKAnnotationView {
     override init(annotation: MKAnnotation?, reuseIdentifier: String?) {
         super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
         
-        let facilityAnnotation  = annotation as? FacilityAnnotation
-        
         guard let imageSize = self.facilityPinImageDefault?.size else {
             assertionFailure("cannot get image size")
             return
@@ -58,11 +56,11 @@ class FacilityAnnotationView: MKAnnotationView {
         }
         self.addSubview(imageView)
         
-        self.priceLabel = AnnotationLabel(frame: self.labelBoundsWithScale(1))
-        guard let displayPrice = facilityAnnotation?.facility?.displayPrice() else {
+        guard let facilityAnnotation  = annotation as? FacilityAnnotation else {
             return
         }
-        self.priceLabel?.text = "$\(displayPrice)"
+        self.priceLabel = AnnotationLabel(frame: self.labelBoundsWithScale(1))
+        self.setAnnotationAndUpdatePriceLabel(facilityAnnotation)
         self.priceLabel?.textColor = .shp_spotHeroBlue()
         self.priceLabel?.font = UIFont.systemFontOfSize(self.priceLabel?.text?.characters.count > 3 ? AnnotationLabel.minLabelFontSize : AnnotationLabel.maxLabelFontSize)
         self.priceLabel?.contentMode = .Center
@@ -83,6 +81,14 @@ class FacilityAnnotationView: MKAnnotationView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+    }
+    
+    func setAnnotationAndUpdatePriceLabel(annotation: FacilityAnnotation) {
+        self.annotation = annotation
+        guard let displayPrice = annotation.facility?.displayPrice() else {
+            return
+        }
+        self.priceLabel?.text = "$\(displayPrice)"
     }
     
     private func labelBoundsWithScale(scale: CGFloat) -> CGRect {
