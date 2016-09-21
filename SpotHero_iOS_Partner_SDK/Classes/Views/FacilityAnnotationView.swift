@@ -57,6 +57,7 @@ class FacilityAnnotationView: MKAnnotationView {
         self.addSubview(imageView)
         
         guard let facilityAnnotation  = annotation as? FacilityAnnotation else {
+            assertionFailure("cannot get facility annotation")
             return
         }
         self.priceLabel = AnnotationLabel(frame: self.labelBoundsWithScale(1))
