@@ -231,6 +231,7 @@ class MapViewController: UIViewController {
         switch gestureRecognizer.state {
         case .Began:
             self.spotCardCollectionView.hidden = true
+            self.searchBar.resignFirstResponder()
         case .Ended:
             self.fetchFacilities(self.mapView.centerCoordinate, panning: true)
         default:
