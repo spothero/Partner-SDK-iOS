@@ -355,7 +355,7 @@ extension MapViewController: StartEndDateDelegate {
     }
     
     func didSelectStartEndView() {
-        searchBar.resignFirstResponder()
+        self.searchBar.resignFirstResponder()
     }
 }
 
