@@ -25,6 +25,19 @@ class FacilityAnnotationView: MKAnnotationView {
                                                  compatibleWithTraitCollection: nil)
     private var priceLabel: AnnotationLabel?
     private var backgroundImageView: UIImageView?
+    override var annotation: MKAnnotation? {
+        didSet {
+            guard let facilityAnnotation = self.annotation as? FacilityAnnotation else {
+                return
+            }
+            guard let displayPrice = facilityAnnotation.facility?.displayPrice() else {
+                self.priceLabel?.text = ""
+                return
+            }
+            self.priceLabel?.font = UIFont.systemFontOfSize(self.priceLabel?.text?.characters.count > 3 ? AnnotationLabel.minLabelFontSize : AnnotationLabel.maxLabelFontSize)
+            self.priceLabel?.text = "$\(displayPrice)"
+        }
+    }
     override var selected: Bool {
         didSet {
             self.animate(selected)
@@ -33,8 +46,6 @@ class FacilityAnnotationView: MKAnnotationView {
     
     override init(annotation: MKAnnotation?, reuseIdentifier: String?) {
         super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
-        
-        let facilityAnnotation  = annotation as? FacilityAnnotation
         
         guard let imageSize = self.facilityPinImageDefault?.size else {
             assertionFailure("cannot get image size")
@@ -57,14 +68,10 @@ class FacilityAnnotationView: MKAnnotationView {
             return
         }
         self.addSubview(imageView)
-        
+
         self.priceLabel = AnnotationLabel(frame: self.labelBoundsWithScale(1))
-        guard let displayPrice = facilityAnnotation?.facility?.displayPrice() else {
-            return
-        }
-        self.priceLabel?.text = "$\(displayPrice)"
+        self.annotation = annotation
         self.priceLabel?.textColor = .shp_spotHeroBlue()
-        self.priceLabel?.font = UIFont.systemFontOfSize(self.priceLabel?.text?.characters.count > 3 ? AnnotationLabel.minLabelFontSize : AnnotationLabel.maxLabelFontSize)
         self.priceLabel?.contentMode = .Center
         self.priceLabel?.autoresizingMask = [
             .FlexibleTopMargin,

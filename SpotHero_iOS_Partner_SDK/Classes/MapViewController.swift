@@ -238,6 +238,11 @@ class MapViewController: UIViewController {
         }
     }
     
+    
+    @IBAction func didTapMapView(sender: AnyObject) {
+        self.searchBar.resignFirstResponder()
+    }
+    
     //MARK: Helpers
     
     func startLoading() {
@@ -253,6 +258,7 @@ class MapViewController: UIViewController {
             ProgressHUD.hideHUDForView(self.view)
         }
     }
+    
 }
 
 //MARK: PredictionControllerDelegateHoursBetweenDates
@@ -368,10 +374,14 @@ extension MapViewController: MKMapViewDelegate {
                 return annotationView
             }
         }
-        guard let annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(FacilityAnnotationView.Identifier) else {
+        
+        guard let annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(FacilityAnnotationView.Identifier) as? FacilityAnnotationView else {
             return FacilityAnnotationView(annotation: annotation, reuseIdentifier: FacilityAnnotationView.Identifier)
         }
         
+        if let facilityAnnotation = annotation as? FacilityAnnotation {
+           annotationView.annotation = facilityAnnotation
+        }
         return annotationView
     }
     
