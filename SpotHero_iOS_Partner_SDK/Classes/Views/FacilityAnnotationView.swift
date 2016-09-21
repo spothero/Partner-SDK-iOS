@@ -27,7 +27,7 @@ class FacilityAnnotationView: MKAnnotationView {
     private var backgroundImageView: UIImageView?
     override var annotation: MKAnnotation? {
         didSet {
-            guard let facilityAnnotation = annotation as? FacilityAnnotation else {
+            guard let facilityAnnotation = self.annotation as? FacilityAnnotation else {
                 return
             }
             guard let displayPrice = facilityAnnotation.facility?.displayPrice() else {
