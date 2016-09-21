@@ -27,11 +27,11 @@ class MapViewController: UIViewController {
     private var prediction: GooglePlacesPrediction?
     private let predictionController = PredictionController()
     private var predictionPlaceDetails: GooglePlaceDetails?
-    private var startDate: NSDate = NSDate().shp_dateByRoundingMinutesBy30(roundDown: true)
-    private var endDate: NSDate = NSDate().shp_dateByRoundingMinutesBy30(roundDown: false)
+    private var startDate: NSDate = NSDate().shp_dateByRoundingMinutes(roundDown: true, minutes: Constants.SixHoursInMinutes)
+    private var endDate: NSDate = NSDate().shp_dateByRoundingMinutes(roundDown: false, minutes: Constants.SixHoursInMinutes)
     private let searchBarHeight: CGFloat = 44
     private let reservationContainerViewHeight: CGFloat = 134
-    private var startEndDateDifferenceInSeconds: NSTimeInterval = Constants.ThirtyMinutesInSeconds
+    private var startEndDateDifferenceInSeconds: NSTimeInterval = Double(Constants.SixHoursInMinutes)
     private var centerCell: SpotCardCollectionViewCell? {
         willSet {
             self.centerCell?.buyButton.enabled = false

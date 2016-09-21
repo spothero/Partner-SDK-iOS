@@ -13,6 +13,7 @@ enum Constants {
     static let ChicagoLocation = CLLocation(latitude: 41.894503, longitude: -87.636659)
     static let ViewAnimationDuration: NSTimeInterval = 0.3
     static let ThirtyMinutesInSeconds: NSTimeInterval = 1800
+    static let SixHoursInMinutes: Int = 360
     static let SecondsInHour: NSTimeInterval = 3600
     static let TestCreditCardNumber = "4242424242424242"
     static let TestExpirationMonth = "12"
