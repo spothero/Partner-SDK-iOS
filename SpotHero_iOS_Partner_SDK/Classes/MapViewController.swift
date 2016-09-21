@@ -202,6 +202,10 @@ class MapViewController: UIViewController {
         self.fetchFacilities()
         self.searchBar.resignFirstResponder()
     }
+    
+    @IBAction func didTapMapView(sender: AnyObject) {
+        self.searchBar.resignFirstResponder()
+    }
 }
 
 //MARK: PredictionControllerDelegateHoursBetweenDates
