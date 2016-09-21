@@ -62,7 +62,6 @@ class FacilityAnnotationView: MKAnnotationView {
         self.priceLabel = AnnotationLabel(frame: self.labelBoundsWithScale(1))
         self.setAnnotationAndUpdatePriceLabel(facilityAnnotation)
         self.priceLabel?.textColor = .shp_spotHeroBlue()
-        self.priceLabel?.font = UIFont.systemFontOfSize(self.priceLabel?.text?.characters.count > 3 ? AnnotationLabel.minLabelFontSize : AnnotationLabel.maxLabelFontSize)
         self.priceLabel?.contentMode = .Center
         self.priceLabel?.autoresizingMask = [
             .FlexibleTopMargin,
@@ -88,6 +87,7 @@ class FacilityAnnotationView: MKAnnotationView {
         guard let displayPrice = annotation.facility?.displayPrice() else {
             return
         }
+        self.priceLabel?.font = UIFont.systemFontOfSize(self.priceLabel?.text?.characters.count > 3 ? AnnotationLabel.minLabelFontSize : AnnotationLabel.maxLabelFontSize)
         self.priceLabel?.text = "$\(displayPrice)"
     }
     
