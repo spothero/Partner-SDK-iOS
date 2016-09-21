@@ -63,13 +63,13 @@ class TimeSelectionView: UIView {
             }
         }
     }
-    private var startDate: NSDate = NSDate().shp_dateByRoundingMinutes(roundDown: true, minutes: Constants.SixHoursInMinutes) {
+    private var startDate: NSDate = NSDate().shp_roundDateToNearestHalfHour(roundDown: true) {
         didSet {
             self.setDateTimeLabels(self.startDate, endDate: self.endDate)
             self.startEndDateDelegate?.didChangeStartEndDate(startDate: self.startDate, endDate: self.endDate)
         }
     }
-    private var endDate: NSDate = NSDate().shp_dateByRoundingMinutes(roundDown: false, minutes: Constants.SixHoursInMinutes) {
+    private var endDate: NSDate = NSDate().dateByAddingTimeInterval(Constants.SixHoursInSeconds).shp_roundDateToNearestHalfHour(roundDown: true) {
         didSet {
             self.setDateTimeLabels(self.startDate, endDate: self.endDate)
             self.startEndDateDelegate?.didChangeStartEndDate(startDate: self.startDate, endDate: self.endDate)
@@ -82,8 +82,8 @@ class TimeSelectionView: UIView {
     }
     
     private func setupTimeSelectionView() {
-        self.startDate = NSDate().shp_dateByRoundingMinutes(roundDown: true, minutes: Constants.SixHoursInMinutes)
-        self.endDate = NSDate().shp_dateByRoundingMinutes(roundDown: false, minutes: Constants.SixHoursInMinutes)
+        self.startDate = NSDate().shp_roundDateToNearestHalfHour(roundDown: true)
+        self.endDate = NSDate().dateByAddingTimeInterval(Constants.SixHoursInSeconds).shp_roundDateToNearestHalfHour(roundDown: true)
         
         self.startDateLabel.accessibilityLabel = AccessibilityStrings.StartDateLabel
         self.endDateLabel.accessibilityLabel = AccessibilityStrings.EndDateLabel
@@ -124,7 +124,7 @@ class TimeSelectionView: UIView {
         if (self.startViewSelected) {
             self.startDate = date
             if (self.endDate.timeIntervalSinceDate(date) < Constants.ThirtyMinutesInSeconds) {
-                self.endDate = date.shp_dateByRoundingMinutes(roundDown: false)
+                self.endDate = date.shp_roundDateToNearestHalfHour(roundDown: false)
             }
         } else if (self.endViewSelected) {
             self.endDate = date

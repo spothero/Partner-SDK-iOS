@@ -10,20 +10,19 @@ import Foundation
 
 public extension NSDate {
     /**
-     Round date time up/down by x mins
+     Round date time up/down to the nearest half hour
      
-     - parameter roundDown: pass in true to round down by x mins, false to round up
-     - parameter minutes: pass in x mins, by default it is set to 30 mins
+     - parameter roundDown: pass in true to round down, false to round up
      */
-    func shp_dateByRoundingMinutes(roundDown roundDown: Bool, minutes: Int = 30) -> NSDate {
+    func shp_roundDateToNearestHalfHour(roundDown roundDown: Bool) -> NSDate {
         let unitFlags: NSCalendarUnit = [.Minute, .Second]
         let timeComponents = NSCalendar.currentCalendar().components(unitFlags, fromDate: self)
-        let remain = timeComponents.minute % minutes
+        let remain = timeComponents.minute % 30
         let interval: NSTimeInterval
         if roundDown {
             interval = Double(-((60 * remain) + timeComponents.second))
         } else {
-            interval = Double((60 * (minutes - remain) - timeComponents.second))
+            interval = Double((60 * (30 - remain) - timeComponents.second))
         }
         return self.dateByAddingTimeInterval(interval)
     }
