@@ -39,7 +39,7 @@ class PartnerAPIMockTests: BaseTests {
         if let
             startDate = self.startDate,
             endDate = self.endDate {
-                FacilityAPI.fetchFacilities(location,
+                FacilityAPI.fetchFacilities(location.coordinate,
                                             starts: startDate,
                                             ends: endDate,
                                             completion: completion)

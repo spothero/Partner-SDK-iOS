@@ -26,7 +26,15 @@ class MapViewController: UIViewController {
     
     private var prediction: GooglePlacesPrediction?
     private let predictionController = PredictionController()
-    private var predictionPlaceDetails: GooglePlaceDetails?
+    private var predictionPlaceDetails: GooglePlaceDetails? {
+        didSet {
+            guard let placeDetails = self.predictionPlaceDetails else {
+                return
+            }
+            
+            self.fetchFacilities(placeDetails.location.coordinate)
+        }
+    }
     private var startDate: NSDate = NSDate().shp_dateByRoundingMinutesBy30(roundDown: true)
     private var endDate: NSDate = NSDate().shp_dateByRoundingMinutesBy30(roundDown: false)
     private let searchBarHeight: CGFloat = 44
@@ -66,6 +74,10 @@ class MapViewController: UIViewController {
         }
         
         layout.delegate = self
+        
+        let mapDragRecognizer = UIPanGestureRecognizer(target: self, action: "didDragMap:")
+        mapDragRecognizer.delegate = self
+        self.mapView.addGestureRecognizer(mapDragRecognizer)
     }
     
     private func setMapViewRegion() {
@@ -107,34 +119,32 @@ class MapViewController: UIViewController {
         self.searchSpotsButton.hidden = (self.searchBar.text ?? "").isEmpty
     }
     
-    func fetchFacilities() {
-        guard let prediction = self.prediction else {
-            return
-        }
+    func getPlaceDetails(prediction: GooglePlacesPrediction, completion: (GooglePlaceDetails?) -> ()) {
         ProgressHUD.showHUDAddedTo(self.view, withText: LocalizedStrings.Loading)
         GooglePlacesWrapper.getPlaceDetails(prediction) {
             placeDetails, error in
-            if let placeDetails = placeDetails {
-                self.predictionPlaceDetails = placeDetails
-                FacilityAPI.fetchFacilities(placeDetails.location,
-                                            starts: self.startDate,
-                                            ends: self.endDate,
-                                            completion: {
-                                                [weak self]
-                                                facilities, error in
-                                                ProgressHUD.hideHUDForView(self?.view)
-                                                if facilities.isEmpty {
-                                                    AlertView.presentErrorAlertView(LocalizedStrings.NoSpotsFound, from: self)
-                                                }
-                                                
-                                                self?.facilities = facilities
-                                                self?.addAndShowFacilityAnnotations()
-                    })
-            }
+            completion(placeDetails)
         }
     }
     
-    func addAndShowFacilityAnnotations() {
+    func fetchFacilities(coordinate: CLLocationCoordinate2D, panning: Bool = false) {
+            FacilityAPI.fetchFacilities(coordinate,
+                                        starts: self.startDate,
+                                        ends: self.endDate,
+                                        completion: {
+                                            [weak self]
+                                            facilities, error in
+                                            ProgressHUD.hideHUDForView(self?.view)
+                                            if facilities.isEmpty && !panning {
+                                                AlertView.presentErrorAlertView(LocalizedStrings.NoSpotsFound, from: self)
+                                            }
+                                            
+                                            self?.facilities = facilities
+                                            self?.addAndShowFacilityAnnotations(panning)
+                })
+    }
+    
+    func addAndShowFacilityAnnotations(panning: Bool = false) {
         //TODO: Look into caching annotations like the main app
         self.mapView.removeAnnotations(self.mapView.annotations)
         if let placeDetails = self.predictionPlaceDetails {
@@ -150,19 +160,22 @@ class MapViewController: UIViewController {
                                                         coordinate: facility.location.coordinate,
                                                         facility: facility,
                                                         index: i)
-            if i == 0 {
+            if i == 0 && !panning {
                 firstAnnotation = facilityAnnotation
             }
             self.mapView.addAnnotation(facilityAnnotation)
         }
-        let annotations = self.mapView.annotations
-        self.mapView.showAnnotations(annotations, animated: true)
-        self.currentIndex = 0
         self.showSpotCardCollectionView()
-        guard let annotation = firstAnnotation else {
-            return
+        if !panning {
+            let annotations = self.mapView.annotations
+            self.mapView.showAnnotations(annotations, animated: true)
+            self.currentIndex = 0
+            
+            guard let annotation = firstAnnotation else {
+                return
+            }
+            self.mapView.selectAnnotation(annotation, animated: true)
         }
-        self.mapView.selectAnnotation(annotation, animated: true)
     }
     
     func showSpotCardCollectionView() {
@@ -199,8 +212,25 @@ class MapViewController: UIViewController {
         self.timeSelectionView.showTimeSelectionView(false)
         let hoursBetweenDates = self.startEndDateDifferenceInSeconds / Constants.SecondsInHour
         self.collapsedSearchBar.text = String(format: LocalizedStrings.HoursBetweenDatesFormat, hoursBetweenDates)
-        self.fetchFacilities()
+        if let prediction = self.prediction {
+            self.getPlaceDetails(prediction, completion: { (placeDetails) in
+                if let placeDetails = placeDetails {
+                    self.predictionPlaceDetails = placeDetails
+                }
+            })
+        }
         self.searchBar.resignFirstResponder()
+    }
+    
+    func didDragMap(gestureRecognizer: UIGestureRecognizer) {
+        switch gestureRecognizer.state {
+        case .Began:
+            self.spotCardCollectionView.hidden = true
+        case .Ended:
+            self.fetchFacilities(self.mapView.centerCoordinate, panning: true)
+        default:
+            break
+        }
     }
 }
 
@@ -245,7 +275,13 @@ extension MapViewController: PredictionControllerDelegate {
     
     func didTapSearchButton() {
         guard self.predictionController.predictions.count > 0 else {
-            self.fetchFacilities()
+            if let prediction = self.prediction {
+                self.getPlaceDetails(prediction, completion: { (placeDetails) in
+                    if let placeDetails = placeDetails {
+                        self.predictionPlaceDetails = placeDetails
+                    }
+                })
+            }
             return
         }
         
@@ -433,10 +469,14 @@ extension MapViewController: SpotCardCollectionViewFlowLayoutDelegate {
         case UISwipeGestureRecognizerDirection.Left:
             if self.currentIndex + 1 < self.facilities.count {
                 self.currentIndex += 1
+            } else {
+                return
             }
         case UISwipeGestureRecognizerDirection.Right:
             if self.currentIndex > 0 {
                 self.currentIndex -= 1
+            } else {
+                return
             }
         default:
             return
@@ -459,5 +499,13 @@ extension MapViewController: SpotCardCollectionViewFlowLayoutDelegate {
         if let annotation = annotation {
             self.mapView.selectAnnotation(annotation, animated: true)
         }
+    }
+}
+
+// MARK: - UIGestureRecognizerDelegate
+
+extension MapViewController: UIGestureRecognizerDelegate {
+    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
     }
 }
