@@ -85,6 +85,7 @@ class FacilityAnnotationView: MKAnnotationView {
     func setAnnotationAndUpdatePriceLabel(annotation: FacilityAnnotation) {
         self.annotation = annotation
         guard let displayPrice = annotation.facility?.displayPrice() else {
+            self.priceLabel?.text = ""
             return
         }
         self.priceLabel?.font = UIFont.systemFontOfSize(self.priceLabel?.text?.characters.count > 3 ? AnnotationLabel.minLabelFontSize : AnnotationLabel.maxLabelFontSize)
