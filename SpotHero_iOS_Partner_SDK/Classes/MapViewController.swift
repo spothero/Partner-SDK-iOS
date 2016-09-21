@@ -54,6 +54,7 @@ class MapViewController: UIViewController {
     private var selectedFacility: Facility?
     private var maxTableHeight: CGFloat = 0
     private var currentIndex: Int = 0
+    private var loading = false
     
     var facilities = [Facility]()
     
@@ -120,7 +121,7 @@ class MapViewController: UIViewController {
     }
     
     func getPlaceDetails(prediction: GooglePlacesPrediction, completion: (GooglePlaceDetails?) -> ()) {
-        ProgressHUD.showHUDAddedTo(self.view, withText: LocalizedStrings.Loading)
+        self.startLoading()
         GooglePlacesWrapper.getPlaceDetails(prediction) {
             placeDetails, error in
             completion(placeDetails)
@@ -128,20 +129,24 @@ class MapViewController: UIViewController {
     }
     
     func fetchFacilities(coordinate: CLLocationCoordinate2D, panning: Bool = false) {
-            FacilityAPI.fetchFacilities(coordinate,
-                                        starts: self.startDate,
-                                        ends: self.endDate,
-                                        completion: {
-                                            [weak self]
-                                            facilities, error in
-                                            ProgressHUD.hideHUDForView(self?.view)
-                                            if facilities.isEmpty && !panning {
-                                                AlertView.presentErrorAlertView(LocalizedStrings.NoSpotsFound, from: self)
-                                            }
-                                            
-                                            self?.facilities = facilities
-                                            self?.addAndShowFacilityAnnotations(panning)
-                })
+        if !panning {
+            self.startLoading()
+        }
+
+        FacilityAPI.fetchFacilities(coordinate,
+                                    starts: self.startDate,
+                                    ends: self.endDate,
+                                    completion: {
+                                        [weak self]
+                                        facilities, error in
+                                        self?.stopLoading()
+                                        if facilities.isEmpty && !panning {
+                                            AlertView.presentErrorAlertView(LocalizedStrings.NoSpotsFound, from: self)
+                                        }
+                                        
+                                        self?.facilities = facilities
+                                        self?.addAndShowFacilityAnnotations(panning)
+            })
     }
     
     func addAndShowFacilityAnnotations(panning: Bool = false) {
@@ -230,6 +235,22 @@ class MapViewController: UIViewController {
             self.fetchFacilities(self.mapView.centerCoordinate, panning: true)
         default:
             break
+        }
+    }
+    
+    //MARK: Helpers
+    
+    func startLoading() {
+        if !self.loading {
+            self.loading = true
+            ProgressHUD.showHUDAddedTo(self.view, withText: LocalizedStrings.Loading)
+        }
+    }
+    
+    func stopLoading() {
+        if self.loading {
+            self.loading = false
+            ProgressHUD.hideHUDForView(self.view)
         }
     }
 }
