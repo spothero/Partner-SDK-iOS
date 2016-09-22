@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol PersonalInfoTableViewCellDelegate: class {
+    func textFieldShouldReturn(type: PersonalInfoRow)
+}
+
 class PersonalInfoTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var textField: UITextField!
@@ -16,6 +20,7 @@ class PersonalInfoTableViewCell: UITableViewCell {
     var type: PersonalInfoRow = .FullName
     
     var delegate: ValidatorCellDelegate?
+    weak var personalInfoCellDelegate: PersonalInfoTableViewCellDelegate?
     var validationClosure: ((String) throws -> ())?
     var valid = false {
         didSet {
@@ -66,6 +71,7 @@ extension PersonalInfoTableViewCell: UITextFieldDelegate {
             
             if unformatted.characters.count == 10 {
                 textField.resignFirstResponder()
+                self.personalInfoCellDelegate?.textFieldShouldReturn(self.type)
             }
             
             return false
@@ -76,6 +82,7 @@ extension PersonalInfoTableViewCell: UITextFieldDelegate {
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
+        self.personalInfoCellDelegate?.textFieldShouldReturn(self.type)
         return false
     }
 }
