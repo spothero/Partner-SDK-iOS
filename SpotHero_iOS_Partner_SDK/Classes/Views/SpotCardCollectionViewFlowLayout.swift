@@ -8,12 +8,12 @@
 
 import UIKit
 
-protocol SpotCardCollectionViewFlowLayoutDelegate {
+protocol SpotCardCollectionViewFlowLayoutDelegate: class {
     func didSwipeCollectionView(direction: UISwipeGestureRecognizerDirection)
 }
 
 class SpotCardCollectionViewFlowLayout: UICollectionViewFlowLayout {
-    var delegate: SpotCardCollectionViewFlowLayoutDelegate?
+    weak var delegate: SpotCardCollectionViewFlowLayoutDelegate?
     private let collectionViewHeight: CGFloat = SpotCardCollectionViewCell.ItemHeight
     private let screenWidth: CGFloat = UIScreen.mainScreen().bounds.width
     

@@ -8,17 +8,17 @@
 
 import UIKit
 
-protocol TimeSelectionViewDelegate {
+protocol TimeSelectionViewDelegate: class {
     func didTapStartView(startDate: NSDate, endDate: NSDate)
     func didTapEndView(startDate: NSDate, endDate: NSDate)
     func timeSelectionViewShouldHide()
 }
 
-protocol ShowTimeSelectionViewDelegate {
+protocol ShowTimeSelectionViewDelegate: class {
     func timeSelectionViewShouldShow(show: Bool)
 }
 
-protocol StartEndDateDelegate {
+protocol StartEndDateDelegate: class {
     func didChangeStartEndDate(startDate startDate: NSDate, endDate: NSDate)
     func didSelectStartEndView()
 }
@@ -33,9 +33,9 @@ class TimeSelectionView: UIView {
     @IBOutlet weak private var startsView: UIView!
     @IBOutlet weak private var endsView: UIView!
     
-    var delegate: TimeSelectionViewDelegate?
-    var showTimeSelectionViewDelegate: ShowTimeSelectionViewDelegate?
-    var startEndDateDelegate: StartEndDateDelegate?
+    weak var delegate: TimeSelectionViewDelegate?
+    weak var showTimeSelectionViewDelegate: ShowTimeSelectionViewDelegate?
+    weak var startEndDateDelegate: StartEndDateDelegate?
     
     var startViewSelected = false {
         didSet {

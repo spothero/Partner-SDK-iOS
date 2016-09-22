@@ -8,12 +8,12 @@
 
 import UIKit
 
-protocol SpotCardCollectionViewDelegate {
+protocol SpotCardCollectionViewDelegate: class {
     func didTapDoneButton(button: UIButton)
 }
 
 class SpotCardCollectionViewCell: UICollectionViewCell {
-    var delegate: SpotCardCollectionViewDelegate?
+    weak var delegate: SpotCardCollectionViewDelegate?
     
     static let Identifier = "SpotCardCellID"
     static let ItemWidth: CGFloat = 275

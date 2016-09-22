@@ -8,12 +8,12 @@
 
 import UIKit
 
-protocol DatePickerViewDelegate {
+protocol DatePickerViewDelegate: class {
     func didPressDoneButton()
     func didChangeDatePickerValue(date: NSDate)
 }
 
-protocol DatePickerDoneButtonDelegate {
+protocol DatePickerDoneButtonDelegate: class {
     func didPressDoneButton()
 }
 
@@ -23,8 +23,8 @@ class DatePickerView: UIView {
     @IBOutlet weak private var datePickerViewBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak private var toolbarTitleLabel: UILabel!
     
-    var doneButtonDelegate: DatePickerDoneButtonDelegate?
-    var delegate: DatePickerViewDelegate?
+    weak var doneButtonDelegate: DatePickerDoneButtonDelegate?
+    weak var delegate: DatePickerViewDelegate?
     
     private let DatePickerViewHeight: CGFloat = 200
     

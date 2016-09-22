@@ -19,7 +19,7 @@ class PersonalInfoTableViewCell: UITableViewCell {
     
     var type: PersonalInfoRow = .FullName
     
-    var delegate: ValidatorCellDelegate?
+    weak var delegate: ValidatorCellDelegate?
     weak var personalInfoCellDelegate: PersonalInfoTableViewCellDelegate?
     var validationClosure: ((String) throws -> ())?
     var valid = false {

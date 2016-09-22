@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol PredictionControllerDelegate {
+protocol PredictionControllerDelegate: class {
     func didUpdatePredictions(predictions: [GooglePlacesPrediction])
     func didSelectPrediction(prediction: GooglePlacesPrediction)
     func didTapXButton()
@@ -26,7 +26,7 @@ class PredictionController: NSObject {
         }
     }
     
-    var delegate: PredictionControllerDelegate?
+    weak var delegate: PredictionControllerDelegate?
 }
 
 //MARK: UITableViewDataSource
