@@ -67,13 +67,13 @@ enum PersonalInfoRow: Int, CountableIntEnum {
     func placeholder() -> String {
         switch self {
         case .FullName:
-            return LocalizedStrings.EnterFullName
+            return LocalizedStrings.FullNamePlaceHolder
         case .Email:
-            return LocalizedStrings.EnterEmailAddress
+            return LocalizedStrings.EmailAddressPlaceHolder
         case .Phone:
-            return LocalizedStrings.EnterPhoneNumber
+            return LocalizedStrings.PhoneNumberPlaceHolder
         case .License:
-            return LocalizedStrings.EnterLicensePlate
+            return LocalizedStrings.LicensePlatePlaceHolder
         }
     }
 }
