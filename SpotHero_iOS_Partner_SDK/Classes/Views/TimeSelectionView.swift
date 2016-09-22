@@ -63,13 +63,13 @@ class TimeSelectionView: UIView {
             }
         }
     }
-    private var startDate: NSDate = NSDate().shp_dateByRoundingMinutesBy30(roundDown: true) {
+    private var startDate: NSDate = NSDate().shp_roundDateToNearestHalfHour(roundDown: true) {
         didSet {
             self.setDateTimeLabels(self.startDate, endDate: self.endDate)
             self.startEndDateDelegate?.didChangeStartEndDate(startDate: self.startDate, endDate: self.endDate)
         }
     }
-    private var endDate: NSDate = NSDate().shp_dateByRoundingMinutesBy30(roundDown: false) {
+    private var endDate: NSDate = NSDate().dateByAddingTimeInterval(Constants.SixHoursInSeconds).shp_roundDateToNearestHalfHour(roundDown: true) {
         didSet {
             self.setDateTimeLabels(self.startDate, endDate: self.endDate)
             self.startEndDateDelegate?.didChangeStartEndDate(startDate: self.startDate, endDate: self.endDate)
@@ -82,8 +82,8 @@ class TimeSelectionView: UIView {
     }
     
     private func setupTimeSelectionView() {
-        self.startDate = NSDate().shp_dateByRoundingMinutesBy30(roundDown: true)
-        self.endDate = NSDate().shp_dateByRoundingMinutesBy30(roundDown: false)
+        self.startDate = NSDate().shp_roundDateToNearestHalfHour(roundDown: true)
+        self.endDate = self.startDate.dateByAddingTimeInterval(Constants.SixHoursInSeconds)
         
         self.startDateLabel.accessibilityLabel = AccessibilityStrings.StartDateLabel
         self.endDateLabel.accessibilityLabel = AccessibilityStrings.EndDateLabel
@@ -124,7 +124,7 @@ class TimeSelectionView: UIView {
         if (self.startViewSelected) {
             self.startDate = date
             if (self.endDate.timeIntervalSinceDate(date) < Constants.ThirtyMinutesInSeconds) {
-                self.endDate = date.shp_dateByRoundingMinutesBy30(roundDown: false)
+                self.endDate = date.shp_roundDateToNearestHalfHour(roundDown: false)
             }
         } else if (self.endViewSelected) {
             self.endDate = date
