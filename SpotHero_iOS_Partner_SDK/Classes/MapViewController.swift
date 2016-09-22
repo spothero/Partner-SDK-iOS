@@ -28,11 +28,9 @@ class MapViewController: UIViewController {
     private let predictionController = PredictionController()
     private var predictionPlaceDetails: GooglePlaceDetails? {
         didSet {
-            guard let placeDetails = self.predictionPlaceDetails else {
-                return
+            if let placeDetails = self.predictionPlaceDetails {
+                self.fetchFacilities(placeDetails.location.coordinate)
             }
-            
-            self.fetchFacilities(placeDetails.location.coordinate)
         }
     }
     private var startDate: NSDate = NSDate().shp_roundDateToNearestHalfHour(roundDown: true)
