@@ -49,7 +49,9 @@ struct FacilityAPI {
                                                          additionalParams: params,
                                                          errorCompletion: {
                                                             error in
-                                                            completion([], error)
+                                                            NSOperationQueue.mainQueue().addOperationWithBlock({ 
+                                                                completion([], error)
+                                                            })
         }) {
             JSON in
             //SWIFT3: DispatchQueue.main.async

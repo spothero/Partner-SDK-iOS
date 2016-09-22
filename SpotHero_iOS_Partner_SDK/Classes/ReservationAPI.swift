@@ -53,7 +53,9 @@ struct ReservationAPI {
                                                         withHeaders: headers,
                                                         errorCompletion: {
                                                             error in
-                                                            completion(nil, error)
+                                                            NSOperationQueue.mainQueue().addOperationWithBlock({ 
+                                                                completion(nil, error)
+                                                            })
         }) {
             JSON in
             NSOperationQueue.mainQueue().addOperationWithBlock {
