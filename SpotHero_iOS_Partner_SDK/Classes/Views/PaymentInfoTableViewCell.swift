@@ -21,7 +21,7 @@ class PaymentInfoTableViewCell: UITableViewCell {
     @IBOutlet weak var textFieldContainer: UIView!
     @IBOutlet weak var errorLabel: UILabel!
     
-    var delegate: ValidatorCellDelegate?
+    weak var delegate: ValidatorCellDelegate?
     var cardNumber = ""
     var expirationMonth = ""
     var expirationYear = ""
