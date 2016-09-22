@@ -76,7 +76,7 @@ class MapViewController: UIViewController {
         
         layout.delegate = self
         
-        let mapDragRecognizer = UIPanGestureRecognizer(target: self, action: "didDragMap:")
+        let mapDragRecognizer = UIPanGestureRecognizer(target: self, action: #selector(self.didDragMap(_:)))
         mapDragRecognizer.delegate = self
         self.mapView.addGestureRecognizer(mapDragRecognizer)
     }
@@ -217,13 +217,7 @@ class MapViewController: UIViewController {
         self.timeSelectionView.showTimeSelectionView(false)
         let hoursBetweenDates = self.startEndDateDifferenceInSeconds / Constants.SecondsInHour
         self.collapsedSearchBar.text = String(format: LocalizedStrings.HoursBetweenDatesFormat, hoursBetweenDates)
-        if let prediction = self.prediction {
-            self.getPlaceDetails(prediction, completion: { (placeDetails) in
-                if let placeDetails = placeDetails {
-                    self.predictionPlaceDetails = placeDetails
-                }
-            })
-        }
+        self.searchPrediction()
         self.searchBar.resignFirstResponder()
     }
     
@@ -256,6 +250,17 @@ class MapViewController: UIViewController {
         if self.loading {
             self.loading = false
             ProgressHUD.hideHUDForView(self.view)
+        }
+    }
+    
+    func searchPrediction() {
+        if let prediction = self.prediction {
+            self.getPlaceDetails(prediction, completion: {
+                placeDetails in
+                if let placeDetails = placeDetails {
+                    self.predictionPlaceDetails = placeDetails
+                }
+            })
         }
     }
 }
@@ -301,13 +306,7 @@ extension MapViewController: PredictionControllerDelegate {
     
     func didTapSearchButton() {
         guard self.predictionController.predictions.count > 0 else {
-            if let prediction = self.prediction {
-                self.getPlaceDetails(prediction, completion: { (placeDetails) in
-                    if let placeDetails = placeDetails {
-                        self.predictionPlaceDetails = placeDetails
-                    }
-                })
-            }
+            self.searchPrediction()
             return
         }
         
