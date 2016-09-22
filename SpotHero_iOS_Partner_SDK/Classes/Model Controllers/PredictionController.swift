@@ -86,5 +86,6 @@ extension PredictionController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         self.delegate?.didTapSearchButton()
+        searchBar.resignFirstResponder()
     }
 }
