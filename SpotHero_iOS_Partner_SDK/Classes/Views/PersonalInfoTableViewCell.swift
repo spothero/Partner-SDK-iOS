@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol PersonalInfoTableViewCellDelegate {
+protocol PersonalInfoTableViewCellDelegate: class {
     func textFieldShouldReturn(type: PersonalInfoRow)
 }
 
@@ -20,7 +20,7 @@ class PersonalInfoTableViewCell: UITableViewCell {
     var type: PersonalInfoRow = .FullName
     
     var delegate: ValidatorCellDelegate?
-    var personalInfoCellDelegate: PersonalInfoTableViewCellDelegate?
+    weak var personalInfoCellDelegate: PersonalInfoTableViewCellDelegate?
     var validationClosure: ((String) throws -> ())?
     var valid = false {
         didSet {
