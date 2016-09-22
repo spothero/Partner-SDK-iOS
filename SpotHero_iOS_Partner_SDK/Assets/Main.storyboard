@@ -455,13 +455,14 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Find Parking" id="QQS-us-8wq">
-                        <barButtonItem key="rightBarButtonItem" title="Close" id="Pda-yU-gs7">
+                        <barButtonItem key="rightBarButtonItem" image="close-accessory" id="Pda-yU-gs7">
                             <connections>
                                 <action selector="closeButtonPressed:" destination="Vax-OI-bt8" id="j0v-UM-LDr"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="closeButton" destination="Pda-yU-gs7" id="gA0-HY-75m"/>
                         <outlet property="collapsedSearchBar" destination="k6h-I3-1nd" id="eZI-Zy-oel"/>
                         <outlet property="datePickerView" destination="zfM-Xw-6w1" id="WIY-kY-Gk0"/>
                         <outlet property="mapView" destination="nEN-Yc-ckc" id="6bX-7F-2O6"/>
@@ -903,6 +904,7 @@
     <resources>
         <image name="Rebook White" width="35" height="35"/>
         <image name="Success Icon" width="41" height="41"/>
+        <image name="close-accessory" width="26" height="26"/>
         <image name="credit_card" width="32" height="23"/>
         <image name="ic_expand_more_36pt" width="36" height="36"/>
     </resources>
