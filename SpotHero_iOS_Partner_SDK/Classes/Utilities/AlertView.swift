@@ -9,12 +9,12 @@
 import UIKit
 
 enum AlertView {
-    static func presentErrorAlertView(message: String, from viewController: UIViewController?) {
+    static func presentErrorAlertView(title: String = LocalizedStrings.Error, message: String, from viewController: UIViewController?) {
         guard let viewController = viewController else {
             return
         }
         
-        let alert = UIAlertController(title: LocalizedStrings.Error,
+        let alert = UIAlertController(title: title,
                                       message: message,
                                       preferredStyle: .Alert)
         alert.addAction(UIAlertAction(title: LocalizedStrings.OK,
