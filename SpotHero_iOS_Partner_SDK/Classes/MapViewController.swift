@@ -23,7 +23,7 @@ class MapViewController: UIViewController {
     @IBOutlet weak private var datePickerView: DatePickerView!
     @IBOutlet weak private var searchSpotsButton: UIButton!
     @IBOutlet weak private var spotCardCollectionView: UICollectionView!
-    @IBOutlet weak var closeButton: UIBarButtonItem!
+    @IBOutlet weak private var closeButton: UIBarButtonItem!
     
     private var prediction: GooglePlacesPrediction?
     private let predictionController = PredictionController()
