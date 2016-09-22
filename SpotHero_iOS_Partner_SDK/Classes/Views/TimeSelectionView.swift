@@ -83,7 +83,7 @@ class TimeSelectionView: UIView {
     
     private func setupTimeSelectionView() {
         self.startDate = NSDate().shp_roundDateToNearestHalfHour(roundDown: true)
-        self.endDate = NSDate().dateByAddingTimeInterval(Constants.SixHoursInSeconds).shp_roundDateToNearestHalfHour(roundDown: true)
+        self.endDate = self.startDate.dateByAddingTimeInterval(Constants.SixHoursInSeconds)
         
         self.startDateLabel.accessibilityLabel = AccessibilityStrings.StartDateLabel
         self.endDateLabel.accessibilityLabel = AccessibilityStrings.EndDateLabel
