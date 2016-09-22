@@ -454,7 +454,7 @@ extension CheckoutTableViewController: KeyboardNotification {
     }
 }
 
-
+// MARK: - PersonalInfoTableViewCellDelegate
 
 extension CheckoutTableViewController: PersonalInfoTableViewCellDelegate {
     func textFieldShouldReturn(type: PersonalInfoRow) {
