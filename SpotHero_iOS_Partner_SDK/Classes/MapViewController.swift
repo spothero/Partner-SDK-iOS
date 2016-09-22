@@ -23,6 +23,7 @@ class MapViewController: UIViewController {
     @IBOutlet weak private var datePickerView: DatePickerView!
     @IBOutlet weak private var searchSpotsButton: UIButton!
     @IBOutlet weak private var spotCardCollectionView: UICollectionView!
+    @IBOutlet weak var closeButton: UIBarButtonItem!
     
     private var prediction: GooglePlacesPrediction?
     private let predictionController = PredictionController()
@@ -101,6 +102,7 @@ class MapViewController: UIViewController {
         self.searchBar.accessibilityLabel = AccessibilityStrings.SearchBar
         self.predictionTableView.accessibilityLabel = AccessibilityStrings.PredictionTableView
         self.timeSelectionView.accessibilityLabel = AccessibilityStrings.TimeSelectionView
+        self.closeButton.accessibilityLabel = LocalizedStrings.Close
     }
     
     func showCollapsedSearchBar() {
