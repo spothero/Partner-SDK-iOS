@@ -63,7 +63,7 @@ class PartnerAPIMockTests: BaseTests {
             }
             
             XCTAssertNil(error)
-            XCTAssertEqual(facilities.count, 170)
+            XCTAssertEqual(facilities.count, 137)
             guard let
                 facility = facilities.first,
                 rate = facility.availableRates.first else {
