@@ -126,6 +126,12 @@ class MapViewController: UIViewController {
         }
     }
     
+    /**
+     Fetch the factilities around a given coordinate
+     
+     - parameter coordinate: coordinate to search around
+     - parameter panning:    Whether or not this was triggered by the user panning the map. Passin true will cause there to be no loading spinner and no "No spots" error
+     */
     func fetchFacilities(coordinate: CLLocationCoordinate2D, panning: Bool = false) {
         if !panning {
             self.startLoading()
@@ -147,6 +153,11 @@ class MapViewController: UIViewController {
             })
     }
     
+    /**
+     Adds annotations to the map
+     
+     - parameter panning: Pass true to cause the map to zoom in on the facilities
+     */
     func addAndShowFacilityAnnotations(panning: Bool = false) {
         //TODO: Look into caching annotations like the main app
         self.mapView.removeAnnotations(self.mapView.annotations)
