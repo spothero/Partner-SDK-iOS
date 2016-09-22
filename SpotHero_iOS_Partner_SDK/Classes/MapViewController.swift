@@ -147,7 +147,7 @@ class MapViewController: UIViewController {
                                         facilities, error in
                                         self?.stopLoading()
                                         if facilities.isEmpty && !panning {
-                                            AlertView.presentErrorAlertView(LocalizedStrings.NoSpotsFound, from: self)
+                                            AlertView.presentErrorAlertView(LocalizedStrings.Sorry, message: LocalizedStrings.NoSpotsFound, from: self)
                                         }
                                         
                                         self?.facilities = facilities
@@ -166,7 +166,7 @@ class MapViewController: UIViewController {
         if let placeDetails = self.predictionPlaceDetails {
             let locationAnnotation = MKPointAnnotation()
             locationAnnotation.coordinate = placeDetails.location.coordinate
-            locationAnnotation.title = self.facilities.isEmpty ? LocalizedStrings.NoSpotsAvailable : ""
+            locationAnnotation.title = self.facilities.isEmpty ? LocalizedStrings.NoSpotsFound : ""
             self.mapView.addAnnotation(locationAnnotation)
         }
         
@@ -269,6 +269,8 @@ class MapViewController: UIViewController {
     
     @IBAction func didTapMapView(sender: AnyObject) {
         self.searchBar.resignFirstResponder()
+        self.datePickerView.showDatePickerView(false)
+        self.timeSelectionView.deselect()
     }
     
     //MARK: Helpers
@@ -356,6 +358,11 @@ extension MapViewController: PredictionControllerDelegate {
         
         let indexPath = NSIndexPath(forRow: 0, inSection: 0)
         self.predictionTableView.selectRowAtIndexPath(indexPath, animated: true, scrollPosition: .None)
+    }
+    
+    func didBeginEditingSearchBar() {
+        self.datePickerView.showDatePickerView(false)
+        self.timeSelectionView.deselect()
     }
 }
 

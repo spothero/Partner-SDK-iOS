@@ -13,6 +13,7 @@ protocol PredictionControllerDelegate {
     func didSelectPrediction(prediction: GooglePlacesPrediction)
     func didTapXButton()
     func didTapSearchButton()
+    func didBeginEditingSearchBar()
     func shouldSelectFirstPrediction()
 }
 
@@ -84,7 +85,12 @@ extension PredictionController: UISearchBarDelegate {
         }
     }
     
+    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        self.delegate?.didBeginEditingSearchBar()
+    }
+    
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         self.delegate?.didTapSearchButton()
+        searchBar.resignFirstResponder()
     }
 }
