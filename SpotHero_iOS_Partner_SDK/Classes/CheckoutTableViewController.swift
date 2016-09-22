@@ -271,10 +271,12 @@ class CheckoutTableViewController: UIViewController {
         cell.textField.placeholder = row.placeholder()
         cell.textField.inputAccessoryView = self.toolbar
         cell.type = row
+        cell.personalInfoCellDelegate = self
         
         switch row {
         case PersonalInfoRow.FullName:
             cell.textField.autocapitalizationType = .Words
+            cell.textField.returnKeyType = .Next
             cell.validationClosure = {
                 fullName in
                 try Validator.validateFullName(fullName)
@@ -282,6 +284,7 @@ class CheckoutTableViewController: UIViewController {
         case PersonalInfoRow.Email:
             cell.textField.autocapitalizationType = .None
             cell.textField.keyboardType = .EmailAddress
+            cell.textField.returnKeyType = .Next
             cell.validationClosure = {
                 email in
                 try Validator.validateEmail(email)
@@ -447,6 +450,17 @@ extension CheckoutTableViewController: KeyboardNotification {
                                                                     }
                                                                     
                                                                     self?.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: paymentButtonHeight, right: 0)
+        }
+    }
+}
+
+
+
+extension CheckoutTableViewController: PersonalInfoTableViewCellDelegate {
+    func textFieldShouldReturn(type: PersonalInfoRow) {
+        let indexPath = NSIndexPath(forRow: type.rawValue + 1, inSection: CheckoutSection.PersonalInfo.rawValue)
+        if let cell = self.tableView.cellForRowAtIndexPath(indexPath) as? PersonalInfoTableViewCell {
+            cell.textField.becomeFirstResponder()
         }
     }
 }
