@@ -61,7 +61,7 @@ class PartnerAPITests: BaseTests {
         
         self.getFacilities(Constants.ChicagoLocation) {
             facilities, error in
-            if let facility = facilities.first, rate = facility.rates.first {
+            if let facility = facilities.first, rate = facility.availableRates.first {
                 StripeWrapper.getToken(Constants.TestCreditCardNumber,
                                        expirationMonth: Constants.TestExpirationMonth,
                                        expirationYear: Constants.TestExpirationYear,

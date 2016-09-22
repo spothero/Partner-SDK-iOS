@@ -214,7 +214,7 @@ class MapViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let vc = segue.destinationViewController as? CheckoutTableViewController {
             vc.facility = self.selectedFacility
-            vc.rate = self.selectedFacility?.rates.first
+            vc.rate = self.selectedFacility?.availableRates.first
         }
     }
     
@@ -385,7 +385,7 @@ extension MapViewController: UICollectionViewDataSource {
         cell.streetAddressLabel.text = facility.streetAddress
         cell.spotInfoLabel.text = facility.title
         
-        if let rate = facility.rates.first {
+        if let rate = facility.availableRates.first {
             if rate.isWheelchairAccessible() {
                 cell.accessibleParkingImageView.hidden = false
             } else {

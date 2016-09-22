@@ -66,7 +66,7 @@ class PartnerAPIMockTests: BaseTests {
             XCTAssertEqual(facilities.count, 170)
             guard let
                 facility = facilities.first,
-                rate = facility.rates.first else {
+                rate = facility.availableRates.first else {
                     XCTFail("Did not get facility or rate")
                     return
             }
@@ -106,7 +106,7 @@ class PartnerAPIMockTests: BaseTests {
                 return
             }
             
-            if let facility = facilities.first, rate = facility.rates.first {
+            if let facility = facilities.first, rate = facility.availableRates.first {
                 ReservationAPI.createReservation(facility,
                                                  rate: rate,
                                                  email: self.testEmail,
