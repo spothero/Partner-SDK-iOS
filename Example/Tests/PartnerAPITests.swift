@@ -21,7 +21,7 @@ class PartnerAPITests: BaseTests {
     func getFacilities(location: CLLocation, completion: ([Facility], ErrorType?) -> Void) {
         let startDate = NSDate().dateByAddingTimeInterval(60 * 60 * 5)
         let endDate = NSDate().dateByAddingTimeInterval(60 * 60 * 10)
-        FacilityAPI.fetchFacilities(location,
+        FacilityAPI.fetchFacilities(location.coordinate,
                                     starts: startDate,
                                     ends: endDate,
                                     completion: completion)
