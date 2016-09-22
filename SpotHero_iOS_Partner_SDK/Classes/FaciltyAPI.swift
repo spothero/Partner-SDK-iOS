@@ -60,8 +60,11 @@ struct FacilityAPI {
                     let facility = try Facility(json: result)
                     facilities.append(facility)
                 }
-                if facilities.count > 0 {
-                    completion(facilities, nil)
+                
+                let facilitiesWithRates = facilities.filter { !$0.availableRates.isEmpty }
+                
+                if !facilitiesWithRates.isEmpty {
+                    completion(facilitiesWithRates, nil)
                 } else {
                     completion([], FacilityError.NoFacilitiesFound)
                 }
