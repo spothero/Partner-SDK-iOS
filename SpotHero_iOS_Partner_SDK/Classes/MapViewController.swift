@@ -124,7 +124,7 @@ class MapViewController: UIViewController {
                                                 facilities, error in
                                                 ProgressHUD.hideHUDForView(self?.view)
                                                 if facilities.isEmpty {
-                                                    AlertView.presentErrorAlertView(LocalizedStrings.NoSpotsFound, from: self)
+                                                    AlertView.presentErrorAlertView(LocalizedStrings.Sorry, message: LocalizedStrings.NoSpotsFound, from: self)
                                                 }
                                                 
                                                 self?.facilities = facilities
@@ -140,7 +140,7 @@ class MapViewController: UIViewController {
         if let placeDetails = self.predictionPlaceDetails {
             let locationAnnotation = MKPointAnnotation()
             locationAnnotation.coordinate = placeDetails.location.coordinate
-            locationAnnotation.title = self.facilities.isEmpty ? LocalizedStrings.NoSpotsAvailable : ""
+            locationAnnotation.title = self.facilities.isEmpty ? LocalizedStrings.NoSpotsFound : ""
             self.mapView.addAnnotation(locationAnnotation)
         }
         

@@ -154,7 +154,7 @@ class CheckoutTableViewController: UIViewController {
                 if success {
                     self?.performSegueWithIdentifier(Constants.Segue.Confirmation, sender: nil)
                 } else {
-                    AlertView.presentErrorAlertView(LocalizedStrings.CreateReservationErrorMessage, from: self)
+                    AlertView.presentErrorAlertView(message: LocalizedStrings.CreateReservationErrorMessage, from: self)
                 }
             }
         }
@@ -187,10 +187,10 @@ class CheckoutTableViewController: UIViewController {
                                     if let error = error as? StripeAPIError {
                                         switch error {
                                         case .CannotGetToken(let message):
-                                            AlertView.presentErrorAlertView(message, from: self)
+                                            AlertView.presentErrorAlertView(message: message, from: self)
                                         }
                                     } else {
-                                        AlertView.presentErrorAlertView(LocalizedStrings.CreateReservationErrorMessage, from: self)
+                                        AlertView.presentErrorAlertView(message: LocalizedStrings.CreateReservationErrorMessage, from: self)
                                     }
                                     completion(nil)
                                     return
