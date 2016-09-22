@@ -52,25 +52,22 @@ struct FacilityAPI {
                                                             completion([], error)
         }) {
             JSON in
-            //SWIFT3: DispatchQueue.main.async
-            dispatch_async(dispatch_get_main_queue(),{
-                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-                do {
-                    let results = try JSON.shp_array("results") as [JSONDictionary]
-                    var facilities = [Facility]()
-                    for result in results {
-                        let facility = try Facility(json: result)
-                        facilities.append(facility)
-                    }
-                    if facilities.count > 0 {
-                        completion(facilities, nil)
-                    } else {
-                        completion([], FacilityError.NoFacilitiesFound)
-                    }
-                } catch let error {
-                    completion([], error)
+            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+            do {
+                let results = try JSON.shp_array("results") as [JSONDictionary]
+                var facilities = [Facility]()
+                for result in results {
+                    let facility = try Facility(json: result)
+                    facilities.append(facility)
                 }
-            })
+                if facilities.count > 0 {
+                    completion(facilities, nil)
+                } else {
+                    completion([], FacilityError.NoFacilitiesFound)
+                }
+            } catch let error {
+                completion([], error)
+            }
         }
     }
 }
