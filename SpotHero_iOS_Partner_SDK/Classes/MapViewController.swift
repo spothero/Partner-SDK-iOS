@@ -170,6 +170,29 @@ class MapViewController: UIViewController {
         self.spotCardCollectionView.reloadData()
     }
     
+    func scrollToSpotCard(withIndex indexPath: NSIndexPath) {
+        self.currentIndex = indexPath.row
+        self.centerCell = self.spotCardCollectionView.cellForItemAtIndexPath(indexPath) as? SpotCardCollectionViewCell
+        self.spotCardCollectionView.scrollToItemAtIndexPath(indexPath,
+                                                            atScrollPosition: .None,
+                                                            animated: true)
+    }
+    
+    func selectAnnotation(withIndex index: Int) {
+        self.currentIndex = index
+        let annotation = self.mapView.annotations.flatMap {
+            annotation in
+            return annotation as? FacilityAnnotation
+            }.filter { //Filters the array returned by flatmap
+                typed in
+                return typed.index == index
+            }.first //takes the first object returned by the filter
+        
+        if let annotation = annotation {
+            self.mapView.selectAnnotation(annotation, animated: true)
+        }
+    }
+    
     //MARK: Actions
     
     @IBAction private func closeButtonPressed(sender: AnyObject) {
@@ -332,11 +355,7 @@ extension MapViewController: MKMapViewDelegate {
         }
         
         let itemIndex = NSIndexPath(forItem: facilityAnnotation.index, inSection: 0)
-        self.currentIndex = itemIndex.row
-        self.centerCell = self.spotCardCollectionView.cellForItemAtIndexPath(itemIndex) as? SpotCardCollectionViewCell
-        self.spotCardCollectionView.scrollToItemAtIndexPath(itemIndex,
-                                                            atScrollPosition: .None,
-                                                            animated: true)
+        self.scrollToSpotCard(withIndex: itemIndex)
     }
 }
 
@@ -376,6 +395,11 @@ extension MapViewController: UICollectionViewDelegate {
     func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
         let itemIndex = NSIndexPath(forItem: self.currentIndex, inSection: 0)
         self.centerCell = self.spotCardCollectionView.cellForItemAtIndexPath(itemIndex) as? SpotCardCollectionViewCell
+    }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        self.scrollToSpotCard(withIndex: indexPath)
+        self.selectAnnotation(withIndex: indexPath.row)
     }
 }
 
@@ -451,21 +475,7 @@ extension MapViewController: SpotCardCollectionViewFlowLayoutDelegate {
         }
         
         let itemIndex = NSIndexPath(forItem: self.currentIndex, inSection: 0)
-        self.centerCell = self.spotCardCollectionView.cellForItemAtIndexPath(itemIndex) as? SpotCardCollectionViewCell
-        self.spotCardCollectionView.scrollToItemAtIndexPath(itemIndex,
-                                                            atScrollPosition: .None,
-                                                            animated: true)
-        
-        let annotation = self.mapView.annotations.flatMap {
-            annotation in
-            return annotation as? FacilityAnnotation
-            }.filter { //Filters the array returned by flatmap
-                typed in
-                return typed.index == itemIndex.row
-            }.first //takes the first object returned by the filter
-        
-        if let annotation = annotation {
-            self.mapView.selectAnnotation(annotation, animated: true)
-        }
+        self.scrollToSpotCard(withIndex: itemIndex)
+        self.selectAnnotation(withIndex: itemIndex.row)
     }
 }
