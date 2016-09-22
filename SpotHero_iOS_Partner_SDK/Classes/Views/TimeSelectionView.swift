@@ -108,6 +108,14 @@ class TimeSelectionView: UIView {
     }
     
     /**
+     Deselect both time selection views
+     */
+    func deselect() {
+        self.startViewSelected = false
+        self.endViewSelected = false
+    }
+    
+    /**
      Show or hide time selection view
      
      - parameter show: pass in true to show, false to hide
@@ -149,8 +157,7 @@ class TimeSelectionView: UIView {
 
 extension TimeSelectionView: DatePickerViewDelegate {
     func didPressDoneButton() {
-        self.startViewSelected = false
-        self.endViewSelected = false
+        self.deselect()
     }
     
     func didChangeDatePickerValue(date: NSDate) {

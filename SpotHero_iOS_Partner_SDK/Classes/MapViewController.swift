@@ -228,6 +228,8 @@ class MapViewController: UIViewController {
     
     @IBAction func didTapMapView(sender: AnyObject) {
         self.searchBar.resignFirstResponder()
+        self.datePickerView.showDatePickerView(false)
+        self.timeSelectionView.deselect()
     }
 }
 
@@ -288,6 +290,11 @@ extension MapViewController: PredictionControllerDelegate {
         
         let indexPath = NSIndexPath(forRow: 0, inSection: 0)
         self.predictionTableView.selectRowAtIndexPath(indexPath, animated: true, scrollPosition: .None)
+    }
+    
+    func didBeginEditingSearchBar() {
+        self.datePickerView.showDatePickerView(false)
+        self.timeSelectionView.deselect()
     }
 }
 
