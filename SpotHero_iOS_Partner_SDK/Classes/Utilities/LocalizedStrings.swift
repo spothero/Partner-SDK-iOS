@@ -35,11 +35,11 @@ enum LocalizedStrings {
                                            comment: "Title for Email row of checkout screen")
     static let Phone = NSLocalizedString("Phone",
                                          comment: "Title for Phone number row of checkout screen")
-    static let EnterFullName = NSLocalizedString("Enter Full Name",
+    static let EnterFullName = NSLocalizedString("Full Name",
                                                  comment: "Placeholder for Full Name row of checkout screen")
-    static let EnterEmailAddress = NSLocalizedString("Enter Email Address",
+    static let EnterEmailAddress = NSLocalizedString("Email Address",
                                                  comment: "Placeholder for Email row of checkout screen")
-    static let EnterPhoneNumber = NSLocalizedString("Enter Phone Number",
+    static let EnterPhoneNumber = NSLocalizedString("Phone Number",
                                                  comment: "Placeholder for Phone Number row of checkout screen")
     static let ReservationInfo = NSLocalizedString("RESERVATION INFO",
                                                    comment: "Title for reservation info section of checkout screen")
@@ -93,7 +93,7 @@ enum LocalizedStrings {
                                                comment: "Button title for search spots button")
     static let LicensePlate = NSLocalizedString("License Plate",
                                                 comment: "Title for License Plate row of checkout screen")
-    static let EnterLicensePlate = NSLocalizedString("Enter License Plate",
+    static let EnterLicensePlate = NSLocalizedString("License Plate (Optional)",
                                                      comment: "Enter License Plate Number")
     static let LicensePlateErrorMessage = NSLocalizedString("Please enter a valid license plate number",
                                                             comment: "Message to indicate that a license plate number is invalid")
