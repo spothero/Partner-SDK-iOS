@@ -451,7 +451,7 @@ extension MapViewController: UICollectionViewDataSource {
         let facility = self.facilities[indexPath.row]
         cell.buyButton.setTitle(LocalizedStrings.BookIt + " | $\(facility.displayPrice())", forState: .Normal)
         cell.streetAddressLabel.text = facility.streetAddress
-        let distanceInMiles = Double(facility.distance) / Constants.UnitsOfMeasurement.MetersPerMile
+        let distanceInMiles = Double(facility.distanceInMeters) / Constants.UnitsOfMeasurement.MetersPerMile
         //TODO: localize miles
         cell.spotInfoLabel.text = String(format: "\(LocalizedStrings.Distance): %.2f mi", distanceInMiles)
         
