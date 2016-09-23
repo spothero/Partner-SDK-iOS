@@ -114,4 +114,6 @@ enum LocalizedStrings {
                                                      comment: "Error message for when no spots are found")
     static let Sorry = NSLocalizedString("Sorry",
                                          comment: "Title for no spots error message")
+    static let Distance = NSLocalizedString("Distance",
+                                            comment: "Distance")
 }
