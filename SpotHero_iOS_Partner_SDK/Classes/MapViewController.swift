@@ -251,7 +251,7 @@ class MapViewController: UIViewController {
         self.searchSpotsButton.hidden = true
         self.collapsedSearchBar.show()
         self.timeSelectionView.showTimeSelectionView(false)
-        let hoursBetweenDates = self.startEndDateDifferenceInSeconds / Constants.UnitsOfMeasurement.SecondsInHour
+        let hoursBetweenDates = self.startEndDateDifferenceInSeconds / Constants.SecondsInHour
         self.collapsedSearchBar.text = String(format: LocalizedStrings.HoursBetweenDatesFormat, hoursBetweenDates)
         self.searchPrediction()
         self.searchBar.resignFirstResponder()
@@ -451,7 +451,7 @@ extension MapViewController: UICollectionViewDataSource {
         let facility = self.facilities[indexPath.row]
         cell.buyButton.setTitle(LocalizedStrings.BookIt + " | $\(facility.displayPrice())", forState: .Normal)
         cell.streetAddressLabel.text = facility.streetAddress
-        let distanceInMiles = Double(facility.distanceInMeters) / Constants.UnitsOfMeasurement.MetersPerMile
+        let distanceInMiles = UnitsOfMeasurement.distanceInMiles(Double(facility.distanceInMeters))
         //TODO: localize miles
         cell.spotInfoLabel.text = String(format: "\(LocalizedStrings.Distance): %.2f mi", distanceInMiles)
         
