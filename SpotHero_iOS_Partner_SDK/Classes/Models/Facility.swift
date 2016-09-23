@@ -24,7 +24,10 @@ struct Facility {
     let streetAddress: String
     let distance: Int
     
-    var rates = [Rate]()
+    private var rates = [Rate]()
+    var availableRates: [Rate] {
+        return self.rates.filter { $0.unavailable == false }
+    }
 }
 
 extension Facility {

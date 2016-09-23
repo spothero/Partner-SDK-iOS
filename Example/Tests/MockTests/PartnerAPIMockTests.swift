@@ -39,7 +39,7 @@ class PartnerAPIMockTests: BaseTests {
         if let
             startDate = self.startDate,
             endDate = self.endDate {
-                FacilityAPI.fetchFacilities(location,
+                FacilityAPI.fetchFacilities(location.coordinate,
                                             starts: startDate,
                                             ends: endDate,
                                             completion: completion)
@@ -63,10 +63,10 @@ class PartnerAPIMockTests: BaseTests {
             }
             
             XCTAssertNil(error)
-            XCTAssertEqual(facilities.count, 170)
+            XCTAssertEqual(facilities.count, 137)
             guard let
                 facility = facilities.first,
-                rate = facility.rates.first else {
+                rate = facility.availableRates.first else {
                     XCTFail("Did not get facility or rate")
                     return
             }
@@ -106,7 +106,7 @@ class PartnerAPIMockTests: BaseTests {
                 return
             }
             
-            if let facility = facilities.first, rate = facility.rates.first {
+            if let facility = facilities.first, rate = facility.availableRates.first {
                 ReservationAPI.createReservation(facility,
                                                  rate: rate,
                                                  email: self.testEmail,

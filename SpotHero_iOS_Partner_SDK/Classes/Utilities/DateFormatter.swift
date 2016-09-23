@@ -34,7 +34,7 @@ class DateFormatter: NSObject {
         MMDDHmma = "MM/dd h:mm a",
         PrettyDayDate = "EEE, MMM d",
         LinkDateTime = "MM-dd-yyyy hhmma",
-        PrettyMonthDayDate = "MMM dd, YYYY"
+        PrettyMonthDayDate = "MMM dd, yyyy"
     }
     
     private static func formatterWithFormat(format: StringEnum) -> NSDateFormatter {

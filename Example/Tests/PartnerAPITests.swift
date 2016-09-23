@@ -21,7 +21,7 @@ class PartnerAPITests: BaseTests {
     func getFacilities(location: CLLocation, completion: ([Facility], ErrorType?) -> Void) {
         let startDate = NSDate().dateByAddingTimeInterval(60 * 60 * 5)
         let endDate = NSDate().dateByAddingTimeInterval(60 * 60 * 10)
-        FacilityAPI.fetchFacilities(location,
+        FacilityAPI.fetchFacilities(location.coordinate,
                                     starts: startDate,
                                     ends: endDate,
                                     completion: completion)
@@ -61,7 +61,7 @@ class PartnerAPITests: BaseTests {
         
         self.getFacilities(Constants.ChicagoLocation) {
             facilities, error in
-            if let facility = facilities.first, rate = facility.rates.first {
+            if let facility = facilities.first, rate = facility.availableRates.first {
                 StripeWrapper.getToken(Constants.TestCreditCardNumber,
                                        expirationMonth: Constants.TestExpirationMonth,
                                        expirationYear: Constants.TestExpirationYear,

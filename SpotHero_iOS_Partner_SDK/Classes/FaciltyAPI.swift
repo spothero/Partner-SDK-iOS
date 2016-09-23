@@ -23,7 +23,7 @@ struct FacilityAPI {
      - parameter ends:       when the reservation should end
      - parameter completion: closure to call after network call is made. passes in an array of facilities or an error
      */
-    static func fetchFacilities(location: CLLocation,
+    static func fetchFacilities(coordinate: CLLocationCoordinate2D,
                                 starts: NSDate,
                                 ends: NSDate,
                                 completion: ([Facility], ErrorType?) -> (Void)) {
@@ -32,8 +32,8 @@ struct FacilityAPI {
         let startsString = DateFormatter.ISO8601NoSeconds.stringFromDate(starts)
         let endsString = DateFormatter.ISO8601NoSeconds.stringFromDate(ends)
         
-        let latitude = "\(location.coordinate.latitude)"
-        let longitude = "\(location.coordinate.longitude)"
+        let latitude = "\(coordinate.latitude)"
+        let longitude = "\(coordinate.longitude)"
         
         let headers = APIHeaders.defaultHeaders()
         let params = [
@@ -60,8 +60,11 @@ struct FacilityAPI {
                     let facility = try Facility(json: result)
                     facilities.append(facility)
                 }
-                if facilities.count > 0 {
-                    completion(facilities, nil)
+                
+                let facilitiesWithRates = facilities.filter { !$0.availableRates.isEmpty }
+                
+                if !facilitiesWithRates.isEmpty {
+                    completion(facilitiesWithRates, nil)
                 } else {
                     completion([], FacilityError.NoFacilitiesFound)
                 }
