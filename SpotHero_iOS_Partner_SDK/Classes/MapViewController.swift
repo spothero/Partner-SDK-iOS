@@ -473,7 +473,9 @@ extension MapViewController: UICollectionViewDataSource {
         let facility = self.facilities[indexPath.row]
         cell.buyButton.setTitle(LocalizedStrings.BookIt + " | $\(facility.displayPrice())", forState: .Normal)
         cell.streetAddressLabel.text = facility.streetAddress
-        cell.spotInfoLabel.text = facility.title
+        let distanceInMiles = UnitsOfMeasurement.distanceInMiles(Double(facility.distanceInMeters))
+        //TODO: localize miles
+        cell.spotInfoLabel.text = String(format: "\(LocalizedStrings.Distance): %.2f mi", distanceInMiles)
         
         if let rate = facility.availableRates.first {
             if rate.isWheelchairAccessible() {

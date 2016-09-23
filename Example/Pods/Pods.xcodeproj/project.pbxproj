@@ -15,6 +15,7 @@
 		0E696E98B16C59A6AD10807E246A5511 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44EE72E22B15FDAF57F9EE6D2EE224D5 /* Foundation.framework */; };
 		11D570C3721EF196A78D096BCA8047FB /* ValidatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DD32202340107436A91156741E9023 /* ValidatorCell.swift */; };
 		12AC30A8BBD2D158AE154DD3E358D754 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44EE72E22B15FDAF57F9EE6D2EE224D5 /* Foundation.framework */; };
+		12F0B8B21D958EA0009BADBA /* UnitsOfMeasurement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F0B8B11D958EA0009BADBA /* UnitsOfMeasurement.swift */; };
 		1884983D6D196A42E1BC81DC044F29D0 /* HTTPHeaderFields.m in Sources */ = {isa = PBXBuildFile; fileRef = 33475DCFAD041DE4DE25A6AEB9C41CCF /* HTTPHeaderFields.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		1884B864224C3FB362CD8A5494B051C8 /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EBE81440D91FA7CA4C666265999FBA /* Formatter.swift */; };
 		193A81B1776D2369F4FC9E6286795DA8 /* Pods-SpotHero_iOS_Partner_SDK_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2684D36E1DF39EED96E5B6EA84EDF8CF /* Pods-SpotHero_iOS_Partner_SDK_Tests-dummy.m */; };
@@ -278,6 +279,7 @@
 		10FB630A2699946E09F3D27C1D7D1708 /* PaymentButton.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = PaymentButton.xib; sourceTree = "<group>"; };
 		117DC4EDDFFBE0C4A7AB0F057D7D3564 /* KIFUITestActor-ConditionalTests.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "KIFUITestActor-ConditionalTests.m"; path = "Classes/KIFUITestActor-ConditionalTests.m"; sourceTree = "<group>"; };
 		127E01E5A45C4F58FE75BA91DE539413 /* Pods_SpotHero_iOS_Partner_SDK_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpotHero_iOS_Partner_SDK_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		12F0B8B11D958EA0009BADBA /* UnitsOfMeasurement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnitsOfMeasurement.swift; sourceTree = "<group>"; };
 		12F419EB9D92785AAE0A8749F7D453D3 /* Pods-SpotHero_iOS_Partner_SDK_ExampleUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SpotHero_iOS_Partner_SDK_ExampleUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		13BE74C806B6FDC81630F6836EB27D41 /* KIFTestActor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = KIFTestActor.m; path = Classes/KIFTestActor.m; sourceTree = "<group>"; };
 		1456BCEA72759C60727AFF952EF591D1 /* UIView-KIFAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIView-KIFAdditions.h"; path = "Additions/UIView-KIFAdditions.h"; sourceTree = "<group>"; };
@@ -763,6 +765,7 @@
 			isa = PBXGroup;
 			children = (
 				4FB3F4C94A80F7555E781B5575A396A6 /* AccessibilityStrings.swift */,
+				12F0B8B11D958EA0009BADBA /* UnitsOfMeasurement.swift */,
 				89CEC36F42844445ED3006F3DF274AA1 /* AlertView.swift */,
 				A3A116C1091958F45D09DAB6513947E1 /* Constants.swift */,
 				950E93F1497565684F52EA0E3D43D880 /* DateFormatter.swift */,
@@ -1420,6 +1423,7 @@
 				DD11898D8E41E158FA14FEF38D5DB76F /* NumberFormatter.swift in Sources */,
 				601158C5D061E6ADD3F02B837FB743DF /* PaymentButton.swift in Sources */,
 				C64BE0ABBD642DB238FFDB80D8DB8854 /* PaymentInfoTableViewCell.swift in Sources */,
+				12F0B8B21D958EA0009BADBA /* UnitsOfMeasurement.swift in Sources */,
 				5C0C83E3102CEB7A7CA36A7D0A186D6A /* PersonalInfoTableViewCell.swift in Sources */,
 				4A54BCC73897BE2BF2487A3871632510 /* PredictionController.swift in Sources */,
 				495809D7CF7AF7AB080BFBECBCB632A5 /* PredictionTableViewCell.swift in Sources */,
