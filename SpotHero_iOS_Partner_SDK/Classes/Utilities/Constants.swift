@@ -19,6 +19,8 @@ enum Constants {
     static let TestExpirationMonth = "12"
     static let TestExpirationYear = "2020"
     static let TestCVC = "123"
+    static let MetersPerMile = 1609.344
+    
     enum Segue {
         static let Confirmation = "confirmation"
     }
