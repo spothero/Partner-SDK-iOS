@@ -77,10 +77,12 @@ class GooglePlacesTests: XCTestCase {
                 XCTAssertEqual(placeDetails.placeID, self.spotheroPrediction.placeID)
                 XCTAssertEqualWithAccuracy(placeDetails.location.coordinate.latitude,
                                            Constants.ChicagoLocation.coordinate.latitude,
-                                           accuracy: 0.001, "The two locacations are not within 0.001")
+                                           accuracy: 0.001,
+                                           "The two locacations are not within 0.001")
                 XCTAssertEqualWithAccuracy(placeDetails.location.coordinate.longitude,
                                            Constants.ChicagoLocation.coordinate.longitude,
-                                           accuracy: 0.001, "The two locacations are not within 0.001")
+                                           accuracy: 0.001,
+                                           "The two locacations are not within 0.001")
             } else {
                 XCTFail("Place Details is nil")
             }
