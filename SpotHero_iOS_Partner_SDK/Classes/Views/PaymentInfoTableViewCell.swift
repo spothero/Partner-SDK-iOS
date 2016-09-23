@@ -32,29 +32,26 @@ class PaymentInfoTableViewCell: UITableViewCell {
         }
     }
     
-    var creditCardValid: Bool? {
+    var creditCardValid = false {
         didSet {
             self.fieldValidChanged()
         }
     }
     
-    var expirationDateValid: Bool? {
+    var expirationDateValid = false {
         didSet {
             self.fieldValidChanged()
         }
     }
     
-    var cvcValid: Bool? {
+    var cvcValid = false {
         didSet {
             self.fieldValidChanged()
         }
     }
     
     var valid: Bool {
-        if let creditCardValid = self.creditCardValid, expirationDateValid = self.expirationDateValid, cvcValid = self.cvcValid {
-            return creditCardValid && expirationDateValid && cvcValid
-        }
-        return false
+        return creditCardValid && expirationDateValid && cvcValid
     }
     
     static let reuseIdentifier = "paymentInfoCell"
@@ -248,9 +245,8 @@ extension PaymentInfoTableViewCell: UITextFieldDelegate {
                 break
             }
 
-            self.setErrorState(true, error: nil)
+            self.setErrorState(self.valid, error: nil)
         } catch let error as ValidatorError {
-            self.setErrorState(false, error: error)
             switch textField {
             case self.creditCardTextField:
                 self.creditCardValid = false
@@ -261,6 +257,7 @@ extension PaymentInfoTableViewCell: UITextFieldDelegate {
             default:
                 break
             }
+            self.setErrorState(self.valid, error:error)
         } catch let error {
             assertionFailure("Some other error was thrown: \(error)")
         }
@@ -271,10 +268,6 @@ extension PaymentInfoTableViewCell: UITextFieldDelegate {
 
 extension PaymentInfoTableViewCell: ValidatorCell {
     func setErrorState(valid: Bool, error: ValidatorError?) {
-        guard self.creditCardValid != nil && self.expirationDateValid != nil && self.cvcValid != nil else {
-            return
-        }
-        
         self.errorLabel.hidden = valid
         
         if let error = error {
