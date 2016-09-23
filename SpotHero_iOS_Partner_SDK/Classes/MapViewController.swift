@@ -195,6 +195,9 @@ class MapViewController: UIViewController {
         }
     }
     
+    /**
+     Shows the annotations with the searched location in the center of the map
+     */
     func showAnnotations() {
         guard let placeDetails = self.predictionPlaceDetails else {
             return
@@ -202,6 +205,10 @@ class MapViewController: UIViewController {
         
         var latitudeDelta: CLLocationDegrees = 0
         var longitudeDelta: CLLocationDegrees = 0
+        
+        // Loop through all annotations
+        // Find the the difference in latitude and longitude from the searched location and the annotation and take the absolute value
+        // Set the latitude and longitude deltas to the the new value if it is greater than the current value 
         for annotation in self.mapView.annotations {
             let latitude = abs(placeDetails.location.coordinate.latitude - annotation.coordinate.latitude)
             let longitude = abs(placeDetails.location.coordinate.longitude - annotation.coordinate.longitude)
