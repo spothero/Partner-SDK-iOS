@@ -33,7 +33,7 @@ class PartnerAPITests: BaseTests {
         self.getFacilities(Constants.ChicagoLocation) {
             facilities, error in
             XCTAssertNil(error)
-            XCTAssert(facilities.count > 0)
+            XCTAssert(!facilities.isEmpty)
             expectation.fulfill()
         }
         
@@ -49,7 +49,7 @@ class PartnerAPITests: BaseTests {
         self.getFacilities(location) {
             facilities, error in
             XCTAssertNotNil(error)
-            XCTAssert(facilities.count == 0)
+            XCTAssert(facilities.isEmpty)
             expectation.fulfill()
         }
         
