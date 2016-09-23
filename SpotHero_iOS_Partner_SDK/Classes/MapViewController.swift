@@ -185,8 +185,7 @@ class MapViewController: UIViewController {
         }
         self.showSpotCardCollectionView()
         if !panning {
-            let annotations = self.mapView.annotations
-            self.mapView.showAnnotations(annotations, animated: true)
+            self.showAnnotations()
             self.currentIndex = 0
             
             guard let annotation = firstAnnotation else {
@@ -194,6 +193,29 @@ class MapViewController: UIViewController {
             }
             self.mapView.selectAnnotation(annotation, animated: true)
         }
+    }
+    
+    func showAnnotations() {
+        guard let placeDetails = self.predictionPlaceDetails else {
+            return
+        }
+        
+        var latitudeDelta: CLLocationDegrees = 0
+        var longitudeDelta: CLLocationDegrees = 0
+        for annotation in self.mapView.annotations {
+            let latitude = abs(placeDetails.location.coordinate.latitude - annotation.coordinate.latitude)
+            let longitude = abs(placeDetails.location.coordinate.longitude - annotation.coordinate.longitude)
+            
+            latitudeDelta = max(latitudeDelta, latitude)
+            longitudeDelta = max(longitudeDelta, longitude)
+        }
+        
+        // Multiply the deltas by 2 plus some extra padding
+        let multiplier = 2.2
+        
+        let region = MKCoordinateRegion(center: placeDetails.location.coordinate, span: MKCoordinateSpan(latitudeDelta: latitudeDelta * multiplier, longitudeDelta: longitudeDelta * multiplier))
+        
+        self.mapView.setRegion(region, animated: true)
     }
     
     func showSpotCardCollectionView() {
