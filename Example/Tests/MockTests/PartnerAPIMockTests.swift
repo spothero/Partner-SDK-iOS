@@ -128,7 +128,8 @@ class PartnerAPIMockTests: BaseTests {
                                                     XCTAssertEqual(reservation?.starts, self.reservationStartDate)
                                                     XCTAssertEqual(reservation?.ends, self.reservationEndDate)
                                                     XCTAssertEqual(reservation?.price, 1500)
-                                                    XCTAssertEqual(reservation?.receiptAccessKey, "bdce43f47b539e06e0cce19ffff2fa2f37e5b0d391caf2a76b5e9afbd34a9292")
+                                                    XCTAssertEqual(reservation?.receiptAccessKey,
+                                                        "bdce43f47b539e06e0cce19ffff2fa2f37e5b0d391caf2a76b5e9afbd34a9292")
                                                     
                                                     expectation.fulfill()
                 })
