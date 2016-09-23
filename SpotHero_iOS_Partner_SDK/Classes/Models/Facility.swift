@@ -22,6 +22,7 @@ struct Facility {
     let city: String
     let state: String
     let streetAddress: String
+    let distanceInMeters: Int
     
     private var rates = [Rate]()
     var availableRates: [Rate] {
@@ -36,6 +37,7 @@ extension Facility {
         self.parkingSpotID = try json.shp_int("parking_spot_id")
         self.timeZone = try json.shp_string("timezone")
         self.phoneNumberRequired = try json.shp_bool("phone_number_required")
+        self.distanceInMeters = try json.shp_int("distance")
         
         let latitude = try json.shp_double("latitude")
         let longitude = try json.shp_double("longitude")
