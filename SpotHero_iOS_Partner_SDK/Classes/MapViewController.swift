@@ -506,7 +506,9 @@ extension MapViewController: UICollectionViewDelegate {
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        self.scrollToSpotCardThenSelectAnnotation(withIndexPath: indexPath)
+        if let cell = collectionView.cellForItemAtIndexPath(indexPath) where cell !== self.centerCell {
+            self.scrollToSpotCardThenSelectAnnotation(withIndexPath: indexPath)
+        }
     }
 }
 
