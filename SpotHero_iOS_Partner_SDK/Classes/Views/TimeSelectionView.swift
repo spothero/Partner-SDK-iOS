@@ -157,7 +157,9 @@ class TimeSelectionView: UIView {
 
 extension TimeSelectionView: DatePickerViewDelegate {
     func didPressDoneButton() {
-        self.deselect()
+        if self.startViewSelected {
+            self.end
+        }
     }
     
     func didChangeDatePickerValue(date: NSDate) {
