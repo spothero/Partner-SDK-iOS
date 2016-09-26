@@ -132,7 +132,7 @@ class TimeSelectionView: UIView {
         if (self.startViewSelected) {
             self.startDate = date
             if (self.endDate.timeIntervalSinceDate(date) < Constants.ThirtyMinutesInSeconds) {
-                self.endDate = date.shp_roundDateToNearestHalfHour(roundDown: false)
+                self.endDate = date.dateByAddingTimeInterval(Constants.SixHoursInSeconds).shp_roundDateToNearestHalfHour(roundDown: true)
             }
         } else if (self.endViewSelected) {
             self.endDate = date
