@@ -78,6 +78,7 @@ class MapViewController: UIViewController {
         let mapDragRecognizer = UIPanGestureRecognizer(target: self, action: #selector(self.didDragMap(_:)))
         mapDragRecognizer.delegate = self
         self.mapView.addGestureRecognizer(mapDragRecognizer)
+        searchBar.becomeFirstResponder()
     }
     
     private func setMapViewRegion() {
