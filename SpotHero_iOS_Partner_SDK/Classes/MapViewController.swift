@@ -414,7 +414,12 @@ extension MapViewController: ShowTimeSelectionViewDelegate {
 
 extension MapViewController: DatePickerDoneButtonDelegate {
     func didPressDoneButton() {
-        self.showCollapsedSearchBar()
+        if self.timeSelectionView.endViewSelected {
+            self.datePickerView.timeSelectionViewShouldHide()
+            if !(self.searchBar.text ?? "").isEmpty {
+                self.searchSpots()
+            }
+        } 
     }
 }
 

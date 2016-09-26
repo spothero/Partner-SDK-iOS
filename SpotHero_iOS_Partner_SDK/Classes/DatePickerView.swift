@@ -52,8 +52,8 @@ class DatePickerView: UIView {
     }
     
     @IBAction private func doneButtonPressed(sender: AnyObject) {
-        self.delegate?.didPressDoneButton()
         self.doneButtonDelegate?.didPressDoneButton()
+        self.delegate?.didPressDoneButton()
     }
     
     @IBAction private func datePickerValueDidChange(datePicker: UIDatePicker) {
