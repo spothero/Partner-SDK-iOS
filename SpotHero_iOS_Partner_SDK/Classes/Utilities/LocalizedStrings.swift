@@ -47,7 +47,7 @@ enum LocalizedStrings {
                                                 comment: "Title for personal info section of checkout screen")
     static let PaymentInfo = NSLocalizedString("PAYMENT INFO",
                                                comment: "Title for payment info section of checkout screen")
-    static let CreditCardWarning = NSLocalizedString("A credit card is required to guarantee your reservation. It will not be charged until the reservation starts.",
+    static let CreditCardWarning = NSLocalizedString("A credit card is required to guarantee your reservation.",
                                                      comment: "Label explaining that a credit card is required to guarantee a reservation")
     static let CreditCard = NSLocalizedString("Credit Card",
                                               comment: "Name of credit card field")
