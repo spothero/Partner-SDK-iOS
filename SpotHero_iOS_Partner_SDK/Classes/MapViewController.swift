@@ -377,6 +377,8 @@ extension MapViewController: PredictionControllerDelegate {
         self.timeSelectionView.showTimeSelectionView(true)
         self.showCollapsedSearchBar()
         self.searchBar.resignFirstResponder()
+        self.timeSelectionView.startViewSelected = true
+        self.datePickerView.showDatePickerView(true)
     }
     
     func didTapXButton() {
@@ -425,7 +427,14 @@ extension MapViewController: ShowTimeSelectionViewDelegate {
 
 extension MapViewController: DatePickerDoneButtonDelegate {
     func didPressDoneButton() {
-        self.showCollapsedSearchBar()
+        if self.timeSelectionView.endViewSelected {
+            self.datePickerView.timeSelectionViewShouldHide()
+            guard let text = searchBar.text where !text.isEmpty else {
+                return
+            }
+            
+            self.searchSpots()
+        } 
     }
 }
 
