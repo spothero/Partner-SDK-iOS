@@ -231,7 +231,12 @@ class MapViewController: UIViewController {
         self.startLoading()
         GooglePlacesWrapper.getPlaceDetails(prediction) {
             placeDetails, error in
-            completion(placeDetails)
+            if let error = error {
+                self.stopLoading()
+            } else {
+                completion(placeDetails)
+                //stopLoading() handled in fetchFacilities()
+            }
         }
     }
     
