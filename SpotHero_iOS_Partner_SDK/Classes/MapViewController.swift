@@ -234,6 +234,7 @@ class MapViewController: UIViewController {
             placeDetails, error in
             if let error = error {
                 self.stopLoading()
+                completion(nil)
             } else {
                 completion(placeDetails)
                 //stopLoading() handled in fetchFacilities()
