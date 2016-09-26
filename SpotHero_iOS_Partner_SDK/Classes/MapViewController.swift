@@ -429,9 +429,11 @@ extension MapViewController: DatePickerDoneButtonDelegate {
     func didPressDoneButton() {
         if self.timeSelectionView.endViewSelected {
             self.datePickerView.timeSelectionViewShouldHide()
-            if !(self.searchBar.text ?? "").isEmpty {
-                self.searchSpots()
+            guard let text = searchBar.text where !text.isEmpty else {
+                return
             }
+            
+            self.searchSpots()
         } 
     }
 }
