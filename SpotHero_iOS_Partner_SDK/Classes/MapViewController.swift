@@ -321,7 +321,7 @@ class MapViewController: UIViewController {
         self.timeSelectionView.deselect()
     }
     
-    //MARK: Progress HUD Helpers
+    //MARK: Helpers
     
     private func startLoading() {
         if !self.loading {
