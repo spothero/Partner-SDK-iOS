@@ -49,13 +49,13 @@ class MapViewController: UIViewController {
             self.centerCell?.buyButton.backgroundColor = .shp_green()
         }
     }
-    let checkoutSegueIdentifier = "showCheckout"
+    private let checkoutSegueIdentifier = "showCheckout"
     private var selectedFacility: Facility?
     private var maxTableHeight: CGFloat = 0
     private var currentIndex: Int = 0
     private var loading = false
     
-    var facilities = [Facility]()
+    private var facilities = [Facility]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,13 +79,6 @@ class MapViewController: UIViewController {
         mapDragRecognizer.delegate = self
         self.mapView.addGestureRecognizer(mapDragRecognizer)
         searchBar.becomeFirstResponder()
-    }
-    
-    private func setMapViewRegion() {
-        let region = MKCoordinateRegion(center: Constants.ChicagoLocation.coordinate,
-                                        span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
-        self.mapView.setRegion(region, animated: true)
-        self.mapView.accessibilityLabel = AccessibilityStrings.MapView
     }
     
     private func setupViews() {
@@ -117,45 +110,24 @@ class MapViewController: UIViewController {
         self.closeButton.accessibilityLabel = LocalizedStrings.Close
     }
     
-    func showCollapsedSearchBar() {
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let vc = segue.destinationViewController as? CheckoutTableViewController {
+            vc.facility = self.selectedFacility
+            vc.rate = self.selectedFacility?.availableRates.first
+        }
+    }
+    
+    private func showCollapsedSearchBar() {
         self.searchSpotsButton.hidden = (self.searchBar.text ?? "").isEmpty
     }
     
-    func getPlaceDetails(prediction: GooglePlacesPrediction, completion: (GooglePlaceDetails?) -> ()) {
-        self.startLoading()
-        GooglePlacesWrapper.getPlaceDetails(prediction) {
-            placeDetails, error in
-            completion(placeDetails)
-        }
-    }
+    //MARK: MapView & Spot Cards Helpers
     
-    /**
-     Fetch the factilities around a given coordinate
-     
-     - parameter coordinate: coordinate to search around
-     - parameter panning:    Whether or not this was triggered by the user panning the map. 
-                             Passing true will cause there to be no loading spinner and no "No spots" error
-                             Optional (Defaults to false)
-     */
-    func fetchFacilities(coordinate: CLLocationCoordinate2D, panning: Bool = false) {
-        if !panning {
-            self.startLoading()
-        }
-
-        FacilityAPI.fetchFacilities(coordinate,
-                                    starts: self.startDate,
-                                    ends: self.endDate,
-                                    completion: {
-                                        [weak self]
-                                        facilities, error in
-                                        self?.stopLoading()
-                                        if facilities.isEmpty && !panning {
-                                            AlertView.presentErrorAlertView(LocalizedStrings.Sorry, message: LocalizedStrings.NoSpotsFound, from: self)
-                                        }
-                                        
-                                        self?.facilities = facilities
-                                        self?.addAndShowFacilityAnnotations(panning)
-            })
+    private func setMapViewRegion() {
+        let region = MKCoordinateRegion(center: Constants.ChicagoLocation.coordinate,
+                                        span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
+        self.mapView.setRegion(region, animated: true)
+        self.mapView.accessibilityLabel = AccessibilityStrings.MapView
     }
     
     /**
@@ -163,7 +135,7 @@ class MapViewController: UIViewController {
      
      - parameter panning: Pass true to cause the map not to zoom in on the facilities. Optional (Defaults to false)
      */
-    func addAndShowFacilityAnnotations(panning: Bool = false) {
+    private func addAndShowFacilityAnnotations(panning: Bool = false) {
         //TODO: Look into caching annotations like the main app
         self.mapView.removeAnnotations(self.mapView.annotations)
         if let placeDetails = self.predictionPlaceDetails {
@@ -199,7 +171,7 @@ class MapViewController: UIViewController {
     /**
      Shows the annotations with the searched location in the center of the map
      */
-    func showAnnotations() {
+    private func showAnnotations() {
         guard let placeDetails = self.predictionPlaceDetails else {
             return
         }
@@ -209,7 +181,7 @@ class MapViewController: UIViewController {
         
         // Loop through all annotations
         // Find the the difference in latitude and longitude from the searched location and the annotation and take the absolute value
-        // Set the latitude and longitude deltas to the the new value if it is greater than the current value 
+        // Set the latitude and longitude deltas to the the new value if it is greater than the current value
         for annotation in self.mapView.annotations {
             let latitude = abs(placeDetails.location.coordinate.latitude - annotation.coordinate.latitude)
             let longitude = abs(placeDetails.location.coordinate.longitude - annotation.coordinate.longitude)
@@ -226,12 +198,12 @@ class MapViewController: UIViewController {
         self.mapView.setRegion(region, animated: true)
     }
     
-    func showSpotCardCollectionView() {
+    private func showSpotCardCollectionView() {
         self.spotCardCollectionView.hidden = false
         self.spotCardCollectionView.reloadData()
     }
     
-    func scrollToSpotCardThenSelectAnnotation(withIndexPath indexPath: NSIndexPath) {
+    private func scrollToSpotCardThenSelectAnnotation(withIndexPath indexPath: NSIndexPath) {
         self.scrollToSpotCard(withIndexPath: indexPath)
         let annotation = self.mapView.annotations.flatMap {
             annotation in
@@ -246,7 +218,7 @@ class MapViewController: UIViewController {
         }
     }
     
-    func scrollToSpotCard(withIndexPath indexPath: NSIndexPath) {
+    private func scrollToSpotCard(withIndexPath indexPath: NSIndexPath) {
         self.currentIndex = indexPath.row
         self.centerCell = self.spotCardCollectionView.cellForItemAtIndexPath(indexPath) as? SpotCardCollectionViewCell
         self.spotCardCollectionView.scrollToItemAtIndexPath(indexPath,
@@ -254,30 +226,65 @@ class MapViewController: UIViewController {
                                                             animated: true)
     }
     
-    //MARK: Actions
+    //MARK: Google Autocomplete Helpers
     
-    @IBAction private func closeButtonPressed(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-    @IBAction func collapsedSearchBarTapped(sender: AnyObject) {
-        self.collapsedSearchBar.hide()
-        self.timeSelectionView.showTimeSelectionView(true)
-        self.searchSpotsButton.hidden = false
-    }
-    
-    @IBAction func searchSpotsButtonPressed(sender: AnyObject) {
-        self.searchSpots()
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let vc = segue.destinationViewController as? CheckoutTableViewController {
-            vc.facility = self.selectedFacility
-            vc.rate = self.selectedFacility?.availableRates.first
+    private func getPlaceDetails(prediction: GooglePlacesPrediction, completion: (GooglePlaceDetails?) -> ()) {
+        self.startLoading()
+        GooglePlacesWrapper.getPlaceDetails(prediction) {
+            placeDetails, error in
+            if let error = error {
+                self.stopLoading()
+                completion(nil)
+            } else {
+                completion(placeDetails)
+                //stopLoading() handled in fetchFacilities()
+            }
         }
     }
     
-    func searchSpots() {
+    private func searchPrediction() {
+        if let prediction = self.prediction {
+            self.getPlaceDetails(prediction, completion: {
+                placeDetails in
+                if let placeDetails = placeDetails {
+                    self.predictionPlaceDetails = placeDetails
+                }
+            })
+        }
+    }
+    
+    //MARK: Facility Helpers
+    
+    /**
+     Fetch the factilities around a given coordinate
+     
+     - parameter coordinate: coordinate to search around
+     - parameter panning:    Whether or not this was triggered by the user panning the map. 
+                             Passing true will cause there to be no loading spinner and no "No spots" error
+                             Optional (Defaults to false)
+     */
+    private func fetchFacilities(coordinate: CLLocationCoordinate2D, panning: Bool = false) {
+        if !panning {
+            self.startLoading()
+        }
+
+        FacilityAPI.fetchFacilities(coordinate,
+                                    starts: self.startDate,
+                                    ends: self.endDate,
+                                    completion: {
+                                        [weak self]
+                                        facilities, error in
+                                        self?.stopLoading()
+                                        if facilities.isEmpty && !panning {
+                                            AlertView.presentErrorAlertView(LocalizedStrings.Sorry, message: LocalizedStrings.NoSpotsFound, from: self)
+                                        }
+                                        
+                                        self?.facilities = facilities
+                                        self?.addAndShowFacilityAnnotations(panning)
+            })
+    }
+    
+    private func searchSpots() {
         self.searchSpotsButton.hidden = true
         self.collapsedSearchBar.show()
         self.timeSelectionView.showTimeSelectionView(false)
@@ -287,7 +294,23 @@ class MapViewController: UIViewController {
         self.searchBar.resignFirstResponder()
     }
     
-    func didDragMap(gestureRecognizer: UIGestureRecognizer) {
+    //MARK: Actions
+    
+    @IBAction private func closeButtonPressed(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    @IBAction private func collapsedSearchBarTapped(sender: AnyObject) {
+        self.collapsedSearchBar.hide()
+        self.timeSelectionView.showTimeSelectionView(true)
+        self.searchSpotsButton.hidden = false
+    }
+    
+    @IBAction private func searchSpotsButtonPressed(sender: AnyObject) {
+        self.searchSpots()
+    }
+    
+    @objc private func didDragMap(gestureRecognizer: UIGestureRecognizer) {
         switch gestureRecognizer.state {
         case .Began:
             self.spotCardCollectionView.hidden = true
@@ -299,7 +322,7 @@ class MapViewController: UIViewController {
         }
     }
     
-    @IBAction func didTapMapView(sender: AnyObject) {
+    @IBAction private func didTapMapView(sender: AnyObject) {
         self.searchBar.resignFirstResponder()
         self.datePickerView.showDatePickerView(false)
         self.timeSelectionView.deselect()
@@ -307,28 +330,17 @@ class MapViewController: UIViewController {
     
     //MARK: Helpers
     
-    func startLoading() {
+    private func startLoading() {
         if !self.loading {
             self.loading = true
             ProgressHUD.showHUDAddedTo(self.view, withText: LocalizedStrings.Loading)
         }
     }
     
-    func stopLoading() {
+    private func stopLoading() {
         if self.loading {
             self.loading = false
             ProgressHUD.hideHUDForView(self.view)
-        }
-    }
-    
-    func searchPrediction() {
-        if let prediction = self.prediction {
-            self.getPlaceDetails(prediction, completion: {
-                placeDetails in
-                if let placeDetails = placeDetails {
-                    self.predictionPlaceDetails = placeDetails
-                }
-            })
         }
     }
 }
