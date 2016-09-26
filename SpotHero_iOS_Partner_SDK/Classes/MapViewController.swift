@@ -364,6 +364,8 @@ extension MapViewController: PredictionControllerDelegate {
         self.timeSelectionView.showTimeSelectionView(true)
         self.showCollapsedSearchBar()
         self.searchBar.resignFirstResponder()
+        self.timeSelectionView.startViewSelected = true
+        self.datePickerView.showDatePickerView(true)
     }
     
     func didTapXButton() {
