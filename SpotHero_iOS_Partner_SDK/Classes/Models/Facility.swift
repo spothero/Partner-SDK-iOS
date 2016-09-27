@@ -12,7 +12,7 @@ import CoreLocation
 /**
  *  Represents a facility
  */
-struct Facility {
+struct Facility: Equatable {
     let title: String
     let licensePlateRequired: Bool
     let parkingSpotID: Int
@@ -64,4 +64,8 @@ extension Facility {
         
         return String(rate.displayPrice)
     }
+}
+
+func ==(lhs: Facility, rhs: Facility) -> Bool {
+    return lhs.parkingSpotID == rhs.parkingSpotID
 }
