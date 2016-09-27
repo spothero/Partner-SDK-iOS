@@ -22,7 +22,15 @@ class SearchSpotsUITests: BaseUITests {
         XCTAssertNotEqual(timeSelectionView?.endViewSelected, timeSelectionView?.startViewSelected)
     }
     
-    private func dismissDatePickerView() {
+    private func dismissStartView() {
+        let timeSelectionView = tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.TimeSelectionView) as? TimeSelectionView
+        tester().tapViewWithAccessibilityLabel(LocalizedStrings.Done)
+        XCTAssertEqual(false, timeSelectionView?.startViewSelected)
+        tester().tapViewWithAccessibilityLabel(LocalizedStrings.Done)
+        XCTAssertEqual(false, timeSelectionView?.endViewSelected)
+    }
+    
+    private func dismissEndView() {
         let timeSelectionView = tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.TimeSelectionView) as? TimeSelectionView
         tester().tapViewWithAccessibilityLabel(LocalizedStrings.Done)
         XCTAssertEqual(false, timeSelectionView?.startViewSelected)
@@ -52,7 +60,7 @@ class SearchSpotsUITests: BaseUITests {
         tester().waitForViewWithAccessibilityLabel(LocalizedStrings.Done)
         self.validateStartEndViewSelectedState()
         
-        self.dismissDatePickerView()
+        self.dismissStartView()
     }
     
     func testTappingEndsViewShowsEndDatePickerView() {
@@ -65,7 +73,7 @@ class SearchSpotsUITests: BaseUITests {
         tester().waitForViewWithAccessibilityLabel(LocalizedStrings.Done)
         self.validateStartEndViewSelectedState()
         
-        self.dismissDatePickerView()
+        self.dismissEndView()
     }
     
     func testSelectingAddressShowsSearchSpotsButton() {
