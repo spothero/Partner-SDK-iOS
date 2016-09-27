@@ -116,10 +116,7 @@ class PaymentInfoTableViewCell: UITableViewCell {
             self.cardNumber = unformatted
             
             if unformatted.characters.count == cardLength {
-                self.showExpirationDateAndCVCTextFields(show: true)
-                self.creditCardTextField.text = self.lastFourDigits(text)
                 self.creditCardTextField.resignFirstResponder()
-                self.expirationDateTextField.becomeFirstResponder()
             }
         default:
             let (formatted, unformatted) = Formatter.formatCreditCard(text)
@@ -133,9 +130,7 @@ class PaymentInfoTableViewCell: UITableViewCell {
             self.cardNumber = unformatted
             
             if unformatted.characters.count == cardLength {
-                self.showExpirationDateAndCVCTextFields(show: true)
-                self.creditCardTextField.text = self.lastFourDigits(unformatted)
-                self.expirationDateTextField.becomeFirstResponder()
+                self.creditCardTextField.resignFirstResponder()
             }
         }
         
@@ -223,6 +218,9 @@ extension PaymentInfoTableViewCell: UITextFieldDelegate {
                 self.cardType = Validator.getCardType(text)
                 try Validator.validateCreditCard(self.cardNumber)
                 self.creditCardValid = true
+                self.showExpirationDateAndCVCTextFields(show: true)
+                self.expirationDateTextField.becomeFirstResponder()
+                self.creditCardTextField.text = self.lastFourDigits(text)
             case self.expirationDateTextField:
                 let parts = text.componentsSeparatedByString("/")
                 if let month = parts.first, year = parts.last {
