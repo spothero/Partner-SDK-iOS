@@ -258,12 +258,20 @@ class CheckoutTableViewController: UIViewController {
             cell.primaryLabel.text = facility.streetAddress
             cell.secondaryLabel.text = "\(facility.city), \(facility.state)"
         case ReservationInfoRow.Starts:
-            cell.primaryLabel.text = "\(DateFormatter.RelativeDate.stringFromDate(rate.starts)), \(DateFormatter.DateOnlyNoYear.stringFromDate(rate.starts))"
+            cell.primaryLabel.text = self.getDateFormatString(rate.starts)
             cell.secondaryLabel.text = DateFormatter.TimeOnly.stringFromDate(rate.starts)
         case ReservationInfoRow.Ends:
-            cell.primaryLabel.text = "\(DateFormatter.RelativeDate.stringFromDate(rate.ends)), \(DateFormatter.DateOnlyNoYear.stringFromDate(rate.ends))"
+            cell.primaryLabel.text = self.getDateFormatString(rate.ends)
             cell.secondaryLabel.text = DateFormatter.TimeOnly.stringFromDate(rate.ends)
         }
+    }
+    
+    private func getDateFormatString(date: NSDate) -> String {        
+        guard let calendar = NSCalendar(calendarIdentifier: NSGregorianCalendar) where calendar.isDateInToday(date) || calendar.isDateInTomorrow(date) else {
+            return "\(DateFormatter.DayOfWeek.stringFromDate(date)), \(DateFormatter.DateOnlyNoYear.stringFromDate(date))"
+        }
+        
+        return "\(DateFormatter.RelativeDate.stringFromDate(date)), \(DateFormatter.DateOnlyNoYear.stringFromDate(date))"
     }
     
     private func configureCell(cell: PersonalInfoTableViewCell, row: PersonalInfoRow) {
