@@ -35,7 +35,7 @@ class DateFormatter: NSObject {
         PrettyDayDate = "EEE, MMM d",
         LinkDateTime = "MM-dd-yyyy hhmma",
         PrettyMonthDayDate = "MMM dd, yyyy",
-        DayOfWeek = "EEEE"
+        DayOfWeekWithDate = "EEEE, MM/dd"
     }
     
     private static func formatterWithFormat(format: StringEnum) -> NSDateFormatter {
@@ -119,7 +119,7 @@ class DateFormatter: NSObject {
     static let PrettyMonthDayDate: NSDateFormatter = DateFormatter.formatterWithFormat(DateFormat.PrettyMonthDayDate)
     
     //A formatter for getting the day of the week
-    static let DayOfWeek: NSDateFormatter = DateFormatter.formatterWithFormat(DateFormat.DayOfWeek)
+    static let DayOfWeekWithDate: NSDateFormatter = DateFormatter.formatterWithFormat(DateFormat.DayOfWeekWithDate)
 
     ///A formatter for translating relative dates
     static let RelativeDate: NSDateFormatter = DateFormatter.relativeFormatterWithFormat()

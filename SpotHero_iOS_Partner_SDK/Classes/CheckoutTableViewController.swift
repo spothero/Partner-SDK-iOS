@@ -268,7 +268,7 @@ class CheckoutTableViewController: UIViewController {
     
     private func getDateFormatString(date: NSDate) -> String {        
         guard let calendar = NSCalendar(calendarIdentifier: NSGregorianCalendar) where calendar.isDateInToday(date) || calendar.isDateInTomorrow(date) else {
-            return "\(DateFormatter.DayOfWeek.stringFromDate(date)), \(DateFormatter.DateOnlyNoYear.stringFromDate(date))"
+            return DateFormatter.DayOfWeekWithDate.stringFromDate(date)
         }
         
         return "\(DateFormatter.RelativeDate.stringFromDate(date)), \(DateFormatter.DateOnlyNoYear.stringFromDate(date))"
