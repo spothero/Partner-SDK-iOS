@@ -254,17 +254,9 @@ struct SpotHeroPartnerAPIController {
             return
         }
         
-        guard let actualData = successJSON["data"] as? JSONDictionary else {
-            let jsonError = APIError.parsingError(successJSON)
-            NSOperationQueue.mainQueue().addOperationWithBlock({ 
-                errorCompletion(error: jsonError)
-            })
-            return
-        }
-        
         // Ermahgerd! It worked!
         NSOperationQueue.mainQueue().addOperationWithBlock { 
-            completion(JSON: actualData)
+            completion(JSON: successJSON)
         }
     }
     
