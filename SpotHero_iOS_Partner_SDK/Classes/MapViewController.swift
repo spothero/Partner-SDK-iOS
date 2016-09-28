@@ -288,8 +288,8 @@ class MapViewController: UIViewController {
         self.searchSpotsButton.hidden = true
         self.collapsedSearchBar.show()
         self.timeSelectionView.showTimeSelectionView(false)
-        let hoursBetweenDates = self.startEndDateDifferenceInSeconds / Constants.SecondsInHour
-        self.collapsedSearchBar.text = String(format: LocalizedStrings.HoursBetweenDatesFormat, hoursBetweenDates)
+        let hoursBetweenDates = ceil(self.startEndDateDifferenceInSeconds) / Constants.SecondsInHour
+        self.collapsedSearchBar.hours = hoursBetweenDates
         self.searchPrediction()
         self.searchBar.resignFirstResponder()
     }

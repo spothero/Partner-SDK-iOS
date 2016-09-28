@@ -20,9 +20,9 @@ public extension NSDate {
         let remain = timeComponents.minute % 30
         let interval: NSTimeInterval
         if roundDown {
-            interval = Double(-((60 * remain) + timeComponents.second))
+            interval = NSTimeInterval(-((60 * remain) + timeComponents.second))
         } else {
-            interval = Double((60 * (30 - remain) - timeComponents.second))
+            interval = NSTimeInterval((60 * (30 - remain) - timeComponents.second))
         }
         return self.dateByAddingTimeInterval(interval)
     }
