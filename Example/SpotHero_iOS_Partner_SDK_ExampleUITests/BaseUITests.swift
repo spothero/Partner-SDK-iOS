@@ -15,6 +15,10 @@ class BaseUITests: KIFTestCase {
         
     override func beforeAll() {
         super.beforeAll()
+        
+        //Test Go Fast Now!
+        UIApplication.sharedApplication().keyWindow?.layer.speed = 50
+        
         tester().tapViewWithAccessibilityLabel(LocalizedStrings.LaunchSDK)
         tester().waitForViewWithAccessibilityLabel(LocalizedStrings.FindParking)
     }

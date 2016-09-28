@@ -18,25 +18,6 @@ slack_webhook_url='https://hooks.slack.com/services/T02755W03/B17P10JU9/JGrtFKFL
 # The username of the CI user on iTunes Connect.
 ci_username = 'ci-ios@spothero.com'
 
-####################
-# Pre-defined keys #
-####################
-
-# Key for string specifying the name of the Scheme to use to perform various tasks.
-scheme_options_key = 'scheme'
-
-# Key for string path for folder to output data to (relative to fastlane_folder)
-output_options_key = 'output'
-
-# Key for string specifying the name of a the provisioning profile to use for various tasks.
-profile_options_key = 'profile'
-
-# Key for string specifying the app identifier to use to perform various tasks
-app_identifier_options_key = 'app_identifier'
-
-# Key for string specifying the distribution method - "ad-hoc" or "app-store" to use with gym
-method_options_key = 'method'
-
 #########################
 # Per-Project Variables #
 #########################
@@ -157,6 +138,7 @@ test_flight_provisioning_profile_name = 'Distribution: SDK Sample App'
             skip_slack: !is_ci, # only let us know if we're on CI
             output_directory: File.join(fastlane_folder, output_folder),
             clean: true,
+            skip_build: true, #the test action will already kick off a build, don't build twice
         )
     end
 
