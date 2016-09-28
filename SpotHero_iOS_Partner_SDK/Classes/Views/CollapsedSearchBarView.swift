@@ -12,18 +12,19 @@ class CollapsedSearchBarView: UIView {
     @IBOutlet weak private var timeLabel: UILabel!
     @IBOutlet weak private var chevron: UIImageView!
     
-    var hours: Double = 0 {
+    static let dateComponentsFormatter: NSDateComponentsFormatter = {
+        let _dateComponentsFormatter = NSDateComponentsFormatter()
+        _dateComponentsFormatter.unitsStyle = .Full
+        return _dateComponentsFormatter
+    }()
+    
+    var time: NSDateComponents? {
         didSet {
-            let hoursLeftOver = self.hours % 24
-            let days = Int(self.hours / 24)
-            
-            if days > 0 {
-                let format = (floor(hoursLeftOver) == hoursLeftOver) ? LocalizedStrings.HoursAndDaysBetweenDatesFormat : LocalizedStrings.HoursAndDaysBetweenDatesFormatDecimal
-                self.timeLabel.text = String(format: format, days, hoursLeftOver)
-            } else {
-                let format = (floor(hoursLeftOver) == hoursLeftOver) ? LocalizedStrings.HoursBetweenDatesFormat : LocalizedStrings.HoursBetweenDatesFormatDecimal
-                self.timeLabel.text = String(format: format, hoursLeftOver)
+            guard let time = self.time else {
+                return
             }
+            
+            self.timeLabel.text = CollapsedSearchBarView.dateComponentsFormatter.stringFromDateComponents(time)
         }
     }
     
