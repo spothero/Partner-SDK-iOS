@@ -12,7 +12,7 @@ class CollapsedSearchBarView: UIView {
     @IBOutlet weak private var timeLabel: UILabel!
     @IBOutlet weak private var chevron: UIImageView!
     
-    static let dateComponentsFormatter: NSDateComponentsFormatter = {
+    static let DateComponentsFormatter: NSDateComponentsFormatter = {
         let _dateComponentsFormatter = NSDateComponentsFormatter()
         _dateComponentsFormatter.unitsStyle = .Full
         return _dateComponentsFormatter
@@ -24,7 +24,7 @@ class CollapsedSearchBarView: UIView {
                 return
             }
             
-            self.timeLabel.text = CollapsedSearchBarView.dateComponentsFormatter.stringFromDateComponents(time)
+            self.timeLabel.text = CollapsedSearchBarView.DateComponentsFormatter.stringFromDateComponents(time)
         }
     }
     
