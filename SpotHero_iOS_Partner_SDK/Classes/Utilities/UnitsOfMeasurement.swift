@@ -16,6 +16,6 @@ enum UnitsOfMeasurement {
      - returns: distance in miles as a double
      */
     static func distanceInMiles(meters: Double) -> Double {
-        return meters / 1609.344
+        return meters / Constants.MetersPerMile
     }
 }
