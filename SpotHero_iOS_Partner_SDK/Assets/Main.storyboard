@@ -673,7 +673,7 @@
                                                                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                                 </textField>
                                                             </subviews>
-                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             <constraints>
                                                                 <constraint firstItem="jpy-Ti-lkc" firstAttribute="top" secondItem="d3g-NY-obD" secondAttribute="top" id="7UT-hE-5C1"/>
                                                                 <constraint firstItem="Dzo-OK-jB7" firstAttribute="leading" secondItem="gQn-hF-5RA" secondAttribute="trailing" id="9li-6W-M4w"/>
