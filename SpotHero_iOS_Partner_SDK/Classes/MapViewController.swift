@@ -152,13 +152,13 @@ class MapViewController: UIViewController {
         // Make sure when coming back from the background that the start date is not before
         // the booking interval.
         let now = NSDate()
-        if self.startDate.compare(now) != .OrderedAscending {
+        if self.startDate.compare(now) == .OrderedAscending { //now is after start date
             let updatedStartDate = now.shp_roundDateToNearestHalfHour(roundDown: true)
             self.didChangeStartEndDate(startDate: updatedStartDate, endDate: self.endDate)
         }
         
         // Next, make sure the end date is not before the start date
-        if self.startDate.compare(self.endDate) != .OrderedAscending {
+        if self.startDate.compare(self.endDate) == .OrderedAscending { //end date after start 
             let updatedEndDate = self.startDate
                 .dateByAddingTimeInterval(Constants.SixHoursInSeconds)
                 .shp_roundDateToNearestHalfHour(roundDown: true)
