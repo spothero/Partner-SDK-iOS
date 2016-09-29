@@ -35,8 +35,15 @@ class DatePickerView: UIView {
     
     private func setupDatePickerView() {
         self.datePickerViewBottomConstraint.constant = -self.DatePickerViewHeight
-        self.datePicker.minimumDate = NSDate().shp_roundDateToNearestHalfHour(roundDown: true)
+        self.updateMinimumDate()
         self.datePicker.date = NSDate().shp_roundDateToNearestHalfHour(roundDown: true)
+    }
+
+    /**
+     Updates the minimum date of the date picker view. 
+     */
+    func updateMinimumDate() {
+        self.datePicker.minimumDate = NSDate().shp_roundDateToNearestHalfHour(roundDown: true)
     }
     
     /**
