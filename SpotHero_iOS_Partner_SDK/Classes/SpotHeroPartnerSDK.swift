@@ -30,9 +30,6 @@ public class SpotHeroPartnerSDK: NSObject {
     /// The text color to use for the nav bar. Defaults to white.
     public var textColor: UIColor = .whiteColor()
     
-    /// The name of the partner application to display. Should be localized if your application has a localized name. Defaults to an empty string.
-    public var partnerApplicationName: String = ""
-    
     /// Your application's private key. Defaults to an empty string.
     public var partnerApplicationKey: String = ""
     
