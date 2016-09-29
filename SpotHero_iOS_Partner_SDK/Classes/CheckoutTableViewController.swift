@@ -82,7 +82,7 @@ class CheckoutTableViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet var toolbar: UIToolbar!
     
-    private let reservationCellHeight: CGFloat = 86
+    private let reservationCellHeight: CGFloat = 60
     private let paymentButtonHeight: CGFloat = 60
     private let paymentButtonMargin: CGFloat = 0
     
