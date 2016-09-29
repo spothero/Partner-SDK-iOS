@@ -29,9 +29,7 @@ class MapViewController: UIViewController {
     private let predictionController = PredictionController()
     private var predictionPlaceDetails: GooglePlaceDetails? {
         didSet {
-            if let placeDetails = self.predictionPlaceDetails {
-                self.fetchFacilities(placeDetails.location.coordinate)
-            }
+            self.fetchFacilitiesIfPlaceDetailsExists()
         }
     }
     private var startDate: NSDate = NSDate().shp_roundDateToNearestHalfHour(roundDown: true)
@@ -128,6 +126,9 @@ class MapViewController: UIViewController {
                                     .shp_roundDateToNearestHalfHour(roundDown: true)
             self.didChangeStartEndDate(startDate: updatedEndDate, endDate: self.endDate)
         }
+        
+        //Finally, update any existing search to ensure shown prices are accurate.
+        self.fetchFacilitiesIfPlaceDetailsExists()
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -361,6 +362,12 @@ class MapViewController: UIViewController {
         if self.loading {
             self.loading = false
             ProgressHUD.hideHUDForView(self.view)
+        }
+    }
+    
+    private func fetchFacilitiesIfPlaceDetailsExists() {
+        if let placeDetails = self.predictionPlaceDetails {
+            self.fetchFacilities(placeDetails.location.coordinate)
         }
     }
 }
