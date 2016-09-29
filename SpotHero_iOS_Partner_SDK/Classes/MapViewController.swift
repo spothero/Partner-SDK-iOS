@@ -88,6 +88,8 @@ class MapViewController: UIViewController {
                          selector: #selector(applicationWillEnterForeground(_:)),
                          name: UIApplicationWillEnterForegroundNotification,
                          object: nil)
+        
+        self.updateStartStartAndEndDatesVsCurrentTimeIfNeeded()
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -141,11 +143,15 @@ class MapViewController: UIViewController {
     //MARK: Application lifecycle
     
     @objc private func applicationWillEnterForeground(notification: NSNotification) {
+        self.updateStartStartAndEndDatesVsCurrentTimeIfNeeded()
+    }
+    
+    private func updateStartStartAndEndDatesVsCurrentTimeIfNeeded() {
         // Make sure when coming back from the background that the start date is not before
         // the booking interval.
-        let enterForegroundDate = NSDate()
-        if self.startDate.compare(enterForegroundDate) != .OrderedAscending {
-            let updatedStartDate = enterForegroundDate.shp_roundDateToNearestHalfHour(roundDown: true)
+        let now = NSDate()
+        if self.startDate.compare(now) != .OrderedAscending {
+            let updatedStartDate = now.shp_roundDateToNearestHalfHour(roundDown: true)
             self.didChangeStartEndDate(startDate: updatedStartDate, endDate: self.endDate)
         }
         
