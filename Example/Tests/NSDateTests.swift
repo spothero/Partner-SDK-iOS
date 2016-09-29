@@ -22,8 +22,17 @@ class NSDateTests: XCTestCase {
         let roundedUp = date.shp_roundDateToNearestHalfHour(roundDown: false)
         let roundedDown = date.shp_roundDateToNearestHalfHour(roundDown: true)
         
-        let roundedUpComponents = NSCalendar.currentCalendar().components([.Minute, .Hour], fromDate: roundedUp)
-        let roundedDownComponents = NSCalendar.currentCalendar().components([.Minute], fromDate: roundedDown)
+        guard
+            let calendar = NSCalendar(identifier: NSCalendarIdentifierGregorian),
+            let timeZone = NSTimeZone(name: "America/Chicago") else {
+            XCTFail("Cannot creat calendar or timezone")
+            return
+        }
+        
+        calendar.timeZone = timeZone
+        
+        let roundedUpComponents = calendar.components([.Minute, .Hour], fromDate: roundedUp)
+        let roundedDownComponents = calendar.components([.Minute], fromDate: roundedDown)
         
         XCTAssertEqual(roundedUpComponents.minute,
                        roundUpMinute,

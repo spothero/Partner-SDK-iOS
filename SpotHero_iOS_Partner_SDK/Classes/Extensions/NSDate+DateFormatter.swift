@@ -29,8 +29,7 @@ public extension NSDate {
             if minute < 30 {
                 minute = 30
             } else {
-                minute = 0
-                timeComponents.hour += 1
+                minute = 60
             }
         }
         
