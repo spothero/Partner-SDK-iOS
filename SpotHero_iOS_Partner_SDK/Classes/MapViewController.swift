@@ -79,6 +79,25 @@ class MapViewController: UIViewController {
         searchBar.becomeFirstResponder()
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        NSNotificationCenter
+            .defaultCenter()
+            .addObserver(self,
+                         selector: #selector(applicationWillEnterForeground(_:)),
+                         name: UIApplicationWillEnterForegroundNotification,
+                         object: nil)
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        NSNotificationCenter
+            .defaultCenter()
+            .removeObserver(self)
+    }
+    
     private func setupViews() {
         self.reservationContainerView.layer.cornerRadius = HeightsAndLengths.standardCornerRadius
         self.reservationContainerView.layer.masksToBounds = true
@@ -108,29 +127,6 @@ class MapViewController: UIViewController {
         self.closeButton.accessibilityLabel = LocalizedStrings.Close
     }
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        // Make sure when coming back from the background that the start date is not before
-        // the booking interval.
-        let vwaDate = NSDate()
-        if self.startDate.compare(vwaDate) != .OrderedAscending {
-            let updatedStartDate = vwaDate.shp_roundDateToNearestHalfHour(roundDown: true)
-            self.didChangeStartEndDate(startDate: updatedStartDate, endDate: self.endDate)
-        }
-        
-        // Next, make sure the end date is not before the start date
-        if self.startDate.compare(self.endDate) != .OrderedAscending {
-            let updatedEndDate = self.startDate
-                                    .dateByAddingTimeInterval(Constants.SixHoursInSeconds)
-                                    .shp_roundDateToNearestHalfHour(roundDown: true)
-            self.didChangeStartEndDate(startDate: updatedEndDate, endDate: self.endDate)
-        }
-        
-        //Finally, update any existing search to ensure shown prices are accurate.
-        self.fetchFacilitiesIfPlaceDetailsExists()
-    }
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let vc = segue.destinationViewController as? CheckoutTableViewController {
             vc.facility = self.selectedFacility
@@ -140,6 +136,29 @@ class MapViewController: UIViewController {
     
     private func showCollapsedSearchBar() {
         self.searchSpotsButton.hidden = (self.searchBar.text ?? "").isEmpty
+    }
+    
+    //MARK: Application lifecycle
+    
+    @objc private func applicationWillEnterForeground(notification: NSNotification) {
+        // Make sure when coming back from the background that the start date is not before
+        // the booking interval.
+        let enterForegroundDate = NSDate()
+        if self.startDate.compare(enterForegroundDate) != .OrderedAscending {
+            let updatedStartDate = enterForegroundDate.shp_roundDateToNearestHalfHour(roundDown: true)
+            self.didChangeStartEndDate(startDate: updatedStartDate, endDate: self.endDate)
+        }
+        
+        // Next, make sure the end date is not before the start date
+        if self.startDate.compare(self.endDate) != .OrderedAscending {
+            let updatedEndDate = self.startDate
+                .dateByAddingTimeInterval(Constants.SixHoursInSeconds)
+                .shp_roundDateToNearestHalfHour(roundDown: true)
+            self.didChangeStartEndDate(startDate: updatedEndDate, endDate: self.endDate)
+        }
+        
+        //Finally, update any existing search to ensure shown prices are accurate.
+        self.fetchFacilitiesIfPlaceDetailsExists()
     }
     
     //MARK: MapView & Spot Cards Helpers
