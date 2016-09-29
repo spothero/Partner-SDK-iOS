@@ -170,7 +170,7 @@ class CheckoutTableViewController: UIViewController {
         //If the user comes back and the date is before the rounded-down date, boot the user 
         // back to the map with an apology.
         let roundedDown = NSDate().shp_roundDateToNearestHalfHour(roundDown: true)
-        if rate.starts.compare(roundedDown) != .OrderedAscending {            
+        if roundedDown.shp_isBeforeDate(rate.starts) {
             AlertView.presentErrorAlertView(LocalizedStrings.Sorry,
                                             message: LocalizedStrings.RateExpired,
                                             from: self)
