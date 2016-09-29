@@ -25,8 +25,8 @@ class NSDateTests: XCTestCase {
         guard
             let calendar = NSCalendar(identifier: NSCalendarIdentifierGregorian),
             let timeZone = NSTimeZone(name: "America/Chicago") else {
-            XCTFail("Cannot creat calendar or timezone")
-            return
+                XCTFail("Cannot creat calendar or timezone")
+                return
         }
         
         calendar.timeZone = timeZone
