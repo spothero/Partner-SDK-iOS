@@ -23,7 +23,7 @@ class NSDateTests: XCTestCase {
         let roundedDown = date.shp_roundDateToNearestHalfHour(roundDown: true)
         
         let roundedUpComponents = NSCalendar.currentCalendar().components([.Minute, .Hour], fromDate: roundedUp)
-        let roundedDownComponents = NSCalendar.currentCalendar().components([.Minute, .Hour], fromDate: roundedDown)
+        let roundedDownComponents = NSCalendar.currentCalendar().components([.Minute], fromDate: roundedDown)
         
         XCTAssertEqual(roundedUpComponents.minute,
                        roundUpMinute,
@@ -39,7 +39,7 @@ class NSDateTests: XCTestCase {
                        line: line)
     }
     
-    func testRounding() {
+    func testRoundingMinutes() {
         // 8:00pm
         let nonRounding = NSDate(timeIntervalSince1970: 1475110800)
         
@@ -104,5 +104,4 @@ class NSDateTests: XCTestCase {
                        roundDownMinute: 30,
                        hour: 21)
     }
-    
 }
