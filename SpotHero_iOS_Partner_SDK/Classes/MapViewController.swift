@@ -517,6 +517,8 @@ extension MapViewController: UICollectionViewDataSource {
                 cell.accessibleParkingImageView.hidden = true
             }
             
+            cell.accessibleParkingImageViewWidthConstraint.constant = rate.isWheelchairAccessible() ? 30 : 0
+            
             cell.noReentryImageView.hidden = rate.allowsReentry()
         }
                 

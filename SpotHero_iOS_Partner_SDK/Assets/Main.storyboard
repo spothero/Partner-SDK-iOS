@@ -401,6 +401,7 @@
                                         </variation>
                                         <connections>
                                             <outlet property="accessibleParkingImageView" destination="lYi-oY-Q5A" id="N1E-MX-bd2"/>
+                                            <outlet property="accessibleParkingImageViewWidthConstraint" destination="RAl-R3-xlJ" id="9Ed-hy-bZT"/>
                                             <outlet property="buyButton" destination="3jD-ib-d5I" id="v5p-Mh-VNf"/>
                                             <outlet property="noReentryImageView" destination="2Rw-uh-awg" id="8X6-jt-amC"/>
                                             <outlet property="spotInfoLabel" destination="lGu-UY-rpK" id="aP0-JJ-TvP"/>

@@ -24,6 +24,7 @@ class SpotCardCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var spotInfoLabel: UILabel!
     @IBOutlet weak var accessibleParkingImageView: UIImageView!
     @IBOutlet weak var noReentryImageView: UIImageView!
+    @IBOutlet weak var accessibleParkingImageViewWidthConstraint: NSLayoutConstraint!
     
     override func awakeFromNib() {
         super.awakeFromNib()
