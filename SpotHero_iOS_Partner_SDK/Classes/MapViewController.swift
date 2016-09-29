@@ -158,7 +158,7 @@ class MapViewController: UIViewController {
         }
         
         // Next, make sure the end date is not before the start date
-        if self.startDate.compare(self.endDate) == .OrderedAscending { //end date after start 
+        if self.startDate.compare(self.endDate) == .OrderedAscending { //end date after start
             let updatedEndDate = self.startDate
                 .dateByAddingTimeInterval(Constants.SixHoursInSeconds)
                 .shp_roundDateToNearestHalfHour(roundDown: true)
