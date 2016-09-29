@@ -83,8 +83,6 @@ enum LocalizedStrings {
                                         comment: "A MasterCard Credit Card")
     static let Discover = NSLocalizedString("Discover",
                                         comment: "A Discover Credit Card")
-    static let HoursBetweenDatesFormat = NSLocalizedString("%.2f hours",
-                                                           comment: "Hours between dates format")
     static let paymentButtonTitleFormat = NSLocalizedString("Pay %@ and Confirm Parking",
                                                       comment: "Title of the checkout screen payment button")
     static let blankFieldErrorFormat = NSLocalizedString("Please enter your %@",
