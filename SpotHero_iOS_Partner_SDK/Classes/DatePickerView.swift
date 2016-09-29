@@ -74,15 +74,12 @@ class DatePickerView: UIView {
 extension DatePickerView: TimeSelectionViewDelegate {
     func didTapStartView(startDate: NSDate, endDate: NSDate) {
         self.showDatePickerView(true)
-        self.datePicker.minimumDate = startDate
         self.datePicker.date = startDate
         self.toolbarTitleLabel.text = LocalizedStrings.SetStartTime
     }
     
     func didTapEndView(startDate: NSDate, endDate: NSDate) {
         self.showDatePickerView(true)
-        self.datePicker.minimumDate = startDate.shp_roundDateToNearestHalfHour(roundDown: false)
-        self.datePicker.maximumDate = nil
         self.datePicker.date = endDate
         self.toolbarTitleLabel.text = LocalizedStrings.SetEndTime
     }

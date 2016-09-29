@@ -24,6 +24,7 @@ class MapViewController: UIViewController {
     @IBOutlet weak private var searchSpotsButton: UIButton!
     @IBOutlet weak private var spotCardCollectionView: UICollectionView!
     @IBOutlet weak private var closeButton: UIBarButtonItem!
+    @IBOutlet weak private var loadingView: UIView!
     
     private var prediction: GooglePlacesPrediction?
     private let predictionController = PredictionController()
@@ -316,6 +317,8 @@ class MapViewController: UIViewController {
     private func fetchFacilities(coordinate: CLLocationCoordinate2D, panning: Bool = false) {
         if !panning {
             self.startLoading()
+        } else {
+            self.loadingView.hidden = false
         }
 
         FacilityAPI.fetchFacilities(coordinate,
@@ -325,6 +328,7 @@ class MapViewController: UIViewController {
                                         [weak self]
                                         facilities, error in
                                         self?.stopLoading()
+                                        self?.loadingView.hidden = true
                                         if facilities.isEmpty && !panning {
                                             AlertView.presentErrorAlertView(LocalizedStrings.Sorry, message: LocalizedStrings.NoSpotsFound, from: self)
                                         }
@@ -338,8 +342,7 @@ class MapViewController: UIViewController {
         self.searchSpotsButton.hidden = true
         self.collapsedSearchBar.show()
         self.timeSelectionView.showTimeSelectionView(false)
-        let hoursBetweenDates = self.startEndDateDifferenceInSeconds / Constants.SecondsInHour
-        self.collapsedSearchBar.text = String(format: LocalizedStrings.HoursBetweenDatesFormat, hoursBetweenDates)
+        self.collapsedSearchBar.time = NSCalendar.currentCalendar().components([.Hour, .Day, .Minute], fromDate: self.startDate, toDate: self.endDate, options: [])
         self.searchPrediction()
         self.searchBar.resignFirstResponder()
     }
