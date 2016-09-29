@@ -104,12 +104,36 @@ class CheckoutTableViewController: UIViewController {
     var rate: Rate?
     var indexPathsToValidate = [NSIndexPath]()
     
+    //MARK: - View Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.estimatedRowHeight = 60
         self.setupPaymentButton()
         self.registerForKeyboardNotifications()
     }
+    
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        NSNotificationCenter
+            .defaultCenter()
+            .addObserver(self,
+                         selector: #selector(applicationWillEnterForeground(_:)),
+                         name: UIApplicationWillEnterForegroundNotification,
+                         object: nil)
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        NSNotificationCenter
+            .defaultCenter()
+            .removeObserver(self)
+    }
+    
+    //MARK: UI Setup
     
     private func setupPaymentButton() {
         guard let
@@ -136,6 +160,24 @@ class CheckoutTableViewController: UIViewController {
         self.view.addConstraints(verticalContraints)
     }
     
+    //MARK: Notification handling
+    
+    @objc private func applicationWillEnterForeground(notification: NSNotification) {
+        guard let rate = self.rate else {
+            return
+        }
+        
+        //If the user comes back and the date is before the rounded-down date, boot the user 
+        // back to the map with an apology.
+        let roundedDown = NSDate().shp_roundDateToNearestHalfHour(roundDown: true)
+        if rate.starts.compare(roundedDown) != .OrderedAscending {            
+            AlertView.presentErrorAlertView(LocalizedStrings.Sorry,
+                                            message: LocalizedStrings.RateExpired,
+                                            from: self)
+            self.navigationController?.popViewControllerAnimated(true)
+        }
+    }
+    
     //MARK: Actions
     
     func paymentButtonPressed() {
@@ -159,6 +201,7 @@ class CheckoutTableViewController: UIViewController {
             }
         }
     }
+    
     @IBAction func doneButtonPressed(sender: AnyObject) {
         self.view.endEditing(true)
     }
