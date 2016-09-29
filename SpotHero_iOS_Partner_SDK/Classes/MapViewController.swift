@@ -162,7 +162,7 @@ class MapViewController: UIViewController {
             let updatedEndDate = self.startDate
                 .dateByAddingTimeInterval(Constants.SixHoursInSeconds)
                 .shp_roundDateToNearestHalfHour(roundDown: true)
-            self.didChangeStartEndDate(startDate: updatedEndDate, endDate: self.endDate)
+            self.didChangeStartEndDate(startDate: self.startDate, endDate: updatedEndDate)
         }
         
         //Finally, update any existing search to ensure shown prices are accurate.
