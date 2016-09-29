@@ -24,6 +24,7 @@ class MapViewController: UIViewController {
     @IBOutlet weak private var searchSpotsButton: UIButton!
     @IBOutlet weak private var spotCardCollectionView: UICollectionView!
     @IBOutlet weak private var closeButton: UIBarButtonItem!
+    @IBOutlet weak private var loadingView: UIView!
     
     private var prediction: GooglePlacesPrediction?
     private let predictionController = PredictionController()
@@ -266,6 +267,8 @@ class MapViewController: UIViewController {
     private func fetchFacilities(coordinate: CLLocationCoordinate2D, panning: Bool = false) {
         if !panning {
             self.startLoading()
+        } else {
+            self.loadingView.hidden = false
         }
 
         FacilityAPI.fetchFacilities(coordinate,
@@ -275,6 +278,7 @@ class MapViewController: UIViewController {
                                         [weak self]
                                         facilities, error in
                                         self?.stopLoading()
+                                        self?.loadingView.hidden = true
                                         if facilities.isEmpty && !panning {
                                             AlertView.presentErrorAlertView(LocalizedStrings.Sorry, message: LocalizedStrings.NoSpotsFound, from: self)
                                         }

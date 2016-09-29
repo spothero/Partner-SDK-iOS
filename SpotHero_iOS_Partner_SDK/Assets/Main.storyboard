@@ -26,6 +26,34 @@
                                     <outletCollection property="gestureRecognizers" destination="JfO-Bm-qra" appends="YES" id="Nph-Qu-UhQ"/>
                                 </connections>
                             </mapView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bVb-Jm-KUk">
+                                <rect key="frame" x="457" y="560" width="103" height="20"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zpx-Z9-Jeq">
+                                        <rect key="frame" x="28" y="0.0" width="75" height="20"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="IfL-AP-CfK">
+                                        <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="YQF-fJ-Chq"/>
+                                        </constraints>
+                                        <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="Zpx-Z9-Jeq" firstAttribute="top" secondItem="bVb-Jm-KUk" secondAttribute="top" id="65M-dZ-HyZ"/>
+                                    <constraint firstItem="IfL-AP-CfK" firstAttribute="leading" secondItem="bVb-Jm-KUk" secondAttribute="leading" id="Fo4-fv-2p5"/>
+                                    <constraint firstItem="Zpx-Z9-Jeq" firstAttribute="leading" secondItem="IfL-AP-CfK" secondAttribute="trailing" constant="8" id="KOI-Ng-dPF"/>
+                                    <constraint firstAttribute="bottom" secondItem="Zpx-Z9-Jeq" secondAttribute="bottom" id="Kp4-OF-H3J"/>
+                                    <constraint firstAttribute="bottom" secondItem="IfL-AP-CfK" secondAttribute="bottom" id="nmN-Kg-0Ea"/>
+                                    <constraint firstItem="IfL-AP-CfK" firstAttribute="top" secondItem="bVb-Jm-KUk" secondAttribute="top" id="zVm-xY-dbI"/>
+                                    <constraint firstAttribute="trailing" secondItem="Zpx-Z9-Jeq" secondAttribute="trailing" id="zxR-Wf-dsa"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="37V-ku-ODQ">
                                 <rect key="frame" x="20" y="72" width="560" height="134"/>
                                 <subviews>
@@ -465,8 +493,10 @@
                             <constraint firstItem="zfM-Xw-6w1" firstAttribute="leading" secondItem="74f-zj-sek" secondAttribute="leading" id="aIN-e6-wW9"/>
                             <constraint firstItem="EcZ-Kj-xzb" firstAttribute="top" secondItem="64R-U6-acf" secondAttribute="bottom" constant="20" id="bWS-65-Uxl"/>
                             <constraint firstItem="64R-U6-acf" firstAttribute="leading" secondItem="74f-zj-sek" secondAttribute="leading" id="bYo-Xf-TKW"/>
+                            <constraint firstItem="EcZ-Kj-xzb" firstAttribute="top" secondItem="bVb-Jm-KUk" secondAttribute="bottom" constant="20" id="ba6-mi-aGk"/>
                             <constraint firstAttribute="trailing" secondItem="nEN-Yc-ckc" secondAttribute="trailing" id="cvr-jp-0PY"/>
                             <constraint firstItem="nEN-Yc-ckc" firstAttribute="top" secondItem="2XB-0q-QOj" secondAttribute="bottom" id="e5U-fH-ez1"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="bVb-Jm-KUk" secondAttribute="trailing" constant="20" id="fpt-Ac-Y86"/>
                             <constraint firstItem="37V-ku-ODQ" firstAttribute="top" secondItem="2XB-0q-QOj" secondAttribute="bottom" constant="8" id="iTE-7t-dXl"/>
                             <constraint firstAttribute="trailing" secondItem="64R-U6-acf" secondAttribute="trailing" id="pVx-Ax-SUA"/>
                             <constraint firstItem="37V-ku-ODQ" firstAttribute="leading" secondItem="74f-zj-sek" secondAttribute="leading" constant="20" id="rzZ-Xn-oDh"/>
@@ -484,6 +514,7 @@
                         <outlet property="closeButton" destination="Pda-yU-gs7" id="gA0-HY-75m"/>
                         <outlet property="collapsedSearchBar" destination="k6h-I3-1nd" id="eZI-Zy-oel"/>
                         <outlet property="datePickerView" destination="zfM-Xw-6w1" id="WIY-kY-Gk0"/>
+                        <outlet property="loadingView" destination="bVb-Jm-KUk" id="THD-v1-63L"/>
                         <outlet property="mapView" destination="nEN-Yc-ckc" id="6bX-7F-2O6"/>
                         <outlet property="predictionTableView" destination="k7g-kF-iqV" id="TSz-4Y-HDE"/>
                         <outlet property="reservationContainerView" destination="37V-ku-ODQ" id="u5t-sw-uVG"/>
