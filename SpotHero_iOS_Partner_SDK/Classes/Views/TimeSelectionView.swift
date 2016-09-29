@@ -159,6 +159,7 @@ extension TimeSelectionView: DatePickerViewDelegate {
     func didPressDoneButton() {
         if self.startViewSelected {
             self.endViewSelected = true
+            self.delegate?.didTapEndView(self.startDate, endDate: self.endDate)
         } else {
             self.deselect()
         }
