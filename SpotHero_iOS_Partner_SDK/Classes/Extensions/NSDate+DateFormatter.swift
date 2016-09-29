@@ -15,9 +15,8 @@ public extension NSDate {
      - parameter roundDown: pass in true to round down, false to round up
      */
     func shp_roundDateToNearestHalfHour(roundDown roundDown: Bool) -> NSDate {
-        let unitFlags: NSCalendarUnit = [.Minute, .Era, .Day, .Month, .Year, .Hour]
+        let unitFlags: NSCalendarUnit = [.Era, .Year, .Month, .Day, .Hour, .Minute]
         let timeComponents = NSCalendar.currentCalendar().components(unitFlags, fromDate: self)
-        timeComponents.second = 0
         var minute = timeComponents.minute
         
         if roundDown {
@@ -29,13 +28,19 @@ public extension NSDate {
         } else {
             if minute < 30 {
                 minute = 30
-            } else if minute >= 30 {
+            } else {
                 minute = 0
                 timeComponents.hour += 1
             }
         }
         
         timeComponents.minute = minute
-        return  NSCalendar.currentCalendar().dateFromComponents(timeComponents) ?? NSDate()
+        
+        guard let date = NSCalendar.currentCalendar().dateFromComponents(timeComponents) else {
+            assertionFailure("Unable to create a date from timeComponents: \(timeComponents)")
+            return self
+        }
+        
+        return date
     }
 }
