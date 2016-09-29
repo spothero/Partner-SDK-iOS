@@ -110,6 +110,26 @@ class MapViewController: UIViewController {
         self.closeButton.accessibilityLabel = LocalizedStrings.Close
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Make sure when coming back from the background that the start date is not before
+        // the booking interval.
+        let vwaDate = NSDate()
+        if self.startDate.compare(vwaDate) != .OrderedAscending {
+            let updatedStartDate = vwaDate.shp_roundDateToNearestHalfHour(roundDown: true)
+            self.didChangeStartEndDate(startDate: updatedStartDate, endDate: self.endDate)
+        }
+        
+        // Next, make sure the end date is not before the start date
+        if self.startDate.compare(self.endDate) != .OrderedAscending {
+            let updatedEndDate = self.startDate
+                                    .dateByAddingTimeInterval(Constants.SixHoursInSeconds)
+                                    .shp_roundDateToNearestHalfHour(roundDown: true)
+            self.didChangeStartEndDate(startDate: updatedEndDate, endDate: self.endDate)
+        }
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let vc = segue.destinationViewController as? CheckoutTableViewController {
             vc.facility = self.selectedFacility
