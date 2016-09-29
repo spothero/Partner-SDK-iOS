@@ -268,6 +268,8 @@ extension PaymentInfoTableViewCell: ValidatorCell {
     func setErrorState(valid: Bool, error: ValidatorError?) {
         self.errorLabel.hidden = valid
         
+        self.creditCardContainerView.backgroundColor = valid ? .whiteColor() : .shp_errorRed()
+        
         if let error = error {
             switch error {
             case .FieldBlank(let fieldName):
