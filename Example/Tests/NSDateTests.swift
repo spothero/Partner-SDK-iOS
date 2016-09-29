@@ -39,8 +39,10 @@ class NSDateTests: XCTestCase {
                        line: line)
     }
     
+    // TODO: test for Daylight savings time, seconds and new years eve
+    
     func testRoundingMinutes() {
-        // 8:00pm
+        // 8:00pm CST
         let nonRounding = NSDate(timeIntervalSince1970: 1475110800)
         
         self.checkTime(nonRounding,
@@ -48,7 +50,7 @@ class NSDateTests: XCTestCase {
                        roundDownMinute: 0,
                        hour: 20)
         
-        // 8:01pm
+        // 8:01pm CST
         let onePast = NSDate(timeIntervalSince1970: 1475110860)
         
         self.checkTime(onePast,
@@ -56,7 +58,7 @@ class NSDateTests: XCTestCase {
                        roundDownMinute: 0,
                        hour: 20)
         
-        // 8:15pm
+        // 8:15pm CST
         let fifteenPast = NSDate(timeIntervalSince1970: 1475111700)
         
         self.checkTime(fifteenPast,
@@ -64,7 +66,7 @@ class NSDateTests: XCTestCase {
                        roundDownMinute: 0,
                        hour: 20)
         
-        // 8:29pm
+        // 8:29pm CST
         let OneMinuteBeforeThirty = NSDate(timeIntervalSince1970: 1475112540)
         
         self.checkTime(OneMinuteBeforeThirty,
@@ -72,7 +74,7 @@ class NSDateTests: XCTestCase {
                        roundDownMinute: 0,
                        hour: 20)
         
-        // 8:30pm
+        // 8:30pm CST
         let nonRoundingThirty = NSDate(timeIntervalSince1970: 1475112600)
         
         self.checkTime(nonRoundingThirty,
@@ -80,7 +82,7 @@ class NSDateTests: XCTestCase {
                        roundDownMinute: 30,
                        hour: 21)
        
-        // 8:31pm
+        // 8:31pm CST
         let onePastThirty = NSDate(timeIntervalSince1970: 1475112660)
         
         self.checkTime(onePastThirty,
@@ -88,7 +90,7 @@ class NSDateTests: XCTestCase {
                        roundDownMinute: 30,
                        hour: 21)
         
-        // 8:45pm
+        // 8:45pm CST
         let fifteenPastThirty = NSDate(timeIntervalSince1970: 1475113500)
 
         self.checkTime(fifteenPastThirty,
@@ -96,7 +98,7 @@ class NSDateTests: XCTestCase {
                        roundDownMinute: 30,
                        hour: 21)
         
-        // 8:59pm
+        // 8:59pm CST
         let OneMinuteBefore = NSDate(timeIntervalSince1970: 1475114340)
         
         self.checkTime(OneMinuteBefore,
@@ -104,4 +106,5 @@ class NSDateTests: XCTestCase {
                        roundDownMinute: 30,
                        hour: 21)
     }
+    
 }
