@@ -23,6 +23,7 @@ class SpotCardCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var streetAddressLabel: UILabel!
     @IBOutlet weak var spotInfoLabel: UILabel!
     @IBOutlet weak var accessibleParkingImageView: UIImageView!
+    @IBOutlet weak var noReentryImageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -35,6 +36,9 @@ class SpotCardCollectionViewCell: UICollectionViewCell {
         self.accessibleParkingImageView.image = UIImage(named: "accessibility",
                                                         inBundle: NSBundle.shp_resourceBundle(),
                                                         compatibleWithTraitCollection: nil)
+        self.noReentryImageView.image = UIImage(named: "Noreentry",
+                                                inBundle: NSBundle.shp_resourceBundle(),
+                                                compatibleWithTraitCollection: nil)
         self.buyButton.backgroundColor = .shp_spotHeroBlue()
         self.buyButton.enabled = false
     }
