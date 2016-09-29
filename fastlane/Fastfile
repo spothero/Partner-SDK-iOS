@@ -63,7 +63,7 @@ test_flight_provisioning_profile_name = 'Distribution: SDK Sample App'
         if is_ci 
             # Make sure we're on Xcode 7 on the build server. 
             sh "sudo xcode-select --switch /Applications/Xcode_7.3.1.app/Contents/Developer"
-        endif
+        end
     end
 
 ##############
