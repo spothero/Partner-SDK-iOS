@@ -90,7 +90,7 @@ class MapViewController: UIViewController {
                          name: UIApplicationWillEnterForegroundNotification,
                          object: nil)
         
-        self.updateStartStartAndEndDatesVsCurrentTimeIfNeeded()
+        self.updateStartAndEndDatesVsCurrentTimeIfNeeded()
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -144,10 +144,10 @@ class MapViewController: UIViewController {
     //MARK: Application lifecycle
     
     @objc private func applicationWillEnterForeground(notification: NSNotification) {
-        self.updateStartStartAndEndDatesVsCurrentTimeIfNeeded()
+        self.updateStartAndEndDatesVsCurrentTimeIfNeeded()
     }
     
-    private func updateStartStartAndEndDatesVsCurrentTimeIfNeeded() {
+    private func updateStartAndEndDatesVsCurrentTimeIfNeeded() {
         self.datePickerView?.updateMinimumDate()
         
         // Make sure when coming back from the background that the start date is not before
