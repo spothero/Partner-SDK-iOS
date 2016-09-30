@@ -171,10 +171,15 @@ class CheckoutTableViewController: UIViewController {
         // boot the user back to the map with an apology.
         let roundedDown = NSDate().shp_roundDateToNearestHalfHour(roundDown: true)
         if roundedDown.shp_isAfterDate(rate.starts) {
+            guard let navController = self.navigationController else {
+                assertionFailure("No navigation controller?!")
+                return
+            }
+            
             AlertView.presentErrorAlertView(LocalizedStrings.Sorry,
                                             message: LocalizedStrings.RateExpired,
-                                            from: self)
-            self.navigationController?.popViewControllerAnimated(true)
+                                            from: navController)
+            navController.popViewControllerAnimated(true)
         }
     }
     
