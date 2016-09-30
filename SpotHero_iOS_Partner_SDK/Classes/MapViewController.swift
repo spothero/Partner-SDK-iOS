@@ -78,6 +78,9 @@ class MapViewController: UIViewController {
         let mapDragRecognizer = UIPanGestureRecognizer(target: self, action: #selector(self.didDragMap(_:)))
         mapDragRecognizer.delegate = self
         self.mapView.addGestureRecognizer(mapDragRecognizer)
+        let mapPinchRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(self.didDragMap(_:)))
+        mapPinchRecognizer.delegate = self
+        self.mapView.addGestureRecognizer(mapPinchRecognizer)
         searchBar.becomeFirstResponder()
     }
     
@@ -135,30 +138,33 @@ class MapViewController: UIViewController {
      
      - parameter panning: Pass true to cause the map not to zoom in on the facilities. Optional (Defaults to false)
      */
-    private func addAndShowFacilityAnnotations(panning: Bool = false) {
+    private func addAndShowFacilityAnnotations(facilities: [Facility], panning: Bool = false) {
+        self.facilities += facilities
+        self.spotCardCollectionView.reloadData()
         //TODO: Look into caching annotations like the main app
-        self.mapView.removeAnnotations(self.mapView.annotations)
+//        self.mapView.removeAnnotations(self.mapView.annotations)
         if let placeDetails = self.predictionPlaceDetails {
             let locationAnnotation = MKPointAnnotation()
             locationAnnotation.coordinate = placeDetails.location.coordinate
             locationAnnotation.title = self.facilities.isEmpty ? LocalizedStrings.NoSpotsFound : ""
             self.mapView.addAnnotation(locationAnnotation)
         }
-        
         var firstAnnotation: FacilityAnnotation?
-        for (i, facility) in self.facilities.enumerate() {
-            let facilityAnnotation = FacilityAnnotation(title: facility.title,
-                                                        coordinate: facility.location.coordinate,
-                                                        facility: facility,
-                                                        index: i)
-            if i == 0 && !panning {
-                firstAnnotation = facilityAnnotation
+        for facility in facilities {
+            if let index = self.facilities.indexOf(facility) {
+                let facilityAnnotation = FacilityAnnotation(title: facility.title,
+                                                            coordinate: facility.location.coordinate,
+                                                            facility: facility,
+                                                            index: index)
+                if index == 0 && !panning {
+                    firstAnnotation = facilityAnnotation
+                }
+                self.mapView.addAnnotation(facilityAnnotation)
             }
-            self.mapView.addAnnotation(facilityAnnotation)
         }
         self.showSpotCardCollectionView()
         if !panning {
-            self.showAnnotations()
+            self.mapView.setRegion(MKCoordinateRegionMakeWithDistance(self.predictionPlaceDetails!.location.coordinate, Constants.MetersPerMile, Constants.MetersPerMile), animated: true)
             self.currentIndex = 0
             
             guard let annotation = firstAnnotation else {
@@ -226,6 +232,10 @@ class MapViewController: UIViewController {
                                                             animated: true)
     }
     
+    private func visibleMapViewRadiusInMeters() -> Double {
+        return (self.mapView.region.span.latitudeDelta * 69 * Constants.MetersPerMile) / 2
+    }
+    
     //MARK: Google Autocomplete Helpers
     
     private func getPlaceDetails(prediction: GooglePlacesPrediction, completion: (GooglePlaceDetails?) -> ()) {
@@ -264,23 +274,26 @@ class MapViewController: UIViewController {
                              Optional (Defaults to false)
      */
     private func fetchFacilities(coordinate: CLLocationCoordinate2D, panning: Bool = false) {
+        var maxSearchRadius = self.visibleMapViewRadiusInMeters()
         if !panning {
             self.startLoading()
+            maxSearchRadius = Constants.MetersPerMile
         }
-
+        
         FacilityAPI.fetchFacilities(coordinate,
                                     starts: self.startDate,
                                     ends: self.endDate,
+                                    maxSearchRadius: maxSearchRadius,
                                     completion: {
                                         [weak self]
                                         facilities, error in
                                         self?.stopLoading()
                                         if facilities.isEmpty && !panning {
-                                            AlertView.presentErrorAlertView(LocalizedStrings.Sorry, message: LocalizedStrings.NoSpotsFound, from: self)
+                                            AlertView.presentErrorAlertView(LocalizedStrings.Sorry,
+                                                message: LocalizedStrings.NoSpotsFound,
+                                                from: self)
                                         }
-                                        
-                                        self?.facilities = facilities
-                                        self?.addAndShowFacilityAnnotations(panning)
+                                        self?.addAndShowFacilityAnnotations(facilities, panning: panning)
             })
     }
     
