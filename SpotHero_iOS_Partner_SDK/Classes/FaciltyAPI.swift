@@ -13,6 +13,8 @@ enum FacilityError: ErrorType {
     case NoFacilitiesFound
 }
 
+typealias FacilityCompletion = ([Facility], ErrorType?) -> (Void)
+
 struct FacilityAPI {
     static var NextURLString: String?
     
@@ -29,7 +31,7 @@ struct FacilityAPI {
                                 ends: NSDate,
                                 minSearchRadius: Int = 0,
                                 maxSearchRadius: Double = Constants.MetersPerMile,
-                                completion: ([Facility], ErrorType?) -> (Void)) {
+                                completion: FacilityCompletion) {
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         
         let startsString = DateFormatter.ISO8601NoSeconds.stringFromDate(starts)
@@ -55,28 +57,12 @@ struct FacilityAPI {
                                                          errorCompletion: {
                                                             error in
                                                             completion([], error)
-        }) {
-            JSON in
-            let mappedJSON = FacilityAPI.mapJSON(JSON)
-            let facilitiesWithRates = mappedJSON.facilities
-            let error = mappedJSON.error
-            completion(facilitiesWithRates, error)
-            guard let nextURLString = mappedJSON.nextURLString else {
-                return
-            }
-            
-            FacilityAPI.fetchFacilitiesFromNextURLString(nextURLString,
-                                                         prevFacilities: facilitiesWithRates,
-                                                         completion: {
-                                                            facilities, error in
-                                                            completion(facilities, error)
-            })
-        }
+                                                         },
+                                                         successCompletion: self.facilityFetchSuccessHandler(completion))
     }
     
     private static func mapJSON(JSON: JSONDictionary) -> (facilities: [Facility], error: ErrorType?, nextURLString: String?) {
         do {
-            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
             let actualData = try JSON.shp_dictionary("data") as JSONDictionary
             let metaData = try JSON.shp_dictionary("meta") as JSONDictionary
             let results = try actualData.shp_array("results") as [JSONDictionary]
@@ -103,7 +89,7 @@ struct FacilityAPI {
     
     private static func fetchFacilitiesFromNextURLString(urlString: String,
                                                          prevFacilities: [Facility],
-                                                         completion: ([Facility], ErrorType?) -> (Void)) {
+                                                         completion: FacilityCompletion) {
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         FacilityAPI.NextURLString = urlString
         SpotHeroPartnerAPIController.getJSONFromFullURLString(urlString,
@@ -111,21 +97,31 @@ struct FacilityAPI {
                                                               errorCompletion: {
                                                                 error in
                                                                 completion([], error)
-        }) {
+                                                              },
+                                                              successCompletion: self.facilityFetchSuccessHandler(completion))
+    }
+    
+    private static func facilityFetchSuccessHandler(completion: FacilityCompletion) -> JSONAPISuccessCompletion {
+        return {
             JSON in
+            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+
             let mappedJSON = FacilityAPI.mapJSON(JSON)
             let facilitiesWithRates = mappedJSON.facilities
             let error = mappedJSON.error
             completion(facilitiesWithRates, error)
+            
             guard let nextURLString = mappedJSON.nextURLString else {
                 return
             }
+            
             FacilityAPI.fetchFacilitiesFromNextURLString(nextURLString,
                                                          prevFacilities: facilitiesWithRates,
                                                          completion: {
                                                             facilities, error in
                                                             completion(facilities, error)
             })
+
         }
     }
 }
