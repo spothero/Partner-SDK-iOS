@@ -1,10 +1,14 @@
 # iOS-Partner-SDK
 
-The SpotHero SDK for partner applications
+The SpotHero iOS Partner SDK allows your users to purchase parking through SpotHero with minimal setup by your development team. 
+
+## Before You Start
+
+To add the SpotHero iOS Partner SDK to your application, you will need a SpotHero Partner Key. To inquire about partnering with us, please fill out [this form](https://docs.google.com/forms/d/e/1FAIpQLSf3eErKlAwvqDUdgNWtxg4iTq2Deocoouwp-qLdD24DBWz9jQ/viewform), and someone from our Partnerships program will reach out to you. 
+
+If you've already got a SpotHero Partner Key, you're ready to start. 
 
 ## Getting Started 
-
-To add the SpotHero iOS Partner SDK to your application, you need a SpotHero Partner Key. [TODO: FROM WHENCE]
 
 The SpotHero SDK is implemented as a singleton which can be launched from any `UIViewController` subclass. It will be presented modally. There is only one **required** property which must be set:
 
