@@ -157,18 +157,17 @@ class MapViewController: UIViewController {
             let updatedStartDate = now.shp_roundDateToNearestHalfHour(roundDown: true)
             self.timeSelectionView.startDate = updatedStartDate
             self.didChangeStartEndDate(startDate: updatedStartDate, endDate: self.endDate)
+            
+            // Now, make sure the end date is not before the updated start date
+            if self.endDate.shp_isAfterDate(self.startDate) {
+                let updatedEndDate = self.startDate
+                    .dateByAddingTimeInterval(Constants.SixHoursInSeconds) //Start date is already rounded.
+                self.timeSelectionView.endDate = updatedEndDate
+                self.didChangeStartEndDate(startDate: self.startDate, endDate: updatedEndDate)
+            }
         }
         
-        // Next, make sure the end date is not before the start date
-        if self.endDate.shp_isAfterDate(self.startDate) {
-            let updatedEndDate = self.startDate
-                .dateByAddingTimeInterval(Constants.SixHoursInSeconds)
-                .shp_roundDateToNearestHalfHour(roundDown: true)
-            self.timeSelectionView.endDate = updatedEndDate
-            self.didChangeStartEndDate(startDate: self.startDate, endDate: updatedEndDate)
-        }
-        
-        //Finally, update any existing search to ensure shown prices are accurate.
+        //Update any existing search to ensure shown prices are accurate.
         self.fetchFacilitiesIfPlaceDetailsExists()
     }
     
