@@ -69,10 +69,12 @@ extension PredictionController: UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        // Number chosen to match designs
         return 30
     }
     
     func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        // Number chosen to match designs
         return 30
     }
 }
