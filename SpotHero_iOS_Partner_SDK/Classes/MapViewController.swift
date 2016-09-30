@@ -24,14 +24,13 @@ class MapViewController: UIViewController {
     @IBOutlet weak private var searchSpotsButton: UIButton!
     @IBOutlet weak private var spotCardCollectionView: UICollectionView!
     @IBOutlet weak private var closeButton: UIBarButtonItem!
+    @IBOutlet weak private var loadingView: UIView!
     
     private var prediction: GooglePlacesPrediction?
     private let predictionController = PredictionController()
     private var predictionPlaceDetails: GooglePlaceDetails? {
         didSet {
-            if let placeDetails = self.predictionPlaceDetails {
-                self.fetchFacilities(placeDetails.location.coordinate)
-            }
+            self.fetchFacilitiesIfPlaceDetailsExists()
         }
     }
     private var startDate: NSDate = NSDate().shp_roundDateToNearestHalfHour(roundDown: true)
@@ -84,6 +83,27 @@ class MapViewController: UIViewController {
         searchBar.becomeFirstResponder()
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        NSNotificationCenter
+            .defaultCenter()
+            .addObserver(self,
+                         selector: #selector(applicationWillEnterForeground(_:)),
+                         name: UIApplicationWillEnterForegroundNotification,
+                         object: nil)
+        
+        self.updateStartAndEndDatesVsCurrentTimeIfNeeded()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        NSNotificationCenter
+            .defaultCenter()
+            .removeObserver(self)
+    }
+    
     private func setupViews() {
         self.reservationContainerView.layer.cornerRadius = HeightsAndLengths.standardCornerRadius
         self.reservationContainerView.layer.masksToBounds = true
@@ -122,6 +142,36 @@ class MapViewController: UIViewController {
     
     private func showCollapsedSearchBar() {
         self.searchSpotsButton.hidden = (self.searchBar.text ?? "").isEmpty
+    }
+    
+    //MARK: Application lifecycle
+    
+    @objc private func applicationWillEnterForeground(notification: NSNotification) {
+        self.updateStartAndEndDatesVsCurrentTimeIfNeeded()
+    }
+    
+    private func updateStartAndEndDatesVsCurrentTimeIfNeeded() {
+        self.datePickerView?.updateMinimumDate()
+        
+        // Make sure when coming back from the background that the start date is not before
+        // the booking interval.
+        let now = NSDate()
+        if self.startDate.shp_isAfterDate(now) {
+            let updatedStartDate = now.shp_roundDateToNearestHalfHour(roundDown: true)
+            self.timeSelectionView.startDate = updatedStartDate
+            self.didChangeStartEndDate(startDate: updatedStartDate, endDate: self.endDate)
+            
+            // Now, make sure the end date is not before the updated start date
+            if self.endDate.shp_isAfterDate(self.startDate) {
+                let updatedEndDate = self.startDate
+                    .dateByAddingTimeInterval(Constants.SixHoursInSeconds) //Start date is already rounded.
+                self.timeSelectionView.endDate = updatedEndDate
+                self.didChangeStartEndDate(startDate: self.startDate, endDate: updatedEndDate)
+            }
+        }
+        
+        //Update any existing search to ensure shown prices are accurate.
+        self.fetchFacilitiesIfPlaceDetailsExists()
     }
     
     //MARK: MapView & Spot Cards Helpers
@@ -278,6 +328,8 @@ class MapViewController: UIViewController {
         if !panning {
             self.startLoading()
             maxSearchRadius = Constants.MetersPerMile
+        } else {
+            self.loadingView.hidden = false
         }
         
         FacilityAPI.fetchFacilities(coordinate,
@@ -288,6 +340,7 @@ class MapViewController: UIViewController {
                                         [weak self]
                                         facilities, error in
                                         self?.stopLoading()
+                                        self?.loadingView.hidden = true
                                         if facilities.isEmpty && !panning {
                                             AlertView.presentErrorAlertView(LocalizedStrings.Sorry,
                                                 message: LocalizedStrings.NoSpotsFound,
@@ -301,8 +354,7 @@ class MapViewController: UIViewController {
         self.searchSpotsButton.hidden = true
         self.collapsedSearchBar.show()
         self.timeSelectionView.showTimeSelectionView(false)
-        let hoursBetweenDates = self.startEndDateDifferenceInSeconds / Constants.SecondsInHour
-        self.collapsedSearchBar.text = String(format: LocalizedStrings.HoursBetweenDatesFormat, hoursBetweenDates)
+        self.collapsedSearchBar.time = NSCalendar.currentCalendar().components([.Hour, .Day, .Minute], fromDate: self.startDate, toDate: self.endDate, options: [])
         self.searchPrediction()
         self.searchBar.resignFirstResponder()
     }
@@ -356,6 +408,12 @@ class MapViewController: UIViewController {
             ProgressHUD.hideHUDForView(self.view)
         }
     }
+    
+    private func fetchFacilitiesIfPlaceDetailsExists() {
+        if let placeDetails = self.predictionPlaceDetails {
+            self.fetchFacilities(placeDetails.location.coordinate)
+        }
+    }
 }
 
 //MARK: PredictionControllerDelegateHoursBetweenDates
@@ -390,6 +448,8 @@ extension MapViewController: PredictionControllerDelegate {
         self.timeSelectionView.showTimeSelectionView(true)
         self.showCollapsedSearchBar()
         self.searchBar.resignFirstResponder()
+        self.timeSelectionView.startViewSelected = true
+        self.datePickerView.showDatePickerView(true)
     }
     
     func didTapXButton() {
@@ -399,7 +459,7 @@ extension MapViewController: PredictionControllerDelegate {
     
     func didTapSearchButton() {
         guard self.predictionController.predictions.count > 0 else {
-            self.searchPrediction()
+            self.searchSpots()
             return
         }
         
@@ -438,7 +498,14 @@ extension MapViewController: ShowTimeSelectionViewDelegate {
 
 extension MapViewController: DatePickerDoneButtonDelegate {
     func didPressDoneButton() {
-        self.showCollapsedSearchBar()
+        if self.timeSelectionView.endViewSelected {
+            self.datePickerView.timeSelectionViewShouldHide()
+            guard let text = searchBar.text where !text.isEmpty else {
+                return
+            }
+            
+            self.searchSpots()
+        } 
     }
 }
 
@@ -516,8 +583,12 @@ extension MapViewController: UICollectionViewDataSource {
             } else {
                 cell.accessibleParkingImageView.hidden = true
             }
+            
+            cell.accessibleParkingImageViewWidthConstraint.constant = rate.isWheelchairAccessible() ? 30 : 0
+            
+            cell.noReentryImageView.hidden = rate.allowsReentry()
         }
-        
+                
         cell.delegate = self
         return cell
     }

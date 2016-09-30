@@ -37,7 +37,11 @@ public enum ServerEnvironment {
                     components.queryItems = queryItems
                 }
                 
-                fullURLString = components.URL!.absoluteString
+                #if swift(>=2.3)
+                    fullURLString = components.URL!.absoluteString!
+                #else
+                    fullURLString = components.URL!.absoluteString
+                #endif
             } //else nothing to add
         } //else nothing to add to.
         

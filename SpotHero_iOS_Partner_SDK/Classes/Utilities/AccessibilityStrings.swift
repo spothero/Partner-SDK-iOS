@@ -38,5 +38,5 @@ enum AccessibilityStrings {
     static let EndTimeLabel = NSLocalizedString("EndTimeLabel",
                                                 comment: "Accessibility label for end time")
     static let CollapsedSearchBarView = NSLocalizedString("CollapsedSearchBarView",
-                                                          comment: "Accessibility label for collaped search bar view")
+                                                          comment: "Accessibility label for collapsed search bar view")
 }

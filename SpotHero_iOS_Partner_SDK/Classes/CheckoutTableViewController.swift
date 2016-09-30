@@ -82,16 +82,26 @@ class CheckoutTableViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet var toolbar: UIToolbar!
     
-    private let reservationCellHeight: CGFloat = 86
+    private let reservationCellHeight: CGFloat = 60
     private let paymentButtonHeight: CGFloat = 60
     private let paymentButtonMargin: CGFloat = 0
     
     private lazy var paymentButton: UIButton = {
-        let _button = NSBundle.shp_resourceBundle()
-            .loadNibNamed(String(PaymentButton),
-                          owner: nil,
-                          options: nil)
-            .first as! UIButton
+        #if swift(>=2.3)
+            let _button = NSBundle.shp_resourceBundle()
+                .loadNibNamed(String(PaymentButton),
+                              owner: nil,
+                              options: nil)!
+                .first as! UIButton
+        #else
+            let _button = NSBundle.shp_resourceBundle()
+                .loadNibNamed(String(PaymentButton),
+                              owner: nil,
+                              options: nil)
+                .first as! UIButton
+        #endif
+        
+        
         _button.addTarget(self,
                           action: #selector(self.paymentButtonPressed),
                           forControlEvents: .TouchUpInside)
@@ -104,6 +114,8 @@ class CheckoutTableViewController: UIViewController {
     var rate: Rate?
     var indexPathsToValidate = [NSIndexPath]()
     
+    //MARK: - View Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.estimatedRowHeight = 60
@@ -111,10 +123,32 @@ class CheckoutTableViewController: UIViewController {
         self.registerForKeyboardNotifications()
     }
     
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        NSNotificationCenter
+            .defaultCenter()
+            .addObserver(self,
+                         selector: #selector(applicationWillEnterForeground(_:)),
+                         name: UIApplicationWillEnterForegroundNotification,
+                         object: nil)
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        NSNotificationCenter
+            .defaultCenter()
+            .removeObserver(self)
+    }
+    
+    //MARK: UI Setup
+    
     private func setupPaymentButton() {
-        guard let
-            rate = self.rate,
-            price = NumberFormatter.dollarNoCentsStringFromCents(rate.price) else {
+        guard
+            let rate = self.rate,
+            let price = NumberFormatter.dollarNoCentsStringFromCents(rate.price) else {
             return
         }
         
@@ -134,6 +168,29 @@ class CheckoutTableViewController: UIViewController {
                                                                                 views: ["paymentButton": paymentButton])
         self.view.addConstraints(horizontalConstraints)
         self.view.addConstraints(verticalContraints)
+    }
+    
+    //MARK: Notification handling
+    
+    @objc private func applicationWillEnterForeground(notification: NSNotification) {
+        guard let rate = self.rate else {
+            return
+        }
+        
+        //If the user comes back and the current date is after the rate start date, 
+        // boot the user back to the map with an apology.
+        let roundedDown = NSDate().shp_roundDateToNearestHalfHour(roundDown: true)
+        if roundedDown.shp_isAfterDate(rate.starts) {
+            guard let navController = self.navigationController else {
+                assertionFailure("No navigation controller?!")
+                return
+            }
+            
+            AlertView.presentErrorAlertView(LocalizedStrings.Sorry,
+                                            message: LocalizedStrings.RateExpired,
+                                            from: navController)
+            navController.popViewControllerAnimated(true)
+        }
     }
     
     //MARK: Actions
@@ -159,6 +216,7 @@ class CheckoutTableViewController: UIViewController {
             }
         }
     }
+    
     @IBAction func doneButtonPressed(sender: AnyObject) {
         self.view.endEditing(true)
     }
@@ -207,17 +265,17 @@ class CheckoutTableViewController: UIViewController {
      - parameter completion: Passing in a bool. True if reservation was successfully created, false if an error occured
      */
     func createReservation(token: String, completion: (Bool) -> ()) {
-        guard let
-            facility = self.facility,
-            rate = self.rate else {
+        guard
+            let facility = self.facility,
+            let rate = self.rate else {
                 assertionFailure("No facility or rate")
                 completion(false)
                 return
         }
         
-        guard let
-            emailCell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: PersonalInfoRow.Email.rawValue, inSection: CheckoutSection.PersonalInfo.rawValue)) as? PersonalInfoTableViewCell,
-            email = emailCell.textField.text else {
+        guard
+            let emailCell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: PersonalInfoRow.Email.rawValue, inSection: CheckoutSection.PersonalInfo.rawValue)) as? PersonalInfoTableViewCell,
+            let email = emailCell.textField.text else {
                 assertionFailure("Cannot get email cell")
                 completion(false)
                 return
@@ -258,12 +316,20 @@ class CheckoutTableViewController: UIViewController {
             cell.primaryLabel.text = facility.streetAddress
             cell.secondaryLabel.text = "\(facility.city), \(facility.state)"
         case ReservationInfoRow.Starts:
-            cell.primaryLabel.text = "\(DateFormatter.RelativeDate.stringFromDate(rate.starts)), \(DateFormatter.DateOnlyNoYear.stringFromDate(rate.starts))"
+            cell.primaryLabel.text = self.getDateFormatString(rate.starts)
             cell.secondaryLabel.text = DateFormatter.TimeOnly.stringFromDate(rate.starts)
         case ReservationInfoRow.Ends:
-            cell.primaryLabel.text = "\(DateFormatter.RelativeDate.stringFromDate(rate.ends)), \(DateFormatter.DateOnlyNoYear.stringFromDate(rate.ends))"
+            cell.primaryLabel.text = self.getDateFormatString(rate.ends)
             cell.secondaryLabel.text = DateFormatter.TimeOnly.stringFromDate(rate.ends)
         }
+    }
+    
+    private func getDateFormatString(date: NSDate) -> String {        
+        guard let calendar = NSCalendar(calendarIdentifier: NSGregorianCalendar) where calendar.isDateInToday(date) || calendar.isDateInTomorrow(date) else {
+            return DateFormatter.DayOfWeekWithDate.stringFromDate(date)
+        }
+        
+        return "\(DateFormatter.RelativeDate.stringFromDate(date)), \(DateFormatter.DateOnlyNoYear.stringFromDate(date))"
     }
     
     private func configureCell(cell: PersonalInfoTableViewCell, row: PersonalInfoRow) {
@@ -345,19 +411,19 @@ extension CheckoutTableViewController: UITableViewDataSource {
             cell = UITableViewCell()
         }
         
-        if let
-            cell = cell as? ReservationInfoTableViewCell,
-            facility = self.facility,
-            rate = self.rate,
-            row = ReservationInfoRow(rawValue: indexPath.row) {
+        if
+            let cell = cell as? ReservationInfoTableViewCell,
+            let facility = self.facility,
+            let rate = self.rate,
+            let row = ReservationInfoRow(rawValue: indexPath.row) {
             
             self.configureCell(cell,
                                row: row,
                                facility: facility,
                                rate: rate)
-        } else if let
-            cell = cell as? PersonalInfoTableViewCell,
-            row = PersonalInfoRow(rawValue: indexPath.row) {
+        } else if
+            let cell = cell as? PersonalInfoTableViewCell,
+            let row = PersonalInfoRow(rawValue: indexPath.row) {
             
             self.configureCell(cell, row: row)
         } else if let cell = cell as? PaymentInfoTableViewCell {
@@ -430,9 +496,9 @@ extension CheckoutTableViewController: KeyboardNotification {
                                                                 queue: nil) {
                                                                     [weak self]
                                                                     notification in
-                                                                    guard let
-                                                                        userInfo = notification.userInfo,
-                                                                        frame = userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue else {
+                                                                    guard
+                                                                        let userInfo = notification.userInfo,
+                                                                        let frame = userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue else {
                                                                             return
                                                                     }
                                                                     

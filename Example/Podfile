@@ -11,6 +11,6 @@ target 'SpotHero_iOS_Partner_SDK_Example' do
   target 'SpotHero_iOS_Partner_SDK_ExampleUITests' do
     inherit! :search_paths
     pod 'VOKMockUrlProtocol', '~>2.2.0'
-    pod 'KIF', '~>3.4.2'
+    pod 'KIF', '~>3.5.1'
   end
 end

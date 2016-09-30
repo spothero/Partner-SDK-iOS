@@ -35,8 +35,15 @@ class DatePickerView: UIView {
     
     private func setupDatePickerView() {
         self.datePickerViewBottomConstraint.constant = -self.DatePickerViewHeight
-        self.datePicker.minimumDate = NSDate().shp_roundDateToNearestHalfHour(roundDown: true)
+        self.updateMinimumDate()
         self.datePicker.date = NSDate().shp_roundDateToNearestHalfHour(roundDown: true)
+    }
+
+    /**
+     Updates the minimum date of the date picker view. 
+     */
+    func updateMinimumDate() {
+        self.datePicker.minimumDate = NSDate().shp_roundDateToNearestHalfHour(roundDown: true)
     }
     
     /**
@@ -52,9 +59,8 @@ class DatePickerView: UIView {
     }
     
     @IBAction private func doneButtonPressed(sender: AnyObject) {
-        self.showDatePickerView(false)
-        self.delegate?.didPressDoneButton()
         self.doneButtonDelegate?.didPressDoneButton()
+        self.delegate?.didPressDoneButton()
     }
     
     @IBAction private func datePickerValueDidChange(datePicker: UIDatePicker) {
@@ -68,15 +74,12 @@ class DatePickerView: UIView {
 extension DatePickerView: TimeSelectionViewDelegate {
     func didTapStartView(startDate: NSDate, endDate: NSDate) {
         self.showDatePickerView(true)
-        self.datePicker.minimumDate = startDate
         self.datePicker.date = startDate
         self.toolbarTitleLabel.text = LocalizedStrings.SetStartTime
     }
     
     func didTapEndView(startDate: NSDate, endDate: NSDate) {
         self.showDatePickerView(true)
-        self.datePicker.minimumDate = startDate.shp_roundDateToNearestHalfHour(roundDown: false)
-        self.datePicker.maximumDate = nil
         self.datePicker.date = endDate
         self.toolbarTitleLabel.text = LocalizedStrings.SetEndTime
     }

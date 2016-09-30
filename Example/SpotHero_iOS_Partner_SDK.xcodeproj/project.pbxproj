@@ -11,6 +11,7 @@
 		234673EB15066D4EC9DC8FC8 /* Pods_SpotHero_iOS_Partner_SDK_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F26D5251B78585BF5881D75 /* Pods_SpotHero_iOS_Partner_SDK_Example.framework */; };
 		3361782E1D249B1A00AF7AD6 /* ShowSDKUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3361782D1D249B1A00AF7AD6 /* ShowSDKUITests.swift */; };
 		336178381D24A8BB00AF7AD6 /* XCTestCase+KIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336178371D24A8BB00AF7AD6 /* XCTestCase+KIF.swift */; };
+		3391D7931D9DA98E009A42B8 /* DateCompareTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3391D7911D9DA8D4009A42B8 /* DateCompareTests.swift */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
@@ -27,6 +28,7 @@
 		C79C65B71D58EF9D001CDCA4 /* FormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79C65B61D58EF9D001CDCA4 /* FormatterTests.swift */; };
 		C7CBF4891D411F0F001D988F /* SpotHeroPartnerAPIController+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7CBF4871D411EFA001D988F /* SpotHeroPartnerAPIController+Mock.swift */; };
 		C7CBF48C1D412362001D988F /* PartnerAPIMockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7CBF48B1D412362001D988F /* PartnerAPIMockTests.swift */; };
+		C7DEAAA61D9C607900443B3B /* NSDateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DEAAA51D9C607900443B3B /* NSDateTests.swift */; };
 		C7FBD09B1D4273B40089A53B /* VOKMockData in Resources */ = {isa = PBXBuildFile; fileRef = C7FBD09A1D4273B40089A53B /* VOKMockData */; };
 		C7FBD0AE1D47BF170089A53B /* StripeWrapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7FBD0AD1D47BF170089A53B /* StripeWrapperTests.swift */; };
 /* End PBXBuildFile section */
@@ -58,6 +60,7 @@
 		3361782D1D249B1A00AF7AD6 /* ShowSDKUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowSDKUITests.swift; sourceTree = "<group>"; };
 		3361782F1D249B1A00AF7AD6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		336178371D24A8BB00AF7AD6 /* XCTestCase+KIF.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCTestCase+KIF.swift"; sourceTree = "<group>"; };
+		3391D7911D9DA8D4009A42B8 /* DateCompareTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateCompareTests.swift; sourceTree = "<group>"; };
 		404DD54A3DE66EB92B0AF76B /* Pods-SpotHero_iOS_Partner_SDK_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpotHero_iOS_Partner_SDK_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SpotHero_iOS_Partner_SDK_Example/Pods-SpotHero_iOS_Partner_SDK_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		598A47307E22AF714D78D454 /* Pods-SpotHero_iOS_Partner_SDK_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpotHero_iOS_Partner_SDK_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SpotHero_iOS_Partner_SDK_Tests/Pods-SpotHero_iOS_Partner_SDK_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		5F9343FE890355916ED4BCDD /* Pods-SpotHero_iOS_Partner_SDK_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpotHero_iOS_Partner_SDK_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-SpotHero_iOS_Partner_SDK_Example/Pods-SpotHero_iOS_Partner_SDK_Example.release.xcconfig"; sourceTree = "<group>"; };
@@ -84,6 +87,7 @@
 		C79C65B61D58EF9D001CDCA4 /* FormatterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormatterTests.swift; sourceTree = "<group>"; };
 		C7CBF4871D411EFA001D988F /* SpotHeroPartnerAPIController+Mock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SpotHeroPartnerAPIController+Mock.swift"; sourceTree = "<group>"; };
 		C7CBF48B1D412362001D988F /* PartnerAPIMockTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartnerAPIMockTests.swift; sourceTree = "<group>"; };
+		C7DEAAA51D9C607900443B3B /* NSDateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateTests.swift; sourceTree = "<group>"; };
 		C7FBD09A1D4273B40089A53B /* VOKMockData */ = {isa = PBXFileReference; lastKnownFileType = folder; path = VOKMockData; sourceTree = "<group>"; };
 		C7FBD0AD1D47BF170089A53B /* StripeWrapperTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StripeWrapperTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -194,13 +198,15 @@
 				C7FBD09A1D4273B40089A53B /* VOKMockData */,
 				C7CBF48A1D41201F001D988F /* MockTests */,
 				C7CBF4861D411ED5001D988F /* Extensions */,
-				607FACEB1AFB9204008FA782 /* PartnerAPITests.swift */,
-				607FACE91AFB9204008FA782 /* Supporting Files */,
+				C70AC4C51D4FC64F004F8539 /* BaseTests.swift */,
+				3391D7911D9DA8D4009A42B8 /* DateCompareTests.swift */,
+				C79C65B61D58EF9D001CDCA4 /* FormatterTests.swift */,
 				C73848571D35538C0023E1A8 /* GooglePlacesTests.swift */,
+				C7DEAAA51D9C607900443B3B /* NSDateTests.swift */,
+				607FACEB1AFB9204008FA782 /* PartnerAPITests.swift */,
 				C7FBD0AD1D47BF170089A53B /* StripeWrapperTests.swift */,
 				C70AC4C21D4BF909004F8539 /* ValidatorTests.swift */,
-				C70AC4C51D4FC64F004F8539 /* BaseTests.swift */,
-				C79C65B61D58EF9D001CDCA4 /* FormatterTests.swift */,
+				607FACE91AFB9204008FA782 /* Supporting Files */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -323,11 +329,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "SpotHero, Inc.";
 				TargetAttributes = {
 					3361782A1D249B1A00AF7AD6 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
 					607FACCF1AFB9204008FA782 = {
@@ -335,6 +342,7 @@
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						LastSwiftMigration = 0800;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
 				};
@@ -400,7 +408,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		0880808AA2DC77C3EC9D3374 /* [CP] Copy Pods Resources */ = {
@@ -488,7 +496,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		BAA9FF7718693DB948C79321 /* [CP] Copy Pods Resources */ = {
@@ -518,7 +526,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		F37FCD8CDFFE6F0CEECB84FF /* [CP] Embed Pods Frameworks */ = {
@@ -579,6 +587,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7DEAAA61D9C607900443B3B /* NSDateTests.swift in Sources */,
 				C70AC4C31D4BF909004F8539 /* ValidatorTests.swift in Sources */,
 				C73848581D35538C0023E1A8 /* GooglePlacesTests.swift in Sources */,
 				C7FBD0AE1D47BF170089A53B /* StripeWrapperTests.swift in Sources */,
@@ -587,6 +596,7 @@
 				607FACEC1AFB9204008FA782 /* PartnerAPITests.swift in Sources */,
 				C79C65B71D58EF9D001CDCA4 /* FormatterTests.swift in Sources */,
 				C7CBF48C1D412362001D988F /* PartnerAPIMockTests.swift in Sources */,
+				3391D7931D9DA98E009A42B8 /* DateCompareTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -637,6 +647,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.spothero.SpotHero-iOS-Partner-SDK-ExampleUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SpotHero_iOS_Partner_SDK_Example.app/SpotHero_iOS_Partner_SDK_Example";
 			};
 			name = Debug;
@@ -652,6 +663,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.spothero.SpotHero-iOS-Partner-SDK-ExampleUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SpotHero_iOS_Partner_SDK_Example.app/SpotHero_iOS_Partner_SDK_Example";
 			};
 			name = Release;
@@ -669,13 +681,15 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 39;
+				CURRENT_PROJECT_VERSION = 41;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -699,6 +713,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
@@ -715,13 +730,15 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 39;
+				CURRENT_PROJECT_VERSION = 41;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -736,6 +753,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 2.3;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -744,9 +763,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 404DD54A3DE66EB92B0AF76B /* Pods-SpotHero_iOS_Partner_SDK_Example.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 39;
+				CURRENT_PROJECT_VERSION = 41;
 				INFOPLIST_FILE = SpotHero_iOS_Partner_SDK/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -754,6 +774,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.spothero.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "$(sigh_tools.fastlane.app_development)";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
@@ -761,9 +782,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5F9343FE890355916ED4BCDD /* Pods-SpotHero_iOS_Partner_SDK_Example.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				CURRENT_PROJECT_VERSION = 39;
+				CURRENT_PROJECT_VERSION = 41;
 				INFOPLIST_FILE = SpotHero_iOS_Partner_SDK/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -771,6 +793,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.spothero.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "$(sigh_tools.fastlane.app_development)";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
 		};
@@ -788,6 +811,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SpotHero_iOS_Partner_SDK_Example.app/SpotHero_iOS_Partner_SDK_Example";
 			};
 			name = Debug;
@@ -802,6 +826,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SpotHero_iOS_Partner_SDK_Example.app/SpotHero_iOS_Partner_SDK_Example";
 			};
 			name = Release;
