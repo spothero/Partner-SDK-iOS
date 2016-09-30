@@ -178,10 +178,10 @@ struct SpotHeroPartnerAPIController {
     
     private static func handleResponse(data: NSData?,
                                        _ response: NSURLResponse?,
-                                         _ error: NSError?,
-                                           _ errorCompletion: APIErrorCompletion,
-                                             _ noResponseSuccessCompletion: NoResponseExpectedAPISuccessCompletion?,
-                                               _ jsonSuccessCompletion: JSONAPISuccessCompletion?) {
+                                       _ error: NSError?,
+                                       _ errorCompletion: APIErrorCompletion,
+                                       _ noResponseSuccessCompletion: NoResponseExpectedAPISuccessCompletion?,
+                                       _ jsonSuccessCompletion: JSONAPISuccessCompletion?) {
         
         if ServerEnvironment.ShouldDebugPrintInfo {
             self.debugPrintResponseInfo(response, data: data)
@@ -237,8 +237,8 @@ struct SpotHeroPartnerAPIController {
     
     private static func handleDataSuccessWithStatusCode(statusCode: Int,
                                                         andData data: NSData?,
-                                                                errorCompletion: APIErrorCompletion,
-                                                                completion: JSONAPISuccessCompletion) {
+                                                        errorCompletion: APIErrorCompletion,
+                                                        completion: JSONAPISuccessCompletion) {
         guard let returnedData = data else {
             // There ought to be something here.
             let error = APIError.errorWithDescription("No data received. Did you mean to use the NoResponseExpected completion?",
@@ -262,7 +262,7 @@ struct SpotHeroPartnerAPIController {
     
     private static func handleErrorWithStatusCode(statusCode: Int,
                                                   andData data: NSData?,
-                                                          completion: APIErrorCompletion) {
+                                                  completion: APIErrorCompletion) {
         guard let errorData = data else {
             let error = APIError.errorFromHTTPStatusCode(statusCode)
             NSOperationQueue.mainQueue().addOperationWithBlock({
@@ -366,9 +366,9 @@ struct SpotHeroPartnerAPIController {
     static func postJSONtoEndpoint(endpoint: String,
                                    endpointIsDumb: Bool = false,
                                    jsonToPost json: [String : AnyObject],
-                                              withHeaders headers: HeaderDictionary,
-                                                          errorCompletion: APIErrorCompletion,
-                                                          successCompletion: JSONAPISuccessCompletion) {
+                                   withHeaders headers: HeaderDictionary,
+                                   errorCompletion: APIErrorCompletion,
+                                   successCompletion: JSONAPISuccessCompletion) {
         
         let fullURLString = ServerEnvironment
             .CurrentEnvironment
@@ -401,9 +401,9 @@ struct SpotHeroPartnerAPIController {
      */
     private static func postFormDataToFullURLString(fullURLString: String,
                                                     dictionaryToPost dictionary: JSONDictionary,
-                                                                     withHeaders headers: [String : String],
-                                                                                 errorCompletion: APIErrorCompletion,
-                                                                                 successCompletion: JSONAPISuccessCompletion) {
+                                                    withHeaders headers: [String : String],
+                                                    errorCompletion: APIErrorCompletion,
+                                                    successCompletion: JSONAPISuccessCompletion) {
         
         self.dataTaskWithMethod(.POST,
                                 encoding: .FormData,
@@ -425,9 +425,9 @@ struct SpotHeroPartnerAPIController {
      */
     static func putJSONtoEndpoint(endpoint: String,
                                   jsonToPut json: JSONDictionary,
-                                            withHeaders headers: HeaderDictionary,
-                                                        errorCompletion: APIErrorCompletion,
-                                                        successCompletion: JSONAPISuccessCompletion) {
+                                  withHeaders headers: HeaderDictionary,
+                                  errorCompletion: APIErrorCompletion,
+                                  successCompletion: JSONAPISuccessCompletion) {
         
         let stringHeaders = APIHeaders.headerStringDict(headers)
         let fullURLString = ServerEnvironment
