@@ -277,7 +277,7 @@ class CheckoutTableViewController: UIViewController {
     }
     
     private func getDateFormatString(date: NSDate) -> String {        
-        guard let calendar = NSCalendar(calendarIdentifier: NSGregorianCalendar)  where calendar.isDateInToday(date) || calendar.isDateInTomorrow(date) else {
+        guard let calendar = NSCalendar(calendarIdentifier: NSGregorianCalendar) where calendar.isDateInToday(date) || calendar.isDateInTomorrow(date) else {
             return DateFormatter.DayOfWeekWithDate.stringFromDate(date)
         }
         
@@ -345,7 +345,7 @@ extension CheckoutTableViewController: UITableViewDataSource {
         case .ReservationInfo:
             return ReservationInfoRow.AllCases.count
         case .PersonalInfo:
-            guard let licensePlateRequired = facility?.licensePlateRequired  where licensePlateRequired else {
+            guard let licensePlateRequired = facility?.licensePlateRequired where licensePlateRequired else {
                 return PersonalInfoRow.AllCases.count - 1
             }
             return PersonalInfoRow.AllCases.count
