@@ -237,7 +237,7 @@ class CheckoutTableViewController: UIViewController {
         
         if let
             licenseCell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: PersonalInfoRow.Email.rawValue, inSection: CheckoutSection.PersonalInfo.rawValue)) as? PersonalInfoTableViewCell
-             where facility.licensePlateRequired {
+            where facility.licensePlateRequired {
             license = licenseCell.textField.text
         }
         
