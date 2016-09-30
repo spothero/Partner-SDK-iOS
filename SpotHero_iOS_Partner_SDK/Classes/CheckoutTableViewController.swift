@@ -87,11 +87,21 @@ class CheckoutTableViewController: UIViewController {
     private let paymentButtonMargin: CGFloat = 0
     
     private lazy var paymentButton: UIButton = {
-        let _button = NSBundle.shp_resourceBundle()
-            .loadNibNamed(String(PaymentButton),
-                          owner: nil,
-                          options: nil)
-            .first as! UIButton
+        #if swift(>=2.3)
+            let _button = NSBundle.shp_resourceBundle()
+                .loadNibNamed(String(PaymentButton),
+                              owner: nil,
+                              options: nil)!
+                .first as! UIButton
+        #else
+            let _button = NSBundle.shp_resourceBundle()
+                .loadNibNamed(String(PaymentButton),
+                              owner: nil,
+                              options: nil)
+                .first as! UIButton
+        #endif
+        
+        
         _button.addTarget(self,
                           action: #selector(self.paymentButtonPressed),
                           forControlEvents: .TouchUpInside)
@@ -136,9 +146,9 @@ class CheckoutTableViewController: UIViewController {
     //MARK: UI Setup
     
     private func setupPaymentButton() {
-        guard let
-            rate = self.rate,
-            price = NumberFormatter.dollarNoCentsStringFromCents(rate.price) else {
+        guard
+            let rate = self.rate,
+            let price = NumberFormatter.dollarNoCentsStringFromCents(rate.price) else {
             return
         }
         
@@ -255,17 +265,17 @@ class CheckoutTableViewController: UIViewController {
      - parameter completion: Passing in a bool. True if reservation was successfully created, false if an error occured
      */
     func createReservation(token: String, completion: (Bool) -> ()) {
-        guard let
-            facility = self.facility,
-            rate = self.rate else {
+        guard
+            let facility = self.facility,
+            let rate = self.rate else {
                 assertionFailure("No facility or rate")
                 completion(false)
                 return
         }
         
-        guard let
-            emailCell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: PersonalInfoRow.Email.rawValue, inSection: CheckoutSection.PersonalInfo.rawValue)) as? PersonalInfoTableViewCell,
-            email = emailCell.textField.text else {
+        guard
+            let emailCell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: PersonalInfoRow.Email.rawValue, inSection: CheckoutSection.PersonalInfo.rawValue)) as? PersonalInfoTableViewCell,
+            let email = emailCell.textField.text else {
                 assertionFailure("Cannot get email cell")
                 completion(false)
                 return
@@ -401,19 +411,19 @@ extension CheckoutTableViewController: UITableViewDataSource {
             cell = UITableViewCell()
         }
         
-        if let
-            cell = cell as? ReservationInfoTableViewCell,
-            facility = self.facility,
-            rate = self.rate,
-            row = ReservationInfoRow(rawValue: indexPath.row) {
+        if
+            let cell = cell as? ReservationInfoTableViewCell,
+            let facility = self.facility,
+            let rate = self.rate,
+            let row = ReservationInfoRow(rawValue: indexPath.row) {
             
             self.configureCell(cell,
                                row: row,
                                facility: facility,
                                rate: rate)
-        } else if let
-            cell = cell as? PersonalInfoTableViewCell,
-            row = PersonalInfoRow(rawValue: indexPath.row) {
+        } else if
+            let cell = cell as? PersonalInfoTableViewCell,
+            let row = PersonalInfoRow(rawValue: indexPath.row) {
             
             self.configureCell(cell, row: row)
         } else if let cell = cell as? PaymentInfoTableViewCell {
@@ -486,9 +496,9 @@ extension CheckoutTableViewController: KeyboardNotification {
                                                                 queue: nil) {
                                                                     [weak self]
                                                                     notification in
-                                                                    guard let
-                                                                        userInfo = notification.userInfo,
-                                                                        frame = userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue else {
+                                                                    guard
+                                                                        let userInfo = notification.userInfo,
+                                                                        let frame = userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue else {
                                                                             return
                                                                     }
                                                                     
