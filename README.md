@@ -63,7 +63,7 @@ And here is what it would look like on launch (assuming you just went with the h
 
 ![](readme_img/custom_nav_bar.png)
 
-## Debugging Halp 
+## Debugging Help 
 
 If you are running into problems and you would like to see a very, very large amount of detail about the calls going to and from the SpotHero server, you may change the `debugPrintInfo` property on the SDK singleton to `true`. 
 
