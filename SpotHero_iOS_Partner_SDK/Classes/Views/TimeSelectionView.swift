@@ -63,13 +63,13 @@ class TimeSelectionView: UIView {
             }
         }
     }
-    private var startDate: NSDate = NSDate().shp_roundDateToNearestHalfHour(roundDown: true) {
+    var startDate: NSDate = NSDate().shp_roundDateToNearestHalfHour(roundDown: true) {
         didSet {
             self.setDateTimeLabels(self.startDate, endDate: self.endDate)
             self.startEndDateDelegate?.didChangeStartEndDate(startDate: self.startDate, endDate: self.endDate)
         }
     }
-    private var endDate: NSDate = NSDate().dateByAddingTimeInterval(Constants.SixHoursInSeconds).shp_roundDateToNearestHalfHour(roundDown: true) {
+    var endDate: NSDate = NSDate().dateByAddingTimeInterval(Constants.SixHoursInSeconds).shp_roundDateToNearestHalfHour(roundDown: true) {
         didSet {
             self.setDateTimeLabels(self.startDate, endDate: self.endDate)
             self.startEndDateDelegate?.didChangeStartEndDate(startDate: self.startDate, endDate: self.endDate)

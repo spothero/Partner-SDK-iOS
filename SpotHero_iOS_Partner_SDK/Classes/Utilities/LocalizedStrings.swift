@@ -114,4 +114,6 @@ enum LocalizedStrings {
                                          comment: "Title for no spots error message")
     static let Distance = NSLocalizedString("Distance",
                                             comment: "Distance")
+    static let RateExpired = NSLocalizedString("The spot you selected earlier has expired. Please select an updated spot.",
+                                               comment: "Error message for when the user comes back to the app ")
 }

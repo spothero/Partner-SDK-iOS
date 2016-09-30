@@ -238,7 +238,8 @@ enum Validator {
             
             if dateComponents.month < 0 || dateComponents.month > 12 {
                 throw ValidatorError.FieldInvalid(fieldName: fieldName, message: invalidDateMessage)
-            } else if let date = calendar?.dateFromComponents(dateComponents) where NSDate().compare(date) == NSComparisonResult.OrderedDescending  {
+            } else if let date = calendar?.dateFromComponents(dateComponents)
+                    where date.shp_isBeforeDate(NSDate()) {
                 throw ValidatorError.FieldInvalid(fieldName: fieldName, message: dateInThePastMessage)
             } else if calendar?.dateFromComponents(dateComponents) == nil {
                 throw ValidatorError.FieldInvalid(fieldName: fieldName, message: invalidDateMessage)

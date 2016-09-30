@@ -30,9 +30,7 @@ class MapViewController: UIViewController {
     private let predictionController = PredictionController()
     private var predictionPlaceDetails: GooglePlaceDetails? {
         didSet {
-            if let placeDetails = self.predictionPlaceDetails {
-                self.fetchFacilities(placeDetails.location.coordinate)
-            }
+            self.fetchFacilitiesIfPlaceDetailsExists()
         }
     }
     private var startDate: NSDate = NSDate().shp_roundDateToNearestHalfHour(roundDown: true)
@@ -82,6 +80,27 @@ class MapViewController: UIViewController {
         searchBar.becomeFirstResponder()
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        NSNotificationCenter
+            .defaultCenter()
+            .addObserver(self,
+                         selector: #selector(applicationWillEnterForeground(_:)),
+                         name: UIApplicationWillEnterForegroundNotification,
+                         object: nil)
+        
+        self.updateStartAndEndDatesVsCurrentTimeIfNeeded()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        NSNotificationCenter
+            .defaultCenter()
+            .removeObserver(self)
+    }
+    
     private func setupViews() {
         self.reservationContainerView.layer.cornerRadius = HeightsAndLengths.standardCornerRadius
         self.reservationContainerView.layer.masksToBounds = true
@@ -120,6 +139,36 @@ class MapViewController: UIViewController {
     
     private func showCollapsedSearchBar() {
         self.searchSpotsButton.hidden = (self.searchBar.text ?? "").isEmpty
+    }
+    
+    //MARK: Application lifecycle
+    
+    @objc private func applicationWillEnterForeground(notification: NSNotification) {
+        self.updateStartAndEndDatesVsCurrentTimeIfNeeded()
+    }
+    
+    private func updateStartAndEndDatesVsCurrentTimeIfNeeded() {
+        self.datePickerView?.updateMinimumDate()
+        
+        // Make sure when coming back from the background that the start date is not before
+        // the booking interval.
+        let now = NSDate()
+        if self.startDate.shp_isAfterDate(now) {
+            let updatedStartDate = now.shp_roundDateToNearestHalfHour(roundDown: true)
+            self.timeSelectionView.startDate = updatedStartDate
+            self.didChangeStartEndDate(startDate: updatedStartDate, endDate: self.endDate)
+            
+            // Now, make sure the end date is not before the updated start date
+            if self.endDate.shp_isAfterDate(self.startDate) {
+                let updatedEndDate = self.startDate
+                    .dateByAddingTimeInterval(Constants.SixHoursInSeconds) //Start date is already rounded.
+                self.timeSelectionView.endDate = updatedEndDate
+                self.didChangeStartEndDate(startDate: self.startDate, endDate: updatedEndDate)
+            }
+        }
+        
+        //Update any existing search to ensure shown prices are accurate.
+        self.fetchFacilitiesIfPlaceDetailsExists()
     }
     
     //MARK: MapView & Spot Cards Helpers
@@ -344,6 +393,12 @@ class MapViewController: UIViewController {
         if self.loading {
             self.loading = false
             ProgressHUD.hideHUDForView(self.view)
+        }
+    }
+    
+    private func fetchFacilitiesIfPlaceDetailsExists() {
+        if let placeDetails = self.predictionPlaceDetails {
+            self.fetchFacilities(placeDetails.location.coordinate)
         }
     }
 }
