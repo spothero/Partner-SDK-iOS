@@ -471,6 +471,10 @@ extension CheckoutTableViewController: UITableViewDelegate {
     func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return CGFloat.min
     }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 32
+    }
 }
 
 //MARK: ValidatorCellDelegate
