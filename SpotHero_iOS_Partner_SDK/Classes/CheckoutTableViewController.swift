@@ -473,6 +473,7 @@ extension CheckoutTableViewController: UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        // Number chosen to match designs
         return 32
     }
 }
