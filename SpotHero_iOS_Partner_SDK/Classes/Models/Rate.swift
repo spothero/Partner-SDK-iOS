@@ -59,4 +59,8 @@ extension Rate {
         
         return visible
     }
+    
+    func allowsReentry() -> Bool {
+        return self.amenities["in-out"] != nil
+    }
 }
