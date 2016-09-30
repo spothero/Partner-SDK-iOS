@@ -67,6 +67,14 @@ extension PredictionController: UITableViewDelegate {
         let view = tableView.dequeueReusableHeaderFooterViewWithIdentifier("predictionFooter")
         return view
     }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 30
+    }
+    
+    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 30
+    }
 }
 
 //MARK: UISearchBarDelegate
