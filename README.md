@@ -6,7 +6,7 @@ The SpotHero SDK for partner applications
 
 To add the SpotHero iOS Partner SDK to your application, you need a SpotHero Partner Key. [TODO: FROM WHENCE]
 
-The SpotHero SDK is implemented as a singleton which should be launched from any `UIViewController` subclass. It will be presented modally. There is only one **required** property which must be set:
+The SpotHero SDK is implemented as a singleton which can be launched from any `UIViewController` subclass. It will be presented modally. There is only one **required** property which must be set:
 
 - `partnerApplicationKey: String`: Your application's partner key.
 
