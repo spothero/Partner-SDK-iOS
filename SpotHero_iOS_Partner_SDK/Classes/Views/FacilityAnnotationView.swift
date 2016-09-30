@@ -90,7 +90,7 @@ class FacilityAnnotationView: MKAnnotationView {
     
     #if swift(>=2.3)
     #else
-    init(frame: CGRect) {
+    override init(frame: CGRect) {
         super.init(frame: frame)
     }
     #endif
