@@ -59,7 +59,7 @@ Here is an example of that same `IBAction` with the  optional items set up:
 }
 ```
 
-And here is what it would look like on launch (assuming you just went with the hard-coded name): 
+And here is what it would look like on launch: 
 
 ![](readme_img/custom_nav_bar.png)
 
