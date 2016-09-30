@@ -185,6 +185,27 @@ test_flight_provisioning_profile_name = 'Distribution: SDK Sample App'
             output_options_key: test_output_folder,
         )
     end
+    
+    desc "Runs all the tests of the app and gathers code coverage on Xcode 8"
+    lane :test_8 do
+        if is_ci 
+            # Make sure we're on Xcode 8 on the build server. 
+            sh "sudo xcode-select --switch /Applications/Xcode_8.app/Contents/Developer"
+        end
+        
+        test 
+        
+        if is_ci 
+            # Make sure we're back to Xcode 7.3.1 on the build server. 
+            sh "sudo xcode-select --switch /Applications/Xcode_7.3.1.app/Contents/Developer"
+        end
+    end
+    
+    desc "Runs all the tests of the app and gathers code coverage across all versions of xcode"
+    lane :test_all do
+        test
+        test_8
+    end
 
 ########################
 ## BUILDING & SIGNING ##
