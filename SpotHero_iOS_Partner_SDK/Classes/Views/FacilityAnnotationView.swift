@@ -88,10 +88,6 @@ class FacilityAnnotationView: MKAnnotationView {
         super.init(coder: aDecoder)
     }
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-    }
-    
     private func labelBoundsWithScale(scale: CGFloat) -> CGRect {
         var labelBounds = self.bounds
         labelBounds.size.height = labelBounds.size.height - 10 * scale

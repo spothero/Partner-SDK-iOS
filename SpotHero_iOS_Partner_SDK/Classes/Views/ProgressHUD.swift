@@ -20,11 +20,19 @@ class ProgressHUD: UIView {
      - parameter text: The text that will be displayed under the activity indicator.
      */
     static func showHUDAddedTo(view: UIView, withText text: String = "") {
-        guard let progressView = NSBundle.shp_resourceBundle().loadNibNamed(String(ProgressHUD),
-                                                                                   owner: self,
-                                                                                   options: nil).first as? ProgressHUD else {
+        #if swift(>=2.3)
+            guard let progressView = NSBundle.shp_resourceBundle().loadNibNamed(String(ProgressHUD),
+                                                                                owner: self,
+                                                                                options: nil)!.first as? ProgressHUD else {
                                                                                     return
-        }
+            }
+        #else
+            guard let progressView = NSBundle.shp_resourceBundle().loadNibNamed(String(ProgressHUD),
+                                                                                owner: self,
+                                                                                options: nil).first as? ProgressHUD else {
+                                                                                    return
+            }
+        #endif
         
         progressView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
         progressView.center = CGPoint(x: view.bounds.width / 2, y: view.bounds.height / 2)
