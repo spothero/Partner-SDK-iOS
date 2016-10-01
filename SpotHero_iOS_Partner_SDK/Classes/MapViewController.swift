@@ -202,16 +202,20 @@ class MapViewController: UIViewController {
         }
         var firstAnnotation: FacilityAnnotation?
         for facility in facilitiesToAdd {
-            if let index = self.facilities.indexOf(facility) {
-                let facilityAnnotation = FacilityAnnotation(title: facility.title,
-                                                            coordinate: facility.location.coordinate,
-                                                            facility: facility,
-                                                            index: index)
-                if index == 0 && !panning {
-                    firstAnnotation = facilityAnnotation
-                }
-                self.mapView.addAnnotation(facilityAnnotation)
+            guard let index = self.facilities.indexOf(facility) else {
+                //Something weird has happened here, let's just move on.
+                continue
             }
+            
+            let facilityAnnotation = FacilityAnnotation(title: facility.title,
+                                                        coordinate: facility.location.coordinate,
+                                                        facility: facility,
+                                                        index: index)
+            if index == 0 && !panning {
+                firstAnnotation = facilityAnnotation
+            }
+            
+            self.mapView.addAnnotation(facilityAnnotation)
         }
         self.showSpotCardCollectionView()
         if !panning {
