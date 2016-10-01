@@ -18,7 +18,7 @@ class PartnerAPITests: BaseTests {
         SpotHeroPartnerSDK.SharedInstance.partnerApplicationKey = "65f498a5f7966a9b814bd676f11a76025dd42a68"
     }
     
-    func getFacilities(location: CLLocation, completion: ([Facility], ErrorType?) -> Void) {
+    func getFacilities(location: CLLocation, completion: FacilityCompletion) {
         let startDate = NSDate().dateByAddingTimeInterval(60 * 60 * 5)
         let endDate = NSDate().dateByAddingTimeInterval(60 * 60 * 10)
         FacilityAPI.fetchFacilities(location.coordinate,
@@ -31,9 +31,10 @@ class PartnerAPITests: BaseTests {
         let expectation = self.expectationWithDescription("testGetFacilities")
         
         self.getFacilities(Constants.ChicagoLocation) {
-            facilities, error in
+            facilities, error, hasMorePages in
             XCTAssertNil(error)
-            XCTAssert(!facilities.isEmpty)
+            XCTAssertFalse(facilities.isEmpty)
+            XCTAssertTrue(hasMorePages)
             expectation.fulfill()
         }
         
@@ -47,9 +48,10 @@ class PartnerAPITests: BaseTests {
         let location = CLLocation(latitude: 51.5074, longitude: 0.1278)
         
         self.getFacilities(location) {
-            facilities, error in
+            facilities, error, hasMorePages in
             XCTAssertNotNil(error)
-            XCTAssert(facilities.isEmpty)
+            XCTAssertTrue(facilities.isEmpty)
+            XCTAssertFalse(hasMorePages)
             expectation.fulfill()
         }
         
@@ -60,8 +62,9 @@ class PartnerAPITests: BaseTests {
         let expectation = self.expectationWithDescription("testCreateReservation")
         
         self.getFacilities(Constants.ChicagoLocation) {
-            facilities, error in
-            if let facility = facilities.first, rate = facility.availableRates.first {
+            facilities, error, hasMorePages in
+            if let facility = facilities.first,
+                let rate = facility.availableRates.first {
                 StripeWrapper.getToken(Constants.TestCreditCardNumber,
                                        expirationMonth: Constants.TestExpirationMonth,
                                        expirationYear: Constants.TestExpirationYear,
