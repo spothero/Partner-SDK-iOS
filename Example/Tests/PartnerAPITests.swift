@@ -61,10 +61,27 @@ class PartnerAPITests: BaseTests {
     func testCreateReservation() {
         let expectation = self.expectationWithDescription("testCreateReservation")
         
+        var testExecuting = false
         self.getFacilities(Constants.ChicagoLocation) {
             facilities, error, hasMorePages in
-            if let facility = facilities.first,
+            
+            // This is another set of results from getting the facilities.
+            if testExecuting {
+                return
+            }
+            
+            testExecuting = true
+            var testFacility: Facility? = nil
+            for facility in facilities {
+                if !facility.phoneNumberRequired && !facility.licensePlateRequired {
+                    testFacility = facility
+                    break
+                }
+            }
+            
+            if let facility = testFacility,
                 let rate = facility.availableRates.first {
+                facility.phoneNumberRequired
                 StripeWrapper.getToken(Constants.TestCreditCardNumber,
                                        expirationMonth: Constants.TestExpirationMonth,
                                        expirationYear: Constants.TestExpirationYear,
