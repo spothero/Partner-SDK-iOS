@@ -28,8 +28,20 @@ class MapViewController: UIViewController {
     
     private var prediction: GooglePlacesPrediction?
     private let predictionController = PredictionController()
+    private var defaultSearchRadius: Double = UnitsOfMeasurement.MetersPerMile.rawValue
     private var predictionPlaceDetails: GooglePlaceDetails? {
         didSet {
+            guard let details = self.predictionPlaceDetails else {
+                return
+            }
+            
+            if details.isAirport() {
+                //have a wider search radius around airports.
+                self.defaultSearchRadius = UnitsOfMeasurement.MetersPerMile.rawValue * 5
+            } else {
+                self.defaultSearchRadius = UnitsOfMeasurement.MetersPerMile.rawValue
+            }
+            
             self.fetchFacilitiesIfPlaceDetailsExists()
         }
     }
@@ -227,10 +239,9 @@ class MapViewController: UIViewController {
         }
         self.showSpotCardCollectionView()
         if !panning {
-            let mileInMeters = UnitsOfMeasurement.MetersPerMile.rawValue
             let coordinateRegion = MKCoordinateRegionMakeWithDistance(self.predictionPlaceDetails!.location.coordinate,
-                                                                      mileInMeters,
-                                                                      mileInMeters)
+                                                                      self.defaultSearchRadius,
+                                                                      self.defaultSearchRadius)
             self.mapView.setRegion(coordinateRegion, animated: true)
             self.currentIndex = 0
             
@@ -349,7 +360,7 @@ class MapViewController: UIViewController {
         var maxSearchRadius = self.visibleMapViewRadiusInMeters()
         if !panning {
             self.initialLoading = true
-            maxSearchRadius = UnitsOfMeasurement.MetersPerMile.rawValue
+            maxSearchRadius = self.defaultSearchRadius
         } else {
             self.loadingView.hidden = false
         }
