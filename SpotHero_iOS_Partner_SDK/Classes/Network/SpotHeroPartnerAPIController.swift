@@ -110,11 +110,7 @@ struct SpotHeroPartnerAPIController {
         
         //Pre-flight checks
         if ((noResponseSuccessCompletion != nil && jsonSuccessCompletion != nil) //Both are there
-            //##SWIFTCLEAN_SKIP##
-            || (noResponseSuccessCompletion
-                //^ known bug with swift-clean
-                //##SWIFTCLEAN_ENDSKIP##
-                == nil && jsonSuccessCompletion == nil)) { //both are nil
+            || (noResponseSuccessCompletion == nil && jsonSuccessCompletion == nil)) { //both are nil
             let error = APIError.errorWithDescription("You must select one, JSON success or no response expected success. You cannot has both or neither.",
                                                       andStatusCode: APIError.PartnerSDKErrorCode.InvalidParameter.rawValue)
             NSOperationQueue.mainQueue().addOperationWithBlock({
