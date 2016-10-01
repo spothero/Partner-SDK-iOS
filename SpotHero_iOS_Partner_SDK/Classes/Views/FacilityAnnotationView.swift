@@ -144,41 +144,34 @@ class AnnotationLabel: UILabel {
     
     override var text: String? {
         didSet {
-            self.setNeedsDisplay()
+            self.updateFontSize()
         }
     }
     
-    private var initialWidth: CGFloat?
+    private var initialWidth: CGFloat = 1 // Do not divide by zero.
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.initialWidth = self.frame.size.width
+        self.initialWidth = self.frame.width
         self.backgroundColor = .clearColor()
+        self.textAlignment = .Center
+        self.font = UIFont(name: self.font!.fontName, size: AnnotationLabel.minLabelFontSize)
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
-    override func drawRect(rect: CGRect) {
-        let fontSize: CGFloat = self.text?.characters.count > 3 ? AnnotationLabel.minLabelFontSize : AnnotationLabel.maxLabelFontSize
-        guard let width = self.initialWidth else {
-            return
+    func updateFontSize() {
+        let fontSize: CGFloat
+        if self.text?.characters.count > 3 {
+            fontSize = AnnotationLabel.minLabelFontSize
+        } else {
+            fontSize = AnnotationLabel.maxLabelFontSize
         }
-        let scale: CGFloat = rect.size.width / width
-        let centerX: CGFloat = rect.size.width / 2
-        let font: UIFont = UIFont.systemFontOfSize(fontSize * scale)
-        guard let labelText = self.text else {
-            return
-        }
-        let textSize: CGSize = labelText.sizeWithAttributes([NSFontAttributeName : font])
-        let halfHeightOfAnnotationLabel = rect.size.height / 2
-        let fontSizeAdjustment: CGFloat = fontSize == AnnotationLabel.minLabelFontSize ? 3 : 0
-        let textBounds = CGRect(x: centerX - textSize.width / 2,
-                                y: halfHeightOfAnnotationLabel - 6 * scale + (fontSizeAdjustment),
-                                width: textSize.width,
-                                height: 20)
-        labelText.drawInRect(textBounds, withAttributes: [NSFontAttributeName : font, NSForegroundColorAttributeName: self.textColor])
+        
+        let scale: CGFloat = self.frame.width / self.initialWidth
+        self.font = UIFont.systemFontOfSize(fontSize * scale)
     }
 }
