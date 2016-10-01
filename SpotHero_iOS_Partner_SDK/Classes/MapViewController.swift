@@ -35,6 +35,10 @@ class MapViewController: UIViewController {
                 return
             }
             
+            //Clear existing facilities
+            self.facilities = []
+            self.mapView.removeAnnotations(self.mapView.annotations)
+            
             if details.isAirport() {
                 //have a wider search radius around airports.
                 self.defaultSearchRadius = UnitsOfMeasurement.MetersPerMile.rawValue * 5
