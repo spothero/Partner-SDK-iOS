@@ -90,7 +90,6 @@ struct FacilityAPI {
     private static func fetchFacilitiesFromNextURLString(urlString: String,
                                                          prevFacilities: [Facility],
                                                          completion: FacilityCompletion) {
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         FacilityAPI.NextURLString = urlString
         SpotHeroPartnerAPIController.getJSONFromFullURLString(urlString,
                                                               withHeaders: APIHeaders.defaultHeaders(),
@@ -104,14 +103,16 @@ struct FacilityAPI {
     private static func facilityFetchSuccessHandler(completion: FacilityCompletion) -> JSONAPISuccessCompletion {
         return {
             JSON in
-            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
 
             let mappedJSON = FacilityAPI.mapJSON(JSON)
             let facilitiesWithRates = mappedJSON.facilities
             let error = mappedJSON.error
             completion(facilitiesWithRates, error)
             
-            guard let nextURLString = mappedJSON.nextURLString else {
+            guard let nextURLString = mappedJSON.nextURLString
+                    where nextURLString != FacilityAPI.NextURLString else {
+                //We're done loading, hide the activity indicator.
+                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
                 return
             }
             
@@ -121,7 +122,6 @@ struct FacilityAPI {
                                                             facilities, error in
                                                             completion(facilities, error)
             })
-
         }
     }
 }
