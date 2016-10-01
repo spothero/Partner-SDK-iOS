@@ -70,7 +70,9 @@ struct FacilityAPI {
                                                          successCompletion: self.facilityFetchSuccessHandler(completion))
     }
     
-    private static func mapJSON(JSON: JSONDictionary) -> (facilities: [Facility], error: ErrorType?, nextURLString: String?) {
+    private static func mapJSON(JSON: JSONDictionary) -> (facilities: [Facility],
+                                                          error: ErrorType?,
+                                                          nextURLString: String?) {
         do {
             let actualData = try JSON.shp_dictionary("data") as JSONDictionary
             let metaData = try JSON.shp_dictionary("meta") as JSONDictionary

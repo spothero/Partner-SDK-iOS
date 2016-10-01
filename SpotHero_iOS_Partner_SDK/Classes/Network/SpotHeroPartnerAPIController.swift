@@ -313,9 +313,9 @@ struct SpotHeroPartnerAPIController {
      */
     static func getJSONFromEndpoint(endpoint: String,
                                     withHeaders headers: HeaderDictionary,
-                                                additionalParams: [String : String]? = nil,
-                                                errorCompletion: APIErrorCompletion,
-                                                successCompletion: JSONAPISuccessCompletion) {
+                                    additionalParams: [String : String]? = nil,
+                                    errorCompletion: APIErrorCompletion,
+                                    successCompletion: JSONAPISuccessCompletion) {
         
         let stringHeaders = APIHeaders.headerStringDict(headers)
         
@@ -338,8 +338,8 @@ struct SpotHeroPartnerAPIController {
     
     static func getJSONFromFullURLString(fullURLString: String,
                                          withHeaders headers: HeaderDictionary,
-                                                     errorCompletion: APIErrorCompletion,
-                                                     successCompletion: JSONAPISuccessCompletion) {
+                                         errorCompletion: APIErrorCompletion,
+                                         successCompletion: JSONAPISuccessCompletion) {
         let stringHeaders = APIHeaders.headerStringDict(headers)
         self.dataTaskWithMethod(.GET,
                                 fullURLString: fullURLString,
