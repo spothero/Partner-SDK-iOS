@@ -292,7 +292,8 @@ class MapViewController: UIViewController {
     }
     
     private func visibleMapViewRadiusInMeters() -> Double {
-        return (self.mapView.region.span.latitudeDelta * 69 * Constants.MetersPerMile) / 2
+        let diameter = self.mapView.region.span.latitudeDelta * Constants.ApproximateMilesPerDegreeOfLatitude * Constants.MetersPerMile
+        return diameter / 2
     }
     
     //MARK: Google Autocomplete Helpers

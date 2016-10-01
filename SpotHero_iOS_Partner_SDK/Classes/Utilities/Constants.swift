@@ -19,7 +19,10 @@ enum Constants {
     static let TestExpirationMonth = "12"
     static let TestExpirationYear = "2020"
     static let TestCVC = "123"
+    
     static let MetersPerMile = 1609.344
+    //http://gis.stackexchange.com/a/142327/45816
+    static let ApproximateMilesPerDegreeOfLatitude = 69.0
     
     enum Segue {
         static let Confirmation = "confirmation"
