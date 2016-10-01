@@ -76,7 +76,9 @@ struct GooglePlacesWrapper {
             }).resume()
         } else {
             assertionFailure("Unable to form URL")
-            completion([], GooglePlacesError.CannotFormURL)
+            NSOperationQueue.mainQueue().addOperationWithBlock() {
+                completion([], GooglePlacesError.CannotFormURL)
+            }
         }
     }
     
@@ -99,26 +101,30 @@ struct GooglePlacesWrapper {
         if let url = urlComponents.URL {
             NSURLSession.sharedSession().dataTaskWithURL(url, completionHandler: {
                 data, response, error in
-                guard let data = data else {
-                    completion(nil, error)
-                    return
-                }
-                
-                do {
-                    let responseDictionary = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions()) as? JSONDictionary
-                    if let placeDictionary = responseDictionary?["result"] as? JSONDictionary {
-                        let placeDetails = try GooglePlaceDetails(json: placeDictionary)
-                        completion(placeDetails, nil)
-                    } else {
-                        completion(nil, GooglePlacesError.PlaceDetailsNotFound)
+                NSOperationQueue.mainQueue().addOperationWithBlock() {
+                    guard let data = data else {
+                        completion(nil, error)
+                        return
                     }
-                } catch let error {
-                    completion(nil, error)
+                    
+                    do {
+                        let responseDictionary = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions()) as? JSONDictionary
+                        if let placeDictionary = responseDictionary?["result"] as? JSONDictionary {
+                            let placeDetails = try GooglePlaceDetails(json: placeDictionary)
+                            completion(placeDetails, nil)
+                        } else {
+                            completion(nil, GooglePlacesError.PlaceDetailsNotFound)
+                        }
+                    } catch let error {
+                        completion(nil, error)
+                    }
                 }
             }).resume()
         } else {
             assertionFailure("Unable to form URL")
-            completion(nil, GooglePlacesError.CannotFormURL)
+            NSOperationQueue.mainQueue().addOperationWithBlock() {
+                completion(nil, GooglePlacesError.CannotFormURL)
+            }
         }
     }
 }
