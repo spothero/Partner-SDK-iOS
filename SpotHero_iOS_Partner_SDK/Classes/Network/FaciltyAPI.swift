@@ -13,7 +13,14 @@ enum FacilityError: ErrorType {
     case NoFacilitiesFound
 }
 
-typealias FacilityCompletion = (facilities: [Facility], error: ErrorType?, hasMorePages: Bool) -> (Void)
+/*
+ - parameter facilities:    An array of the returned facilities. Will be empty on an error.
+ - parameter error:         [Optional] Any error encountered, or nil if none was encountered.
+ - parameter hasMorePages:  true if there are more pages of facilities to load, false if not.
+ */
+typealias FacilityCompletion = (facilities: [Facility],
+                                error: ErrorType?,
+                                hasMorePages: Bool) -> (Void)
 
 struct FacilityAPI {
     static var NextURLString: String?
@@ -24,7 +31,7 @@ struct FacilityAPI {
      - parameter location:   location to find facilities near
      - parameter starts:     when the reservation shold start
      - parameter ends:       when the reservation should end
-     - parameter completion: closure to call after network call is made. passes in an array of facilities or an error
+     - parameter completion: closure to call after each page of results is loaded.
      */
     static func fetchFacilities(coordinate: CLLocationCoordinate2D,
                                 starts: NSDate,
