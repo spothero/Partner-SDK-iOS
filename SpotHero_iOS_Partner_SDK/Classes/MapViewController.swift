@@ -227,9 +227,10 @@ class MapViewController: UIViewController {
         }
         self.showSpotCardCollectionView()
         if !panning {
+            let mileInMeters = UnitsOfMeasurement.MetersPerMile.rawValue
             let coordinateRegion = MKCoordinateRegionMakeWithDistance(self.predictionPlaceDetails!.location.coordinate,
-                                                                      Constants.MetersPerMile,
-                                                                      Constants.MetersPerMile)
+                                                                      mileInMeters,
+                                                                      mileInMeters)
             self.mapView.setRegion(coordinateRegion, animated: true)
             self.currentIndex = 0
             
@@ -300,7 +301,9 @@ class MapViewController: UIViewController {
     }
     
     private func visibleMapViewRadiusInMeters() -> Double {
-        let diameter = self.mapView.region.span.latitudeDelta * Constants.ApproximateMilesPerDegreeOfLatitude * Constants.MetersPerMile
+        let diameter = self.mapView.region.span.latitudeDelta
+                            * UnitsOfMeasurement.ApproximateMilesPerDegreeOfLatitude.rawValue
+                            * UnitsOfMeasurement.MetersPerMile.rawValue
         return diameter / 2
     }
     
@@ -346,7 +349,7 @@ class MapViewController: UIViewController {
         var maxSearchRadius = self.visibleMapViewRadiusInMeters()
         if !panning {
             self.initialLoading = true
-            maxSearchRadius = Constants.MetersPerMile
+            maxSearchRadius = UnitsOfMeasurement.MetersPerMile.rawValue
         } else {
             self.loadingView.hidden = false
         }

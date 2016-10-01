@@ -37,7 +37,7 @@ struct FacilityAPI {
                                 starts: NSDate,
                                 ends: NSDate,
                                 minSearchRadius: Int = 0,
-                                maxSearchRadius: Double = Constants.MetersPerMile,
+                                maxSearchRadius: Double = UnitsOfMeasurement.MetersPerMile.rawValue,
                                 completion: FacilityCompletion) {
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         
