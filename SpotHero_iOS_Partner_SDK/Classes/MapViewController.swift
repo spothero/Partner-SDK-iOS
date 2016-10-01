@@ -189,10 +189,11 @@ class MapViewController: UIViewController {
      - parameter panning: Pass true to cause the map not to zoom in on the facilities. Optional (Defaults to false)
      */
     private func addAndShowFacilityAnnotations(facilities: [Facility], panning: Bool = false) {
-        self.facilities += facilities
+        // Only add facilities not already in the list
+        let facilitiesToAdd = facilities.filter() { return !self.facilities.contains($0) }
+        self.facilities += facilitiesToAdd
         self.spotCardCollectionView.reloadData()
-        //TODO: Look into caching annotations like the main app
-//        self.mapView.removeAnnotations(self.mapView.annotations)
+        
         if let placeDetails = self.predictionPlaceDetails {
             let locationAnnotation = MKPointAnnotation()
             locationAnnotation.coordinate = placeDetails.location.coordinate
@@ -200,7 +201,7 @@ class MapViewController: UIViewController {
             self.mapView.addAnnotation(locationAnnotation)
         }
         var firstAnnotation: FacilityAnnotation?
-        for facility in facilities {
+        for facility in facilitiesToAdd {
             if let index = self.facilities.indexOf(facility) {
                 let facilityAnnotation = FacilityAnnotation(title: facility.title,
                                                             coordinate: facility.location.coordinate,
@@ -223,6 +224,7 @@ class MapViewController: UIViewController {
             guard let annotation = firstAnnotation else {
                 return
             }
+            
             self.mapView.selectAnnotation(annotation, animated: true)
         }
     }
