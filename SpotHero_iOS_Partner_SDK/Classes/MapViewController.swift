@@ -214,7 +214,10 @@ class MapViewController: UIViewController {
         }
         self.showSpotCardCollectionView()
         if !panning {
-            self.mapView.setRegion(MKCoordinateRegionMakeWithDistance(self.predictionPlaceDetails!.location.coordinate, Constants.MetersPerMile, Constants.MetersPerMile), animated: true)
+            let coordinateRegion = MKCoordinateRegionMakeWithDistance(self.predictionPlaceDetails!.location.coordinate,
+                                                                      Constants.MetersPerMile,
+                                                                      Constants.MetersPerMile)
+            self.mapView.setRegion(coordinateRegion, animated: true)
             self.currentIndex = 0
             
             guard let annotation = firstAnnotation else {
