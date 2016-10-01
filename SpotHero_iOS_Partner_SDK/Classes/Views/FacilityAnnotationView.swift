@@ -115,19 +115,20 @@ class FacilityAnnotationView: MKAnnotationView {
         let newHeight: CGFloat = selected ? imageSize.height * self.facilityGrowScale : imageSize.height
         
         if (oldWidth != newWidth) {
-            
             self.centerOffset = CGPoint(x: 0, y: -newHeight / 2)
             
             UIView.animateWithDuration(self.growDuration, animations: {
                 self.frame = CGRect(x: self.frame.origin.x - (newWidth - oldWidth) / 2,
-                    y: self.frame.origin.y - (newHeight - oldHeight),
-                    width: newWidth,
-                    height: newHeight)
+                                    y: self.frame.origin.y - (newHeight - oldHeight),
+                                    width: newWidth,
+                                    height: newHeight)
                 self.backgroundImageView?.frame = self.bounds
                 self.priceLabel?.frame = self.labelBoundsWithScale(selected ? self.facilityGrowScale : 1)
-                }, completion: {
-                    _ in
-                    self.priceLabel?.setNeedsDisplay()
+                self.priceLabel?.updateFontSize()
+            },
+            completion: {
+                _ in
+                self.priceLabel?.setNeedsDisplay()
             })
             
             self.backgroundImageView?.image = nil
