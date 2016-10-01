@@ -13,7 +13,7 @@ enum FacilityError: ErrorType {
     case NoFacilitiesFound
 }
 
-typealias FacilityCompletion = ([Facility], ErrorType?) -> (Void)
+typealias FacilityCompletion = (facilities: [Facility], error: ErrorType?, hasMorePages: Bool) -> (Void)
 
 struct FacilityAPI {
     static var NextURLString: String?
@@ -56,7 +56,9 @@ struct FacilityAPI {
                                                          additionalParams: params,
                                                          errorCompletion: {
                                                             error in
-                                                            completion([], error)
+                                                            completion(facilities: [],
+                                                                       error: error,
+                                                                       hasMorePages: false)
                                                          },
                                                          successCompletion: self.facilityFetchSuccessHandler(completion))
     }
@@ -95,7 +97,9 @@ struct FacilityAPI {
                                                               withHeaders: APIHeaders.defaultHeaders(),
                                                               errorCompletion: {
                                                                 error in
-                                                                completion([], error)
+                                                                completion(facilities: [],
+                                                                           error: error,
+                                                                           hasMorePages: false)
                                                               },
                                                               successCompletion: self.facilityFetchSuccessHandler(completion))
     }
@@ -107,21 +111,23 @@ struct FacilityAPI {
             let mappedJSON = FacilityAPI.mapJSON(JSON)
             let facilitiesWithRates = mappedJSON.facilities
             let error = mappedJSON.error
-            completion(facilitiesWithRates, error)
             
             guard let nextURLString = mappedJSON.nextURLString
                     where nextURLString != FacilityAPI.NextURLString else {
                 //We're done loading, hide the activity indicator.
                 UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+                // Call the completion block and let them know we're out of pages.
+                completion(facilities: facilitiesWithRates, error: error, hasMorePages: false)
                 return
             }
             
+            //Call the completion block, but let them know we have more pages.
+            completion(facilities: facilitiesWithRates, error: error, hasMorePages: true)
+            
+            //Get said more pages.
             FacilityAPI.fetchFacilitiesFromNextURLString(nextURLString,
                                                          prevFacilities: facilitiesWithRates,
-                                                         completion: {
-                                                            facilities, error in
-                                                            completion(facilities, error)
-            })
+                                                         completion: completion)
         }
     }
 }

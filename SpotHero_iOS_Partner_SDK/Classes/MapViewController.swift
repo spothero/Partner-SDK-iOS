@@ -52,7 +52,15 @@ class MapViewController: UIViewController {
     private var selectedFacility: Facility?
     private var maxTableHeight: CGFloat = 0
     private var currentIndex: Int = 0
-    private var loading = false
+    private var initialLoading = false {
+        didSet {
+            if self.initialLoading {
+                ProgressHUD.showHUDAddedTo(self.view, withText: LocalizedStrings.Loading)
+            } else {
+                ProgressHUD.hideHUDForView(self.view)
+            }
+        }
+    }
     
     private var facilities = [Facility]()
     
@@ -299,15 +307,16 @@ class MapViewController: UIViewController {
     //MARK: Google Autocomplete Helpers
     
     private func getPlaceDetails(prediction: GooglePlacesPrediction, completion: (GooglePlaceDetails?) -> ()) {
-        self.startLoading()
+        self.initialLoading = true
         GooglePlacesWrapper.getPlaceDetails(prediction) {
+            [weak self]
             placeDetails, error in
             if let error = error {
-                self.stopLoading()
+                self?.initialLoading = false
                 completion(nil)
             } else {
                 completion(placeDetails)
-                //stopLoading() handled in fetchFacilities()
+                //updating initialLoading handled in fetchFacilities()
             }
         }
     }
@@ -336,7 +345,7 @@ class MapViewController: UIViewController {
     private func fetchFacilities(coordinate: CLLocationCoordinate2D, panning: Bool = false) {
         var maxSearchRadius = self.visibleMapViewRadiusInMeters()
         if !panning {
-            self.startLoading()
+            self.initialLoading = true
             maxSearchRadius = Constants.MetersPerMile
         } else {
             self.loadingView.hidden = false
@@ -348,9 +357,13 @@ class MapViewController: UIViewController {
                                     maxSearchRadius: maxSearchRadius,
                                     completion: {
                                         [weak self]
-                                        facilities, error in
-                                        self?.stopLoading()
-                                        self?.loadingView.hidden = true
+                                        facilities, error, hasMorePages in
+                                        
+                                        self?.initialLoading = false
+
+                                        //If there are more pages, show the wee loading view.
+                                        self?.loadingView.hidden = !hasMorePages
+                                        
                                         if facilities.isEmpty && !panning {
                                             AlertView.presentErrorAlertView(LocalizedStrings.Sorry,
                                                 message: LocalizedStrings.NoSpotsFound,
@@ -404,20 +417,6 @@ class MapViewController: UIViewController {
     }
     
     //MARK: Helpers
-    
-    private func startLoading() {
-        if !self.loading {
-            self.loading = true
-            ProgressHUD.showHUDAddedTo(self.view, withText: LocalizedStrings.Loading)
-        }
-    }
-    
-    private func stopLoading() {
-        if self.loading {
-            self.loading = false
-            ProgressHUD.hideHUDForView(self.view)
-        }
-    }
     
     private func fetchFacilitiesIfPlaceDetailsExists() {
         if let placeDetails = self.predictionPlaceDetails {
