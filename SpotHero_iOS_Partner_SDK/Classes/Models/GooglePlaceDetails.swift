@@ -15,13 +15,19 @@ import CoreLocation
 struct GooglePlaceDetails {
     let name: String
     let placeID: String
+    let types: [String]
     let location: CLLocation
+    
+    func isAirport() -> Bool {
+        return self.types.contains("airport")
+    }
 }
 
 extension GooglePlaceDetails {
     init(json: JSONDictionary) throws {
         self.name = try json.shp_string("name")
         self.placeID = try json.shp_string("place_id")
+        self.types = try json.shp_array("types")
         let geometry = try json.shp_dictionary("geometry") as JSONDictionary
         let location = try geometry.shp_dictionary("location") as JSONDictionary
         let latitude = try location.shp_double("lat")
