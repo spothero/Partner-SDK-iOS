@@ -55,7 +55,7 @@ struct FacilityAPI {
             "ends" : endsString,
             "distance__gt" : "\(minSearchRadius)",
             "distance__lt" : "\(maxSearchRadius)",
-            "include" : "facility"
+            "include" : "facility",
         ]
         
         SpotHeroPartnerAPIController.getJSONFromEndpoint("partner/v1/facilities/rates",
