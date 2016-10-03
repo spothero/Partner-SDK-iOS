@@ -32,19 +32,19 @@ class PaymentInfoTableViewCell: UITableViewCell {
         }
     }
     
-    var creditCardValid = false {
+    var creditCardValid = true {
         didSet {
             self.fieldValidChanged()
         }
     }
     
-    var expirationDateValid = false {
+    var expirationDateValid = true {
         didSet {
             self.fieldValidChanged()
         }
     }
     
-    var cvcValid = false {
+    var cvcValid = true {
         didSet {
             self.fieldValidChanged()
         }
