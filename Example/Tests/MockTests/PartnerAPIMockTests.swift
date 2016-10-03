@@ -44,7 +44,9 @@ class PartnerAPIMockTests: BaseTests {
                                             ends: endDate,
                                             completion: completion)
         } else {
-            completion(facilities: [], error: PartnerAPIMockTestsError.CannotParseDate, hasMorePages: false)
+            completion(facilities: [],
+                       error: PartnerAPIMockTestsError.CannotParseDate,
+                       hasMorePages: false)
             XCTFail("Cannot parse dates")
         }
     }

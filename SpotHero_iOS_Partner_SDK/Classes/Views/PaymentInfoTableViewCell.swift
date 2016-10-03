@@ -221,16 +221,20 @@ extension PaymentInfoTableViewCell: UITextFieldDelegate {
                 self.showExpirationDateAndCVCTextFields(show: true)
                 self.expirationDateTextField.becomeFirstResponder()
                 self.creditCardTextField.text = self.lastFourDigits(text)
+                self.setErrorState(self.creditCardValid, error: nil)
             case self.expirationDateTextField:
                 let parts = text.componentsSeparatedByString("/")
-                if let month = parts.first, year = parts.last {
-                    self.expirationMonth = month
-                    self.expirationYear = "20\(year)"
-                    try Validator.validateExpiration(self.expirationMonth, year: self.expirationYear)
+                if
+                    let month = parts.first,
+                    let year = parts.last {
+                        self.expirationMonth = month
+                        self.expirationYear = "20\(year)"
+                        try Validator.validateExpiration(self.expirationMonth, year: self.expirationYear)
                 } else {
                     throw ValidatorError.FieldInvalid(fieldName: LocalizedStrings.ExpirationDate, message: LocalizedStrings.InvalidDateErrorMessage)
                 }
                 self.expirationDateValid = true
+                self.setErrorState(self.expirationDateValid, error: nil)
             case self.cvcTextField:
                 if cardType == .Amex {
                     try Validator.validateCVC(text, amex: true)
@@ -239,23 +243,24 @@ extension PaymentInfoTableViewCell: UITextFieldDelegate {
                 }
                 self.cvcValid = true
                 self.cvc = text
+                self.setErrorState(self.cvcValid, error: nil)
             default:
                 break
             }
-
-            self.setErrorState(self.valid, error: nil)
         } catch let error as ValidatorError {
             switch textField {
             case self.creditCardTextField:
                 self.creditCardValid = false
+                self.setErrorState(self.creditCardValid, error:error)
             case self.expirationDateTextField:
                 self.expirationDateValid = false
+                self.setErrorState(self.expirationDateValid, error:error)
             case self.cvcTextField:
                 self.cvcValid = false
+                self.setErrorState(self.cvcValid, error:error)
             default:
                 break
             }
-            self.setErrorState(self.valid, error:error)
         } catch let error {
             assertionFailure("Some other error was thrown: \(error)")
         }
