@@ -153,7 +153,10 @@ class AnnotationLabel: UILabel {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.initialWidth = self.frame.width
+        if self.frame.width != 0 {
+            self.initialWidth = self.frame.width
+        } //else don't update initial width or you'll get divide by zero errors.
+        
         self.backgroundColor = .clearColor()
         self.textAlignment = .Center
         self.font = UIFont(name: self.font!.fontName, size: AnnotationLabel.minLabelFontSize)
