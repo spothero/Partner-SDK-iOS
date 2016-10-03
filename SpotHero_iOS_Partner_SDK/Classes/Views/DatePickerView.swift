@@ -81,6 +81,7 @@ extension DatePickerView: TimeSelectionViewDelegate {
     
     func didTapEndView(startDate: NSDate, endDate: NSDate) {
         self.showDatePickerView(true)
+        // When End Date View is tapped make sure it is atleast 30 mins past the start date
         self.datePicker.minimumDate = startDate.shp_roundDateToNearestHalfHour(roundDown: false)
         self.datePicker.date = endDate
         self.toolbarTitleLabel.text = LocalizedStrings.SetEndTime
