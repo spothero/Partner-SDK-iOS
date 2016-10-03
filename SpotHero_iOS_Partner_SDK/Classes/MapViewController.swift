@@ -272,18 +272,27 @@ class MapViewController: UIViewController {
         // Loop through all annotations
         // Find the the difference in latitude and longitude from the searched location and the annotation and take the absolute value
         // Set the latitude and longitude deltas to the the new value if it is greater than the current value
-        for annotation in self.mapView.annotations {
-            let latitude = abs(placeDetails.location.coordinate.latitude - annotation.coordinate.latitude)
-            let longitude = abs(placeDetails.location.coordinate.longitude - annotation.coordinate.longitude)
-            
-            latitudeDelta = max(latitudeDelta, latitude)
-            longitudeDelta = max(longitudeDelta, longitude)
+        if self.mapView.annotations.count > 1 {
+            for annotation in self.mapView.annotations {
+                let latitude = abs(placeDetails.location.coordinate.latitude - annotation.coordinate.latitude)
+                let longitude = abs(placeDetails.location.coordinate.longitude - annotation.coordinate.longitude)
+                
+                latitudeDelta = max(latitudeDelta, latitude)
+                longitudeDelta = max(longitudeDelta, longitude)
+            }
+            // Multiply the deltas by 2 plus some extra padding
+            let multiplier = 2.2
+        
+            latitudeDelta *= multiplier
+            longitudeDelta *= multiplier
+        } else {
+            // Convert 1 mile to latitude/longitude degrees
+            let delta = 1.0 / UnitsOfMeasurement.ApproximateMilesPerDegreeOfLatitude.rawValue
+            latitudeDelta = delta
+            longitudeDelta = delta
         }
         
-        // Multiply the deltas by 2 plus some extra padding
-        let multiplier = 2.2
-        
-        let region = MKCoordinateRegion(center: placeDetails.location.coordinate, span: MKCoordinateSpan(latitudeDelta: latitudeDelta * multiplier, longitudeDelta: longitudeDelta * multiplier))
+        let region = MKCoordinateRegion(center: placeDetails.location.coordinate, span: MKCoordinateSpan(latitudeDelta: latitudeDelta, longitudeDelta: longitudeDelta))
         
         self.mapView.setRegion(region, animated: true)
     }
