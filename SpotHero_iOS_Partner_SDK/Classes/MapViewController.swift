@@ -148,7 +148,7 @@ class MapViewController: UIViewController {
     }
     
     private func updateStartAndEndDatesVsCurrentTimeIfNeeded() {
-        self.datePickerView?.updateMinimumDate()
+        self.datePickerView?.updateMinimumStartDate()
         
         // Make sure when coming back from the background that the start date is not before
         // the booking interval.
