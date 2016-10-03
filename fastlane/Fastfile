@@ -47,7 +47,7 @@ codesigning_id = 'iPhone Distribution: Spot Hero Inc.'
 team_identifier = 'ZW7QWR628D'
 
 # The SDK to use to archive builds. Should be of the format 'iphoneosX.X'
-archive_sdk = 'iphoneos9.3'
+archive_sdk = 'iphoneos10.0'
 
 # The name of the TestFlight provisioning profile
 test_flight_provisioning_profile_name = 'Distribution: SDK Sample App'
