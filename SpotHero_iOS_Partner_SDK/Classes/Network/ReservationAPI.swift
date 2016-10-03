@@ -57,7 +57,12 @@ struct ReservationAPI {
         }) {
             JSON in
             do {
-                let reservation  = try Reservation(json: JSON)
+                guard let data = JSON["data"] as? JSONDictionary else {
+                    completion(nil, APIError.parsingError(JSON))
+                    return
+                }
+                
+                let reservation  = try Reservation(json: data)
                 completion(reservation, nil)
             } catch let error {
                 completion(nil, error)

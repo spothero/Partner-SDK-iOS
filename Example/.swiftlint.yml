@@ -4,6 +4,7 @@ disabled_rules:
   - function_parameter_count # "Number of function parameters should be low."
   - nesting # "Types should be nested at most 1 level deep, and statements should be nested at most 5 levels deep."
   - mark # "MARK comment should be in valid format."
+  - conditional_binding_cascade # this kicks up warnings in Swift 2.3+
 
 opt_in_rules:
   - force_unwrapping # "Force unwrapping should be avoided."

@@ -18,7 +18,7 @@ public enum ServerEnvironment {
     public static var CurrentEnvironment = ServerEnvironment.Staging
     
     /// Should the API debugPrint the info?
-    public static var ShouldDebugPrintInfo = true
+    public static var ShouldDebugPrintInfo = SpotHeroPartnerSDK.SharedInstance.debugPrintInfo
     
     //MARK: SpotHero API
     

@@ -52,7 +52,15 @@ class MapViewController: UIViewController {
     private var selectedFacility: Facility?
     private var maxTableHeight: CGFloat = 0
     private var currentIndex: Int = 0
-    private var loading = false
+    private var initialLoading = false {
+        didSet {
+            if self.initialLoading {
+                ProgressHUD.showHUDAddedTo(self.view, withText: LocalizedStrings.Loading)
+            } else {
+                ProgressHUD.hideHUDForView(self.view)
+            }
+        }
+    }
     
     private var facilities = [Facility]()
     
@@ -77,6 +85,9 @@ class MapViewController: UIViewController {
         let mapDragRecognizer = UIPanGestureRecognizer(target: self, action: #selector(self.didDragMap(_:)))
         mapDragRecognizer.delegate = self
         self.mapView.addGestureRecognizer(mapDragRecognizer)
+        let mapPinchRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(self.didDragMap(_:)))
+        mapPinchRecognizer.delegate = self
+        self.mapView.addGestureRecognizer(mapPinchRecognizer)
         searchBar.becomeFirstResponder()
     }
     
@@ -185,35 +196,48 @@ class MapViewController: UIViewController {
      
      - parameter panning: Pass true to cause the map not to zoom in on the facilities. Optional (Defaults to false)
      */
-    private func addAndShowFacilityAnnotations(panning: Bool = false) {
-        //TODO: Look into caching annotations like the main app
-        self.mapView.removeAnnotations(self.mapView.annotations)
+    private func addAndShowFacilityAnnotations(facilities: [Facility], panning: Bool = false) {
+        // Only add facilities not already in the list
+        let facilitiesToAdd = facilities.filter() { return !self.facilities.contains($0) }
+        self.facilities += facilitiesToAdd
+        self.spotCardCollectionView.reloadData()
+        
         if let placeDetails = self.predictionPlaceDetails {
             let locationAnnotation = MKPointAnnotation()
             locationAnnotation.coordinate = placeDetails.location.coordinate
             locationAnnotation.title = self.facilities.isEmpty ? LocalizedStrings.NoSpotsFound : ""
             self.mapView.addAnnotation(locationAnnotation)
         }
-        
         var firstAnnotation: FacilityAnnotation?
-        for (i, facility) in self.facilities.enumerate() {
+        for facility in facilitiesToAdd {
+            guard let index = self.facilities.indexOf(facility) else {
+                //Something weird has happened here, let's just move on.
+                continue
+            }
+            
             let facilityAnnotation = FacilityAnnotation(title: facility.title,
                                                         coordinate: facility.location.coordinate,
                                                         facility: facility,
-                                                        index: i)
-            if i == 0 && !panning {
+                                                        index: index)
+            if index == 0 && !panning {
                 firstAnnotation = facilityAnnotation
             }
+            
             self.mapView.addAnnotation(facilityAnnotation)
         }
         self.showSpotCardCollectionView()
         if !panning {
-            self.showAnnotations()
+            let mileInMeters = UnitsOfMeasurement.MetersPerMile.rawValue
+            let coordinateRegion = MKCoordinateRegionMakeWithDistance(self.predictionPlaceDetails!.location.coordinate,
+                                                                      mileInMeters,
+                                                                      mileInMeters)
+            self.mapView.setRegion(coordinateRegion, animated: true)
             self.currentIndex = 0
             
             guard let annotation = firstAnnotation else {
                 return
             }
+            
             self.mapView.selectAnnotation(annotation, animated: true)
         }
     }
@@ -276,18 +300,27 @@ class MapViewController: UIViewController {
                                                             animated: true)
     }
     
+    private func visibleMapViewRadiusInMeters() -> Double {
+        // Convert the difference between max and min latitude to miles for the diameter
+        let diameter = self.mapView.region.span.latitudeDelta
+                            * UnitsOfMeasurement.ApproximateMilesPerDegreeOfLatitude.rawValue
+                            * UnitsOfMeasurement.MetersPerMile.rawValue
+        return diameter / 2
+    }
+    
     //MARK: Google Autocomplete Helpers
     
     private func getPlaceDetails(prediction: GooglePlacesPrediction, completion: (GooglePlaceDetails?) -> ()) {
-        self.startLoading()
+        self.initialLoading = true
         GooglePlacesWrapper.getPlaceDetails(prediction) {
+            [weak self]
             placeDetails, error in
             if let error = error {
-                self.stopLoading()
+                self?.initialLoading = false
                 completion(nil)
             } else {
                 completion(placeDetails)
-                //stopLoading() handled in fetchFacilities()
+                //updating initialLoading handled in fetchFacilities()
             }
         }
     }
@@ -314,26 +347,33 @@ class MapViewController: UIViewController {
                              Optional (Defaults to false)
      */
     private func fetchFacilities(coordinate: CLLocationCoordinate2D, panning: Bool = false) {
+        var maxSearchRadius = self.visibleMapViewRadiusInMeters()
         if !panning {
-            self.startLoading()
+            self.initialLoading = true
+            maxSearchRadius = UnitsOfMeasurement.MetersPerMile.rawValue
         } else {
             self.loadingView.hidden = false
         }
-
+        
         FacilityAPI.fetchFacilities(coordinate,
                                     starts: self.startDate,
                                     ends: self.endDate,
+                                    maxSearchRadius: maxSearchRadius,
                                     completion: {
                                         [weak self]
-                                        facilities, error in
-                                        self?.stopLoading()
-                                        self?.loadingView.hidden = true
-                                        if facilities.isEmpty && !panning {
-                                            AlertView.presentErrorAlertView(LocalizedStrings.Sorry, message: LocalizedStrings.NoSpotsFound, from: self)
-                                        }
+                                        facilities, error, hasMorePages in
                                         
-                                        self?.facilities = facilities
-                                        self?.addAndShowFacilityAnnotations(panning)
+                                        self?.initialLoading = false
+
+                                        //If there are more pages, show the wee loading view.
+                                        self?.loadingView.hidden = !hasMorePages
+                                        
+                                        if facilities.isEmpty && !panning {
+                                            AlertView.presentErrorAlertView(LocalizedStrings.Sorry,
+                                                message: LocalizedStrings.NoSpotsFound,
+                                                from: self)
+                                        }
+                                        self?.addAndShowFacilityAnnotations(facilities, panning: panning)
             })
     }
     
@@ -381,20 +421,6 @@ class MapViewController: UIViewController {
     }
     
     //MARK: Helpers
-    
-    private func startLoading() {
-        if !self.loading {
-            self.loading = true
-            ProgressHUD.showHUDAddedTo(self.view, withText: LocalizedStrings.Loading)
-        }
-    }
-    
-    private func stopLoading() {
-        if self.loading {
-            self.loading = false
-            ProgressHUD.hideHUDForView(self.view)
-        }
-    }
     
     private func fetchFacilitiesIfPlaceDetailsExists() {
         if let placeDetails = self.predictionPlaceDetails {
