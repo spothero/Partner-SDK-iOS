@@ -20,9 +20,7 @@ import Foundation
  
  - parameter message:  The message you wish to log out.
  */
-//##SWIFTCLEAN_SKIP##
 func DLog(@autoclosure message: () -> String,
-//##SWIFTCLEAN_ENDSKIP##
     filename: StaticString = #file,
     function: StaticString = #function,
     line: UInt = #line) {
@@ -36,9 +34,7 @@ func DLog(@autoclosure message: () -> String,
  
  - parameter message:  The message you wish to log out.
  */
-//##SWIFTCLEAN_SKIP##
 func ALog(@autoclosure message: () -> String,
-//##SWIFTCLEAN_ENDSKIP##
     filename: StaticString = #file,
     function: StaticString = #function,
     line: UInt = #line) {

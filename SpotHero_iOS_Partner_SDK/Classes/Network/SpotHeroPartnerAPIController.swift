@@ -110,14 +110,10 @@ struct SpotHeroPartnerAPIController {
         
         //Pre-flight checks
         if ((noResponseSuccessCompletion != nil && jsonSuccessCompletion != nil) //Both are there
-            //##SWIFTCLEAN_SKIP##
-            || (noResponseSuccessCompletion
-            //^ known bug with swift-clean
-            //##SWIFTCLEAN_ENDSKIP##
-                == nil && jsonSuccessCompletion == nil)) { //both are nil
+            || (noResponseSuccessCompletion == nil && jsonSuccessCompletion == nil)) { //both are nil
             let error = APIError.errorWithDescription("You must select one, JSON success or no response expected success. You cannot has both or neither.",
                                                       andStatusCode: APIError.PartnerSDKErrorCode.InvalidParameter.rawValue)
-            NSOperationQueue.mainQueue().addOperationWithBlock({ 
+            NSOperationQueue.mainQueue().addOperationWithBlock({
                 errorCompletion(error: error)
             })
             return nil
@@ -147,7 +143,7 @@ struct SpotHeroPartnerAPIController {
                     request.HTTPBody = jsonData
                 } catch let error as NSError {
                     //Something went wrong with JSON encoding
-                    NSOperationQueue.mainQueue().addOperationWithBlock({ 
+                    NSOperationQueue.mainQueue().addOperationWithBlock({
                         errorCompletion(error: error)
                     })
                     return nil
@@ -178,10 +174,10 @@ struct SpotHeroPartnerAPIController {
     
     private static func handleResponse(data: NSData?,
                                        _ response: NSURLResponse?,
-                                         _ error: NSError?,
-                                           _ errorCompletion: APIErrorCompletion,
-                                             _ noResponseSuccessCompletion: NoResponseExpectedAPISuccessCompletion?,
-                                               _ jsonSuccessCompletion: JSONAPISuccessCompletion?) {
+                                       _ error: NSError?,
+                                       _ errorCompletion: APIErrorCompletion,
+                                       _ noResponseSuccessCompletion: NoResponseExpectedAPISuccessCompletion?,
+                                       _ jsonSuccessCompletion: JSONAPISuccessCompletion?) {
         
         if ServerEnvironment.ShouldDebugPrintInfo {
             self.debugPrintResponseInfo(response, data: data)
@@ -204,7 +200,7 @@ struct SpotHeroPartnerAPIController {
             }
             
             if let noResponseCompletion = noResponseSuccessCompletion {
-                NSOperationQueue.mainQueue().addOperationWithBlock({ 
+                NSOperationQueue.mainQueue().addOperationWithBlock({
                     noResponseCompletion()
                 })
                 return
@@ -237,13 +233,13 @@ struct SpotHeroPartnerAPIController {
     
     private static func handleDataSuccessWithStatusCode(statusCode: Int,
                                                         andData data: NSData?,
-                                                                errorCompletion: APIErrorCompletion,
-                                                                completion: JSONAPISuccessCompletion) {
+                                                        errorCompletion: APIErrorCompletion,
+                                                        completion: JSONAPISuccessCompletion) {
         guard let returnedData = data else {
             // There ought to be something here.
             let error = APIError.errorWithDescription("No data received. Did you mean to use the NoResponseExpected completion?",
                                                       andStatusCode: APIError.PartnerSDKErrorCode.UnexpectedEmptyResponse.rawValue)
-            NSOperationQueue.mainQueue().addOperationWithBlock({ 
+            NSOperationQueue.mainQueue().addOperationWithBlock({
                 errorCompletion(error: error)
             })
             return
@@ -254,26 +250,18 @@ struct SpotHeroPartnerAPIController {
             return
         }
         
-        guard let actualData = successJSON["data"] as? JSONDictionary else {
-            let jsonError = APIError.parsingError(successJSON)
-            NSOperationQueue.mainQueue().addOperationWithBlock({ 
-                errorCompletion(error: jsonError)
-            })
-            return
-        }
-        
         // Ermahgerd! It worked!
-        NSOperationQueue.mainQueue().addOperationWithBlock { 
-            completion(JSON: actualData)
+        NSOperationQueue.mainQueue().addOperationWithBlock {
+            completion(JSON: successJSON)
         }
     }
     
     private static func handleErrorWithStatusCode(statusCode: Int,
                                                   andData data: NSData?,
-                                                          completion: APIErrorCompletion) {
+                                                  completion: APIErrorCompletion) {
         guard let errorData = data else {
             let error = APIError.errorFromHTTPStatusCode(statusCode)
-            NSOperationQueue.mainQueue().addOperationWithBlock({ 
+            NSOperationQueue.mainQueue().addOperationWithBlock({
                 completion(error: error)
             })
             return
@@ -287,13 +275,13 @@ struct SpotHeroPartnerAPIController {
         do {
             let serverErrors = try ServerErrorJSON(json: errorJSON)
             let error = APIError.errorFromServerJSON(serverErrors, statusCode: statusCode)
-            NSOperationQueue.mainQueue().addOperationWithBlock({ 
+            NSOperationQueue.mainQueue().addOperationWithBlock({
                 completion(error: error)
             })
         } catch let parsingError {
             DLog("Parsing error: \(parsingError)")
             let error = APIError.parsingError(errorJSON)
-            NSOperationQueue.mainQueue().addOperationWithBlock({ 
+            NSOperationQueue.mainQueue().addOperationWithBlock({
                 completion(error: error)
             })
         }
@@ -305,7 +293,7 @@ struct SpotHeroPartnerAPIController {
             let dictionary = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions()) as? JSONDictionary
             return dictionary
         } catch let error as NSError {
-            NSOperationQueue.mainQueue().addOperationWithBlock({ 
+            NSOperationQueue.mainQueue().addOperationWithBlock({
                 errorCompletion(error: error)
             })
             return nil
@@ -341,6 +329,18 @@ struct SpotHeroPartnerAPIController {
             .CurrentEnvironment
             .fullURLStringForEndpoint(endpoint, withQueryItems: queryItems)
         
+        self.dataTaskWithMethod(.GET,
+                                fullURLString: fullURLString,
+                                headers: stringHeaders,
+                                errorCompletion: errorCompletion,
+                                jsonSuccessCompletion: successCompletion)
+    }
+    
+    static func getJSONFromFullURLString(fullURLString: String,
+                                         withHeaders headers: HeaderDictionary,
+                                         errorCompletion: APIErrorCompletion,
+                                         successCompletion: JSONAPISuccessCompletion) {
+        let stringHeaders = APIHeaders.headerStringDict(headers)
         self.dataTaskWithMethod(.GET,
                                 fullURLString: fullURLString,
                                 headers: stringHeaders,

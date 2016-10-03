@@ -35,7 +35,7 @@ class PartnerAPIMockTests: BaseTests {
         super.tearDown()
     }
     
-    private func getFacilities(location: CLLocation, completion: ([Facility], ErrorType?) -> Void) {
+    private func getFacilities(location: CLLocation, completion: FacilityCompletion) {
         if let
             startDate = self.startDate,
             endDate = self.endDate {
@@ -44,7 +44,9 @@ class PartnerAPIMockTests: BaseTests {
                                             ends: endDate,
                                             completion: completion)
         } else {
-            completion([], PartnerAPIMockTestsError.CannotParseDate)
+            completion(facilities: [],
+                       error: PartnerAPIMockTestsError.CannotParseDate,
+                       hasMorePages: false)
             XCTFail("Cannot parse dates")
         }
     }
@@ -52,7 +54,7 @@ class PartnerAPIMockTests: BaseTests {
     func testMockGetFacilities() {
         let expectation = self.expectationWithDescription("Got facilities")
         self.getFacilities(Constants.ChicagoLocation) {
-            facilities, error in
+            facilities, error, hasMorePages in
             
             if let returnedError = error {
                 XCTFail("Unexpected error: \(returnedError)")
@@ -97,7 +99,7 @@ class PartnerAPIMockTests: BaseTests {
         let expectation = self.expectationWithDescription("Created reservation")
         
         self.getFacilities(Constants.ChicagoLocation) {
-            facilities, error in
+            facilities, error, hasMorePages in
             if let returnedError = error {
                 XCTFail("Unexpected error fetching facilities: \(returnedError)")
                 
