@@ -37,6 +37,7 @@ class MapViewController: UIViewController {
             
             //Clear existing facilities
             self.facilities = []
+            self.spotCardCollectionView.reloadData()
             self.mapView.removeAnnotations(self.mapView.annotations)
             
             if details.isAirport() {
