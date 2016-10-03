@@ -280,16 +280,19 @@ class MapViewController: UIViewController {
                 latitudeDelta = max(latitudeDelta, latitude)
                 longitudeDelta = max(longitudeDelta, longitude)
             }
+            // Multiply the deltas by 2 plus some extra padding
+            let multiplier = 2.2
+        
+            latitudeDelta *= multiplier
+            longitudeDelta *= multiplier
         } else {
-            // TODO: Use UnitsOfMeasurement when Ellen's PR is merged
-            latitudeDelta = 0.01449275362
-            longitudeDelta = 0.01449275362
+            // Convert 1 mile to latitude/longitude degrees
+            let delta = 1.0 / UnitsOfMeasurement.ApproximateMilesPerDegreeOfLatitude.rawValue
+            latitudeDelta = delta
+            longitudeDelta = delta
         }
         
-        // Multiply the deltas by 2 plus some extra padding
-        let multiplier = 2.2
-        
-        let region = MKCoordinateRegion(center: placeDetails.location.coordinate, span: MKCoordinateSpan(latitudeDelta: latitudeDelta * multiplier, longitudeDelta: longitudeDelta * multiplier))
+        let region = MKCoordinateRegion(center: placeDetails.location.coordinate, span: MKCoordinateSpan(latitudeDelta: latitudeDelta, longitudeDelta: longitudeDelta))
         
         self.mapView.setRegion(region, animated: true)
     }
