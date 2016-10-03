@@ -316,6 +316,7 @@ class MapViewController: UIViewController {
     }
     
     private func visibleMapViewRadiusInMeters() -> Double {
+        // Convert the difference between max and min latitude to miles for the diameter
         let diameter = self.mapView.region.span.latitudeDelta
                             * UnitsOfMeasurement.ApproximateMilesPerDegreeOfLatitude.rawValue
                             * UnitsOfMeasurement.MetersPerMile.rawValue

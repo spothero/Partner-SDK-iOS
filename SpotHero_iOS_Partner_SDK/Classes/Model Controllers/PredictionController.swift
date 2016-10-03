@@ -18,6 +18,8 @@ protocol PredictionControllerDelegate: class {
 }
 
 class PredictionController: NSObject {
+    let headerFooterHeight: CGFloat = 30
+    
     var predictions = [GooglePlacesPrediction]() {
         didSet {
             guard let delegate = self.delegate?.didUpdatePredictions(self.predictions) else {
@@ -66,6 +68,16 @@ extension PredictionController: UITableViewDelegate {
     func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let view = tableView.dequeueReusableHeaderFooterViewWithIdentifier("predictionFooter")
         return view
+    }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        // Number chosen to match designs
+        return self.headerFooterHeight
+    }
+    
+    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        // Number chosen to match designs
+        return self.headerFooterHeight
     }
 }
 

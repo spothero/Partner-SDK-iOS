@@ -55,7 +55,7 @@ struct FacilityAPI {
             "ends" : endsString,
             "distance__gt" : "\(minSearchRadius)",
             "distance__lt" : "\(maxSearchRadius)",
-            "include" : "facility"
+            "include" : "facility",
         ]
         
         SpotHeroPartnerAPIController.getJSONFromEndpoint("partner/v1/facilities/rates",
@@ -77,11 +77,8 @@ struct FacilityAPI {
             let actualData = try JSON.shp_dictionary("data") as JSONDictionary
             let metaData = try JSON.shp_dictionary("meta") as JSONDictionary
             let results = try actualData.shp_array("results") as [JSONDictionary]
-            var facilities = [Facility]()
-            for result in results {
-                let facility = try Facility(json: result)
-                facilities.append(facility)
-            }
+            
+            let facilities = results.flatMap { return try? Facility(json: $0) }
             
             let facilitiesWithRates = facilities.filter { !$0.availableRates.isEmpty }
             var nextURLString = metaData["next"] as? String
@@ -123,8 +120,10 @@ struct FacilityAPI {
             
             guard let nextURLString = mappedJSON.nextURLString
                     where nextURLString != FacilityAPI.NextURLString else {
-                //We're done loading, hide the activity indicator.
+                //We're done loading, hide the activity indicator and reset the next URL string
                 UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+                FacilityAPI.NextURLString = nil
+                                                
                 // Call the completion block and let them know we're out of pages.
                 completion(facilities: facilitiesWithRates, error: error, hasMorePages: false)
                 return
