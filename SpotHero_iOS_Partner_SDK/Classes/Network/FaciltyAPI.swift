@@ -120,8 +120,10 @@ struct FacilityAPI {
             
             guard let nextURLString = mappedJSON.nextURLString
                     where nextURLString != FacilityAPI.NextURLString else {
-                //We're done loading, hide the activity indicator.
+                //We're done loading, hide the activity indicator and reset the next URL string
                 UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+                FacilityAPI.NextURLString = nil
+                                                
                 // Call the completion block and let them know we're out of pages.
                 completion(facilities: facilitiesWithRates, error: error, hasMorePages: false)
                 return
