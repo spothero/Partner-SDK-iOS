@@ -272,12 +272,18 @@ class MapViewController: UIViewController {
         // Loop through all annotations
         // Find the the difference in latitude and longitude from the searched location and the annotation and take the absolute value
         // Set the latitude and longitude deltas to the the new value if it is greater than the current value
-        for annotation in self.mapView.annotations {
-            let latitude = abs(placeDetails.location.coordinate.latitude - annotation.coordinate.latitude)
-            let longitude = abs(placeDetails.location.coordinate.longitude - annotation.coordinate.longitude)
-            
-            latitudeDelta = max(latitudeDelta, latitude)
-            longitudeDelta = max(longitudeDelta, longitude)
+        if self.mapView.annotations.count > 1 {
+            for annotation in self.mapView.annotations {
+                let latitude = abs(placeDetails.location.coordinate.latitude - annotation.coordinate.latitude)
+                let longitude = abs(placeDetails.location.coordinate.longitude - annotation.coordinate.longitude)
+                
+                latitudeDelta = max(latitudeDelta, latitude)
+                longitudeDelta = max(longitudeDelta, longitude)
+            }
+        } else {
+            // TODO: Use UnitsOfMeasurement when Ellen's PR is merged
+            latitudeDelta = 0.01449275362
+            longitudeDelta = 0.01449275362
         }
         
         // Multiply the deltas by 2 plus some extra padding
