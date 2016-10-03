@@ -34,6 +34,13 @@ class ProgressHUD: UIView {
             }
         #endif
         
+        // Don't show if it is already being shown
+        for subView in view.subviews {
+            if subView.isKindOfClass(ProgressHUD) {
+                return
+            }
+        }
+        
         progressView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
         progressView.center = CGPoint(x: view.bounds.width / 2, y: view.bounds.height / 2)
         progressView.layer.cornerRadius = HeightsAndLengths.standardCornerRadius
