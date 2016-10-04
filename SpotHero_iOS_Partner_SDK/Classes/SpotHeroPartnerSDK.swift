@@ -62,9 +62,17 @@ public class SpotHeroPartnerSDK: NSObject {
         navController.navigationBar.tintColor = self.textColor
         navController.navigationBar.barTintColor = self.tintColor
 
-        viewController.presentViewController(navController,
-                                             animated: true,
-                                             completion: completion)
+        APIKeyConfig.sharedInstance.getKeys {
+            success in
+            if success {
+                viewController.presentViewController(navController,
+                    animated: true,
+                    completion: completion)
+            } else {
+                assertionFailure("Unable to get API Keys")
+            }
+        }
+        
     }
     
     //MARK: -  Error keys

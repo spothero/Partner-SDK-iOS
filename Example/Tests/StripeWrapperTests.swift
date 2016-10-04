@@ -10,9 +10,10 @@ import XCTest
 
 @testable import SpotHero_iOS_Partner_SDK
 
-class StripeWrapperTests: XCTestCase {
+class StripeWrapperTests: BaseTests {
 
-    func testGetToken() {
+    // TODO unskip this when we get a staging stripe token
+    func skip_testGetToken() {
         let expectation = self.expectationWithDescription("testGetToken")
         
         StripeWrapper.getToken(Constants.TestCreditCardNumber,
