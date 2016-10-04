@@ -49,7 +49,7 @@ public enum ServerEnvironment {
     }
     
     public var stripeAPIKey: String {
-        return Config.sharedInstance.stripeApiKey
+        return APIKeyConfig.sharedInstance.stripeApiKey
     }
     
     public var apiBaseURLString: String {

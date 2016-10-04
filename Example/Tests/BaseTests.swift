@@ -20,7 +20,7 @@ class BaseTests: XCTestCase {
     
     override func setUp() {
         let expectation = self.expectationWithDescription("Retrieved API Keys")
-        Config.sharedInstance.getKeys {
+        APIKeyConfig.sharedInstance.getKeys {
             success in
             expectation.fulfill()
             XCTAssert(success)

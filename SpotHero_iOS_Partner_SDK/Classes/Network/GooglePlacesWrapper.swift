@@ -22,7 +22,7 @@ typealias GooglePlaceDetailsCompletion = (GooglePlaceDetails?, ErrorType?) -> (V
 struct GooglePlacesWrapper {
     static let Host = "maps.googleapis.com"
     static let Scheme = "https"
-    static let KeyQueryItem = NSURLQueryItem(name: "key", value: Config.sharedInstance.googleApiKey)
+    static let KeyQueryItem = NSURLQueryItem(name: "key", value: APIKeyConfig.sharedInstance.googleApiKey)
     
     /**
      Finds Predictions based on a string

@@ -8,8 +8,8 @@
 
 import Foundation
 
-class Config {
-    static let sharedInstance = Config()
+class APIKeyConfig {
+    static let sharedInstance = APIKeyConfig()
     
     private (set) var googleApiKey = ""
     private (set) var stripeApiKey = ""
