@@ -6,9 +6,9 @@ Pod::Spec.new do |s|
     s.description      = <<-DESC
 An SDK that allows your users to book SpotHero parking directly from within your app.
                             DESC
-    s.homepage         = 'https://github.com/spothero/iOS_Partner_SDK'
+    s.homepage         = 'https://github.com/spothero/Partner-SDK-iOS'
     s.author           = { 'SpotHero Mobile' => 'mobile@spothero.com' }
-    s.source           = { :git => 'https://github.com/spothero/iOS_Partner_SDK.git', :tag => s.version.to_s }
+    s.source           = { :git => 'https://github.com/spothero/Partner-SDK-iOS.git', :tag => s.version.to_s }
     s.social_media_url = 'https://twitter.com/SpotHero'
     s.source_files = 'SpotHero_iOS_Partner_SDK/Classes/**/*'
 
