@@ -38,6 +38,12 @@ class DatePickerView: UIView {
         self.updateMinimumStartDate()
         self.datePicker.date = NSDate().shp_roundDateToNearestHalfHour(roundDown: true)
     }
+    
+    var minimumStartDate: NSDate {
+        get {
+            return self.datePicker.minimumDate ?? NSDate()
+        }
+    }
 
     /**
      Updates the minimum date of the date picker view. 
