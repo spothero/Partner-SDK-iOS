@@ -1,5 +1,5 @@
 //
-//  Config.swift
+//  APIKeyConfig.swift
 //  Pods
 //
 //  Created by SpotHeroMatt on 10/4/16.
