@@ -24,6 +24,9 @@ class BaseTests: XCTestCase {
             success in
             expectation.fulfill()
             XCTAssert(success)
+            XCTAssertNotNil(APIKeyConfig.sharedInstance.googleApiKey)
+            XCTAssertNotNil(APIKeyConfig.sharedInstance.stripeApiKey)
+            XCTAssertNotNil(APIKeyConfig.sharedInstance.mixpanelApiKey)
         }
         self.waitForExpectationsWithTimeout(10.0, handler: nil)
     }
