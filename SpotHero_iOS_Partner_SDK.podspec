@@ -12,8 +12,7 @@ An SDK that allows your users to book SpotHero parking directly from within your
     s.social_media_url = 'https://twitter.com/SpotHero'
     s.source_files = 'SpotHero_iOS_Partner_SDK/Classes/**/*'
 
-#TODO: Update these as we go along
-    # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
+    s.screenshots     = 'https://github.com/spothero/Partner-SDK-iOS/tree/master/readme_img/stock.png'
     s.resource_bundles = {
         'SpotHero_iOS_Partner_SDK' => ['SpotHero_iOS_Partner_SDK/Assets/*.{png,storyboard,lproj,xcassets,xib}']
     }
