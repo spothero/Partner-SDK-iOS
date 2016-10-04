@@ -208,6 +208,11 @@ class MapViewController: UIViewController {
         self.mapView.accessibilityLabel = AccessibilityStrings.MapView
     }
     
+    private func setCenterCell() {
+        let itemIndex = NSIndexPath(forItem: self.currentIndex, inSection: 0)
+        self.centerCell = self.spotCardCollectionView.cellForItemAtIndexPath(itemIndex) as? SpotCardCollectionViewCell
+    }
+    
     /**
      Adds annotations to the map
      
@@ -322,7 +327,6 @@ class MapViewController: UIViewController {
     
     private func scrollToSpotCard(withIndexPath indexPath: NSIndexPath) {
         self.currentIndex = indexPath.row
-        self.centerCell = self.spotCardCollectionView.cellForItemAtIndexPath(indexPath) as? SpotCardCollectionViewCell
         self.spotCardCollectionView.scrollToItemAtIndexPath(indexPath,
                                                             atScrollPosition: .None,
                                                             animated: true)
@@ -639,14 +643,21 @@ extension MapViewController: UICollectionViewDataSource {
 
 extension MapViewController: UICollectionViewDelegate {
     func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
-        let itemIndex = NSIndexPath(forItem: self.currentIndex, inSection: 0)
-        self.centerCell = self.spotCardCollectionView.cellForItemAtIndexPath(itemIndex) as? SpotCardCollectionViewCell
+        self.setCenterCell()
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         if let cell = collectionView.cellForItemAtIndexPath(indexPath) where cell !== self.centerCell {
             self.scrollToSpotCardThenSelectAnnotation(withIndexPath: indexPath)
         }
+    }
+}
+
+//MARK: UIScrollViewDelegate
+
+extension MapViewController: UIScrollViewDelegate {
+    func scrollViewDidEndScrollingAnimation(scrollView: UIScrollView) {
+        self.setCenterCell()
     }
 }
 
