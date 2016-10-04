@@ -250,7 +250,6 @@ class MapViewController: UIViewController {
                                                                       self.defaultSearchRadius,
                                                                       self.defaultSearchRadius)
             self.mapView.setRegion(coordinateRegion, animated: true)
-            self.currentIndex = 0
             
             guard let annotation = firstAnnotation else {
                 return
