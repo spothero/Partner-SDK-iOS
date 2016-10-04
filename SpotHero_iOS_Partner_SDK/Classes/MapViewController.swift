@@ -192,10 +192,10 @@ class MapViewController: UIViewController {
                 self.timeSelectionView.endDate = updatedEndDate
                 self.didChangeStartEndDate(startDate: self.startDate, endDate: updatedEndDate)
             }
+            
+            //Update any existing search to ensure shown prices are accurate.
+            self.fetchFacilitiesIfPlaceDetailsExists()
         }
-        
-        //Update any existing search to ensure shown prices are accurate.
-        self.fetchFacilitiesIfPlaceDetailsExists()
     }
     
     //MARK: MapView & Spot Cards Helpers
