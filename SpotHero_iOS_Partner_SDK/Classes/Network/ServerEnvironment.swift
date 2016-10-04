@@ -49,14 +49,7 @@ public enum ServerEnvironment {
     }
     
     public var stripeAPIKey: String {
-        switch self {
-        case .Production:
-            return "pk_Upwuor56YhI3bn8eyKsTVzMzRNtkJ"
-        case .Staging:
-            return "pk_pVrZECFdsvN2AS2UpLXO4CCPnziai"
-        default:
-            return ""
-        }
+        return Config.sharedInstance.stripeApiKey
     }
     
     public var apiBaseURLString: String {
