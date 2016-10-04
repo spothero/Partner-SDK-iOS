@@ -37,6 +37,7 @@ class MapViewController: UIViewController {
             
             //Clear existing facilities
             self.facilities = []
+            self.currentIndex = 0
             self.spotCardCollectionView.reloadData()
             self.mapView.removeAnnotations(self.mapView.annotations)
             
@@ -192,10 +193,10 @@ class MapViewController: UIViewController {
                 self.timeSelectionView.endDate = updatedEndDate
                 self.didChangeStartEndDate(startDate: self.startDate, endDate: updatedEndDate)
             }
+            
+            //Update any existing search to ensure shown prices are accurate.
+            self.fetchFacilitiesIfPlaceDetailsExists()
         }
-        
-        //Update any existing search to ensure shown prices are accurate.
-        self.fetchFacilitiesIfPlaceDetailsExists()
     }
     
     //MARK: MapView & Spot Cards Helpers
@@ -241,13 +242,14 @@ class MapViewController: UIViewController {
             
             self.mapView.addAnnotation(facilityAnnotation)
         }
-        self.showSpotCardCollectionView()
+        
+        self.showSpotCardCollectionView(scrolledToIndex: self.currentIndex)
+        
         if !panning {
             let coordinateRegion = MKCoordinateRegionMakeWithDistance(self.predictionPlaceDetails!.location.coordinate,
                                                                       self.defaultSearchRadius,
                                                                       self.defaultSearchRadius)
             self.mapView.setRegion(coordinateRegion, animated: true)
-            self.currentIndex = 0
             
             guard let annotation = firstAnnotation else {
                 return
@@ -296,9 +298,11 @@ class MapViewController: UIViewController {
         self.mapView.setRegion(region, animated: true)
     }
     
-    private func showSpotCardCollectionView() {
+    private func showSpotCardCollectionView(scrolledToIndex index: Int) {
         self.spotCardCollectionView.hidden = false
         self.spotCardCollectionView.reloadData()
+        
+        self.scrollToSpotCard(withIndexPath: NSIndexPath(forItem: index, inSection: 0))
     }
     
     private func scrollToSpotCardThenSelectAnnotation(withIndexPath indexPath: NSIndexPath) {
