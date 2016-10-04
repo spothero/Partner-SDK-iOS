@@ -179,10 +179,9 @@ class MapViewController: UIViewController {
         self.datePickerView?.updateMinimumStartDate()
         
         // Make sure when coming back from the background that the start date is not before
-        // the booking interval.
-        let now = NSDate()
-        if self.startDate.shp_isAfterDate(now) {
-            let updatedStartDate = now.shp_roundDateToNearestHalfHour(roundDown: true)
+        // the minimum start date.
+        if self.startDate.shp_isBeforeDate(self.datePickerView.minimumStartDate) {
+            let updatedStartDate = self.datePickerView.minimumStartDate // already rounded.
             self.timeSelectionView.startDate = updatedStartDate
             self.didChangeStartEndDate(startDate: updatedStartDate, endDate: self.endDate)
             
