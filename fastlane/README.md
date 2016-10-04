@@ -1,0 +1,36 @@
+fastlane documentation
+================
+# Installation
+```
+sudo gem install fastlane
+```
+# Available Actions
+## iOS
+### ios test
+```
+fastlane ios test
+```
+Runs all the tests of the app and gathers code coverage
+### ios test_8
+```
+fastlane ios test_8
+```
+Runs all the tests of the app and gathers code coverage on Xcode 8
+### ios test_all
+```
+fastlane ios test_all
+```
+Runs all the tests of the app and gathers code coverage across all versions of xcode
+### ios sample_itc
+```
+fastlane ios sample_itc
+```
+Method to run after a successful merge.
+
+Will bump/commit/tag/push the version and upload to iTunes Connect.
+
+----
+
+This README.md is auto-generated and will be re-generated every time [fastlane](https://fastlane.tools) is run.
+More information about fastlane can be found on [https://fastlane.tools](https://fastlane.tools).
+The documentation of fastlane can be found on [GitHub](https://github.com/fastlane/fastlane/tree/master/fastlane).

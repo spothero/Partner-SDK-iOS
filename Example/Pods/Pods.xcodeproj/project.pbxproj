@@ -1,0 +1,2377 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		04A82C087D24C9F82BE00552458BCBA2 /* UnitsOfMeasurement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4431A880C80CEE68FECCB08138196E /* UnitsOfMeasurement.swift */; };
+		05856463520A04D15A5F2C657E06C942 /* KIFUITestActor.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DE166392A59BF3193915D7C04DC509 /* KIFUITestActor.m */; };
+		069F4192ECF76A5967C73A692AF97B51 /* KIFAccessibilityEnabler.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B3DC643A090782402F0D38E61A5C5C6 /* KIFAccessibilityEnabler.m */; };
+		08050954512BC37FF95E5EB4F23DF2C8 /* KIFUITestActor-ConditionalTests.h in Headers */ = {isa = PBXBuildFile; fileRef = AE4AEF9BB40713DD8A137E7914FB7C48 /* KIFUITestActor-ConditionalTests.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		08C36943DBE0C12A28C58EF08E700AD4 /* VOKBenkode-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5DD8AEB4125F372055C269CA62A172 /* VOKBenkode-dummy.m */; };
+		0A5FA559B0951C4714A7E81D65E373A4 /* VOKBenkode.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DCB61DE61D8B651F49EE3470324FAB2 /* VOKBenkode.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0E696E98B16C59A6AD10807E246A5511 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44EE72E22B15FDAF57F9EE6D2EE224D5 /* Foundation.framework */; };
+		0F60EB8D2BE86E3663CBC308A0FBA88A /* TimeSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6393BD8F776BA36B9ED39DB2C6C2937D /* TimeSelectionView.swift */; };
+		12AC30A8BBD2D158AE154DD3E358D754 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44EE72E22B15FDAF57F9EE6D2EE224D5 /* Foundation.framework */; };
+		12F5BF580B01D11B3F58360D71F1A7CF /* SpotHeroPartnerAPIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4843F5F80C627641BEACC18378B8646E /* SpotHeroPartnerAPIController.swift */; };
+		162B12F5680B9A66C77CEA881F353A7E /* KIFUIObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FC79E7BBF43F066DFF9EB87D51061921 /* KIFUIObject.m */; };
+		167DE4242C0634054845621E9B7F722F /* UIColor+SpotHeroPartner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A2073789F1B7F0BA50232D8F45891C /* UIColor+SpotHeroPartner.swift */; };
+		178F85DD2117134FD05C9F76E73D7930 /* SpotCardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE5B207916E62EE6552853C7FA7CF79 /* SpotCardCollectionViewCell.swift */; };
+		17C9F2D4C7814EA39BD83EAFB65D88A0 /* HeightsAndLengths.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E03E007C7F87C20D731861A317B08D /* HeightsAndLengths.swift */; };
+		1884983D6D196A42E1BC81DC044F29D0 /* HTTPHeaderFields.m in Sources */ = {isa = PBXBuildFile; fileRef = 33475DCFAD041DE4DE25A6AEB9C41CCF /* HTTPHeaderFields.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		193A81B1776D2369F4FC9E6286795DA8 /* Pods-SpotHero_iOS_Partner_SDK_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2684D36E1DF39EED96E5B6EA84EDF8CF /* Pods-SpotHero_iOS_Partner_SDK_Tests-dummy.m */; };
+		1B28003849DE02143943FE92F3DFEB10 /* XCTestCase-KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9612B1BD916149C0655E7EAC43A23A89 /* XCTestCase-KIFAdditions.m */; };
+		1E299951E56B748702CFAEB5E29BE99F /* UIAccessibilityElement-KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C68716BC527FC9871B770B9C6F6965F /* UIAccessibilityElement-KIFAdditions.m */; };
+		1F2DDC75F2FC75B65632FF2E6AE95F2E /* UIEvent+KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BEDA75377328053174054C6A5833D42F /* UIEvent+KIFAdditions.m */; };
+		217C37C5B0EB229F4E98A4F9703D61BE /* KIFUIViewTestActor.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A12DFA58738ADA0A672FE53663024FD /* KIFUIViewTestActor.m */; };
+		226E515781459EB5B7B504765084C2DB /* ILGHttpConstants.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0517F0DBBD81C6D6B15B505CFA2FA484 /* ILGHttpConstants.framework */; };
+		22E4A6BF36E392DC5E21DA4346F5F4EC /* NSException-KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E3144748FFC69E335D6763D1AA79143C /* NSException-KIFAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		234EF6DA51E46EA68E978353DE6B9C22 /* KIFSystemTestActor.h in Headers */ = {isa = PBXBuildFile; fileRef = 7895D8168A4FBEFD5D1FB554B3300ED9 /* KIFSystemTestActor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		259DA652410E563D6B1B5F11F810E005 /* ILGHttpConstants-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F8E91F97381005CCA5971CFDC42B11D /* ILGHttpConstants-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27B6FD9D32F66B18694AEB0D1AAAD61F /* ILGHttpConstants-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 108DBB169E266E6EC3FDB9CBDDF95C03 /* ILGHttpConstants-dummy.m */; };
+		28699E1FD11EC92237ACECAE6BB714E8 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C2DBE3F457BF416F24E38FC92AEE68B /* MapKit.framework */; };
+		29BA68E356E8AB2E7D1E8FF3F0DD87C4 /* UIView-Debugging.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AF5BE3DF0710E4168CC8C90C1B93579 /* UIView-Debugging.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2AA2EC24DE4E712455C03C3C24D7D0C4 /* Facility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E05208D03C85061143520A151BD0BF9 /* Facility.swift */; };
+		2C21AC6FF6CF49C58E3484CAF38B42C7 /* UIWindow-KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = BD85043557276A5A74C98EA80F496FA1 /* UIWindow-KIFAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		32E719C922BE98B0ACA097CD763024A7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8D222BAE84DEBE8D060E3DF47BD9C42 /* CoreGraphics.framework */; };
+		333BA472101F58E064B1460B2A1B5FD0 /* VOKBenkode.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4CF7A50631AF2A005CAC54E0AFE35A /* VOKBenkode.m */; };
+		337E3E7D6863800E4F547AB0DEA58DC7 /* ProgressHUD.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AA421B7404FCAFDDA5CE9A1ED498ABA /* ProgressHUD.xib */; };
+		3391D7901D9DA7F8009A42B8 /* NSDate+Comparison.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3391D78F1D9DA7F8009A42B8 /* NSDate+Comparison.swift */; };
+		33BFC40A1D9F41B700F7C37F /* FaciltyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BFC4091D9F41B700F7C37F /* FaciltyAPI.swift */; };
+		33BFC40C1D9F4FF800F7C37F /* FacilityAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BFC40B1D9F4FF800F7C37F /* FacilityAnnotation.swift */; };
+		33BFC40E1D9F504300F7C37F /* ReservationAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BFC40D1D9F504300F7C37F /* ReservationAPI.swift */; };
+		33BFC4101D9F508900F7C37F /* ValidatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BFC40F1D9F508900F7C37F /* ValidatorCell.swift */; };
+		33BFC4121D9F50A200F7C37F /* CountableIntEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BFC4111D9F50A200F7C37F /* CountableIntEnum.swift */; };
+		33BFC4141D9F50BA00F7C37F /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BFC4131D9F50BA00F7C37F /* DatePickerView.swift */; };
+		33BFC4161D9F50C900F7C37F /* PredictionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BFC4151D9F50C900F7C37F /* PredictionTableViewCell.swift */; };
+		33BFC4181D9F510000F7C37F /* KeyboardNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BFC4171D9F510000F7C37F /* KeyboardNotification.swift */; };
+		37AFD24C3C8DD7317DBD56FEAED7A065 /* NSPredicate+KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D957AD40B2EADE4637A2E7B0B563ED88 /* NSPredicate+KIFAdditions.m */; };
+		38007BB4FC7A7FDFDE71FC4BB1833CA0 /* SpotHero_iOS_Partner_SDK-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 66FE110AD3FCF0BE89B8C745B4E8D69E /* SpotHero_iOS_Partner_SDK-dummy.m */; };
+		38CA7CF4457FD0B66845EABD43C8747D /* UIScreen+KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = A19B44EF688D4A3ABE53616188E2985E /* UIScreen+KIFAdditions.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		3C16F9A9A5453AAE897BCC728858DC00 /* APIHeaders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126B6FC65528F8F249F2DD5BBA889C7E /* APIHeaders.swift */; };
+		3D4A63A5FC9B24D420237883B2526253 /* StripeWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0746705D5D433CB9AD081E2F3B68264D /* StripeWrapper.swift */; };
+		409E617709140C4768835D16D1EE93D6 /* UIWindow-KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BB681286D9D7F769D8D9F685ACF69B3 /* UIWindow-KIFAdditions.m */; };
+		417ABF4EAD140DFE58B2E13EEDE2FD3C /* NSDate+DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147262C01BCE60B257AA3F193E3EEFEE /* NSDate+DateFormatter.swift */; };
+		4A75F0B7F0176F2D7C4F2EBAE46D8089 /* UIView-KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B219DF247E2CF50E129FC74BE7B664 /* UIView-KIFAdditions.m */; };
+		4B002FCDA3266B58A34211BBC50D400F /* UITouch-KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F459F139927FC3DD9C72D21435742E30 /* UITouch-KIFAdditions.m */; };
+		4D4D915C5DB41140AFE90F6A10CF5309 /* IOHIDEvent+KIF.h in Headers */ = {isa = PBXBuildFile; fileRef = 357CF9B284B7BDB96189A781EAD3C7B1 /* IOHIDEvent+KIF.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4F34981032C2403C02D531C12396079C /* ServerEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C08EACF14E88D07E6F255749DF2ED5E /* ServerEnvironment.swift */; };
+		5083FE402C902E16AD380E92DCAB9A9F /* CAAnimation+KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 80AC677903BBC3145691D9DAE849FBB4 /* CAAnimation+KIFAdditions.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		531841026ABB73DA0B1357AD71CD343B /* SpotHero_iOS_Partner_SDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 030A1525F39C146F0AE433430ED38B60 /* SpotHero_iOS_Partner_SDK.bundle */; };
+		533355686AFEBD690804112DD46AD635 /* UITableView-KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 4DFDEECAF3E437C8FA734C4C2167C9A3 /* UITableView-KIFAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5772B10C590ADA538AE7ECE311DFF347 /* AccessibilityStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCAA22231D2F9F63B29CF71FC19CDAC /* AccessibilityStrings.swift */; };
+		5917C8CC36C8D842B7089A39F07CA44B /* KIFTestStepValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 866438039E504224B30AAEF7B79243F4 /* KIFTestStepValidation.m */; };
+		5987915EAD9F7739863FCFEA312420E5 /* Pods-SpotHero_iOS_Partner_SDK_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 07697703F62E04514A84CD427DBC0A21 /* Pods-SpotHero_iOS_Partner_SDK_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5C47B9243EFD57C5D4300AB10BA942C6 /* KIFUITestActor.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C193B25C1810BBD872ECB28FFB54ADC /* KIFUITestActor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5EB333AB52E7780ABF359AEAC4A0549D /* KIFAccessibilityEnabler.h in Headers */ = {isa = PBXBuildFile; fileRef = FE0DDBE7673615D3F562FE93010094A7 /* KIFAccessibilityEnabler.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5FBAA909FCCF323BAF0F5DE579BFA4F2 /* HTTPMethods.h in Headers */ = {isa = PBXBuildFile; fileRef = 47B12878D4433F7E7B446830522A141D /* HTTPMethods.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		606C9DC52EAFAA3D95D61A99B7EE3D49 /* VOKMockUrlProtocol-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FFF533926512C588619E82503028867 /* VOKMockUrlProtocol-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		635621291F8E488162462F77A8585FE8 /* UITableView-KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 023428660D7E49A326EF10FDEAA3E672 /* UITableView-KIFAdditions.m */; };
+		63E3B5E38461EC6BB2DF38AE19A716F4 /* UIView-Debugging.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BCF7530600392CA1FC2089789BEA0BA /* UIView-Debugging.m */; };
+		646941F1C8A371A2F136AB36F51C4F1B /* NSString+KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 60801F84415AFC96278BDB90792D8D59 /* NSString+KIFAdditions.m */; };
+		651321C727591FE0BB021BE0AFA8E5FD /* UIApplication-KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 86D9F639B5B9062BC711E85881EA2910 /* UIApplication-KIFAdditions.m */; };
+		674501A5C68EA1A9A4C20D06B7151F1A /* Pods-SpotHero_iOS_Partner_SDK_ExampleUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 34F191306BE13B0604226705D0A83380 /* Pods-SpotHero_iOS_Partner_SDK_ExampleUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		67B0936D159937C69ADDBA09F37DEEDF /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7E473D7492C3D1D2B4CA2BDCDB989F /* Formatter.swift */; };
+		68073D8C7625423C5B028BE904442914 /* UIAutomationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 036DD618FD754A6F142E66AB78AD2978 /* UIAutomationHelper.m */; };
+		6854B582E4FA98D5F12ADE81AE6CC4C6 /* CollapsedSearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93F192D0BAEA7B86E19CB1F9D8A1347 /* CollapsedSearchBarView.swift */; };
+		68E2555A42644EC8B1E28C30A33B202E /* SpotHeroPartnerNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D2D6BDA9C499AC6C270610CCFBE0E2 /* SpotHeroPartnerNavigationController.swift */; };
+		6AB2B66F4AADD488BC6674C9CC92C9CC /* CGGeometry-KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 262E04DE4EC83F0C63F6BF60D0E189BA /* CGGeometry-KIFAdditions.m */; };
+		6B31FE7D8EC8521EAB31A3EC024D84BE /* UIEvent+KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A17C7ED0DEB8DF18262CC7E68C63A1E /* UIEvent+KIFAdditions.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		6F4674E6D69F73F81C333F75CB3427B7 /* ServerErrorJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB1F1B91D91AD57CA47F7B7BA14C27F /* ServerErrorJSON.swift */; };
+		73D0CB7F53B76A46582023F0177CEFE6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089BA0E413245F450C1D5EC080359E01 /* Constants.swift */; };
+		745AFD5190CD4DE0083B6DF8547466E7 /* DLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57DED3B6943DFCF24EBD206F63B4A71 /* DLog.swift */; };
+		77AA555B4098F00713A6D89F64ADDDDE /* KIFTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 65E8436FAA6A010A09344F4A685712D1 /* KIFTestCase.m */; };
+		77FD519E64E813EF334A963CB4CECE3C /* KIFTestStepValidation.h in Headers */ = {isa = PBXBuildFile; fileRef = F52CD6475F314B386CB1471CF001ADB2 /* KIFTestStepValidation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		79FB533D7CB70F0C6760ACD39121776D /* Rate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043AF825F9CDCB37823B5648EAAFB7FF /* Rate.swift */; };
+		7AA609E416482159356DBCF734F9D0E9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44EE72E22B15FDAF57F9EE6D2EE224D5 /* Foundation.framework */; };
+		7C00AF68DA8D9A43FB5A0D0E6F185538 /* IOHIDEvent+KIF.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B2885101A68B5288F8985640400A67 /* IOHIDEvent+KIF.m */; };
+		7E685FDA4255E1EA66188C5932AA6DB3 /* NSFileManager-KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE3DF01C196343E228B7800413F14B3 /* NSFileManager-KIFAdditions.m */; };
+		7F0A300C99805F759E0788B38CC2D375 /* VOKMockUrlProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = B9B57B04FEA617ADAB2C10BD467E0C73 /* VOKMockUrlProtocol.m */; };
+		7FDB50A386F2F1829EAE739B5E4D5655 /* NSString+KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 939D0D61929FE6B2946996A630EBA746 /* NSString+KIFAdditions.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		7FFCFA9B5EA2FB85E726A8E7A7C7B1F1 /* KIF-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3414DF7CD6094902EFFDD6AF92AE935E /* KIF-dummy.m */; };
+		80E5EAD32F18874FE4D10EB119893D01 /* StringEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCC5CD29192D0AE640C28C44790B222 /* StringEnum.swift */; };
+		820281C03CEB6B77AB722DB925900D4B /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69E8D4B16C35EB8DD5E799A8A84A4B49 /* Validator.swift */; };
+		8508DA7AA97287A5AD3D5258D901FABD /* GooglePlacesPrediction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E5F087C562F2B88DA514B7DB632B75 /* GooglePlacesPrediction.swift */; };
+		87E172EB2DAE3FBBAA4F92EB2F9F6E6A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57F859535A911D731946724AB9E1FBD4 /* UIKit.framework */; };
+		88584332FE7B2CF91C794CB4825F0E43 /* KIFUITestActor-ConditionalTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 691535177390B46DB27DCC6BFD38D833 /* KIFUITestActor-ConditionalTests.m */; };
+		88E4A7881BAF15E5961C022878FFC7CC /* GooglePredictionTableFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBBADA0C564612CD0A2FD287A04C1B00 /* GooglePredictionTableFooter.xib */; };
+		8AAF01CFD2D493D5C3003D707C9124B3 /* CAAnimation+KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 72B48CB1BECA5369BEA055509EAE68C6 /* CAAnimation+KIFAdditions.m */; };
+		8B3D8E8C84DE44FA1674A906CF0A8B7E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44EE72E22B15FDAF57F9EE6D2EE224D5 /* Foundation.framework */; };
+		8B713C80FC8134539536136CBECA4C40 /* NSError-KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = FB46DF40571D77DF0B6A0CC3B512D4F1 /* NSError-KIFAdditions.m */; };
+		8BBE2B2C7DC7AECD381263A8985138E3 /* KIF-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = FDDE33C5BCB4BFFB00FA49E31E86B362 /* KIF-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8E573001B87C5AADBB994D55B294B3F9 /* GooglePlacesWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DDEA34C5FFBD7166C8431AFB3029C9C /* GooglePlacesWrapper.swift */; };
+		942B535D5CB86055632F63509E6AB337 /* Pods-SpotHero_iOS_Partner_SDK_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C0A0C46C6A2D321077A532B60B60D0D /* Pods-SpotHero_iOS_Partner_SDK_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		944B7349B89ED856B82CF0E2B783CDEF /* CheckoutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893AEA1DAD7DF249CE4688A409C76DB1 /* CheckoutTableViewController.swift */; };
+		9835B2A258BABC40B5AE9EC6649739FC /* UIView-KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 550F02F58791DE679A4CAB5CD84FC2EF /* UIView-KIFAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9899D7A99B401AEB70284EFF616CCAF5 /* UIAutomationHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 1D1BA75382E22E513D93B5C6BEDF8C17 /* UIAutomationHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9934F594895B7B937160AE96B66B1EC0 /* SpotHero_iOS_Partner_SDK-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 238D6C429A5DA9D357266CA0EBD36B75 /* SpotHero_iOS_Partner_SDK-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9D27E47BB19445E395EE3DF53040785A /* PersonalInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942F27EF05262AE5CCA0FA8CD008E722 /* PersonalInfoTableViewCell.swift */; };
+		9E7893AE5908B8B165303A362D93AAB1 /* NSBundle+SpotHeroPartner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF3D514A9845A230A5E49FD2AEA768B /* NSBundle+SpotHeroPartner.swift */; };
+		9FB8E923C926350D0C665F76D97E7601 /* NSFileManager-KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 1EAE28440FDA8925EDAF637CEED209D0 /* NSFileManager-KIFAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A172DD97DF6F9DE7FDA8B935C3ADAFA2 /* LoadableCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 41CA1169E160FF78258961D228E65B42 /* LoadableCategory.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		A60D4AFADBD4CD0CC1DECEEE13076D0D /* ProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD8F6EEA6B9FD756658BF85BD9F2BE3 /* ProgressHUD.swift */; };
+		A613224495F0938A12F4139E5490E38E /* VOKBenkode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 481D25AA6BE70645CA7A90B8B7BF1BEE /* VOKBenkode.framework */; };
+		A7D27172CA53D2D4A8DA989A2449B410 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9605FCE896085BDD592EFF4CB3F748AF /* Main.storyboard */; };
+		A968E463CB883420630D46D48B01C21E /* UIApplication-KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 41CD44210489E6B40C794497CD5076C2 /* UIApplication-KIFAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AD21276537AEB56D426F92014614B922 /* CALayer-KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 33BD1B3947C9542289742ABE68410BB4 /* CALayer-KIFAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AD3BCFB971D5AC7CC7BAF19EC39FF6B8 /* FacilityAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B58219B16AECCA0B1597BA4906AFA0A /* FacilityAnnotationView.swift */; };
+		AD434B4A871BF7A5215642E81960A891 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C79B28A51C2E4CAE22F70E4E5D09112C /* Images.xcassets */; };
+		B0196216EF04DBF174825BCFC9A27085 /* KIFTestCase.h in Headers */ = {isa = PBXBuildFile; fileRef = 1CC1540585636B60DA115F721A830B64 /* KIFTestCase.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B28686CBE10B8A410E09AE44147D163C /* UIAccessibilityElement-KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D7FAF6DD7FDE6F0A999D62E62ADA58D5 /* UIAccessibilityElement-KIFAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B4E9CC5DBF6DEAB57EFB80BC0062F346 /* Reservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46433380AB6FE923B40359A374602BC7 /* Reservation.swift */; };
+		B66CDC415E1EC5D2A532851C3AFBA199 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44EE72E22B15FDAF57F9EE6D2EE224D5 /* Foundation.framework */; };
+		B744AD03F5AB4F9AE371BAB3DE2D895E /* GooglePredictionTableHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 444E5570E33BAFE592F0DBC2C7E4CD80 /* GooglePredictionTableHeader.xib */; };
+		BBF90BC938FB6A40B2E9F7F1D4004651 /* ReservationInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8716A958FCAFBC119EC57E2471FB8A /* ReservationInfoTableViewCell.swift */; };
+		BE0251A910E11DA7F8DADA4D61AA610B /* PredictionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81722604F109391FE7F28C4C35877B0A /* PredictionController.swift */; };
+		BFC969CB7CCEA5B6AA15C2EDD328133B /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8038B7BE15073A198A88886217A235D /* IOKit.framework */; };
+		C1953711B0FAB5833484D6ACD35F2D52 /* ConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8488E2AE4C32227B72ECE3F77736D6B7 /* ConfirmationViewController.swift */; };
+		C4B7907A85B8317D6868AE08B3207C19 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A505AC0285FE14B505B6D026D35B6DC /* QuartzCore.framework */; };
+		C6823953955B79CA0D45C6C82BC50814 /* NumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8255D1825601ADFE398B4EB922691C2C /* NumberFormatter.swift */; };
+		C734E00407D5DF6EA98DD60DFF7AC583 /* NSBundle-KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 1DBF6DC98970E2BFEB691EDBC77BDA04 /* NSBundle-KIFAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C7DA17EA1DA41429005CB324 /* APIKeyConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DA17E81DA41420005CB324 /* APIKeyConfig.swift */; };
+		C7E8F7603416B765A43FD6D7385CA6F2 /* KIFUIViewTestActor.h in Headers */ = {isa = PBXBuildFile; fileRef = 432C2B4713E6B3F05A7EF354D1458B72 /* KIFUIViewTestActor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C8BEDDE689BC9F43B3B838B8D4A3AB49 /* SpotHeroPartnerSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C679732E5A2858659CBEAA4152C8A8 /* SpotHeroPartnerSDK.swift */; };
+		CA174F78DC426E8E91378B1CA7617737 /* NSBundle-KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = DE154E1A407CCF467D82F9664BB4ED5A /* NSBundle-KIFAdditions.m */; };
+		CAD284359578C301B6C9AA9E00F6CF5E /* XCTestCase-KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 86C0FB676A64659D35DE0CB7A213E6F7 /* XCTestCase-KIFAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CB125322FE1956400E85F7C58D16C605 /* KIF.h in Headers */ = {isa = PBXBuildFile; fileRef = 03D55896FFCC56B1E53A30D8484A331C /* KIF.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CCF0C51DA5EDADD2477707EB4102BDBF /* UITouch-KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D14A4E16C756029A1FDE1D2B320B2EFE /* UITouch-KIFAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CDB9060D902A7490C8EDE904F0E29EAA /* Pods-SpotHero_iOS_Partner_SDK_ExampleUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCB13CA9753FE818B409E09D017F825 /* Pods-SpotHero_iOS_Partner_SDK_ExampleUITests-dummy.m */; };
+		CE4844A2CF4313DF5672F20801CAF947 /* JSONDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189C92AD68CB6B28D75BB87E4D16424A /* JSONDictionary.swift */; };
+		CFFEB4C01CD261C87DE744422B65843E /* CGGeometry-KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 7D38DD096F904E67D9AA9AEC9157492E /* CGGeometry-KIFAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D11F15D5184BA286FB4905F43158DB14 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44EE72E22B15FDAF57F9EE6D2EE224D5 /* Foundation.framework */; };
+		D1D16548BEC37FCE1D97522ECB69B8D0 /* VOKMockUrlProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = A24D29F1383067FED859AEEC2BF6D107 /* VOKMockUrlProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D1F14B9DDA3AD5B5A40E4235F76CF02D /* CALayer-KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E36CD28D212B61E58CD62349A0854AB /* CALayer-KIFAdditions.m */; };
+		D42BC74D54F24F72DB0292814834E630 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8F47D000626807A6D63365F917C034 /* MapViewController.swift */; };
+		D4FE6CB2BB55519C1C381810C1CA9788 /* PaymentButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10FB630A2699946E09F3D27C1D7D1708 /* PaymentButton.xib */; };
+		D7D90D609BF7CCE98F61CC5D904C9546 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E8A5FE66E947B136FC84DBFCDE8472 /* APIError.swift */; };
+		D8CBEF4421FED8390D4868423EB4A462 /* HTTPStatusCodes.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C697BE21D1ACD302B11B902AAF2D97A /* HTTPStatusCodes.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D91D70DC9E5AD5547610893F556F25CB /* KIFTypist.m in Sources */ = {isa = PBXBuildFile; fileRef = 6161278137E914FA32EA9C187968D697 /* KIFTypist.m */; };
+		DA292ADF5EF1F55376262F9A516CAB41 /* PaymentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8A2239537E4B7CCA1072D770A19110 /* PaymentButton.swift */; };
+		DA448530A535F1170BAD136297E3188A /* VOKMockUrlProtocol-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E6D3709DC54477B06CB25AE2F7DD9076 /* VOKMockUrlProtocol-dummy.m */; };
+		DAB88BD02087A04AB92186A62DBFBE98 /* GooglePredictionTableHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8171861BCDC2860E10003BCB32C411E /* GooglePredictionTableHeader.swift */; };
+		DE277F85AC878AD1C3898A1D735E3ADC /* Pods-SpotHero_iOS_Partner_SDK_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BFB888D7AF57F531266DD178438689EB /* Pods-SpotHero_iOS_Partner_SDK_Example-dummy.m */; };
+		DECC827D45A03F3CDCEF6143EEC31D44 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44EE72E22B15FDAF57F9EE6D2EE224D5 /* Foundation.framework */; };
+		E04C4F111BA309242978D2FAD7D631DE /* GooglePlaceDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA8769543A526788AEFE89A2FBF54B2 /* GooglePlaceDetails.swift */; };
+		E148B2D1F42354975AA4E3525754D25A /* UIScreen+KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 92518C488BB5064CA7E3D494B25C00F1 /* UIScreen+KIFAdditions.m */; };
+		E231F10B11453A88B507A806BF6B4E3C /* KIFTypist.h in Headers */ = {isa = PBXBuildFile; fileRef = 85FD829FE460E7B2722AD5B5D8FB52A6 /* KIFTypist.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E3DC36E560A8493AD15D26E70DF1DC66 /* NSError-KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 148D8ABBE9D7C024C7CA2E018D9CCC38 /* NSError-KIFAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E4E933B952C37CC3549E793812762624 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD0BAD6FFDE8A2C95626A17D17C54B3 /* AlertView.swift */; };
+		E6A94810C5DDF7492EE03E4F3E428AC6 /* UIScrollView-KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E76948A1DCBF88D98FD04374882EA13D /* UIScrollView-KIFAdditions.m */; };
+		E706F5D828F016DE4BBB9C646404079F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44EE72E22B15FDAF57F9EE6D2EE224D5 /* Foundation.framework */; };
+		E89643124781A3CD54199B1943626AA4 /* KIFSystemTestActor.m in Sources */ = {isa = PBXBuildFile; fileRef = 365F1B5ED7B941CCDEC02EE7F33F94D3 /* KIFSystemTestActor.m */; };
+		E8C08F4DE724466F256BBA2A6D8117C7 /* LocalizedStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC59BF3C7F4362C49DF01C77D84B03F5 /* LocalizedStrings.swift */; };
+		EBF4ECC86BB4EC61DAAB7659524782EE /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58C9093FA51C251AD2BC7C02115B42BB /* XCTest.framework */; };
+		ED0049ED53A38DFE64CB2B9202112FD5 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB2211EBC3C815DA3EA7279F79E54099 /* CoreLocation.framework */; };
+		F08B1A93137ED9FED89E962C565503E6 /* HTTPMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7A4098EBEA5D0F0D6447FD2A93B4F8 /* HTTPMethods.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		F10EBB363DF27458768A3026CE1FDA1A /* HTTPHeaderFields.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C8BDC3534C9762CF77E0E8465DB8921 /* HTTPHeaderFields.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F1B212D720EC0BA2F61E9F02DE47481E /* NSException-KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EE378135A99233428074D0DAA93248C /* NSException-KIFAdditions.m */; };
+		F60A4B7F33FA1FDBDEB3B7E13617CECE /* KIFTestActor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2964CE05BA4D9E738E2397C1A03647F4 /* KIFTestActor.m */; };
+		F73F61843D28037B032C4B982A1FAE31 /* NSPredicate+KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C24BA6D67C90E7721730C20F8854CC2 /* NSPredicate+KIFAdditions.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		F90EEA8EBAA458A5222B728EF4D6804B /* NSURLQueryItem+QueryParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CB2788B6474B596AD9130013AE4DA3 /* NSURLQueryItem+QueryParams.swift */; };
+		F92942EA643A233C10A3E630870B8652 /* GooglePredictionTableFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9394ACEF4AE77F95ABD72F20DBEF8E6 /* GooglePredictionTableFooter.swift */; };
+		F95325B6FE819634A5E45D6A50EC9EF5 /* KIFUIObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 29CEC39B60AA040D85AAE961EAD20FF3 /* KIFUIObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F95689E5D8C635FE598C587A24D7D7C1 /* SpotCardCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95910D43A13F897B5AF1E911FB8AD49D /* SpotCardCollectionViewFlowLayout.swift */; };
+		F9C9316C97DFB7F39D018454A8E61940 /* VOKBenkode-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 14CC0C2507AB8F15346FCCA174BFFE82 /* VOKBenkode-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FB95AC8D79F09D2D62411C6A039E2444 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31B9CC6FBAB18E03C8329CAC4ACCD05 /* DateFormatter.swift */; };
+		FE014C13A00EBB80A39B37404DFA6704 /* KIFTestActor.h in Headers */ = {isa = PBXBuildFile; fileRef = 50124536159A7071F3F2076FF60EE14E /* KIFTestActor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FF8B6DE559BA1A052541A4C09FD47640 /* PaymentInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26865E84098C69965AEB235AE754F3C7 /* PaymentInfoTableViewCell.swift */; };
+		FFDFC56F4783064D9C3917F2AA889215 /* UIScrollView-KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 9248549012BA7A53612ACD0DD50B65D2 /* UIScrollView-KIFAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0AC43555EC34515E6B99F6F8C6D29E9D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1E5E9A6F588D31B189D3AEDCE14BE21D;
+			remoteInfo = "SpotHero_iOS_Partner_SDK-SpotHero_iOS_Partner_SDK";
+		};
+		37E2F36ABECD779EAA8068E3CE8DB3AC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AD9A8BE9C00B3D02C1A78E8C7E88696F;
+			remoteInfo = VOKBenkode;
+		};
+		381B1A293F6BBDD2B3B8144F616CC703 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 11C417C5A444DA622081003D30C568F0;
+			remoteInfo = SpotHero_iOS_Partner_SDK;
+		};
+		41C334D338218E165F29B6D334079015 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AD9A8BE9C00B3D02C1A78E8C7E88696F;
+			remoteInfo = VOKBenkode;
+		};
+		4EB9FFB547C5DF41A9C497F062582444 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DCCBDC731E172083F7CC90FF6493A73B;
+			remoteInfo = VOKMockUrlProtocol;
+		};
+		54236D81254BE83FAC41AA1B8581CEE1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 28C1D2BCF3CF2F2210CB63D423BEF55E;
+			remoteInfo = ILGHttpConstants;
+		};
+		716E5923AEE296859542FDF7634CB4A7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DCCBDC731E172083F7CC90FF6493A73B;
+			remoteInfo = VOKMockUrlProtocol;
+		};
+		AB0F3D02D40FA453DF9AFC0ECA1C459F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 28C1D2BCF3CF2F2210CB63D423BEF55E;
+			remoteInfo = ILGHttpConstants;
+		};
+		BB820FF9AE881AE7BA02F4F7FF5091F7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 28C1D2BCF3CF2F2210CB63D423BEF55E;
+			remoteInfo = ILGHttpConstants;
+		};
+		C6C034765F2C056043A00A7C653F284A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 535131CDF6F2C39C4D2E535BF3FD879C;
+			remoteInfo = KIF;
+		};
+		F2CABF85269BA5183BEE26FBD10273AC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AD9A8BE9C00B3D02C1A78E8C7E88696F;
+			remoteInfo = VOKBenkode;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		023428660D7E49A326EF10FDEAA3E672 /* UITableView-KIFAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UITableView-KIFAdditions.m"; path = "Additions/UITableView-KIFAdditions.m"; sourceTree = "<group>"; };
+		030A1525F39C146F0AE433430ED38B60 /* SpotHero_iOS_Partner_SDK.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpotHero_iOS_Partner_SDK.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		036DD618FD754A6F142E66AB78AD2978 /* UIAutomationHelper.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = UIAutomationHelper.m; path = Classes/UIAutomationHelper.m; sourceTree = "<group>"; };
+		03D55896FFCC56B1E53A30D8484A331C /* KIF.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KIF.h; path = Classes/KIF.h; sourceTree = "<group>"; };
+		043AF825F9CDCB37823B5648EAAFB7FF /* Rate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Rate.swift; sourceTree = "<group>"; };
+		0517F0DBBD81C6D6B15B505CFA2FA484 /* ILGHttpConstants.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ILGHttpConstants.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		06B219DF247E2CF50E129FC74BE7B664 /* UIView-KIFAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIView-KIFAdditions.m"; path = "Additions/UIView-KIFAdditions.m"; sourceTree = "<group>"; };
+		0746705D5D433CB9AD081E2F3B68264D /* StripeWrapper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = StripeWrapper.swift; sourceTree = "<group>"; };
+		07697703F62E04514A84CD427DBC0A21 /* Pods-SpotHero_iOS_Partner_SDK_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SpotHero_iOS_Partner_SDK_Example-umbrella.h"; sourceTree = "<group>"; };
+		07D2D6BDA9C499AC6C270610CCFBE0E2 /* SpotHeroPartnerNavigationController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SpotHeroPartnerNavigationController.swift; sourceTree = "<group>"; };
+		089BA0E413245F450C1D5EC080359E01 /* Constants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		0A17C7ED0DEB8DF18262CC7E68C63A1E /* UIEvent+KIFAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIEvent+KIFAdditions.h"; path = "Additions/UIEvent+KIFAdditions.h"; sourceTree = "<group>"; };
+		0B58219B16AECCA0B1597BA4906AFA0A /* FacilityAnnotationView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FacilityAnnotationView.swift; sourceTree = "<group>"; };
+		0BCF7530600392CA1FC2089789BEA0BA /* UIView-Debugging.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIView-Debugging.m"; path = "Additions/UIView-Debugging.m"; sourceTree = "<group>"; };
+		0F092BCA2988A5D2AE8864F04E617F25 /* Pods-SpotHero_iOS_Partner_SDK_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-SpotHero_iOS_Partner_SDK_Tests.modulemap"; sourceTree = "<group>"; };
+		105A38EED625B3A853DAD9FF80562323 /* Pods-SpotHero_iOS_Partner_SDK_ExampleUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SpotHero_iOS_Partner_SDK_ExampleUITests.release.xcconfig"; sourceTree = "<group>"; };
+		108DBB169E266E6EC3FDB9CBDDF95C03 /* ILGHttpConstants-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ILGHttpConstants-dummy.m"; sourceTree = "<group>"; };
+		10FB630A2699946E09F3D27C1D7D1708 /* PaymentButton.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = PaymentButton.xib; sourceTree = "<group>"; };
+		126B6FC65528F8F249F2DD5BBA889C7E /* APIHeaders.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = APIHeaders.swift; sourceTree = "<group>"; };
+		127E01E5A45C4F58FE75BA91DE539413 /* Pods_SpotHero_iOS_Partner_SDK_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpotHero_iOS_Partner_SDK_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		12F419EB9D92785AAE0A8749F7D453D3 /* Pods-SpotHero_iOS_Partner_SDK_ExampleUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SpotHero_iOS_Partner_SDK_ExampleUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		13CB2788B6474B596AD9130013AE4DA3 /* NSURLQueryItem+QueryParams.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "NSURLQueryItem+QueryParams.swift"; sourceTree = "<group>"; };
+		147262C01BCE60B257AA3F193E3EEFEE /* NSDate+DateFormatter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "NSDate+DateFormatter.swift"; sourceTree = "<group>"; };
+		148D8ABBE9D7C024C7CA2E018D9CCC38 /* NSError-KIFAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSError-KIFAdditions.h"; path = "Additions/NSError-KIFAdditions.h"; sourceTree = "<group>"; };
+		14CC0C2507AB8F15346FCCA174BFFE82 /* VOKBenkode-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "VOKBenkode-umbrella.h"; sourceTree = "<group>"; };
+		189C92AD68CB6B28D75BB87E4D16424A /* JSONDictionary.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JSONDictionary.swift; sourceTree = "<group>"; };
+		1AA421B7404FCAFDDA5CE9A1ED498ABA /* ProgressHUD.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = ProgressHUD.xib; sourceTree = "<group>"; };
+		1AE5B207916E62EE6552853C7FA7CF79 /* SpotCardCollectionViewCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SpotCardCollectionViewCell.swift; sourceTree = "<group>"; };
+		1B9EE4552760134BA8F9B2575A5B357D /* Pods-SpotHero_iOS_Partner_SDK_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SpotHero_iOS_Partner_SDK_Example.release.xcconfig"; sourceTree = "<group>"; };
+		1C0A0C46C6A2D321077A532B60B60D0D /* Pods-SpotHero_iOS_Partner_SDK_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SpotHero_iOS_Partner_SDK_Tests-umbrella.h"; sourceTree = "<group>"; };
+		1C7E473D7492C3D1D2B4CA2BDCDB989F /* Formatter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
+		1CC1540585636B60DA115F721A830B64 /* KIFTestCase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KIFTestCase.h; path = Classes/KIFTestCase.h; sourceTree = "<group>"; };
+		1D1BA75382E22E513D93B5C6BEDF8C17 /* UIAutomationHelper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = UIAutomationHelper.h; path = Classes/UIAutomationHelper.h; sourceTree = "<group>"; };
+		1DBF6DC98970E2BFEB691EDBC77BDA04 /* NSBundle-KIFAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSBundle-KIFAdditions.h"; path = "Additions/NSBundle-KIFAdditions.h"; sourceTree = "<group>"; };
+		1E05208D03C85061143520A151BD0BF9 /* Facility.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Facility.swift; sourceTree = "<group>"; };
+		1E5F49D147153B475B8F13A52855EC93 /* Pods-SpotHero_iOS_Partner_SDK_ExampleUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SpotHero_iOS_Partner_SDK_ExampleUITests-acknowledgements.plist"; sourceTree = "<group>"; };
+		1EAE28440FDA8925EDAF637CEED209D0 /* NSFileManager-KIFAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSFileManager-KIFAdditions.h"; path = "Additions/NSFileManager-KIFAdditions.h"; sourceTree = "<group>"; };
+		1EE378135A99233428074D0DAA93248C /* NSException-KIFAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSException-KIFAdditions.m"; path = "Additions/NSException-KIFAdditions.m"; sourceTree = "<group>"; };
+		238D6C429A5DA9D357266CA0EBD36B75 /* SpotHero_iOS_Partner_SDK-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SpotHero_iOS_Partner_SDK-umbrella.h"; sourceTree = "<group>"; };
+		245E9173B4A887E18879469EDF017026 /* ILGHttpConstants.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ILGHttpConstants.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		24E03E007C7F87C20D731861A317B08D /* HeightsAndLengths.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HeightsAndLengths.swift; sourceTree = "<group>"; };
+		25295A0DBE18CA746017E93D5AFBFA8A /* KIF.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = KIF.modulemap; sourceTree = "<group>"; };
+		262E04DE4EC83F0C63F6BF60D0E189BA /* CGGeometry-KIFAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "CGGeometry-KIFAdditions.m"; path = "Additions/CGGeometry-KIFAdditions.m"; sourceTree = "<group>"; };
+		2684D36E1DF39EED96E5B6EA84EDF8CF /* Pods-SpotHero_iOS_Partner_SDK_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SpotHero_iOS_Partner_SDK_Tests-dummy.m"; sourceTree = "<group>"; };
+		26865E84098C69965AEB235AE754F3C7 /* PaymentInfoTableViewCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PaymentInfoTableViewCell.swift; sourceTree = "<group>"; };
+		27B96FA03251D2984B001ADB3AD894E8 /* Pods-SpotHero_iOS_Partner_SDK_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SpotHero_iOS_Partner_SDK_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		2964CE05BA4D9E738E2397C1A03647F4 /* KIFTestActor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = KIFTestActor.m; path = Classes/KIFTestActor.m; sourceTree = "<group>"; };
+		2994F25322891A775466DB578834B4B3 /* KIF.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KIF.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		29CEC39B60AA040D85AAE961EAD20FF3 /* KIFUIObject.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KIFUIObject.h; path = Classes/KIFUIObject.h; sourceTree = "<group>"; };
+		2AF5BE3DF0710E4168CC8C90C1B93579 /* UIView-Debugging.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIView-Debugging.h"; path = "Additions/UIView-Debugging.h"; sourceTree = "<group>"; };
+		2C08EACF14E88D07E6F255749DF2ED5E /* ServerEnvironment.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ServerEnvironment.swift; sourceTree = "<group>"; };
+		2C193B25C1810BBD872ECB28FFB54ADC /* KIFUITestActor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KIFUITestActor.h; path = Classes/KIFUITestActor.h; sourceTree = "<group>"; };
+		2C70D8DEC3E7F4EB969D3CCFD178F679 /* Pods-SpotHero_iOS_Partner_SDK_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SpotHero_iOS_Partner_SDK_Example-resources.sh"; sourceTree = "<group>"; };
+		2C8A2239537E4B7CCA1072D770A19110 /* PaymentButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PaymentButton.swift; sourceTree = "<group>"; };
+		301E195C2D84BDEFA95256606CD27545 /* VOKMockUrlProtocol.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = VOKMockUrlProtocol.xcconfig; sourceTree = "<group>"; };
+		33475DCFAD041DE4DE25A6AEB9C41CCF /* HTTPHeaderFields.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = HTTPHeaderFields.m; sourceTree = "<group>"; };
+		3391D78F1D9DA7F8009A42B8 /* NSDate+Comparison.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Comparison.swift"; sourceTree = "<group>"; };
+		33BD1B3947C9542289742ABE68410BB4 /* CALayer-KIFAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "CALayer-KIFAdditions.h"; path = "Additions/CALayer-KIFAdditions.h"; sourceTree = "<group>"; };
+		33BFC4091D9F41B700F7C37F /* FaciltyAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaciltyAPI.swift; sourceTree = "<group>"; };
+		33BFC40B1D9F4FF800F7C37F /* FacilityAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacilityAnnotation.swift; sourceTree = "<group>"; };
+		33BFC40D1D9F504300F7C37F /* ReservationAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReservationAPI.swift; sourceTree = "<group>"; };
+		33BFC40F1D9F508900F7C37F /* ValidatorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidatorCell.swift; sourceTree = "<group>"; };
+		33BFC4111D9F50A200F7C37F /* CountableIntEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountableIntEnum.swift; sourceTree = "<group>"; };
+		33BFC4131D9F50BA00F7C37F /* DatePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
+		33BFC4151D9F50C900F7C37F /* PredictionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredictionTableViewCell.swift; sourceTree = "<group>"; };
+		33BFC4171D9F510000F7C37F /* KeyboardNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardNotification.swift; sourceTree = "<group>"; };
+		3414DF7CD6094902EFFDD6AF92AE935E /* KIF-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "KIF-dummy.m"; sourceTree = "<group>"; };
+		34F191306BE13B0604226705D0A83380 /* Pods-SpotHero_iOS_Partner_SDK_ExampleUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SpotHero_iOS_Partner_SDK_ExampleUITests-umbrella.h"; sourceTree = "<group>"; };
+		357CF9B284B7BDB96189A781EAD3C7B1 /* IOHIDEvent+KIF.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "IOHIDEvent+KIF.h"; path = "Classes/IOHIDEvent+KIF.h"; sourceTree = "<group>"; };
+		365F1B5ED7B941CCDEC02EE7F33F94D3 /* KIFSystemTestActor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = KIFSystemTestActor.m; path = Classes/KIFSystemTestActor.m; sourceTree = "<group>"; };
+		36DDAFCA2170A1E7AA4BDAFECBCBEA88 /* VOKBenkode-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "VOKBenkode-prefix.pch"; sourceTree = "<group>"; };
+		3A2ADFE230B15D2C3B7F51A9ED50B3BB /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3AF3D514A9845A230A5E49FD2AEA768B /* NSBundle+SpotHeroPartner.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "NSBundle+SpotHeroPartner.swift"; sourceTree = "<group>"; };
+		3B8716A958FCAFBC119EC57E2471FB8A /* ReservationInfoTableViewCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ReservationInfoTableViewCell.swift; sourceTree = "<group>"; };
+		3C2DBE3F457BF416F24E38FC92AEE68B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/MapKit.framework; sourceTree = DEVELOPER_DIR; };
+		3C68716BC527FC9871B770B9C6F6965F /* UIAccessibilityElement-KIFAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIAccessibilityElement-KIFAdditions.m"; path = "Additions/UIAccessibilityElement-KIFAdditions.m"; sourceTree = "<group>"; };
+		3DCB61DE61D8B651F49EE3470324FAB2 /* VOKBenkode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VOKBenkode.h; path = Pod/Classes/VOKBenkode.h; sourceTree = "<group>"; };
+		3E36CD28D212B61E58CD62349A0854AB /* CALayer-KIFAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "CALayer-KIFAdditions.m"; path = "Additions/CALayer-KIFAdditions.m"; sourceTree = "<group>"; };
+		3F8E91F97381005CCA5971CFDC42B11D /* ILGHttpConstants-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ILGHttpConstants-umbrella.h"; sourceTree = "<group>"; };
+		3FFF533926512C588619E82503028867 /* VOKMockUrlProtocol-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "VOKMockUrlProtocol-umbrella.h"; sourceTree = "<group>"; };
+		40C95C317AE9F8EBD648F6EC54F342A0 /* VOKMockUrlProtocol.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VOKMockUrlProtocol.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		41CA1169E160FF78258961D228E65B42 /* LoadableCategory.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LoadableCategory.h; path = Additions/LoadableCategory.h; sourceTree = "<group>"; };
+		41CD44210489E6B40C794497CD5076C2 /* UIApplication-KIFAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIApplication-KIFAdditions.h"; path = "Additions/UIApplication-KIFAdditions.h"; sourceTree = "<group>"; };
+		432C2B4713E6B3F05A7EF354D1458B72 /* KIFUIViewTestActor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KIFUIViewTestActor.h; path = Classes/KIFUIViewTestActor.h; sourceTree = "<group>"; };
+		444E5570E33BAFE592F0DBC2C7E4CD80 /* GooglePredictionTableHeader.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = GooglePredictionTableHeader.xib; sourceTree = "<group>"; };
+		44EE72E22B15FDAF57F9EE6D2EE224D5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		45DD5C960CEC6151A3D5F0A1FCBCD170 /* Pods-SpotHero_iOS_Partner_SDK_ExampleUITests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SpotHero_iOS_Partner_SDK_ExampleUITests-resources.sh"; sourceTree = "<group>"; };
+		46433380AB6FE923B40359A374602BC7 /* Reservation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Reservation.swift; sourceTree = "<group>"; };
+		4777173DD31D9679DDAEBC3B8C3F17A5 /* Pods-SpotHero_iOS_Partner_SDK_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SpotHero_iOS_Partner_SDK_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		47B12878D4433F7E7B446830522A141D /* HTTPMethods.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = HTTPMethods.h; sourceTree = "<group>"; };
+		481D25AA6BE70645CA7A90B8B7BF1BEE /* VOKBenkode.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VOKBenkode.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4843F5F80C627641BEACC18378B8646E /* SpotHeroPartnerAPIController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SpotHeroPartnerAPIController.swift; sourceTree = "<group>"; };
+		485EB766887DD817CB9A3837C7A43EE8 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		48A760F2D4631318CAE9119B7FE81C5D /* Pods-SpotHero_iOS_Partner_SDK_ExampleUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SpotHero_iOS_Partner_SDK_ExampleUITests-frameworks.sh"; sourceTree = "<group>"; };
+		4DCAA22231D2F9F63B29CF71FC19CDAC /* AccessibilityStrings.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AccessibilityStrings.swift; sourceTree = "<group>"; };
+		4DFDEECAF3E437C8FA734C4C2167C9A3 /* UITableView-KIFAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UITableView-KIFAdditions.h"; path = "Additions/UITableView-KIFAdditions.h"; sourceTree = "<group>"; };
+		50124536159A7071F3F2076FF60EE14E /* KIFTestActor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KIFTestActor.h; path = Classes/KIFTestActor.h; sourceTree = "<group>"; };
+		50E7887E667F443F5769AB1EA47F2910 /* Pods-SpotHero_iOS_Partner_SDK_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SpotHero_iOS_Partner_SDK_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+		550F02F58791DE679A4CAB5CD84FC2EF /* UIView-KIFAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIView-KIFAdditions.h"; path = "Additions/UIView-KIFAdditions.h"; sourceTree = "<group>"; };
+		571B3DA07B945E73E2FF7BA4A7E2C227 /* SpotHero_iOS_Partner_SDK.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = SpotHero_iOS_Partner_SDK.modulemap; sourceTree = "<group>"; };
+		57F859535A911D731946724AB9E1FBD4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		5803D81A30D18771642B9ED5518FB480 /* Pods-SpotHero_iOS_Partner_SDK_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SpotHero_iOS_Partner_SDK_Tests-frameworks.sh"; sourceTree = "<group>"; };
+		58C9093FA51C251AD2BC7C02115B42BB /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		5B3DC643A090782402F0D38E61A5C5C6 /* KIFAccessibilityEnabler.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = KIFAccessibilityEnabler.m; path = Classes/KIFAccessibilityEnabler.m; sourceTree = "<group>"; };
+		5C4431A880C80CEE68FECCB08138196E /* UnitsOfMeasurement.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UnitsOfMeasurement.swift; sourceTree = "<group>"; };
+		60801F84415AFC96278BDB90792D8D59 /* NSString+KIFAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSString+KIFAdditions.m"; path = "Additions/NSString+KIFAdditions.m"; sourceTree = "<group>"; };
+		6161278137E914FA32EA9C187968D697 /* KIFTypist.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = KIFTypist.m; path = Classes/KIFTypist.m; sourceTree = "<group>"; };
+		6393BD8F776BA36B9ED39DB2C6C2937D /* TimeSelectionView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TimeSelectionView.swift; sourceTree = "<group>"; };
+		65E8436FAA6A010A09344F4A685712D1 /* KIFTestCase.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = KIFTestCase.m; path = Classes/KIFTestCase.m; sourceTree = "<group>"; };
+		66FE110AD3FCF0BE89B8C745B4E8D69E /* SpotHero_iOS_Partner_SDK-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SpotHero_iOS_Partner_SDK-dummy.m"; sourceTree = "<group>"; };
+		68B2885101A68B5288F8985640400A67 /* IOHIDEvent+KIF.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "IOHIDEvent+KIF.m"; path = "Classes/IOHIDEvent+KIF.m"; sourceTree = "<group>"; };
+		691535177390B46DB27DCC6BFD38D833 /* KIFUITestActor-ConditionalTests.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "KIFUITestActor-ConditionalTests.m"; path = "Classes/KIFUITestActor-ConditionalTests.m"; sourceTree = "<group>"; };
+		69CF9EE8A678C30435E2E3474D318C64 /* VOKBenkode.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = VOKBenkode.xcconfig; sourceTree = "<group>"; };
+		69E8D4B16C35EB8DD5E799A8A84A4B49 /* Validator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
+		6C697BE21D1ACD302B11B902AAF2D97A /* HTTPStatusCodes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = HTTPStatusCodes.h; sourceTree = "<group>"; };
+		6DD6E4F1A553A4E0481D8C5385D65FC6 /* ResourceBundle-SpotHero_iOS_Partner_SDK-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-SpotHero_iOS_Partner_SDK-Info.plist"; sourceTree = "<group>"; };
+		702B4B6548CD6F52D03AC4D8C46C1816 /* SpotHero_iOS_Partner_SDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SpotHero_iOS_Partner_SDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		72B48CB1BECA5369BEA055509EAE68C6 /* CAAnimation+KIFAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "CAAnimation+KIFAdditions.m"; path = "Additions/CAAnimation+KIFAdditions.m"; sourceTree = "<group>"; };
+		72CF597D56D63BC415CE0F77857458F9 /* Pods-SpotHero_iOS_Partner_SDK_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-SpotHero_iOS_Partner_SDK_Example.modulemap"; sourceTree = "<group>"; };
+		74C679732E5A2858659CBEAA4152C8A8 /* SpotHeroPartnerSDK.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SpotHeroPartnerSDK.swift; sourceTree = "<group>"; };
+		77CBB8F9EFB48CCD7636F88AE153EE6F /* VOKMockUrlProtocol.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = VOKMockUrlProtocol.modulemap; sourceTree = "<group>"; };
+		7895D8168A4FBEFD5D1FB554B3300ED9 /* KIFSystemTestActor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KIFSystemTestActor.h; path = Classes/KIFSystemTestActor.h; sourceTree = "<group>"; };
+		791A5445D306D31CE1A784DB9E264414 /* Pods-SpotHero_iOS_Partner_SDK_ExampleUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SpotHero_iOS_Partner_SDK_ExampleUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		7A12DFA58738ADA0A672FE53663024FD /* KIFUIViewTestActor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = KIFUIViewTestActor.m; path = Classes/KIFUIViewTestActor.m; sourceTree = "<group>"; };
+		7B5DD8AEB4125F372055C269CA62A172 /* VOKBenkode-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "VOKBenkode-dummy.m"; sourceTree = "<group>"; };
+		7BA8769543A526788AEFE89A2FBF54B2 /* GooglePlaceDetails.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GooglePlaceDetails.swift; sourceTree = "<group>"; };
+		7C24BA6D67C90E7721730C20F8854CC2 /* NSPredicate+KIFAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSPredicate+KIFAdditions.h"; path = "Additions/NSPredicate+KIFAdditions.h"; sourceTree = "<group>"; };
+		7C7A4098EBEA5D0F0D6447FD2A93B4F8 /* HTTPMethods.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = HTTPMethods.m; sourceTree = "<group>"; };
+		7D38DD096F904E67D9AA9AEC9157492E /* CGGeometry-KIFAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "CGGeometry-KIFAdditions.h"; path = "Additions/CGGeometry-KIFAdditions.h"; sourceTree = "<group>"; };
+		7D54BACBA56D12077E7A78872F2C1D2F /* ILGHttpConstants.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = ILGHttpConstants.modulemap; sourceTree = "<group>"; };
+		80AC677903BBC3145691D9DAE849FBB4 /* CAAnimation+KIFAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "CAAnimation+KIFAdditions.h"; path = "Additions/CAAnimation+KIFAdditions.h"; sourceTree = "<group>"; };
+		81722604F109391FE7F28C4C35877B0A /* PredictionController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PredictionController.swift; sourceTree = "<group>"; };
+		8255D1825601ADFE398B4EB922691C2C /* NumberFormatter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NumberFormatter.swift; sourceTree = "<group>"; };
+		8488E2AE4C32227B72ECE3F77736D6B7 /* ConfirmationViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ConfirmationViewController.swift; sourceTree = "<group>"; };
+		85FD829FE460E7B2722AD5B5D8FB52A6 /* KIFTypist.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KIFTypist.h; path = Classes/KIFTypist.h; sourceTree = "<group>"; };
+		866438039E504224B30AAEF7B79243F4 /* KIFTestStepValidation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = KIFTestStepValidation.m; path = Classes/KIFTestStepValidation.m; sourceTree = "<group>"; };
+		86C0FB676A64659D35DE0CB7A213E6F7 /* XCTestCase-KIFAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "XCTestCase-KIFAdditions.h"; path = "Additions/XCTestCase-KIFAdditions.h"; sourceTree = "<group>"; };
+		86D9F639B5B9062BC711E85881EA2910 /* UIApplication-KIFAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIApplication-KIFAdditions.m"; path = "Additions/UIApplication-KIFAdditions.m"; sourceTree = "<group>"; };
+		88DE166392A59BF3193915D7C04DC509 /* KIFUITestActor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = KIFUITestActor.m; path = Classes/KIFUITestActor.m; sourceTree = "<group>"; };
+		88EC3FAD884F79D8E73F0D210CB27DF1 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		893AEA1DAD7DF249CE4688A409C76DB1 /* CheckoutTableViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CheckoutTableViewController.swift; sourceTree = "<group>"; };
+		8AD0BAD6FFDE8A2C95626A17D17C54B3 /* AlertView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
+		8BD8F6EEA6B9FD756658BF85BD9F2BE3 /* ProgressHUD.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ProgressHUD.swift; sourceTree = "<group>"; };
+		8C8BDC3534C9762CF77E0E8465DB8921 /* HTTPHeaderFields.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = HTTPHeaderFields.h; sourceTree = "<group>"; };
+		8CCB13CA9753FE818B409E09D017F825 /* Pods-SpotHero_iOS_Partner_SDK_ExampleUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SpotHero_iOS_Partner_SDK_ExampleUITests-dummy.m"; sourceTree = "<group>"; };
+		8CCC5CD29192D0AE640C28C44790B222 /* StringEnum.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = StringEnum.swift; sourceTree = "<group>"; };
+		8CF0AFE39B87B766DAD99F71912DA0CA /* SpotHero_iOS_Partner_SDK.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SpotHero_iOS_Partner_SDK.xcconfig; sourceTree = "<group>"; };
+		8DDEA34C5FFBD7166C8431AFB3029C9C /* GooglePlacesWrapper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GooglePlacesWrapper.swift; sourceTree = "<group>"; };
+		8E445A100FD63186F3123406ABE006E8 /* Pods-SpotHero_iOS_Partner_SDK_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SpotHero_iOS_Partner_SDK_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		921E864FD91B49BBBEBBDA646D9537E6 /* SpotHero_iOS_Partner_SDK-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SpotHero_iOS_Partner_SDK-prefix.pch"; sourceTree = "<group>"; };
+		9248549012BA7A53612ACD0DD50B65D2 /* UIScrollView-KIFAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIScrollView-KIFAdditions.h"; path = "Additions/UIScrollView-KIFAdditions.h"; sourceTree = "<group>"; };
+		92518C488BB5064CA7E3D494B25C00F1 /* UIScreen+KIFAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIScreen+KIFAdditions.m"; path = "Additions/UIScreen+KIFAdditions.m"; sourceTree = "<group>"; };
+		939D0D61929FE6B2946996A630EBA746 /* NSString+KIFAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSString+KIFAdditions.h"; path = "Additions/NSString+KIFAdditions.h"; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		942F27EF05262AE5CCA0FA8CD008E722 /* PersonalInfoTableViewCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PersonalInfoTableViewCell.swift; sourceTree = "<group>"; };
+		95910D43A13F897B5AF1E911FB8AD49D /* SpotCardCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SpotCardCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
+		95E5F087C562F2B88DA514B7DB632B75 /* GooglePlacesPrediction.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GooglePlacesPrediction.swift; sourceTree = "<group>"; };
+		9605FCE896085BDD592EFF4CB3F748AF /* Main.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		9612B1BD916149C0655E7EAC43A23A89 /* XCTestCase-KIFAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "XCTestCase-KIFAdditions.m"; path = "Additions/XCTestCase-KIFAdditions.m"; sourceTree = "<group>"; };
+		9A505AC0285FE14B505B6D026D35B6DC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
+		9BB681286D9D7F769D8D9F685ACF69B3 /* UIWindow-KIFAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIWindow-KIFAdditions.m"; path = "Additions/UIWindow-KIFAdditions.m"; sourceTree = "<group>"; };
+		9D6FE183FE8B961977D0E68B0D60A595 /* Pods-SpotHero_iOS_Partner_SDK_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SpotHero_iOS_Partner_SDK_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		A19B44EF688D4A3ABE53616188E2985E /* UIScreen+KIFAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIScreen+KIFAdditions.h"; path = "Additions/UIScreen+KIFAdditions.h"; sourceTree = "<group>"; };
+		A1F8E3B80D2A84E3EC1CCFF12FB5816F /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A24D29F1383067FED859AEEC2BF6D107 /* VOKMockUrlProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VOKMockUrlProtocol.h; sourceTree = "<group>"; };
+		A28C78A8C890A13E6949B8438527A9CF /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A74F85BE7618CE5FFAAA013859F1345F /* ILGHttpConstants-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ILGHttpConstants-prefix.pch"; sourceTree = "<group>"; };
+		A8038B7BE15073A198A88886217A235D /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/IOKit.framework; sourceTree = DEVELOPER_DIR; };
+		A9B161941B347A29F861D9AAF7F325A4 /* VOKBenkode.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = VOKBenkode.modulemap; sourceTree = "<group>"; };
+		AB2211EBC3C815DA3EA7279F79E54099 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/CoreLocation.framework; sourceTree = DEVELOPER_DIR; };
+		AD8F47D000626807A6D63365F917C034 /* MapViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		AE4AEF9BB40713DD8A137E7914FB7C48 /* KIFUITestActor-ConditionalTests.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "KIFUITestActor-ConditionalTests.h"; path = "Classes/KIFUITestActor-ConditionalTests.h"; sourceTree = "<group>"; };
+		B03DDC183E86127A9B620C1A4F1E2B29 /* Pods-SpotHero_iOS_Partner_SDK_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SpotHero_iOS_Partner_SDK_Tests-resources.sh"; sourceTree = "<group>"; };
+		B1E8A5FE66E947B136FC84DBFCDE8472 /* APIError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		B93F192D0BAEA7B86E19CB1F9D8A1347 /* CollapsedSearchBarView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CollapsedSearchBarView.swift; sourceTree = "<group>"; };
+		B9B57B04FEA617ADAB2C10BD467E0C73 /* VOKMockUrlProtocol.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = VOKMockUrlProtocol.m; sourceTree = "<group>"; };
+		BB4CF7A50631AF2A005CAC54E0AFE35A /* VOKBenkode.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = VOKBenkode.m; path = Pod/Classes/VOKBenkode.m; sourceTree = "<group>"; };
+		BB65D5FB9941D22DCFF75511D44BD252 /* ILGHttpConstants.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ILGHttpConstants.xcconfig; sourceTree = "<group>"; };
+		BD85043557276A5A74C98EA80F496FA1 /* UIWindow-KIFAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIWindow-KIFAdditions.h"; path = "Additions/UIWindow-KIFAdditions.h"; sourceTree = "<group>"; };
+		BDB1F1B91D91AD57CA47F7B7BA14C27F /* ServerErrorJSON.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ServerErrorJSON.swift; sourceTree = "<group>"; };
+		BEDA75377328053174054C6A5833D42F /* UIEvent+KIFAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIEvent+KIFAdditions.m"; path = "Additions/UIEvent+KIFAdditions.m"; sourceTree = "<group>"; };
+		BF417A0AC673E17995B074801D1448EA /* VOKBenkode.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VOKBenkode.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BFB888D7AF57F531266DD178438689EB /* Pods-SpotHero_iOS_Partner_SDK_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SpotHero_iOS_Partner_SDK_Example-dummy.m"; sourceTree = "<group>"; };
+		C79B28A51C2E4CAE22F70E4E5D09112C /* Images.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		C7DA17E81DA41420005CB324 /* APIKeyConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIKeyConfig.swift; sourceTree = "<group>"; };
+		C9394ACEF4AE77F95ABD72F20DBEF8E6 /* GooglePredictionTableFooter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GooglePredictionTableFooter.swift; sourceTree = "<group>"; };
+		CBBADA0C564612CD0A2FD287A04C1B00 /* GooglePredictionTableFooter.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = GooglePredictionTableFooter.xib; sourceTree = "<group>"; };
+		D14A4E16C756029A1FDE1D2B320B2EFE /* UITouch-KIFAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UITouch-KIFAdditions.h"; path = "Additions/UITouch-KIFAdditions.h"; sourceTree = "<group>"; };
+		D57DED3B6943DFCF24EBD206F63B4A71 /* DLog.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DLog.swift; sourceTree = "<group>"; };
+		D6CE75863C99AD43B644B4AAC2CE67D4 /* Pods_SpotHero_iOS_Partner_SDK_ExampleUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpotHero_iOS_Partner_SDK_ExampleUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D786B2E88548322A347D7016CC1B5E8E /* Pods-SpotHero_iOS_Partner_SDK_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SpotHero_iOS_Partner_SDK_Example-frameworks.sh"; sourceTree = "<group>"; };
+		D7FAF6DD7FDE6F0A999D62E62ADA58D5 /* UIAccessibilityElement-KIFAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIAccessibilityElement-KIFAdditions.h"; path = "Additions/UIAccessibilityElement-KIFAdditions.h"; sourceTree = "<group>"; };
+		D8171861BCDC2860E10003BCB32C411E /* GooglePredictionTableHeader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GooglePredictionTableHeader.swift; sourceTree = "<group>"; };
+		D957AD40B2EADE4637A2E7B0B563ED88 /* NSPredicate+KIFAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSPredicate+KIFAdditions.m"; path = "Additions/NSPredicate+KIFAdditions.m"; sourceTree = "<group>"; };
+		DAE3DF01C196343E228B7800413F14B3 /* NSFileManager-KIFAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSFileManager-KIFAdditions.m"; path = "Additions/NSFileManager-KIFAdditions.m"; sourceTree = "<group>"; };
+		DCC5ED37B6366962F94BBD4F34F1607D /* Pods-SpotHero_iOS_Partner_SDK_ExampleUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-SpotHero_iOS_Partner_SDK_ExampleUITests.modulemap"; sourceTree = "<group>"; };
+		DE154E1A407CCF467D82F9664BB4ED5A /* NSBundle-KIFAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSBundle-KIFAdditions.m"; path = "Additions/NSBundle-KIFAdditions.m"; sourceTree = "<group>"; };
+		E3144748FFC69E335D6763D1AA79143C /* NSException-KIFAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSException-KIFAdditions.h"; path = "Additions/NSException-KIFAdditions.h"; sourceTree = "<group>"; };
+		E6D3709DC54477B06CB25AE2F7DD9076 /* VOKMockUrlProtocol-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "VOKMockUrlProtocol-dummy.m"; sourceTree = "<group>"; };
+		E76948A1DCBF88D98FD04374882EA13D /* UIScrollView-KIFAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIScrollView-KIFAdditions.m"; path = "Additions/UIScrollView-KIFAdditions.m"; sourceTree = "<group>"; };
+		E7A2073789F1B7F0BA50232D8F45891C /* UIColor+SpotHeroPartner.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIColor+SpotHeroPartner.swift"; sourceTree = "<group>"; };
+		E8D222BAE84DEBE8D060E3DF47BD9C42 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
+		EC39B13BE65F58591BB7798B49188584 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ECE811086E4E71A144070A4D76C0ABB3 /* KIF-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "KIF-prefix.pch"; sourceTree = "<group>"; };
+		EEA7B5F3A5959B9F0234AA20AF1BCA1D /* Pods_SpotHero_iOS_Partner_SDK_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpotHero_iOS_Partner_SDK_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1040CA6CAB2E4929292EB7CFEC89768 /* Pods-SpotHero_iOS_Partner_SDK_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SpotHero_iOS_Partner_SDK_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		F31B9CC6FBAB18E03C8329CAC4ACCD05 /* DateFormatter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
+		F459F139927FC3DD9C72D21435742E30 /* UITouch-KIFAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UITouch-KIFAdditions.m"; path = "Additions/UITouch-KIFAdditions.m"; sourceTree = "<group>"; };
+		F52CD6475F314B386CB1471CF001ADB2 /* KIFTestStepValidation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KIFTestStepValidation.h; path = Classes/KIFTestStepValidation.h; sourceTree = "<group>"; };
+		F7A1B38FA43F648E4BC74A4C2FF5542C /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F8CAEF1A388C2AD4016A62A07055ED39 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FB46DF40571D77DF0B6A0CC3B512D4F1 /* NSError-KIFAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSError-KIFAdditions.m"; path = "Additions/NSError-KIFAdditions.m"; sourceTree = "<group>"; };
+		FC59BF3C7F4362C49DF01C77D84B03F5 /* LocalizedStrings.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LocalizedStrings.swift; sourceTree = "<group>"; };
+		FC79E7BBF43F066DFF9EB87D51061921 /* KIFUIObject.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = KIFUIObject.m; path = Classes/KIFUIObject.m; sourceTree = "<group>"; };
+		FD8D47137BD2E6CF7E923081DC882A72 /* VOKMockUrlProtocol-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "VOKMockUrlProtocol-prefix.pch"; sourceTree = "<group>"; };
+		FDC18EF0ED64A379352D22E386BC67CF /* KIF.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = KIF.xcconfig; sourceTree = "<group>"; };
+		FDDE33C5BCB4BFFB00FA49E31E86B362 /* KIF-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "KIF-umbrella.h"; sourceTree = "<group>"; };
+		FE0DDBE7673615D3F562FE93010094A7 /* KIFAccessibilityEnabler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KIFAccessibilityEnabler.h; path = Classes/KIFAccessibilityEnabler.h; sourceTree = "<group>"; };
+		FF46B62D9A88082DB961B9FAC6AA2ACC /* Pods-SpotHero_iOS_Partner_SDK_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SpotHero_iOS_Partner_SDK_Example-acknowledgements.plist"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		03337477C8E645599C27F25D58B186FB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				32E719C922BE98B0ACA097CD763024A7 /* CoreGraphics.framework in Frameworks */,
+				E706F5D828F016DE4BBB9C646404079F /* Foundation.framework in Frameworks */,
+				BFC969CB7CCEA5B6AA15C2EDD328133B /* IOKit.framework in Frameworks */,
+				C4B7907A85B8317D6868AE08B3207C19 /* QuartzCore.framework in Frameworks */,
+				EBF4ECC86BB4EC61DAAB7659524782EE /* XCTest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		06C9309AC232A3AC5B669C984A897A0E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8B3D8E8C84DE44FA1674A906CF0A8B7E /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		271D3CAC46096E6EA34656205A2014E8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED0049ED53A38DFE64CB2B9202112FD5 /* CoreLocation.framework in Frameworks */,
+				7AA609E416482159356DBCF734F9D0E9 /* Foundation.framework in Frameworks */,
+				28699E1FD11EC92237ACECAE6BB714E8 /* MapKit.framework in Frameworks */,
+				87E172EB2DAE3FBBAA4F92EB2F9F6E6A /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2D3731083F958F62680F219D98146CD1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0E696E98B16C59A6AD10807E246A5511 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52DD1DF8254C9F1B6A160EEF190AC7B7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D11F15D5184BA286FB4905F43158DB14 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		70D511D3CAA45DF97585B454698F82BF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9A644352019DA83960582E9FC00E08D9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B66CDC415E1EC5D2A532851C3AFBA199 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BCBAED73FAE4894E9B6F505B3EC3E69F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				12AC30A8BBD2D158AE154DD3E358D754 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CF3207B4D736DB1C7D5F07B945B252CA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DECC827D45A03F3CDCEF6143EEC31D44 /* Foundation.framework in Frameworks */,
+				226E515781459EB5B7B504765084C2DB /* ILGHttpConstants.framework in Frameworks */,
+				A613224495F0938A12F4139E5490E38E /* VOKBenkode.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0BC2E84072A6A81D67D76D4D5E30FBD8 /* SpotHero_iOS_Partner_SDK */ = {
+			isa = PBXGroup;
+			children = (
+				E0B4EA77E0C426DFCFE65FA389148E2C /* Assets */,
+			);
+			path = SpotHero_iOS_Partner_SDK;
+			sourceTree = "<group>";
+		};
+		11F2EB5EB5AD1F59086B37F38A1DF97A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0BC2E84072A6A81D67D76D4D5E30FBD8 /* SpotHero_iOS_Partner_SDK */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		13F97A3688FDD8B4DCAFE1BF38487097 /* Model Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				81722604F109391FE7F28C4C35877B0A /* PredictionController.swift */,
+			);
+			path = "Model Controllers";
+			sourceTree = "<group>";
+		};
+		23263886BEE27FAA4F5616882EC98651 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3AF3D514A9845A230A5E49FD2AEA768B /* NSBundle+SpotHeroPartner.swift */,
+				147262C01BCE60B257AA3F193E3EEFEE /* NSDate+DateFormatter.swift */,
+				13CB2788B6474B596AD9130013AE4DA3 /* NSURLQueryItem+QueryParams.swift */,
+				E7A2073789F1B7F0BA50232D8F45891C /* UIColor+SpotHeroPartner.swift */,
+				3391D78F1D9DA7F8009A42B8 /* NSDate+Comparison.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		278EE9D7B6DC38A6701C8EBCB284D180 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				245E9173B4A887E18879469EDF017026 /* ILGHttpConstants.framework */,
+				2994F25322891A775466DB578834B4B3 /* KIF.framework */,
+				127E01E5A45C4F58FE75BA91DE539413 /* Pods_SpotHero_iOS_Partner_SDK_Example.framework */,
+				D6CE75863C99AD43B644B4AAC2CE67D4 /* Pods_SpotHero_iOS_Partner_SDK_ExampleUITests.framework */,
+				EEA7B5F3A5959B9F0234AA20AF1BCA1D /* Pods_SpotHero_iOS_Partner_SDK_Tests.framework */,
+				030A1525F39C146F0AE433430ED38B60 /* SpotHero_iOS_Partner_SDK.bundle */,
+				702B4B6548CD6F52D03AC4D8C46C1816 /* SpotHero_iOS_Partner_SDK.framework */,
+				BF417A0AC673E17995B074801D1448EA /* VOKBenkode.framework */,
+				40C95C317AE9F8EBD648F6EC54F342A0 /* VOKMockUrlProtocol.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2FA946C649DF875B7FE8639B29A406F7 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				F7A1B38FA43F648E4BC74A4C2FF5542C /* Info.plist */,
+				A9B161941B347A29F861D9AAF7F325A4 /* VOKBenkode.modulemap */,
+				69CF9EE8A678C30435E2E3474D318C64 /* VOKBenkode.xcconfig */,
+				7B5DD8AEB4125F372055C269CA62A172 /* VOKBenkode-dummy.m */,
+				36DDAFCA2170A1E7AA4BDAFECBCBEA88 /* VOKBenkode-prefix.pch */,
+				14CC0C2507AB8F15346FCCA174BFFE82 /* VOKBenkode-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/VOKBenkode";
+			sourceTree = "<group>";
+		};
+		38B69691C74D4695343E99CA59A3B81F /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				4DCAA22231D2F9F63B29CF71FC19CDAC /* AccessibilityStrings.swift */,
+				8AD0BAD6FFDE8A2C95626A17D17C54B3 /* AlertView.swift */,
+				33BFC4111D9F50A200F7C37F /* CountableIntEnum.swift */,
+				089BA0E413245F450C1D5EC080359E01 /* Constants.swift */,
+				F31B9CC6FBAB18E03C8329CAC4ACCD05 /* DateFormatter.swift */,
+				D57DED3B6943DFCF24EBD206F63B4A71 /* DLog.swift */,
+				1C7E473D7492C3D1D2B4CA2BDCDB989F /* Formatter.swift */,
+				24E03E007C7F87C20D731861A317B08D /* HeightsAndLengths.swift */,
+				33BFC4171D9F510000F7C37F /* KeyboardNotification.swift */,
+				FC59BF3C7F4362C49DF01C77D84B03F5 /* LocalizedStrings.swift */,
+				8255D1825601ADFE398B4EB922691C2C /* NumberFormatter.swift */,
+				8CCC5CD29192D0AE640C28C44790B222 /* StringEnum.swift */,
+				5C4431A880C80CEE68FECCB08138196E /* UnitsOfMeasurement.swift */,
+				69E8D4B16C35EB8DD5E799A8A84A4B49 /* Validator.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		3D2DCF33051FF1A95AA888C711F96AEF /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				A1F8E3B80D2A84E3EC1CCFF12FB5816F /* Info.plist */,
+				77CBB8F9EFB48CCD7636F88AE153EE6F /* VOKMockUrlProtocol.modulemap */,
+				301E195C2D84BDEFA95256606CD27545 /* VOKMockUrlProtocol.xcconfig */,
+				E6D3709DC54477B06CB25AE2F7DD9076 /* VOKMockUrlProtocol-dummy.m */,
+				FD8D47137BD2E6CF7E923081DC882A72 /* VOKMockUrlProtocol-prefix.pch */,
+				3FFF533926512C588619E82503028867 /* VOKMockUrlProtocol-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/VOKMockUrlProtocol";
+			sourceTree = "<group>";
+		};
+		3F3E89A84BB83FDD8B85931DDC9B6EFF /* Pods-SpotHero_iOS_Partner_SDK_ExampleUITests */ = {
+			isa = PBXGroup;
+			children = (
+				EC39B13BE65F58591BB7798B49188584 /* Info.plist */,
+				DCC5ED37B6366962F94BBD4F34F1607D /* Pods-SpotHero_iOS_Partner_SDK_ExampleUITests.modulemap */,
+				12F419EB9D92785AAE0A8749F7D453D3 /* Pods-SpotHero_iOS_Partner_SDK_ExampleUITests-acknowledgements.markdown */,
+				1E5F49D147153B475B8F13A52855EC93 /* Pods-SpotHero_iOS_Partner_SDK_ExampleUITests-acknowledgements.plist */,
+				8CCB13CA9753FE818B409E09D017F825 /* Pods-SpotHero_iOS_Partner_SDK_ExampleUITests-dummy.m */,
+				48A760F2D4631318CAE9119B7FE81C5D /* Pods-SpotHero_iOS_Partner_SDK_ExampleUITests-frameworks.sh */,
+				45DD5C960CEC6151A3D5F0A1FCBCD170 /* Pods-SpotHero_iOS_Partner_SDK_ExampleUITests-resources.sh */,
+				34F191306BE13B0604226705D0A83380 /* Pods-SpotHero_iOS_Partner_SDK_ExampleUITests-umbrella.h */,
+				791A5445D306D31CE1A784DB9E264414 /* Pods-SpotHero_iOS_Partner_SDK_ExampleUITests.debug.xcconfig */,
+				105A38EED625B3A853DAD9FF80562323 /* Pods-SpotHero_iOS_Partner_SDK_ExampleUITests.release.xcconfig */,
+			);
+			name = "Pods-SpotHero_iOS_Partner_SDK_ExampleUITests";
+			path = "Target Support Files/Pods-SpotHero_iOS_Partner_SDK_ExampleUITests";
+			sourceTree = "<group>";
+		};
+		5F9014B5D7D901D2AC943141E7FCE6F1 /* ILGHttpConstants */ = {
+			isa = PBXGroup;
+			children = (
+				8C8BDC3534C9762CF77E0E8465DB8921 /* HTTPHeaderFields.h */,
+				33475DCFAD041DE4DE25A6AEB9C41CCF /* HTTPHeaderFields.m */,
+				47B12878D4433F7E7B446830522A141D /* HTTPMethods.h */,
+				7C7A4098EBEA5D0F0D6447FD2A93B4F8 /* HTTPMethods.m */,
+				6C697BE21D1ACD302B11B902AAF2D97A /* HTTPStatusCodes.h */,
+				612D52B490FB9D5D2846557B2A5F059B /* Support Files */,
+			);
+			path = ILGHttpConstants;
+			sourceTree = "<group>";
+		};
+		612D52B490FB9D5D2846557B2A5F059B /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				7D54BACBA56D12077E7A78872F2C1D2F /* ILGHttpConstants.modulemap */,
+				BB65D5FB9941D22DCFF75511D44BD252 /* ILGHttpConstants.xcconfig */,
+				108DBB169E266E6EC3FDB9CBDDF95C03 /* ILGHttpConstants-dummy.m */,
+				A74F85BE7618CE5FFAAA013859F1345F /* ILGHttpConstants-prefix.pch */,
+				3F8E91F97381005CCA5971CFDC42B11D /* ILGHttpConstants-umbrella.h */,
+				485EB766887DD817CB9A3837C7A43EE8 /* Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/ILGHttpConstants";
+			sourceTree = "<group>";
+		};
+		764910FD9C4B71D3E0AF86B71E1974F2 /* Pods-SpotHero_iOS_Partner_SDK_Example */ = {
+			isa = PBXGroup;
+			children = (
+				3A2ADFE230B15D2C3B7F51A9ED50B3BB /* Info.plist */,
+				72CF597D56D63BC415CE0F77857458F9 /* Pods-SpotHero_iOS_Partner_SDK_Example.modulemap */,
+				9D6FE183FE8B961977D0E68B0D60A595 /* Pods-SpotHero_iOS_Partner_SDK_Example-acknowledgements.markdown */,
+				FF46B62D9A88082DB961B9FAC6AA2ACC /* Pods-SpotHero_iOS_Partner_SDK_Example-acknowledgements.plist */,
+				BFB888D7AF57F531266DD178438689EB /* Pods-SpotHero_iOS_Partner_SDK_Example-dummy.m */,
+				D786B2E88548322A347D7016CC1B5E8E /* Pods-SpotHero_iOS_Partner_SDK_Example-frameworks.sh */,
+				2C70D8DEC3E7F4EB969D3CCFD178F679 /* Pods-SpotHero_iOS_Partner_SDK_Example-resources.sh */,
+				07697703F62E04514A84CD427DBC0A21 /* Pods-SpotHero_iOS_Partner_SDK_Example-umbrella.h */,
+				F1040CA6CAB2E4929292EB7CFEC89768 /* Pods-SpotHero_iOS_Partner_SDK_Example.debug.xcconfig */,
+				1B9EE4552760134BA8F9B2575A5B357D /* Pods-SpotHero_iOS_Partner_SDK_Example.release.xcconfig */,
+			);
+			name = "Pods-SpotHero_iOS_Partner_SDK_Example";
+			path = "Target Support Files/Pods-SpotHero_iOS_Partner_SDK_Example";
+			sourceTree = "<group>";
+		};
+		7B57207ED1145DDCA6C3D53764CB07C8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B93F192D0BAEA7B86E19CB1F9D8A1347 /* CollapsedSearchBarView.swift */,
+				33BFC4131D9F50BA00F7C37F /* DatePickerView.swift */,
+				0B58219B16AECCA0B1597BA4906AFA0A /* FacilityAnnotationView.swift */,
+				C9394ACEF4AE77F95ABD72F20DBEF8E6 /* GooglePredictionTableFooter.swift */,
+				D8171861BCDC2860E10003BCB32C411E /* GooglePredictionTableHeader.swift */,
+				2C8A2239537E4B7CCA1072D770A19110 /* PaymentButton.swift */,
+				26865E84098C69965AEB235AE754F3C7 /* PaymentInfoTableViewCell.swift */,
+				942F27EF05262AE5CCA0FA8CD008E722 /* PersonalInfoTableViewCell.swift */,
+				33BFC4151D9F50C900F7C37F /* PredictionTableViewCell.swift */,
+				8BD8F6EEA6B9FD756658BF85BD9F2BE3 /* ProgressHUD.swift */,
+				3B8716A958FCAFBC119EC57E2471FB8A /* ReservationInfoTableViewCell.swift */,
+				1AE5B207916E62EE6552853C7FA7CF79 /* SpotCardCollectionViewCell.swift */,
+				95910D43A13F897B5AF1E911FB8AD49D /* SpotCardCollectionViewFlowLayout.swift */,
+				6393BD8F776BA36B9ED39DB2C6C2937D /* TimeSelectionView.swift */,
+				33BFC40F1D9F508900F7C37F /* ValidatorCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
+				D3F39BA0F2626529971799FB1209559B /* Development Pods */,
+				D1285031867A35AF93D917C8D58E8054 /* Frameworks */,
+				E26809B06FFBF788D3C1F33A554D8965 /* Pods */,
+				278EE9D7B6DC38A6701C8EBCB284D180 /* Products */,
+				BC90AD44F8EB4CF4C8DBB7E6010A6D68 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		803269EB20B1EE1C77D7B596A591921A /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				80AC677903BBC3145691D9DAE849FBB4 /* CAAnimation+KIFAdditions.h */,
+				72B48CB1BECA5369BEA055509EAE68C6 /* CAAnimation+KIFAdditions.m */,
+				33BD1B3947C9542289742ABE68410BB4 /* CALayer-KIFAdditions.h */,
+				3E36CD28D212B61E58CD62349A0854AB /* CALayer-KIFAdditions.m */,
+				7D38DD096F904E67D9AA9AEC9157492E /* CGGeometry-KIFAdditions.h */,
+				262E04DE4EC83F0C63F6BF60D0E189BA /* CGGeometry-KIFAdditions.m */,
+				357CF9B284B7BDB96189A781EAD3C7B1 /* IOHIDEvent+KIF.h */,
+				68B2885101A68B5288F8985640400A67 /* IOHIDEvent+KIF.m */,
+				03D55896FFCC56B1E53A30D8484A331C /* KIF.h */,
+				FE0DDBE7673615D3F562FE93010094A7 /* KIFAccessibilityEnabler.h */,
+				5B3DC643A090782402F0D38E61A5C5C6 /* KIFAccessibilityEnabler.m */,
+				7895D8168A4FBEFD5D1FB554B3300ED9 /* KIFSystemTestActor.h */,
+				365F1B5ED7B941CCDEC02EE7F33F94D3 /* KIFSystemTestActor.m */,
+				50124536159A7071F3F2076FF60EE14E /* KIFTestActor.h */,
+				2964CE05BA4D9E738E2397C1A03647F4 /* KIFTestActor.m */,
+				1CC1540585636B60DA115F721A830B64 /* KIFTestCase.h */,
+				65E8436FAA6A010A09344F4A685712D1 /* KIFTestCase.m */,
+				F52CD6475F314B386CB1471CF001ADB2 /* KIFTestStepValidation.h */,
+				866438039E504224B30AAEF7B79243F4 /* KIFTestStepValidation.m */,
+				85FD829FE460E7B2722AD5B5D8FB52A6 /* KIFTypist.h */,
+				6161278137E914FA32EA9C187968D697 /* KIFTypist.m */,
+				29CEC39B60AA040D85AAE961EAD20FF3 /* KIFUIObject.h */,
+				FC79E7BBF43F066DFF9EB87D51061921 /* KIFUIObject.m */,
+				2C193B25C1810BBD872ECB28FFB54ADC /* KIFUITestActor.h */,
+				88DE166392A59BF3193915D7C04DC509 /* KIFUITestActor.m */,
+				AE4AEF9BB40713DD8A137E7914FB7C48 /* KIFUITestActor-ConditionalTests.h */,
+				691535177390B46DB27DCC6BFD38D833 /* KIFUITestActor-ConditionalTests.m */,
+				432C2B4713E6B3F05A7EF354D1458B72 /* KIFUIViewTestActor.h */,
+				7A12DFA58738ADA0A672FE53663024FD /* KIFUIViewTestActor.m */,
+				41CA1169E160FF78258961D228E65B42 /* LoadableCategory.h */,
+				1DBF6DC98970E2BFEB691EDBC77BDA04 /* NSBundle-KIFAdditions.h */,
+				DE154E1A407CCF467D82F9664BB4ED5A /* NSBundle-KIFAdditions.m */,
+				148D8ABBE9D7C024C7CA2E018D9CCC38 /* NSError-KIFAdditions.h */,
+				FB46DF40571D77DF0B6A0CC3B512D4F1 /* NSError-KIFAdditions.m */,
+				E3144748FFC69E335D6763D1AA79143C /* NSException-KIFAdditions.h */,
+				1EE378135A99233428074D0DAA93248C /* NSException-KIFAdditions.m */,
+				1EAE28440FDA8925EDAF637CEED209D0 /* NSFileManager-KIFAdditions.h */,
+				DAE3DF01C196343E228B7800413F14B3 /* NSFileManager-KIFAdditions.m */,
+				7C24BA6D67C90E7721730C20F8854CC2 /* NSPredicate+KIFAdditions.h */,
+				D957AD40B2EADE4637A2E7B0B563ED88 /* NSPredicate+KIFAdditions.m */,
+				939D0D61929FE6B2946996A630EBA746 /* NSString+KIFAdditions.h */,
+				60801F84415AFC96278BDB90792D8D59 /* NSString+KIFAdditions.m */,
+				D7FAF6DD7FDE6F0A999D62E62ADA58D5 /* UIAccessibilityElement-KIFAdditions.h */,
+				3C68716BC527FC9871B770B9C6F6965F /* UIAccessibilityElement-KIFAdditions.m */,
+				41CD44210489E6B40C794497CD5076C2 /* UIApplication-KIFAdditions.h */,
+				86D9F639B5B9062BC711E85881EA2910 /* UIApplication-KIFAdditions.m */,
+				1D1BA75382E22E513D93B5C6BEDF8C17 /* UIAutomationHelper.h */,
+				036DD618FD754A6F142E66AB78AD2978 /* UIAutomationHelper.m */,
+				0A17C7ED0DEB8DF18262CC7E68C63A1E /* UIEvent+KIFAdditions.h */,
+				BEDA75377328053174054C6A5833D42F /* UIEvent+KIFAdditions.m */,
+				A19B44EF688D4A3ABE53616188E2985E /* UIScreen+KIFAdditions.h */,
+				92518C488BB5064CA7E3D494B25C00F1 /* UIScreen+KIFAdditions.m */,
+				9248549012BA7A53612ACD0DD50B65D2 /* UIScrollView-KIFAdditions.h */,
+				E76948A1DCBF88D98FD04374882EA13D /* UIScrollView-KIFAdditions.m */,
+				4DFDEECAF3E437C8FA734C4C2167C9A3 /* UITableView-KIFAdditions.h */,
+				023428660D7E49A326EF10FDEAA3E672 /* UITableView-KIFAdditions.m */,
+				D14A4E16C756029A1FDE1D2B320B2EFE /* UITouch-KIFAdditions.h */,
+				F459F139927FC3DD9C72D21435742E30 /* UITouch-KIFAdditions.m */,
+				2AF5BE3DF0710E4168CC8C90C1B93579 /* UIView-Debugging.h */,
+				0BCF7530600392CA1FC2089789BEA0BA /* UIView-Debugging.m */,
+				550F02F58791DE679A4CAB5CD84FC2EF /* UIView-KIFAdditions.h */,
+				06B219DF247E2CF50E129FC74BE7B664 /* UIView-KIFAdditions.m */,
+				BD85043557276A5A74C98EA80F496FA1 /* UIWindow-KIFAdditions.h */,
+				9BB681286D9D7F769D8D9F685ACF69B3 /* UIWindow-KIFAdditions.m */,
+				86C0FB676A64659D35DE0CB7A213E6F7 /* XCTestCase-KIFAdditions.h */,
+				9612B1BD916149C0655E7EAC43A23A89 /* XCTestCase-KIFAdditions.m */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+		824DAA745AA3069D7B38B086C5416880 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1E05208D03C85061143520A151BD0BF9 /* Facility.swift */,
+				33BFC40B1D9F4FF800F7C37F /* FacilityAnnotation.swift */,
+				7BA8769543A526788AEFE89A2FBF54B2 /* GooglePlaceDetails.swift */,
+				95E5F087C562F2B88DA514B7DB632B75 /* GooglePlacesPrediction.swift */,
+				043AF825F9CDCB37823B5648EAAFB7FF /* Rate.swift */,
+				46433380AB6FE923B40359A374602BC7 /* Reservation.swift */,
+				BDB1F1B91D91AD57CA47F7B7BA14C27F /* ServerErrorJSON.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		829243ED7502CAA615FDA386C4EC5C53 /* VOKBenkode */ = {
+			isa = PBXGroup;
+			children = (
+				3DCB61DE61D8B651F49EE3470324FAB2 /* VOKBenkode.h */,
+				BB4CF7A50631AF2A005CAC54E0AFE35A /* VOKBenkode.m */,
+				2FA946C649DF875B7FE8639B29A406F7 /* Support Files */,
+			);
+			path = VOKBenkode;
+			sourceTree = "<group>";
+		};
+		A3CEA03A287FFBB1A5D3CC8A621F5FDF /* SpotHero_iOS_Partner_SDK */ = {
+			isa = PBXGroup;
+			children = (
+				11F2EB5EB5AD1F59086B37F38A1DF97A /* Resources */,
+				A90397979675FD4F355556A2214AADD9 /* SpotHero_iOS_Partner_SDK */,
+				C2F0EE94E37A4C11329BC0CEC6E28350 /* Support Files */,
+			);
+			name = SpotHero_iOS_Partner_SDK;
+			path = ../..;
+			sourceTree = "<group>";
+		};
+		A90397979675FD4F355556A2214AADD9 /* SpotHero_iOS_Partner_SDK */ = {
+			isa = PBXGroup;
+			children = (
+				D6FDDD6C6D20DE259D5488F5B819C561 /* Classes */,
+			);
+			path = SpotHero_iOS_Partner_SDK;
+			sourceTree = "<group>";
+		};
+		AD57691DC33163795CDC0F1E7848597F /* KIF */ = {
+			isa = PBXGroup;
+			children = (
+				803269EB20B1EE1C77D7B596A591921A /* Core */,
+				FAF7E7F5C46BBD78C663678625B191EF /* Support Files */,
+			);
+			path = KIF;
+			sourceTree = "<group>";
+		};
+		BC90AD44F8EB4CF4C8DBB7E6010A6D68 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				764910FD9C4B71D3E0AF86B71E1974F2 /* Pods-SpotHero_iOS_Partner_SDK_Example */,
+				3F3E89A84BB83FDD8B85931DDC9B6EFF /* Pods-SpotHero_iOS_Partner_SDK_ExampleUITests */,
+				EC0952BD06CA66491CF2A1D9891404CC /* Pods-SpotHero_iOS_Partner_SDK_Tests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		C2F0EE94E37A4C11329BC0CEC6E28350 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				88EC3FAD884F79D8E73F0D210CB27DF1 /* Info.plist */,
+				6DD6E4F1A553A4E0481D8C5385D65FC6 /* ResourceBundle-SpotHero_iOS_Partner_SDK-Info.plist */,
+				571B3DA07B945E73E2FF7BA4A7E2C227 /* SpotHero_iOS_Partner_SDK.modulemap */,
+				8CF0AFE39B87B766DAD99F71912DA0CA /* SpotHero_iOS_Partner_SDK.xcconfig */,
+				66FE110AD3FCF0BE89B8C745B4E8D69E /* SpotHero_iOS_Partner_SDK-dummy.m */,
+				921E864FD91B49BBBEBBDA646D9537E6 /* SpotHero_iOS_Partner_SDK-prefix.pch */,
+				238D6C429A5DA9D357266CA0EBD36B75 /* SpotHero_iOS_Partner_SDK-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/SpotHero_iOS_Partner_SDK";
+			sourceTree = "<group>";
+		};
+		CE70764018B2436BA52C2C4A3EA0721A /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				B1E8A5FE66E947B136FC84DBFCDE8472 /* APIError.swift */,
+				126B6FC65528F8F249F2DD5BBA889C7E /* APIHeaders.swift */,
+				33BFC4091D9F41B700F7C37F /* FaciltyAPI.swift */,
+				8DDEA34C5FFBD7166C8431AFB3029C9C /* GooglePlacesWrapper.swift */,
+				189C92AD68CB6B28D75BB87E4D16424A /* JSONDictionary.swift */,
+				33BFC40D1D9F504300F7C37F /* ReservationAPI.swift */,
+				2C08EACF14E88D07E6F255749DF2ED5E /* ServerEnvironment.swift */,
+				4843F5F80C627641BEACC18378B8646E /* SpotHeroPartnerAPIController.swift */,
+				0746705D5D433CB9AD081E2F3B68264D /* StripeWrapper.swift */,
+				C7DA17E81DA41420005CB324 /* APIKeyConfig.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		CFC1CC8E27E5F71DF7D155ECF49BB40E /* VOKMockUrlProtocol */ = {
+			isa = PBXGroup;
+			children = (
+				A24D29F1383067FED859AEEC2BF6D107 /* VOKMockUrlProtocol.h */,
+				B9B57B04FEA617ADAB2C10BD467E0C73 /* VOKMockUrlProtocol.m */,
+				3D2DCF33051FF1A95AA888C711F96AEF /* Support Files */,
+			);
+			path = VOKMockUrlProtocol;
+			sourceTree = "<group>";
+		};
+		D1285031867A35AF93D917C8D58E8054 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0517F0DBBD81C6D6B15B505CFA2FA484 /* ILGHttpConstants.framework */,
+				481D25AA6BE70645CA7A90B8B7BF1BEE /* VOKBenkode.framework */,
+				D50C71960980173ECBFB2B9EC0EACA81 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D3F39BA0F2626529971799FB1209559B /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A3CEA03A287FFBB1A5D3CC8A621F5FDF /* SpotHero_iOS_Partner_SDK */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		D50C71960980173ECBFB2B9EC0EACA81 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				E8D222BAE84DEBE8D060E3DF47BD9C42 /* CoreGraphics.framework */,
+				AB2211EBC3C815DA3EA7279F79E54099 /* CoreLocation.framework */,
+				44EE72E22B15FDAF57F9EE6D2EE224D5 /* Foundation.framework */,
+				A8038B7BE15073A198A88886217A235D /* IOKit.framework */,
+				3C2DBE3F457BF416F24E38FC92AEE68B /* MapKit.framework */,
+				9A505AC0285FE14B505B6D026D35B6DC /* QuartzCore.framework */,
+				57F859535A911D731946724AB9E1FBD4 /* UIKit.framework */,
+				58C9093FA51C251AD2BC7C02115B42BB /* XCTest.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		D6FDDD6C6D20DE259D5488F5B819C561 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				893AEA1DAD7DF249CE4688A409C76DB1 /* CheckoutTableViewController.swift */,
+				8488E2AE4C32227B72ECE3F77736D6B7 /* ConfirmationViewController.swift */,
+				AD8F47D000626807A6D63365F917C034 /* MapViewController.swift */,
+				07D2D6BDA9C499AC6C270610CCFBE0E2 /* SpotHeroPartnerNavigationController.swift */,
+				74C679732E5A2858659CBEAA4152C8A8 /* SpotHeroPartnerSDK.swift */,
+				23263886BEE27FAA4F5616882EC98651 /* Extensions */,
+				13F97A3688FDD8B4DCAFE1BF38487097 /* Model Controllers */,
+				824DAA745AA3069D7B38B086C5416880 /* Models */,
+				CE70764018B2436BA52C2C4A3EA0721A /* Network */,
+				38B69691C74D4695343E99CA59A3B81F /* Utilities */,
+				7B57207ED1145DDCA6C3D53764CB07C8 /* Views */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		E0B4EA77E0C426DFCFE65FA389148E2C /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				CBBADA0C564612CD0A2FD287A04C1B00 /* GooglePredictionTableFooter.xib */,
+				444E5570E33BAFE592F0DBC2C7E4CD80 /* GooglePredictionTableHeader.xib */,
+				C79B28A51C2E4CAE22F70E4E5D09112C /* Images.xcassets */,
+				9605FCE896085BDD592EFF4CB3F748AF /* Main.storyboard */,
+				10FB630A2699946E09F3D27C1D7D1708 /* PaymentButton.xib */,
+				1AA421B7404FCAFDDA5CE9A1ED498ABA /* ProgressHUD.xib */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		E26809B06FFBF788D3C1F33A554D8965 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5F9014B5D7D901D2AC943141E7FCE6F1 /* ILGHttpConstants */,
+				AD57691DC33163795CDC0F1E7848597F /* KIF */,
+				829243ED7502CAA615FDA386C4EC5C53 /* VOKBenkode */,
+				CFC1CC8E27E5F71DF7D155ECF49BB40E /* VOKMockUrlProtocol */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		EC0952BD06CA66491CF2A1D9891404CC /* Pods-SpotHero_iOS_Partner_SDK_Tests */ = {
+			isa = PBXGroup;
+			children = (
+				F8CAEF1A388C2AD4016A62A07055ED39 /* Info.plist */,
+				0F092BCA2988A5D2AE8864F04E617F25 /* Pods-SpotHero_iOS_Partner_SDK_Tests.modulemap */,
+				8E445A100FD63186F3123406ABE006E8 /* Pods-SpotHero_iOS_Partner_SDK_Tests-acknowledgements.markdown */,
+				50E7887E667F443F5769AB1EA47F2910 /* Pods-SpotHero_iOS_Partner_SDK_Tests-acknowledgements.plist */,
+				2684D36E1DF39EED96E5B6EA84EDF8CF /* Pods-SpotHero_iOS_Partner_SDK_Tests-dummy.m */,
+				5803D81A30D18771642B9ED5518FB480 /* Pods-SpotHero_iOS_Partner_SDK_Tests-frameworks.sh */,
+				B03DDC183E86127A9B620C1A4F1E2B29 /* Pods-SpotHero_iOS_Partner_SDK_Tests-resources.sh */,
+				1C0A0C46C6A2D321077A532B60B60D0D /* Pods-SpotHero_iOS_Partner_SDK_Tests-umbrella.h */,
+				27B96FA03251D2984B001ADB3AD894E8 /* Pods-SpotHero_iOS_Partner_SDK_Tests.debug.xcconfig */,
+				4777173DD31D9679DDAEBC3B8C3F17A5 /* Pods-SpotHero_iOS_Partner_SDK_Tests.release.xcconfig */,
+			);
+			name = "Pods-SpotHero_iOS_Partner_SDK_Tests";
+			path = "Target Support Files/Pods-SpotHero_iOS_Partner_SDK_Tests";
+			sourceTree = "<group>";
+		};
+		FAF7E7F5C46BBD78C663678625B191EF /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				A28C78A8C890A13E6949B8438527A9CF /* Info.plist */,
+				25295A0DBE18CA746017E93D5AFBFA8A /* KIF.modulemap */,
+				FDC18EF0ED64A379352D22E386BC67CF /* KIF.xcconfig */,
+				3414DF7CD6094902EFFDD6AF92AE935E /* KIF-dummy.m */,
+				ECE811086E4E71A144070A4D76C0ABB3 /* KIF-prefix.pch */,
+				FDDE33C5BCB4BFFB00FA49E31E86B362 /* KIF-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/KIF";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		1ACEA4FE4477B2A73497E322B9031E29 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9934F594895B7B937160AE96B66B1EC0 /* SpotHero_iOS_Partner_SDK-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9412A8F47FEEE8680F54C7FE4E32D7C2 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				942B535D5CB86055632F63509E6AB337 /* Pods-SpotHero_iOS_Partner_SDK_Tests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A002D2F308885D6F5F691038D0B3537E /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5987915EAD9F7739863FCFEA312420E5 /* Pods-SpotHero_iOS_Partner_SDK_Example-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B50CEE4FD87CFF8F42763EA2A3C87F7C /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F9C9316C97DFB7F39D018454A8E61940 /* VOKBenkode-umbrella.h in Headers */,
+				0A5FA559B0951C4714A7E81D65E373A4 /* VOKBenkode.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D6D3B98A2AE0C642450CC70F3563950B /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F10EBB363DF27458768A3026CE1FDA1A /* HTTPHeaderFields.h in Headers */,
+				5FBAA909FCCF323BAF0F5DE579BFA4F2 /* HTTPMethods.h in Headers */,
+				D8CBEF4421FED8390D4868423EB4A462 /* HTTPStatusCodes.h in Headers */,
+				259DA652410E563D6B1B5F11F810E005 /* ILGHttpConstants-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E6C177292321B59A38935E59ECE70E1D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5083FE402C902E16AD380E92DCAB9A9F /* CAAnimation+KIFAdditions.h in Headers */,
+				AD21276537AEB56D426F92014614B922 /* CALayer-KIFAdditions.h in Headers */,
+				CFFEB4C01CD261C87DE744422B65843E /* CGGeometry-KIFAdditions.h in Headers */,
+				4D4D915C5DB41140AFE90F6A10CF5309 /* IOHIDEvent+KIF.h in Headers */,
+				8BBE2B2C7DC7AECD381263A8985138E3 /* KIF-umbrella.h in Headers */,
+				CB125322FE1956400E85F7C58D16C605 /* KIF.h in Headers */,
+				5EB333AB52E7780ABF359AEAC4A0549D /* KIFAccessibilityEnabler.h in Headers */,
+				234EF6DA51E46EA68E978353DE6B9C22 /* KIFSystemTestActor.h in Headers */,
+				FE014C13A00EBB80A39B37404DFA6704 /* KIFTestActor.h in Headers */,
+				B0196216EF04DBF174825BCFC9A27085 /* KIFTestCase.h in Headers */,
+				77FD519E64E813EF334A963CB4CECE3C /* KIFTestStepValidation.h in Headers */,
+				E231F10B11453A88B507A806BF6B4E3C /* KIFTypist.h in Headers */,
+				F95325B6FE819634A5E45D6A50EC9EF5 /* KIFUIObject.h in Headers */,
+				08050954512BC37FF95E5EB4F23DF2C8 /* KIFUITestActor-ConditionalTests.h in Headers */,
+				5C47B9243EFD57C5D4300AB10BA942C6 /* KIFUITestActor.h in Headers */,
+				C7E8F7603416B765A43FD6D7385CA6F2 /* KIFUIViewTestActor.h in Headers */,
+				A172DD97DF6F9DE7FDA8B935C3ADAFA2 /* LoadableCategory.h in Headers */,
+				C734E00407D5DF6EA98DD60DFF7AC583 /* NSBundle-KIFAdditions.h in Headers */,
+				E3DC36E560A8493AD15D26E70DF1DC66 /* NSError-KIFAdditions.h in Headers */,
+				22E4A6BF36E392DC5E21DA4346F5F4EC /* NSException-KIFAdditions.h in Headers */,
+				9FB8E923C926350D0C665F76D97E7601 /* NSFileManager-KIFAdditions.h in Headers */,
+				F73F61843D28037B032C4B982A1FAE31 /* NSPredicate+KIFAdditions.h in Headers */,
+				7FDB50A386F2F1829EAE739B5E4D5655 /* NSString+KIFAdditions.h in Headers */,
+				B28686CBE10B8A410E09AE44147D163C /* UIAccessibilityElement-KIFAdditions.h in Headers */,
+				A968E463CB883420630D46D48B01C21E /* UIApplication-KIFAdditions.h in Headers */,
+				9899D7A99B401AEB70284EFF616CCAF5 /* UIAutomationHelper.h in Headers */,
+				6B31FE7D8EC8521EAB31A3EC024D84BE /* UIEvent+KIFAdditions.h in Headers */,
+				38CA7CF4457FD0B66845EABD43C8747D /* UIScreen+KIFAdditions.h in Headers */,
+				FFDFC56F4783064D9C3917F2AA889215 /* UIScrollView-KIFAdditions.h in Headers */,
+				533355686AFEBD690804112DD46AD635 /* UITableView-KIFAdditions.h in Headers */,
+				CCF0C51DA5EDADD2477707EB4102BDBF /* UITouch-KIFAdditions.h in Headers */,
+				29BA68E356E8AB2E7D1E8FF3F0DD87C4 /* UIView-Debugging.h in Headers */,
+				9835B2A258BABC40B5AE9EC6649739FC /* UIView-KIFAdditions.h in Headers */,
+				2C21AC6FF6CF49C58E3484CAF38B42C7 /* UIWindow-KIFAdditions.h in Headers */,
+				CAD284359578C301B6C9AA9E00F6CF5E /* XCTestCase-KIFAdditions.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E6EEB1375D86EC91E86A407CC89F2860 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				606C9DC52EAFAA3D95D61A99B7EE3D49 /* VOKMockUrlProtocol-umbrella.h in Headers */,
+				D1D16548BEC37FCE1D97522ECB69B8D0 /* VOKMockUrlProtocol.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F31CEF698AA6E776028EF7CCD3F2966B /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				674501A5C68EA1A9A4C20D06B7151F1A /* Pods-SpotHero_iOS_Partner_SDK_ExampleUITests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		11C417C5A444DA622081003D30C568F0 /* SpotHero_iOS_Partner_SDK */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7769D02DE8B6710592290328861852EC /* Build configuration list for PBXNativeTarget "SpotHero_iOS_Partner_SDK" */;
+			buildPhases = (
+				89F472C32345538C34C1E7750648A359 /* Sources */,
+				271D3CAC46096E6EA34656205A2014E8 /* Frameworks */,
+				AA13FE002EE71A25082060F0422F68E8 /* Resources */,
+				1ACEA4FE4477B2A73497E322B9031E29 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B8E3DA6CA696AE14117A76E2AE3F122F /* PBXTargetDependency */,
+			);
+			name = SpotHero_iOS_Partner_SDK;
+			productName = SpotHero_iOS_Partner_SDK;
+			productReference = 702B4B6548CD6F52D03AC4D8C46C1816 /* SpotHero_iOS_Partner_SDK.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		1E5E9A6F588D31B189D3AEDCE14BE21D /* SpotHero_iOS_Partner_SDK-SpotHero_iOS_Partner_SDK */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C8E98A537B0BB6AF8BCE847AD1B63FD6 /* Build configuration list for PBXNativeTarget "SpotHero_iOS_Partner_SDK-SpotHero_iOS_Partner_SDK" */;
+			buildPhases = (
+				C686720B08FDAE34AE8867E5A4827A3B /* Sources */,
+				70D511D3CAA45DF97585B454698F82BF /* Frameworks */,
+				B0FA2DFB071DA73C50B13748919DC47D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "SpotHero_iOS_Partner_SDK-SpotHero_iOS_Partner_SDK";
+			productName = "SpotHero_iOS_Partner_SDK-SpotHero_iOS_Partner_SDK";
+			productReference = 030A1525F39C146F0AE433430ED38B60 /* SpotHero_iOS_Partner_SDK.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
+		28C1D2BCF3CF2F2210CB63D423BEF55E /* ILGHttpConstants */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 649AF03E2CF4D3646BA49211841AE022 /* Build configuration list for PBXNativeTarget "ILGHttpConstants" */;
+			buildPhases = (
+				CD77564A01AC2DF84839683F5A55A8C6 /* Sources */,
+				52DD1DF8254C9F1B6A160EEF190AC7B7 /* Frameworks */,
+				D6D3B98A2AE0C642450CC70F3563950B /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ILGHttpConstants;
+			productName = ILGHttpConstants;
+			productReference = 245E9173B4A887E18879469EDF017026 /* ILGHttpConstants.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		36D9E8263DBEC5EFA24F2AAC9D831BD6 /* Pods-SpotHero_iOS_Partner_SDK_Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C6CC7B7D5D39CD0B06B6B42F84252CA4 /* Build configuration list for PBXNativeTarget "Pods-SpotHero_iOS_Partner_SDK_Example" */;
+			buildPhases = (
+				D0CB5119EF88CE5FA98620DFBB993170 /* Sources */,
+				06C9309AC232A3AC5B669C984A897A0E /* Frameworks */,
+				A002D2F308885D6F5F691038D0B3537E /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2460020138EED24032412BEA92D1DB5E /* PBXTargetDependency */,
+			);
+			name = "Pods-SpotHero_iOS_Partner_SDK_Example";
+			productName = "Pods-SpotHero_iOS_Partner_SDK_Example";
+			productReference = 127E01E5A45C4F58FE75BA91DE539413 /* Pods_SpotHero_iOS_Partner_SDK_Example.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		535131CDF6F2C39C4D2E535BF3FD879C /* KIF */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 961A35B4544398FD9B9060DA2519E2A8 /* Build configuration list for PBXNativeTarget "KIF" */;
+			buildPhases = (
+				2DAEB3E8F397F4DEF21931F444C633E5 /* Sources */,
+				03337477C8E645599C27F25D58B186FB /* Frameworks */,
+				E6C177292321B59A38935E59ECE70E1D /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KIF;
+			productName = KIF;
+			productReference = 2994F25322891A775466DB578834B4B3 /* KIF.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		7F7429D3ED936A2EE8CAA540C86B8E7B /* Pods-SpotHero_iOS_Partner_SDK_Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2B09B3AC34CB8C02AD172F925B29A5B7 /* Build configuration list for PBXNativeTarget "Pods-SpotHero_iOS_Partner_SDK_Tests" */;
+			buildPhases = (
+				45CF85766D84B21DB35F2E9DA9821455 /* Sources */,
+				2D3731083F958F62680F219D98146CD1 /* Frameworks */,
+				9412A8F47FEEE8680F54C7FE4E32D7C2 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E2E2ABDB390C680783B2C685016AC77B /* PBXTargetDependency */,
+				8F6928827C79BA679F9BDE2AA4C8D1C4 /* PBXTargetDependency */,
+				F711C0D0DCDA04BCFAC53E075C5E1F62 /* PBXTargetDependency */,
+			);
+			name = "Pods-SpotHero_iOS_Partner_SDK_Tests";
+			productName = "Pods-SpotHero_iOS_Partner_SDK_Tests";
+			productReference = EEA7B5F3A5959B9F0234AA20AF1BCA1D /* Pods_SpotHero_iOS_Partner_SDK_Tests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		812BEC2415B40B37AAE67F9ED0DC03E3 /* Pods-SpotHero_iOS_Partner_SDK_ExampleUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 984F479E1C16806D72707DF009024948 /* Build configuration list for PBXNativeTarget "Pods-SpotHero_iOS_Partner_SDK_ExampleUITests" */;
+			buildPhases = (
+				E55B75902B179326922B3C7BA2A7477A /* Sources */,
+				BCBAED73FAE4894E9B6F505B3EC3E69F /* Frameworks */,
+				F31CEF698AA6E776028EF7CCD3F2966B /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				04E726D069E4FB2D38EA1B531D7DB2F4 /* PBXTargetDependency */,
+				7F722DD3097508ED7D2CA08959AED509 /* PBXTargetDependency */,
+				ED19177482778DE431AAA4532F44CC18 /* PBXTargetDependency */,
+				7C5E5634E3DA3AC358DFE5703692AC29 /* PBXTargetDependency */,
+			);
+			name = "Pods-SpotHero_iOS_Partner_SDK_ExampleUITests";
+			productName = "Pods-SpotHero_iOS_Partner_SDK_ExampleUITests";
+			productReference = D6CE75863C99AD43B644B4AAC2CE67D4 /* Pods_SpotHero_iOS_Partner_SDK_ExampleUITests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		AD9A8BE9C00B3D02C1A78E8C7E88696F /* VOKBenkode */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A8F846406CBF1F57BE846AE578350BE5 /* Build configuration list for PBXNativeTarget "VOKBenkode" */;
+			buildPhases = (
+				D590DDD79ADD837A32769666FE0A88D3 /* Sources */,
+				9A644352019DA83960582E9FC00E08D9 /* Frameworks */,
+				B50CEE4FD87CFF8F42763EA2A3C87F7C /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = VOKBenkode;
+			productName = VOKBenkode;
+			productReference = BF417A0AC673E17995B074801D1448EA /* VOKBenkode.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		DCCBDC731E172083F7CC90FF6493A73B /* VOKMockUrlProtocol */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E3C12EDFD57A5CE262F69CA33108645A /* Build configuration list for PBXNativeTarget "VOKMockUrlProtocol" */;
+			buildPhases = (
+				121EFC165203950B7DAF22A86EBE62CB /* Sources */,
+				CF3207B4D736DB1C7D5F07B945B252CA /* Frameworks */,
+				E6EEB1375D86EC91E86A407CC89F2860 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EEA644958708D564842A8908B90AE6FD /* PBXTargetDependency */,
+				01BA1B9AB4D389D392C9B4431F06C4CD /* PBXTargetDependency */,
+			);
+			name = VOKMockUrlProtocol;
+			productName = VOKMockUrlProtocol;
+			productReference = 40C95C317AE9F8EBD648F6EC54F342A0 /* VOKMockUrlProtocol.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0700;
+				TargetAttributes = {
+					11C417C5A444DA622081003D30C568F0 = {
+						LastSwiftMigration = 0800;
+					};
+					28C1D2BCF3CF2F2210CB63D423BEF55E = {
+						LastSwiftMigration = 0800;
+					};
+					36D9E8263DBEC5EFA24F2AAC9D831BD6 = {
+						LastSwiftMigration = 0800;
+					};
+				};
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = 278EE9D7B6DC38A6701C8EBCB284D180 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				28C1D2BCF3CF2F2210CB63D423BEF55E /* ILGHttpConstants */,
+				535131CDF6F2C39C4D2E535BF3FD879C /* KIF */,
+				36D9E8263DBEC5EFA24F2AAC9D831BD6 /* Pods-SpotHero_iOS_Partner_SDK_Example */,
+				812BEC2415B40B37AAE67F9ED0DC03E3 /* Pods-SpotHero_iOS_Partner_SDK_ExampleUITests */,
+				7F7429D3ED936A2EE8CAA540C86B8E7B /* Pods-SpotHero_iOS_Partner_SDK_Tests */,
+				11C417C5A444DA622081003D30C568F0 /* SpotHero_iOS_Partner_SDK */,
+				1E5E9A6F588D31B189D3AEDCE14BE21D /* SpotHero_iOS_Partner_SDK-SpotHero_iOS_Partner_SDK */,
+				AD9A8BE9C00B3D02C1A78E8C7E88696F /* VOKBenkode */,
+				DCCBDC731E172083F7CC90FF6493A73B /* VOKMockUrlProtocol */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AA13FE002EE71A25082060F0422F68E8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				531841026ABB73DA0B1357AD71CD343B /* SpotHero_iOS_Partner_SDK.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B0FA2DFB071DA73C50B13748919DC47D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				88E4A7881BAF15E5961C022878FFC7CC /* GooglePredictionTableFooter.xib in Resources */,
+				B744AD03F5AB4F9AE371BAB3DE2D895E /* GooglePredictionTableHeader.xib in Resources */,
+				AD434B4A871BF7A5215642E81960A891 /* Images.xcassets in Resources */,
+				A7D27172CA53D2D4A8DA989A2449B410 /* Main.storyboard in Resources */,
+				D4FE6CB2BB55519C1C381810C1CA9788 /* PaymentButton.xib in Resources */,
+				337E3E7D6863800E4F547AB0DEA58DC7 /* ProgressHUD.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		121EFC165203950B7DAF22A86EBE62CB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DA448530A535F1170BAD136297E3188A /* VOKMockUrlProtocol-dummy.m in Sources */,
+				7F0A300C99805F759E0788B38CC2D375 /* VOKMockUrlProtocol.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2DAEB3E8F397F4DEF21931F444C633E5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8AAF01CFD2D493D5C3003D707C9124B3 /* CAAnimation+KIFAdditions.m in Sources */,
+				D1F14B9DDA3AD5B5A40E4235F76CF02D /* CALayer-KIFAdditions.m in Sources */,
+				6AB2B66F4AADD488BC6674C9CC92C9CC /* CGGeometry-KIFAdditions.m in Sources */,
+				7C00AF68DA8D9A43FB5A0D0E6F185538 /* IOHIDEvent+KIF.m in Sources */,
+				7FFCFA9B5EA2FB85E726A8E7A7C7B1F1 /* KIF-dummy.m in Sources */,
+				069F4192ECF76A5967C73A692AF97B51 /* KIFAccessibilityEnabler.m in Sources */,
+				E89643124781A3CD54199B1943626AA4 /* KIFSystemTestActor.m in Sources */,
+				F60A4B7F33FA1FDBDEB3B7E13617CECE /* KIFTestActor.m in Sources */,
+				77AA555B4098F00713A6D89F64ADDDDE /* KIFTestCase.m in Sources */,
+				5917C8CC36C8D842B7089A39F07CA44B /* KIFTestStepValidation.m in Sources */,
+				D91D70DC9E5AD5547610893F556F25CB /* KIFTypist.m in Sources */,
+				162B12F5680B9A66C77CEA881F353A7E /* KIFUIObject.m in Sources */,
+				88584332FE7B2CF91C794CB4825F0E43 /* KIFUITestActor-ConditionalTests.m in Sources */,
+				05856463520A04D15A5F2C657E06C942 /* KIFUITestActor.m in Sources */,
+				217C37C5B0EB229F4E98A4F9703D61BE /* KIFUIViewTestActor.m in Sources */,
+				CA174F78DC426E8E91378B1CA7617737 /* NSBundle-KIFAdditions.m in Sources */,
+				8B713C80FC8134539536136CBECA4C40 /* NSError-KIFAdditions.m in Sources */,
+				F1B212D720EC0BA2F61E9F02DE47481E /* NSException-KIFAdditions.m in Sources */,
+				7E685FDA4255E1EA66188C5932AA6DB3 /* NSFileManager-KIFAdditions.m in Sources */,
+				37AFD24C3C8DD7317DBD56FEAED7A065 /* NSPredicate+KIFAdditions.m in Sources */,
+				646941F1C8A371A2F136AB36F51C4F1B /* NSString+KIFAdditions.m in Sources */,
+				1E299951E56B748702CFAEB5E29BE99F /* UIAccessibilityElement-KIFAdditions.m in Sources */,
+				651321C727591FE0BB021BE0AFA8E5FD /* UIApplication-KIFAdditions.m in Sources */,
+				68073D8C7625423C5B028BE904442914 /* UIAutomationHelper.m in Sources */,
+				1F2DDC75F2FC75B65632FF2E6AE95F2E /* UIEvent+KIFAdditions.m in Sources */,
+				E148B2D1F42354975AA4E3525754D25A /* UIScreen+KIFAdditions.m in Sources */,
+				E6A94810C5DDF7492EE03E4F3E428AC6 /* UIScrollView-KIFAdditions.m in Sources */,
+				635621291F8E488162462F77A8585FE8 /* UITableView-KIFAdditions.m in Sources */,
+				4B002FCDA3266B58A34211BBC50D400F /* UITouch-KIFAdditions.m in Sources */,
+				63E3B5E38461EC6BB2DF38AE19A716F4 /* UIView-Debugging.m in Sources */,
+				4A75F0B7F0176F2D7C4F2EBAE46D8089 /* UIView-KIFAdditions.m in Sources */,
+				409E617709140C4768835D16D1EE93D6 /* UIWindow-KIFAdditions.m in Sources */,
+				1B28003849DE02143943FE92F3DFEB10 /* XCTestCase-KIFAdditions.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		45CF85766D84B21DB35F2E9DA9821455 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				193A81B1776D2369F4FC9E6286795DA8 /* Pods-SpotHero_iOS_Partner_SDK_Tests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		89F472C32345538C34C1E7750648A359 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5772B10C590ADA538AE7ECE311DFF347 /* AccessibilityStrings.swift in Sources */,
+				E4E933B952C37CC3549E793812762624 /* AlertView.swift in Sources */,
+				33BFC4141D9F50BA00F7C37F /* DatePickerView.swift in Sources */,
+				D7D90D609BF7CCE98F61CC5D904C9546 /* APIError.swift in Sources */,
+				33BFC4161D9F50C900F7C37F /* PredictionTableViewCell.swift in Sources */,
+				3C16F9A9A5453AAE897BCC728858DC00 /* APIHeaders.swift in Sources */,
+				944B7349B89ED856B82CF0E2B783CDEF /* CheckoutTableViewController.swift in Sources */,
+				33BFC4181D9F510000F7C37F /* KeyboardNotification.swift in Sources */,
+				6854B582E4FA98D5F12ADE81AE6CC4C6 /* CollapsedSearchBarView.swift in Sources */,
+				C1953711B0FAB5833484D6ACD35F2D52 /* ConfirmationViewController.swift in Sources */,
+				73D0CB7F53B76A46582023F0177CEFE6 /* Constants.swift in Sources */,
+				FB95AC8D79F09D2D62411C6A039E2444 /* DateFormatter.swift in Sources */,
+				745AFD5190CD4DE0083B6DF8547466E7 /* DLog.swift in Sources */,
+				2AA2EC24DE4E712455C03C3C24D7D0C4 /* Facility.swift in Sources */,
+				AD3BCFB971D5AC7CC7BAF19EC39FF6B8 /* FacilityAnnotationView.swift in Sources */,
+				67B0936D159937C69ADDBA09F37DEEDF /* Formatter.swift in Sources */,
+				E04C4F111BA309242978D2FAD7D631DE /* GooglePlaceDetails.swift in Sources */,
+				8508DA7AA97287A5AD3D5258D901FABD /* GooglePlacesPrediction.swift in Sources */,
+				8E573001B87C5AADBB994D55B294B3F9 /* GooglePlacesWrapper.swift in Sources */,
+				F92942EA643A233C10A3E630870B8652 /* GooglePredictionTableFooter.swift in Sources */,
+				DAB88BD02087A04AB92186A62DBFBE98 /* GooglePredictionTableHeader.swift in Sources */,
+				17C9F2D4C7814EA39BD83EAFB65D88A0 /* HeightsAndLengths.swift in Sources */,
+				3391D7901D9DA7F8009A42B8 /* NSDate+Comparison.swift in Sources */,
+				33BFC4121D9F50A200F7C37F /* CountableIntEnum.swift in Sources */,
+				CE4844A2CF4313DF5672F20801CAF947 /* JSONDictionary.swift in Sources */,
+				E8C08F4DE724466F256BBA2A6D8117C7 /* LocalizedStrings.swift in Sources */,
+				D42BC74D54F24F72DB0292814834E630 /* MapViewController.swift in Sources */,
+				9E7893AE5908B8B165303A362D93AAB1 /* NSBundle+SpotHeroPartner.swift in Sources */,
+				33BFC40E1D9F504300F7C37F /* ReservationAPI.swift in Sources */,
+				417ABF4EAD140DFE58B2E13EEDE2FD3C /* NSDate+DateFormatter.swift in Sources */,
+				F90EEA8EBAA458A5222B728EF4D6804B /* NSURLQueryItem+QueryParams.swift in Sources */,
+				C6823953955B79CA0D45C6C82BC50814 /* NumberFormatter.swift in Sources */,
+				DA292ADF5EF1F55376262F9A516CAB41 /* PaymentButton.swift in Sources */,
+				FF8B6DE559BA1A052541A4C09FD47640 /* PaymentInfoTableViewCell.swift in Sources */,
+				9D27E47BB19445E395EE3DF53040785A /* PersonalInfoTableViewCell.swift in Sources */,
+				BE0251A910E11DA7F8DADA4D61AA610B /* PredictionController.swift in Sources */,
+				A60D4AFADBD4CD0CC1DECEEE13076D0D /* ProgressHUD.swift in Sources */,
+				79FB533D7CB70F0C6760ACD39121776D /* Rate.swift in Sources */,
+				33BFC40A1D9F41B700F7C37F /* FaciltyAPI.swift in Sources */,
+				B4E9CC5DBF6DEAB57EFB80BC0062F346 /* Reservation.swift in Sources */,
+				BBF90BC938FB6A40B2E9F7F1D4004651 /* ReservationInfoTableViewCell.swift in Sources */,
+				4F34981032C2403C02D531C12396079C /* ServerEnvironment.swift in Sources */,
+				6F4674E6D69F73F81C333F75CB3427B7 /* ServerErrorJSON.swift in Sources */,
+				178F85DD2117134FD05C9F76E73D7930 /* SpotCardCollectionViewCell.swift in Sources */,
+				F95689E5D8C635FE598C587A24D7D7C1 /* SpotCardCollectionViewFlowLayout.swift in Sources */,
+				38007BB4FC7A7FDFDE71FC4BB1833CA0 /* SpotHero_iOS_Partner_SDK-dummy.m in Sources */,
+				12F5BF580B01D11B3F58360D71F1A7CF /* SpotHeroPartnerAPIController.swift in Sources */,
+				68E2555A42644EC8B1E28C30A33B202E /* SpotHeroPartnerNavigationController.swift in Sources */,
+				C8BEDDE689BC9F43B3B838B8D4A3AB49 /* SpotHeroPartnerSDK.swift in Sources */,
+				80E5EAD32F18874FE4D10EB119893D01 /* StringEnum.swift in Sources */,
+				3D4A63A5FC9B24D420237883B2526253 /* StripeWrapper.swift in Sources */,
+				C7DA17EA1DA41429005CB324 /* APIKeyConfig.swift in Sources */,
+				0F60EB8D2BE86E3663CBC308A0FBA88A /* TimeSelectionView.swift in Sources */,
+				33BFC4101D9F508900F7C37F /* ValidatorCell.swift in Sources */,
+				167DE4242C0634054845621E9B7F722F /* UIColor+SpotHeroPartner.swift in Sources */,
+				04A82C087D24C9F82BE00552458BCBA2 /* UnitsOfMeasurement.swift in Sources */,
+				820281C03CEB6B77AB722DB925900D4B /* Validator.swift in Sources */,
+				33BFC40C1D9F4FF800F7C37F /* FacilityAnnotation.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C686720B08FDAE34AE8867E5A4827A3B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD77564A01AC2DF84839683F5A55A8C6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1884983D6D196A42E1BC81DC044F29D0 /* HTTPHeaderFields.m in Sources */,
+				F08B1A93137ED9FED89E962C565503E6 /* HTTPMethods.m in Sources */,
+				27B6FD9D32F66B18694AEB0D1AAAD61F /* ILGHttpConstants-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D0CB5119EF88CE5FA98620DFBB993170 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DE277F85AC878AD1C3898A1D735E3ADC /* Pods-SpotHero_iOS_Partner_SDK_Example-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D590DDD79ADD837A32769666FE0A88D3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				08C36943DBE0C12A28C58EF08E700AD4 /* VOKBenkode-dummy.m in Sources */,
+				333BA472101F58E064B1460B2A1B5FD0 /* VOKBenkode.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E55B75902B179326922B3C7BA2A7477A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CDB9060D902A7490C8EDE904F0E29EAA /* Pods-SpotHero_iOS_Partner_SDK_ExampleUITests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		01BA1B9AB4D389D392C9B4431F06C4CD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = VOKBenkode;
+			target = AD9A8BE9C00B3D02C1A78E8C7E88696F /* VOKBenkode */;
+			targetProxy = 41C334D338218E165F29B6D334079015 /* PBXContainerItemProxy */;
+		};
+		04E726D069E4FB2D38EA1B531D7DB2F4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ILGHttpConstants;
+			target = 28C1D2BCF3CF2F2210CB63D423BEF55E /* ILGHttpConstants */;
+			targetProxy = BB820FF9AE881AE7BA02F4F7FF5091F7 /* PBXContainerItemProxy */;
+		};
+		2460020138EED24032412BEA92D1DB5E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SpotHero_iOS_Partner_SDK;
+			target = 11C417C5A444DA622081003D30C568F0 /* SpotHero_iOS_Partner_SDK */;
+			targetProxy = 381B1A293F6BBDD2B3B8144F616CC703 /* PBXContainerItemProxy */;
+		};
+		7C5E5634E3DA3AC358DFE5703692AC29 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = VOKMockUrlProtocol;
+			target = DCCBDC731E172083F7CC90FF6493A73B /* VOKMockUrlProtocol */;
+			targetProxy = 4EB9FFB547C5DF41A9C497F062582444 /* PBXContainerItemProxy */;
+		};
+		7F722DD3097508ED7D2CA08959AED509 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = KIF;
+			target = 535131CDF6F2C39C4D2E535BF3FD879C /* KIF */;
+			targetProxy = C6C034765F2C056043A00A7C653F284A /* PBXContainerItemProxy */;
+		};
+		8F6928827C79BA679F9BDE2AA4C8D1C4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = VOKBenkode;
+			target = AD9A8BE9C00B3D02C1A78E8C7E88696F /* VOKBenkode */;
+			targetProxy = F2CABF85269BA5183BEE26FBD10273AC /* PBXContainerItemProxy */;
+		};
+		B8E3DA6CA696AE14117A76E2AE3F122F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "SpotHero_iOS_Partner_SDK-SpotHero_iOS_Partner_SDK";
+			target = 1E5E9A6F588D31B189D3AEDCE14BE21D /* SpotHero_iOS_Partner_SDK-SpotHero_iOS_Partner_SDK */;
+			targetProxy = 0AC43555EC34515E6B99F6F8C6D29E9D /* PBXContainerItemProxy */;
+		};
+		E2E2ABDB390C680783B2C685016AC77B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ILGHttpConstants;
+			target = 28C1D2BCF3CF2F2210CB63D423BEF55E /* ILGHttpConstants */;
+			targetProxy = 54236D81254BE83FAC41AA1B8581CEE1 /* PBXContainerItemProxy */;
+		};
+		ED19177482778DE431AAA4532F44CC18 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = VOKBenkode;
+			target = AD9A8BE9C00B3D02C1A78E8C7E88696F /* VOKBenkode */;
+			targetProxy = 37E2F36ABECD779EAA8068E3CE8DB3AC /* PBXContainerItemProxy */;
+		};
+		EEA644958708D564842A8908B90AE6FD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ILGHttpConstants;
+			target = 28C1D2BCF3CF2F2210CB63D423BEF55E /* ILGHttpConstants */;
+			targetProxy = AB0F3D02D40FA453DF9AFC0ECA1C459F /* PBXContainerItemProxy */;
+		};
+		F711C0D0DCDA04BCFAC53E075C5E1F62 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = VOKMockUrlProtocol;
+			target = DCCBDC731E172083F7CC90FF6493A73B /* VOKMockUrlProtocol */;
+			targetProxy = 716E5923AEE296859542FDF7634CB4A7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		0012BAAB55D268FD96AB74FA977A4894 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FDC18EF0ED64A379352D22E386BC67CF /* KIF.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/KIF/KIF-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/KIF/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/KIF/KIF.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = KIF;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		00440683DA01A7CB567FB10FF066EE52 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 791A5445D306D31CE1A784DB9E264414 /* Pods-SpotHero_iOS_Partner_SDK_ExampleUITests.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-SpotHero_iOS_Partner_SDK_ExampleUITests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-SpotHero_iOS_Partner_SDK_ExampleUITests/Pods-SpotHero_iOS_Partner_SDK_ExampleUITests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_SpotHero_iOS_Partner_SDK_ExampleUITests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		0754914C024A070C36C2BB9C459B6B09 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 69CF9EE8A678C30435E2E3474D318C64 /* VOKBenkode.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/VOKBenkode/VOKBenkode-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/VOKBenkode/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/VOKBenkode/VOKBenkode.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = VOKBenkode;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		2441600F444AD31A3C2CB5C7C290F654 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8CF0AFE39B87B766DAD99F71912DA0CA /* SpotHero_iOS_Partner_SDK.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SpotHero_iOS_Partner_SDK/SpotHero_iOS_Partner_SDK-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SpotHero_iOS_Partner_SDK/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SpotHero_iOS_Partner_SDK/SpotHero_iOS_Partner_SDK.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = SpotHero_iOS_Partner_SDK;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 2.3;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		4813B26377E78F01C8686E6446B9DBFE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BB65D5FB9941D22DCFF75511D44BD252 /* ILGHttpConstants.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/ILGHttpConstants/ILGHttpConstants-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ILGHttpConstants/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/ILGHttpConstants/ILGHttpConstants.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = ILGHttpConstants;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 2.3;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		4F9AEB256239269F851E33DDA6F84D1A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1B9EE4552760134BA8F9B2575A5B357D /* Pods-SpotHero_iOS_Partner_SDK_Example.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-SpotHero_iOS_Partner_SDK_Example/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-SpotHero_iOS_Partner_SDK_Example/Pods-SpotHero_iOS_Partner_SDK_Example.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_SpotHero_iOS_Partner_SDK_Example;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 2.3;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		59B042A655B7C20CBAB90E385BF4E4C7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		6052142122F0B9B58F8EBBA91C3A5397 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BB65D5FB9941D22DCFF75511D44BD252 /* ILGHttpConstants.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/ILGHttpConstants/ILGHttpConstants-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ILGHttpConstants/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/ILGHttpConstants/ILGHttpConstants.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = ILGHttpConstants;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 2.3;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		62C20C195A6FB27CF9784CA6C6C6230B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8CF0AFE39B87B766DAD99F71912DA0CA /* SpotHero_iOS_Partner_SDK.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SpotHero_iOS_Partner_SDK/SpotHero_iOS_Partner_SDK-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SpotHero_iOS_Partner_SDK/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SpotHero_iOS_Partner_SDK/SpotHero_iOS_Partner_SDK.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = SpotHero_iOS_Partner_SDK;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 2.3;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		75D5EE985390985D1C364C279D380CB7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 69CF9EE8A678C30435E2E3474D318C64 /* VOKBenkode.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/VOKBenkode/VOKBenkode-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/VOKBenkode/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/VOKBenkode/VOKBenkode.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = VOKBenkode;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		79B6CF0FBF42F070BB5A850D16B2261D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8CF0AFE39B87B766DAD99F71912DA0CA /* SpotHero_iOS_Partner_SDK.xcconfig */;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/SpotHero_iOS_Partner_SDK";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/SpotHero_iOS_Partner_SDK/ResourceBundle-SpotHero_iOS_Partner_SDK-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				PRODUCT_NAME = SpotHero_iOS_Partner_SDK;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		806E8F1DBBE712E298D93CC881D22B79 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4777173DD31D9679DDAEBC3B8C3F17A5 /* Pods-SpotHero_iOS_Partner_SDK_Tests.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-SpotHero_iOS_Partner_SDK_Tests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-SpotHero_iOS_Partner_SDK_Tests/Pods-SpotHero_iOS_Partner_SDK_Tests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_SpotHero_iOS_Partner_SDK_Tests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		88D094E928C51E43B03D1AA3EABA7912 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 105A38EED625B3A853DAD9FF80562323 /* Pods-SpotHero_iOS_Partner_SDK_ExampleUITests.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-SpotHero_iOS_Partner_SDK_ExampleUITests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-SpotHero_iOS_Partner_SDK_ExampleUITests/Pods-SpotHero_iOS_Partner_SDK_ExampleUITests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_SpotHero_iOS_Partner_SDK_ExampleUITests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		8C7504D72C03A2170128EBC51253F886 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 301E195C2D84BDEFA95256606CD27545 /* VOKMockUrlProtocol.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/VOKMockUrlProtocol/VOKMockUrlProtocol-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/VOKMockUrlProtocol/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/VOKMockUrlProtocol/VOKMockUrlProtocol.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = VOKMockUrlProtocol;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		920EB6FD299BCD7F8B2E29110467FEBF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 27B96FA03251D2984B001ADB3AD894E8 /* Pods-SpotHero_iOS_Partner_SDK_Tests.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-SpotHero_iOS_Partner_SDK_Tests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-SpotHero_iOS_Partner_SDK_Tests/Pods-SpotHero_iOS_Partner_SDK_Tests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_SpotHero_iOS_Partner_SDK_Tests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		B66DBFDC1C37C493768B59714B45B238 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8CF0AFE39B87B766DAD99F71912DA0CA /* SpotHero_iOS_Partner_SDK.xcconfig */;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/SpotHero_iOS_Partner_SDK";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/SpotHero_iOS_Partner_SDK/ResourceBundle-SpotHero_iOS_Partner_SDK-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				PRODUCT_NAME = SpotHero_iOS_Partner_SDK;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+		B7324857C38B065FEB1EEE3105C2367A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D32C662D2B48A1F5238E69EB65D8C913 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F1040CA6CAB2E4929292EB7CFEC89768 /* Pods-SpotHero_iOS_Partner_SDK_Example.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-SpotHero_iOS_Partner_SDK_Example/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-SpotHero_iOS_Partner_SDK_Example/Pods-SpotHero_iOS_Partner_SDK_Example.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_SpotHero_iOS_Partner_SDK_Example;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 2.3;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		F3E4E719B1DD0FB9E859A735A512D56B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FDC18EF0ED64A379352D22E386BC67CF /* KIF.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/KIF/KIF-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/KIF/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/KIF/KIF.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = KIF;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		FD4E72F352F982FA7FD2E80A6BE60653 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 301E195C2D84BDEFA95256606CD27545 /* VOKMockUrlProtocol.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/VOKMockUrlProtocol/VOKMockUrlProtocol-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/VOKMockUrlProtocol/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/VOKMockUrlProtocol/VOKMockUrlProtocol.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = VOKMockUrlProtocol;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2B09B3AC34CB8C02AD172F925B29A5B7 /* Build configuration list for PBXNativeTarget "Pods-SpotHero_iOS_Partner_SDK_Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				920EB6FD299BCD7F8B2E29110467FEBF /* Debug */,
+				806E8F1DBBE712E298D93CC881D22B79 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				59B042A655B7C20CBAB90E385BF4E4C7 /* Debug */,
+				B7324857C38B065FEB1EEE3105C2367A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		649AF03E2CF4D3646BA49211841AE022 /* Build configuration list for PBXNativeTarget "ILGHttpConstants" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4813B26377E78F01C8686E6446B9DBFE /* Debug */,
+				6052142122F0B9B58F8EBBA91C3A5397 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7769D02DE8B6710592290328861852EC /* Build configuration list for PBXNativeTarget "SpotHero_iOS_Partner_SDK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				62C20C195A6FB27CF9784CA6C6C6230B /* Debug */,
+				2441600F444AD31A3C2CB5C7C290F654 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		961A35B4544398FD9B9060DA2519E2A8 /* Build configuration list for PBXNativeTarget "KIF" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0012BAAB55D268FD96AB74FA977A4894 /* Debug */,
+				F3E4E719B1DD0FB9E859A735A512D56B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		984F479E1C16806D72707DF009024948 /* Build configuration list for PBXNativeTarget "Pods-SpotHero_iOS_Partner_SDK_ExampleUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				00440683DA01A7CB567FB10FF066EE52 /* Debug */,
+				88D094E928C51E43B03D1AA3EABA7912 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A8F846406CBF1F57BE846AE578350BE5 /* Build configuration list for PBXNativeTarget "VOKBenkode" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0754914C024A070C36C2BB9C459B6B09 /* Debug */,
+				75D5EE985390985D1C364C279D380CB7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C6CC7B7D5D39CD0B06B6B42F84252CA4 /* Build configuration list for PBXNativeTarget "Pods-SpotHero_iOS_Partner_SDK_Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D32C662D2B48A1F5238E69EB65D8C913 /* Debug */,
+				4F9AEB256239269F851E33DDA6F84D1A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C8E98A537B0BB6AF8BCE847AD1B63FD6 /* Build configuration list for PBXNativeTarget "SpotHero_iOS_Partner_SDK-SpotHero_iOS_Partner_SDK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				79B6CF0FBF42F070BB5A850D16B2261D /* Debug */,
+				B66DBFDC1C37C493768B59714B45B238 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E3C12EDFD57A5CE262F69CA33108645A /* Build configuration list for PBXNativeTarget "VOKMockUrlProtocol" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FD4E72F352F982FA7FD2E80A6BE60653 /* Debug */,
+				8C7504D72C03A2170128EBC51253F886 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}
