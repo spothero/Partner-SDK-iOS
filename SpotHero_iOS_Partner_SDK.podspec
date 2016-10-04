@@ -3,6 +3,7 @@ Pod::Spec.new do |s|
     s.ios.deployment_target = '9.0'
     s.version          = '0.1.0'
     s.summary          = 'An SDK for simple integration with SpotHero.'
+    s.license          = 'LICENSE.md'
     s.description      = <<-DESC
 An SDK that allows your users to book SpotHero parking directly from within your app.
                             DESC
