@@ -62,7 +62,8 @@ public class SpotHeroPartnerSDK: NSObject {
         navController.navigationBar.tintColor = self.textColor
         navController.navigationBar.barTintColor = self.tintColor
 
-        Config.sharedInstance.getKeys { (success) in
+        Config.sharedInstance.getKeys {
+            success in
             if success {
                 viewController.presentViewController(navController,
                     animated: true,

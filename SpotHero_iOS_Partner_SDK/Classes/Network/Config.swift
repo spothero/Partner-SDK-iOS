@@ -11,9 +11,9 @@ import Foundation
 class Config {
     static let sharedInstance = Config()
     
-    var googleApiKey = ""
-    var stripeApiKey = ""
-    var mixpanelApiKey = ""
+    private (set) var googleApiKey = ""
+    private (set) var stripeApiKey = ""
+    private (set) var mixpanelApiKey = ""
     
     typealias APIKeyCompletion = (Bool) -> ()
     func getKeys(completion: APIKeyCompletion) {

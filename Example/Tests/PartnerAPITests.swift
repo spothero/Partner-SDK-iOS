@@ -58,7 +58,8 @@ class PartnerAPITests: BaseTests {
        self.waitForExpectationsWithTimeout(self.timeoutDuration, handler: nil)
     }
     
-    func testCreateReservation() {
+    // TODO unskip this when we get a staging stripe token
+    func skip_testCreateReservation() {
         let expectation = self.expectationWithDescription("testCreateReservation")
         
         var testExecuting = false

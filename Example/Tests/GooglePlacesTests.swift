@@ -10,7 +10,7 @@ import XCTest
 import CoreLocation
 @testable import SpotHero_iOS_Partner_SDK
 
-class GooglePlacesTests: XCTestCase {
+class GooglePlacesTests: BaseTests {
     let waitDuration: NSTimeInterval = 10
     let spotheroPrediction = GooglePlacesPrediction(description: "SpotHero, West Huron Street, Chicago, IL, United States",
                                                     placeID: "ChIJEyn6463TD4gR9Ta3uIauNyo",
