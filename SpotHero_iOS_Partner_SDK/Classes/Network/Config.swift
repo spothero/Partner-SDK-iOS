@@ -23,22 +23,20 @@ class Config {
                                                          withHeaders: headers,
                                                          errorCompletion: {
                                                             error in
+                                                            assertionFailure("Cannot get json, error \(error)")
                                                             completion(false)
             }) {
                 JSON in
-                guard
-                    let data = JSON["data"] as? [String: AnyObject],
-                    let googleApiKey = data["google_places_api_key"] as? String,
-                    let stripeApiKey = data["stripe_public_api_key"] as? String,
-                    let mixpanelApiKey = data["mixpanel_api_key"] as? String else {
-                        completion(false)
-                        return
+                do {
+                    let data = try JSON.shp_dictionary("data") as JSONDictionary
+                    self.googleApiKey = try data.shp_string("google_places_api_key")
+                    self.stripeApiKey = try data.shp_string("stripe_public_api_key")
+                    self.mixpanelApiKey = try data.shp_string("mixpanel_api_key")
+                    completion(true)
+                } catch let error {
+                    assertionFailure("Cannot parse json, error \(error)")
+                    completion(false)
                 }
-                
-                self.googleApiKey = googleApiKey
-                self.stripeApiKey = stripeApiKey
-                self.mixpanelApiKey = mixpanelApiKey
-                completion(true)
         }
     }
 }
