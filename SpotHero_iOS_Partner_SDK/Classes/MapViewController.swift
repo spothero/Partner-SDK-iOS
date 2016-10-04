@@ -241,7 +241,9 @@ class MapViewController: UIViewController {
             
             self.mapView.addAnnotation(facilityAnnotation)
         }
-        self.showSpotCardCollectionView()
+        
+        self.showSpotCardCollectionView(scrolledToIndex: self.currentIndex)
+        
         if !panning {
             let coordinateRegion = MKCoordinateRegionMakeWithDistance(self.predictionPlaceDetails!.location.coordinate,
                                                                       self.defaultSearchRadius,
@@ -296,9 +298,11 @@ class MapViewController: UIViewController {
         self.mapView.setRegion(region, animated: true)
     }
     
-    private func showSpotCardCollectionView() {
+    private func showSpotCardCollectionView(scrolledToIndex index: Int) {
         self.spotCardCollectionView.hidden = false
         self.spotCardCollectionView.reloadData()
+        
+        self.scrollToSpotCard(withIndexPath: NSIndexPath(forItem: index, inSection: 0))
     }
     
     private func scrollToSpotCardThenSelectAnnotation(withIndexPath indexPath: NSIndexPath) {
