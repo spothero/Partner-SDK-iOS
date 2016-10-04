@@ -16,6 +16,5 @@ An SDK that allows your users to book SpotHero parking directly from within your
 
     s.screenshots           = 'https://github.com/spothero/Partner-SDK-iOS/blob/master/readme_img/stock.png'
 
-    s.public_header_files   = 'Pod/Classes/**/*.h'
     s.frameworks            = 'UIKit', 'MapKit', 'CoreLocation'
 end
