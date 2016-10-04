@@ -17,7 +17,7 @@ class Config {
     
     typealias APIKeyCompletion = (Bool) -> ()
     func getKeys(completion: APIKeyCompletion) {
-        let endpoint = "api/v1/mobile-config/iossdk/"
+        let endpoint = "/v1/mobile-config/iossdk/"
         let headers = APIHeaders.defaultHeaders()
         SpotHeroPartnerAPIController.getJSONFromEndpoint(endpoint,
                                                          withHeaders: headers,
