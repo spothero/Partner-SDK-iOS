@@ -166,7 +166,6 @@
                                             <constraint firstAttribute="trailing" secondItem="k7g-kF-iqV" secondAttribute="trailing" id="fyq-JL-S10"/>
                                             <constraint firstAttribute="trailing" secondItem="4tn-Sv-RqJ" secondAttribute="trailing" id="gVo-eT-cr3"/>
                                             <constraint firstItem="pgM-LO-aq0" firstAttribute="top" secondItem="lqQ-xQ-L7J" secondAttribute="top" id="hEe-40-v5y"/>
-                                            <constraint firstAttribute="bottom" secondItem="k6h-I3-1nd" secondAttribute="bottom" id="nRv-h7-ATS"/>
                                             <constraint firstAttribute="bottom" secondItem="k7g-kF-iqV" secondAttribute="bottom" id="z0R-tg-7r1"/>
                                         </constraints>
                                     </view>
