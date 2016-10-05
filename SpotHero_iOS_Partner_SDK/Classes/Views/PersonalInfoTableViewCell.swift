@@ -66,7 +66,7 @@ extension PersonalInfoTableViewCell: UITextFieldDelegate {
         }
         
         if self.type == .Phone {
-            let cursorLocation = textField.shp_getCursorPosition(<#T##range: NSRange##NSRange#>, string: <#T##String#>)
+            let cursorLocation = textField.shp_getCursorPosition(range, string: string)
             let (formatted, unformatted) = Formatter.formatPhoneNumber(text)
             textField.text = formatted
             textField.shp_setCursorPosition(cursorLocation)
