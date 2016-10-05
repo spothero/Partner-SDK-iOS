@@ -173,21 +173,16 @@ extension PaymentInfoTableViewCell: UITextFieldDelegate {
             return true
         }
         
-        let beginning = textField.beginningOfDocument
-        let cursorLocation = textField.positionFromPosition(beginning, offset: (range.location + string.characters.count))
+        let cursorLocation = textField.shp_getCursorPosition(range, string: string)
         
         switch textField {
         case self.creditCardTextField:
             self.formatCreditCard(text)
-            if let cursorLocation = cursorLocation {
-                textField.selectedTextRange = textField.textRangeFromPosition(cursorLocation, toPosition: cursorLocation)
-            }
+            textField.shp_setCursorPosition(cursorLocation)
             return false
         case self.expirationDateTextField:
             self.formatExpirationDate(text)
-            if let cursorLocation = cursorLocation {
-                textField.selectedTextRange = textField.textRangeFromPosition(cursorLocation, toPosition: cursorLocation)
-            }
+            textField.shp_setCursorPosition(cursorLocation)
             return false
         case self.cvcTextField:
             return self.formatCVC(text)
