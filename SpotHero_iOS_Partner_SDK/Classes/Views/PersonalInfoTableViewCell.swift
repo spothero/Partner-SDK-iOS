@@ -66,8 +66,14 @@ extension PersonalInfoTableViewCell: UITextFieldDelegate {
         }
         
         if self.type == .Phone {
+            let beginning = textField.beginningOfDocument
+            let cursorLocation = textField.positionFromPosition(beginning, offset: (range.location + string.characters.count))
             let (formatted, unformatted) = Formatter.formatPhoneNumber(text)
             textField.text = formatted
+            
+            if let cursorLocation = cursorLocation {
+                textField.selectedTextRange = textField.textRangeFromPosition(cursorLocation, toPosition: cursorLocation)
+            }
             
             if unformatted.characters.count == 10 {
                 textField.resignFirstResponder()
