@@ -306,8 +306,9 @@ class MapViewController: UIViewController {
     private func showSpotCardCollectionView(scrolledToIndex index: Int) {
         self.spotCardCollectionView.hidden = false
         self.spotCardCollectionView.reloadData()
-        
-        self.scrollToSpotCard(withIndexPath: NSIndexPath(forItem: index, inSection: 0))
+        if !self.facilities.isEmpty {
+            self.scrollToSpotCard(withIndexPath: NSIndexPath(forItem: index, inSection: 0))
+        }
     }
     
     private func scrollToSpotCardThenSelectAnnotation(withIndexPath indexPath: NSIndexPath) {
