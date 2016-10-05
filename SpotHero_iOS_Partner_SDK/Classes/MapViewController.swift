@@ -248,7 +248,7 @@ class MapViewController: UIViewController {
             self.mapView.addAnnotation(facilityAnnotation)
         }
         
-        self.showSpotCardCollectionView(scrolledToIndex: self.currentIndex)
+        self.showSpotCardCollectionView()
         
         if !panning {
             let coordinateRegion = MKCoordinateRegionMakeWithDistance(self.predictionPlaceDetails!.location.coordinate,
@@ -303,12 +303,9 @@ class MapViewController: UIViewController {
         self.mapView.setRegion(region, animated: true)
     }
     
-    private func showSpotCardCollectionView(scrolledToIndex index: Int) {
+    private func showSpotCardCollectionView() {
         self.spotCardCollectionView.hidden = false
         self.spotCardCollectionView.reloadData()
-        if !self.facilities.isEmpty {
-            self.scrollToSpotCard(withIndexPath: NSIndexPath(forItem: index, inSection: 0))
-        }
     }
     
     private func scrollToSpotCardThenSelectAnnotation(withIndexPath indexPath: NSIndexPath) {
@@ -648,7 +645,7 @@ extension MapViewController: UICollectionViewDelegate {
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        if let cell = collectionView.cellForItemAtIndexPath(indexPath) where cell !== self.centerCell {
+        if self.currentIndex != indexPath.row {
             self.scrollToSpotCardThenSelectAnnotation(withIndexPath: indexPath)
         }
     }
