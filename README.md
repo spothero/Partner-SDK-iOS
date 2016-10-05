@@ -10,6 +10,31 @@ If you've already got a SpotHero Partner Key, you're ready to start.
 
 ## Getting Started 
 
+Use [CocoaPods](https://guides.cocoapods.org/using/getting-started.html) to install our SDK. 
+
+Add the following line to your [Podfile](https://guides.cocoapods.org/using/the-podfile.html), within the target you wish to add our SDK to:
+
+```ruby
+pod `SpotHero_iOS_Partner_SDK`, '~>0.1'
+```
+
+**NOTE**: Since our SDK is in Swift, you _must_ use the [`use_frameworks!`](https://guides.cocoapods.org/syntax/podfile.html#use_frameworks_bang) flag in your Podfile, or it won't build. 
+
+Run `pod install`, and the current version of our SDK will be installed. 
+
+To use the SDK or its elements in a Swift file, add the following line to the top of your file: 
+
+```swift
+import SpotHero_iOS_Partner_SDK
+```
+
+To use the SDK or its elements in Objective-C file, add this line to the top of your file instead: 
+
+```objectivec
+@import SpotHero_iOS_Partner_SDK;
+```
+## Launching the SDK
+
 The SpotHero SDK is implemented as a singleton which can be launched from any `UIViewController` subclass. It will be presented modally. There is only one **required** property which must be set:
 
 - `partnerApplicationKey: String`: Your application's partner key.
