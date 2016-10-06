@@ -185,6 +185,11 @@ struct SpotHeroPartnerAPIController {
         
         guard let urlResponse = response as? NSHTTPURLResponse else {
             //Fail with some kind of ceci n'est pas une URL respones
+            if let error = error {
+                NSOperationQueue.mainQueue().addOperationWithBlock({ 
+                    errorCompletion(error: error)
+                })
+            }
             return
         }
         
@@ -315,7 +320,7 @@ struct SpotHeroPartnerAPIController {
                                     withHeaders headers: HeaderDictionary,
                                     additionalParams: [String : String]? = nil,
                                     errorCompletion: APIErrorCompletion,
-                                    successCompletion: JSONAPISuccessCompletion) {
+                                    successCompletion: JSONAPISuccessCompletion) -> NSURLSessionDataTask? {
         
         let stringHeaders = APIHeaders.headerStringDict(headers)
         
@@ -329,7 +334,7 @@ struct SpotHeroPartnerAPIController {
             .CurrentEnvironment
             .fullURLStringForEndpoint(endpoint, withQueryItems: queryItems)
         
-        self.dataTaskWithMethod(.GET,
+        return self.dataTaskWithMethod(.GET,
                                 fullURLString: fullURLString,
                                 headers: stringHeaders,
                                 errorCompletion: errorCompletion,
@@ -339,9 +344,9 @@ struct SpotHeroPartnerAPIController {
     static func getJSONFromFullURLString(fullURLString: String,
                                          withHeaders headers: HeaderDictionary,
                                          errorCompletion: APIErrorCompletion,
-                                         successCompletion: JSONAPISuccessCompletion) {
+                                         successCompletion: JSONAPISuccessCompletion) -> NSURLSessionDataTask? {
         let stringHeaders = APIHeaders.headerStringDict(headers)
-        self.dataTaskWithMethod(.GET,
+        return self.dataTaskWithMethod(.GET,
                                 fullURLString: fullURLString,
                                 headers: stringHeaders,
                                 errorCompletion: errorCompletion,

@@ -24,6 +24,7 @@ typealias FacilityCompletion = (facilities: [Facility],
 
 struct FacilityAPI {
     static var NextURLString: String?
+    static var DataTasks = [NSURLSessionDataTask]()
     
     /**
      Returns the facilities near a given location within a range of dates
@@ -58,7 +59,10 @@ struct FacilityAPI {
             "include" : "facility",
         ]
         
-        SpotHeroPartnerAPIController.getJSONFromEndpoint("partner/v1/facilities/rates",
+        self.DataTasks.forEach { $0.cancel() }
+        self.DataTasks.removeAll()
+        
+        let dataTask = SpotHeroPartnerAPIController.getJSONFromEndpoint("partner/v1/facilities/rates",
                                                          withHeaders: headers,
                                                          additionalParams: params,
                                                          errorCompletion: {
@@ -68,6 +72,10 @@ struct FacilityAPI {
                                                                        hasMorePages: false)
                                                          },
                                                          successCompletion: self.facilityFetchSuccessHandler(completion))
+
+        if let dataTask = dataTask {
+            self.DataTasks.append(dataTask)
+        }
     }
     
     private static func mapJSON(JSON: JSONDictionary) -> (facilities: [Facility],
@@ -99,7 +107,7 @@ struct FacilityAPI {
                                                          prevFacilities: [Facility],
                                                          completion: FacilityCompletion) {
         FacilityAPI.NextURLString = urlString
-        SpotHeroPartnerAPIController.getJSONFromFullURLString(urlString,
+        let dataTask = SpotHeroPartnerAPIController.getJSONFromFullURLString(urlString,
                                                               withHeaders: APIHeaders.defaultHeaders(),
                                                               errorCompletion: {
                                                                 error in
@@ -108,6 +116,10 @@ struct FacilityAPI {
                                                                            hasMorePages: false)
                                                               },
                                                               successCompletion: self.facilityFetchSuccessHandler(completion))
+        
+        if let dataTask = dataTask {
+            self.DataTasks.append(dataTask)
+        }
     }
     
     private static func facilityFetchSuccessHandler(completion: FacilityCompletion) -> JSONAPISuccessCompletion {

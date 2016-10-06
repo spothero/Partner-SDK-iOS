@@ -32,11 +32,37 @@ class PartnerAPITests: BaseTests {
         
         self.getFacilities(Constants.ChicagoLocation) {
             facilities, error, hasMorePages in
-            XCTAssertNil(error)
-            XCTAssertFalse(facilities.isEmpty)
-            XCTAssertTrue(hasMorePages)
-            expectation.fulfill()
+            if !hasMorePages {
+                expectation.fulfill()
+            }
+            
+            if hasMorePages {
+                XCTAssertNil(error)
+                XCTAssertFalse(facilities.isEmpty)
+                XCTAssertTrue(hasMorePages)
+            }
         }
+        
+        self.waitForExpectationsWithTimeout(self.timeoutDuration, handler: nil)
+    }
+    
+    func testCancelGetFacilities() {
+        let expectation = self.expectationWithDescription("Facility request cancelled")
+        
+        self.getFacilities(Constants.ChicagoLocation) {
+            facilities, error, hasMorePages in
+            expectation.fulfill()
+            XCTAssertEqual(facilities.count, 0)
+            XCTAssertNotNil(error)
+            XCTAssertFalse(hasMorePages)
+            if let error = error as? NSError {
+                XCTAssertEqual(error.code, NSURLError.Cancelled.rawValue)
+            } else {
+                XCTFail("Received the wrong error type")
+            }
+        }
+        
+        FacilityAPI.DataTasks.forEach { $0.cancel() }
         
         self.waitForExpectationsWithTimeout(self.timeoutDuration, handler: nil)
     }
@@ -49,10 +75,13 @@ class PartnerAPITests: BaseTests {
         
         self.getFacilities(location) {
             facilities, error, hasMorePages in
+            if !hasMorePages {
+                expectation.fulfill()
+            }
+            
             XCTAssertNotNil(error)
             XCTAssertTrue(facilities.isEmpty)
             XCTAssertFalse(hasMorePages)
-            expectation.fulfill()
         }
         
        self.waitForExpectationsWithTimeout(self.timeoutDuration, handler: nil)
