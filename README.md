@@ -15,12 +15,31 @@ Use [CocoaPods](https://guides.cocoapods.org/using/getting-started.html) to inst
 Add the following line to your [Podfile](https://guides.cocoapods.org/using/the-podfile.html), within the target you wish to add our SDK to:
 
 ```ruby
-pod `SpotHero_iOS_Partner_SDK`, '~>0.1'
+target 'YourAppTargetName'
+  pod `SpotHero_iOS_Partner_SDK`, '~>0.1'
+end
 ```
 
 **NOTE**: Since our SDK is in Swift, you _must_ use the [`use_frameworks!`](https://guides.cocoapods.org/syntax/podfile.html#use_frameworks_bang) flag in your Podfile, or it won't build. 
 
-Run `pod install`, and the current version of our SDK will be installed. 
+If you are running Xcode 7.3 or 7.3.1, you may skip this next step.
+
+If you are running Xcode 8 or higher, you need to add a post-install hook at the bottom of your Podfile (outside the target) to make sure that it builds using Swift 2.3 instead of 3.0: 
+
+```ruby
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      config.build_settings['SWIFT_VERSION'] = '2.3'
+    end
+  end
+end
+```
+
+More information about Swift verisoning is available in our [note on Swift Versions](#a-note-on-swift-versions).
+
+EVERYONE: Run `pod install`, and the current version of our SDK will be installed. 
+
 
 To use the SDK or its elements in a Swift file, add the following line to the top of your file: 
 
