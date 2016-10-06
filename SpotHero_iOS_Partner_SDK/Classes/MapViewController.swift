@@ -288,7 +288,7 @@ class MapViewController: UIViewController {
             }
             // Multiply the deltas by 2 plus some extra padding
             let multiplier = 2.2
-        
+            
             latitudeDelta *= multiplier
             longitudeDelta *= multiplier
         } else {
@@ -333,8 +333,8 @@ class MapViewController: UIViewController {
     private func visibleMapViewRadiusInMeters() -> Double {
         // Convert the difference between max and min latitude to miles for the diameter
         let diameter = self.mapView.region.span.latitudeDelta
-                            * UnitsOfMeasurement.ApproximateMilesPerDegreeOfLatitude.rawValue
-                            * UnitsOfMeasurement.MetersPerMile.rawValue
+            * UnitsOfMeasurement.ApproximateMilesPerDegreeOfLatitude.rawValue
+            * UnitsOfMeasurement.MetersPerMile.rawValue
         return diameter / 2
     }
     
@@ -372,9 +372,9 @@ class MapViewController: UIViewController {
      Fetch the factilities around a given coordinate
      
      - parameter coordinate: coordinate to search around
-     - parameter panning:    Whether or not this was triggered by the user panning the map. 
-                             Passing true will cause there to be no loading spinner and no "No spots" error
-                             Optional (Defaults to false)
+     - parameter panning:    Whether or not this was triggered by the user panning the map.
+     Passing true will cause there to be no loading spinner and no "No spots" error
+     Optional (Defaults to false)
      */
     private func fetchFacilities(coordinate: CLLocationCoordinate2D, panning: Bool = false) {
         var maxSearchRadius = self.visibleMapViewRadiusInMeters()
@@ -394,7 +394,7 @@ class MapViewController: UIViewController {
                                         facilities, error, hasMorePages in
                                         
                                         self?.initialLoading = false
-
+                                        
                                         //If there are more pages, show the wee loading view.
                                         self?.loadingView.hidden = !hasMorePages
                                         
@@ -548,7 +548,7 @@ extension MapViewController: DatePickerDoneButtonDelegate {
             }
             
             self.searchSpots()
-        } 
+        }
     }
 }
 
@@ -586,7 +586,7 @@ extension MapViewController: MKMapViewDelegate {
         }
         
         if let facilityAnnotation = annotation as? FacilityAnnotation {
-           annotationView.annotation = facilityAnnotation
+            annotationView.annotation = facilityAnnotation
         }
         return annotationView
     }
@@ -631,7 +631,7 @@ extension MapViewController: UICollectionViewDataSource {
             
             cell.noReentryImageView.hidden = rate.allowsReentry()
         }
-                
+        
         cell.delegate = self
         return cell
     }
@@ -640,7 +640,7 @@ extension MapViewController: UICollectionViewDataSource {
 //MARK: UICollectionViewDelegate
 
 extension MapViewController: UICollectionViewDelegate {
-    func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
+    func collectionView(collectionView: UICollectionView, didEndDisplayingCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
         self.setCenterCell()
     }
     
