@@ -96,7 +96,7 @@ class PaymentInfoTableViewCell: UITableViewCell {
         self.delegate?.didValidateText()
     }
     
-    func formatCreditCard(text: String) -> Bool {
+    func formatCreditCard(text: String) {
         if text.isEmpty {
             self.cardType = .Unknown
         }
@@ -109,8 +109,6 @@ class PaymentInfoTableViewCell: UITableViewCell {
             
             if unformatted.characters.count <= cardLength {
                 self.creditCardTextField.text = formatted
-            } else {
-                return false
             }
             
             self.cardNumber = unformatted
@@ -123,8 +121,6 @@ class PaymentInfoTableViewCell: UITableViewCell {
             
             if unformatted.characters.count <= cardLength {
                 self.creditCardTextField.text = formatted
-            } else {
-                return false
             }
             
             self.cardNumber = unformatted
@@ -139,11 +135,9 @@ class PaymentInfoTableViewCell: UITableViewCell {
         } else {
             self.cardType = Validator.getCardType(self.cardNumber)
         }
-        
-        return false
     }
     
-    func formatExpirationDate(text: String) -> Bool {
+    func formatExpirationDate(text: String) {
         let (formatted, unformatted) = Formatter.formatExpirationDate(text)
         if unformatted.characters.count <= 4 {
             self.expirationDateTextField.text = formatted
@@ -152,8 +146,6 @@ class PaymentInfoTableViewCell: UITableViewCell {
         if unformatted.characters.count == 4 {
             self.cvcTextField.becomeFirstResponder()
         }
-        
-        return false
     }
     
     func formatCVC(text: String) -> Bool {
@@ -181,11 +173,17 @@ extension PaymentInfoTableViewCell: UITextFieldDelegate {
             return true
         }
         
+        let cursorLocation = textField.shp_getCursorPosition(range, string: string)
+        
         switch textField {
         case self.creditCardTextField:
-            return self.formatCreditCard(text)
+            self.formatCreditCard(text)
+            textField.shp_setCursorPosition(cursorLocation)
+            return false
         case self.expirationDateTextField:
-            return self.formatExpirationDate(text)
+            self.formatExpirationDate(text)
+            textField.shp_setCursorPosition(cursorLocation)
+            return false
         case self.cvcTextField:
             return self.formatCVC(text)
         default:
