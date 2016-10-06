@@ -401,7 +401,7 @@ class MapViewController: UIViewController {
                                         var cancelled = false
                                         
                                         if let error = error as? NSError {
-                                            cancelled = error.code == NSURLError.Cancelled.rawValue
+                                            cancelled = (error.code == NSURLError.Cancelled.rawValue)
                                         }
                                         
                                         if facilities.isEmpty && !panning && !hasMorePages && !cancelled {
