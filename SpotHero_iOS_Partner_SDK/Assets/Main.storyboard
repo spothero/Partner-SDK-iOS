@@ -62,7 +62,7 @@
                                                         <rect key="frame" x="0.0" y="28" width="374" height="60"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="gny-aK-qke" id="DsV-UZ-K9d">
-                                                            <frame key="frameInset" width="374" height="59.666666666666664"/>
+                                                            <frame key="frameInset" width="374" height="60"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chicago IL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Oq9-B0-NHM">
@@ -444,12 +444,24 @@
                                     <action selector="searchSpotsButtonPressed:" destination="Vax-OI-bt8" eventType="touchUpInside" id="SHT-vM-KKN"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Sd-Ez-tec">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="195" id="K9Q-QG-Wjk"/>
+                                    <constraint firstAttribute="height" constant="45" id="MyG-JA-Tin"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <state key="normal" title="Redo Search In This Area"/>
+                                <connections>
+                                    <action selector="redoSearchButtonPressed:" destination="Vax-OI-bt8" eventType="touchUpInside" id="NAy-Ab-If4"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="SrH-hR-dUQ" firstAttribute="leading" secondItem="74f-zj-sek" secondAttribute="leading" constant="20" id="3KO-Uv-Mt7"/>
                             <constraint firstItem="SrH-hR-dUQ" firstAttribute="top" secondItem="37V-ku-ODQ" secondAttribute="bottom" constant="8" id="4Cn-Wa-3F2"/>
                             <constraint firstAttribute="trailing" secondItem="SrH-hR-dUQ" secondAttribute="trailing" constant="20" id="9hQ-tf-6NR"/>
+                            <constraint firstItem="8Sd-Ez-tec" firstAttribute="centerX" secondItem="74f-zj-sek" secondAttribute="centerX" id="CXE-qs-qa4"/>
                             <constraint firstItem="EcZ-Kj-xzb" firstAttribute="top" secondItem="nEN-Yc-ckc" secondAttribute="bottom" id="Eta-77-iSQ"/>
                             <constraint firstItem="nEN-Yc-ckc" firstAttribute="leading" secondItem="74f-zj-sek" secondAttribute="leading" id="Vao-aZ-gnQ"/>
                             <constraint firstItem="EcZ-Kj-xzb" firstAttribute="top" secondItem="zfM-Xw-6w1" secondAttribute="bottom" id="VzY-Ya-tjU"/>
@@ -460,6 +472,7 @@
                             <constraint firstItem="64R-U6-acf" firstAttribute="leading" secondItem="74f-zj-sek" secondAttribute="leading" id="bYo-Xf-TKW"/>
                             <constraint firstItem="EcZ-Kj-xzb" firstAttribute="top" secondItem="bVb-Jm-KUk" secondAttribute="bottom" constant="20" id="ba6-mi-aGk"/>
                             <constraint firstAttribute="trailing" secondItem="nEN-Yc-ckc" secondAttribute="trailing" id="cvr-jp-0PY"/>
+                            <constraint firstItem="64R-U6-acf" firstAttribute="top" secondItem="8Sd-Ez-tec" secondAttribute="bottom" constant="15" id="dTW-33-08A"/>
                             <constraint firstItem="nEN-Yc-ckc" firstAttribute="top" secondItem="2XB-0q-QOj" secondAttribute="bottom" id="e5U-fH-ez1"/>
                             <constraint firstAttribute="trailingMargin" secondItem="bVb-Jm-KUk" secondAttribute="trailing" constant="20" id="fpt-Ac-Y86"/>
                             <constraint firstItem="37V-ku-ODQ" firstAttribute="top" secondItem="2XB-0q-QOj" secondAttribute="bottom" constant="8" id="iTE-7t-dXl"/>
@@ -482,6 +495,8 @@
                         <outlet property="loadingView" destination="bVb-Jm-KUk" id="THD-v1-63L"/>
                         <outlet property="mapView" destination="nEN-Yc-ckc" id="6bX-7F-2O6"/>
                         <outlet property="predictionTableView" destination="k7g-kF-iqV" id="TSz-4Y-HDE"/>
+                        <outlet property="redoSearchButton" destination="8Sd-Ez-tec" id="Zer-iX-jlM"/>
+                        <outlet property="redoSearchButtonBottomConstraint" destination="dTW-33-08A" id="2hG-hL-Eow"/>
                         <outlet property="reservationContainerView" destination="37V-ku-ODQ" id="u5t-sw-uVG"/>
                         <outlet property="reservationContainerViewHeightConstraint" destination="2bU-Z6-A3s" id="w8h-8D-CAY"/>
                         <outlet property="searchBar" destination="pgM-LO-aq0" id="Ojn-18-3IW"/>
@@ -536,7 +551,7 @@
                                         <rect key="frame" x="0.0" y="55" width="414" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="XFy-AB-cG3" id="afe-AS-BCS">
-                                            <frame key="frameInset" width="414" height="59.666666666666664"/>
+                                            <frame key="frameInset" width="414" height="59"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EnR-Cz-Rin">
@@ -587,7 +602,7 @@
                                         <rect key="frame" x="0.0" y="115" width="414" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="yHh-3E-J0x" id="UXm-Fc-DTh">
-                                            <frame key="frameInset" width="414" height="49.666666666666664"/>
+                                            <frame key="frameInset" width="414" height="49"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fDk-Eb-01W">
@@ -629,7 +644,7 @@
                                         <rect key="frame" x="0.0" y="165" width="414" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="HL8-1Q-tXC" id="7GP-Dw-1MG">
-                                            <frame key="frameInset" width="414" height="149.66666666666666"/>
+                                            <frame key="frameInset" width="414" height="149"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eha-tc-NKv">

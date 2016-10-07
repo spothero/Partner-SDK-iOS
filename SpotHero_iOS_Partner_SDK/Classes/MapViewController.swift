@@ -25,6 +25,8 @@ class MapViewController: UIViewController {
     @IBOutlet weak private var spotCardCollectionView: UICollectionView!
     @IBOutlet weak private var closeButton: UIBarButtonItem!
     @IBOutlet weak private var loadingView: UIView!
+    @IBOutlet weak private var redoSearchButton: UIButton!
+    @IBOutlet weak private var redoSearchButtonBottomConstraint: NSLayoutConstraint!
     
     private var prediction: GooglePlacesPrediction?
     private let predictionController = PredictionController()
@@ -454,6 +456,10 @@ class MapViewController: UIViewController {
         self.searchBar.resignFirstResponder()
         self.datePickerView.showDatePickerView(false)
         self.timeSelectionView.deselect()
+    }
+    
+    @IBAction func redoSearchButtonPressed(_ sender: AnyObject) {
+        
     }
     
     //MARK: Helpers
