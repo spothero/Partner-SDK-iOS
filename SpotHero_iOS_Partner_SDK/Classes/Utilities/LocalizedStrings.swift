@@ -29,14 +29,10 @@ enum LocalizedStrings {
                                           comment: "Title for start date row of checkout screen")
     static let Ends = NSLocalizedString("Ends",
                                         comment: "Title for end date row of checkout screen")
-    static let FullName = NSLocalizedString("Full Name",
-                                        comment: "Title for Full Name row of checkout screen")
     static let Email = NSLocalizedString("Email",
                                            comment: "Title for Email row of checkout screen")
     static let Phone = NSLocalizedString("Phone",
                                          comment: "Title for Phone number row of checkout screen")
-    static let FullNamePlaceHolder = NSLocalizedString("Full Name",
-                                                 comment: "Placeholder for Full Name row of checkout screen")
     static let EmailAddressPlaceHolder = NSLocalizedString("Email Address",
                                                  comment: "Placeholder for Email row of checkout screen")
     static let PhoneNumberPlaceHolder = NSLocalizedString("Phone Number",

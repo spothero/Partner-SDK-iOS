@@ -17,7 +17,7 @@ class PersonalInfoTableViewCell: UITableViewCell {
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var errorLabel: UILabel!
     
-    var type: PersonalInfoRow = .FullName
+    var type: PersonalInfoRow = .Email
     
     weak var delegate: ValidatorCellDelegate?
     weak var personalInfoCellDelegate: PersonalInfoTableViewCellDelegate?
