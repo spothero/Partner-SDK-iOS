@@ -445,6 +445,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Sd-Ez-tec">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="195" id="K9Q-QG-Wjk"/>
                                     <constraint firstAttribute="height" constant="45" id="MyG-JA-Tin"/>
@@ -461,6 +462,7 @@
                             <constraint firstItem="SrH-hR-dUQ" firstAttribute="leading" secondItem="74f-zj-sek" secondAttribute="leading" constant="20" id="3KO-Uv-Mt7"/>
                             <constraint firstItem="SrH-hR-dUQ" firstAttribute="top" secondItem="37V-ku-ODQ" secondAttribute="bottom" constant="8" id="4Cn-Wa-3F2"/>
                             <constraint firstAttribute="trailing" secondItem="SrH-hR-dUQ" secondAttribute="trailing" constant="20" id="9hQ-tf-6NR"/>
+                            <constraint firstItem="EcZ-Kj-xzb" firstAttribute="top" secondItem="8Sd-Ez-tec" secondAttribute="bottom" constant="15" id="ALU-f2-hUJ"/>
                             <constraint firstItem="8Sd-Ez-tec" firstAttribute="centerX" secondItem="74f-zj-sek" secondAttribute="centerX" id="CXE-qs-qa4"/>
                             <constraint firstItem="EcZ-Kj-xzb" firstAttribute="top" secondItem="nEN-Yc-ckc" secondAttribute="bottom" id="Eta-77-iSQ"/>
                             <constraint firstItem="nEN-Yc-ckc" firstAttribute="leading" secondItem="74f-zj-sek" secondAttribute="leading" id="Vao-aZ-gnQ"/>
@@ -472,7 +474,6 @@
                             <constraint firstItem="64R-U6-acf" firstAttribute="leading" secondItem="74f-zj-sek" secondAttribute="leading" id="bYo-Xf-TKW"/>
                             <constraint firstItem="EcZ-Kj-xzb" firstAttribute="top" secondItem="bVb-Jm-KUk" secondAttribute="bottom" constant="20" id="ba6-mi-aGk"/>
                             <constraint firstAttribute="trailing" secondItem="nEN-Yc-ckc" secondAttribute="trailing" id="cvr-jp-0PY"/>
-                            <constraint firstItem="64R-U6-acf" firstAttribute="top" secondItem="8Sd-Ez-tec" secondAttribute="bottom" constant="15" id="dTW-33-08A"/>
                             <constraint firstItem="nEN-Yc-ckc" firstAttribute="top" secondItem="2XB-0q-QOj" secondAttribute="bottom" id="e5U-fH-ez1"/>
                             <constraint firstAttribute="trailingMargin" secondItem="bVb-Jm-KUk" secondAttribute="trailing" constant="20" id="fpt-Ac-Y86"/>
                             <constraint firstItem="37V-ku-ODQ" firstAttribute="top" secondItem="2XB-0q-QOj" secondAttribute="bottom" constant="8" id="iTE-7t-dXl"/>
@@ -496,7 +497,7 @@
                         <outlet property="mapView" destination="nEN-Yc-ckc" id="6bX-7F-2O6"/>
                         <outlet property="predictionTableView" destination="k7g-kF-iqV" id="TSz-4Y-HDE"/>
                         <outlet property="redoSearchButton" destination="8Sd-Ez-tec" id="Zer-iX-jlM"/>
-                        <outlet property="redoSearchButtonBottomConstraint" destination="dTW-33-08A" id="2hG-hL-Eow"/>
+                        <outlet property="redoSearchButtonBottomConstraint" destination="ALU-f2-hUJ" id="Y0r-4c-6Hf"/>
                         <outlet property="reservationContainerView" destination="37V-ku-ODQ" id="u5t-sw-uVG"/>
                         <outlet property="reservationContainerViewHeightConstraint" destination="2bU-Z6-A3s" id="w8h-8D-CAY"/>
                         <outlet property="searchBar" destination="pgM-LO-aq0" id="Ojn-18-3IW"/>
