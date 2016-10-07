@@ -32,14 +32,11 @@ class PartnerAPITests: BaseTests {
         
         self.getFacilities(Constants.ChicagoLocation) {
             facilities, error, hasMorePages in
-            if !hasMorePages {
-                expectation.fulfill()
-            }
-            
             if hasMorePages {
                 XCTAssertNil(error)
                 XCTAssertFalse(facilities.isEmpty)
-                XCTAssertTrue(hasMorePages)
+            } else {
+                expectation.fulfill()
             }
         }
         
@@ -51,7 +48,6 @@ class PartnerAPITests: BaseTests {
         
         self.getFacilities(Constants.ChicagoLocation) {
             facilities, error, hasMorePages in
-            expectation.fulfill()
             XCTAssertEqual(facilities.count, 0)
             XCTAssertNotNil(error)
             XCTAssertFalse(hasMorePages)
@@ -60,9 +56,10 @@ class PartnerAPITests: BaseTests {
             } else {
                 XCTFail("Received the wrong error type")
             }
+            expectation.fulfill()
         }
         
-        FacilityAPI.DataTasks.forEach { $0.cancel() }
+        FacilityAPI.stopSearching()
         
         self.waitForExpectationsWithTimeout(self.timeoutDuration, handler: nil)
     }
@@ -75,13 +72,10 @@ class PartnerAPITests: BaseTests {
         
         self.getFacilities(location) {
             facilities, error, hasMorePages in
-            if !hasMorePages {
-                expectation.fulfill()
-            }
-            
             XCTAssertNotNil(error)
             XCTAssertTrue(facilities.isEmpty)
             XCTAssertFalse(hasMorePages)
+            expectation.fulfill()
         }
         
        self.waitForExpectationsWithTimeout(self.timeoutDuration, handler: nil)

@@ -335,10 +335,10 @@ struct SpotHeroPartnerAPIController {
             .fullURLStringForEndpoint(endpoint, withQueryItems: queryItems)
         
         return self.dataTaskWithMethod(.GET,
-                                fullURLString: fullURLString,
-                                headers: stringHeaders,
-                                errorCompletion: errorCompletion,
-                                jsonSuccessCompletion: successCompletion)
+                                       fullURLString: fullURLString,
+                                       headers: stringHeaders,
+                                       errorCompletion: errorCompletion,
+                                       jsonSuccessCompletion: successCompletion)
     }
     
     static func getJSONFromFullURLString(fullURLString: String,
@@ -347,10 +347,10 @@ struct SpotHeroPartnerAPIController {
                                          successCompletion: JSONAPISuccessCompletion) -> NSURLSessionDataTask? {
         let stringHeaders = APIHeaders.headerStringDict(headers)
         return self.dataTaskWithMethod(.GET,
-                                fullURLString: fullURLString,
-                                headers: stringHeaders,
-                                errorCompletion: errorCompletion,
-                                jsonSuccessCompletion: successCompletion)
+                                       fullURLString: fullURLString,
+                                       headers: stringHeaders,
+                                       errorCompletion: errorCompletion,
+                                       jsonSuccessCompletion: successCompletion)
     }
     
     /**
