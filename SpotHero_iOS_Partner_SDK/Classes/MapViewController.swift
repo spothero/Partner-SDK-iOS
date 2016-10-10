@@ -25,6 +25,8 @@ class MapViewController: UIViewController {
     @IBOutlet weak private var spotCardCollectionView: UICollectionView!
     @IBOutlet weak private var closeButton: UIBarButtonItem!
     @IBOutlet weak private var loadingView: UIView!
+    @IBOutlet weak private var redoSearchButton: UIButton!
+    @IBOutlet weak private var redoSearchButtonBottomConstraint: NSLayoutConstraint!
     
     private var prediction: GooglePlacesPrediction?
     private let predictionController = PredictionController()
@@ -35,11 +37,7 @@ class MapViewController: UIViewController {
                 return
             }
             
-            //Clear existing facilities
-            self.facilities = []
-            self.currentIndex = 0
-            self.spotCardCollectionView.reloadData()
-            self.mapView.removeAnnotations(self.mapView.annotations)
+            self.clearExistingFacilities()
             
             if details.isAirport() {
                 //have a wider search radius around airports.
@@ -79,8 +77,9 @@ class MapViewController: UIViewController {
             }
         }
     }
-    
     private var facilities = [Facility]()
+    private let redoSearchButtonBottomConstraintConstant: CGFloat = 15
+    private var hasMorePages = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -137,6 +136,11 @@ class MapViewController: UIViewController {
         self.searchSpotsButton.hidden = true
         self.searchSpotsButton.layer.cornerRadius = HeightsAndLengths.standardCornerRadius
         self.searchSpotsButton.backgroundColor = .shp_spotHeroBlue()
+        
+        self.redoSearchButton.layer.cornerRadius = HeightsAndLengths.redoSearchButtonCornerRadius
+        self.redoSearchButton.setTitleColor(.shp_spotHeroBlue(), forState: .Normal)
+        self.redoSearchButton.setTitleColor(.grayColor(), forState: .Disabled)
+        self.redoSearchButton.hidden = true
         
         self.predictionController.delegate = self
         
@@ -305,6 +309,7 @@ class MapViewController: UIViewController {
     
     private func showSpotCardCollectionView() {
         self.spotCardCollectionView.hidden = false
+        self.redoSearchButtonBottomConstraint.constant = self.spotCardCollectionView.frame.height + self.redoSearchButtonBottomConstraintConstant
         self.spotCardCollectionView.reloadData()
     }
     
@@ -394,6 +399,7 @@ class MapViewController: UIViewController {
                                         facilities, error, hasMorePages in
                                         
                                         self?.initialLoading = false
+                                        self?.hasMorePages = hasMorePages
                                         
                                         //If there are more pages, show the wee loading view.
                                         self?.loadingView.hidden = !hasMorePages
@@ -422,6 +428,13 @@ class MapViewController: UIViewController {
         self.searchBar.resignFirstResponder()
     }
     
+    private func clearExistingFacilities() {
+        self.facilities = []
+        self.currentIndex = 0
+        self.spotCardCollectionView.reloadData()
+        self.mapView.removeAnnotations(self.mapView.annotations)
+    }
+    
     //MARK: Actions
     
     @IBAction private func closeButtonPressed(sender: AnyObject) {
@@ -442,9 +455,15 @@ class MapViewController: UIViewController {
         switch gestureRecognizer.state {
         case .Began:
             self.spotCardCollectionView.hidden = true
+            self.redoSearchButton.hidden = true
             self.searchBar.resignFirstResponder()
         case .Ended:
-            self.fetchFacilities(self.mapView.centerCoordinate, panning: true)
+            self.redoSearchButton.hidden = false
+            if self.spotCardCollectionView.numberOfItemsInSection(0) > 0 {
+                self.showSpotCardCollectionView()
+            } else {
+                self.redoSearchButtonBottomConstraint.constant = self.redoSearchButtonBottomConstraintConstant
+            }
         default:
             break
         }
@@ -454,6 +473,12 @@ class MapViewController: UIViewController {
         self.searchBar.resignFirstResponder()
         self.datePickerView.showDatePickerView(false)
         self.timeSelectionView.deselect()
+    }
+    
+    @IBAction private func redoSearchButtonPressed(_ sender: AnyObject) {
+        self.redoSearchButton.hidden = true
+        self.clearExistingFacilities()
+        self.fetchFacilities(self.mapView.centerCoordinate, panning: true)
     }
     
     //MARK: Helpers
@@ -493,6 +518,7 @@ extension MapViewController: PredictionControllerDelegate {
     
     func didSelectPrediction(prediction: GooglePlacesPrediction) {
         self.prediction = prediction
+        self.redoSearchButton.hidden = true
         self.searchBar.text = prediction.description
         self.timeSelectionView.showTimeSelectionView(true)
         self.showCollapsedSearchBar()
@@ -604,6 +630,16 @@ extension MapViewController: MKMapViewDelegate {
         
         let itemIndex = NSIndexPath(forItem: facilityAnnotation.index, inSection: 0)
         self.scrollToSpotCard(withIndexPath: itemIndex)
+    }
+    
+    func mapView(mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        if self.hasMorePages {
+            self.redoSearchButton.enabled = false
+        } else if self.visibleMapViewRadiusInMeters() > Constants.MaxSearchRadiusInMeters {
+            self.redoSearchButton.enabled = false
+        } else {
+            self.redoSearchButton.enabled = true
+        }
     }
 }
 
