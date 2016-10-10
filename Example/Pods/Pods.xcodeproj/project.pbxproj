@@ -131,6 +131,7 @@
 		C4B7907A85B8317D6868AE08B3207C19 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A505AC0285FE14B505B6D026D35B6DC /* QuartzCore.framework */; };
 		C6823953955B79CA0D45C6C82BC50814 /* NumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8255D1825601ADFE398B4EB922691C2C /* NumberFormatter.swift */; };
 		C734E00407D5DF6EA98DD60DFF7AC583 /* NSBundle-KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 1DBF6DC98970E2BFEB691EDBC77BDA04 /* NSBundle-KIFAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C7D8CF281DAC46D500DAC57A /* MixpanelWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D8CF271DAC46D500DAC57A /* MixpanelWrapper.swift */; };
 		C7DA17EA1DA41429005CB324 /* APIKeyConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DA17E81DA41420005CB324 /* APIKeyConfig.swift */; };
 		C7DA17EE1DA5966A005CB324 /* UITextField+SpotHeroPartner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DA17ED1DA5966A005CB324 /* UITextField+SpotHeroPartner.swift */; };
 		C7E8F7603416B765A43FD6D7385CA6F2 /* KIFUIViewTestActor.h in Headers */ = {isa = PBXBuildFile; fileRef = 432C2B4713E6B3F05A7EF354D1458B72 /* KIFUIViewTestActor.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -447,6 +448,7 @@
 		BF417A0AC673E17995B074801D1448EA /* VOKBenkode.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VOKBenkode.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFB888D7AF57F531266DD178438689EB /* Pods-SpotHero_iOS_Partner_SDK_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SpotHero_iOS_Partner_SDK_Example-dummy.m"; sourceTree = "<group>"; };
 		C79B28A51C2E4CAE22F70E4E5D09112C /* Images.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		C7D8CF271DAC46D500DAC57A /* MixpanelWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MixpanelWrapper.swift; sourceTree = "<group>"; };
 		C7DA17E81DA41420005CB324 /* APIKeyConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIKeyConfig.swift; sourceTree = "<group>"; };
 		C7DA17ED1DA5966A005CB324 /* UITextField+SpotHeroPartner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+SpotHeroPartner.swift"; sourceTree = "<group>"; };
 		C9394ACEF4AE77F95ABD72F20DBEF8E6 /* GooglePredictionTableFooter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GooglePredictionTableFooter.swift; sourceTree = "<group>"; };
@@ -931,6 +933,7 @@
 				4843F5F80C627641BEACC18378B8646E /* SpotHeroPartnerAPIController.swift */,
 				0746705D5D433CB9AD081E2F3B68264D /* StripeWrapper.swift */,
 				C7DA17E81DA41420005CB324 /* APIKeyConfig.swift */,
+				C7D8CF271DAC46D500DAC57A /* MixpanelWrapper.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -1496,6 +1499,7 @@
 				BE0251A910E11DA7F8DADA4D61AA610B /* PredictionController.swift in Sources */,
 				A60D4AFADBD4CD0CC1DECEEE13076D0D /* ProgressHUD.swift in Sources */,
 				79FB533D7CB70F0C6760ACD39121776D /* Rate.swift in Sources */,
+				C7D8CF281DAC46D500DAC57A /* MixpanelWrapper.swift in Sources */,
 				33BFC40A1D9F41B700F7C37F /* FaciltyAPI.swift in Sources */,
 				B4E9CC5DBF6DEAB57EFB80BC0062F346 /* Reservation.swift in Sources */,
 				BBF90BC938FB6A40B2E9F7F1D4004651 /* ReservationInfoTableViewCell.swift in Sources */,
