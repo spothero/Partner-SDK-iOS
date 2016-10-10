@@ -77,9 +77,9 @@ class MapViewController: UIViewController {
             }
         }
     }
-    
     private var facilities = [Facility]()
     private let redoSearchButtonBottomConstraintConstant: CGFloat = 15
+    private var hasMorePages = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -139,6 +139,7 @@ class MapViewController: UIViewController {
         
         self.redoSearchButton.layer.cornerRadius = HeightsAndLengths.redoSearchButtonCornerRadius
         self.redoSearchButton.setTitleColor(.shp_spotHeroBlue(), forState: .Normal)
+        self.redoSearchButton.setTitleColor(.grayColor(), forState: .Disabled)
         self.redoSearchButton.hidden = true
         
         self.predictionController.delegate = self
@@ -398,6 +399,7 @@ class MapViewController: UIViewController {
                                         facilities, error, hasMorePages in
                                         
                                         self?.initialLoading = false
+                                        self?.hasMorePages = hasMorePages
                                         
                                         //If there are more pages, show the wee loading view.
                                         self?.loadingView.hidden = !hasMorePages
@@ -458,7 +460,7 @@ class MapViewController: UIViewController {
         case .Ended:
             self.redoSearchButton.hidden = false
             if self.spotCardCollectionView.numberOfItemsInSection(0) > 0 {
-                self.spotCardCollectionView.hidden = false
+                self.showSpotCardCollectionView()
             } else {
                 self.redoSearchButtonBottomConstraint.constant = self.redoSearchButtonBottomConstraintConstant
             }
@@ -628,6 +630,16 @@ extension MapViewController: MKMapViewDelegate {
         
         let itemIndex = NSIndexPath(forItem: facilityAnnotation.index, inSection: 0)
         self.scrollToSpotCard(withIndexPath: itemIndex)
+    }
+    
+    func mapView(mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        if self.hasMorePages {
+            self.redoSearchButton.enabled = false
+        } else if self.visibleMapViewRadiusInMeters() > Constants.MaxSearchRadiusInMeters {
+            self.redoSearchButton.enabled = false
+        } else {
+            self.redoSearchButton.enabled = true
+        }
     }
 }
 
