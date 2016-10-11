@@ -9,11 +9,15 @@
 import Foundation
 
 struct MixpanelWrapper {
-    private static let baseUrlString = "http://api.mixpanel.com/track/"
+    private static let baseUrlString = "https://api.mixpanel.com/track/"
     
     static func track(event: String, properties: [String: AnyObject]) {
         var mutableProperties = properties
-        mutableProperties["token"] = APIKeyConfig.sharedInstance.mixpanelApiKey
+        // TODO: Uncomment when mixpanel key included in mobile-config
+//        mutableProperties["token"] = APIKeyConfig.sharedInstance.mixpanelApiKey
+        // TODO: Remove when mixpanel key included in mobile-config
+        // TEMP: Demo key
+        mutableProperties["token"] = "6f8e586ff01c9adbf3c8c2c4290ebaf9"
         let eventDictionary = ["event": event, "properties": mutableProperties]
         
         do {
@@ -28,8 +32,9 @@ struct MixpanelWrapper {
                         print(error)
                     } else {
                         print(data)
+                        print("Mix Panel event: \(event) \nProperties: \(properties)")
                     }
-                })
+                }).resume()
             } else {
                 assertionFailure("Cannot create url")
             }

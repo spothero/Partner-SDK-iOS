@@ -68,6 +68,7 @@ public class SpotHeroPartnerSDK: NSObject {
                 viewController.presentViewController(navController,
                     animated: true,
                     completion: completion)
+                MixpanelWrapper.track("SDK Opened", properties: [:])
             } else {
                 assertionFailure("Unable to get API Keys")
             }
