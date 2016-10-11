@@ -25,4 +25,12 @@ class GooglePlacesPrediction: NSObject {
             return try term.shp_string("value")
         }
     }
+    
+    init(predictionDescription: String,
+         placeID: String,
+         terms: [String]) {
+        self.predictionDescription = predictionDescription
+        self.placeID = placeID
+        self.terms = terms
+    }
 }
