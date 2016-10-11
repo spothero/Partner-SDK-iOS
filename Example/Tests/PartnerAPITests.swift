@@ -32,11 +32,34 @@ class PartnerAPITests: BaseTests {
         
         self.getFacilities(Constants.ChicagoLocation) {
             facilities, error, hasMorePages in
-            XCTAssertNil(error)
-            XCTAssertFalse(facilities.isEmpty)
-            XCTAssertTrue(hasMorePages)
+            if hasMorePages {
+                XCTAssertNil(error)
+                XCTAssertFalse(facilities.isEmpty)
+            } else {
+                expectation.fulfill()
+            }
+        }
+        
+        self.waitForExpectationsWithTimeout(self.timeoutDuration, handler: nil)
+    }
+    
+    func testCancelGetFacilities() {
+        let expectation = self.expectationWithDescription("Facility request cancelled")
+        
+        self.getFacilities(Constants.ChicagoLocation) {
+            facilities, error, hasMorePages in
+            XCTAssertEqual(facilities.count, 0)
+            XCTAssertNotNil(error)
+            XCTAssertFalse(hasMorePages)
+            if let error = error as? NSError {
+                XCTAssertEqual(error.code, NSURLError.Cancelled.rawValue)
+            } else {
+                XCTFail("Received the wrong error type")
+            }
             expectation.fulfill()
         }
+        
+        FacilityAPI.stopSearching()
         
         self.waitForExpectationsWithTimeout(self.timeoutDuration, handler: nil)
     }

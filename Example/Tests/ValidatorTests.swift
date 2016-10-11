@@ -80,34 +80,6 @@ class ValidatorTests: XCTestCase {
     
     //MARK: Tests
     
-    //MARK: Full Name
-    
-    func testValidFullName() {
-        let validFullName = "Matt Reed"
-        
-        self.validateThatErrorIsNotThrown {
-            try Validator.validateFullName(validFullName)
-        }
-    }
-    
-    func testInvalidFullName() {
-        let invalidFullNameOneWord = "Matt"
-        
-        self.validateThatFieldInvalidErrorIsThrown(LocalizedStrings.FullName, errorMessage: LocalizedStrings.FullNameErrorMessage) {
-            try Validator.validateFullName(invalidFullNameOneWord)
-        }
-    }
-    
-    func testBlankName() {
-        self.validateThatFieldBlankErrorThrown(LocalizedStrings.FullName) {
-            try Validator.validateFullName(self.emptyString)
-        }
-        
-        self.validateThatFieldBlankErrorThrown(LocalizedStrings.FullName) {
-            try Validator.validateFullName(self.blankSpace)
-        }
-    }
-    
     //MARK: Email
     
     func testValidEmail() {

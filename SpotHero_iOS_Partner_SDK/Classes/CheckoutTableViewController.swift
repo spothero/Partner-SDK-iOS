@@ -46,15 +46,12 @@ enum ReservationInfoRow: Int, CountableIntEnum {
 
 enum PersonalInfoRow: Int, CountableIntEnum {
     case
-    FullName,
     Email,
     Phone,
     License
     
     func title() -> String {
         switch self {
-        case .FullName:
-            return LocalizedStrings.FullName
         case .Email:
             return LocalizedStrings.Email
         case .Phone:
@@ -66,8 +63,6 @@ enum PersonalInfoRow: Int, CountableIntEnum {
     
     func placeholder() -> String {
         switch self {
-        case .FullName:
-            return LocalizedStrings.FullNamePlaceHolder
         case .Email:
             return LocalizedStrings.EmailAddressPlaceHolder
         case .Phone:
@@ -340,13 +335,6 @@ class CheckoutTableViewController: UIViewController {
         cell.personalInfoCellDelegate = self
         
         switch row {
-        case PersonalInfoRow.FullName:
-            cell.textField.autocapitalizationType = .Words
-            cell.textField.returnKeyType = .Next
-            cell.validationClosure = {
-                fullName in
-                try Validator.validateFullName(fullName)
-            }
         case PersonalInfoRow.Email:
             cell.textField.autocapitalizationType = .None
             cell.textField.keyboardType = .EmailAddress

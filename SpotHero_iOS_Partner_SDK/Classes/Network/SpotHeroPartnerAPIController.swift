@@ -184,7 +184,12 @@ struct SpotHeroPartnerAPIController {
         }
         
         guard let urlResponse = response as? NSHTTPURLResponse else {
-            //Fail with some kind of ceci n'est pas une URL respones
+            //If theres no response and an error call the error completion.
+            if let error = error {
+                NSOperationQueue.mainQueue().addOperationWithBlock({ 
+                    errorCompletion(error: error)
+                })
+            }
             return
         }
         
@@ -315,7 +320,7 @@ struct SpotHeroPartnerAPIController {
                                     withHeaders headers: HeaderDictionary,
                                     additionalParams: [String : String]? = nil,
                                     errorCompletion: APIErrorCompletion,
-                                    successCompletion: JSONAPISuccessCompletion) {
+                                    successCompletion: JSONAPISuccessCompletion) -> NSURLSessionDataTask? {
         
         let stringHeaders = APIHeaders.headerStringDict(headers)
         
@@ -329,23 +334,23 @@ struct SpotHeroPartnerAPIController {
             .CurrentEnvironment
             .fullURLStringForEndpoint(endpoint, withQueryItems: queryItems)
         
-        self.dataTaskWithMethod(.GET,
-                                fullURLString: fullURLString,
-                                headers: stringHeaders,
-                                errorCompletion: errorCompletion,
-                                jsonSuccessCompletion: successCompletion)
+        return self.dataTaskWithMethod(.GET,
+                                       fullURLString: fullURLString,
+                                       headers: stringHeaders,
+                                       errorCompletion: errorCompletion,
+                                       jsonSuccessCompletion: successCompletion)
     }
     
     static func getJSONFromFullURLString(fullURLString: String,
                                          withHeaders headers: HeaderDictionary,
                                          errorCompletion: APIErrorCompletion,
-                                         successCompletion: JSONAPISuccessCompletion) {
+                                         successCompletion: JSONAPISuccessCompletion) -> NSURLSessionDataTask? {
         let stringHeaders = APIHeaders.headerStringDict(headers)
-        self.dataTaskWithMethod(.GET,
-                                fullURLString: fullURLString,
-                                headers: stringHeaders,
-                                errorCompletion: errorCompletion,
-                                jsonSuccessCompletion: successCompletion)
+        return self.dataTaskWithMethod(.GET,
+                                       fullURLString: fullURLString,
+                                       headers: stringHeaders,
+                                       errorCompletion: errorCompletion,
+                                       jsonSuccessCompletion: successCompletion)
     }
     
     /**

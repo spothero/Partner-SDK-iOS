@@ -50,26 +50,6 @@ enum CardType {
 
 enum Validator {
     /**
-     Validates that a string is a full name
-     
-     - parameter fullName: string to validate
-     
-     - throws: throws an error if string is empty or invalid
-     */
-    static func validateFullName(fullName: String) throws {
-        let fieldName = LocalizedStrings.FullName
-        
-        // Trim trailing spaces
-        let trimmedFullName = fullName.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
-        
-        if trimmedFullName.isEmpty {
-            throw ValidatorError.FieldBlank(fieldName: fieldName)
-        } else if trimmedFullName.componentsSeparatedByString(" ").count < 2 {
-            throw ValidatorError.FieldInvalid(fieldName: fieldName, message: LocalizedStrings.FullNameErrorMessage)
-        }
-    }
-    
-    /**
      Validates that a string is an email
      
      - parameter email: string to validate
