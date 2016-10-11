@@ -42,7 +42,7 @@ class PaymentInfoTableViewCell: UITableViewCell, ValidatorCell {
     var errors = [String: ValidatorError]() {
         didSet {
             var valid = true
-            for (key, value) in errors {
+            for value in self.errors.values {
                 valid = false
                 self.setErrorState(value)
                 break
