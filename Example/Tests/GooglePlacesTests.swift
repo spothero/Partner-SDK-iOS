@@ -12,20 +12,20 @@ import CoreLocation
 
 class GooglePlacesTests: BaseTests {
     let waitDuration: NSTimeInterval = 10
-    let spotheroPrediction = GooglePlacesPrediction(description: "SpotHero, West Huron Street, Chicago, IL, United States",
+    let spotheroPrediction = GooglePlacesPrediction(predictionDescription: "SpotHero, West Huron Street, Chicago, IL, United States",
                                                     placeID: "ChIJEyn6463TD4gR9Ta3uIauNyo",
                                                     terms: [])
-    let invalidPrediction = GooglePlacesPrediction(description: "Invalid",
+    let invalidPrediction = GooglePlacesPrediction(predictionDescription: "Invalid",
                                                    placeID: "Invalid",
                                                    terms: [])
-
+    
     func testGetPredictionsWithAddressSubstring() {
         let expectation = self.expectationWithDescription("testGetPredictionsWithAddressSubstring")
         
         GooglePlacesWrapper.getPredictions("325 W Huron",
                                            location: Constants.ChicagoLocation) {
-                                                predictions, error in
-                                                XCTAssertNil(error)
+                                            predictions, error in
+                                            XCTAssertNil(error)
                                             XCTAssertGreaterThanOrEqual(predictions.count, 1)
                                             XCTAssertLessThanOrEqual(predictions.count, 5)
                                             expectation.fulfill()
@@ -33,7 +33,7 @@ class GooglePlacesTests: BaseTests {
         
         self.waitForExpectationsWithTimeout(self.waitDuration, handler: nil)
     }
-
+    
     func testGetPredictionsWithPlaceName() {
         let expectation = self.expectationWithDescription("testGetPredictionsWithPlaceName")
         

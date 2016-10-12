@@ -32,7 +32,9 @@ extension Dictionary where Key: StringLiteralConvertible, Value: AnyObject {
     private func shp_throwingValueForKey(key: Key) throws -> AnyObject {
         guard let value = self[key] else {
             //Since Key is a StringLiteral convertible, force-cast always succeeds.
+            // swiftlint:disable force_cast
             throw JSONParsingError.KeyNotFound(key: key as! String)
+            // swiftlint:enable force_cast
         }
         
         return value

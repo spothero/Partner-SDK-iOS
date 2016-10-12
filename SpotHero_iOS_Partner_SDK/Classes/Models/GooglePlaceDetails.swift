@@ -12,7 +12,8 @@ import CoreLocation
 /**
  *  Represents The details for a google place
  */
-struct GooglePlaceDetails {
+@objc(SPHGooglePlaceDetails)
+class GooglePlaceDetails: NSObject {
     let name: String
     let placeID: String
     let types: [String]
@@ -21,9 +22,7 @@ struct GooglePlaceDetails {
     func isAirport() -> Bool {
         return self.types.contains("airport")
     }
-}
-
-extension GooglePlaceDetails {
+    
     init(json: JSONDictionary) throws {
         self.name = try json.shp_string("name")
         self.placeID = try json.shp_string("place_id")

@@ -19,7 +19,8 @@ enum GooglePlacesError: ErrorType {
 typealias GooglePlacesWrapperCompletion = ([GooglePlacesPrediction], ErrorType?) -> (Void)
 typealias GooglePlaceDetailsCompletion = (GooglePlaceDetails?, ErrorType?) -> (Void)
 
-struct GooglePlacesWrapper {
+@objc(SPHGooglePlacesWrapper)
+class GooglePlacesWrapper: NSObject {
     static let Host = "maps.googleapis.com"
     static let Scheme = "https"
     static let KeyQueryItem = NSURLQueryItem(name: "key", value: APIKeyConfig.sharedInstance.googleApiKey)
@@ -59,7 +60,8 @@ struct GooglePlacesWrapper {
                     
                     do {
                         let responseDictionary = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions()) as? JSONDictionary
-                        if let predictionDictionaries = responseDictionary?["predictions"] as? [JSONDictionary] where predictionDictionaries.count > 0 {
+                        if let predictionDictionaries =
+                            responseDictionary?["predictions"] as? [JSONDictionary] where !predictionDictionaries.isEmpty {
                             var predictions = [GooglePlacesPrediction]()
                             for predictionDictionary in predictionDictionaries {
                                 let predition = try GooglePlacesPrediction(json: predictionDictionary)
@@ -88,13 +90,13 @@ struct GooglePlacesWrapper {
      - parameter prediction:  Prediction to find the details for
      - parameter completion: Completion closure. Passing in either the details or an error
      */
-    static func getPlaceDetails(predition: GooglePlacesPrediction, completion: GooglePlaceDetailsCompletion) {
+    static func getPlaceDetails(prediction: GooglePlacesPrediction, completion: GooglePlaceDetailsCompletion) {
         let urlComponents = NSURLComponents()
         urlComponents.host = Host
         urlComponents.scheme = Scheme
         urlComponents.path = "/maps/api/place/details/json"
         urlComponents.queryItems = [
-            NSURLQueryItem(name: "placeid", value: predition.placeID),
+            NSURLQueryItem(name: "placeid", value: prediction.placeID),
             KeyQueryItem
         ]
         
