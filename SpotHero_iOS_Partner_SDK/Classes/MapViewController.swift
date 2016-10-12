@@ -643,7 +643,7 @@ extension MapViewController: MKMapViewDelegate {
         }
     }
     
-    func locationAnnotationView(annotation: MKAnnotation) -> MKAnnotationView {
+    private func locationAnnotationView(annotation: MKAnnotation) -> MKAnnotationView {
         let annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "LocationAnnotation")
         annotationView.canShowCallout = self.facilities.isEmpty
         annotationView.enabled = self.facilities.isEmpty
