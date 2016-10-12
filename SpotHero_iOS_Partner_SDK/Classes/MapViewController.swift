@@ -232,7 +232,7 @@ class MapViewController: UIViewController {
         if let placeDetails = self.predictionPlaceDetails {
             locationAnnotation.coordinate = placeDetails.location.coordinate
         } else {
-            locationAnnotation.coordinate = mapView.centerCoordinate
+            locationAnnotation.coordinate = self.mapView.centerCoordinate
         }
         locationAnnotation.title = self.facilities.isEmpty ? LocalizedStrings.NoSpotsFound : ""
         self.mapView.addAnnotation(locationAnnotation)
@@ -605,20 +605,12 @@ extension MapViewController: MKMapViewDelegate {
         if let placeDetails = self.predictionPlaceDetails {
             if annotation.coordinate.latitude == placeDetails.location.coordinate.latitude &&
                 annotation.coordinate.longitude == placeDetails.location.coordinate.longitude {
-                let annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "LocationAnnotation")
-                annotationView.canShowCallout = self.facilities.isEmpty
-                annotationView.enabled = self.facilities.isEmpty
-                annotationView.pinTintColor = self.facilities.isEmpty ? .redColor() : .greenColor()
-                return annotationView
+                return self.locationAnnotationView(annotation)
             }
         } else {
             if annotation.coordinate.latitude == self.mapView.centerCoordinate.latitude &&
                 annotation.coordinate.longitude == self.mapView.centerCoordinate.longitude {
-                let annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "LocationAnnotation")
-                annotationView.canShowCallout = self.facilities.isEmpty
-                annotationView.enabled = self.facilities.isEmpty
-                annotationView.pinTintColor = self.facilities.isEmpty ? .redColor() : .greenColor()
-                return annotationView
+                return self.locationAnnotationView(annotation)
             }
         }
         
@@ -649,6 +641,14 @@ extension MapViewController: MKMapViewDelegate {
         } else {
             self.redoSearchButton.enabled = true
         }
+    }
+    
+    func locationAnnotationView(annotation: MKAnnotation) -> MKAnnotationView {
+        let annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "LocationAnnotation")
+        annotationView.canShowCallout = self.facilities.isEmpty
+        annotationView.enabled = self.facilities.isEmpty
+        annotationView.pinTintColor = self.facilities.isEmpty ? .redColor() : .greenColor()
+        return annotationView
     }
 }
 
