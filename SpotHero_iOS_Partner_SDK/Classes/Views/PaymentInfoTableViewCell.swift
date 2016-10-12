@@ -8,7 +8,14 @@
 
 import UIKit
 
-class PaymentInfoTableViewCell: UITableViewCell {
+class PaymentInfoTableViewCell: UITableViewCell, ValidatorCell {
+    enum ErrorKey: String {
+        case
+        CreditCard,
+        Expiration,
+        CVC
+    }
+    
     @IBOutlet weak var creditCardView: UIView!
     @IBOutlet weak var cardImage: UIImageView!
     @IBOutlet weak var creditCardTextField: UITextField!
@@ -32,26 +39,28 @@ class PaymentInfoTableViewCell: UITableViewCell {
         }
     }
     
-    var creditCardValid = false {
+    var errors = [String: ValidatorError]() {
         didSet {
-            self.fieldValidChanged()
+            var valid = true
+            for value in self.errors.values {
+                valid = false
+                self.setErrorState(value)
+                break
+            }
+            
+            self.valid = valid
+            
+            if self.valid {
+                self.errorLabel.hidden = true
+                self.creditCardContainerView.backgroundColor = .whiteColor()
+            }
         }
     }
     
-    var expirationDateValid = false {
+    var valid: Bool = false {
         didSet {
-            self.fieldValidChanged()
+            self.delegate?.didValidateText()
         }
-    }
-    
-    var cvcValid = false {
-        didSet {
-            self.fieldValidChanged()
-        }
-    }
-    
-    var valid: Bool {
-        return creditCardValid && expirationDateValid && cvcValid
     }
     
     static let reuseIdentifier = "paymentInfoCell"
@@ -215,11 +224,10 @@ extension PaymentInfoTableViewCell: UITextFieldDelegate {
             case self.creditCardTextField:
                 self.cardType = Validator.getCardType(text)
                 try Validator.validateCreditCard(self.cardNumber)
-                self.creditCardValid = true
+                self.errors[ErrorKey.CreditCard.rawValue] = nil
                 self.showExpirationDateAndCVCTextFields(show: true)
                 self.expirationDateTextField.becomeFirstResponder()
                 self.creditCardTextField.text = self.lastFourDigits(text)
-                self.setErrorState(self.creditCardValid, error: nil)
             case self.expirationDateTextField:
                 let parts = text.componentsSeparatedByString("/")
                 if
@@ -231,31 +239,26 @@ extension PaymentInfoTableViewCell: UITextFieldDelegate {
                 } else {
                     throw ValidatorError.FieldInvalid(fieldName: LocalizedStrings.ExpirationDate, message: LocalizedStrings.InvalidDateErrorMessage)
                 }
-                self.expirationDateValid = true
-                self.setErrorState(self.expirationDateValid, error: nil)
+                self.errors[ErrorKey.Expiration.rawValue] = nil
             case self.cvcTextField:
                 if cardType == .Amex {
                     try Validator.validateCVC(text, amex: true)
                 } else {
                     try Validator.validateCVC(text)
                 }
-                self.cvcValid = true
                 self.cvc = text
-                self.setErrorState(self.cvcValid, error: nil)
+                self.errors[ErrorKey.CVC.rawValue] = nil
             default:
                 break
             }
         } catch let error as ValidatorError {
             switch textField {
             case self.creditCardTextField:
-                self.creditCardValid = false
-                self.setErrorState(self.creditCardValid, error:error)
+                self.errors[ErrorKey.CreditCard.rawValue] = error
             case self.expirationDateTextField:
-                self.expirationDateValid = false
-                self.setErrorState(self.expirationDateValid, error:error)
+                self.errors[ErrorKey.Expiration.rawValue] = error
             case self.cvcTextField:
-                self.cvcValid = false
-                self.setErrorState(self.cvcValid, error:error)
+                self.errors[ErrorKey.CVC.rawValue] = error
             default:
                 break
             }
@@ -263,23 +266,17 @@ extension PaymentInfoTableViewCell: UITextFieldDelegate {
             assertionFailure("Some other error was thrown: \(error)")
         }
     }
-}
-
-// MARK: - ValidatorCell
-
-extension PaymentInfoTableViewCell: ValidatorCell {
-    func setErrorState(valid: Bool, error: ValidatorError?) {
-        self.errorLabel.hidden = valid
+    
+    private func setErrorState(error: ValidatorError) {
+        self.errorLabel.hidden = false
         
-        self.creditCardContainerView.backgroundColor = valid ? .whiteColor() : .shp_errorRed()
+        self.creditCardContainerView.backgroundColor = .shp_errorRed()
         
-        if let error = error {
-            switch error {
-            case .FieldBlank(let fieldName):
-                self.errorLabel.text = String(format: LocalizedStrings.blankFieldErrorFormat, fieldName)
-            case .FieldInvalid(let fieldName, let message):
-                self.errorLabel.text = message
-            }
+        switch error {
+        case .FieldBlank(let fieldName):
+            self.errorLabel.text = String(format: LocalizedStrings.blankFieldErrorFormat, fieldName)
+        case .FieldInvalid(let fieldName, let message):
+            self.errorLabel.text = message
         }
     }
 }

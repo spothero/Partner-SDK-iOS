@@ -12,7 +12,7 @@ protocol PersonalInfoTableViewCellDelegate: class {
     func textFieldShouldReturn(type: PersonalInfoRow)
 }
 
-class PersonalInfoTableViewCell: UITableViewCell {
+class PersonalInfoTableViewCell: UITableViewCell, ValidatorCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var errorLabel: UILabel!
@@ -50,9 +50,9 @@ extension PersonalInfoTableViewCell: UITextFieldDelegate {
             } else {
                 assertionFailure("Validation closure not set")
             }
-            self.setErrorState(true, error: nil)
+            self.setErrorState(nil)
         } catch let error as ValidatorError {
-            self.setErrorState(false, error: error)
+            self.setErrorState(error)
         } catch {
             assertionFailure("Some other error was thrown")
         }
@@ -87,10 +87,8 @@ extension PersonalInfoTableViewCell: UITextFieldDelegate {
         self.personalInfoCellDelegate?.textFieldShouldReturn(self.type)
         return false
     }
-}
-
-extension PersonalInfoTableViewCell: ValidatorCell {
-    func setErrorState(valid: Bool, error: ValidatorError?) {
+    
+    func setErrorState(error: ValidatorError?) {
         if let error = error {
             switch error {
             case .FieldBlank(let fieldName):
@@ -100,6 +98,6 @@ extension PersonalInfoTableViewCell: ValidatorCell {
             }
         }
         
-        self.valid = valid
+        self.valid = (error == nil)
     }
 }
