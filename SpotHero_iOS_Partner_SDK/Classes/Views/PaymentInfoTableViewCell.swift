@@ -186,7 +186,12 @@ extension PaymentInfoTableViewCell: UITextFieldDelegate {
         
         switch textField {
         case self.creditCardTextField:
-            self.formatCreditCard(text)
+            if string.isEmpty && (textField.text as? NSString)?.substringWithRange(range) == " " {
+                let rangeBefore = NSRange(location: range.location - 1, length: 1)
+                self.creditCardTextField.text = (text as? NSString)?.stringByReplacingCharactersInRange(rangeBefore, withString: "")
+            } else {
+                self.formatCreditCard(text)
+            }
             textField.shp_setCursorPosition(cursorLocation)
             return false
         case self.expirationDateTextField:
