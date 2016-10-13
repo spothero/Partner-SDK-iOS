@@ -556,7 +556,7 @@ extension MapViewController: PredictionControllerDelegate {
     func didSelectPrediction(prediction: GooglePlacesPrediction) {
         self.prediction = prediction
         self.redoSearchButton.hidden = true
-        self.searchBar.text = prediction.description
+        self.searchBar.text = prediction.predictionDescription
         self.timeSelectionView.showTimeSelectionView(true)
         self.showCollapsedSearchBar()
         self.searchBar.resignFirstResponder()
@@ -640,13 +640,11 @@ extension MapViewController: StartEndDateDelegate {
 extension MapViewController: MKMapViewDelegate {
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         if let placeDetails = self.predictionPlaceDetails {
-            if annotation.coordinate.latitude == placeDetails.location.coordinate.latitude &&
-                annotation.coordinate.longitude == placeDetails.location.coordinate.longitude {
+            if annotation.coordinate == placeDetails.location.coordinate {
                 return self.locationAnnotationView(annotation)
             }
         } else {
-            if annotation.coordinate.latitude == self.mapView.centerCoordinate.latitude &&
-                annotation.coordinate.longitude == self.mapView.centerCoordinate.longitude {
+            if annotation.coordinate == self.mapView.centerCoordinate {
                 return self.locationAnnotationView(annotation)
             }
         }
