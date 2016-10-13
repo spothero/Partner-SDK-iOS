@@ -69,7 +69,7 @@ extension Rate {
         return self.amenities["in-out"] != nil
     }
     
-    func timeToReservation() -> Int {
-        return NSCalendar.currentCalendar().components([.Minute], fromDate: NSDate(), toDate: self.starts, options: []).minute
+    func minutesToReservation() -> Int {
+        return NSCalendar.currentCalendar().components([.Minute], fromDate: NSDate(), toDate: self.starts, options: [.WrapComponents]).minute
     }
 }
