@@ -186,7 +186,7 @@ extension PaymentInfoTableViewCell: UITextFieldDelegate {
         
         switch textField {
         case self.creditCardTextField:
-            if string.isEmpty && (textField.text as? NSString)?.substringWithRange(range) == " " {
+            if string.isEmpty && (textField.text as? NSString)?.substringWithRange(range) == " " && range.location > 2 {
                 let rangeBefore = NSRange(location: range.location - 1, length: 1)
                 self.creditCardTextField.text = (text as? NSString)?.stringByReplacingCharactersInRange(rangeBefore, withString: "")
             } else {
