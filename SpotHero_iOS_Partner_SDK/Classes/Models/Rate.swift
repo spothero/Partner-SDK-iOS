@@ -68,4 +68,8 @@ extension Rate {
     func allowsReentry() -> Bool {
         return self.amenities["in-out"] != nil
     }
+    
+    func timeToReservation() -> Int {
+        return NSCalendar.currentCalendar().components([.Minute], fromDate: NSDate(), toDate: self.starts, options: []).minute
+    }
 }

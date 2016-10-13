@@ -18,12 +18,12 @@ class ConfirmationViewController: UIViewController {
     
     @IBAction func bookAnotherButtonPressed(sender: AnyObject) {
         // Got first ViewController to be able to start the rental process over again
-        MixpanelWrapper.track("Post Purchase", properties: ["Tapped book another": true])
+        MixpanelWrapper.track(.PostPurchase, properties: [.TappedBookAnother: true])
         self.navigationController?.popToRootViewControllerAnimated(true)
     }
     
     @IBAction func doneButtonPressed(sender: AnyObject) {
-        MixpanelWrapper.track("Post Purchase", properties: ["Tapped done": true])
+        MixpanelWrapper.track(.PostPurchase, properties: [.TappedDone: true])
         SpotHeroPartnerSDK.SharedInstance.reportSDKClosed()
         self.dismissViewControllerAnimated(true, completion: nil)
     }

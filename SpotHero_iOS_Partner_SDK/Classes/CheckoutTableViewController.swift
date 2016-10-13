@@ -302,21 +302,21 @@ class CheckoutTableViewController: UIViewController {
                                                 return
                                             }
                                             
-                                            if let rate = self?.rate, let facility = self?.facility {
-                                                let timeToReservationInMinutes = Int(rate.starts.timeIntervalSinceDate(NSDate()) / 60)
-                                                MixpanelWrapper.track("User Purchased", properties: [
-                                                    "Price": rate.displayPrice,
-                                                    "Spot ID": facility.parkingSpotID,
-                                                    "SpotHero City": facility.city,
-                                                    "Reservation length": rate.duration,
-                                                    "Distance": facility.distanceInMeters,
-                                                    "Distance from Search Center": facility.distanceInMeters,
-                                                    "Payment Type": "Credit Card",
-                                                    "Required License Plate": facility.licensePlateRequired,
-                                                    "Required Phone Number": facility.phoneNumberRequired,
-                                                    "Email address": email,
-                                                    "Phone Number": phoneNumber,
-                                                    "Time From Reservation Start": timeToReservationInMinutes,
+                                            if let rate = self?.rate,
+                                                let facility = self?.facility {
+                                                MixpanelWrapper.track(.UserPurchased, properties: [
+                                                    .Price: rate.displayPrice,
+                                                    .SpotID: facility.parkingSpotID,
+                                                    .SpotHeroCity: facility.city,
+                                                    .ReservationLength: rate.duration,
+                                                    .Distance: facility.distanceInMeters,
+                                                    .DistanceFromSearchCenter: facility.distanceInMeters,
+                                                    .PaymentType: "Credit Card",
+                                                    .RequiredLicensePlate: facility.licensePlateRequired,
+                                                    .RequiredPhoneNumber: facility.phoneNumberRequired,
+                                                    .EmailAddress: email,
+                                                    .PhoneNumber: phoneNumber,
+                                                    .TimeFromReservationStart: rate.timeToReservation(),
                                                     ])
                                             }
                                             completion(true)

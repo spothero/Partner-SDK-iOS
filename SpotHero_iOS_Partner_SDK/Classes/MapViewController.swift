@@ -397,7 +397,7 @@ class MapViewController: UIViewController {
                                     completion: {
                                         [weak self]
                                         facilities, error, hasMorePages in
-                                        MixpanelWrapper.track("Viewed Search Results Screen")
+                                        MixpanelWrapper.track(.ViewedSearchResultsScreen)
                                         self?.initialLoading = false
                                         self?.hasMorePages = hasMorePages
                                         
@@ -414,7 +414,7 @@ class MapViewController: UIViewController {
                                             AlertView.presentErrorAlertView(LocalizedStrings.Sorry,
                                                 message: LocalizedStrings.NoSpotsFound,
                                                 from: self)
-                                            MixpanelWrapper.track("Viewed No Results Found Modal")
+                                            MixpanelWrapper.track(.ViewedNoResultsFoundModal)
                                         }
                                         self?.addAndShowFacilityAnnotations(facilities)
             })
@@ -497,12 +497,12 @@ class MapViewController: UIViewController {
     private func trackViewPin(tap: Bool = true) {
         let facility = self.facilities[self.currentIndex]
         
-        MixpanelWrapper.track("Tapped Spot Pin", properties: [
-            "Tapped Pin": true,
-            "Viewing Method": tap ? "tap" : "swipe",
-            "Spot Address": facility.streetAddress,
-            "Distance": facility.distanceInMeters,
-            "Spot ID": facility.parkingSpotID,
+        MixpanelWrapper.track(.TappedSpotPin, properties: [
+            .TappedPin: true,
+            .ViewingMethod: tap ? "tap" : "swipe",
+            .SpotAddress: facility.streetAddress,
+            .Distance: facility.distanceInMeters,
+            .SpotID: facility.parkingSpotID,
             ])
     }
     
@@ -510,16 +510,15 @@ class MapViewController: UIViewController {
         let facility = self.facilities[self.currentIndex]
         
         if let prediction = self.prediction {
-            let timeToReservationInMinutes = Int(self.startDate.timeIntervalSinceDate(NSDate()) / 60)
-            MixpanelWrapper.track("User Searched", properties: [
-                "Search Query": prediction.predictionDescription,
-                "Tapped Redo Search": redo,
-                "Optimal Zoom": self.defaultSearchRadius,
-                "Results within optimal zoom": self.facilities.count,
-                "SpotHero City": facility.city,
-                "Search Type": type,
-                "Reservation length": NSCalendar.currentCalendar().components([.Hour], fromDate: self.startDate, toDate: self.endDate, options: []).hour,
-                "Time From Reservation Start": timeToReservationInMinutes,
+            MixpanelWrapper.track(.UserSearched, properties: [
+                .SearchQuery: prediction.predictionDescription,
+                .TappedRedoSearch: redo,
+                .OptimalZoom: self.defaultSearchRadius,
+                .ResultsWithinOptimalZoom: self.facilities.count,
+                .SpotHeroCity: facility.city,
+                .SearchType: type,
+                .ReservationLength: NSCalendar.currentCalendar().components([.Hour], fromDate: self.startDate, toDate: self.endDate, options: [.WrapComponents]).hour,
+                .TimeFromReservationStart: facility.availableRates.first?.timeToReservation() ?? 0,
                 ])
         }
     }

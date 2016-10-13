@@ -43,7 +43,7 @@ public class SpotHeroPartnerSDK: NSObject {
         let date = NSDate()
         if let openDate = SpotHeroPartnerSDK.SharedInstance.dateSDKOpened {
             let duration = date.timeIntervalSinceDate(openDate)
-            MixpanelWrapper.track("SDK Closed", properties: ["SDK Closed": duration])
+            MixpanelWrapper.track(.SDKClosed, properties: [.SDKClosed: duration])
         }
     }
     
@@ -80,7 +80,7 @@ public class SpotHeroPartnerSDK: NSObject {
                 viewController.presentViewController(navController,
                     animated: true,
                     completion: completion)
-                MixpanelWrapper.track("SDK Opened")
+                MixpanelWrapper.track(.SDKOpened)
                 self.dateSDKOpened = NSDate()
             } else {
                 assertionFailure("Unable to get API Keys")
