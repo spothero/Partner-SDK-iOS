@@ -54,6 +54,10 @@ struct MixpanelWrapper {
     private static let baseUrlString = "https://api.mixpanel.com/track/"
     
     static func track(event: MixpanelEvent, properties: [MixpanelKey: AnyObject] = [:]) {
+        guard NSClassFromString("XCTest") == nil else {
+            return
+        }
+        
         var mutableProperties = properties
         mutableProperties[MixpanelKey.Token] = APIKeyConfig.sharedInstance.mixpanelApiKey
         
