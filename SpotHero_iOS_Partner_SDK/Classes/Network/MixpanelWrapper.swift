@@ -55,11 +55,7 @@ struct MixpanelWrapper {
     
     static func track(event: MixpanelEvent, properties: [MixpanelKey: AnyObject] = [:]) {
         var mutableProperties = properties
-        // TODO: Uncomment when mixpanel key included in mobile-config
-//        mutableProperties["token"] = APIKeyConfig.sharedInstance.mixpanelApiKey
-        // TODO: Remove when mixpanel key included in mobile-config
-        // TEMP: Demo key
-        mutableProperties[MixpanelKey.Token] = "6f8e586ff01c9adbf3c8c2c4290ebaf9"
+        mutableProperties[MixpanelKey.Token] = APIKeyConfig.sharedInstance.mixpanelApiKey
         
         var stringDictionary = [String: AnyObject]()
         
