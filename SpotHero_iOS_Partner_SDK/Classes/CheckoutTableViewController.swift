@@ -277,7 +277,8 @@ class CheckoutTableViewController: UIViewController {
         }
         
         var phoneNumber = ""
-        if let phoneCell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: PersonalInfoRow.Phone.rawValue, inSection: CheckoutSection.PersonalInfo.rawValue)) as? PersonalInfoTableViewCell, text = phoneCell.textField.text {
+        if let phoneCell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: PersonalInfoRow.Phone.rawValue, inSection: CheckoutSection.PersonalInfo.rawValue)) as? PersonalInfoTableViewCell,
+            let text = phoneCell.textField.text {
             phoneNumber = text
         }
         
