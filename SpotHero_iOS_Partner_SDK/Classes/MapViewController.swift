@@ -314,7 +314,7 @@ class MapViewController: UIViewController {
     }
     
     private func scrollToSpotCardThenSelectAnnotation(withIndexPath indexPath: NSIndexPath) {
-        self.scrollToSpotCard(withIndexPath: indexPath)
+        self.scrollToSpotCard(withIndexPath: indexPath, tap: false)
         let annotation = self.mapView.annotations.flatMap {
             annotation in
             return annotation as? FacilityAnnotation
@@ -328,11 +328,12 @@ class MapViewController: UIViewController {
         }
     }
     
-    private func scrollToSpotCard(withIndexPath indexPath: NSIndexPath) {
+    private func scrollToSpotCard(withIndexPath indexPath: NSIndexPath, tap: Bool) {
         self.currentIndex = indexPath.row
         self.spotCardCollectionView.scrollToItemAtIndexPath(indexPath,
                                                             atScrollPosition: .None,
                                                             animated: true)
+        self.trackViewPin(tap)
     }
     
     private func visibleMapViewRadiusInMeters() -> Double {
@@ -397,7 +398,7 @@ class MapViewController: UIViewController {
                                     completion: {
                                         [weak self]
                                         facilities, error, hasMorePages in
-                                        
+                                        MixpanelWrapper.track("Viewed Search Results Screen")
                                         self?.initialLoading = false
                                         self?.hasMorePages = hasMorePages
                                         
@@ -414,6 +415,7 @@ class MapViewController: UIViewController {
                                             AlertView.presentErrorAlertView(LocalizedStrings.Sorry,
                                                 message: LocalizedStrings.NoSpotsFound,
                                                 from: self)
+                                            MixpanelWrapper.track("Viewed No Results Found Modal")
                                         }
                                         self?.addAndShowFacilityAnnotations(facilities, panning: panning)
             })
@@ -426,6 +428,7 @@ class MapViewController: UIViewController {
         self.collapsedSearchBar.time = NSCalendar.currentCalendar().components([.Hour, .Day, .Minute], fromDate: self.startDate, toDate: self.endDate, options: [])
         self.searchPrediction()
         self.searchBar.resignFirstResponder()
+        self.trackUserSearch(true, type: "Search")
     }
     
     private func clearExistingFacilities() {
@@ -438,6 +441,7 @@ class MapViewController: UIViewController {
     //MARK: Actions
     
     @IBAction private func closeButtonPressed(sender: AnyObject) {
+        SpotHeroPartnerSDK.SharedInstance.reportSDKClosed()
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -479,6 +483,7 @@ class MapViewController: UIViewController {
         self.redoSearchButton.hidden = true
         self.clearExistingFacilities()
         self.fetchFacilities(self.mapView.centerCoordinate, panning: true)
+        self.trackUserSearch(true, type: "Pan")
     }
     
     //MARK: Helpers
@@ -486,6 +491,36 @@ class MapViewController: UIViewController {
     private func fetchFacilitiesIfPlaceDetailsExists() {
         if let placeDetails = self.predictionPlaceDetails {
             self.fetchFacilities(placeDetails.location.coordinate)
+        }
+    }
+    
+    private func trackViewPin(tap: Bool = true) {
+        let facility = self.facilities[self.currentIndex]
+        
+        MixpanelWrapper.track("Tapped Spot Pin", properties: [
+            "Tapped Pin": true,
+            "Viewing Method": tap ? "tap" : "swipe",
+            "Spot Address": facility.streetAddress,
+            "Distance": facility.distanceInMeters,
+            "Spot ID": facility.parkingSpotID,
+            ])
+    }
+    
+    private func trackUserSearch(redo: Bool = false, type: String) {
+        let facility = self.facilities[self.currentIndex]
+        
+        if let prediction = self.prediction {
+            let timeToReservationInMinutes = Int(self.startDate.timeIntervalSinceDate(NSDate()) / 60)
+            MixpanelWrapper.track("User Searched", properties: [
+                "Search Query": prediction.predictionDescription,
+                "Tapped Redo Search": redo,
+                "Optimal Zoom": self.defaultSearchRadius,
+                "Results within optimal zoom": self.facilities.count,
+                "SpotHero City": facility.city,
+                "Search Type": type,
+                "Reservation length": NSCalendar.currentCalendar().components([.Hour], fromDate: self.startDate, toDate: self.endDate, options: []).hour,
+                "Time From Reservation Start": timeToReservationInMinutes,
+                ])
         }
     }
 }
@@ -629,7 +664,7 @@ extension MapViewController: MKMapViewDelegate {
         }
         
         let itemIndex = NSIndexPath(forItem: facilityAnnotation.index, inSection: 0)
-        self.scrollToSpotCard(withIndexPath: itemIndex)
+        self.scrollToSpotCard(withIndexPath: itemIndex, tap: true)
     }
     
     func mapView(mapView: MKMapView, regionDidChangeAnimated animated: Bool) {

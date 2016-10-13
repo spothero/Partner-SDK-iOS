@@ -19,6 +19,9 @@ struct Rate {
     let price: Int
     let ruleGroupID: Int
     let unavailableReason: String?
+    // TODO add tests
+    let duration: Double
+    let phoneNumberRequired: Bool
 
     // TODO: Change to struct or enum
     let amenities: JSONDictionary
@@ -32,6 +35,8 @@ extension Rate {
         self.price = try json.shp_int("price")
         self.amenities = try json.shp_dictionary("amenities") as JSONDictionary
         self.ruleGroupID = try json.shp_int("rule_group_id")
+        self.duration = try json.shp_double("duration")
+        self.phoneNumberRequired = try json.shp_bool("phone_number_required")
         
         let startsString = try json.shp_string("starts")
         if let starts = DateFormatter.ISO8601NoSeconds.dateFromString(startsString) {

@@ -276,6 +276,11 @@ class CheckoutTableViewController: UIViewController {
                 return
         }
         
+        var phoneNumber = ""
+        if let phoneCell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: PersonalInfoRow.Phone.rawValue, inSection: CheckoutSection.PersonalInfo.rawValue)) as? PersonalInfoTableViewCell, text = phoneCell.textField.text {
+            phoneNumber = text
+        }
+        
         var license: String?
         
         if let
@@ -290,12 +295,30 @@ class CheckoutTableViewController: UIViewController {
                                          stripeToken: token,
                                          license: license,
                                          completion: {
+                                            [weak self]
                                             reservation, error in
                                             guard let reservation = reservation else {
                                                 completion(false)
                                                 return
                                             }
                                             
+                                            if let rate = self?.rate, let facility = self?.facility {
+                                                let timeToReservationInMinutes = Int(rate.starts.timeIntervalSinceDate(NSDate()) / 60)
+                                                MixpanelWrapper.track("User Purchased", properties: [
+                                                    "Price": rate.displayPrice,
+                                                    "Spot ID": facility.parkingSpotID,
+                                                    "SpotHero City": facility.city,
+                                                    "Reservation length": rate.duration,
+                                                    "Distance": facility.distanceInMeters,
+                                                    "Distance from Search Center": facility.distanceInMeters,
+                                                    "Payment Type": "Credit Card",
+                                                    "Required License Plate": facility.licensePlateRequired,
+                                                    "Required Phone Number": facility.phoneNumberRequired,
+                                                    "Email address": email,
+                                                    "Phone Number": phoneNumber,
+                                                    "Time From Reservation Start": timeToReservationInMinutes,
+                                                    ])
+                                            }
                                             completion(true)
         })
     }

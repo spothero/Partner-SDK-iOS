@@ -11,7 +11,7 @@ import Foundation
 struct MixpanelWrapper {
     private static let baseUrlString = "https://api.mixpanel.com/track/"
     
-    static func track(event: String, properties: [String: AnyObject]) {
+    static func track(event: String, properties: [String: AnyObject] = [:]) {
         var mutableProperties = properties
         // TODO: Uncomment when mixpanel key included in mobile-config
 //        mutableProperties["token"] = APIKeyConfig.sharedInstance.mixpanelApiKey
