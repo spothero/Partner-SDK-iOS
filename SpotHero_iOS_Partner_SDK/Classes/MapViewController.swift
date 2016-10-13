@@ -385,7 +385,7 @@ class MapViewController: UIViewController {
      Passing true will cause there to be no loading spinner and no "No spots" error
      Optional (Defaults to false)
      */
-    private func fetchFacilities(coordinate: CLLocationCoordinate2D) {
+    private func fetchFacilities(coordinate: CLLocationCoordinate2D, redo: Bool = false) {
         var maxSearchRadius = self.visibleMapViewRadiusInMeters()
         self.initialLoading = true
         maxSearchRadius = self.defaultSearchRadius
@@ -397,7 +397,6 @@ class MapViewController: UIViewController {
                                     completion: {
                                         [weak self]
                                         facilities, error, hasMorePages in
-                                        MixpanelWrapper.track(.ViewedSearchResultsScreen)
                                         self?.initialLoading = false
                                         self?.hasMorePages = hasMorePages
                                         
@@ -415,8 +414,14 @@ class MapViewController: UIViewController {
                                                 message: LocalizedStrings.NoSpotsFound,
                                                 from: self)
                                             MixpanelWrapper.track(.ViewedNoResultsFoundModal)
+                                        } else {
+                                            MixpanelWrapper.track(.ViewedSearchResultsScreen)
                                         }
+                                        
                                         self?.addAndShowFacilityAnnotations(facilities)
+                                        if !hasMorePages && !facilities.isEmpty {
+                                            self?.trackUserSearch(redo, type: "Search")
+                                        }
             })
     }
     
@@ -427,7 +432,6 @@ class MapViewController: UIViewController {
         self.collapsedSearchBar.time = NSCalendar.currentCalendar().components([.Hour, .Day, .Minute], fromDate: self.startDate, toDate: self.endDate, options: [])
         self.searchPrediction()
         self.searchBar.resignFirstResponder()
-        self.trackUserSearch(true, type: "Search")
     }
     
     private func clearExistingFacilities() {
@@ -482,8 +486,7 @@ class MapViewController: UIViewController {
         self.redoSearchButton.hidden = true
         self.clearExistingFacilities()
         self.predictionPlaceDetails = nil
-        self.fetchFacilities(self.mapView.centerCoordinate)
-        self.trackUserSearch(true, type: "Pan")
+        self.fetchFacilities(self.mapView.centerCoordinate, redo: true)
     }
     
     //MARK: Helpers
