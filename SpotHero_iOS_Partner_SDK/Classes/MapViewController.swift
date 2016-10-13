@@ -518,7 +518,7 @@ class MapViewController: UIViewController {
                 .SpotHeroCity: facility.city,
                 .SearchType: type,
                 .ReservationLength: NSCalendar.currentCalendar().components([.Hour], fromDate: self.startDate, toDate: self.endDate, options: [.WrapComponents]).hour,
-                .TimeFromReservationStart: facility.availableRates.first?.timeToReservation() ?? 0,
+                .TimeFromReservationStart: facility.availableRates.first?.minutesToReservation() ?? 0,
                 ])
         }
     }

@@ -316,7 +316,7 @@ class CheckoutTableViewController: UIViewController {
                                                     .RequiredPhoneNumber: facility.phoneNumberRequired,
                                                     .EmailAddress: email,
                                                     .PhoneNumber: phoneNumber,
-                                                    .TimeFromReservationStart: rate.timeToReservation(),
+                                                    .TimeFromReservationStart: rate.minutesToReservation(),
                                                     ])
                                             }
                                             completion(true)
