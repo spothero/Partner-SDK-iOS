@@ -222,18 +222,21 @@ class MapViewController: UIViewController {
      
      - parameter panning: Pass true to cause the map not to zoom in on the facilities. Optional (Defaults to false)
      */
-    private func addAndShowFacilityAnnotations(facilities: [Facility], panning: Bool = false) {
+    private func addAndShowFacilityAnnotations(facilities: [Facility]) {
         // Only add facilities not already in the list
         let facilitiesToAdd = facilities.filter() { return !self.facilities.contains($0) }
         self.facilities += facilitiesToAdd
         self.spotCardCollectionView.reloadData()
         
+        let locationAnnotation = MKPointAnnotation()
         if let placeDetails = self.predictionPlaceDetails {
-            let locationAnnotation = MKPointAnnotation()
             locationAnnotation.coordinate = placeDetails.location.coordinate
-            locationAnnotation.title = self.facilities.isEmpty ? LocalizedStrings.NoSpotsFound : ""
-            self.mapView.addAnnotation(locationAnnotation)
+        } else {
+            locationAnnotation.coordinate = self.mapView.centerCoordinate
         }
+        locationAnnotation.title = self.facilities.isEmpty ? LocalizedStrings.NoSpotsFound : ""
+        self.mapView.addAnnotation(locationAnnotation)
+        
         var firstAnnotation: FacilityAnnotation?
         for facility in facilitiesToAdd {
             guard let index = self.facilities.indexOf(facility) else {
@@ -245,7 +248,7 @@ class MapViewController: UIViewController {
                                                         coordinate: facility.location.coordinate,
                                                         facility: facility,
                                                         index: index)
-            if index == 0 && !panning {
+            if index == 0 {
                 firstAnnotation = facilityAnnotation
             }
             
@@ -254,18 +257,18 @@ class MapViewController: UIViewController {
         
         self.showSpotCardCollectionView()
         
-        if !panning {
-            let coordinateRegion = MKCoordinateRegionMakeWithDistance(self.predictionPlaceDetails!.location.coordinate,
+        if let predictionPlaceDetails = predictionPlaceDetails {
+            let coordinateRegion = MKCoordinateRegionMakeWithDistance(predictionPlaceDetails.location.coordinate,
                                                                       self.defaultSearchRadius,
                                                                       self.defaultSearchRadius)
             self.mapView.setRegion(coordinateRegion, animated: true)
-            
-            guard let annotation = firstAnnotation else {
-                return
-            }
-            
-            self.mapView.selectAnnotation(annotation, animated: true)
         }
+        
+        guard let annotation = firstAnnotation else {
+            return
+        }
+        
+        self.mapView.selectAnnotation(annotation, animated: true)
     }
     
     /**
@@ -381,14 +384,10 @@ class MapViewController: UIViewController {
      Passing true will cause there to be no loading spinner and no "No spots" error
      Optional (Defaults to false)
      */
-    private func fetchFacilities(coordinate: CLLocationCoordinate2D, panning: Bool = false) {
+    private func fetchFacilities(coordinate: CLLocationCoordinate2D) {
         var maxSearchRadius = self.visibleMapViewRadiusInMeters()
-        if !panning {
-            self.initialLoading = true
-            maxSearchRadius = self.defaultSearchRadius
-        } else {
-            self.loadingView.hidden = false
-        }
+        self.initialLoading = true
+        maxSearchRadius = self.defaultSearchRadius
         
         FacilityAPI.fetchFacilities(coordinate,
                                     starts: self.startDate,
@@ -410,12 +409,12 @@ class MapViewController: UIViewController {
                                             cancelled = (error.code == NSURLError.Cancelled.rawValue)
                                         }
                                         
-                                        if facilities.isEmpty && !panning && !hasMorePages && !cancelled {
+                                        if facilities.isEmpty && !hasMorePages && !cancelled {
                                             AlertView.presentErrorAlertView(LocalizedStrings.Sorry,
                                                 message: LocalizedStrings.NoSpotsFound,
                                                 from: self)
                                         }
-                                        self?.addAndShowFacilityAnnotations(facilities, panning: panning)
+                                        self?.addAndShowFacilityAnnotations(facilities)
             })
     }
     
@@ -478,7 +477,8 @@ class MapViewController: UIViewController {
     @IBAction private func redoSearchButtonPressed(_ sender: AnyObject) {
         self.redoSearchButton.hidden = true
         self.clearExistingFacilities()
-        self.fetchFacilities(self.mapView.centerCoordinate, panning: true)
+        self.predictionPlaceDetails = nil
+        self.fetchFacilities(self.mapView.centerCoordinate)
     }
     
     //MARK: Helpers
@@ -605,11 +605,12 @@ extension MapViewController: MKMapViewDelegate {
         if let placeDetails = self.predictionPlaceDetails {
             if annotation.coordinate.latitude == placeDetails.location.coordinate.latitude &&
                 annotation.coordinate.longitude == placeDetails.location.coordinate.longitude {
-                let annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "LocationAnnotation")
-                annotationView.canShowCallout = self.facilities.isEmpty
-                annotationView.enabled = self.facilities.isEmpty
-                annotationView.pinTintColor = self.facilities.isEmpty ? .redColor() : .greenColor()
-                return annotationView
+                return self.locationAnnotationView(annotation)
+            }
+        } else {
+            if annotation.coordinate.latitude == self.mapView.centerCoordinate.latitude &&
+                annotation.coordinate.longitude == self.mapView.centerCoordinate.longitude {
+                return self.locationAnnotationView(annotation)
             }
         }
         
@@ -640,6 +641,14 @@ extension MapViewController: MKMapViewDelegate {
         } else {
             self.redoSearchButton.enabled = true
         }
+    }
+    
+    private func locationAnnotationView(annotation: MKAnnotation) -> MKAnnotationView {
+        let annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "LocationAnnotation")
+        annotationView.canShowCallout = self.facilities.isEmpty
+        annotationView.enabled = self.facilities.isEmpty
+        annotationView.pinTintColor = self.facilities.isEmpty ? .redColor() : .greenColor()
+        return annotationView
     }
 }
 
