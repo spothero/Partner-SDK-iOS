@@ -67,7 +67,8 @@ extension Rate {
         return self.amenities["in-out"] != nil
     }
     
+    // TODO: add unit tests for this
     func minutesToReservation() -> Int {
-        return NSCalendar.currentCalendar().components([.Minute], fromDate: NSDate(), toDate: self.starts, options: [.WrapComponents]).minute
+        return NSCalendar.currentCalendar().components([.Minute], fromDate: NSDate(), toDate: self.starts, options: []).minute
     }
 }
