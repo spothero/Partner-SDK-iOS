@@ -228,14 +228,25 @@ class MapViewController: UIViewController {
         self.facilities += facilitiesToAdd
         self.spotCardCollectionView.reloadData()
         
-        let locationAnnotation = MKPointAnnotation()
-        if let placeDetails = self.predictionPlaceDetails {
-            locationAnnotation.coordinate = placeDetails.location.coordinate
-        } else {
-            locationAnnotation.coordinate = self.mapView.centerCoordinate
+        var hasLocationPin = false
+        
+        for annotation in self.mapView.annotations {
+            if annotation.isKindOfClass(MKPointAnnotation) {
+                hasLocationPin = true
+                break
+            }
         }
-        locationAnnotation.title = self.facilities.isEmpty ? LocalizedStrings.NoSpotsFound : ""
-        self.mapView.addAnnotation(locationAnnotation)
+        
+        if !hasLocationPin {
+            let locationAnnotation = MKPointAnnotation()
+            if let placeDetails = self.predictionPlaceDetails {
+                locationAnnotation.coordinate = placeDetails.location.coordinate
+            } else {
+                locationAnnotation.coordinate = self.mapView.centerCoordinate
+            }
+            locationAnnotation.title = self.facilities.isEmpty ? LocalizedStrings.NoSpotsFound : ""
+            self.mapView.addAnnotation(locationAnnotation)
+        }
         
         var firstAnnotation: FacilityAnnotation?
         for facility in facilitiesToAdd {
