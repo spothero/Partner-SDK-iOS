@@ -99,15 +99,16 @@ enum Validator {
      - throws: throws an error if string is empty or invalid
      */
     static func validatePhone(phone: String) throws {
-        let fieldName = LocalizedStrings.Phone
-        let message = LocalizedStrings.PhoneErrorMessage
-        
         // Trim trailing spaces
         let trimmedPhone = phone.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
         
-        if trimmedPhone.isEmpty {
-            throw ValidatorError.FieldBlank(fieldName: fieldName)
+        // If phone number is blank return
+        guard !trimmedPhone.isEmpty else {
+            return
         }
+        
+        let fieldName = LocalizedStrings.Phone
+        let message = LocalizedStrings.PhoneErrorMessage
         
         // Remove dashes
         let digits = trimmedPhone.stringByReplacingOccurrencesOfString("-", withString: "")
