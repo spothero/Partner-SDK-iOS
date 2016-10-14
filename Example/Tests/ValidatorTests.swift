@@ -147,11 +147,11 @@ class ValidatorTests: XCTestCase {
     }
     
     func testBlankPhone() {
-        self.validateThatFieldBlankErrorThrown(LocalizedStrings.Phone) { 
+        self.validateThatErrorIsNotThrown {
             try Validator.validatePhone(self.emptyString)
         }
         
-        self.validateThatFieldBlankErrorThrown(LocalizedStrings.Phone) {
+        self.validateThatErrorIsNotThrown {
             try Validator.validatePhone(self.blankSpace)
         }
     }

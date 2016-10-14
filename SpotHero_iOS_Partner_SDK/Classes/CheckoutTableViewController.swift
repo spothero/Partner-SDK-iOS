@@ -345,6 +345,7 @@ class CheckoutTableViewController: UIViewController {
             }
         case PersonalInfoRow.Phone:
             cell.textField.keyboardType = .PhonePad
+            cell.valid = true
             cell.validationClosure = {
                 phone in
                 try Validator.validatePhone(phone)
