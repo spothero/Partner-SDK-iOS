@@ -39,11 +39,13 @@ class MapViewController: UIViewController {
             
             self.clearExistingFacilities()
             
+            let padding = 1.5
+            
             if details.isAirport() {
                 //have a wider search radius around airports.
-                self.defaultSearchRadius = UnitsOfMeasurement.MetersPerMile.rawValue * 5
+                self.defaultSearchRadius = UnitsOfMeasurement.MetersPerMile.rawValue * 5 * padding
             } else {
-                self.defaultSearchRadius = UnitsOfMeasurement.MetersPerMile.rawValue
+                self.defaultSearchRadius = UnitsOfMeasurement.MetersPerMile.rawValue * padding
             }
             
             self.fetchFacilitiesIfPlaceDetailsExists()
