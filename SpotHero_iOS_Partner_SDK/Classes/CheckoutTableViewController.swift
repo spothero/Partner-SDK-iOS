@@ -90,10 +90,10 @@ class CheckoutTableViewController: UIViewController {
                 .first as! UIButton
         #else
             let _button = NSBundle.shp_resourceBundle()
-                .loadNibNamed(String(PaymentButton),
-                              owner: nil,
-                              options: nil)
-                .first as! UIButton
+            .loadNibNamed(String(PaymentButton),
+            owner: nil,
+            options: nil)
+            .first as! UIButton
         #endif
         
         
@@ -144,7 +144,7 @@ class CheckoutTableViewController: UIViewController {
         guard
             let rate = self.rate,
             let price = NumberFormatter.dollarNoCentsStringFromCents(rate.price) else {
-            return
+                return
         }
         
         self.tableView.contentInset = UIEdgeInsets(top: 0,
@@ -172,7 +172,7 @@ class CheckoutTableViewController: UIViewController {
             return
         }
         
-        //If the user comes back and the current date is after the rate start date, 
+        //If the user comes back and the current date is after the rate start date,
         // boot the user back to the map with an apology.
         let roundedDown = NSDate().shp_roundDateToNearestHalfHour(roundDown: true)
         if roundedDown.shp_isAfterDate(rate.starts) {
@@ -276,6 +276,12 @@ class CheckoutTableViewController: UIViewController {
                 return
         }
         
+        var phoneNumber = ""
+        if let phoneCell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: PersonalInfoRow.Phone.rawValue, inSection: CheckoutSection.PersonalInfo.rawValue)) as? PersonalInfoTableViewCell,
+            let text = phoneCell.textField.text {
+            phoneNumber = text
+        }
+        
         var license: String?
         
         if let
@@ -290,20 +296,39 @@ class CheckoutTableViewController: UIViewController {
                                          stripeToken: token,
                                          license: license,
                                          completion: {
+                                            [weak self]
                                             reservation, error in
                                             guard let reservation = reservation else {
                                                 completion(false)
                                                 return
                                             }
                                             
+                                            if
+                                                let rate = self?.rate,
+                                                let facility = self?.facility {
+                                                MixpanelWrapper.track(.UserPurchased, properties: [
+                                                    .Price: rate.displayPrice,
+                                                    .SpotID: facility.parkingSpotID,
+                                                    .SpotHeroCity: facility.city,
+                                                    .ReservationLength: rate.duration,
+                                                    .Distance: facility.distanceInMeters,
+                                                    .DistanceFromSearchCenter: facility.distanceInMeters,
+                                                    .PaymentType: "Credit Card",
+                                                    .RequiredLicensePlate: facility.licensePlateRequired,
+                                                    .RequiredPhoneNumber: facility.phoneNumberRequired,
+                                                    .EmailAddress: email,
+                                                    .PhoneNumber: phoneNumber,
+                                                    .TimeFromReservationStart: rate.minutesToReservation(),
+                                                    ])
+                                            }
                                             completion(true)
-        })
+            })
     }
     
     private func configureCell(cell: ReservationInfoTableViewCell,
-                       row: ReservationInfoRow,
-                       facility: Facility,
-                       rate: Rate) {
+                               row: ReservationInfoRow,
+                               facility: Facility,
+                               rate: Rate) {
         cell.titleLabel.text = row.title()
         
         switch row {
@@ -319,7 +344,7 @@ class CheckoutTableViewController: UIViewController {
         }
     }
     
-    private func getDateFormatString(date: NSDate) -> String {        
+    private func getDateFormatString(date: NSDate) -> String {
         guard let calendar = NSCalendar(calendarIdentifier: NSGregorianCalendar) where calendar.isDateInToday(date) || calendar.isDateInTomorrow(date) else {
             return DateFormatter.DayOfWeekWithDate.stringFromDate(date)
         }

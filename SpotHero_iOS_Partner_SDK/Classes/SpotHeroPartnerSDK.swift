@@ -33,7 +33,19 @@ public class SpotHeroPartnerSDK: NSObject {
     /// Your application's private key. Defaults to an empty string.
     public var partnerApplicationKey: String = ""
     
+    private var dateSDKOpened: NSDate?
+    
     //MARK: - Functions
+    
+    
+    /// Send Mixpanel event that sdk was closed
+    func reportSDKClosed() {
+        let date = NSDate()
+        if let openDate = SpotHeroPartnerSDK.SharedInstance.dateSDKOpened {
+            let duration = date.timeIntervalSinceDate(openDate)
+            MixpanelWrapper.track(.SDKClosed, properties: [.SDKClosed: duration])
+        }
+    }
     
     /**
      Launches the SDK's UI from a given view controller as a modal.
@@ -68,6 +80,8 @@ public class SpotHeroPartnerSDK: NSObject {
                 viewController.presentViewController(navController,
                     animated: true,
                     completion: completion)
+                MixpanelWrapper.track(.SDKOpened)
+                self.dateSDKOpened = NSDate()
             } else {
                 assertionFailure("Unable to get API Keys")
             }
