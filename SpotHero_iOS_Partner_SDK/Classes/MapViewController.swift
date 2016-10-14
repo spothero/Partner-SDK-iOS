@@ -39,6 +39,7 @@ class MapViewController: UIViewController {
             
             self.clearExistingFacilities()
             
+            // Add some padding around default region to account for screen being a rectangle
             let padding = 1.5
             
             if details.isAirport() {
