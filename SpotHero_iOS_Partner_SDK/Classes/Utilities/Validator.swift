@@ -107,14 +107,14 @@ enum Validator {
             return
         }
         
-        let fieldName = LocalizedStrings.Phone
-        let message = LocalizedStrings.PhoneErrorMessage
-        
         // Remove dashes
         let digits = trimmedPhone.stringByReplacingOccurrencesOfString("-", withString: "")
         
         // Check there are ten digits and Check phone number is numeric
         if digits.characters.count != 10 || !self.isStringNumeric(digits) {
+            let fieldName = LocalizedStrings.Phone
+            let message = LocalizedStrings.PhoneErrorMessage
+            
             throw ValidatorError.FieldInvalid(fieldName: fieldName, message: message)
         }
     }
