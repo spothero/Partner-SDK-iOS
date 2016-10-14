@@ -186,9 +186,16 @@ extension PaymentInfoTableViewCell: UITextFieldDelegate {
         
         switch textField {
         case self.creditCardTextField:
-            if string.isEmpty && (textField.text as? NSString)?.substringWithRange(range) == " " && range.location > 2 {
+            if string.isEmpty // If replacement string is is blank
+                && (textField.text as? NSString)?.substringWithRange(range) == " " // If deleted string is a space
+                && range.location > 2 { // make sure there are at least 3 charaters in the text field
                 let rangeBefore = NSRange(location: range.location - 1, length: 1)
-                self.creditCardTextField.text = (text as? NSString)?.stringByReplacingCharactersInRange(rangeBefore, withString: "")
+                if let newText = (text as? NSString)?.stringByReplacingCharactersInRange(rangeBefore, withString: "") {
+                    self.creditCardTextField.text = newText
+                } else {
+                    // Can't turn the String into an NSString so let's just delete the space
+                    return true
+                }
             } else {
                 self.formatCreditCard(text)
             }
