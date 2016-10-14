@@ -303,7 +303,8 @@ class CheckoutTableViewController: UIViewController {
                                                 return
                                             }
                                             
-                                            if let rate = self?.rate,
+                                            if
+                                                let rate = self?.rate,
                                                 let facility = self?.facility {
                                                 MixpanelWrapper.track(.UserPurchased, properties: [
                                                     .Price: rate.displayPrice,
