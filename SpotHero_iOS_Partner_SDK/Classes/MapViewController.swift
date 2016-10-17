@@ -221,7 +221,7 @@ class MapViewController: UIViewController {
      
      - parameter panning: Pass true to cause the map not to zoom in on the facilities. Optional (Defaults to false)
      */
-    private func addAndShowFacilityAnnotations(facilities: [Facility]) {
+    private func addAndShowFacilityAnnotations(facilities: [Facility], firstSearch: Bool) {
         // Only add facilities not already in the list
         let facilitiesToAdd = facilities.filter() { return !self.facilities.contains($0) }
         self.facilities += facilitiesToAdd
@@ -263,7 +263,7 @@ class MapViewController: UIViewController {
         
         self.showSpotCardCollectionView()
         
-        if let predictionPlaceDetails = predictionPlaceDetails {
+        if let predictionPlaceDetails = predictionPlaceDetails where firstSearch {
             let coordinateRegion = MKCoordinateRegionMakeWithDistance(predictionPlaceDetails.location.coordinate,
                                                                       self.defaultSearchRadius,
                                                                       self.defaultSearchRadius)
@@ -425,7 +425,8 @@ class MapViewController: UIViewController {
                                             MixpanelWrapper.track(.ViewedSearchResultsScreen)
                                         }
                                         
-                                        self?.addAndShowFacilityAnnotations(facilities)
+                                        self?.addAndShowFacilityAnnotations(facilities, firstSearch: firstSearch)
+                                        
                                         if !hasMorePages && !facilities.isEmpty {
                                             self?.trackUserSearch(redo, type: "Search")
                                         }
