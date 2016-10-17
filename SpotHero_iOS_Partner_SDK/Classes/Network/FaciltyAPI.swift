@@ -23,7 +23,15 @@ typealias FacilityCompletion = (facilities: [Facility],
                                 hasMorePages: Bool) -> (Void)
 
 struct FacilityAPI {
-    static var NextURLString: String?
+    private static var NextURLString: String?
+    private static var DataTasks = [NSURLSessionDataTask]()
+    
+    
+    /// Cancel all facility requests
+    static func stopSearching() {
+        self.DataTasks.forEach { $0.cancel() }
+        self.DataTasks.removeAll()
+    }
     
     /**
      Returns the facilities near a given location within a range of dates
@@ -58,16 +66,22 @@ struct FacilityAPI {
             "include" : "facility",
         ]
         
-        SpotHeroPartnerAPIController.getJSONFromEndpoint("partner/v1/facilities/rates",
-                                                         withHeaders: headers,
-                                                         additionalParams: params,
-                                                         errorCompletion: {
-                                                            error in
-                                                            completion(facilities: [],
-                                                                       error: error,
-                                                                       hasMorePages: false)
-                                                         },
-                                                         successCompletion: self.facilityFetchSuccessHandler(completion))
+        self.stopSearching()
+        
+        let dataTask = SpotHeroPartnerAPIController.getJSONFromEndpoint("partner/v1/facilities/rates",
+                                                                        withHeaders: headers,
+                                                                        additionalParams: params,
+                                                                        errorCompletion: {
+                                                                            error in
+                                                                            completion(facilities: [],
+                                                                                error: error,
+                                                                                hasMorePages: false)
+                                                                        },
+                                                                        successCompletion: self.facilityFetchSuccessHandler(completion))
+
+        if let dataTask = dataTask {
+            self.DataTasks.append(dataTask)
+        }
     }
     
     private static func mapJSON(JSON: JSONDictionary) -> (facilities: [Facility],
@@ -99,15 +113,19 @@ struct FacilityAPI {
                                                          prevFacilities: [Facility],
                                                          completion: FacilityCompletion) {
         FacilityAPI.NextURLString = urlString
-        SpotHeroPartnerAPIController.getJSONFromFullURLString(urlString,
-                                                              withHeaders: APIHeaders.defaultHeaders(),
-                                                              errorCompletion: {
-                                                                error in
-                                                                completion(facilities: [],
-                                                                           error: error,
-                                                                           hasMorePages: false)
-                                                              },
-                                                              successCompletion: self.facilityFetchSuccessHandler(completion))
+        let dataTask = SpotHeroPartnerAPIController.getJSONFromFullURLString(urlString,
+                                                                             withHeaders: APIHeaders.defaultHeaders(),
+                                                                             errorCompletion: {
+                                                                                error in
+                                                                                completion(facilities: [],
+                                                                                    error: error,
+                                                                                    hasMorePages: false)
+                                                                             },
+                                                                             successCompletion: self.facilityFetchSuccessHandler(completion))
+        
+        if let dataTask = dataTask {
+            self.DataTasks.append(dataTask)
+        }
     }
     
     private static func facilityFetchSuccessHandler(completion: FacilityCompletion) -> JSONAPISuccessCompletion {
@@ -126,6 +144,7 @@ struct FacilityAPI {
                                                 
                 // Call the completion block and let them know we're out of pages.
                 completion(facilities: facilitiesWithRates, error: error, hasMorePages: false)
+                self.DataTasks.removeAll()
                 return
             }
             
@@ -136,6 +155,7 @@ struct FacilityAPI {
             FacilityAPI.fetchFacilitiesFromNextURLString(nextURLString,
                                                          prevFacilities: facilitiesWithRates,
                                                          completion: completion)
+            
         }
     }
 }

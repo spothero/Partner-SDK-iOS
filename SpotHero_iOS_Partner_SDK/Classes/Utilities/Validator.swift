@@ -50,26 +50,6 @@ enum CardType {
 
 enum Validator {
     /**
-     Validates that a string is a full name
-     
-     - parameter fullName: string to validate
-     
-     - throws: throws an error if string is empty or invalid
-     */
-    static func validateFullName(fullName: String) throws {
-        let fieldName = LocalizedStrings.FullName
-        
-        // Trim trailing spaces
-        let trimmedFullName = fullName.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
-        
-        if trimmedFullName.isEmpty {
-            throw ValidatorError.FieldBlank(fieldName: fieldName)
-        } else if trimmedFullName.componentsSeparatedByString(" ").count < 2 {
-            throw ValidatorError.FieldInvalid(fieldName: fieldName, message: LocalizedStrings.FullNameErrorMessage)
-        }
-    }
-    
-    /**
      Validates that a string is an email
      
      - parameter email: string to validate
@@ -119,14 +99,12 @@ enum Validator {
      - throws: throws an error if string is empty or invalid
      */
     static func validatePhone(phone: String) throws {
-        let fieldName = LocalizedStrings.Phone
-        let message = LocalizedStrings.PhoneErrorMessage
-        
         // Trim trailing spaces
         let trimmedPhone = phone.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
         
-        if trimmedPhone.isEmpty {
-            throw ValidatorError.FieldBlank(fieldName: fieldName)
+        // If phone number is blank return
+        guard !trimmedPhone.isEmpty else {
+            return
         }
         
         // Remove dashes
@@ -134,6 +112,9 @@ enum Validator {
         
         // Check there are ten digits and Check phone number is numeric
         if digits.characters.count != 10 || !self.isStringNumeric(digits) {
+            let fieldName = LocalizedStrings.Phone
+            let message = LocalizedStrings.PhoneErrorMessage
+            
             throw ValidatorError.FieldInvalid(fieldName: fieldName, message: message)
         }
     }
