@@ -203,7 +203,7 @@ class TimeSelectionView: UIView {
         self.endDate = datePicker.date
     }
     
-    // Helpers
+    //MARK: Helpers
     
     private func selectStartView() {
         self.startDateLabel.textColor = .shp_spotHeroBlue()
