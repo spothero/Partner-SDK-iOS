@@ -274,7 +274,9 @@ class MapViewController: UIViewController {
             return
         }
         
-        self.mapView.selectAnnotation(annotation, animated: true)
+        if self.centerCell == nil {
+            self.mapView.selectAnnotation(annotation, animated: true)
+        }
     }
     
     /**
