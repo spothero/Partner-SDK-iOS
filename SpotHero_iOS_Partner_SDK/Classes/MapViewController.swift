@@ -397,6 +397,7 @@ class MapViewController: UIViewController {
         var maxSearchRadius = self.visibleMapViewRadiusInMeters()
         self.initialLoading = true
         maxSearchRadius = self.defaultSearchRadius
+        self.centerCell = nil
         
         FacilityAPI.fetchFacilities(coordinate,
                                     starts: self.startDate,
