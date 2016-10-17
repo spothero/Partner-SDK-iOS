@@ -611,6 +611,14 @@ extension MapViewController: ShowTimeSelectionViewDelegate {
             self.view.layoutIfNeeded()
         }
     }
+    
+    func didPressEndDoneButton() {
+        guard let text = searchBar.text where !text.isEmpty else {
+            return
+        }
+        
+        self.searchSpots()
+    }
 }
 
 //MARK: StartEndDateDelegate

@@ -184,26 +184,32 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E9C-J2-a3u">
+                                                        <connections>
+                                                            <action selector="startViewTapped:" destination="00R-A9-LV4" eventType="touchUpInside" id="9ii-7d-ZZa"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <gestureRecognizers/>
                                                 <constraints>
                                                     <constraint firstAttribute="bottom" secondItem="nXl-sc-e5R" secondAttribute="bottom" id="0CS-CM-fnE"/>
+                                                    <constraint firstAttribute="trailing" secondItem="E9C-J2-a3u" secondAttribute="trailing" id="5Iq-Nv-fX1"/>
                                                     <constraint firstItem="pSu-pa-Tea" firstAttribute="top" secondItem="OXP-P9-EfD" secondAttribute="top" id="9no-F5-zi5"/>
                                                     <constraint firstItem="nXl-sc-e5R" firstAttribute="leading" secondItem="2cL-gx-hZ0" secondAttribute="trailing" constant="8" id="D96-ZV-Eae"/>
                                                     <constraint firstItem="2cL-gx-hZ0" firstAttribute="top" secondItem="OXP-P9-EfD" secondAttribute="top" id="FjL-fx-zcg"/>
+                                                    <constraint firstItem="E9C-J2-a3u" firstAttribute="leading" secondItem="OXP-P9-EfD" secondAttribute="leading" id="L4K-3L-fkE"/>
                                                     <constraint firstAttribute="trailing" secondItem="pSu-pa-Tea" secondAttribute="trailing" id="Mrq-lx-qoY"/>
                                                     <constraint firstItem="pSu-pa-Tea" firstAttribute="leading" secondItem="nXl-sc-e5R" secondAttribute="trailing" constant="8" id="O97-xI-lDK"/>
+                                                    <constraint firstItem="E9C-J2-a3u" firstAttribute="top" secondItem="OXP-P9-EfD" secondAttribute="top" id="Q6y-Vr-C0G"/>
                                                     <constraint firstItem="nXl-sc-e5R" firstAttribute="top" secondItem="OXP-P9-EfD" secondAttribute="top" id="RN9-65-j3T"/>
                                                     <constraint firstAttribute="bottom" secondItem="pSu-pa-Tea" secondAttribute="bottom" id="TRh-74-t3d"/>
                                                     <constraint firstAttribute="height" constant="33" id="ThO-4R-tvx"/>
                                                     <constraint firstItem="pSu-pa-Tea" firstAttribute="width" secondItem="nXl-sc-e5R" secondAttribute="width" id="b5v-St-UHF"/>
                                                     <constraint firstItem="2cL-gx-hZ0" firstAttribute="leading" secondItem="OXP-P9-EfD" secondAttribute="leading" id="kRe-Eo-SaW"/>
+                                                    <constraint firstAttribute="bottom" secondItem="E9C-J2-a3u" secondAttribute="bottom" id="tCA-kR-jb6"/>
                                                     <constraint firstAttribute="bottom" secondItem="2cL-gx-hZ0" secondAttribute="bottom" id="ume-xE-hi4"/>
                                                 </constraints>
-                                                <connections>
-                                                    <outletCollection property="gestureRecognizers" destination="Krv-xQ-Ko3" appends="YES" id="XA1-Ge-eNn"/>
-                                                </connections>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7JF-vh-Ckv" userLabel="End View">
                                                 <subviews>
@@ -226,13 +232,21 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d0T-lt-1xS">
+                                                        <connections>
+                                                            <action selector="endViewTapped:" destination="00R-A9-LV4" eventType="touchUpInside" id="ZxT-WO-zmS"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <gestureRecognizers/>
                                                 <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="d0T-lt-1xS" secondAttribute="bottom" id="1N9-tS-zp3"/>
                                                     <constraint firstAttribute="bottom" secondItem="VOI-fz-qIm" secondAttribute="bottom" id="4G5-jl-6fR"/>
                                                     <constraint firstItem="VOI-fz-qIm" firstAttribute="top" secondItem="7JF-vh-Ckv" secondAttribute="top" id="6Tr-eg-B5I"/>
+                                                    <constraint firstAttribute="trailing" secondItem="d0T-lt-1xS" secondAttribute="trailing" id="9eh-aq-1ah"/>
                                                     <constraint firstItem="VOI-fz-qIm" firstAttribute="leading" secondItem="7JF-vh-Ckv" secondAttribute="leading" id="DXn-MQ-HGW"/>
+                                                    <constraint firstItem="d0T-lt-1xS" firstAttribute="top" secondItem="7JF-vh-Ckv" secondAttribute="top" id="IIF-1o-vQy"/>
                                                     <constraint firstAttribute="bottom" secondItem="rvd-oM-7oL" secondAttribute="bottom" id="LAS-N1-DFa"/>
                                                     <constraint firstItem="YXw-Fe-5He" firstAttribute="width" secondItem="rvd-oM-7oL" secondAttribute="width" id="Lb0-Fy-Ryw"/>
                                                     <constraint firstAttribute="trailing" secondItem="YXw-Fe-5He" secondAttribute="trailing" id="Pon-j1-LTa"/>
@@ -240,12 +254,10 @@
                                                     <constraint firstItem="YXw-Fe-5He" firstAttribute="top" secondItem="7JF-vh-Ckv" secondAttribute="top" id="Vo1-mB-DM8"/>
                                                     <constraint firstItem="rvd-oM-7oL" firstAttribute="leading" secondItem="VOI-fz-qIm" secondAttribute="trailing" constant="8" id="WsU-yr-FJm"/>
                                                     <constraint firstAttribute="bottom" secondItem="YXw-Fe-5He" secondAttribute="bottom" id="bN0-t3-55V"/>
+                                                    <constraint firstItem="d0T-lt-1xS" firstAttribute="leading" secondItem="7JF-vh-Ckv" secondAttribute="leading" id="eO8-j5-EmX"/>
                                                     <constraint firstItem="YXw-Fe-5He" firstAttribute="leading" secondItem="rvd-oM-7oL" secondAttribute="trailing" constant="8" id="iq1-ur-gsM"/>
                                                     <constraint firstItem="rvd-oM-7oL" firstAttribute="top" secondItem="7JF-vh-Ckv" secondAttribute="top" id="jg8-CF-gNb"/>
                                                 </constraints>
-                                                <connections>
-                                                    <outletCollection property="gestureRecognizers" destination="b1i-w7-gEP" appends="YES" id="WA3-V5-gMf"/>
-                                                </connections>
                                             </view>
                                         </subviews>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -459,23 +471,13 @@
                         <action selector="collapsedSearchBarTapped:" destination="Vax-OI-bt8" id="B5L-Z4-Ivi"/>
                     </connections>
                 </tapGestureRecognizer>
-                <tapGestureRecognizer id="b1i-w7-gEP">
-                    <connections>
-                        <action selector="endViewTapped:" destination="00R-A9-LV4" id="nCF-FR-Pbj"/>
-                    </connections>
-                </tapGestureRecognizer>
-                <tapGestureRecognizer id="Krv-xQ-Ko3">
-                    <connections>
-                        <action selector="startViewTapped:" destination="00R-A9-LV4" id="cNg-dd-4jS"/>
-                    </connections>
-                </tapGestureRecognizer>
                 <tapGestureRecognizer id="JfO-Bm-qra">
                     <connections>
                         <action selector="didTapMapView:" destination="Vax-OI-bt8" id="izt-au-DLM"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1046" y="475"/>
+            <point key="canvasLocation" x="1045.5999999999999" y="474.51274362818594"/>
         </scene>
         <!--Checkout-->
         <scene sceneID="ed1-nC-fVm">

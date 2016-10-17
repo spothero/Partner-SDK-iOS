@@ -16,6 +16,7 @@ protocol TimeSelectionViewDelegate: class {
 
 protocol ShowTimeSelectionViewDelegate: class {
     func timeSelectionViewShouldShow(show: Bool)
+    func didPressEndDoneButton()
 }
 
 protocol StartEndDateDelegate: class {
@@ -94,13 +95,10 @@ class TimeSelectionView: UIView {
         self.startsView.accessibilityLabel = AccessibilityStrings.StartsTimeSelectionView
         self.endsView.accessibilityLabel = AccessibilityStrings.EndsTimeSelectionView
         
-        self.setupSelectionViews()
-        self.setupDatePickers()
-    }
-    
-    private func setupSelectionViews() {
         self.startTimeTextField.delegate = self
         self.endTimeTextField.delegate = self
+        
+        self.setupDatePickers()
     }
     
     private func setupDatePickers() {
@@ -113,14 +111,25 @@ class TimeSelectionView: UIView {
         self.startTimeTextField.inputView = self.startDatePicker
         self.endTimeTextField.inputView = self.endDatePicker
         
-        let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: 44))
+        let startToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: 44))
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
-        let doneButton = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: #selector(self.doneButtonPressed))
-        toolbar.items = [flexibleSpace, doneButton]
-        toolbar.backgroundColor = .whiteColor()
+        let startDoneButton = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: #selector(self.startDoneButtonPressed))
+        let startToolbarLabel = UILabel()
+        startToolbarLabel.text = LocalizedStrings.SetStartTime
+        startToolbarLabel.sizeToFit()
+        let startLabelBarButtonItem = UIBarButtonItem(customView: startToolbarLabel)
+        startToolbar.items = [flexibleSpace, startLabelBarButtonItem, flexibleSpace, startDoneButton]
         
-        self.startTimeTextField.inputAccessoryView = toolbar
-        self.endTimeTextField.inputAccessoryView = toolbar
+        let endToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: 44))
+        let endDoneButton = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: #selector(self.endDoneButtonPressed))
+        let endToolbarLabel = UILabel()
+        endToolbarLabel.text = LocalizedStrings.SetEndTime
+        endToolbarLabel.sizeToFit()
+        let endLabelBarButtonItem = UIBarButtonItem(customView: endToolbarLabel)
+        endToolbar.items = [flexibleSpace, endLabelBarButtonItem, flexibleSpace, endDoneButton]
+        
+        self.startTimeTextField.inputAccessoryView = startToolbar
+        self.endTimeTextField.inputAccessoryView = endToolbar
     }
     
     private func setDateTimeLabels(startDate: NSDate, endDate: NSDate) {
@@ -168,18 +177,21 @@ class TimeSelectionView: UIView {
     
     //MARK: Actions
     
-    @IBAction private func startViewTapped(sender: AnyObject) {
+    @IBAction private func startViewTapped(_ sender: AnyObject) {
         self.startViewSelected = true
         self.delegate?.didTapStartView(self.startDate, endDate: self.endDate)
     }
     
-    @IBAction private func endViewTapped(sender: AnyObject) {
+    @IBAction private func endViewTapped(_ sender: AnyObject) {
         self.endViewSelected = true
         self.delegate?.didTapEndView(self.startDate, endDate: self.endDate)
     }
     
-    func doneButtonPressed() {
+    func startDoneButtonPressed() {
         self.startTimeTextField.resignFirstResponder()
+    }
+    
+    func endDoneButtonPressed() {
         self.endTimeTextField.resignFirstResponder()
     }
     
@@ -206,6 +218,12 @@ class TimeSelectionView: UIView {
         self.startViewSelected = false
         self.startEndDateDelegate?.didSelectStartEndView()
     }
+    
+    private func updateMinimumDateIfNeeded() {
+        if let minimumDate = self.startDatePicker.minimumDate where self.startDate.compare(minimumDate) == .OrderedAscending {
+            self.startDate = minimumDate
+        }
+    }
 }
 
 //MARK: UITextFieldDelegate
@@ -216,11 +234,22 @@ extension TimeSelectionView: UITextFieldDelegate {
         case self.startTimeTextField:
             self.selectStartView()
             self.startDatePicker.minimumDate = NSDate().shp_roundDateToNearestHalfHour(roundDown: true)
+            self.updateMinimumDateIfNeeded()
         case self.endTimeTextField:
             self.selectEndView()
             self.endDatePicker.minimumDate = self.startDate.shp_roundDateToNearestHalfHour(roundDown: false)
         default:
             break
+        }
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        switch textField {
+        case self.startTimeTextField:
+            self.endTimeTextField.becomeFirstResponder()
+        default:
+            self.showTimeSelectionViewDelegate?.didPressEndDoneButton()
+            self.deselect()
         }
     }
 }
