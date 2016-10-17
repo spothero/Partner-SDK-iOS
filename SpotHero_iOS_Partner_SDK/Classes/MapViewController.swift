@@ -498,7 +498,10 @@ class MapViewController: UIViewController {
         self.searchSpotsButton.hidden = true
         self.collapsedSearchBar.show()
         self.timeSelectionView.showTimeSelectionView(false)
-        self.collapsedSearchBar.time = NSCalendar.currentCalendar().components([.Hour, .Day, .Minute], fromDate: self.startDate, toDate: self.endDate, options: [])
+        self.collapsedSearchBar.time = NSCalendar.currentCalendar().components([.Hour, .Day, .Minute],
+                                                                               fromDate: self.startDate,
+                                                                               toDate: self.endDate,
+                                                                               options: [])
         self.fetchFacilities(self.mapView.centerCoordinate, redo: true)
     }
     
