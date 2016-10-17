@@ -20,7 +20,6 @@ class MapViewController: UIViewController {
     @IBOutlet weak private var timeSelectionView: TimeSelectionView!
     @IBOutlet weak private var reservationContainerView: UIView!
     @IBOutlet weak private var reservationContainerViewHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak private var datePickerView: DatePickerView!
     @IBOutlet weak private var searchSpotsButton: UIButton!
     @IBOutlet weak private var spotCardCollectionView: UICollectionView!
     @IBOutlet weak private var closeButton: UIBarButtonItem!
@@ -90,10 +89,7 @@ class MapViewController: UIViewController {
         self.setupViews()
         self.registerForKeyboardNotifications()
         
-        self.datePickerView.delegate = self.timeSelectionView
-        self.timeSelectionView.delegate = self.datePickerView
         self.timeSelectionView.showTimeSelectionViewDelegate = self
-        self.datePickerView.doneButtonDelegate = self
         self.timeSelectionView.startEndDateDelegate = self
         
         guard let layout = self.spotCardCollectionView.collectionViewLayout as? SpotCardCollectionViewFlowLayout else {
@@ -184,12 +180,12 @@ class MapViewController: UIViewController {
     }
     
     private func updateStartAndEndDatesVsCurrentTimeIfNeeded() {
-        self.datePickerView?.updateMinimumStartDate()
+        self.timeSelectionView.startDatePicker.minimumDate = NSDate().shp_roundDateToNearestHalfHour(roundDown: true)
         
         // Make sure when coming back from the background that the start date is not before
         // the minimum start date.
-        if self.startDate.shp_isBeforeDate(self.datePickerView.minimumStartDate) {
-            let updatedStartDate = self.datePickerView.minimumStartDate // already rounded.
+        if let minimumDate = self.timeSelectionView.startDatePicker.minimumDate where self.startDate.shp_isBeforeDate(minimumDate) {
+            let updatedStartDate = minimumDate // already rounded.
             self.timeSelectionView.startDate = updatedStartDate
             self.didChangeStartEndDate(startDate: updatedStartDate, endDate: self.endDate)
             
@@ -491,8 +487,7 @@ class MapViewController: UIViewController {
     }
     
     @IBAction private func didTapMapView(sender: AnyObject) {
-        self.searchBar.resignFirstResponder()
-        self.datePickerView.showDatePickerView(false)
+        self.view.endEditing(true)
         self.timeSelectionView.deselect()
     }
     
@@ -575,7 +570,6 @@ extension MapViewController: PredictionControllerDelegate {
         self.showCollapsedSearchBar()
         self.searchBar.resignFirstResponder()
         self.timeSelectionView.startViewSelected = true
-        self.datePickerView.showDatePickerView(true)
     }
     
     func didTapXButton() {
@@ -604,7 +598,6 @@ extension MapViewController: PredictionControllerDelegate {
     }
     
     func didBeginEditingSearchBar() {
-        self.datePickerView.showDatePickerView(false)
         self.timeSelectionView.deselect()
     }
 }
@@ -618,20 +611,13 @@ extension MapViewController: ShowTimeSelectionViewDelegate {
             self.view.layoutIfNeeded()
         }
     }
-}
-
-//MARK: DatePickerDoneButtonDelegate
-
-extension MapViewController: DatePickerDoneButtonDelegate {
-    func didPressDoneButton() {
-        if self.timeSelectionView.endViewSelected {
-            self.datePickerView.timeSelectionViewShouldHide()
-            guard let text = searchBar.text where !text.isEmpty else {
-                return
-            }
-            
-            self.searchSpots()
+    
+    func didPressEndDoneButton() {
+        guard let text = searchBar.text where !text.isEmpty else {
+            return
         }
+        
+        self.searchSpots()
     }
 }
 

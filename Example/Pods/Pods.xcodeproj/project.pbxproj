@@ -45,7 +45,6 @@
 		33BFC40E1D9F504300F7C37F /* ReservationAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BFC40D1D9F504300F7C37F /* ReservationAPI.swift */; };
 		33BFC4101D9F508900F7C37F /* ValidatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BFC40F1D9F508900F7C37F /* ValidatorCell.swift */; };
 		33BFC4121D9F50A200F7C37F /* CountableIntEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BFC4111D9F50A200F7C37F /* CountableIntEnum.swift */; };
-		33BFC4141D9F50BA00F7C37F /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BFC4131D9F50BA00F7C37F /* DatePickerView.swift */; };
 		33BFC4161D9F50C900F7C37F /* PredictionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BFC4151D9F50C900F7C37F /* PredictionTableViewCell.swift */; };
 		33BFC4181D9F510000F7C37F /* KeyboardNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BFC4171D9F510000F7C37F /* KeyboardNotification.swift */; };
 		37AFD24C3C8DD7317DBD56FEAED7A065 /* NSPredicate+KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D957AD40B2EADE4637A2E7B0B563ED88 /* NSPredicate+KIFAdditions.m */; };
@@ -328,7 +327,6 @@
 		33BFC40D1D9F504300F7C37F /* ReservationAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReservationAPI.swift; sourceTree = "<group>"; };
 		33BFC40F1D9F508900F7C37F /* ValidatorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidatorCell.swift; sourceTree = "<group>"; };
 		33BFC4111D9F50A200F7C37F /* CountableIntEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountableIntEnum.swift; sourceTree = "<group>"; };
-		33BFC4131D9F50BA00F7C37F /* DatePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
 		33BFC4151D9F50C900F7C37F /* PredictionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredictionTableViewCell.swift; sourceTree = "<group>"; };
 		33BFC4171D9F510000F7C37F /* KeyboardNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardNotification.swift; sourceTree = "<group>"; };
 		3414DF7CD6094902EFFDD6AF92AE935E /* KIF-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "KIF-dummy.m"; sourceTree = "<group>"; };
@@ -743,7 +741,6 @@
 			isa = PBXGroup;
 			children = (
 				B93F192D0BAEA7B86E19CB1F9D8A1347 /* CollapsedSearchBarView.swift */,
-				33BFC4131D9F50BA00F7C37F /* DatePickerView.swift */,
 				0B58219B16AECCA0B1597BA4906AFA0A /* FacilityAnnotationView.swift */,
 				C9394ACEF4AE77F95ABD72F20DBEF8E6 /* GooglePredictionTableFooter.swift */,
 				D8171861BCDC2860E10003BCB32C411E /* GooglePredictionTableHeader.swift */,
@@ -1465,7 +1462,6 @@
 			files = (
 				5772B10C590ADA538AE7ECE311DFF347 /* AccessibilityStrings.swift in Sources */,
 				E4E933B952C37CC3549E793812762624 /* AlertView.swift in Sources */,
-				33BFC4141D9F50BA00F7C37F /* DatePickerView.swift in Sources */,
 				D7D90D609BF7CCE98F61CC5D904C9546 /* APIError.swift in Sources */,
 				33BFC4161D9F50C900F7C37F /* PredictionTableViewCell.swift in Sources */,
 				C7DA17EE1DA5966A005CB324 /* UITextField+SpotHeroPartner.swift in Sources */,
