@@ -187,19 +187,23 @@ class TimeSelectionView: UIView {
         self.delegate?.didTapEndView(self.startDate, endDate: self.endDate)
     }
     
-    func startDoneButtonPressed() {
+    @objc
+    private func startDoneButtonPressed() {
         self.startTimeTextField.resignFirstResponder()
     }
     
-    func endDoneButtonPressed() {
+    @objc
+    private func endDoneButtonPressed() {
         self.endTimeTextField.resignFirstResponder()
     }
     
-    func startDateChanged(datePicker: UIDatePicker) {
+    @objc
+    private func startDateChanged(datePicker: UIDatePicker) {
         self.startDate = datePicker.date
     }
     
-    func endDateChanged(datePicker: UIDatePicker) {
+    @objc
+    private func endDateChanged(datePicker: UIDatePicker) {
         self.endDate = datePicker.date
     }
     
