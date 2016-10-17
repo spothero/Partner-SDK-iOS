@@ -227,25 +227,21 @@ class MapViewController: UIViewController {
         self.facilities += facilitiesToAdd
         self.spotCardCollectionView.reloadData()
         
-        var hasLocationPin = false
-        
         for annotation in self.mapView.annotations {
             if annotation.isKindOfClass(MKPointAnnotation) {
-                hasLocationPin = true
+                self.mapView.removeAnnotation(annotation)
                 break
             }
         }
         
-        if !hasLocationPin {
-            let locationAnnotation = MKPointAnnotation()
-            if let placeDetails = self.predictionPlaceDetails {
-                locationAnnotation.coordinate = placeDetails.location.coordinate
-            } else {
-                locationAnnotation.coordinate = self.mapView.centerCoordinate
-            }
-            locationAnnotation.title = self.facilities.isEmpty ? LocalizedStrings.NoSpotsFound : ""
-            self.mapView.addAnnotation(locationAnnotation)
+        let locationAnnotation = MKPointAnnotation()
+        if let placeDetails = self.predictionPlaceDetails {
+            locationAnnotation.coordinate = placeDetails.location.coordinate
+        } else {
+            locationAnnotation.coordinate = self.mapView.centerCoordinate
         }
+        locationAnnotation.title = self.facilities.isEmpty ? LocalizedStrings.NoSpotsFound : ""
+        self.mapView.addAnnotation(locationAnnotation)
         
         var firstAnnotation: FacilityAnnotation?
         for facility in facilitiesToAdd {
@@ -407,6 +403,7 @@ class MapViewController: UIViewController {
                                     completion: {
                                         [weak self]
                                         facilities, error, hasMorePages in
+                                        let firstSearch = self?.initialLoading ?? false
                                         self?.initialLoading = false
                                         self?.hasMorePages = hasMorePages
                                         
@@ -419,7 +416,7 @@ class MapViewController: UIViewController {
                                             cancelled = (error.code == NSURLError.Cancelled.rawValue)
                                         }
                                         
-                                        if facilities.isEmpty && !hasMorePages && !cancelled {
+                                        if facilities.isEmpty && !hasMorePages && !cancelled && firstSearch {
                                             AlertView.presentErrorAlertView(LocalizedStrings.Sorry,
                                                 message: LocalizedStrings.NoSpotsFound,
                                                 from: self)
