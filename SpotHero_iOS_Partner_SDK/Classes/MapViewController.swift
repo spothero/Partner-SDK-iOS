@@ -726,6 +726,8 @@ extension MapViewController: UICollectionViewDataSource {
             cell.noReentryImageView.hidden = rate.allowsReentry()
         }
         
+        self.setCenterCell()
+        
         cell.delegate = self
         return cell
     }
