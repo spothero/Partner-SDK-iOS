@@ -406,7 +406,7 @@ class MapViewController: UIViewController {
                                     completion: {
                                         [weak self]
                                         facilities, error, hasMorePages in
-                                        let firstSearch = self?.initialLoading ?? false
+                                        let firstSearch = (self?.initialLoading == true)
                                         self?.initialLoading = false
                                         self?.hasMorePages = hasMorePages
                                         
