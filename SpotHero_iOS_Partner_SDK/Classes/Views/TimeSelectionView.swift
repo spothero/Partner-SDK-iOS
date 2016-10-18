@@ -193,6 +193,7 @@ class TimeSelectionView: UIView {
     
     @objc private func endDoneButtonPressed() {
         self.endTimeTextField.resignFirstResponder()
+        self.showTimeSelectionViewDelegate?.didPressEndDoneButton()
     }
     
     @objc private func startDateChanged(datePicker: UIDatePicker) {
@@ -248,7 +249,6 @@ extension TimeSelectionView: UITextFieldDelegate {
         case self.startTimeTextField:
             self.endTimeTextField.becomeFirstResponder()
         default:
-            self.showTimeSelectionViewDelegate?.didPressEndDoneButton()
             self.deselect()
         }
     }

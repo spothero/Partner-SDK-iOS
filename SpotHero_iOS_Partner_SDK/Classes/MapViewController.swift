@@ -221,31 +221,27 @@ class MapViewController: UIViewController {
      
      - parameter panning: Pass true to cause the map not to zoom in on the facilities. Optional (Defaults to false)
      */
-    private func addAndShowFacilityAnnotations(facilities: [Facility]) {
+    private func addAndShowFacilityAnnotations(facilities: [Facility], firstSearch: Bool) {
         // Only add facilities not already in the list
         let facilitiesToAdd = facilities.filter() { return !self.facilities.contains($0) }
         self.facilities += facilitiesToAdd
         self.spotCardCollectionView.reloadData()
         
-        var hasLocationPin = false
-        
         for annotation in self.mapView.annotations {
             if annotation.isKindOfClass(MKPointAnnotation) {
-                hasLocationPin = true
+                self.mapView.removeAnnotation(annotation)
                 break
             }
         }
         
-        if !hasLocationPin {
-            let locationAnnotation = MKPointAnnotation()
-            if let placeDetails = self.predictionPlaceDetails {
-                locationAnnotation.coordinate = placeDetails.location.coordinate
-            } else {
-                locationAnnotation.coordinate = self.mapView.centerCoordinate
-            }
-            locationAnnotation.title = self.facilities.isEmpty ? LocalizedStrings.NoSpotsFound : ""
-            self.mapView.addAnnotation(locationAnnotation)
+        let locationAnnotation = MKPointAnnotation()
+        if let placeDetails = self.predictionPlaceDetails {
+            locationAnnotation.coordinate = placeDetails.location.coordinate
+        } else {
+            locationAnnotation.coordinate = self.mapView.centerCoordinate
         }
+        locationAnnotation.title = self.facilities.isEmpty ? LocalizedStrings.NoSpotsFound : ""
+        self.mapView.addAnnotation(locationAnnotation)
         
         var firstAnnotation: FacilityAnnotation?
         for facility in facilitiesToAdd {
@@ -267,7 +263,7 @@ class MapViewController: UIViewController {
         
         self.showSpotCardCollectionView()
         
-        if let predictionPlaceDetails = predictionPlaceDetails {
+        if let predictionPlaceDetails = predictionPlaceDetails where firstSearch {
             let coordinateRegion = MKCoordinateRegionMakeWithDistance(predictionPlaceDetails.location.coordinate,
                                                                       self.defaultSearchRadius,
                                                                       self.defaultSearchRadius)
@@ -278,7 +274,9 @@ class MapViewController: UIViewController {
             return
         }
         
-        self.mapView.selectAnnotation(annotation, animated: true)
+        if self.centerCell == nil {
+            self.mapView.selectAnnotation(annotation, animated: true)
+        }
     }
     
     /**
@@ -399,6 +397,7 @@ class MapViewController: UIViewController {
         var maxSearchRadius = self.visibleMapViewRadiusInMeters()
         self.initialLoading = true
         maxSearchRadius = self.defaultSearchRadius
+        self.centerCell = nil
         
         FacilityAPI.fetchFacilities(coordinate,
                                     starts: self.startDate,
@@ -407,6 +406,7 @@ class MapViewController: UIViewController {
                                     completion: {
                                         [weak self]
                                         facilities, error, hasMorePages in
+                                        let firstSearch = (self?.initialLoading == true)
                                         self?.initialLoading = false
                                         self?.hasMorePages = hasMorePages
                                         
@@ -419,7 +419,7 @@ class MapViewController: UIViewController {
                                             cancelled = (error.code == NSURLError.Cancelled.rawValue)
                                         }
                                         
-                                        if facilities.isEmpty && !hasMorePages && !cancelled {
+                                        if facilities.isEmpty && !hasMorePages && !cancelled && firstSearch {
                                             AlertView.presentErrorAlertView(LocalizedStrings.Sorry,
                                                 message: LocalizedStrings.NoSpotsFound,
                                                 from: self)
@@ -428,7 +428,8 @@ class MapViewController: UIViewController {
                                             MixpanelWrapper.track(.ViewedSearchResultsScreen)
                                         }
                                         
-                                        self?.addAndShowFacilityAnnotations(facilities)
+                                        self?.addAndShowFacilityAnnotations(facilities, firstSearch: firstSearch)
+                                        
                                         if !hasMorePages && !facilities.isEmpty {
                                             self?.trackUserSearch(redo, type: "Search")
                                         }
@@ -495,6 +496,13 @@ class MapViewController: UIViewController {
         self.redoSearchButton.hidden = true
         self.clearExistingFacilities()
         self.predictionPlaceDetails = nil
+        self.searchSpotsButton.hidden = true
+        self.collapsedSearchBar.show()
+        self.timeSelectionView.showTimeSelectionView(false)
+        self.collapsedSearchBar.time = NSCalendar.currentCalendar().components([.Hour, .Day, .Minute],
+                                                                               fromDate: self.startDate,
+                                                                               toDate: self.endDate,
+                                                                               options: [])
         self.fetchFacilities(self.mapView.centerCoordinate, redo: true)
     }
     
