@@ -15,6 +15,7 @@ enum Constants {
     static let ThirtyMinutesInSeconds: NSTimeInterval = 30 * 60
     static let SecondsInHour: NSTimeInterval = 60 * 60
     static let SixHoursInSeconds: NSTimeInterval = 6 * Constants.SecondsInHour
+    static let MaxSearchRadiusInMeters = UnitsOfMeasurement.MetersPerMile.rawValue * 60.0
     static let TestCreditCardNumber = "4242424242424242"
     static let TestExpirationMonth = "12"
     static let TestExpirationYear = "2020"

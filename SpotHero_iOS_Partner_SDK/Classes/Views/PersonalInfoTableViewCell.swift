@@ -12,12 +12,12 @@ protocol PersonalInfoTableViewCellDelegate: class {
     func textFieldShouldReturn(type: PersonalInfoRow)
 }
 
-class PersonalInfoTableViewCell: UITableViewCell {
+class PersonalInfoTableViewCell: UITableViewCell, ValidatorCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var errorLabel: UILabel!
     
-    var type: PersonalInfoRow = .FullName
+    var type: PersonalInfoRow = .Email
     
     weak var delegate: ValidatorCellDelegate?
     weak var personalInfoCellDelegate: PersonalInfoTableViewCellDelegate?
@@ -50,9 +50,9 @@ extension PersonalInfoTableViewCell: UITextFieldDelegate {
             } else {
                 assertionFailure("Validation closure not set")
             }
-            self.setErrorState(true, error: nil)
+            self.setErrorState(nil)
         } catch let error as ValidatorError {
-            self.setErrorState(false, error: error)
+            self.setErrorState(error)
         } catch {
             assertionFailure("Some other error was thrown")
         }
@@ -66,8 +66,10 @@ extension PersonalInfoTableViewCell: UITextFieldDelegate {
         }
         
         if self.type == .Phone {
+            let cursorLocation = textField.shp_getCursorPosition(range, string: string)
             let (formatted, unformatted) = Formatter.formatPhoneNumber(text)
             textField.text = formatted
+            textField.shp_setCursorPosition(cursorLocation)
             
             if unformatted.characters.count == 10 {
                 textField.resignFirstResponder()
@@ -85,10 +87,8 @@ extension PersonalInfoTableViewCell: UITextFieldDelegate {
         self.personalInfoCellDelegate?.textFieldShouldReturn(self.type)
         return false
     }
-}
-
-extension PersonalInfoTableViewCell: ValidatorCell {
-    func setErrorState(valid: Bool, error: ValidatorError?) {
+    
+    func setErrorState(error: ValidatorError?) {
         if let error = error {
             switch error {
             case .FieldBlank(let fieldName):
@@ -98,6 +98,6 @@ extension PersonalInfoTableViewCell: ValidatorCell {
             }
         }
         
-        self.valid = valid
+        self.valid = (error == nil)
     }
 }

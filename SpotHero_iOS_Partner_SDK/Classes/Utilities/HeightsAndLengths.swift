@@ -10,4 +10,5 @@ import Foundation
 
 enum HeightsAndLengths {
     static let standardCornerRadius: CGFloat = 5
+    static let redoSearchButtonCornerRadius: CGFloat = 25
 }

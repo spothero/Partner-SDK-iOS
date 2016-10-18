@@ -20,11 +20,12 @@ class MapViewController: UIViewController {
     @IBOutlet weak private var timeSelectionView: TimeSelectionView!
     @IBOutlet weak private var reservationContainerView: UIView!
     @IBOutlet weak private var reservationContainerViewHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak private var datePickerView: DatePickerView!
     @IBOutlet weak private var searchSpotsButton: UIButton!
     @IBOutlet weak private var spotCardCollectionView: UICollectionView!
     @IBOutlet weak private var closeButton: UIBarButtonItem!
     @IBOutlet weak private var loadingView: UIView!
+    @IBOutlet weak private var redoSearchButton: UIButton!
+    @IBOutlet weak private var redoSearchButtonBottomConstraint: NSLayoutConstraint!
     
     private var prediction: GooglePlacesPrediction?
     private let predictionController = PredictionController()
@@ -35,17 +36,16 @@ class MapViewController: UIViewController {
                 return
             }
             
-            //Clear existing facilities
-            self.facilities = []
-            self.currentIndex = 0
-            self.spotCardCollectionView.reloadData()
-            self.mapView.removeAnnotations(self.mapView.annotations)
+            self.clearExistingFacilities()
+            
+            // Add some padding around default region to account for screen being a rectangle
+            let padding = 1.5
             
             if details.isAirport() {
                 //have a wider search radius around airports.
-                self.defaultSearchRadius = UnitsOfMeasurement.MetersPerMile.rawValue * 5
+                self.defaultSearchRadius = UnitsOfMeasurement.MetersPerMile.rawValue * 5 * padding
             } else {
-                self.defaultSearchRadius = UnitsOfMeasurement.MetersPerMile.rawValue
+                self.defaultSearchRadius = UnitsOfMeasurement.MetersPerMile.rawValue * padding
             }
             
             self.fetchFacilitiesIfPlaceDetailsExists()
@@ -79,8 +79,9 @@ class MapViewController: UIViewController {
             }
         }
     }
-    
     private var facilities = [Facility]()
+    private let redoSearchButtonBottomConstraintConstant: CGFloat = 15
+    private var hasMorePages = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -88,10 +89,7 @@ class MapViewController: UIViewController {
         self.setupViews()
         self.registerForKeyboardNotifications()
         
-        self.datePickerView.delegate = self.timeSelectionView
-        self.timeSelectionView.delegate = self.datePickerView
         self.timeSelectionView.showTimeSelectionViewDelegate = self
-        self.datePickerView.doneButtonDelegate = self
         self.timeSelectionView.startEndDateDelegate = self
         
         guard let layout = self.spotCardCollectionView.collectionViewLayout as? SpotCardCollectionViewFlowLayout else {
@@ -138,6 +136,11 @@ class MapViewController: UIViewController {
         self.searchSpotsButton.layer.cornerRadius = HeightsAndLengths.standardCornerRadius
         self.searchSpotsButton.backgroundColor = .shp_spotHeroBlue()
         
+        self.redoSearchButton.layer.cornerRadius = HeightsAndLengths.redoSearchButtonCornerRadius
+        self.redoSearchButton.setTitleColor(.shp_spotHeroBlue(), forState: .Normal)
+        self.redoSearchButton.setTitleColor(.grayColor(), forState: .Disabled)
+        self.redoSearchButton.hidden = true
+        
         self.predictionController.delegate = self
         
         self.spotCardCollectionView.hidden = true
@@ -177,12 +180,12 @@ class MapViewController: UIViewController {
     }
     
     private func updateStartAndEndDatesVsCurrentTimeIfNeeded() {
-        self.datePickerView?.updateMinimumStartDate()
+        self.timeSelectionView.startDatePicker.minimumDate = NSDate().shp_roundDateToNearestHalfHour(roundDown: true)
         
         // Make sure when coming back from the background that the start date is not before
         // the minimum start date.
-        if self.startDate.shp_isBeforeDate(self.datePickerView.minimumStartDate) {
-            let updatedStartDate = self.datePickerView.minimumStartDate // already rounded.
+        if let minimumDate = self.timeSelectionView.startDatePicker.minimumDate where self.startDate.shp_isBeforeDate(minimumDate) {
+            let updatedStartDate = minimumDate // already rounded.
             self.timeSelectionView.startDate = updatedStartDate
             self.didChangeStartEndDate(startDate: updatedStartDate, endDate: self.endDate)
             
@@ -208,23 +211,38 @@ class MapViewController: UIViewController {
         self.mapView.accessibilityLabel = AccessibilityStrings.MapView
     }
     
+    private func setCenterCell() {
+        let itemIndex = NSIndexPath(forItem: self.currentIndex, inSection: 0)
+        self.centerCell = self.spotCardCollectionView.cellForItemAtIndexPath(itemIndex) as? SpotCardCollectionViewCell
+    }
+    
     /**
      Adds annotations to the map
      
      - parameter panning: Pass true to cause the map not to zoom in on the facilities. Optional (Defaults to false)
      */
-    private func addAndShowFacilityAnnotations(facilities: [Facility], panning: Bool = false) {
+    private func addAndShowFacilityAnnotations(facilities: [Facility], firstSearch: Bool) {
         // Only add facilities not already in the list
         let facilitiesToAdd = facilities.filter() { return !self.facilities.contains($0) }
         self.facilities += facilitiesToAdd
         self.spotCardCollectionView.reloadData()
         
-        if let placeDetails = self.predictionPlaceDetails {
-            let locationAnnotation = MKPointAnnotation()
-            locationAnnotation.coordinate = placeDetails.location.coordinate
-            locationAnnotation.title = self.facilities.isEmpty ? LocalizedStrings.NoSpotsFound : ""
-            self.mapView.addAnnotation(locationAnnotation)
+        for annotation in self.mapView.annotations {
+            if annotation.isKindOfClass(MKPointAnnotation) {
+                self.mapView.removeAnnotation(annotation)
+                break
+            }
         }
+        
+        let locationAnnotation = MKPointAnnotation()
+        if let placeDetails = self.predictionPlaceDetails {
+            locationAnnotation.coordinate = placeDetails.location.coordinate
+        } else {
+            locationAnnotation.coordinate = self.mapView.centerCoordinate
+        }
+        locationAnnotation.title = self.facilities.isEmpty ? LocalizedStrings.NoSpotsFound : ""
+        self.mapView.addAnnotation(locationAnnotation)
+        
         var firstAnnotation: FacilityAnnotation?
         for facility in facilitiesToAdd {
             guard let index = self.facilities.indexOf(facility) else {
@@ -236,25 +254,27 @@ class MapViewController: UIViewController {
                                                         coordinate: facility.location.coordinate,
                                                         facility: facility,
                                                         index: index)
-            if index == 0 && !panning {
+            if index == 0 {
                 firstAnnotation = facilityAnnotation
             }
             
             self.mapView.addAnnotation(facilityAnnotation)
         }
         
-        self.showSpotCardCollectionView(scrolledToIndex: self.currentIndex)
+        self.showSpotCardCollectionView()
         
-        if !panning {
-            let coordinateRegion = MKCoordinateRegionMakeWithDistance(self.predictionPlaceDetails!.location.coordinate,
+        if let predictionPlaceDetails = predictionPlaceDetails where firstSearch {
+            let coordinateRegion = MKCoordinateRegionMakeWithDistance(predictionPlaceDetails.location.coordinate,
                                                                       self.defaultSearchRadius,
                                                                       self.defaultSearchRadius)
             self.mapView.setRegion(coordinateRegion, animated: true)
-            
-            guard let annotation = firstAnnotation else {
-                return
-            }
-            
+        }
+        
+        guard let annotation = firstAnnotation else {
+            return
+        }
+        
+        if self.centerCell == nil {
             self.mapView.selectAnnotation(annotation, animated: true)
         }
     }
@@ -283,7 +303,7 @@ class MapViewController: UIViewController {
             }
             // Multiply the deltas by 2 plus some extra padding
             let multiplier = 2.2
-        
+            
             latitudeDelta *= multiplier
             longitudeDelta *= multiplier
         } else {
@@ -298,15 +318,14 @@ class MapViewController: UIViewController {
         self.mapView.setRegion(region, animated: true)
     }
     
-    private func showSpotCardCollectionView(scrolledToIndex index: Int) {
+    private func showSpotCardCollectionView() {
         self.spotCardCollectionView.hidden = false
+        self.redoSearchButtonBottomConstraint.constant = self.spotCardCollectionView.frame.height + self.redoSearchButtonBottomConstraintConstant
         self.spotCardCollectionView.reloadData()
-        
-        self.scrollToSpotCard(withIndexPath: NSIndexPath(forItem: index, inSection: 0))
     }
     
     private func scrollToSpotCardThenSelectAnnotation(withIndexPath indexPath: NSIndexPath) {
-        self.scrollToSpotCard(withIndexPath: indexPath)
+        self.scrollToSpotCard(withIndexPath: indexPath, tap: false)
         let annotation = self.mapView.annotations.flatMap {
             annotation in
             return annotation as? FacilityAnnotation
@@ -320,19 +339,19 @@ class MapViewController: UIViewController {
         }
     }
     
-    private func scrollToSpotCard(withIndexPath indexPath: NSIndexPath) {
+    private func scrollToSpotCard(withIndexPath indexPath: NSIndexPath, tap: Bool) {
         self.currentIndex = indexPath.row
-        self.centerCell = self.spotCardCollectionView.cellForItemAtIndexPath(indexPath) as? SpotCardCollectionViewCell
         self.spotCardCollectionView.scrollToItemAtIndexPath(indexPath,
                                                             atScrollPosition: .None,
                                                             animated: true)
+        self.trackViewPin(tap)
     }
     
     private func visibleMapViewRadiusInMeters() -> Double {
         // Convert the difference between max and min latitude to miles for the diameter
         let diameter = self.mapView.region.span.latitudeDelta
-                            * UnitsOfMeasurement.ApproximateMilesPerDegreeOfLatitude.rawValue
-                            * UnitsOfMeasurement.MetersPerMile.rawValue
+            * UnitsOfMeasurement.ApproximateMilesPerDegreeOfLatitude.rawValue
+            * UnitsOfMeasurement.MetersPerMile.rawValue
         return diameter / 2
     }
     
@@ -370,18 +389,15 @@ class MapViewController: UIViewController {
      Fetch the factilities around a given coordinate
      
      - parameter coordinate: coordinate to search around
-     - parameter panning:    Whether or not this was triggered by the user panning the map. 
-                             Passing true will cause there to be no loading spinner and no "No spots" error
-                             Optional (Defaults to false)
+     - parameter panning:    Whether or not this was triggered by the user panning the map.
+     Passing true will cause there to be no loading spinner and no "No spots" error
+     Optional (Defaults to false)
      */
-    private func fetchFacilities(coordinate: CLLocationCoordinate2D, panning: Bool = false) {
+    private func fetchFacilities(coordinate: CLLocationCoordinate2D, redo: Bool = false) {
         var maxSearchRadius = self.visibleMapViewRadiusInMeters()
-        if !panning {
-            self.initialLoading = true
-            maxSearchRadius = self.defaultSearchRadius
-        } else {
-            self.loadingView.hidden = false
-        }
+        self.initialLoading = true
+        maxSearchRadius = self.defaultSearchRadius
+        self.centerCell = nil
         
         FacilityAPI.fetchFacilities(coordinate,
                                     starts: self.startDate,
@@ -390,18 +406,33 @@ class MapViewController: UIViewController {
                                     completion: {
                                         [weak self]
                                         facilities, error, hasMorePages in
-                                        
+                                        let firstSearch = (self?.initialLoading == true)
                                         self?.initialLoading = false
-
+                                        self?.hasMorePages = hasMorePages
+                                        
                                         //If there are more pages, show the wee loading view.
                                         self?.loadingView.hidden = !hasMorePages
                                         
-                                        if facilities.isEmpty && !panning && !hasMorePages {
+                                        var cancelled = false
+                                        
+                                        if let error = error as? NSError {
+                                            cancelled = (error.code == NSURLError.Cancelled.rawValue)
+                                        }
+                                        
+                                        if facilities.isEmpty && !hasMorePages && !cancelled && firstSearch {
                                             AlertView.presentErrorAlertView(LocalizedStrings.Sorry,
                                                 message: LocalizedStrings.NoSpotsFound,
                                                 from: self)
+                                            MixpanelWrapper.track(.ViewedNoResultsFoundModal)
+                                        } else {
+                                            MixpanelWrapper.track(.ViewedSearchResultsScreen)
                                         }
-                                        self?.addAndShowFacilityAnnotations(facilities, panning: panning)
+                                        
+                                        self?.addAndShowFacilityAnnotations(facilities, firstSearch: firstSearch)
+                                        
+                                        if !hasMorePages && !facilities.isEmpty {
+                                            self?.trackUserSearch(redo, type: "Search")
+                                        }
             })
     }
     
@@ -414,9 +445,17 @@ class MapViewController: UIViewController {
         self.searchBar.resignFirstResponder()
     }
     
+    private func clearExistingFacilities() {
+        self.facilities = []
+        self.currentIndex = 0
+        self.spotCardCollectionView.reloadData()
+        self.mapView.removeAnnotations(self.mapView.annotations)
+    }
+    
     //MARK: Actions
     
     @IBAction private func closeButtonPressed(sender: AnyObject) {
+        SpotHeroPartnerSDK.SharedInstance.reportSDKClosed()
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -434,18 +473,37 @@ class MapViewController: UIViewController {
         switch gestureRecognizer.state {
         case .Began:
             self.spotCardCollectionView.hidden = true
+            self.redoSearchButton.hidden = true
             self.searchBar.resignFirstResponder()
         case .Ended:
-            self.fetchFacilities(self.mapView.centerCoordinate, panning: true)
+            self.redoSearchButton.hidden = false
+            if self.spotCardCollectionView.numberOfItemsInSection(0) > 0 {
+                self.showSpotCardCollectionView()
+            } else {
+                self.redoSearchButtonBottomConstraint.constant = self.redoSearchButtonBottomConstraintConstant
+            }
         default:
             break
         }
     }
     
     @IBAction private func didTapMapView(sender: AnyObject) {
-        self.searchBar.resignFirstResponder()
-        self.datePickerView.showDatePickerView(false)
+        self.view.endEditing(true)
         self.timeSelectionView.deselect()
+    }
+    
+    @IBAction private func redoSearchButtonPressed(_ sender: AnyObject) {
+        self.redoSearchButton.hidden = true
+        self.clearExistingFacilities()
+        self.predictionPlaceDetails = nil
+        self.searchSpotsButton.hidden = true
+        self.collapsedSearchBar.show()
+        self.timeSelectionView.showTimeSelectionView(false)
+        self.collapsedSearchBar.time = NSCalendar.currentCalendar().components([.Hour, .Day, .Minute],
+                                                                               fromDate: self.startDate,
+                                                                               toDate: self.endDate,
+                                                                               options: [])
+        self.fetchFacilities(self.mapView.centerCoordinate, redo: true)
     }
     
     //MARK: Helpers
@@ -453,6 +511,35 @@ class MapViewController: UIViewController {
     private func fetchFacilitiesIfPlaceDetailsExists() {
         if let placeDetails = self.predictionPlaceDetails {
             self.fetchFacilities(placeDetails.location.coordinate)
+        }
+    }
+    
+    private func trackViewPin(tap: Bool = true) {
+        let facility = self.facilities[self.currentIndex]
+        
+        MixpanelWrapper.track(.TappedSpotPin, properties: [
+            .TappedPin: true,
+            .ViewingMethod: tap ? "tap" : "swipe",
+            .SpotAddress: facility.streetAddress,
+            .Distance: facility.distanceInMeters,
+            .SpotID: facility.parkingSpotID,
+            ])
+    }
+    
+    private func trackUserSearch(redo: Bool = false, type: String) {
+        let facility = self.facilities[self.currentIndex]
+        
+        if let prediction = self.prediction {
+            MixpanelWrapper.track(.UserSearched, properties: [
+                .SearchQuery: prediction.predictionDescription,
+                .TappedRedoSearch: redo,
+                .OptimalZoom: self.defaultSearchRadius,
+                .ResultsWithinOptimalZoom: self.facilities.count,
+                .SpotHeroCity: facility.city,
+                .SearchType: type,
+                .ReservationLength: NSCalendar.currentCalendar().components([.Hour], fromDate: self.startDate, toDate: self.endDate, options: [.WrapComponents]).hour,
+                .TimeFromReservationStart: facility.availableRates.first?.minutesToReservation() ?? 0,
+                ])
         }
     }
 }
@@ -485,12 +572,12 @@ extension MapViewController: PredictionControllerDelegate {
     
     func didSelectPrediction(prediction: GooglePlacesPrediction) {
         self.prediction = prediction
-        self.searchBar.text = prediction.description
+        self.redoSearchButton.hidden = true
+        self.searchBar.text = prediction.predictionDescription
         self.timeSelectionView.showTimeSelectionView(true)
         self.showCollapsedSearchBar()
         self.searchBar.resignFirstResponder()
         self.timeSelectionView.startViewSelected = true
-        self.datePickerView.showDatePickerView(true)
     }
     
     func didTapXButton() {
@@ -519,7 +606,6 @@ extension MapViewController: PredictionControllerDelegate {
     }
     
     func didBeginEditingSearchBar() {
-        self.datePickerView.showDatePickerView(false)
         self.timeSelectionView.deselect()
     }
 }
@@ -533,20 +619,13 @@ extension MapViewController: ShowTimeSelectionViewDelegate {
             self.view.layoutIfNeeded()
         }
     }
-}
-
-//MARK: DatePickerDoneButtonDelegate
-
-extension MapViewController: DatePickerDoneButtonDelegate {
-    func didPressDoneButton() {
-        if self.timeSelectionView.endViewSelected {
-            self.datePickerView.timeSelectionViewShouldHide()
-            guard let text = searchBar.text where !text.isEmpty else {
-                return
-            }
-            
-            self.searchSpots()
-        } 
+    
+    func didPressEndDoneButton() {
+        guard let text = searchBar.text where !text.isEmpty else {
+            return
+        }
+        
+        self.searchSpots()
     }
 }
 
@@ -569,13 +648,12 @@ extension MapViewController: StartEndDateDelegate {
 extension MapViewController: MKMapViewDelegate {
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         if let placeDetails = self.predictionPlaceDetails {
-            if annotation.coordinate.latitude == placeDetails.location.coordinate.latitude &&
-                annotation.coordinate.longitude == placeDetails.location.coordinate.longitude {
-                let annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "LocationAnnotation")
-                annotationView.canShowCallout = self.facilities.isEmpty
-                annotationView.enabled = self.facilities.isEmpty
-                annotationView.pinTintColor = self.facilities.isEmpty ? .redColor() : .greenColor()
-                return annotationView
+            if annotation.coordinate == placeDetails.location.coordinate {
+                return self.locationAnnotationView(annotation)
+            }
+        } else {
+            if annotation.coordinate == self.mapView.centerCoordinate {
+                return self.locationAnnotationView(annotation)
             }
         }
         
@@ -584,7 +662,7 @@ extension MapViewController: MKMapViewDelegate {
         }
         
         if let facilityAnnotation = annotation as? FacilityAnnotation {
-           annotationView.annotation = facilityAnnotation
+            annotationView.annotation = facilityAnnotation
         }
         return annotationView
     }
@@ -595,7 +673,25 @@ extension MapViewController: MKMapViewDelegate {
         }
         
         let itemIndex = NSIndexPath(forItem: facilityAnnotation.index, inSection: 0)
-        self.scrollToSpotCard(withIndexPath: itemIndex)
+        self.scrollToSpotCard(withIndexPath: itemIndex, tap: true)
+    }
+    
+    func mapView(mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        if self.hasMorePages {
+            self.redoSearchButton.enabled = false
+        } else if self.visibleMapViewRadiusInMeters() > Constants.MaxSearchRadiusInMeters {
+            self.redoSearchButton.enabled = false
+        } else {
+            self.redoSearchButton.enabled = true
+        }
+    }
+    
+    private func locationAnnotationView(annotation: MKAnnotation) -> MKAnnotationView {
+        let annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "LocationAnnotation")
+        annotationView.canShowCallout = self.facilities.isEmpty
+        annotationView.enabled = self.facilities.isEmpty
+        annotationView.pinTintColor = self.facilities.isEmpty ? .redColor() : .greenColor()
+        return annotationView
     }
 }
 
@@ -629,7 +725,7 @@ extension MapViewController: UICollectionViewDataSource {
             
             cell.noReentryImageView.hidden = rate.allowsReentry()
         }
-                
+        
         cell.delegate = self
         return cell
     }
@@ -638,15 +734,22 @@ extension MapViewController: UICollectionViewDataSource {
 //MARK: UICollectionViewDelegate
 
 extension MapViewController: UICollectionViewDelegate {
-    func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
-        let itemIndex = NSIndexPath(forItem: self.currentIndex, inSection: 0)
-        self.centerCell = self.spotCardCollectionView.cellForItemAtIndexPath(itemIndex) as? SpotCardCollectionViewCell
+    func collectionView(collectionView: UICollectionView, didEndDisplayingCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
+        self.setCenterCell()
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        if let cell = collectionView.cellForItemAtIndexPath(indexPath) where cell !== self.centerCell {
+        if self.currentIndex != indexPath.row {
             self.scrollToSpotCardThenSelectAnnotation(withIndexPath: indexPath)
         }
+    }
+}
+
+//MARK: UIScrollViewDelegate
+
+extension MapViewController: UIScrollViewDelegate {
+    func scrollViewDidEndScrollingAnimation(scrollView: UIScrollView) {
+        self.setCenterCell()
     }
 }
 

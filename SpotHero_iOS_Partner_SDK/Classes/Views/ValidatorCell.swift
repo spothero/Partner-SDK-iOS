@@ -11,7 +11,6 @@ import Foundation
 protocol ValidatorCell: class {
     var valid: Bool { get }
     weak var delegate: ValidatorCellDelegate? { get set }
-    func setErrorState(valid: Bool, error: ValidatorError?)
 }
 
 protocol ValidatorCellDelegate: class  {
