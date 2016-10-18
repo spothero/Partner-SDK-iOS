@@ -20,10 +20,12 @@ typealias GooglePlacesWrapperCompletion = ([GooglePlacesPrediction], ErrorType?)
 typealias GooglePlaceDetailsCompletion = (GooglePlaceDetails?, ErrorType?) -> (Void)
 
 @objc(SPHGooglePlacesWrapper)
-class GooglePlacesWrapper: NSObject {
+public class GooglePlacesWrapper: NSObject {
     static let Host = "maps.googleapis.com"
     static let Scheme = "https"
-    static let KeyQueryItem = NSURLQueryItem(name: "key", value: APIKeyConfig.sharedInstance.googleApiKey)
+    /// Google API Key. Defaults to an empty string.
+    public static var GoogleAPIKey = ""
+    static let KeyQueryItem = NSURLQueryItem(name: "key", value: GoogleAPIKey)
     
     /**
      Finds Predictions based on a string
