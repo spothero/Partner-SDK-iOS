@@ -25,7 +25,7 @@ public class GooglePlacesWrapper: NSObject {
     static let Scheme = "https"
     /// Google API Key. Defaults to an empty string.
     public static var GoogleAPIKey = ""
-    static let KeyQueryItem = NSURLQueryItem(name: "key", value: GoogleAPIKey)
+    static let KeyQueryItem = NSURLQueryItem(name: "key", value: GooglePlacesWrapper.GoogleAPIKey)
     
     /**
      Finds Predictions based on a string

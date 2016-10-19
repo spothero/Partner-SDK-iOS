@@ -30,6 +30,7 @@ class APIKeyConfig {
                 do {
                     let data = try JSON.shp_dictionary("data") as JSONDictionary
                     self.googleApiKey = try data.shp_string("google_places_api_key")
+                    GooglePlacesWrapper.GoogleAPIKey = self.googleApiKey
                     self.stripeApiKey = try data.shp_string("stripe_public_api_key")
                     self.mixpanelApiKey = try data.shp_string("mixpanel_api_key")
                     completion(true)
