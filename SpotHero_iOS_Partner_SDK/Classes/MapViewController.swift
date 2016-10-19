@@ -228,7 +228,7 @@ class MapViewController: UIViewController {
         self.spotCardCollectionView.reloadData()
         
         for annotation in self.mapView.annotations {
-            if annotation.isKindOfClass(MKPointAnnotation) {
+            if annotation is MKPointAnnotation {
                 self.mapView.removeAnnotation(annotation)
                 break
             }
@@ -647,7 +647,7 @@ extension MapViewController: StartEndDateDelegate {
 
 extension MapViewController: MKMapViewDelegate {
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
-        if annotation.isKindOfClass(MKPointAnnotation) {
+        if annotation is MKPointAnnotation {
             return self.locationAnnotationView(annotation)
         }
         
