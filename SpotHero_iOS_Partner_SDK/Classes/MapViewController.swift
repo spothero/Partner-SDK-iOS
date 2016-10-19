@@ -228,7 +228,7 @@ class MapViewController: UIViewController {
         self.spotCardCollectionView.reloadData()
         
         for annotation in self.mapView.annotations {
-            if annotation.isKindOfClass(MKPointAnnotation) {
+            if annotation is MKPointAnnotation {
                 self.mapView.removeAnnotation(annotation)
                 break
             }
@@ -647,14 +647,8 @@ extension MapViewController: StartEndDateDelegate {
 
 extension MapViewController: MKMapViewDelegate {
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
-        if let placeDetails = self.predictionPlaceDetails {
-            if annotation.coordinate == placeDetails.location.coordinate {
-                return self.locationAnnotationView(annotation)
-            }
-        } else {
-            if annotation.coordinate == self.mapView.centerCoordinate {
-                return self.locationAnnotationView(annotation)
-            }
+        if annotation is MKPointAnnotation {
+            return self.locationAnnotationView(annotation)
         }
         
         guard let annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(FacilityAnnotationView.Identifier) as? FacilityAnnotationView else {
