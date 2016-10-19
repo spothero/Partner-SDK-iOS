@@ -105,6 +105,9 @@ class TimeSelectionView: UIView {
         self.startDatePicker.minuteInterval = 30
         self.endDatePicker.minuteInterval = 30
         
+        self.startDatePicker.backgroundColor = .whiteColor()
+        self.endDatePicker.backgroundColor = .whiteColor()
+        
         self.startDatePicker.addTarget(self, action: #selector(self.startDateChanged(_:)), forControlEvents: .ValueChanged)
         self.endDatePicker.addTarget(self, action: #selector(self.endDateChanged(_:)), forControlEvents: .ValueChanged)
         
