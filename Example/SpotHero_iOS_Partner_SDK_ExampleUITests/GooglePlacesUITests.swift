@@ -74,6 +74,8 @@ class GooglePlacesUITests: BaseUITests {
             return
         }
         
+        tester().waitForTimeInterval(1)
+        
         //THEN: The tableview's height should be 0
         XCTAssertEqual(tableView.frame.height, 0)
     }
