@@ -647,14 +647,8 @@ extension MapViewController: StartEndDateDelegate {
 
 extension MapViewController: MKMapViewDelegate {
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
-        if let placeDetails = self.predictionPlaceDetails {
-            if annotation.coordinate == placeDetails.location.coordinate {
-                return self.locationAnnotationView(annotation)
-            }
-        } else {
-            if annotation.coordinate == self.mapView.centerCoordinate {
-                return self.locationAnnotationView(annotation)
-            }
+        if annotation.isKindOfClass(MKPointAnnotation) {
+            return self.locationAnnotationView(annotation)
         }
         
         guard let annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(FacilityAnnotationView.Identifier) as? FacilityAnnotationView else {
