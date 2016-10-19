@@ -16,11 +16,12 @@ class GooglePlacesUITests: BaseUITests {
     
     override func beforeEach() {
         super.beforeEach()
-        self.enterTextIntoSearchBar(AccessibilityStrings.SpotHero)
     }
     
     func testGetPredictions() {
         //GIVEN: I see the search bar and type in an address
+        self.enterTextIntoSearchBar(AccessibilityStrings.SpotHero)
+
         //THEN: I see a table with predictions
         guard let tableView = tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.PredictionTableView) as? UITableView else {
             XCTFail("No Prediction table view")
@@ -39,6 +40,8 @@ class GooglePlacesUITests: BaseUITests {
     
     func testTapAPlace() {
         //GIVEN: I see the search bar and type in an address
+        self.enterTextIntoSearchBar(AccessibilityStrings.SpotHero)
+
         //WHEN: I see a table with predictions and tap a row
         guard let tableView = tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.PredictionTableView) as? UITableView else {
             XCTFail("No Prediction table view")
@@ -59,5 +62,19 @@ class GooglePlacesUITests: BaseUITests {
         XCTAssertNotNil(searchBar.text)
         
         //TODO: Search for place
+    }
+    
+    func testNoPredictions() {
+        //GIVEN: I see the search bar and type in gibberish
+        self.enterTextIntoSearchBar("fjndahdaosdahffsvoafifjnansfjwvauis")
+
+        //When: I see a table with no predictions
+        guard let tableView = tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.PredictionTableView) as? UITableView else {
+            XCTFail("No Prediction table view")
+            return
+        }
+        
+        //THEN: The tableview's height should be 0
+        XCTAssertEqual(tableView.frame.height, 0)
     }
 }
