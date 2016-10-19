@@ -66,7 +66,7 @@ class GooglePlacesUITests: BaseUITests {
     
     func testNoPredictions() {
         //GIVEN: I see the search bar and type in gibberish
-        self.enterTextIntoSearchBar("fjndahdaosdahffsvoafifjnansfjwvauis")
+        self.enterTextIntoSearchBar("Fjndahdaosdahffsvoafifjnansfjwvauis")
 
         //When: I see a table with no predictions
         guard let tableView = tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.PredictionTableView) as? UITableView else {
