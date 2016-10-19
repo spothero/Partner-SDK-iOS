@@ -169,7 +169,7 @@ class MapViewController: UIViewController {
         }
     }
     
-    private func showCollapsedSearchBar() {
+    private func hideSearchSpots() {
         self.searchSpotsButton.hidden = (self.searchBar.text ?? "").isEmpty
     }
     
@@ -438,9 +438,7 @@ class MapViewController: UIViewController {
     
     private func searchSpots() {
         self.searchSpotsButton.hidden = true
-        self.collapsedSearchBar.show()
-        self.timeSelectionView.showTimeSelectionView(false)
-        self.collapsedSearchBar.time = NSCalendar.currentCalendar().components([.Hour, .Day, .Minute], fromDate: self.startDate, toDate: self.endDate, options: [])
+        self.showCollapsedSearchBar()
         self.searchPrediction()
         self.searchBar.resignFirstResponder()
     }
@@ -492,9 +490,7 @@ class MapViewController: UIViewController {
             self.view.endEditing(true)
             self.timeSelectionView.deselect()
         } else {
-            self.collapsedSearchBar.show()
-            self.timeSelectionView.showTimeSelectionView(false)
-            self.collapsedSearchBar.time = NSCalendar.currentCalendar().components([.Hour, .Day, .Minute], fromDate: self.startDate, toDate: self.endDate, options: [])
+            self.showCollapsedSearchBar()
             self.searchSpotsButton.hidden = true
         }
     }
@@ -504,16 +500,20 @@ class MapViewController: UIViewController {
         self.clearExistingFacilities()
         self.predictionPlaceDetails = nil
         self.searchSpotsButton.hidden = true
+        self.showCollapsedSearchBar()
+        self.fetchFacilities(self.mapView.centerCoordinate, redo: true)
+    }
+    
+    //MARK: Helpers
+
+    private func showCollapsedSearchBar() {
         self.collapsedSearchBar.show()
         self.timeSelectionView.showTimeSelectionView(false)
         self.collapsedSearchBar.time = NSCalendar.currentCalendar().components([.Hour, .Day, .Minute],
                                                                                fromDate: self.startDate,
                                                                                toDate: self.endDate,
                                                                                options: [])
-        self.fetchFacilities(self.mapView.centerCoordinate, redo: true)
     }
-    
-    //MARK: Helpers
     
     private func fetchFacilitiesIfPlaceDetailsExists() {
         if let placeDetails = self.predictionPlaceDetails {
@@ -582,7 +582,7 @@ extension MapViewController: PredictionControllerDelegate {
         self.redoSearchButton.hidden = true
         self.searchBar.text = prediction.predictionDescription
         self.timeSelectionView.showTimeSelectionView(true)
-        self.showCollapsedSearchBar()
+        self.hideSearchSpots()
         self.searchBar.resignFirstResponder()
         self.timeSelectionView.startViewSelected = true
     }

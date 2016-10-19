@@ -151,7 +151,7 @@ class SearchSpotsUITests: BaseUITests {
         //WHEN: I tap the collapsed search bar view
         tester().tapViewWithAccessibilityLabel(AccessibilityStrings.CollapsedSearchBarView)
         
-        //THEN: I tap the map
+        //WHEN: I tap the map
         tester().tapViewWithAccessibilityLabel(AccessibilityStrings.MapView)
         
         //THEN: I see the collapsed search bar view
