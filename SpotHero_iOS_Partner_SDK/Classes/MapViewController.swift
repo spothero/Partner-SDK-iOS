@@ -488,8 +488,15 @@ class MapViewController: UIViewController {
     }
     
     @IBAction private func didTapMapView(sender: AnyObject) {
-        self.view.endEditing(true)
-        self.timeSelectionView.deselect()
+        if facilities.isEmpty {
+            self.view.endEditing(true)
+            self.timeSelectionView.deselect()
+        } else {
+            self.collapsedSearchBar.show()
+            self.timeSelectionView.showTimeSelectionView(false)
+            self.collapsedSearchBar.time = NSCalendar.currentCalendar().components([.Hour, .Day, .Minute], fromDate: self.startDate, toDate: self.endDate, options: [])
+            self.searchSpotsButton.hidden = true
+        }
     }
     
     @IBAction private func redoSearchButtonPressed(_ sender: AnyObject) {
