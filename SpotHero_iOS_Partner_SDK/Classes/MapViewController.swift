@@ -555,16 +555,20 @@ extension MapViewController: PredictionControllerDelegate {
                                     let headerFooterHeight: CGFloat = 28
                                     let rowHeight: CGFloat = 60
                                     
-                                    if predictions.count > 0 {
+                                    if !predictions.isEmpty {
                                         self.searchSpotsButton.hidden = true
                                         self.timeSelectionView.showTimeSelectionView(false)
                                         let dynamicHeight = self.searchBarHeight + CGFloat(predictions.count) * rowHeight + headerFooterHeight * 2
                                         let height = min(dynamicHeight, self.maxTableHeight)
                                         self.searchContainerViewHeightConstraint.constant = height
                                         self.reservationContainerViewHeightConstraint.constant = height
+                                    } else if predictions.isEmpty && self.searchBar.text?.isEmpty == true {
+                                        self.searchContainerViewHeightConstraint.constant = self.searchBarHeight
                                     } else {
                                         self.searchContainerViewHeightConstraint.constant = self.searchBarHeight
+                                        self.reservationContainerViewHeightConstraint.constant = self.searchBarHeight
                                     }
+                                    
                                     self.view.layoutIfNeeded()
             },
                                    completion: nil)

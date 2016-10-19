@@ -55,8 +55,8 @@ extension PredictionController: UITableViewDelegate {
         guard let delegate = self.delegate else {
             return assertionFailure("delegate is nil")
         }
-        delegate.didSelectPrediction(prediction)
         self.predictions.removeAll()
+        delegate.didSelectPrediction(prediction)
     }
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
