@@ -11,6 +11,6 @@ A wrapper class for the Google Places API.
     s.author                = { 'SpotHero Mobile' => 'mobile@spothero.com' }
     s.source                = { :git => 'https://github.com/spothero/iOS-Partner-SDK.git', :tag => s.version.to_s }
     s.social_media_url      = 'https://twitter.com/SpotHero'
-    s.source_files          = 'SpotHero_iOS_Partner_SDK/Classes/Models/GooglePlace*.swift', 'SpotHero_iOS_Partner_SDK/Classes/Network/GooglePlacesWrapper.swift', 'SpotHero_iOS_Partner_SDK/Classes/Network/JSONDictionary.swift'
+    s.source_files          = 'SpotHero_iOS_Partner_SDK/Classes/*/GooglePlace*.swift', 'SpotHero_iOS_Partner_SDK/Classes/Network/JSONDictionary.swift'
     s.frameworks            = 'UIKit', 'MapKit', 'CoreLocation'
 end
