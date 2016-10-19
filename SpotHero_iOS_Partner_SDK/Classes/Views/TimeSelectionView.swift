@@ -151,6 +151,8 @@ class TimeSelectionView: UIView {
     func deselect() {
         self.startViewSelected = false
         self.endViewSelected = false
+        self.startTimeTextField.resignFirstResponder()
+        self.endTimeTextField.resignFirstResponder()
     }
     
     /**
