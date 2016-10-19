@@ -53,7 +53,7 @@ class GooglePlacesTests: BaseTests {
         let expectation = self.expectationWithDescription("testNoResults")
         
         // Just passing in jibberish so it finds no predictions
-        GooglePlacesWrapper.getPredictions("fjkaiofnaic",
+        GooglePlacesWrapper.getPredictions("fgkgkbnvjjhkhjhjllhjjlgjl",
                                            location: Constants.ChicagoLocation) {
                                             predictions, error in
                                             XCTAssertNotNil(error)
