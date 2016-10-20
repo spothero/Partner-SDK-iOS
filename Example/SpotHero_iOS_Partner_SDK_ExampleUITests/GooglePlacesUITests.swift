@@ -61,8 +61,6 @@ class GooglePlacesUITests: BaseUITests {
         }
         
         XCTAssertNotNil(searchBar.text)
-        
-        //TODO: Search for place
     }
     
     func testNoPredictions() {
@@ -85,7 +83,7 @@ class GooglePlacesUITests: BaseUITests {
         //GIVEN: I see the search bar and begin typing
         self.enterTextIntoSearchBar("Chicago")
         
-        //WHEN: I see a table view and delete the text
+        //WHEN: I see a table view
         guard let tableView = tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.PredictionTableView) as? UITableView else {
             XCTFail("No Prediction table view")
             return
@@ -93,8 +91,10 @@ class GooglePlacesUITests: BaseUITests {
         
         tester().waitForTimeInterval(self.waitTime)
         
+        //THEN: The table should be expanded
         XCTAssertNotEqual(tableView.frame.height, 0)
         
+        //WHEN: I delete the text
         tester().clearTextFromFirstResponder()
         tester().waitForTimeInterval(self.waitTime)
         
