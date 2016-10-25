@@ -12,8 +12,7 @@ import XCTest
 
 class StripeWrapperTests: BaseTests {
 
-    // TODO unskip this when we get a staging stripe token
-    func skip_testGetToken() {
+    func testGetToken() {
         let expectation = self.expectationWithDescription("testGetToken")
         
         StripeWrapper.getToken(Constants.TestCreditCardNumber,

@@ -9,6 +9,7 @@
 import Foundation
 
 struct ReservationAPI {
+    private static var LastReservation: Reservation?
     
     /**
      Creates a reservation
@@ -63,6 +64,7 @@ struct ReservationAPI {
                 }
                 
                 let reservation  = try Reservation(json: data)
+                self.LastReservation = reservation
                 completion(reservation, nil)
             } catch let error {
                 completion(nil, error)
@@ -93,6 +95,17 @@ struct ReservationAPI {
         }) {
             JSON in
             completion?(nil)
+        }
+    }
+    
+    static func cancelLastReservation(completion: ((Bool) -> Void)) {
+        guard let reservation = self.LastReservation else {
+            completion(false)
+            return
+        }
+        
+        self.cancelReservation(reservation) { (error) -> (Void) in
+            completion(error == nil)
         }
     }
 }

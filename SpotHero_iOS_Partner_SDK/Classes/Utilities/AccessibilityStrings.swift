@@ -39,4 +39,22 @@ enum AccessibilityStrings {
                                                 comment: "Accessibility label for end time")
     static let CollapsedSearchBarView = NSLocalizedString("CollapsedSearchBarView",
                                                           comment: "Accessibility label for collapsed search bar view")
+    static let SpotCards = NSLocalizedString("Spot Cards",
+                                             comment: "Accessibility label for spot cards collection view")
+    static let EmailTextField = NSLocalizedString("Email text field",
+                                                  comment: "Text field for entering an email")
+    static let PhoneTextField = NSLocalizedString("Phone text field",
+                                                  comment: "Text field for entering a phone number")
+    static let LicenseTextField = NSLocalizedString("License text field",
+                                                    comment: "Text field for entering a license plate number")
+    static let CreditCardTextField = NSLocalizedString("Credit card text field",
+                                                       comment: "Text field for entering a credit card number")
+    static let ExpirationTextField = NSLocalizedString("Expiration date text field",
+                                                       comment: "Text field for entering an expiration date")
+    static let CVCTextField = NSLocalizedString("CVC text field",
+                                                comment: "Text field for entering a CVC")
+    static let PaymentButton = NSLocalizedString("Payment Button",
+                                                 comment: "Button to purchase a spot")
+    static let ConfirmationScreen = NSLocalizedString("Confirmation Screen",
+                                                     comment: "Confimation screen. Seen after a spot is purchased")
 }

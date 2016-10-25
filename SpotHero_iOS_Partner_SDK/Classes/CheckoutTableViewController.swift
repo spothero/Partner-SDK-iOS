@@ -71,6 +71,17 @@ enum PersonalInfoRow: Int, CountableIntEnum {
             return LocalizedStrings.LicensePlatePlaceHolder
         }
     }
+    
+    var accessibilityLabel: String {
+        switch self {
+        case .Email:
+            return AccessibilityStrings.EmailTextField
+        case .Phone:
+            return AccessibilityStrings.PhoneTextField
+        case .License:
+            return AccessibilityStrings.LicenseTextField
+        }
+    }
 }
 
 class CheckoutTableViewController: UIViewController {
@@ -102,6 +113,7 @@ class CheckoutTableViewController: UIViewController {
                           forControlEvents: .TouchUpInside)
         _button.backgroundColor = .shp_mutedGreen()
         _button.translatesAutoresizingMaskIntoConstraints = false
+        _button.accessibilityLabel = AccessibilityStrings.PaymentButton
         return _button
     }()
     
@@ -356,6 +368,7 @@ class CheckoutTableViewController: UIViewController {
         cell.titleLabel.text = row.title()
         cell.textField.placeholder = row.placeholder()
         cell.textField.inputAccessoryView = self.toolbar
+        cell.textField.accessibilityLabel = row.accessibilityLabel
         cell.type = row
         cell.personalInfoCellDelegate = self
         

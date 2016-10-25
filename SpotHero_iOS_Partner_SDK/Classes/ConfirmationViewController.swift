@@ -9,11 +9,16 @@
 import UIKit
 
 class ConfirmationViewController: UIViewController {
+    @IBOutlet weak var bookAnotherButton: UIButton!
+    @IBOutlet weak var doneButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.navigationItem.hidesBackButton = true
+        self.view.accessibilityLabel = AccessibilityStrings.ConfirmationScreen
+        self.bookAnotherButton.setTitle(LocalizedStrings.BookAnother, forState: .Normal)
+        self.doneButton.setTitle(LocalizedStrings.Done, forState: .Normal)
     }
     
     @IBAction func bookAnotherButtonPressed(sender: AnyObject) {

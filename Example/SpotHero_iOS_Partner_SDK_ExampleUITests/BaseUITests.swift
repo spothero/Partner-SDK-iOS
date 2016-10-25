@@ -29,11 +29,11 @@ class BaseUITests: KIFTestCase {
         tester().waitForViewWithAccessibilityLabel(LocalizedStrings.LaunchSDK)
     }
     
-    func enterTextIntoSearchBar(text: String) {
+    func enterTextIntoSearchBar(text: String, expectedText: String? = nil) {
         tester().clearTextFromAndThenEnterText(text,
                                                intoViewWithAccessibilityLabel: AccessibilityStrings.SearchBar,
                                                traits: UIAccessibilityTraitNone,
-                                               expectedResult: text)
+                                               expectedResult: expectedText ?? text)
     }
     
 }

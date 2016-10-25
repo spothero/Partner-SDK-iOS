@@ -29,6 +29,7 @@
 		C7CBF4891D411F0F001D988F /* SpotHeroPartnerAPIController+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7CBF4871D411EFA001D988F /* SpotHeroPartnerAPIController+Mock.swift */; };
 		C7CBF48C1D412362001D988F /* PartnerAPIMockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7CBF48B1D412362001D988F /* PartnerAPIMockTests.swift */; };
 		C7DEAAA61D9C607900443B3B /* NSDateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DEAAA51D9C607900443B3B /* NSDateTests.swift */; };
+		C7E786031DB96B7800A0DC90 /* CheckoutUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E786011DB96B4800A0DC90 /* CheckoutUITests.swift */; };
 		C7FBD09B1D4273B40089A53B /* VOKMockData in Resources */ = {isa = PBXBuildFile; fileRef = C7FBD09A1D4273B40089A53B /* VOKMockData */; };
 		C7FBD0AE1D47BF170089A53B /* StripeWrapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7FBD0AD1D47BF170089A53B /* StripeWrapperTests.swift */; };
 /* End PBXBuildFile section */
@@ -88,6 +89,7 @@
 		C7CBF4871D411EFA001D988F /* SpotHeroPartnerAPIController+Mock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SpotHeroPartnerAPIController+Mock.swift"; sourceTree = "<group>"; };
 		C7CBF48B1D412362001D988F /* PartnerAPIMockTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartnerAPIMockTests.swift; sourceTree = "<group>"; };
 		C7DEAAA51D9C607900443B3B /* NSDateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateTests.swift; sourceTree = "<group>"; };
+		C7E786011DB96B4800A0DC90 /* CheckoutUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutUITests.swift; sourceTree = "<group>"; };
 		C7FBD09A1D4273B40089A53B /* VOKMockData */ = {isa = PBXFileReference; lastKnownFileType = folder; path = VOKMockData; sourceTree = "<group>"; };
 		C7FBD0AD1D47BF170089A53B /* StripeWrapperTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StripeWrapperTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -129,6 +131,7 @@
 				C70AA21C1D397E2C004C7BDE /* GooglePlacesUITests.swift */,
 				12794D561D5BC9B30074E246 /* SearchSpotsUITests.swift */,
 				C70AA21F1D398432004C7BDE /* BaseUITests.swift */,
+				C7E786011DB96B4800A0DC90 /* CheckoutUITests.swift */,
 			);
 			name = UITests;
 			path = SpotHero_iOS_Partner_SDK_ExampleUITests;
@@ -572,6 +575,7 @@
 				C70AA2211D398435004C7BDE /* BaseUITests.swift in Sources */,
 				3361782E1D249B1A00AF7AD6 /* ShowSDKUITests.swift in Sources */,
 				336178381D24A8BB00AF7AD6 /* XCTestCase+KIF.swift in Sources */,
+				C7E786031DB96B7800A0DC90 /* CheckoutUITests.swift in Sources */,
 				C70AA21E1D397E75004C7BDE /* GooglePlacesUITests.swift in Sources */,
 				12794D581D5BC9DB0074E246 /* SearchSpotsUITests.swift in Sources */,
 			);

@@ -160,6 +160,7 @@ class MapViewController: UIViewController {
         self.predictionTableView.accessibilityLabel = AccessibilityStrings.PredictionTableView
         self.timeSelectionView.accessibilityLabel = AccessibilityStrings.TimeSelectionView
         self.closeButton.accessibilityLabel = LocalizedStrings.Close
+        self.spotCardCollectionView.accessibilityLabel = AccessibilityStrings.SpotCards
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
