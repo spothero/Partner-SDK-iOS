@@ -104,7 +104,7 @@ class MapViewController: UIViewController {
         let mapPinchRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(self.didDragMap(_:)))
         mapPinchRecognizer.delegate = self
         self.mapView.addGestureRecognizer(mapPinchRecognizer)
-        searchBar.becomeFirstResponder()
+        self.searchBar.becomeFirstResponder()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -598,7 +598,6 @@ extension MapViewController: PredictionControllerDelegate {
     
     func didTapSearchButton() {
         guard self.predictionController.predictions.count > 0 else {
-            self.searchSpots()
             return
         }
         
