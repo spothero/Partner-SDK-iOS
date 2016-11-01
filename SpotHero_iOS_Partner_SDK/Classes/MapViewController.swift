@@ -598,7 +598,6 @@ extension MapViewController: PredictionControllerDelegate {
     
     func didTapSearchButton() {
         guard self.predictionController.predictions.count > 0 else {
-            self.searchSpots()
             return
         }
         
