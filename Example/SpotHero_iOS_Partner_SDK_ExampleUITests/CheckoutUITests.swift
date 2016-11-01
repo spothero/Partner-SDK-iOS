@@ -22,6 +22,8 @@ class CheckoutUITests: BaseUITests {
     let visaCVC = "123"
     let amExCreditCard = "345631899386110"
     let amExCVC = "1234"
+    let testEmail = "matt@test.com"
+    let testExpiration = "1020"
     
     func cancelReservation() {
         let expectation = self.expectationWithDescription("Reservation Cancelled")
@@ -34,18 +36,40 @@ class CheckoutUITests: BaseUITests {
         self.waitForExpectationsWithTimeout(10, handler: nil)
     }
     
-    func purchaseSpot(creditCardNumber: String, cvc: String) {
-        let lastFour = creditCardNumber.substringWithRange(creditCardNumber.endIndex.advancedBy(-4)..<creditCardNumber.endIndex)
-        tester().enterText("matt@test.com", intoViewWithAccessibilityLabel: AccessibilityStrings.EmailTextField)
+    func enterTextInFields(email: String,
+                           creditCardNumber: String,
+                           expiration: String? = nil,
+                           cvc: String? = nil,
+                           expectedCreditCard: String? = nil) {
+        
+        let expectedCC = expectedCreditCard ??
+            creditCardNumber.substringWithRange(creditCardNumber.endIndex.advancedBy(-4)..<creditCardNumber.endIndex)
+        
+        tester().enterText(email, intoViewWithAccessibilityLabel: AccessibilityStrings.EmailTextField)
         tester().enterText(creditCardNumber,
                            intoViewWithAccessibilityLabel: AccessibilityStrings.CreditCardTextField,
                            traits: UIAccessibilityTraitNone,
-                           expectedResult: lastFour)
-        tester().enterText("1020",
-                           intoViewWithAccessibilityLabel: AccessibilityStrings.ExpirationTextField,
-                           traits: UIAccessibilityTraitNone,
-                           expectedResult: "10/20")
-        tester().enterText(cvc, intoViewWithAccessibilityLabel: AccessibilityStrings.CVCTextField)
+                           expectedResult: expectedCC)
+        if let expiration = expiration {
+            var expectedExpiration = expiration
+            expectedExpiration.insert("/", atIndex: expectedExpiration.startIndex.advancedBy(2))
+            tester().enterText(expiration,
+                               intoViewWithAccessibilityLabel: AccessibilityStrings.ExpirationTextField,
+                               traits: UIAccessibilityTraitNone,
+                               expectedResult: expectedExpiration)
+
+        }
+        
+        if let cvc = cvc {
+            tester().enterText(cvc, intoViewWithAccessibilityLabel: AccessibilityStrings.CVCTextField)
+        }
+    }
+    
+    func purchaseSpot(creditCardNumber: String, cvc: String) {
+        self.enterTextInFields(self.testEmail,
+                               creditCardNumber: creditCardNumber,
+                               expiration: self.testExpiration,
+                               cvc: cvc)
         
         guard let button = tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.PaymentButton) as? UIButton else {
             XCTFail("Cannot get payment button")
@@ -97,7 +121,7 @@ class CheckoutUITests: BaseUITests {
         self.purchaseSpot(self.amExCreditCard, cvc: self.amExCVC)
     }
     
-    func testRebookButton() {
+    func testBookAnotherButton() {
         //GIVEN: I see the confimation screen
         self.purchaseSpot(self.visaCreditCard, cvc: self.visaCVC)
         
@@ -122,5 +146,52 @@ class CheckoutUITests: BaseUITests {
         
         // Relaunch SDK
         tester().tapViewWithAccessibilityLabel(LocalizedStrings.LaunchSDK)
+    }
+    
+    func testInvalidEmail() {
+        //GIVEN: I see the checkout screen
+        //WHEN: I enter an invalid email and valid
+        self.enterTextInFields("matt@test",
+                               creditCardNumber: self.visaCreditCard,
+                               expiration: self.testExpiration,
+                               cvc: self.visaCVC)
+        
+        //THEN: The payment button should be disabled
+        if let paymentButton = tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.PaymentButton) as? UIButton {
+            XCTAssertFalse(paymentButton.enabled)
+        } else {
+            XCTFail("Cannot get payment button")
+        }
+    }
+    
+    func testInvalidCreditCardNumber() {
+        //GIVEN: I see the checkout screen
+        //WHEN: I enter an invalid credit card number
+        self.enterTextInFields(self.testEmail,
+                               creditCardNumber: "1234567812345678",
+                               expectedCreditCard: "1234 5678 1234 5678")
+        
+        //THEN: The payment button should be disabled
+        if let paymentButton = tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.PaymentButton) as? UIButton {
+            XCTAssertFalse(paymentButton.enabled)
+        } else {
+            XCTFail("Cannot get payment button")
+        }
+    }
+    
+    func testInvalidExpiration() {
+        //GIVEN: I see the checkout screen
+        //WHEN: I enter an invalid credit card number
+        self.enterTextInFields(self.testEmail,
+                               creditCardNumber: self.visaCreditCard,
+                               expiration: "1013",
+                               cvc: self.visaCVC)
+        
+        //THEN: The payment button should be disabled
+        if let paymentButton = tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.PaymentButton) as? UIButton {
+            XCTAssertFalse(paymentButton.enabled)
+        } else {
+            XCTFail("Cannot get payment button")
+        }
     }
 }

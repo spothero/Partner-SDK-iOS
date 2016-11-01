@@ -11,6 +11,7 @@ import UIKit
 class ConfirmationViewController: UIViewController {
     @IBOutlet weak var bookAnotherButton: UIButton!
     @IBOutlet weak var doneButton: UIButton!
+    @IBOutlet weak var closeButton: UIBarButtonItem!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +20,7 @@ class ConfirmationViewController: UIViewController {
         self.view.accessibilityLabel = AccessibilityStrings.ConfirmationScreen
         self.bookAnotherButton.setTitle(LocalizedStrings.BookAnother, forState: .Normal)
         self.doneButton.setTitle(LocalizedStrings.Done, forState: .Normal)
+        self.closeButton.accessibilityLabel = LocalizedStrings.Close
     }
     
     @IBAction func bookAnotherButtonPressed(sender: AnyObject) {

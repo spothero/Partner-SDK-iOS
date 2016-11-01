@@ -86,6 +86,7 @@ enum PersonalInfoRow: Int, CountableIntEnum {
 
 class CheckoutTableViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var closeButton: UIBarButtonItem!
     @IBOutlet var toolbar: UIToolbar!
     
     private let reservationCellHeight: CGFloat = 60
@@ -128,6 +129,7 @@ class CheckoutTableViewController: UIViewController {
         self.tableView.estimatedRowHeight = 60
         self.setupPaymentButton()
         self.registerForKeyboardNotifications()
+        self.closeButton.accessibilityLabel = LocalizedStrings.Close
     }
     
     
@@ -228,6 +230,10 @@ class CheckoutTableViewController: UIViewController {
         self.view.endEditing(true)
     }
     
+    @IBAction func closeButtonPressed(_ sender: AnyObject) {
+        SpotHeroPartnerSDK.SharedInstance.reportSDKClosed()
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
     //MARK: Helpers
     
     /**
