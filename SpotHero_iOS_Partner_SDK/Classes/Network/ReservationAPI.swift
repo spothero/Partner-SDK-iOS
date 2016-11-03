@@ -23,6 +23,7 @@ struct ReservationAPI {
     static func createReservation(facility: Facility,
                                   rate: Rate,
                                   email: String,
+                                  phone: String,
                                   stripeToken: String,
                                   license: String? = nil,
                                   completion: (Reservation?, ErrorType?) -> (Void))  {
@@ -38,6 +39,7 @@ struct ReservationAPI {
             "ends" : ends,
             "price" : rate.price,
             "stripe_token" : stripeToken,
+            "phone_number" : phone,
         ]
         
         if let license = license where !license.isEmpty {

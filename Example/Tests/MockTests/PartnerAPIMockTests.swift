@@ -18,6 +18,7 @@ enum PartnerAPIMockTestsError: ErrorType {
 
 class PartnerAPIMockTests: XCTestCase {
     let mockTestEmail = "matt@gmail.com"
+    let mockTestPhone = "5555555555"
     let timeoutDuration: NSTimeInterval = 10
     let startDate = DateFormatter.ISO8601NoSeconds.dateFromString("2016-10-13T19:16")
     let endDate = DateFormatter.ISO8601NoSeconds.dateFromString("2016-10-14T00:16")
@@ -113,6 +114,7 @@ class PartnerAPIMockTests: XCTestCase {
                 ReservationAPI.createReservation(facility,
                                                  rate: rate,
                                                  email: self.mockTestEmail,
+                                                 phone: self.mockTestPhone,
                                                  stripeToken: "",
                                                  completion: {
                                                     reservation, reservationError in
