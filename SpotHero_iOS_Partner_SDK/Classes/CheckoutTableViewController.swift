@@ -313,7 +313,7 @@ class CheckoutTableViewController: UIViewController {
             phoneCell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: PersonalInfoRow.Phone.row(facility.phoneNumberRequired), inSection: CheckoutSection.PersonalInfo.rawValue)) as? PersonalInfoTableViewCell
             where facility.phoneNumberRequired,
             let text = phoneCell.textField.text {
-            phoneNumber = text
+                phoneNumber = text
         }
         
         var license: String?
@@ -321,7 +321,7 @@ class CheckoutTableViewController: UIViewController {
         if let
             licenseCell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: PersonalInfoRow.License.row(facility.phoneNumberRequired), inSection: CheckoutSection.PersonalInfo.rawValue)) as? PersonalInfoTableViewCell
             where facility.licensePlateRequired {
-            license = licenseCell.textField.text
+                license = licenseCell.textField.text
         }
         
         ReservationAPI.createReservation(facility,
@@ -476,7 +476,7 @@ extension CheckoutTableViewController: UITableViewDataSource {
             let cell = cell as? PersonalInfoTableViewCell,
             let facility = self.facility {
             let row = PersonalInfoRow(facility: facility, index: indexPath.row)
-            self.configureCell(cell, row: row)
+                self.configureCell(cell, row: row)
         } else if let cell = cell as? PaymentInfoTableViewCell {
             cell.creditCardTextField.inputAccessoryView = self.toolbar
             cell.expirationDateTextField.inputAccessoryView = self.toolbar
