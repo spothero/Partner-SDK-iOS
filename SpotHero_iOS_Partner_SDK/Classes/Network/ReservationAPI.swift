@@ -23,7 +23,7 @@ struct ReservationAPI {
     static func createReservation(facility: Facility,
                                   rate: Rate,
                                   email: String,
-                                  phone: String,
+                                  phone: String? = nil,
                                   stripeToken: String,
                                   license: String? = nil,
                                   completion: (Reservation?, ErrorType?) -> (Void))  {
@@ -39,7 +39,6 @@ struct ReservationAPI {
             "ends" : ends,
             "price" : rate.price,
             "stripe_token" : stripeToken,
-            "phone_number" : phone,
         ]
         
         if let license = license where !license.isEmpty {
@@ -48,6 +47,10 @@ struct ReservationAPI {
             params["license_plate"] = "UNKNOWN"
         }
 
+        if let phone = phone where !phone.isEmpty {
+            params["phone_number"] = phone
+        }
+        
         let headers = APIHeaders.defaultHeaders()
         
         SpotHeroPartnerAPIController.postJSONtoEndpoint("partner/v1/reservations",
