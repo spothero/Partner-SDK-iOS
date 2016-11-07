@@ -475,7 +475,7 @@ extension CheckoutTableViewController: UITableViewDataSource {
         } else if
             let cell = cell as? PersonalInfoTableViewCell,
             let facility = self.facility {
-            let row = PersonalInfoRow(facility: facility, index: indexPath.row)
+                let row = PersonalInfoRow(facility: facility, index: indexPath.row)
                 self.configureCell(cell, row: row)
         } else if let cell = cell as? PaymentInfoTableViewCell {
             cell.creditCardTextField.inputAccessoryView = self.toolbar
