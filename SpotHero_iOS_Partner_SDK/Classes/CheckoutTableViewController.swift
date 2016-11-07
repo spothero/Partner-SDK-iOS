@@ -44,11 +44,43 @@ enum ReservationInfoRow: Int, CountableIntEnum {
     }
 }
 
-enum PersonalInfoRow: Int, CountableIntEnum {
+enum PersonalInfoRow {
     case
     Email,
     Phone,
     License
+    
+    init(facility: Facility, index: Int) {
+        if index == 0 {
+            self = .Email
+        } else if index == 1 && facility.phoneNumberRequired {
+            self = .Phone
+        } else {
+            self = .License
+        }
+    }
+    
+    func row(phoneNumberRequired: Bool) -> Int {
+        switch self {
+        case .Email:
+            return 0
+        case .Phone:
+            return 1
+        case .License:
+            return phoneNumberRequired ? 2 : 1
+        }
+    }
+    
+    static func count(facility: Facility) -> Int {
+        if facility.licensePlateRequired && facility.phoneNumberRequired {
+            return 3
+        } else if facility.licensePlateRequired || facility.phoneNumberRequired {
+            return 2
+        } else {
+            return 1
+        }
+    }
+    
     
     func title() -> String {
         switch self {
@@ -287,30 +319,33 @@ class CheckoutTableViewController: UIViewController {
         }
         
         guard
-            let emailCell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: PersonalInfoRow.Email.rawValue, inSection: CheckoutSection.PersonalInfo.rawValue)) as? PersonalInfoTableViewCell,
+            let emailCell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: PersonalInfoRow.Email.row(facility.phoneNumberRequired), inSection: CheckoutSection.PersonalInfo.rawValue)) as? PersonalInfoTableViewCell,
             let email = emailCell.textField.text else {
                 assertionFailure("Cannot get email cell")
                 completion(false)
                 return
         }
         
-        var phoneNumber = ""
-        if let phoneCell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: PersonalInfoRow.Phone.rawValue, inSection: CheckoutSection.PersonalInfo.rawValue)) as? PersonalInfoTableViewCell,
+        var phoneNumber: String?
+        if let
+            phoneCell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: PersonalInfoRow.Phone.row(facility.phoneNumberRequired), inSection: CheckoutSection.PersonalInfo.rawValue)) as? PersonalInfoTableViewCell
+            where facility.phoneNumberRequired,
             let text = phoneCell.textField.text {
-            phoneNumber = text
+                phoneNumber = text
         }
         
         var license: String?
         
         if let
-            licenseCell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: PersonalInfoRow.License.rawValue, inSection: CheckoutSection.PersonalInfo.rawValue)) as? PersonalInfoTableViewCell
+            licenseCell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: PersonalInfoRow.License.row(facility.phoneNumberRequired), inSection: CheckoutSection.PersonalInfo.rawValue)) as? PersonalInfoTableViewCell
             where facility.licensePlateRequired {
-            license = licenseCell.textField.text
+                license = licenseCell.textField.text
         }
         
         ReservationAPI.createReservation(facility,
                                          rate: rate,
                                          email: email,
+                                         phone: phoneNumber,
                                          stripeToken: token,
                                          license: license,
                                          completion: {
@@ -335,7 +370,7 @@ class CheckoutTableViewController: UIViewController {
                                                     .RequiredLicensePlate: facility.licensePlateRequired,
                                                     .RequiredPhoneNumber: facility.phoneNumberRequired,
                                                     .EmailAddress: email,
-                                                    .PhoneNumber: phoneNumber,
+                                                    .PhoneNumber: phoneNumber ?? "",
                                                     .TimeFromReservationStart: rate.minutesToReservation(),
                                                     ])
                                             }
@@ -426,10 +461,12 @@ extension CheckoutTableViewController: UITableViewDataSource {
         case .ReservationInfo:
             return ReservationInfoRow.AllCases.count
         case .PersonalInfo:
-            guard let licensePlateRequired = facility?.licensePlateRequired where licensePlateRequired else {
-                return PersonalInfoRow.AllCases.count - 1
+            guard let facility = self.facility else {
+                assertionFailure("self.facility is not set!")
+                return 0
             }
-            return PersonalInfoRow.AllCases.count
+            
+            return PersonalInfoRow.count(facility)
         case .PaymentInfo:
             return 1
         }
@@ -456,9 +493,9 @@ extension CheckoutTableViewController: UITableViewDataSource {
                                rate: rate)
         } else if
             let cell = cell as? PersonalInfoTableViewCell,
-            let row = PersonalInfoRow(rawValue: indexPath.row) {
-            
-            self.configureCell(cell, row: row)
+            let facility = self.facility {
+                let row = PersonalInfoRow(facility: facility, index: indexPath.row)
+                self.configureCell(cell, row: row)
         } else if let cell = cell as? PaymentInfoTableViewCell {
             cell.creditCardTextField.inputAccessoryView = self.toolbar
             cell.expirationDateTextField.inputAccessoryView = self.toolbar
@@ -562,7 +599,10 @@ extension CheckoutTableViewController: KeyboardNotification {
 
 extension CheckoutTableViewController: PersonalInfoTableViewCellDelegate {
     func textFieldShouldReturn(type: PersonalInfoRow) {
-        let indexPath = NSIndexPath(forRow: type.rawValue + 1, inSection: CheckoutSection.PersonalInfo.rawValue)
+        guard let facility = self.facility else {
+            return
+        }
+        let indexPath = NSIndexPath(forRow: type.row(facility.phoneNumberRequired) + 1, inSection: CheckoutSection.PersonalInfo.rawValue)
         if let cell = self.tableView.cellForRowAtIndexPath(indexPath) as? PersonalInfoTableViewCell {
             cell.textField.becomeFirstResponder()
         }

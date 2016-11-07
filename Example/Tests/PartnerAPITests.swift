@@ -119,6 +119,7 @@ class PartnerAPITests: BaseTests {
                                         ReservationAPI.createReservation(facility,
                                                                          rate: rate,
                                                                          email: self.testEmailRandom,
+                                                                         phone: self.testPhone,
                                                                          stripeToken: token,
                                                                          completion: {
                                                                             reservation, error in

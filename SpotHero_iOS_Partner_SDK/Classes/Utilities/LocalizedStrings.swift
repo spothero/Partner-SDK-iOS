@@ -35,7 +35,7 @@ enum LocalizedStrings {
                                          comment: "Title for Phone number row of checkout screen")
     static let EmailAddressPlaceHolder = NSLocalizedString("Email Address",
                                                  comment: "Placeholder for Email row of checkout screen")
-    static let PhoneNumberPlaceHolder = NSLocalizedString("Phone Number (Optional)",
+    static let PhoneNumberPlaceHolder = NSLocalizedString("Phone Number",
                                                  comment: "Placeholder for Phone Number row of checkout screen")
     static let ReservationInfo = NSLocalizedString("RESERVATION INFO",
                                                    comment: "Title for reservation info section of checkout screen")
