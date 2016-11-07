@@ -18,6 +18,8 @@ class BaseTests: XCTestCase {
         return "matt\(rand)@test.com"
     }
     
+    let testPhone = "5555555555"
+    
     override func setUp() {
         let expectation = self.expectationWithDescription("Retrieved API Keys")
         APIKeyConfig.sharedInstance.getKeys {

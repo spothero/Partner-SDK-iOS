@@ -15,7 +15,7 @@ public enum ServerEnvironment {
     Custom(baseURL: String) // Must be passed in as https://whatevs.com (no /api) to work
     
     /// What environment should we be pointed at?
-    public static var CurrentEnvironment = ServerEnvironment.Production
+    public static var CurrentEnvironment = ServerEnvironment.Staging
     
     /// Should the API debugPrint the info?
     public static var ShouldDebugPrintInfo = SpotHeroPartnerSDK.SharedInstance.debugPrintInfo
