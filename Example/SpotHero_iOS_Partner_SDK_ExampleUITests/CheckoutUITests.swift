@@ -12,9 +12,9 @@ import KIF
 @testable import SpotHero_iOS_Partner_SDK
 
 class CheckoutUITests: BaseUITests {
-    let emailIndexPath = NSIndexPath(forRow: PersonalInfoRow.Email.rawValue, inSection: CheckoutSection.PersonalInfo.rawValue)
-    let phoneNumberIndexPath = NSIndexPath(forRow: PersonalInfoRow.Phone.rawValue, inSection: CheckoutSection.PersonalInfo.rawValue)
-    let licenseIndexPath = NSIndexPath(forRow: PersonalInfoRow.License.rawValue, inSection: CheckoutSection.PersonalInfo.rawValue)
+    let emailIndexPath = NSIndexPath(forRow: PersonalInfoRow.Email.row(true), inSection: CheckoutSection.PersonalInfo.rawValue)
+    let phoneNumberIndexPath = NSIndexPath(forRow: PersonalInfoRow.Phone.row(true), inSection: CheckoutSection.PersonalInfo.rawValue)
+    let licenseIndexPath = NSIndexPath(forRow: PersonalInfoRow.License.row(true), inSection: CheckoutSection.PersonalInfo.rawValue)
     let firstIndexPath = NSIndexPath(forItem: 0, inSection: 0)
     let enteredText = "Chicago\n"
     let expectedText = "Chicago, IL, United States"
