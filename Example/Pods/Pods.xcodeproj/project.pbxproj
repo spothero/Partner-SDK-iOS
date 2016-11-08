@@ -16,6 +16,9 @@
 		0E696E98B16C59A6AD10807E246A5511 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44EE72E22B15FDAF57F9EE6D2EE224D5 /* Foundation.framework */; };
 		0F60EB8D2BE86E3663CBC308A0FBA88A /* TimeSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6393BD8F776BA36B9ED39DB2C6C2937D /* TimeSelectionView.swift */; };
 		12AC30A8BBD2D158AE154DD3E358D754 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44EE72E22B15FDAF57F9EE6D2EE224D5 /* Foundation.framework */; };
+		12CA75C81DD127C000535940 /* GooglePlacesAPIWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CA75C71DD127C000535940 /* GooglePlacesAPIWrapper.swift */; };
+		12CA75CA1DD132AA00535940 /* GooglePlaceDetailsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CA75C91DD132AA00535940 /* GooglePlaceDetailsWrapper.swift */; };
+		12CA75CC1DD132DD00535940 /* GooglePlacesPredictionWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CA75CB1DD132DD00535940 /* GooglePlacesPredictionWrapper.swift */; };
 		12F5BF580B01D11B3F58360D71F1A7CF /* SpotHeroPartnerAPIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4843F5F80C627641BEACC18378B8646E /* SpotHeroPartnerAPIController.swift */; };
 		162B12F5680B9A66C77CEA881F353A7E /* KIFUIObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FC79E7BBF43F066DFF9EB87D51061921 /* KIFUIObject.m */; };
 		167DE4242C0634054845621E9B7F722F /* UIColor+SpotHeroPartner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A2073789F1B7F0BA50232D8F45891C /* UIColor+SpotHeroPartner.swift */; };
@@ -283,6 +286,9 @@
 		10FB630A2699946E09F3D27C1D7D1708 /* PaymentButton.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = PaymentButton.xib; sourceTree = "<group>"; };
 		126B6FC65528F8F249F2DD5BBA889C7E /* APIHeaders.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = APIHeaders.swift; sourceTree = "<group>"; };
 		127E01E5A45C4F58FE75BA91DE539413 /* Pods_SpotHero_iOS_Partner_SDK_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpotHero_iOS_Partner_SDK_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		12CA75C71DD127C000535940 /* GooglePlacesAPIWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GooglePlacesAPIWrapper.swift; sourceTree = "<group>"; };
+		12CA75C91DD132AA00535940 /* GooglePlaceDetailsWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GooglePlaceDetailsWrapper.swift; sourceTree = "<group>"; };
+		12CA75CB1DD132DD00535940 /* GooglePlacesPredictionWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GooglePlacesPredictionWrapper.swift; sourceTree = "<group>"; };
 		12F419EB9D92785AAE0A8749F7D453D3 /* Pods-SpotHero_iOS_Partner_SDK_ExampleUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SpotHero_iOS_Partner_SDK_ExampleUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		13CB2788B6474B596AD9130013AE4DA3 /* NSURLQueryItem+QueryParams.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "NSURLQueryItem+QueryParams.swift"; sourceTree = "<group>"; };
 		147262C01BCE60B257AA3F193E3EEFEE /* NSDate+DateFormatter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "NSDate+DateFormatter.swift"; sourceTree = "<group>"; };
@@ -585,6 +591,16 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
+		122071491DD22E020020DDF2 /* GooglePlacesWrapperPod_Files */ = {
+			isa = PBXGroup;
+			children = (
+				12CA75C71DD127C000535940 /* GooglePlacesAPIWrapper.swift */,
+				12CA75CB1DD132DD00535940 /* GooglePlacesPredictionWrapper.swift */,
+				12CA75C91DD132AA00535940 /* GooglePlaceDetailsWrapper.swift */,
+			);
+			path = GooglePlacesWrapperPod_Files;
+			sourceTree = "<group>";
+		};
 		13F97A3688FDD8B4DCAFE1BF38487097 /* Model Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -879,6 +895,7 @@
 			isa = PBXGroup;
 			children = (
 				D6FDDD6C6D20DE259D5488F5B819C561 /* Classes */,
+				122071491DD22E020020DDF2 /* GooglePlacesWrapperPod_Files */,
 			);
 			path = SpotHero_iOS_Partner_SDK;
 			sourceTree = "<group>";
@@ -1471,6 +1488,7 @@
 				FB95AC8D79F09D2D62411C6A039E2444 /* DateFormatter.swift in Sources */,
 				745AFD5190CD4DE0083B6DF8547466E7 /* DLog.swift in Sources */,
 				2AA2EC24DE4E712455C03C3C24D7D0C4 /* Facility.swift in Sources */,
+				12CA75CA1DD132AA00535940 /* GooglePlaceDetailsWrapper.swift in Sources */,
 				AD3BCFB971D5AC7CC7BAF19EC39FF6B8 /* FacilityAnnotationView.swift in Sources */,
 				67B0936D159937C69ADDBA09F37DEEDF /* Formatter.swift in Sources */,
 				E04C4F111BA309242978D2FAD7D631DE /* GooglePlaceDetails.swift in Sources */,
@@ -1482,6 +1500,7 @@
 				3391D7901D9DA7F8009A42B8 /* NSDate+Comparison.swift in Sources */,
 				33BFC4121D9F50A200F7C37F /* CountableIntEnum.swift in Sources */,
 				CE4844A2CF4313DF5672F20801CAF947 /* JSONDictionary.swift in Sources */,
+				12CA75C81DD127C000535940 /* GooglePlacesAPIWrapper.swift in Sources */,
 				E8C08F4DE724466F256BBA2A6D8117C7 /* LocalizedStrings.swift in Sources */,
 				D42BC74D54F24F72DB0292814834E630 /* MapViewController.swift in Sources */,
 				9E7893AE5908B8B165303A362D93AAB1 /* NSBundle+SpotHeroPartner.swift in Sources */,
@@ -1490,6 +1509,7 @@
 				F90EEA8EBAA458A5222B728EF4D6804B /* NSURLQueryItem+QueryParams.swift in Sources */,
 				C6823953955B79CA0D45C6C82BC50814 /* NumberFormatter.swift in Sources */,
 				DA292ADF5EF1F55376262F9A516CAB41 /* PaymentButton.swift in Sources */,
+				12CA75CC1DD132DD00535940 /* GooglePlacesPredictionWrapper.swift in Sources */,
 				FF8B6DE559BA1A052541A4C09FD47640 /* PaymentInfoTableViewCell.swift in Sources */,
 				9D27E47BB19445E395EE3DF53040785A /* PersonalInfoTableViewCell.swift in Sources */,
 				BE0251A910E11DA7F8DADA4D61AA610B /* PredictionController.swift in Sources */,
