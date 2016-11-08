@@ -36,7 +36,7 @@ public class GooglePlacesAPIWrapper {
                                       completion: GooglePlacesPredictionWrapperCompletion) {
         GooglePlacesWrapper.getPredictions(input, location: location) {
             predictions, error in
-
+            
             if let error = error {
                 completion([], error)
             } else {
@@ -65,7 +65,7 @@ public class GooglePlacesAPIWrapper {
                                                             terms: prediction.terms)
         GooglePlacesWrapper.getPlaceDetails(googlePlacesPrediction) {
             placeDetails, error in
-
+            
             if let error = error {
                 completion(nil, error)
             } else {

@@ -17,8 +17,8 @@ public class GooglePlacesPredictionWrapper {
     public let terms: [String]
     
     public init(predictionDescription: String,
-         placeID: String,
-         terms: [String]) {
+                placeID: String,
+                terms: [String]) {
         self.predictionDescription = predictionDescription
         self.placeID = placeID
         self.terms = terms
