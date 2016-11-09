@@ -10,13 +10,16 @@
 		0D515359078668ED0E650843EACA2635 /* JSONDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCFCF319B618AA3E60EFBF191986227 /* JSONDictionary.swift */; };
 		0E5DB930C134F88D902D69AB333E8046 /* SpotHero_iOS_Google_Places_Wrapper-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 749F2FB5BFE81214DD66EDB718432B13 /* SpotHero_iOS_Google_Places_Wrapper-dummy.m */; };
 		1852952CF1872DB6869227E4853BF566 /* GooglePlaceDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2F4777D0A8F50C6BB710A771738471 /* GooglePlaceDetails.swift */; };
+		18A5A983918FC600CE50CCB185F32F5C /* Pods-SpotHero_Google_Places_Wrapper_ExampleTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 805573CD4E2770039F1EB608FF4A5E0E /* Pods-SpotHero_Google_Places_Wrapper_ExampleTests-dummy.m */; };
 		3A2D56BDAB03760AF3F46797B1236728 /* GooglePlacesWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD52F51679077247AD89BD471D0D861A /* GooglePlacesWrapper.swift */; };
 		3BE2C47FB0638500366FBFD736BEB6D2 /* GooglePlacesAPIWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C403417035B811862DDCDFCC2473A174 /* GooglePlacesAPIWrapper.swift */; };
+		3D0E48FCBF2877698E5A2226FF2DAF45 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4684650BBE4816222EE76F6A065E1F6B /* Foundation.framework */; };
 		411B29A5609B74428A3C59D795F5656D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4684650BBE4816222EE76F6A065E1F6B /* Foundation.framework */; };
 		47BD9CB2988611EB6A0A5A96949956B5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4684650BBE4816222EE76F6A065E1F6B /* Foundation.framework */; };
 		55958A49F3D334EA98F4CED71770F2BC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A5B4DA82371F3A3FDF45E1102723502 /* CoreLocation.framework */; };
-		7A9B34B2371204BAF47C2EBC4367CB8A /* Pods-SpotHero_Google_Places_Wrapper_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B0257647EFCCC18E005B82E0C7E092 /* Pods-SpotHero_Google_Places_Wrapper_Example-dummy.m */; };
-		7F1599EB3A12AEB667640453819F58A5 /* Pods-SpotHero_Google_Places_Wrapper_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 51F8BCEB200863F83ED3F3E46899EEA5 /* Pods-SpotHero_Google_Places_Wrapper_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7A9B34B2371204BAF47C2EBC4367CB8A /* Pods-SpotHero_Google_Places_Wrapper_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 028591B59A738D0DBE1B0B2ADD09E37A /* Pods-SpotHero_Google_Places_Wrapper_Example-dummy.m */; };
+		7F1599EB3A12AEB667640453819F58A5 /* Pods-SpotHero_Google_Places_Wrapper_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = CC809AE0130F4736D70F99B72F7A7E43 /* Pods-SpotHero_Google_Places_Wrapper_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		956437406AA62391E30CBA77FC4D7411 /* Pods-SpotHero_Google_Places_Wrapper_ExampleTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E0B348CADD549466FA41F76D953FFFDD /* Pods-SpotHero_Google_Places_Wrapper_ExampleTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A21FAC0F241D9E06D4E7F4328BF9F42D /* GooglePlaceDetailsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD3EF8472D0CE97E6B7FA8246132E9D /* GooglePlaceDetailsWrapper.swift */; };
 		B6CC9ED148E4C69F0B439D7BC51153B4 /* SpotHero_iOS_Google_Places_Wrapper-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D2A8F25888B3127524528D81D582D8D /* SpotHero_iOS_Google_Places_Wrapper-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C14990D1F53A400DFC53371D743B5305 /* GooglePlacesPrediction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F5A6813FC8BBE0BA40684B166648BD /* GooglePlacesPrediction.swift */; };
@@ -26,6 +29,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		A1249C2D364CAD14905FEF9B3121C5E9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9906383B1F002676E3C4B11C0FFA88EF;
+			remoteInfo = SpotHero_iOS_Google_Places_Wrapper;
+		};
 		B39B8A3C593AEDA80C58555F7FF8BABD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
@@ -36,34 +46,45 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		028591B59A738D0DBE1B0B2ADD09E37A /* Pods-SpotHero_Google_Places_Wrapper_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SpotHero_Google_Places_Wrapper_Example-dummy.m"; sourceTree = "<group>"; };
 		0A5B4DA82371F3A3FDF45E1102723502 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/CoreLocation.framework; sourceTree = DEVELOPER_DIR; };
+		216BBD29CDC4CDE98365B9D2B22BF66D /* Pods-SpotHero_Google_Places_Wrapper_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SpotHero_Google_Places_Wrapper_Example-frameworks.sh"; sourceTree = "<group>"; };
+		23863FCA40E9E4E8BBD3D2E074B54F4E /* Pods_SpotHero_Google_Places_Wrapper_ExampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_SpotHero_Google_Places_Wrapper_ExampleTests.framework; path = "Pods-SpotHero_Google_Places_Wrapper_ExampleTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		23D58992E9D530D2335EBC1B29212D2F /* Pods-SpotHero_Google_Places_Wrapper_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SpotHero_Google_Places_Wrapper_Example-resources.sh"; sourceTree = "<group>"; };
 		2837DC670151404BAD62F8C991B53421 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		436E10881F769616E2B2CAD2E31D1384 /* Pods-SpotHero_Google_Places_Wrapper_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SpotHero_Google_Places_Wrapper_Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		2E8B7B88769992AB087DF8D2E3AA914E /* Pods-SpotHero_Google_Places_Wrapper_ExampleTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SpotHero_Google_Places_Wrapper_ExampleTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		339651949245F600593EC6278912E932 /* Pods-SpotHero_Google_Places_Wrapper_ExampleTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SpotHero_Google_Places_Wrapper_ExampleTests-acknowledgements.plist"; sourceTree = "<group>"; };
+		3866F26310DF59E67773A92E9DDA9B3C /* Pods-SpotHero_Google_Places_Wrapper_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-SpotHero_Google_Places_Wrapper_Example.modulemap"; sourceTree = "<group>"; };
 		4684650BBE4816222EE76F6A065E1F6B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		51F8BCEB200863F83ED3F3E46899EEA5 /* Pods-SpotHero_Google_Places_Wrapper_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SpotHero_Google_Places_Wrapper_Example-umbrella.h"; sourceTree = "<group>"; };
-		53E1001023CD7970C961B313542D177D /* Pods-SpotHero_Google_Places_Wrapper_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-SpotHero_Google_Places_Wrapper_Example.modulemap"; sourceTree = "<group>"; };
+		49C10A1CAD559BCE16E4F6A0106E1D24 /* Pods-SpotHero_Google_Places_Wrapper_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SpotHero_Google_Places_Wrapper_Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		4DF5C091EC02562B04475A6886BC8749 /* Pods-SpotHero_Google_Places_Wrapper_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SpotHero_Google_Places_Wrapper_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		519F6150B2871D6433259DEB368C536B /* Pods-SpotHero_Google_Places_Wrapper_ExampleTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SpotHero_Google_Places_Wrapper_ExampleTests-frameworks.sh"; sourceTree = "<group>"; };
+		52FEBE534C4E6D58FFB55DD7FC6263A0 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		546C3AADCA540FBFEA6F751383EBB998 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/MapKit.framework; sourceTree = DEVELOPER_DIR; };
 		5FCFCF319B618AA3E60EFBF191986227 /* JSONDictionary.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JSONDictionary.swift; sourceTree = "<group>"; };
 		61726658EB174AB0CE17E16D3D612864 /* GooglePlacesPredictionWrapper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GooglePlacesPredictionWrapper.swift; sourceTree = "<group>"; };
-		6DA71DB8990553F845A771BF18BF13D6 /* Pods-SpotHero_Google_Places_Wrapper_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SpotHero_Google_Places_Wrapper_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		71C1E95F3E05112817890621F5368A1D /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		749F2FB5BFE81214DD66EDB718432B13 /* SpotHero_iOS_Google_Places_Wrapper-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SpotHero_iOS_Google_Places_Wrapper-dummy.m"; sourceTree = "<group>"; };
 		76351726AC255C30C359769848FE6947 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		7B2F4777D0A8F50C6BB710A771738471 /* GooglePlaceDetails.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GooglePlaceDetails.swift; sourceTree = "<group>"; };
-		7DCC0F20BF0560159D7A26EE5E3C300B /* Pods-SpotHero_Google_Places_Wrapper_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SpotHero_Google_Places_Wrapper_Example.release.xcconfig"; sourceTree = "<group>"; };
+		805573CD4E2770039F1EB608FF4A5E0E /* Pods-SpotHero_Google_Places_Wrapper_ExampleTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SpotHero_Google_Places_Wrapper_ExampleTests-dummy.m"; sourceTree = "<group>"; };
 		8236787D7F68A0FE424129D89404E5B4 /* SpotHero_iOS_Google_Places_Wrapper-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SpotHero_iOS_Google_Places_Wrapper-prefix.pch"; sourceTree = "<group>"; };
-		88B0257647EFCCC18E005B82E0C7E092 /* Pods-SpotHero_Google_Places_Wrapper_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SpotHero_Google_Places_Wrapper_Example-dummy.m"; sourceTree = "<group>"; };
 		8D2A8F25888B3127524528D81D582D8D /* SpotHero_iOS_Google_Places_Wrapper-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SpotHero_iOS_Google_Places_Wrapper-umbrella.h"; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		93D8E205D81E278013A2718E4C86E6D3 /* Pods-SpotHero_Google_Places_Wrapper_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SpotHero_Google_Places_Wrapper_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
-		94EB414A1CDE5142924F5262A987D875 /* Pods-SpotHero_Google_Places_Wrapper_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SpotHero_Google_Places_Wrapper_Example-resources.sh"; sourceTree = "<group>"; };
-		B06B5C0613D9B29495D76CB3A5191A91 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BB785568A147CE1FB1BDCBF5F99687D3 /* Pods_SpotHero_Google_Places_Wrapper_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_SpotHero_Google_Places_Wrapper_Example.framework; path = "Pods-SpotHero_Google_Places_Wrapper_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		96638BC1994DC85CC889523263A794C2 /* SpotHero_iOS_Google_Places_Wrapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SpotHero_iOS_Google_Places_Wrapper.framework; path = SpotHero_iOS_Google_Places_Wrapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9848E23FB4D64F6A3A22EC483057C7FC /* Pods-SpotHero_Google_Places_Wrapper_ExampleTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SpotHero_Google_Places_Wrapper_ExampleTests-resources.sh"; sourceTree = "<group>"; };
+		9A26288678BFA7A58558D02BE769D664 /* Pods-SpotHero_Google_Places_Wrapper_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SpotHero_Google_Places_Wrapper_Example.release.xcconfig"; sourceTree = "<group>"; };
+		B16C7FA3EC90E536344E69DF768BF578 /* Pods_SpotHero_Google_Places_Wrapper_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_SpotHero_Google_Places_Wrapper_Example.framework; path = "Pods-SpotHero_Google_Places_Wrapper_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C403417035B811862DDCDFCC2473A174 /* GooglePlacesAPIWrapper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GooglePlacesAPIWrapper.swift; sourceTree = "<group>"; };
+		CB34701BBD6200CF16EEA8F84327EAF9 /* Pods-SpotHero_Google_Places_Wrapper_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SpotHero_Google_Places_Wrapper_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		CB45E3744096A920FC9798BDA609C0B7 /* Pods-SpotHero_Google_Places_Wrapper_ExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SpotHero_Google_Places_Wrapper_ExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
+		CC809AE0130F4736D70F99B72F7A7E43 /* Pods-SpotHero_Google_Places_Wrapper_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SpotHero_Google_Places_Wrapper_Example-umbrella.h"; sourceTree = "<group>"; };
+		CFEB7ED20FC755B03BD094BECAEDF53B /* Pods-SpotHero_Google_Places_Wrapper_ExampleTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-SpotHero_Google_Places_Wrapper_ExampleTests.modulemap"; sourceTree = "<group>"; };
+		D9F60CE6A4EB035BFA69E85B31DC351B /* Pods-SpotHero_Google_Places_Wrapper_ExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SpotHero_Google_Places_Wrapper_ExampleTests.release.xcconfig"; sourceTree = "<group>"; };
 		DD52F51679077247AD89BD471D0D861A /* GooglePlacesWrapper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GooglePlacesWrapper.swift; sourceTree = "<group>"; };
-		E31D06DAA0D20816E1392CEACE5C01CB /* SpotHero_iOS_Google_Places_Wrapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SpotHero_iOS_Google_Places_Wrapper.framework; path = SpotHero_iOS_Google_Places_Wrapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E0B348CADD549466FA41F76D953FFFDD /* Pods-SpotHero_Google_Places_Wrapper_ExampleTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SpotHero_Google_Places_Wrapper_ExampleTests-umbrella.h"; sourceTree = "<group>"; };
 		E4F5A6813FC8BBE0BA40684B166648BD /* GooglePlacesPrediction.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GooglePlacesPrediction.swift; sourceTree = "<group>"; };
 		EBD3EF8472D0CE97E6B7FA8246132E9D /* GooglePlaceDetailsWrapper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GooglePlaceDetailsWrapper.swift; sourceTree = "<group>"; };
-		ED507601E0A3472558F27F575ACC4E70 /* Pods-SpotHero_Google_Places_Wrapper_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SpotHero_Google_Places_Wrapper_Example-frameworks.sh"; sourceTree = "<group>"; };
 		F4036BD6F38C7B52A05B49DABCF348C9 /* SpotHero_iOS_Google_Places_Wrapper.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = SpotHero_iOS_Google_Places_Wrapper.modulemap; sourceTree = "<group>"; };
 		FF458F7E6BF1FBF720E20B190E5DE13E /* SpotHero_iOS_Google_Places_Wrapper.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SpotHero_iOS_Google_Places_Wrapper.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -85,6 +106,14 @@
 				411B29A5609B74428A3C59D795F5656D /* Foundation.framework in Frameworks */,
 				DBAAF390A7B3A962D86456B7FCEF35D8 /* MapKit.framework in Frameworks */,
 				CFBE56AB5C4AFC322616125DBC1E22AA /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F45DAE739AFC9472E7287D8091388C5A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D0E48FCBF2877698E5A2226FF2DAF45 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,6 +150,24 @@
 			path = "SpotHero_Google_Places_Wrapper_Example/Pods/Target Support Files/SpotHero_iOS_Google_Places_Wrapper";
 			sourceTree = "<group>";
 		};
+		457A637EC4CE615F987E9EEAC8130923 /* Pods-SpotHero_Google_Places_Wrapper_Example */ = {
+			isa = PBXGroup;
+			children = (
+				52FEBE534C4E6D58FFB55DD7FC6263A0 /* Info.plist */,
+				3866F26310DF59E67773A92E9DDA9B3C /* Pods-SpotHero_Google_Places_Wrapper_Example.modulemap */,
+				4DF5C091EC02562B04475A6886BC8749 /* Pods-SpotHero_Google_Places_Wrapper_Example-acknowledgements.markdown */,
+				49C10A1CAD559BCE16E4F6A0106E1D24 /* Pods-SpotHero_Google_Places_Wrapper_Example-acknowledgements.plist */,
+				028591B59A738D0DBE1B0B2ADD09E37A /* Pods-SpotHero_Google_Places_Wrapper_Example-dummy.m */,
+				216BBD29CDC4CDE98365B9D2B22BF66D /* Pods-SpotHero_Google_Places_Wrapper_Example-frameworks.sh */,
+				23D58992E9D530D2335EBC1B29212D2F /* Pods-SpotHero_Google_Places_Wrapper_Example-resources.sh */,
+				CC809AE0130F4736D70F99B72F7A7E43 /* Pods-SpotHero_Google_Places_Wrapper_Example-umbrella.h */,
+				CB34701BBD6200CF16EEA8F84327EAF9 /* Pods-SpotHero_Google_Places_Wrapper_Example.debug.xcconfig */,
+				9A26288678BFA7A58558D02BE769D664 /* Pods-SpotHero_Google_Places_Wrapper_Example.release.xcconfig */,
+			);
+			name = "Pods-SpotHero_Google_Places_Wrapper_Example";
+			path = "Target Support Files/Pods-SpotHero_Google_Places_Wrapper_Example";
+			sourceTree = "<group>";
+		};
 		521CD2B100B67EC3A05D516965375599 /* SpotHero_iOS_Partner_SDK */ = {
 			isa = PBXGroup;
 			children = (
@@ -146,8 +193,8 @@
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				1332EE9597B741839F435FAC761B8973 /* Development Pods */,
 				14B8B9B15ECBE87983FF987239AB2D7B /* Frameworks */,
-				942A5AAB058966C45BD134867FF05220 /* Products */,
-				BF22D22B028ED6C62416E5EB1D517D1B /* Targets Support Files */,
+				C91A50D9181582DC66C41222EF2793FD /* Products */,
+				EDB6DAE058A3243AD513CD118820B4EE /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
@@ -182,15 +229,6 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
-		942A5AAB058966C45BD134867FF05220 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				BB785568A147CE1FB1BDCBF5F99687D3 /* Pods_SpotHero_Google_Places_Wrapper_Example.framework */,
-				E31D06DAA0D20816E1392CEACE5C01CB /* SpotHero_iOS_Google_Places_Wrapper.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		B789A0F5C55D76332384C4803AF020AE /* iOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -202,30 +240,14 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		BF22D22B028ED6C62416E5EB1D517D1B /* Targets Support Files */ = {
+		C91A50D9181582DC66C41222EF2793FD /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D585A579415B75CB295F5584FE245993 /* Pods-SpotHero_Google_Places_Wrapper_Example */,
+				B16C7FA3EC90E536344E69DF768BF578 /* Pods_SpotHero_Google_Places_Wrapper_Example.framework */,
+				23863FCA40E9E4E8BBD3D2E074B54F4E /* Pods_SpotHero_Google_Places_Wrapper_ExampleTests.framework */,
+				96638BC1994DC85CC889523263A794C2 /* SpotHero_iOS_Google_Places_Wrapper.framework */,
 			);
-			name = "Targets Support Files";
-			sourceTree = "<group>";
-		};
-		D585A579415B75CB295F5584FE245993 /* Pods-SpotHero_Google_Places_Wrapper_Example */ = {
-			isa = PBXGroup;
-			children = (
-				B06B5C0613D9B29495D76CB3A5191A91 /* Info.plist */,
-				53E1001023CD7970C961B313542D177D /* Pods-SpotHero_Google_Places_Wrapper_Example.modulemap */,
-				93D8E205D81E278013A2718E4C86E6D3 /* Pods-SpotHero_Google_Places_Wrapper_Example-acknowledgements.markdown */,
-				436E10881F769616E2B2CAD2E31D1384 /* Pods-SpotHero_Google_Places_Wrapper_Example-acknowledgements.plist */,
-				88B0257647EFCCC18E005B82E0C7E092 /* Pods-SpotHero_Google_Places_Wrapper_Example-dummy.m */,
-				ED507601E0A3472558F27F575ACC4E70 /* Pods-SpotHero_Google_Places_Wrapper_Example-frameworks.sh */,
-				94EB414A1CDE5142924F5262A987D875 /* Pods-SpotHero_Google_Places_Wrapper_Example-resources.sh */,
-				51F8BCEB200863F83ED3F3E46899EEA5 /* Pods-SpotHero_Google_Places_Wrapper_Example-umbrella.h */,
-				6DA71DB8990553F845A771BF18BF13D6 /* Pods-SpotHero_Google_Places_Wrapper_Example.debug.xcconfig */,
-				7DCC0F20BF0560159D7A26EE5E3C300B /* Pods-SpotHero_Google_Places_Wrapper_Example.release.xcconfig */,
-			);
-			name = "Pods-SpotHero_Google_Places_Wrapper_Example";
-			path = "Target Support Files/Pods-SpotHero_Google_Places_Wrapper_Example";
+			name = Products;
 			sourceTree = "<group>";
 		};
 		DB7203C44AAAE3F416229E924D1B1ACD /* SpotHero_iOS_Google_Places_Wrapper */ = {
@@ -239,6 +261,33 @@
 			path = ../..;
 			sourceTree = "<group>";
 		};
+		EDB6DAE058A3243AD513CD118820B4EE /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				457A637EC4CE615F987E9EEAC8130923 /* Pods-SpotHero_Google_Places_Wrapper_Example */,
+				F5B70797E4016C97F3A997357884C172 /* Pods-SpotHero_Google_Places_Wrapper_ExampleTests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		F5B70797E4016C97F3A997357884C172 /* Pods-SpotHero_Google_Places_Wrapper_ExampleTests */ = {
+			isa = PBXGroup;
+			children = (
+				71C1E95F3E05112817890621F5368A1D /* Info.plist */,
+				CFEB7ED20FC755B03BD094BECAEDF53B /* Pods-SpotHero_Google_Places_Wrapper_ExampleTests.modulemap */,
+				2E8B7B88769992AB087DF8D2E3AA914E /* Pods-SpotHero_Google_Places_Wrapper_ExampleTests-acknowledgements.markdown */,
+				339651949245F600593EC6278912E932 /* Pods-SpotHero_Google_Places_Wrapper_ExampleTests-acknowledgements.plist */,
+				805573CD4E2770039F1EB608FF4A5E0E /* Pods-SpotHero_Google_Places_Wrapper_ExampleTests-dummy.m */,
+				519F6150B2871D6433259DEB368C536B /* Pods-SpotHero_Google_Places_Wrapper_ExampleTests-frameworks.sh */,
+				9848E23FB4D64F6A3A22EC483057C7FC /* Pods-SpotHero_Google_Places_Wrapper_ExampleTests-resources.sh */,
+				E0B348CADD549466FA41F76D953FFFDD /* Pods-SpotHero_Google_Places_Wrapper_ExampleTests-umbrella.h */,
+				CB45E3744096A920FC9798BDA609C0B7 /* Pods-SpotHero_Google_Places_Wrapper_ExampleTests.debug.xcconfig */,
+				D9F60CE6A4EB035BFA69E85B31DC351B /* Pods-SpotHero_Google_Places_Wrapper_ExampleTests.release.xcconfig */,
+			);
+			name = "Pods-SpotHero_Google_Places_Wrapper_ExampleTests";
+			path = "Target Support Files/Pods-SpotHero_Google_Places_Wrapper_ExampleTests";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -247,6 +296,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				B6CC9ED148E4C69F0B439D7BC51153B4 /* SpotHero_iOS_Google_Places_Wrapper-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8769B5DFCED1FE054EB5F9EC923A02D3 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				956437406AA62391E30CBA77FC4D7411 /* Pods-SpotHero_Google_Places_Wrapper_ExampleTests-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,7 +333,7 @@
 			);
 			name = "Pods-SpotHero_Google_Places_Wrapper_Example";
 			productName = "Pods-SpotHero_Google_Places_Wrapper_Example";
-			productReference = BB785568A147CE1FB1BDCBF5F99687D3 /* Pods_SpotHero_Google_Places_Wrapper_Example.framework */;
+			productReference = B16C7FA3EC90E536344E69DF768BF578 /* Pods_SpotHero_Google_Places_Wrapper_Example.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		9906383B1F002676E3C4B11C0FFA88EF /* SpotHero_iOS_Google_Places_Wrapper */ = {
@@ -293,7 +350,25 @@
 			);
 			name = SpotHero_iOS_Google_Places_Wrapper;
 			productName = SpotHero_iOS_Google_Places_Wrapper;
-			productReference = E31D06DAA0D20816E1392CEACE5C01CB /* SpotHero_iOS_Google_Places_Wrapper.framework */;
+			productReference = 96638BC1994DC85CC889523263A794C2 /* SpotHero_iOS_Google_Places_Wrapper.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		B52DEC463576F3BF347C3995D3E8306C /* Pods-SpotHero_Google_Places_Wrapper_ExampleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EBEACE159516832505974C9D904FC8B5 /* Build configuration list for PBXNativeTarget "Pods-SpotHero_Google_Places_Wrapper_ExampleTests" */;
+			buildPhases = (
+				C5B31AAF615A43481561F2E386DAF7F6 /* Sources */,
+				F45DAE739AFC9472E7287D8091388C5A /* Frameworks */,
+				8769B5DFCED1FE054EB5F9EC923A02D3 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				21733173604C29F35126AF603A3756F3 /* PBXTargetDependency */,
+			);
+			name = "Pods-SpotHero_Google_Places_Wrapper_ExampleTests";
+			productName = "Pods-SpotHero_Google_Places_Wrapper_ExampleTests";
+			productReference = 23863FCA40E9E4E8BBD3D2E074B54F4E /* Pods_SpotHero_Google_Places_Wrapper_ExampleTests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -313,11 +388,12 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 942A5AAB058966C45BD134867FF05220 /* Products */;
+			productRefGroup = C91A50D9181582DC66C41222EF2793FD /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				233F26160A59750A9140D43C5C0CAAF4 /* Pods-SpotHero_Google_Places_Wrapper_Example */,
+				B52DEC463576F3BF347C3995D3E8306C /* Pods-SpotHero_Google_Places_Wrapper_ExampleTests */,
 				9906383B1F002676E3C4B11C0FFA88EF /* SpotHero_iOS_Google_Places_Wrapper */,
 			);
 		};
@@ -347,9 +423,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C5B31AAF615A43481561F2E386DAF7F6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18A5A983918FC600CE50CCB185F32F5C /* Pods-SpotHero_Google_Places_Wrapper_ExampleTests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		21733173604C29F35126AF603A3756F3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SpotHero_iOS_Google_Places_Wrapper;
+			target = 9906383B1F002676E3C4B11C0FFA88EF /* SpotHero_iOS_Google_Places_Wrapper */;
+			targetProxy = A1249C2D364CAD14905FEF9B3121C5E9 /* PBXContainerItemProxy */;
+		};
 		967D090D0F310796504209E07B624E00 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SpotHero_iOS_Google_Places_Wrapper;
@@ -359,7 +449,7 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		30C2949E593F990772E751F910287A4A /* Release */ = {
+		10D812F41E0343DC253DFEBBED44EA04 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FF458F7E6BF1FBF720E20B190E5DE13E /* SpotHero_iOS_Google_Places_Wrapper.xcconfig */;
 			buildSettings = {
@@ -384,7 +474,42 @@
 				PRODUCT_NAME = SpotHero_iOS_Google_Places_Wrapper;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 2.3;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		4FB4B3FEAB2D7C6E87AC19C651F1F7BC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D9F60CE6A4EB035BFA69E85B31DC351B /* Pods-SpotHero_Google_Places_Wrapper_ExampleTests.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-SpotHero_Google_Places_Wrapper_ExampleTests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-SpotHero_Google_Places_Wrapper_ExampleTests/Pods-SpotHero_Google_Places_Wrapper_ExampleTests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_SpotHero_Google_Places_Wrapper_ExampleTests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -393,7 +518,7 @@
 		};
 		6D95B2881282E2D0604385DB0FADEF40 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6DA71DB8990553F845A771BF18BF13D6 /* Pods-SpotHero_Google_Places_Wrapper_Example.debug.xcconfig */;
+			baseConfigurationReference = CB34701BBD6200CF16EEA8F84327EAF9 /* Pods-SpotHero_Google_Places_Wrapper_Example.debug.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -427,7 +552,7 @@
 			};
 			name = Debug;
 		};
-		7B671F93EF120D6AA6BD57E6655870ED /* Debug */ = {
+		7D7822C9E361998652A5AC1D0EF14926 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FF458F7E6BF1FBF720E20B190E5DE13E /* SpotHero_iOS_Google_Places_Wrapper.xcconfig */;
 			buildSettings = {
@@ -453,7 +578,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 2.3;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -462,7 +587,7 @@
 		};
 		B6C23D3FC3D725732D9952996FBB765A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7DCC0F20BF0560159D7A26EE5E3C300B /* Pods-SpotHero_Google_Places_Wrapper_Example.release.xcconfig */;
+			baseConfigurationReference = 9A26288678BFA7A58558D02BE769D664 /* Pods-SpotHero_Google_Places_Wrapper_Example.release.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -539,6 +664,42 @@
 			};
 			name = Debug;
 		};
+		E13501EB4A192D21A0388E0775D9C1A8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CB45E3744096A920FC9798BDA609C0B7 /* Pods-SpotHero_Google_Places_Wrapper_ExampleTests.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-SpotHero_Google_Places_Wrapper_ExampleTests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-SpotHero_Google_Places_Wrapper_ExampleTests/Pods-SpotHero_Google_Places_Wrapper_ExampleTests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_SpotHero_Google_Places_Wrapper_ExampleTests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		ED4FC68AB2A4E06C718CFF338F6F156B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -594,8 +755,8 @@
 		578F6ECAA2438BAC5EA4ED26EFCB092C /* Build configuration list for PBXNativeTarget "SpotHero_iOS_Google_Places_Wrapper" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				7B671F93EF120D6AA6BD57E6655870ED /* Debug */,
-				30C2949E593F990772E751F910287A4A /* Release */,
+				7D7822C9E361998652A5AC1D0EF14926 /* Debug */,
+				10D812F41E0343DC253DFEBBED44EA04 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -605,6 +766,15 @@
 			buildConfigurations = (
 				6D95B2881282E2D0604385DB0FADEF40 /* Debug */,
 				B6C23D3FC3D725732D9952996FBB765A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EBEACE159516832505974C9D904FC8B5 /* Build configuration list for PBXNativeTarget "Pods-SpotHero_Google_Places_Wrapper_ExampleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E13501EB4A192D21A0388E0775D9C1A8 /* Debug */,
+				4FB4B3FEAB2D7C6E87AC19C651F1F7BC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

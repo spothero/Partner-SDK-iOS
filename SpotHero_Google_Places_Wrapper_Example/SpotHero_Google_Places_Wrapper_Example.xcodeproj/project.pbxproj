@@ -14,6 +14,7 @@
 		129258441DD3BCC2004B5257 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 129258421DD3BCC2004B5257 /* LaunchScreen.storyboard */; };
 		12FB3C511DD3BD7C00138B8C /* SpotHero_Google_Places_Wrapper_ExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FB3C501DD3BD7C00138B8C /* SpotHero_Google_Places_Wrapper_ExampleTests.swift */; };
 		5CEC2151B95962EDA412C2BE /* Pods_SpotHero_Google_Places_Wrapper_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FDEC83C51271DE8F78D6838 /* Pods_SpotHero_Google_Places_Wrapper_Example.framework */; };
+		94E1E77DE6D224E9178F835E /* Pods_SpotHero_Google_Places_Wrapper_ExampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A9991954A333F00585C5556 /* Pods_SpotHero_Google_Places_Wrapper_ExampleTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		05549F86803CA3CD907D7986 /* Pods-SpotHero_Google_Places_Wrapper_ExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpotHero_Google_Places_Wrapper_ExampleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SpotHero_Google_Places_Wrapper_ExampleTests/Pods-SpotHero_Google_Places_Wrapper_ExampleTests.release.xcconfig"; sourceTree = "<group>"; };
 		129258361DD3BCC2004B5257 /* SpotHero_Google_Places_Wrapper_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpotHero_Google_Places_Wrapper_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		129258391DD3BCC2004B5257 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1292583B1DD3BCC2004B5257 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -38,8 +40,10 @@
 		12FB3C501DD3BD7C00138B8C /* SpotHero_Google_Places_Wrapper_ExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotHero_Google_Places_Wrapper_ExampleTests.swift; sourceTree = "<group>"; };
 		12FB3C521DD3BD7C00138B8C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1A76DC91B8F95EB00CEA9A05 /* Pods-SpotHero_Google_Places_Wrapper_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpotHero_Google_Places_Wrapper_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-SpotHero_Google_Places_Wrapper_Example/Pods-SpotHero_Google_Places_Wrapper_Example.release.xcconfig"; sourceTree = "<group>"; };
+		2A9991954A333F00585C5556 /* Pods_SpotHero_Google_Places_Wrapper_ExampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpotHero_Google_Places_Wrapper_ExampleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FDEC83C51271DE8F78D6838 /* Pods_SpotHero_Google_Places_Wrapper_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpotHero_Google_Places_Wrapper_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B42322423D710BCB9B495A3E /* Pods-SpotHero_Google_Places_Wrapper_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpotHero_Google_Places_Wrapper_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SpotHero_Google_Places_Wrapper_Example/Pods-SpotHero_Google_Places_Wrapper_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		B4AEE16BE212A394333596D5 /* Pods-SpotHero_Google_Places_Wrapper_ExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpotHero_Google_Places_Wrapper_ExampleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SpotHero_Google_Places_Wrapper_ExampleTests/Pods-SpotHero_Google_Places_Wrapper_ExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94E1E77DE6D224E9178F835E /* Pods_SpotHero_Google_Places_Wrapper_ExampleTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,6 +113,8 @@
 			children = (
 				B42322423D710BCB9B495A3E /* Pods-SpotHero_Google_Places_Wrapper_Example.debug.xcconfig */,
 				1A76DC91B8F95EB00CEA9A05 /* Pods-SpotHero_Google_Places_Wrapper_Example.release.xcconfig */,
+				B4AEE16BE212A394333596D5 /* Pods-SpotHero_Google_Places_Wrapper_ExampleTests.debug.xcconfig */,
+				05549F86803CA3CD907D7986 /* Pods-SpotHero_Google_Places_Wrapper_ExampleTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -116,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				9FDEC83C51271DE8F78D6838 /* Pods_SpotHero_Google_Places_Wrapper_Example.framework */,
+				2A9991954A333F00585C5556 /* Pods_SpotHero_Google_Places_Wrapper_ExampleTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -147,9 +155,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 12FB3C551DD3BD7C00138B8C /* Build configuration list for PBXNativeTarget "SpotHero_Google_Places_Wrapper_ExampleTests" */;
 			buildPhases = (
+				1D7F96C187056B73A7EF424C /* [CP] Check Pods Manifest.lock */,
 				12FB3C4A1DD3BD7C00138B8C /* Sources */,
 				12FB3C4B1DD3BD7C00138B8C /* Frameworks */,
 				12FB3C4C1DD3BD7C00138B8C /* Resources */,
+				C5BFF42CE146A75C5936F991 /* [CP] Embed Pods Frameworks */,
+				43A405597D9E9952D169E66F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -222,6 +233,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		1D7F96C187056B73A7EF424C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		224F0207109EFFE1C825F951 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -237,6 +263,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SpotHero_Google_Places_Wrapper_Example/Pods-SpotHero_Google_Places_Wrapper_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		43A405597D9E9952D169E66F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SpotHero_Google_Places_Wrapper_ExampleTests/Pods-SpotHero_Google_Places_Wrapper_ExampleTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		85C93CEB80A87F9E14EDB97B /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -250,6 +291,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SpotHero_Google_Places_Wrapper_Example/Pods-SpotHero_Google_Places_Wrapper_Example-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C5BFF42CE146A75C5936F991 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SpotHero_Google_Places_Wrapper_ExampleTests/Pods-SpotHero_Google_Places_Wrapper_ExampleTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		CA07BD4607E3B884D19B1D50 /* [CP] Check Pods Manifest.lock */ = {
@@ -438,6 +494,7 @@
 		};
 		12FB3C561DD3BD7C00138B8C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B4AEE16BE212A394333596D5 /* Pods-SpotHero_Google_Places_Wrapper_ExampleTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = SpotHero_Google_Places_Wrapper_ExampleTests/Info.plist;
@@ -451,6 +508,7 @@
 		};
 		12FB3C571DD3BD7C00138B8C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 05549F86803CA3CD907D7986 /* Pods-SpotHero_Google_Places_Wrapper_ExampleTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = SpotHero_Google_Places_Wrapper_ExampleTests/Info.plist;

@@ -4,3 +4,7 @@ use_frameworks!
 target 'SpotHero_Google_Places_Wrapper_Example' do
     pod 'SpotHero_iOS_Google_Places_Wrapper', :path => '../'
 end
+
+target 'SpotHero_Google_Places_Wrapper_ExampleTests' do
+    pod 'SpotHero_iOS_Google_Places_Wrapper', :path => '../'
+end
