@@ -13,9 +13,9 @@ import Foundation
  */
 public struct GooglePlacesPredictionWrapper {
     ///contains the human-readable name for the returned result
-    public var predictionDescription: String
+    public let predictionDescription: String
     //uniquely identify a place in the Google Places database and on Google Maps
-    public var placeID: String
+    public let placeID: String
     //contains an array of terms identifying each section of the returned description
-    public var terms: [String]
+    public let terms: [String]
 }
