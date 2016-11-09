@@ -19,8 +19,7 @@ enum GooglePlacesError: ErrorType {
 typealias GooglePlacesWrapperCompletion = ([GooglePlacesPrediction], ErrorType?) -> (Void)
 typealias GooglePlaceDetailsCompletion = (GooglePlaceDetails?, ErrorType?) -> (Void)
 
-@objc(SPHGooglePlacesWrapper)
-class GooglePlacesWrapper: NSObject {
+struct GooglePlacesWrapper {
     static let Host = "maps.googleapis.com"
     static let Scheme = "https"
     static var GoogleAPIKey: String?
