@@ -12,8 +12,19 @@
 		1292583F1DD3BCC2004B5257 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1292583D1DD3BCC2004B5257 /* Main.storyboard */; };
 		129258411DD3BCC2004B5257 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 129258401DD3BCC2004B5257 /* Assets.xcassets */; };
 		129258441DD3BCC2004B5257 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 129258421DD3BCC2004B5257 /* LaunchScreen.storyboard */; };
+		12FB3C511DD3BD7C00138B8C /* SpotHero_Google_Places_Wrapper_ExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FB3C501DD3BD7C00138B8C /* SpotHero_Google_Places_Wrapper_ExampleTests.swift */; };
 		5CEC2151B95962EDA412C2BE /* Pods_SpotHero_Google_Places_Wrapper_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FDEC83C51271DE8F78D6838 /* Pods_SpotHero_Google_Places_Wrapper_Example.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		12FB3C531DD3BD7C00138B8C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1292582E1DD3BCC2004B5257 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 129258351DD3BCC2004B5257;
+			remoteInfo = SpotHero_Google_Places_Wrapper_Example;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		129258361DD3BCC2004B5257 /* SpotHero_Google_Places_Wrapper_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpotHero_Google_Places_Wrapper_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -23,6 +34,9 @@
 		129258401DD3BCC2004B5257 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		129258431DD3BCC2004B5257 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		129258451DD3BCC2004B5257 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		12FB3C4E1DD3BD7C00138B8C /* SpotHero_Google_Places_Wrapper_ExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpotHero_Google_Places_Wrapper_ExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		12FB3C501DD3BD7C00138B8C /* SpotHero_Google_Places_Wrapper_ExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotHero_Google_Places_Wrapper_ExampleTests.swift; sourceTree = "<group>"; };
+		12FB3C521DD3BD7C00138B8C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1A76DC91B8F95EB00CEA9A05 /* Pods-SpotHero_Google_Places_Wrapper_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpotHero_Google_Places_Wrapper_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-SpotHero_Google_Places_Wrapper_Example/Pods-SpotHero_Google_Places_Wrapper_Example.release.xcconfig"; sourceTree = "<group>"; };
 		9FDEC83C51271DE8F78D6838 /* Pods_SpotHero_Google_Places_Wrapper_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpotHero_Google_Places_Wrapper_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B42322423D710BCB9B495A3E /* Pods-SpotHero_Google_Places_Wrapper_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpotHero_Google_Places_Wrapper_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SpotHero_Google_Places_Wrapper_Example/Pods-SpotHero_Google_Places_Wrapper_Example.debug.xcconfig"; sourceTree = "<group>"; };
@@ -37,6 +51,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		12FB3C4B1DD3BD7C00138B8C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -44,6 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				129258381DD3BCC2004B5257 /* SpotHero_Google_Places_Wrapper_Example */,
+				12FB3C4F1DD3BD7C00138B8C /* SpotHero_Google_Places_Wrapper_ExampleTests */,
 				129258371DD3BCC2004B5257 /* Products */,
 				42F2B5C44B94DA0F58539EBE /* Pods */,
 				6C9B3928D3CBF86795A0D50B /* Frameworks */,
@@ -54,6 +76,7 @@
 			isa = PBXGroup;
 			children = (
 				129258361DD3BCC2004B5257 /* SpotHero_Google_Places_Wrapper_Example.app */,
+				12FB3C4E1DD3BD7C00138B8C /* SpotHero_Google_Places_Wrapper_ExampleTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -69,6 +92,15 @@
 				129258451DD3BCC2004B5257 /* Info.plist */,
 			);
 			path = SpotHero_Google_Places_Wrapper_Example;
+			sourceTree = "<group>";
+		};
+		12FB3C4F1DD3BD7C00138B8C /* SpotHero_Google_Places_Wrapper_ExampleTests */ = {
+			isa = PBXGroup;
+			children = (
+				12FB3C501DD3BD7C00138B8C /* SpotHero_Google_Places_Wrapper_ExampleTests.swift */,
+				12FB3C521DD3BD7C00138B8C /* Info.plist */,
+			);
+			path = SpotHero_Google_Places_Wrapper_ExampleTests;
 			sourceTree = "<group>";
 		};
 		42F2B5C44B94DA0F58539EBE /* Pods */ = {
@@ -111,6 +143,24 @@
 			productReference = 129258361DD3BCC2004B5257 /* SpotHero_Google_Places_Wrapper_Example.app */;
 			productType = "com.apple.product-type.application";
 		};
+		12FB3C4D1DD3BD7C00138B8C /* SpotHero_Google_Places_Wrapper_ExampleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 12FB3C551DD3BD7C00138B8C /* Build configuration list for PBXNativeTarget "SpotHero_Google_Places_Wrapper_ExampleTests" */;
+			buildPhases = (
+				12FB3C4A1DD3BD7C00138B8C /* Sources */,
+				12FB3C4B1DD3BD7C00138B8C /* Frameworks */,
+				12FB3C4C1DD3BD7C00138B8C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				12FB3C541DD3BD7C00138B8C /* PBXTargetDependency */,
+			);
+			name = SpotHero_Google_Places_Wrapper_ExampleTests;
+			productName = SpotHero_Google_Places_Wrapper_ExampleTests;
+			productReference = 12FB3C4E1DD3BD7C00138B8C /* SpotHero_Google_Places_Wrapper_ExampleTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -124,6 +174,11 @@
 					129258351DD3BCC2004B5257 = {
 						CreatedOnToolsVersion = 8.1;
 						ProvisioningStyle = Automatic;
+					};
+					12FB3C4D1DD3BD7C00138B8C = {
+						CreatedOnToolsVersion = 8.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 129258351DD3BCC2004B5257;
 					};
 				};
 			};
@@ -141,6 +196,7 @@
 			projectRoot = "";
 			targets = (
 				129258351DD3BCC2004B5257 /* SpotHero_Google_Places_Wrapper_Example */,
+				12FB3C4D1DD3BD7C00138B8C /* SpotHero_Google_Places_Wrapper_ExampleTests */,
 			);
 		};
 /* End PBXProject section */
@@ -153,6 +209,13 @@
 				129258441DD3BCC2004B5257 /* LaunchScreen.storyboard in Resources */,
 				129258411DD3BCC2004B5257 /* Assets.xcassets in Resources */,
 				1292583F1DD3BCC2004B5257 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		12FB3C4C1DD3BD7C00138B8C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,7 +279,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		12FB3C4A1DD3BD7C00138B8C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				12FB3C511DD3BD7C00138B8C /* SpotHero_Google_Places_Wrapper_ExampleTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		12FB3C541DD3BD7C00138B8C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 129258351DD3BCC2004B5257 /* SpotHero_Google_Places_Wrapper_Example */;
+			targetProxy = 12FB3C531DD3BD7C00138B8C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		1292583D1DD3BCC2004B5257 /* Main.storyboard */ = {
@@ -340,7 +419,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.spothero.SpotHero-Google-Places-Wrapper-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
@@ -353,7 +432,33 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.spothero.SpotHero-Google-Places-Wrapper-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 2.3;
+			};
+			name = Release;
+		};
+		12FB3C561DD3BD7C00138B8C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = SpotHero_Google_Places_Wrapper_ExampleTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.spothero.SpotHero-Google-Places-Wrapper-ExampleTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SpotHero_Google_Places_Wrapper_Example.app/SpotHero_Google_Places_Wrapper_Example";
+			};
+			name = Debug;
+		};
+		12FB3C571DD3BD7C00138B8C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = SpotHero_Google_Places_Wrapper_ExampleTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.spothero.SpotHero-Google-Places-Wrapper-ExampleTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SpotHero_Google_Places_Wrapper_Example.app/SpotHero_Google_Places_Wrapper_Example";
 			};
 			name = Release;
 		};
@@ -374,6 +479,15 @@
 			buildConfigurations = (
 				129258491DD3BCC2004B5257 /* Debug */,
 				1292584A1DD3BCC2004B5257 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		12FB3C551DD3BD7C00138B8C /* Build configuration list for PBXNativeTarget "SpotHero_Google_Places_Wrapper_ExampleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				12FB3C561DD3BD7C00138B8C /* Debug */,
+				12FB3C571DD3BD7C00138B8C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
