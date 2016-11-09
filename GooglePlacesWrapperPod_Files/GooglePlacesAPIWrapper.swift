@@ -47,7 +47,7 @@ public struct GooglePlacesAPIWrapper {
                     let predictionWrapper = GooglePlacesPredictionWrapper(predictionDescription: prediction.predictionDescription,
                                                                           placeID: prediction.placeID,
                                                                           terms: prediction.terms)
-                    predictionsWrapper.append(predictionWrapper)
+                    return predictionsWrapper
                 })
                 
                 completion(predictionsWrapper, nil)
