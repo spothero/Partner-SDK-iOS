@@ -14,11 +14,11 @@ import CoreLocation
  */
 public struct GooglePlaceDetailsWrapper {
     ///A term to be matched against all content that Google has indexed for this place
-    public let name: String
+    public var name: String
     //uniquely identify a place in the Google Places database and on Google Maps
-    public let placeID: String
+    public var placeID: String
     ///contains an array of types that apply to this place
-    public let types: [String]
+    public var types: [String]
     ///The latitude/longitude around which to retrieve place information
-    public let location: CLLocation
+    public var location: CLLocation
 }
