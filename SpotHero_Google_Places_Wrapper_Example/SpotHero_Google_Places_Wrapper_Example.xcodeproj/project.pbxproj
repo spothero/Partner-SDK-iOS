@@ -1,0 +1,306 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1292583A1DD3BCC2004B5257 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129258391DD3BCC2004B5257 /* AppDelegate.swift */; };
+		1292583C1DD3BCC2004B5257 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1292583B1DD3BCC2004B5257 /* ViewController.swift */; };
+		1292583F1DD3BCC2004B5257 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1292583D1DD3BCC2004B5257 /* Main.storyboard */; };
+		129258411DD3BCC2004B5257 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 129258401DD3BCC2004B5257 /* Assets.xcassets */; };
+		129258441DD3BCC2004B5257 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 129258421DD3BCC2004B5257 /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		129258361DD3BCC2004B5257 /* SpotHero_Google_Places_Wrapper_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpotHero_Google_Places_Wrapper_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		129258391DD3BCC2004B5257 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		1292583B1DD3BCC2004B5257 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1292583E1DD3BCC2004B5257 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		129258401DD3BCC2004B5257 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		129258431DD3BCC2004B5257 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		129258451DD3BCC2004B5257 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		129258331DD3BCC2004B5257 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1292582D1DD3BCC2004B5257 = {
+			isa = PBXGroup;
+			children = (
+				129258381DD3BCC2004B5257 /* SpotHero_Google_Places_Wrapper_Example */,
+				129258371DD3BCC2004B5257 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		129258371DD3BCC2004B5257 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				129258361DD3BCC2004B5257 /* SpotHero_Google_Places_Wrapper_Example.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		129258381DD3BCC2004B5257 /* SpotHero_Google_Places_Wrapper_Example */ = {
+			isa = PBXGroup;
+			children = (
+				129258391DD3BCC2004B5257 /* AppDelegate.swift */,
+				1292583B1DD3BCC2004B5257 /* ViewController.swift */,
+				1292583D1DD3BCC2004B5257 /* Main.storyboard */,
+				129258401DD3BCC2004B5257 /* Assets.xcassets */,
+				129258421DD3BCC2004B5257 /* LaunchScreen.storyboard */,
+				129258451DD3BCC2004B5257 /* Info.plist */,
+			);
+			path = SpotHero_Google_Places_Wrapper_Example;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		129258351DD3BCC2004B5257 /* SpotHero_Google_Places_Wrapper_Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 129258481DD3BCC2004B5257 /* Build configuration list for PBXNativeTarget "SpotHero_Google_Places_Wrapper_Example" */;
+			buildPhases = (
+				129258321DD3BCC2004B5257 /* Sources */,
+				129258331DD3BCC2004B5257 /* Frameworks */,
+				129258341DD3BCC2004B5257 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SpotHero_Google_Places_Wrapper_Example;
+			productName = SpotHero_Google_Places_Wrapper_Example;
+			productReference = 129258361DD3BCC2004B5257 /* SpotHero_Google_Places_Wrapper_Example.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1292582E1DD3BCC2004B5257 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0810;
+				LastUpgradeCheck = 0810;
+				ORGANIZATIONNAME = "SpotHero, Inc.";
+				TargetAttributes = {
+					129258351DD3BCC2004B5257 = {
+						CreatedOnToolsVersion = 8.1;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 129258311DD3BCC2004B5257 /* Build configuration list for PBXProject "SpotHero_Google_Places_Wrapper_Example" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1292582D1DD3BCC2004B5257;
+			productRefGroup = 129258371DD3BCC2004B5257 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				129258351DD3BCC2004B5257 /* SpotHero_Google_Places_Wrapper_Example */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		129258341DD3BCC2004B5257 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				129258441DD3BCC2004B5257 /* LaunchScreen.storyboard in Resources */,
+				129258411DD3BCC2004B5257 /* Assets.xcassets in Resources */,
+				1292583F1DD3BCC2004B5257 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		129258321DD3BCC2004B5257 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1292583C1DD3BCC2004B5257 /* ViewController.swift in Sources */,
+				1292583A1DD3BCC2004B5257 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		1292583D1DD3BCC2004B5257 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1292583E1DD3BCC2004B5257 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		129258421DD3BCC2004B5257 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				129258431DD3BCC2004B5257 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		129258461DD3BCC2004B5257 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		129258471DD3BCC2004B5257 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		129258491DD3BCC2004B5257 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = SpotHero_Google_Places_Wrapper_Example/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.spothero.SpotHero-Google-Places-Wrapper-Example";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		1292584A1DD3BCC2004B5257 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = SpotHero_Google_Places_Wrapper_Example/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.spothero.SpotHero-Google-Places-Wrapper-Example";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		129258311DD3BCC2004B5257 /* Build configuration list for PBXProject "SpotHero_Google_Places_Wrapper_Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				129258461DD3BCC2004B5257 /* Debug */,
+				129258471DD3BCC2004B5257 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		129258481DD3BCC2004B5257 /* Build configuration list for PBXNativeTarget "SpotHero_Google_Places_Wrapper_Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				129258491DD3BCC2004B5257 /* Debug */,
+				1292584A1DD3BCC2004B5257 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1292582E1DD3BCC2004B5257 /* Project object */;
+}
