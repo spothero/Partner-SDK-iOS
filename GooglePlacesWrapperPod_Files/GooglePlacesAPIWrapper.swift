@@ -16,11 +16,11 @@ public class GooglePlacesAPIWrapper {
     public typealias GooglePlaceDetailsWrapperCompletion = (GooglePlaceDetailsWrapper?, ErrorType?) -> (Void)
     
     /**
-     Sets the Google API Key
+     Stores the Google API Key
      
      - parameter key:      API key string
      */
-    public static func googleAPIKey(key: String) {
+    public static func storeGoogleAPIKey(key: String) {
         GooglePlacesWrapper.GoogleAPIKey = key
     }
     
@@ -41,12 +41,14 @@ public class GooglePlacesAPIWrapper {
                 completion([], error)
             } else {
                 var predictionsWrapper = [GooglePlacesPredictionWrapper]()
-                for prediction in predictions {
+                predictions.map({
+                    prediction in
+                    
                     let predictionWrapper = GooglePlacesPredictionWrapper(predictionDescription: prediction.predictionDescription,
                                                                           placeID: prediction.placeID,
                                                                           terms: prediction.terms)
                     predictionsWrapper.append(predictionWrapper)
-                }
+                })
                 
                 completion(predictionsWrapper, nil)
             }
