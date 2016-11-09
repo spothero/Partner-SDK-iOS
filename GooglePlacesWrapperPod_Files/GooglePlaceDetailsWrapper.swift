@@ -12,7 +12,7 @@ import CoreLocation
 /**
  *  Represents The details for a google place
  */
-public class GooglePlaceDetailsWrapper {
+public struct GooglePlaceDetailsWrapper {
     ///A term to be matched against all content that Google has indexed for this place
     public let name: String
     //uniquely identify a place in the Google Places database and on Google Maps
@@ -21,14 +21,4 @@ public class GooglePlaceDetailsWrapper {
     public let types: [String]
     ///The latitude/longitude around which to retrieve place information
     public let location: CLLocation
-    
-    public init(name: String,
-                placeID: String,
-                types: [String],
-                location: CLLocation) {
-        self.name = name
-        self.placeID = placeID
-        self.types = types
-        self.location = location
-    }
 }

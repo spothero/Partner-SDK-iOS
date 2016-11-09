@@ -9,7 +9,7 @@
 import Foundation
 import CoreLocation
 
-public class GooglePlacesAPIWrapper {
+public struct GooglePlacesAPIWrapper {
     ///Completion closure. Passes in array of predictions and possible error.
     public typealias GooglePlacesPredictionWrapperCompletion = ([GooglePlacesPredictionWrapper], ErrorType?) -> (Void)
     ///Completion closure. Passing in either the details or an error
