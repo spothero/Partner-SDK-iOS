@@ -77,6 +77,8 @@ public struct GooglePlacesAPIWrapper {
                                                                         types: placeDetails.types,
                                                                         location: placeDetails.location)
                     completion(placeDetailsWrapper, nil)
+                } else {
+                    completion(nil, nil)
                 }
             }
         }
