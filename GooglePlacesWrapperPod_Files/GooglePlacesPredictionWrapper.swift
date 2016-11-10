@@ -18,4 +18,12 @@ public struct GooglePlacesPredictionWrapper {
     public let placeID: String
     //contains an array of terms identifying each section of the returned description
     public let terms: [String]
+    
+    public init(predictionDescription: String,
+                placeID: String,
+                terms: [String]) {
+        self.predictionDescription = predictionDescription
+        self.placeID = placeID
+        self.terms = terms
+    }
 }
