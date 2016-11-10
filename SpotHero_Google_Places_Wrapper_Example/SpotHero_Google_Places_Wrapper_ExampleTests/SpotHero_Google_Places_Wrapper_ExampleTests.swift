@@ -8,7 +8,7 @@
 
 import XCTest
 import CoreLocation
-@testable import SpotHero_iOS_Google_Places_Wrapper
+import SpotHero_iOS_Google_Places_Wrapper
 
 class SpotHero_Google_Places_Wrapper_ExampleTests: XCTestCase {
     private let waitDuration: NSTimeInterval = 10.0
