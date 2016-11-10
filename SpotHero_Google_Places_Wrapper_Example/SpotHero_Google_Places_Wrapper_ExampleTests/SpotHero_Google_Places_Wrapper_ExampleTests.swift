@@ -19,9 +19,11 @@ class SpotHero_Google_Places_Wrapper_ExampleTests: XCTestCase {
         
         GooglePlacesAPIWrapper.storeGoogleAPIKey("AIzaSyD9IZRte-MspRDQxxeuf-U6wioXN1x0_68")
     }
+    
     func testGetPredictionWithInput() {
-        let expectation = self.expectationWithDescription("testGetPredictionWithInput")
+        let expectation = self.expectationWithDescription("Got prediction with search input")
         
+        /// Live test
         GooglePlacesAPIWrapper.getPredictions("325 W Huron", completion: {
             predictions, error in
             XCTAssertNil(error)
@@ -34,8 +36,9 @@ class SpotHero_Google_Places_Wrapper_ExampleTests: XCTestCase {
     }
     
     func testGetPredictionWithPlaceName() {
-        let expectation = self.expectationWithDescription("testGetPredictionWithPlaceName")
+        let expectation = self.expectationWithDescription("Got prediction with place name")
         
+        /// Live test
         GooglePlacesAPIWrapper.getPredictions("SpotHero", completion: {
             predictions, error in
             XCTAssertNil(error)
@@ -48,10 +51,11 @@ class SpotHero_Google_Places_Wrapper_ExampleTests: XCTestCase {
     }
     
     func testGetPlaceDetails() {
-        let expectation = self.expectationWithDescription("testGetPlaceDetails")
+        let expectation = self.expectationWithDescription("Got place details with with prediction")
         let prediction = GooglePlacesPredictionWrapper(predictionDescription: "SpotHero, West Huron Street, Chicago, IL, United States",
                                                        placeID: "ChIJEyn6463TD4gR9Ta3uIauNyo",
                                                        terms: [])
+        /// Live test
         GooglePlacesAPIWrapper.getPlaceDetails(prediction, completion: {
             placeDetails, error in
             
@@ -62,12 +66,10 @@ class SpotHero_Google_Places_Wrapper_ExampleTests: XCTestCase {
                 XCTAssertEqual(placeDetails.placeID, prediction.placeID)
                 XCTAssertEqualWithAccuracy(placeDetails.location.coordinate.latitude,
                     self.chicagoLocation.coordinate.latitude,
-                    accuracy: 0.001,
-                    "The two locacations are not within 0.001")
+                    accuracy: 0.001)
                 XCTAssertEqualWithAccuracy(placeDetails.location.coordinate.longitude,
                     self.chicagoLocation.coordinate.longitude,
-                    accuracy: 0.001,
-                    "The two locacations are not within 0.001")
+                    accuracy: 0.001)
             } else {
                 XCTFail("Place Details is nil")
             }
