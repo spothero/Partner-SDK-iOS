@@ -40,7 +40,7 @@ public struct GooglePlacesAPIWrapper {
             if let error = error {
                 completion([], error)
             } else {
-                var predictionsWrapper = [GooglePlacesPredictionWrapper]()
+                let predictionsWrapper: [GooglePlacesPredictionWrapper]
                 predictionsWrapper = predictions.map {
                     prediction in
                     
