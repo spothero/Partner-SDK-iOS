@@ -1,0 +1,6 @@
+framework module SpotHero_iOS_Google_Places_Wrapper {
+  umbrella header "SpotHero_iOS_Google_Places_Wrapper-umbrella.h"
+
+  export *
+  module * { export * }
+}
