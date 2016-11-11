@@ -25,6 +25,8 @@ class FacilityAnnotationView: MKAnnotationView {
                                                  compatibleWithTraitCollection: nil)
     private var priceLabel: AnnotationLabel?
     private var backgroundImageView: UIImageView?
+    private let unscaledHeight:CGFloat = 38
+    
     override var annotation: MKAnnotation? {
         didSet {
             guard let facilityAnnotation = self.annotation as? FacilityAnnotation else {
@@ -104,36 +106,18 @@ class FacilityAnnotationView: MKAnnotationView {
     }
     
     private func animate(selected: Bool) {
-        let oldWidth: CGFloat = self.bounds.size.width
-        let oldHeight: CGFloat = self.bounds.size.height
-        
-        guard let imageSize = self.facilityPinImageDefault?.size else {
-            assertionFailure("cannot get image size")
-            return
-        }
-        let newWidth: CGFloat = selected ? imageSize.width * self.facilityGrowScale : imageSize.width
-        let newHeight: CGFloat = selected ? imageSize.height * self.facilityGrowScale : imageSize.height
-        
-        if (oldWidth != newWidth) {
-            self.centerOffset = CGPoint(x: 0, y: -newHeight / 2)
-            
-            UIView.animateWithDuration(self.growDuration, animations: {
-                self.frame = CGRect(x: self.frame.origin.x - (newWidth - oldWidth) / 2,
-                                    y: self.frame.origin.y - (newHeight - oldHeight),
-                                    width: newWidth,
-                                    height: newHeight)
-                self.backgroundImageView?.frame = self.bounds
-                self.priceLabel?.frame = self.labelBoundsWithScale(selected ? self.facilityGrowScale : 1)
-                self.priceLabel?.updateFontSize()
-            },
-            completion: {
-                _ in
-                self.priceLabel?.setNeedsDisplay()
-            })
-            
-            self.backgroundImageView?.image = nil
-            self.backgroundImageView?.image = selected ? self.facilityPinImageActive : self.facilityPinImageDefault
-            self.priceLabel?.textColor = selected ? self.priceTextColorActive : self.priceTextColorDefault
+        UIView.animateWithDuration(self.growDuration) {
+            if selected {
+                self.backgroundImageView?.image = self.facilityPinImageActive
+                self.priceLabel?.textColor = self.priceTextColorActive
+                self.centerOffset = CGPoint(x: 0, y: (-self.unscaledHeight * self.facilityGrowScale) / 2)
+                self.transform = CGAffineTransformMakeScale(self.facilityGrowScale, self.facilityGrowScale)
+            } else {
+                self.backgroundImageView?.image = self.facilityPinImageDefault
+                self.priceLabel?.textColor = self.priceTextColorDefault
+                self.centerOffset = CGPoint(x: 0, y: -self.unscaledHeight / 2)
+                self.transform = CGAffineTransformIdentity
+            }
         }
     }
 }
