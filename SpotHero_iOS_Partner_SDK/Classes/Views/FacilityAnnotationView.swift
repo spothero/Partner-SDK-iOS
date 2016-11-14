@@ -107,17 +107,11 @@ class FacilityAnnotationView: MKAnnotationView {
     
     private func animate(selected: Bool) {
         UIView.animateWithDuration(self.growDuration) {
-            if selected {
-                self.backgroundImageView?.image = self.facilityPinImageActive
-                self.priceLabel?.textColor = self.priceTextColorActive
-                self.centerOffset = CGPoint(x: 0, y: (-self.unscaledHeight * self.facilityGrowScale) / 2)
-                self.transform = CGAffineTransformMakeScale(self.facilityGrowScale, self.facilityGrowScale)
-            } else {
-                self.backgroundImageView?.image = self.facilityPinImageDefault
-                self.priceLabel?.textColor = self.priceTextColorDefault
-                self.centerOffset = CGPoint(x: 0, y: -self.unscaledHeight / 2)
-                self.transform = CGAffineTransformIdentity
-            }
+            self.backgroundImageView?.image = selected ? self.facilityPinImageActive : self.facilityPinImageDefault
+            self.priceLabel?.textColor = selected ? self.priceTextColorActive : self.priceTextColorDefault
+            let scale = selected ? self.facilityGrowScale : 1
+            self.centerOffset = CGPoint(x: 0, y: (-self.unscaledHeight * scale) / 2)
+            self.transform = selected ? CGAffineTransformMakeScale(self.facilityGrowScale, self.facilityGrowScale) : CGAffineTransformIdentity
         }
     }
 }
