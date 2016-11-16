@@ -26,7 +26,6 @@ struct FacilityAPI {
     private static var NextURLString: String?
     private static var DataTasks = [NSURLSessionDataTask]()
     
-    
     /// Cancel all facility requests
     static func stopSearching() {
         self.DataTasks.forEach { $0.cancel() }
@@ -73,9 +72,11 @@ struct FacilityAPI {
                                                                         additionalParams: params,
                                                                         errorCompletion: {
                                                                             error in
-                                                                            completion(facilities: [],
-                                                                                error: error,
-                                                                                hasMorePages: false)
+                                                                            if error.code != NSURLError.Cancelled.rawValue {
+                                                                                completion(facilities: [],
+                                                                                    error: error,
+                                                                                    hasMorePages: false)
+                                                                            }
                                                                         },
                                                                         successCompletion: self.facilityFetchSuccessHandler(completion))
 
@@ -117,9 +118,11 @@ struct FacilityAPI {
                                                                              withHeaders: APIHeaders.defaultHeaders(),
                                                                              errorCompletion: {
                                                                                 error in
-                                                                                completion(facilities: [],
-                                                                                    error: error,
-                                                                                    hasMorePages: false)
+                                                                                if error.code != NSURLError.Cancelled.rawValue {
+                                                                                    completion(facilities: [],
+                                                                                        error: error,
+                                                                                        hasMorePages: false)
+                                                                                }
                                                                              },
                                                                              successCompletion: self.facilityFetchSuccessHandler(completion))
         

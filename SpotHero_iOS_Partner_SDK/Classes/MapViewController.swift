@@ -413,13 +413,7 @@ class MapViewController: UIViewController {
                                         //If there are more pages, show the wee loading view.
                                         self?.loadingView.hidden = !hasMorePages
                                         
-                                        var cancelled = false
-                                        
-                                        if let error = error as? NSError {
-                                            cancelled = (error.code == NSURLError.Cancelled.rawValue)
-                                        }
-                                        
-                                        if facilities.isEmpty && !hasMorePages && !cancelled && firstSearch {
+                                        if facilities.isEmpty && !hasMorePages && firstSearch {
                                             AlertView.presentErrorAlertView(LocalizedStrings.Sorry,
                                                 message: LocalizedStrings.NoSpotsFound,
                                                 from: self)
