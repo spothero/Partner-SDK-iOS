@@ -32,6 +32,14 @@ struct FacilityAPI {
         self.DataTasks.removeAll()
     }
     
+    
+    /// Check if currently searching faclities
+    ///
+    /// - Returns: true is currently searching
+    static func searching() -> Bool {
+        return !self.DataTasks.isEmpty
+    }
+    
     /**
      Returns the facilities near a given location within a range of dates
      
