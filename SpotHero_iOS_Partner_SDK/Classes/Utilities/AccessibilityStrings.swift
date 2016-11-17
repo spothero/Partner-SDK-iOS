@@ -57,4 +57,6 @@ enum AccessibilityStrings {
                                                  comment: "Button to purchase a spot")
     static let ConfirmationScreen = NSLocalizedString("Confirmation Screen",
                                                      comment: "Confimation screen. Seen after a spot is purchased")
+    static let CheckoutScreen = NSLocalizedString("Checkout Screen",
+                                                  comment: "Screen for entering checkout infomation")
 }

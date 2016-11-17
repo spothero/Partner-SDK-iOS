@@ -84,21 +84,20 @@ class CheckoutUITests: BaseUITests {
         self.cancelReservation()
     }
         
-    override func setUp() {
-        super.setUp()
-        
+    func goToCheckoutScreen(searchBarText: String? = nil) {
         // Enter text into search bar and press return
-        self.enterTextIntoSearchBar(enteredText, expectedText: expectedText)
+        self.enterTextIntoSearchBar(searchBarText ?? enteredText, expectedText: searchBarText ?? expectedText)
         
         // Get collection view and tap book it button
         guard
             let collectionView = tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.SpotCards) as? UICollectionView else {
-            XCTFail("Cannot get spot cards collection view")
-            return
+                XCTFail("Cannot get spot cards collection view")
+                return
         }
         
         tester().waitForCellAtIndexPath(firstIndexPath, inCollectionView: collectionView)
         tester().tapViewWithAccessibilityLabel(LocalizedStrings.BookIt)
+        tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.CheckoutScreen)
     }
     
     override func tearDown() {
@@ -109,6 +108,7 @@ class CheckoutUITests: BaseUITests {
     
     func testBuySpot() {
         //GIVEN: I see the Checkout Table View
+        self.goToCheckoutScreen()
         //WHEN: I enter an email, credit card number, expiration number and cvc
         //THEN: I see the confirmation screen
         self.purchaseSpot(self.visaCreditCard, cvc: self.visaCVC)
@@ -116,6 +116,7 @@ class CheckoutUITests: BaseUITests {
     
     func testBuySpotAmEx() {
         //GIVEN: I see the Checkout Table View
+        self.goToCheckoutScreen()
         //WHEN: I enter an email, american express credit card number, expiration number and cvc
         //THEN: I should see the confirmation screen
         self.purchaseSpot(self.amExCreditCard, cvc: self.amExCVC)
@@ -123,6 +124,7 @@ class CheckoutUITests: BaseUITests {
     
     func testBookAnotherButton() {
         //GIVEN: I see the confimation screen
+        self.goToCheckoutScreen()
         self.purchaseSpot(self.visaCreditCard, cvc: self.visaCVC)
         
         //WHEN: I tap the Book Another button
@@ -135,6 +137,7 @@ class CheckoutUITests: BaseUITests {
     
     func testDoneButton() {
         //GIVEN: I see the confimation screen
+        self.goToCheckoutScreen()
         self.purchaseSpot(self.visaCreditCard, cvc: self.visaCVC)
         
         //WHEN: I tap the Book Another button
@@ -150,6 +153,7 @@ class CheckoutUITests: BaseUITests {
     
     func testInvalidEmail() {
         //GIVEN: I see the checkout screen
+        self.goToCheckoutScreen()
         //WHEN: I enter an invalid email and valid
         self.enterTextInFields("matt@test",
                                creditCardNumber: self.visaCreditCard,
@@ -166,6 +170,7 @@ class CheckoutUITests: BaseUITests {
     
     func testInvalidCreditCardNumber() {
         //GIVEN: I see the checkout screen
+        self.goToCheckoutScreen()
         //WHEN: I enter an invalid credit card number
         self.enterTextInFields(self.testEmail,
                                creditCardNumber: "1234567812345678",
@@ -181,6 +186,7 @@ class CheckoutUITests: BaseUITests {
     
     func testInvalidExpiration() {
         //GIVEN: I see the checkout screen
+        self.goToCheckoutScreen()
         //WHEN: I enter an invalid credit card number
         self.enterTextInFields(self.testEmail,
                                creditCardNumber: self.visaCreditCard,
@@ -193,5 +199,53 @@ class CheckoutUITests: BaseUITests {
         } else {
             XCTFail("Cannot get payment button")
         }
+    }
+    
+    //TODO: Remove notes
+    /*
+     Only Email: 318 South Federal Street Chicago
+     Email and License: 328 South Wabash Avenue Chicago
+     Email and Phone: 100 West Monroe Street Chicago
+     All 3: 525 South Wabash Avenue Chicago
+     */
+    
+    func testEmailOnlyCheckout() {
+        //GIVEN: I select a spot that only required an email address
+        //WHEN: I see the checkout screen
+        self.goToCheckoutScreen("318 South Federal Street, Chicago, IL, United States\n")
+        //THEN: I should only see the email field
+        tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.EmailTextField)
+        tester().waitForAbsenceOfViewWithAccessibilityLabel(AccessibilityStrings.PhoneTextField)
+        tester().waitForAbsenceOfViewWithAccessibilityLabel(AccessibilityStrings.LicenseTextField)
+    }
+    
+    func testEmailandPhoneOnlyCheckout() {
+        //GIVEN: I select a spot that only required an email address
+        //WHEN: I see the checkout screen
+        self.goToCheckoutScreen("100 West Monroe Street Chicago\n")
+        //THEN: I should only see the email field
+        tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.EmailTextField)
+        tester().waitForAbsenceOfViewWithAccessibilityLabel(AccessibilityStrings.PhoneTextField)
+        tester().waitForAbsenceOfViewWithAccessibilityLabel(AccessibilityStrings.LicenseTextField)
+    }
+    
+    func testEmailAndLicenseOnlyCheckout() {
+        //GIVEN: I select a spot that only required an email address
+        //WHEN: I see the checkout screen
+        self.goToCheckoutScreen("328 South Wabash Avenue Chicago\n")
+        //THEN: I should only see the email field
+        tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.EmailTextField)
+        tester().waitForAbsenceOfViewWithAccessibilityLabel(AccessibilityStrings.PhoneTextField)
+        tester().waitForAbsenceOfViewWithAccessibilityLabel(AccessibilityStrings.LicenseTextField)
+    }
+    
+    func testEmailPhoneAndLicenseCheckout() {
+        //GIVEN: I select a spot that only required an email address
+        //WHEN: I see the checkout screen
+        self.goToCheckoutScreen("525 South Wabash Avenue Chicago\n")
+        //THEN: I should only see the email field
+        tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.EmailTextField)
+        tester().waitForAbsenceOfViewWithAccessibilityLabel(AccessibilityStrings.PhoneTextField)
+        tester().waitForAbsenceOfViewWithAccessibilityLabel(AccessibilityStrings.LicenseTextField)
     }
 }

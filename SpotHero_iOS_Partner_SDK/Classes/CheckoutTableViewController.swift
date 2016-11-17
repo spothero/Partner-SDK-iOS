@@ -162,6 +162,7 @@ class CheckoutTableViewController: UIViewController {
         self.setupPaymentButton()
         self.registerForKeyboardNotifications()
         self.closeButton.accessibilityLabel = LocalizedStrings.Close
+        self.view.accessibilityLabel = AccessibilityStrings.CheckoutScreen
     }
     
     
