@@ -183,13 +183,15 @@ struct SpotHeroPartnerAPIController {
             self.debugPrintResponseInfo(response, data: data)
         }
         
+        if let error = error {
+            NSOperationQueue.mainQueue().addOperationWithBlock({ 
+                errorCompletion(error: error)
+            })
+            return
+        }
+        
         guard let urlResponse = response as? NSHTTPURLResponse else {
-            //If theres no response and an error call the error completion.
-            if let error = error {
-                NSOperationQueue.mainQueue().addOperationWithBlock({ 
-                    errorCompletion(error: error)
-                })
-            }
+            //If theres no response
             return
         }
         
