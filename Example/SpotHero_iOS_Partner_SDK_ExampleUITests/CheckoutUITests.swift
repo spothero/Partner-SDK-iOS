@@ -201,14 +201,6 @@ class CheckoutUITests: BaseUITests {
         }
     }
     
-    //TODO: Remove notes
-    /*
-     Only Email: 318 South Federal Street Chicago
-     Email and License: 328 South Wabash Avenue Chicago
-     Email and Phone: 100 West Monroe Street Chicago
-     All 3: 525 South Wabash Avenue Chicago
-     */
-    
     func testEmailOnlyCheckout() {
         //GIVEN: I select a spot that only required an email address
         //WHEN: I see the checkout screen
@@ -222,30 +214,30 @@ class CheckoutUITests: BaseUITests {
     func testEmailandPhoneOnlyCheckout() {
         //GIVEN: I select a spot that only required an email address
         //WHEN: I see the checkout screen
-        self.goToCheckoutScreen("West Monroe Street, Chicago, IL, United States\n")
+        self.goToCheckoutScreen("100 West Monroe Street, Chicago, IL, United States\n")
         //THEN: I should only see the email field
         tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.EmailTextField)
-        tester().waitForAbsenceOfViewWithAccessibilityLabel(AccessibilityStrings.PhoneTextField)
+        tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.PhoneTextField)
         tester().waitForAbsenceOfViewWithAccessibilityLabel(AccessibilityStrings.LicenseTextField)
     }
     
     func testEmailAndLicenseOnlyCheckout() {
         //GIVEN: I select a spot that only required an email address
         //WHEN: I see the checkout screen
-        self.goToCheckoutScreen("South Wabash Avenue, Chicago, IL, United States\n")
+        self.goToCheckoutScreen("328 South Wabash Avenue, Chicago, IL, United States\n")
         //THEN: I should only see the email field
         tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.EmailTextField)
         tester().waitForAbsenceOfViewWithAccessibilityLabel(AccessibilityStrings.PhoneTextField)
-        tester().waitForAbsenceOfViewWithAccessibilityLabel(AccessibilityStrings.LicenseTextField)
+        tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.LicenseTextField)
     }
     
     func testEmailPhoneAndLicenseCheckout() {
         //GIVEN: I select a spot that only required an email address
         //WHEN: I see the checkout screen
-        self.goToCheckoutScreen("Wabash Avenue, Chicago, IL, United States\n")
+        self.goToCheckoutScreen("525 South Wabash Avenue, Chicago, IL, United States\n")
         //THEN: I should only see the email field
         tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.EmailTextField)
-        tester().waitForAbsenceOfViewWithAccessibilityLabel(AccessibilityStrings.PhoneTextField)
-        tester().waitForAbsenceOfViewWithAccessibilityLabel(AccessibilityStrings.LicenseTextField)
+        tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.PhoneTextField)
+        tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.LicenseTextField)
     }
 }
