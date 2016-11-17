@@ -44,8 +44,6 @@ class PartnerAPITests: BaseTests {
     }
     
     func testCancelGetFacilities() {
-        let expectation = self.expectationWithDescription("Facility request cancelled")
-        
         self.getFacilities(Constants.ChicagoLocation) {
             facilities, error, hasMorePages in
             XCTAssertEqual(facilities.count, 0)
@@ -56,12 +54,10 @@ class PartnerAPITests: BaseTests {
             } else {
                 XCTFail("Received the wrong error type")
             }
-            expectation.fulfill()
         }
         
         FacilityAPI.stopSearching()
-        
-        self.waitForExpectationsWithTimeout(self.timeoutDuration, handler: nil)
+        XCTAssertFalse(FacilityAPI.searching())
     }
     
     func testNoFacilities() {
