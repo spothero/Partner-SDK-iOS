@@ -222,7 +222,7 @@ class CheckoutUITests: BaseUITests {
     func testEmailandPhoneOnlyCheckout() {
         //GIVEN: I select a spot that only required an email address
         //WHEN: I see the checkout screen
-        self.goToCheckoutScreen("100 West Monroe Street Chicago\n")
+        self.goToCheckoutScreen("West Monroe Street, Chicago, IL, United States\n")
         //THEN: I should only see the email field
         tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.EmailTextField)
         tester().waitForAbsenceOfViewWithAccessibilityLabel(AccessibilityStrings.PhoneTextField)
@@ -232,7 +232,7 @@ class CheckoutUITests: BaseUITests {
     func testEmailAndLicenseOnlyCheckout() {
         //GIVEN: I select a spot that only required an email address
         //WHEN: I see the checkout screen
-        self.goToCheckoutScreen("328 South Wabash Avenue Chicago\n")
+        self.goToCheckoutScreen("South Wabash Avenue, Chicago, IL, United States\n")
         //THEN: I should only see the email field
         tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.EmailTextField)
         tester().waitForAbsenceOfViewWithAccessibilityLabel(AccessibilityStrings.PhoneTextField)
@@ -242,7 +242,7 @@ class CheckoutUITests: BaseUITests {
     func testEmailPhoneAndLicenseCheckout() {
         //GIVEN: I select a spot that only required an email address
         //WHEN: I see the checkout screen
-        self.goToCheckoutScreen("525 South Wabash Avenue Chicago\n")
+        self.goToCheckoutScreen("Wabash Avenue, Chicago, IL, United States\n")
         //THEN: I should only see the email field
         tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.EmailTextField)
         tester().waitForAbsenceOfViewWithAccessibilityLabel(AccessibilityStrings.PhoneTextField)
