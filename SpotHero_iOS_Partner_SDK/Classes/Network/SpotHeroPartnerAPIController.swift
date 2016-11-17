@@ -184,7 +184,9 @@ struct SpotHeroPartnerAPIController {
         }
         
         if let error = error {
-            errorCompletion(error: error)
+            NSOperationQueue.mainQueue().addOperationWithBlock({ 
+                errorCompletion(error: error)
+            })
             return
         }
         
