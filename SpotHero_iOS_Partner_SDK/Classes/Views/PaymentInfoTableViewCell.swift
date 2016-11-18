@@ -39,7 +39,7 @@ class PaymentInfoTableViewCell: UITableViewCell, ValidatorCell {
         }
     }
     
-    var errors = [String: ValidatorError]() {
+    var errors = [ErrorKey: ValidatorError]() {
         didSet {
             var valid = true
             for value in self.errors.values {
@@ -240,7 +240,7 @@ extension PaymentInfoTableViewCell: UITextFieldDelegate {
             case self.creditCardTextField:
                 self.cardType = Validator.getCardType(text)
                 try Validator.validateCreditCard(self.cardNumber)
-                self.errors[ErrorKey.CreditCard.rawValue] = nil
+                self.errors[.CreditCard] = nil
                 self.showExpirationDateAndCVCTextFields(show: true)
                 self.expirationDateTextField.becomeFirstResponder()
                 self.creditCardTextField.text = self.lastFourDigits(text)
@@ -255,7 +255,7 @@ extension PaymentInfoTableViewCell: UITextFieldDelegate {
                 } else {
                     throw ValidatorError.FieldInvalid(fieldName: LocalizedStrings.ExpirationDate, message: LocalizedStrings.InvalidDateErrorMessage)
                 }
-                self.errors[ErrorKey.Expiration.rawValue] = nil
+                self.errors[.Expiration] = nil
             case self.cvcTextField:
                 if cardType == .Amex {
                     try Validator.validateCVC(text, amex: true)
@@ -263,18 +263,18 @@ extension PaymentInfoTableViewCell: UITextFieldDelegate {
                     try Validator.validateCVC(text)
                 }
                 self.cvc = text
-                self.errors[ErrorKey.CVC.rawValue] = nil
+                self.errors[.CVC] = nil
             default:
                 break
             }
         } catch let error as ValidatorError {
             switch textField {
             case self.creditCardTextField:
-                self.errors[ErrorKey.CreditCard.rawValue] = error
+                self.errors[.CreditCard] = error
             case self.expirationDateTextField:
-                self.errors[ErrorKey.Expiration.rawValue] = error
+                self.errors[.Expiration] = error
             case self.cvcTextField:
-                self.errors[ErrorKey.CVC.rawValue] = error
+                self.errors[.CVC] = error
             default:
                 break
             }

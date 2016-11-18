@@ -201,6 +201,60 @@ class CheckoutUITests: BaseUITests {
         }
     }
     
+    func testEmptyCreditCard() {
+        //GIVEN: I see the checkout screen
+        self.goToCheckoutScreen()
+        //WHEN: I fill out all the fields except the credit card fields
+        tester().enterText(self.testEmail, intoViewWithAccessibilityLabel: AccessibilityStrings.EmailTextField)
+        //THEN: The payment button should be disabled
+        if let paymentButton = tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.PaymentButton) as? UIButton {
+            XCTAssertFalse(paymentButton.enabled)
+        } else {
+            XCTFail("Cannot get payment button")
+        }
+    }
+    
+    func testEmptyExpirationDate() {
+        //GIVEN: I see the checkout screen
+        self.goToCheckoutScreen()
+        //WHEN: I fill out all the fields except the credit card fields
+        self.enterTextInFields(self.testEmail, creditCardNumber: self.visaCreditCard, expiration: nil, cvc: self.visaCVC)
+        //THEN: The payment button should be disabled
+        if let paymentButton = tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.PaymentButton) as? UIButton {
+            XCTAssertFalse(paymentButton.enabled)
+        } else {
+            XCTFail("Cannot get payment button")
+        }
+    }
+    
+    func testEmptyCVC() {
+        //GIVEN: I see the checkout screen
+        self.goToCheckoutScreen()
+        //WHEN: I fill out all the fields except the credit card fields
+        self.enterTextInFields(self.testEmail, creditCardNumber: self.visaCreditCard, expiration: self.testExpiration, cvc: nil)
+        tester().tapViewWithAccessibilityLabel(LocalizedStrings.Done)
+        //THEN: The payment button should be disabled
+        if let paymentButton = tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.PaymentButton) as? UIButton {
+            XCTAssertFalse(paymentButton.enabled)
+        } else {
+            XCTFail("Cannot get payment button")
+        }
+    }
+    
+    func testEmptyExpirationDateAndCVC() {
+        //GIVEN: I see the checkout screen
+        self.goToCheckoutScreen()
+        //WHEN: I fill out all the fields except the credit card fields
+        self.enterTextInFields(self.testEmail, creditCardNumber: self.visaCreditCard)
+        tester().tapViewWithAccessibilityLabel(LocalizedStrings.Done)
+        //THEN: The payment button should be disabled
+        if let paymentButton = tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.PaymentButton) as? UIButton {
+            XCTAssertFalse(paymentButton.enabled)
+        } else {
+            XCTFail("Cannot get payment button")
+        }
+    }
+    
     func testEmailOnlyCheckout() {
         //GIVEN: I select a spot that only required an email address
         //WHEN: I see the checkout screen
