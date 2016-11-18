@@ -25,7 +25,9 @@ class CheckoutUITests: BaseUITests {
     let testEmail = "matt@test.com"
     let testExpiration = "1020"
     
-    func cancelReservation() {
+    //MARK: - Helper Methods
+    
+    private func cancelReservation() {
         let expectation = self.expectationWithDescription("Reservation Cancelled")
         
         ReservationAPI.cancelLastReservation { (success) in
@@ -36,7 +38,7 @@ class CheckoutUITests: BaseUITests {
         self.waitForExpectationsWithTimeout(10, handler: nil)
     }
     
-    func enterTextInFields(email: String,
+    private func enterTextInFields(email: String,
                            creditCardNumber: String,
                            expiration: String? = nil,
                            cvc: String? = nil,
@@ -65,7 +67,7 @@ class CheckoutUITests: BaseUITests {
         }
     }
     
-    func purchaseSpot(creditCardNumber: String, cvc: String) {
+    private func purchaseSpot(creditCardNumber: String, cvc: String) {
         self.enterTextInFields(self.testEmail,
                                creditCardNumber: creditCardNumber,
                                expiration: self.testExpiration,
@@ -84,7 +86,7 @@ class CheckoutUITests: BaseUITests {
         self.cancelReservation()
     }
         
-    func goToCheckoutScreen(searchBarText: String? = nil) {
+    private func goToCheckoutScreen(searchBarText: String? = nil) {
         // Enter text into search bar and press return
         self.enterTextIntoSearchBar(searchBarText ?? enteredText, expectedText: searchBarText ?? expectedText)
         
@@ -100,11 +102,15 @@ class CheckoutUITests: BaseUITests {
         tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.CheckoutScreen)
     }
     
+    //MARK: - Test Lifecycle
+    
     override func tearDown() {
         tester().tapViewWithAccessibilityLabel(LocalizedStrings.Close)
         tester().tapViewWithAccessibilityLabel(LocalizedStrings.LaunchSDK)
         super.tearDown()
     }
+    
+    //MARK: - Test Methods
     
     func testBuySpot() {
         //GIVEN: I see the Checkout Table View
@@ -154,7 +160,7 @@ class CheckoutUITests: BaseUITests {
     func testInvalidEmail() {
         //GIVEN: I see the checkout screen
         self.goToCheckoutScreen()
-        //WHEN: I enter an invalid email and valid
+        //WHEN: I enter an invalid email and valid credit card, experiration date and cvc
         self.enterTextInFields("matt@test",
                                creditCardNumber: self.visaCreditCard,
                                expiration: self.testExpiration,
@@ -187,7 +193,7 @@ class CheckoutUITests: BaseUITests {
     func testInvalidExpiration() {
         //GIVEN: I see the checkout screen
         self.goToCheckoutScreen()
-        //WHEN: I enter an invalid credit card number
+        //WHEN: I enter an invalid expiration date
         self.enterTextInFields(self.testEmail,
                                creditCardNumber: self.visaCreditCard,
                                expiration: "1013",
@@ -217,8 +223,10 @@ class CheckoutUITests: BaseUITests {
     func testEmptyExpirationDate() {
         //GIVEN: I see the checkout screen
         self.goToCheckoutScreen()
-        //WHEN: I fill out all the fields except the credit card fields
-        self.enterTextInFields(self.testEmail, creditCardNumber: self.visaCreditCard, expiration: nil, cvc: self.visaCVC)
+        //WHEN: I fill out all the fields except the expiration date
+        self.enterTextInFields(self.testEmail,
+                               creditCardNumber: self.visaCreditCard,
+                               expiration: nil, cvc: self.visaCVC)
         //THEN: The payment button should be disabled
         if let paymentButton = tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.PaymentButton) as? UIButton {
             XCTAssertFalse(paymentButton.enabled)
@@ -230,8 +238,11 @@ class CheckoutUITests: BaseUITests {
     func testEmptyCVC() {
         //GIVEN: I see the checkout screen
         self.goToCheckoutScreen()
-        //WHEN: I fill out all the fields except the credit card fields
-        self.enterTextInFields(self.testEmail, creditCardNumber: self.visaCreditCard, expiration: self.testExpiration, cvc: nil)
+        //WHEN: I fill out all the fields except the cvc
+        self.enterTextInFields(self.testEmail,
+                               creditCardNumber: self.visaCreditCard,
+                               expiration: self.testExpiration,
+                               cvc: nil)
         tester().tapViewWithAccessibilityLabel(LocalizedStrings.Done)
         //THEN: The payment button should be disabled
         if let paymentButton = tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.PaymentButton) as? UIButton {
@@ -244,7 +255,7 @@ class CheckoutUITests: BaseUITests {
     func testEmptyExpirationDateAndCVC() {
         //GIVEN: I see the checkout screen
         self.goToCheckoutScreen()
-        //WHEN: I fill out all the fields except the credit card fields
+        //WHEN: I fill out all the fields except the expiration date and cvc
         self.enterTextInFields(self.testEmail, creditCardNumber: self.visaCreditCard)
         tester().tapViewWithAccessibilityLabel(LocalizedStrings.Done)
         //THEN: The payment button should be disabled
@@ -269,7 +280,7 @@ class CheckoutUITests: BaseUITests {
         //GIVEN: I select a spot that only required an email address
         //WHEN: I see the checkout screen
         self.goToCheckoutScreen("100 West Monroe Street, Chicago, IL, United States\n")
-        //THEN: I should only see the email field
+        //THEN: I should only see the email and phone fields
         tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.EmailTextField)
         tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.PhoneTextField)
         tester().waitForAbsenceOfViewWithAccessibilityLabel(AccessibilityStrings.LicenseTextField)
@@ -279,7 +290,7 @@ class CheckoutUITests: BaseUITests {
         //GIVEN: I select a spot that only required an email address
         //WHEN: I see the checkout screen
         self.goToCheckoutScreen("328 South Wabash Avenue, Chicago, IL, United States\n")
-        //THEN: I should only see the email field
+        //THEN: I should only see the email and license fields
         tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.EmailTextField)
         tester().waitForAbsenceOfViewWithAccessibilityLabel(AccessibilityStrings.PhoneTextField)
         tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.LicenseTextField)
@@ -289,7 +300,7 @@ class CheckoutUITests: BaseUITests {
         //GIVEN: I select a spot that only required an email address
         //WHEN: I see the checkout screen
         self.goToCheckoutScreen("525 South Wabash Avenue, Chicago, IL, United States\n")
-        //THEN: I should only see the email field
+        //THEN: I should see the email, phone and license fields
         tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.EmailTextField)
         tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.PhoneTextField)
         tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.LicenseTextField)
