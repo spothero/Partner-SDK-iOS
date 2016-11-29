@@ -10,37 +10,37 @@ import Foundation
 
 enum AccessibilityStrings {
     static let MapView = NSLocalizedString("MapView",
-                                           comment: "Accessibility label for map view")
+                                           comment: "Map for displaying parking spots")
     static let SearchBar = NSLocalizedString("SearchBar",
-                                             comment: "Accessibility label for search bar")
+                                             comment: "Search bar for searching for parking spots")
     static let PredictionTableView = NSLocalizedString("PredictionTableView",
-                                                       comment: "Accessibility label for table that shows place predictions from google maps")
+                                                       comment: "Table of place suggestions from Google")
     static let Address = NSLocalizedString("Address",
-                                           comment: "Accessibility label for address label of place")
-    static let City = NSLocalizedString("Address",
-                                        comment: "Accessibility label for city label of place")
+                                           comment: "Label for the address of a place")
+    static let City = NSLocalizedString("City",
+                                        comment: "Label for the city of a place")
     static let SpotHero = NSLocalizedString("SpotHero",
                                             comment: "SpotHero")
     static let ClearText = NSLocalizedString("Clear text",
-                                             comment: "Accessibility label for the clear text button on the search bar field")
+                                             comment: "Button for clearing text for the search bar")
     static let TimeSelectionView = NSLocalizedString("TimeSelectionView",
-                                                     comment: "Accessibility label for time selection view")
+                                                     comment: "View to select the time of your reservation")
     static let StartsTimeSelectionView = NSLocalizedString("StartsTimeSelectionView",
-                                                           comment: "Accessibility label for start time selection view")
+                                                           comment: "View to select the start time of your reservation")
     static let EndsTimeSelectionView = NSLocalizedString("EndsTimeSelectionView",
-                                                         comment: "Accessibility label for end time selection view")
+                                                         comment: "View to select the end time of your reservation")
     static let StartDateLabel = NSLocalizedString("StartDateLabel",
-                                                  comment: "Accessibility label for start date")
+                                                  comment: "Label that shows your reservation's start date")
     static let EndDateLabel = NSLocalizedString("EndDateLabel",
-                                                comment: "Accessibility label for end date")
+                                                comment: "Label that shows your reservation's end date")
     static let StartTimeLabel = NSLocalizedString("StartTimeLabel",
-                                                  comment: "Accessibility label for start time")
+                                                  comment: "Label that shows your reservation's start time")
     static let EndTimeLabel = NSLocalizedString("EndTimeLabel",
-                                                comment: "Accessibility label for end time")
+                                                comment: "Label that shows your reservation's end time")
     static let CollapsedSearchBarView = NSLocalizedString("CollapsedSearchBarView",
-                                                          comment: "Accessibility label for collapsed search bar view")
+                                                          comment: "View that shows you reservation's length")
     static let SpotCards = NSLocalizedString("Spot Cards",
-                                             comment: "Accessibility label for spot cards collection view")
+                                             comment: "View that shows info about a certain parking spot")
     static let EmailTextField = NSLocalizedString("Email text field",
                                                   comment: "Text field for entering an email")
     static let PhoneTextField = NSLocalizedString("Phone text field",

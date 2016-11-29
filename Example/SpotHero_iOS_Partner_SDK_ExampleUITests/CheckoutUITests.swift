@@ -226,7 +226,8 @@ class CheckoutUITests: BaseUITests {
         //WHEN: I fill out all the fields except the expiration date
         self.enterTextInFields(self.testEmail,
                                creditCardNumber: self.visaCreditCard,
-                               expiration: nil, cvc: self.visaCVC)
+                               expiration: nil,
+                               cvc: self.visaCVC)
         //THEN: The payment button should be disabled
         if let paymentButton = tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.PaymentButton) as? UIButton {
             XCTAssertFalse(paymentButton.enabled)

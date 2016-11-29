@@ -9,9 +9,9 @@
 import UIKit
 
 class ConfirmationViewController: UIViewController {
-    @IBOutlet weak var bookAnotherButton: UIButton!
-    @IBOutlet weak var doneButton: UIButton!
-    @IBOutlet weak var closeButton: UIBarButtonItem!
+    @IBOutlet var bookAnotherButton: UIButton!
+    @IBOutlet var doneButton: UIButton!
+    @IBOutlet var closeButton: UIBarButtonItem!
 
     override func viewDidLoad() {
         super.viewDidLoad()
