@@ -62,7 +62,7 @@ test_flight_provisioning_profile_name = 'Distribution: SDK Sample App'
 
         if is_ci 
             # Make sure we're on Xcode 7 on the build server. 
-            sh "sudo xcode-select --switch /Applications/Xcode_7.3.1.app/Contents/Developer"
+            switch_to_xcode_7
         end
     end
 
@@ -118,6 +118,18 @@ test_flight_provisioning_profile_name = 'Distribution: SDK Sample App'
 #############################
 ## TESTING & CODE COVERAGE ##
 #############################
+
+    def switch_to_xcode_7 
+        xcversion(
+            version: "7.3.1",
+        )
+    end 
+
+    def switch_to_xcode_8
+        xcversion(
+            version: "~> 8.1.0", # Selects the latest installed version from the 8.1.x set
+        )    
+    end 
 
     desc "Runs tests with the given options"
     desc "Expects values for the following keys:"
@@ -188,17 +200,8 @@ test_flight_provisioning_profile_name = 'Distribution: SDK Sample App'
     
     desc "Runs all the tests of the app and gathers code coverage on Xcode 8"
     lane :test_8 do
-        if is_ci 
-            # Make sure we're on Xcode 8 on the build server. 
-            sh "sudo xcode-select --switch /Applications/Xcode_8.app/Contents/Developer"
-        end
-        
+        switch_to_xcode_8
         test 
-        
-        if is_ci 
-            # Make sure we're back to Xcode 7.3.1 on the build server. 
-            sh "sudo xcode-select --switch /Applications/Xcode_7.3.1.app/Contents/Developer"
-        end
     end
     
     desc "Runs all the tests of the app and gathers code coverage across all versions of xcode"
@@ -320,34 +323,78 @@ test_flight_provisioning_profile_name = 'Distribution: SDK Sample App'
 
         slack(message: "SDK Sample app build uploaded to iTunes Connect!", success: true)
     end
-
+        
+    def calculate_current_version
+        version = sh("git describe --tags $(git rev-list --tags='b[0-9]*' --max-count=1) --abbrev=0")
+        
+        puts("#{version}")
+                
+        #trim off the b
+        trimmed_version = version[1..version.length]
+        puts("#{trimmed_version}")
+        
+        #make it an integer
+        integer_version = trimmed_version.to_i
+        current_version = integer_version + 1        
+        return current_version
+    end 
+    
+    def checkout_current_branch
+        # For some reason, Jenkins is checking out a detached HEAD instead of the appropriate branch.
+        current_branch = ENV["GIT_BRANCH"]        
+        if current_branch
+            #trim off "origin/" (7 characters)
+            current_branch = current_branch[7..current_branch.length]
+        elsif
+            # We're not getting it from the environment - grab it from git by finding the starred branch.
+            current_branch = sh("git branch | grep \\*")
+            
+            # Trim off the "* " bit (2 characters)
+            current_branch = current_branch[2..current_branch.length]
+        end        
+        
+        # Check out the appropriate branch
+        sh "git checkout " + current_branch
+    end 
+    
     desc "Bumps the version, commits it to git with the appropriate tag, and pushes to the remote."
-    private_lane :bump_commit_tag do
-        # Bump the build number and commit it
+    lane :bump_commit do         
+        checkout_current_branch
+    
+        #figure out what the latest build number is
+        current_version = calculate_current_version
+        puts("Current version: #{current_version.to_s}")
+    
+        # Update the build number and commit it
         increment_build_number(
-            xcodeproj: project_file,
+            build_number: current_version,        
         )
-        commit_version_bump(
-            xcodeproj: project_file,
-        )
-
+        commit_version_bump
+        
         # Set the tag as b(build number) for the committed version bump.
         build_number = Actions.lane_context[Actions::SharedValues::BUILD_NUMBER]
         add_git_tag(
             tag: "b" + build_number
-        )
-
-        # Push to remote
-        push_to_git_remote(
-            # remote: 'GitHub',
-        )
+        )      
     end
+    
+    desc "Method which pushes commits using SSH instead of stored creds"
+    private_lane :push_with_ssh do 
+        # Update the remote URL for origin to use ssh
+        sh "git remote set-url origin git@github.com:spothero/iOS-Partner-SDK.git"
+        
+        # Push to remote with tags using ssh
+        push_to_git_remote(
+            tags: true,
+        ) 
+    end 
 
     desc "Method to run after a successful merge."
     desc "Will bump/commit/tag/push the version and upload to iTunes Connect."
     lane :sample_itc do
-        bump_commit_tag
+        bump_commit
         itc
+        push_with_ssh
     end
 
 
