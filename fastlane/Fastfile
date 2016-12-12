@@ -161,32 +161,6 @@ test_flight_provisioning_profile_name = 'Distribution: SDK Sample App'
         )
     end
 
-    desc "Runs slather with cobertura output on a specified scheme"
-    desc "Expects values for the following keys:"
-    desc "output_options_key: The folder in which to put the cobertura.xml file"
-    desc "scheme_options_key: The scheme to collect coverage for"
-    private_lane :slather_cobertura do |options|
-        if !options.key?(:scheme_options_key) || !options.key?(:output_options_key)
-            raise "Not all required options for this lane are present!"
-            return
-        end
-
-        # What should we test and where should we put it?
-        output = options[:output_options_key]
-        scheme = options[:scheme_options_key]
-
-       slather(
-            cobertura_xml: true,
-            proj: project_file,
-            workspace: workspace_file,
-            input_format: 'profdata',
-            scheme: scheme,
-            output_directory: File.join(fastlane_folder, output),
-            ignore: coverage_files_to_ignore,
-            jenkins: is_ci,
-       )    
-    end
-
     desc "Runs all the tests of the app and gathers code coverage"
     lane :test do
         #stop any existing sims        
@@ -194,12 +168,6 @@ test_flight_provisioning_profile_name = 'Distribution: SDK Sample App'
     
         # Run the Unit tests
         run_tests(
-            scheme_options_key: main_scheme,
-            output_options_key: test_output_folder,
-        )
-
-        # Run coverage for the app
-        slather_cobertura(
             scheme_options_key: main_scheme,
             output_options_key: test_output_folder,
         )

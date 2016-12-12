@@ -15,7 +15,6 @@ GEM
       fastlane_core (>= 0.55.0, < 1.0.0)
       spaceship (>= 0.37.0, < 1.0.0)
     claide (1.0.1)
-    clamp (0.6.5)
     colored (1.2)
     commander (4.4.1)
       highline (~> 1.7.2)
@@ -150,7 +149,6 @@ GEM
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
     mini_magick (4.5.1)
-    mini_portile2 (2.1.0)
     minitest (5.9.1)
     multi_json (1.12.1)
     multi_xml (0.6.0)
@@ -159,8 +157,6 @@ GEM
     net-sftp (2.1.2)
       net-ssh (>= 2.6.5)
     net-ssh (3.2.0)
-    nokogiri (1.6.8.1)
-      mini_portile2 (~> 2.1.0)
     os (0.9.6)
     pem (1.4.1)
       fastlane_core (>= 0.58.0, < 1.0.0)
@@ -199,11 +195,6 @@ GEM
       jwt (~> 1.5)
       multi_json (~> 1.10)
     slack-notifier (1.5.1)
-    slather (2.3.0)
-      activesupport (>= 4.0.2, < 5)
-      clamp (~> 0.6)
-      nokogiri (~> 1.6.3)
-      xcodeproj (>= 0.20, < 2.0.0)
     snapshot (1.16.4)
       fastimage (~> 1.6.3)
       fastlane_core (>= 0.57.0, < 1.0.0)
@@ -253,7 +244,6 @@ PLATFORMS
 DEPENDENCIES
   bundler (~> 1.13.6)
   fastlane (~> 1.111.0)
-  slather (~> 2.3.0)
 
 BUNDLED WITH
    1.13.6
