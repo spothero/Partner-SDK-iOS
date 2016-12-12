@@ -18,6 +18,11 @@ slack_webhook_url='https://hooks.slack.com/services/T02755W03/B17P10JU9/JGrtFKFL
 # The username of the CI user on iTunes Connect.
 ci_username = 'ci-ios@spothero.com'
 
+# Files to ignore in code coverage, as an array of strings. Wildcards may be used.
+coverage_files_to_ignore = [
+    'Pods/*',
+]
+
 #########################
 # Per-Project Variables #
 #########################
@@ -170,14 +175,16 @@ test_flight_provisioning_profile_name = 'Distribution: SDK Sample App'
         output = options[:output_options_key]
         scheme = options[:scheme_options_key]
 
-        #TODO: Re-enable when I figure out wtf is going on with slather
-#        slather(
-#            cobertura_xml: true,
-#            proj: project_file,
-#            input_format: 'profdata',
-#            scheme: scheme,
-#            output_directory: File.join(fastlane_folder, output),
-#        )
+       slather(
+            cobertura_xml: true,
+            proj: project_file,
+            workspace: workspace_file,
+            input_format: 'profdata',
+            scheme: scheme,
+            output_directory: File.join(fastlane_folder, output),
+            ignore: coverage_files_to_ignore,
+            jenkins: is_ci,
+       )    
     end
 
     desc "Runs all the tests of the app and gathers code coverage"
