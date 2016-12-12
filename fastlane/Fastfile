@@ -344,6 +344,7 @@ test_flight_provisioning_profile_name = 'Distribution: SDK Sample App'
         # Update the build number and commit it
         increment_build_number(
             build_number: current_version,        
+            xcodeproj: project_file,        
         )
         commit_version_bump
         
