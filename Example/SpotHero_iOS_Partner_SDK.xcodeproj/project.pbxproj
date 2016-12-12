@@ -75,7 +75,6 @@
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* PartnerAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerAPITests.swift; sourceTree = "<group>"; };
 		98C2BDA4124E6288B4D2DBB4 /* Pods_SpotHero_iOS_Partner_SDK_ExampleUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpotHero_iOS_Partner_SDK_ExampleUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		ACCD235132D0F3E91139EDA1 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		B3D6EF80E8E12778E5EA7832 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		B881BE5BF8EFF967D394C2B4 /* SpotHero_iOS_Partner_SDK.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = SpotHero_iOS_Partner_SDK.podspec; path = ../SpotHero_iOS_Partner_SDK.podspec; sourceTree = "<group>"; };
 		C31FF8F2573F1F03B4C264B2 /* Pods-SpotHero_iOS_Partner_SDK_ExampleUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpotHero_iOS_Partner_SDK_ExampleUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SpotHero_iOS_Partner_SDK_ExampleUITests/Pods-SpotHero_iOS_Partner_SDK_ExampleUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -224,7 +223,6 @@
 			children = (
 				B881BE5BF8EFF967D394C2B4 /* SpotHero_iOS_Partner_SDK.podspec */,
 				B3D6EF80E8E12778E5EA7832 /* README.md */,
-				ACCD235132D0F3E91139EDA1 /* LICENSE */,
 			);
 			name = "Podspec Metadata";
 			sourceTree = "<group>";
