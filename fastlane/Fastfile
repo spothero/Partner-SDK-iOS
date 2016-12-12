@@ -346,7 +346,9 @@ test_flight_provisioning_profile_name = 'Distribution: SDK Sample App'
             build_number: current_version,        
             xcodeproj: project_file,        
         )
-        commit_version_bump
+        commit_version_bump(
+            xcodeproj: project_file,        
+        )
         
         # Set the tag as b(build number) for the committed version bump.
         build_number = Actions.lane_context[Actions::SharedValues::BUILD_NUMBER]
