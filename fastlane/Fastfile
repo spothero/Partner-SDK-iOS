@@ -350,8 +350,9 @@ test_flight_provisioning_profile_name = 'Distribution: SDK Sample App'
         # For some reason, Jenkins is checking out a detached HEAD instead of the appropriate branch.
         current_branch = ENV["GIT_BRANCH"]        
         if current_branch
-            #trim off "origin/" (7 characters)
-            current_branch = current_branch[7..current_branch.length]
+            # Split on the first slash to trim the remote name off the branch name
+            split_on_first_slash = current_branch.split("/", 2)
+            current_branch = split_on_first_slash[1]
         elsif
             # We're not getting it from the environment - grab it from git by finding the starred branch.
             current_branch = sh("git branch | grep \\*")
