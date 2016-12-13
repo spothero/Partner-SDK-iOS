@@ -23,6 +23,9 @@ coverage_files_to_ignore = [
     'Pods/*',
 ]
 
+# The location where derived data should be placed. 
+derived_data_folder = File.join(fastlane_folder, "DerivedData")
+
 #########################
 # Per-Project Variables #
 #########################
@@ -50,9 +53,6 @@ codesigning_id = 'iPhone Distribution: Spot Hero Inc.'
 
 # The identifier of the team to use when retrieving provisioning profiles
 team_identifier = 'ZW7QWR628D'
-
-# The SDK to use to archive builds. Should be of the format 'iphoneosX.X'
-archive_sdk = 'iphoneos10.0'
 
 # The name of the TestFlight provisioning profile
 test_flight_provisioning_profile_name = 'Distribution: SDK Sample App'
@@ -153,9 +153,9 @@ test_flight_provisioning_profile_name = 'Distribution: SDK Sample App'
         scan(
             workspace: workspace_file,
             scheme: scheme,
-            sdk: 'iphonesimulator',
             skip_slack: !is_ci, # only let us know if we're on CI
             output_directory: File.join(fastlane_folder, output_folder),
+            derived_data_path: derived_data_folder,
             clean: true,
             skip_build: true, #the test action will already kick off a build, don't build twice
         )
@@ -240,9 +240,9 @@ test_flight_provisioning_profile_name = 'Distribution: SDK Sample App'
             scheme: scheme,
             export_method: method,
             output_directory: File.join(fastlane_folder, "Build"),
+            derived_data_path: derived_data_folder,
             include_bitcode: false,
             include_symbols: true,
-            sdk: archive_sdk,
             clean: true,
             codesigning_identity: codesigning_id,
         )
