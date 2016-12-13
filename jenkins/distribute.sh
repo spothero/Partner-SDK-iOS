@@ -8,19 +8,13 @@ if [[ "$LAST_GIT_MESSAGE" == "Version Bump to"* ]]; then
     exit 0
 fi
 
-if [ -n "$IS_PULL_REQUEST" ]; then
-    echo "Not on CI!"
-else
-    #Set up credential helper to use the appropriate github creds
-    git config --local credential.username ci-ios@spothero.com
-    git config --local credential.helper store 
-fi 
-
 # Make sure there's a fastlane password for sigh and pilot 
 if [ -z "$FASTLANE_PASSWORD" ]; then
     echo "DISTRIBUTION FAIL: You need to add the FASTLANE_PASSWORD to Jenkins and/or local_config.sh for signing and ITC uploads to work."
     exit 1
 fi
 
+bundle install
+
 # Upload the sample app to iTunes Connect
-fastlane sample_itc
+bundle exec fastlane sample_itc
