@@ -283,6 +283,9 @@ test_flight_provisioning_profile_name = 'Distribution: SDK Sample App'
     desc "Uploads a build iTunes Connect"
     desc "Note: This build should only be distributed via Test Flight."
     private_lane :itc do
+        #Build with latest Xcode
+        switch_to_xcode_8
+        
         # Create an iTunes Connect build
         build_itc
 
