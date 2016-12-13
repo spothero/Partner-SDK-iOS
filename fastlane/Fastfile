@@ -233,13 +233,17 @@ test_flight_provisioning_profile_name = 'Distribution: SDK Sample App'
 
         method = options[:method_options_key]
         scheme = options[:scheme_options_key]
+        
+        # make sure the build folder actually exists first
+        build_folder_name = "Build"
+        sh("mkdir -p #{build_folder_name}")
 
         # Archive away!
         gym(
             workspace: workspace_file,
             scheme: scheme,
             export_method: method,
-            output_directory: File.join(fastlane_folder, "Build"),
+            output_directory:  File.join(fastlane_folder, build_folder_name),
             derived_data_path: derived_data_folder,
             include_bitcode: false,
             include_symbols: true,
