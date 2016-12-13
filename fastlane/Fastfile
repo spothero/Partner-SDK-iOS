@@ -55,7 +55,7 @@ codesigning_id = 'iPhone Distribution: Spot Hero Inc.'
 team_identifier = 'ZW7QWR628D'
 
 # The name of the TestFlight provisioning profile
-test_flight_provisioning_profile_name = 'Distribution: SDK Sample App'
+test_flight_provisioning_profile_name = 'Distribution App Store: SDK Sample App'
 
 
 ###########
