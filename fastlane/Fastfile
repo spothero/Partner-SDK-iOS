@@ -57,6 +57,16 @@ team_identifier = 'ZW7QWR628D'
 # The name of the TestFlight provisioning profile
 test_flight_provisioning_profile_name = 'Distribution App Store: SDK Sample App'
 
+#########################
+# Pod Project Variables #
+#########################
+
+# GOOGLE PLACES
+
+google_places_pod_workspace_file = 'SpotHero_Google_Places_Wrapper_Example/SpotHero_Google_Places_Wrapper_Example.xcworkspace'
+google_places_pod_scheme = 'SpotHero_Google_Places_Wrapper_Example'
+google_places_pod_test_output_folder = 'google_places_pod_test_output'
+
 
 ###########
 ## SETUP ##
@@ -140,18 +150,23 @@ test_flight_provisioning_profile_name = 'Distribution App Store: SDK Sample App'
     desc "Expects values for the following keys:"
     desc "scheme_options_key: The name of the scheme to use to run the tests"
     desc "output_options_key: The path to output information from the tests"
+    desc "workspace_options_key: The path to the workspace to run tests on"
     private_lane :run_tests do |options|
-        if !options.key?(:scheme_options_key) || !options.key?(:output_options_key)
+        if !options.key?(:scheme_options_key) || !options.key?(:output_options_key) || !options.key?(:workspace_options_key)
             raise "Not all required options for this lane are present!"
             return
         end
+        
+        #stop any existing sims        
+        sh "./kill_sim_if_running.sh"    
 
+        workspace = options[:workspace_options_key]
         scheme = options[:scheme_options_key]
         output_folder = options[:output_options_key]
 
         # Build and run the given tests
         scan(
-            workspace: workspace_file,
+            workspace: workspace,
             scheme: scheme,
             skip_slack: !is_ci, # only let us know if we're on CI
             output_directory: File.join(fastlane_folder, output_folder),
@@ -160,29 +175,32 @@ test_flight_provisioning_profile_name = 'Distribution App Store: SDK Sample App'
             skip_build: true, #the test action will already kick off a build, don't build twice
         )
     end
-
-    desc "Runs all the tests of the app and gathers code coverage"
-    lane :test do
-        #stop any existing sims        
-        sh "./kill_sim_if_running.sh"    
     
-        # Run the Unit tests
+    # Runs all the tests of the places pod's sample app. 
+    lane :test_pod do 
+        run_tests(
+            scheme_options_key: google_places_pod_scheme,
+            output_options_key: google_places_pod_test_output_folder,
+            workspace_options_key: google_places_pod_workspace_file,            
+        )
+    end
+
+    desc "Runs all the tests of the sample app"
+    lane :test do     
         run_tests(
             scheme_options_key: main_scheme,
             output_options_key: test_output_folder,
         )
     end
     
-    desc "Runs all the tests of the app and gathers code coverage on Xcode 8"
-    lane :test_8 do
-        switch_to_xcode_8
-        test 
-    end
-    
     desc "Runs all the tests of the app and gathers code coverage across all versions of xcode"
     lane :test_all do
+        switch_to_xcode_7
         test
-        test_8
+        test_pod
+        switch_to_xcode_8
+        test 
+        test_pod
     end
 
 ########################
