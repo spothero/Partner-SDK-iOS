@@ -190,6 +190,7 @@ google_places_pod_test_output_folder = 'google_places_pod_test_output'
         run_tests(
             scheme_options_key: main_scheme,
             output_options_key: test_output_folder,
+            workspace_options_key: workspace_file,
         )
     end
     
