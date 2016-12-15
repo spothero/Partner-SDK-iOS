@@ -29,9 +29,20 @@ struct ReservationAPI {
                                   license: String? = nil,
                                   completion: (Reservation?, ErrorType?) -> (Void))  {
         
-        let starts = DateFormatter.ISO8601NoSeconds.stringFromDate(rate.starts)
-        let ends = DateFormatter.ISO8601NoSeconds.stringFromDate(rate.ends)
-                
+        let startDate: NSDate
+        let endDate: NSDate
+        if NSClassFromString("KIFTestCase") == nil {
+            startDate = rate.starts
+            endDate = rate.ends
+        } else {
+            startDate = Constants.Test.startDate
+            endDate = Constants.Test.endDate
+        }
+        
+        let starts = DateFormatter.ISO8601NoSeconds.stringFromDate(startDate)
+        let ends = DateFormatter.ISO8601NoSeconds.stringFromDate(endDate)
+        
+        
         var params: [String: AnyObject] = [
             "facility_id" : facility.parkingSpotID,
             "rule_group_id" : rate.ruleGroupID,
@@ -41,6 +52,8 @@ struct ReservationAPI {
             "price" : rate.price,
             "stripe_token" : stripeToken,
         ]
+        
+        
         
         if let license = license where !license.isEmpty {
             params["license_plate"] = license

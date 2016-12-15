@@ -1,0 +1,248 @@
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=UTF-8
+Date: Wed, 14 Dec 2016 19:34:26 GMT
+Expires: Wed, 14 Dec 2016 19:34:26 GMT
+Cache-Control: private, max-age=300
+Vary: Accept-Language
+Content-Encoding: gzip
+Server: pablo
+X-XSS-Protection: 1; mode=block
+X-Frame-Options: SAMEORIGIN
+Alt-Svc: quic=":443"; ma=2592000; v="36,35,34"
+Transfer-Encoding: chunked
+Connection: Keep-alive
+
+{
+"predictions" : [
+{
+"description" : "318 South Federal Street, Chicago, IL, United States",
+"id" : "e14f4a7d7781cf1d55f873f9aeaff3db7fb1462c",
+"matched_substrings" : [
+{
+"length" : 3,
+"offset" : 0
+},
+{
+"length" : 13,
+"offset" : 4
+}
+],
+"place_id" : "ChIJzc7MGb0sDogRzT-DRf846cg",
+"reference" : "ClRMAAAAh3RkFsrOQMN2UTxXm_IaGe7XBRwUTFtRl5gsT_wlzUdd5c8fYtsj1Kannzfy4y93iaKal7Bm8lY-G_W6rDU8tt22hCwnFKWkFycebZZsmecSEIO6W_ZovDVOGrfkSoDStoAaFJUTsqxCJPsaGdocYGrEd9w3KjZp",
+"structured_formatting" : {
+"main_text" : "318 South Federal Street",
+"main_text_matched_substrings" : [
+{
+"length" : 3,
+"offset" : 0
+},
+{
+"length" : 13,
+"offset" : 4
+}
+],
+"secondary_text" : "Chicago, IL, United States"
+},
+"terms" : [
+{
+"offset" : 0,
+"value" : "318"
+},
+{
+"offset" : 4,
+"value" : "South Federal Street"
+},
+{
+"offset" : 26,
+"value" : "Chicago"
+},
+{
+"offset" : 35,
+"value" : "IL"
+},
+{
+"offset" : 39,
+"value" : "United States"
+}
+],
+"types" : [ "street_address", "geocode" ]
+},
+{
+"description" : "318 South Federal Avenue, Mason City, IA, United States",
+"id" : "038b3943ad700249fd85ae3424ed254abe7e13e3",
+"matched_substrings" : [
+{
+"length" : 17,
+"offset" : 0
+}
+],
+"place_id" : "EjczMTggU291dGggRmVkZXJhbCBBdmVudWUsIE1hc29uIENpdHksIElBLCBVbml0ZWQgU3RhdGVz",
+"reference" : "CkQ7AAAAYpvO66cnvqwW56Y06tF45DZaWF6z0wG4R0SOHFWnKTWQeCfg3BmKAE1GY4e4GI438D78zxYTRuiW3ClpQHkduBIQAHjtaDy7YA799GoQgwoGJxoUHLUqXwD0lW0NiB3Jny3R5-lRMbY",
+"structured_formatting" : {
+"main_text" : "318 South Federal Avenue",
+"main_text_matched_substrings" : [
+{
+"length" : 17,
+"offset" : 0
+}
+],
+"secondary_text" : "Mason City, IA, United States"
+},
+"terms" : [
+{
+"offset" : 0,
+"value" : "318 South Federal Avenue"
+},
+{
+"offset" : 26,
+"value" : "Mason City"
+},
+{
+"offset" : 38,
+"value" : "IA"
+},
+{
+"offset" : 42,
+"value" : "United States"
+}
+],
+"types" : [ "route", "geocode" ]
+},
+{
+"description" : "318 Federal Court, Des Plaines, IL, United States",
+"id" : "0ffde4dfcad6cbc5533932de0aa88c2c31abd48b",
+"matched_substrings" : [
+{
+"length" : 17,
+"offset" : 0
+}
+],
+"place_id" : "EjEzMTggRmVkZXJhbCBDb3VydCwgRGVzIFBsYWluZXMsIElMLCBVbml0ZWQgU3RhdGVz",
+"reference" : "CkQ1AAAAFeaJ6Ixv3rsAv2OKglBKLkFQQ18m9H3Mxeh0rLxVuM6rgtMChDeHfHt2dSAHjLAOA-D9hCt3Fi1r2Vllp4FsixIQrJhRRr0yipeGDe8-dQykOxoU8SVIEv6CX3UOPMKXP3P4ut7MSqg",
+"structured_formatting" : {
+"main_text" : "318 Federal Court",
+"main_text_matched_substrings" : [
+{
+"length" : 17,
+"offset" : 0
+}
+],
+"secondary_text" : "Des Plaines, IL, United States"
+},
+"terms" : [
+{
+"offset" : 0,
+"value" : "318 Federal Court"
+},
+{
+"offset" : 19,
+"value" : "Des Plaines"
+},
+{
+"offset" : 32,
+"value" : "IL"
+},
+{
+"offset" : 36,
+"value" : "United States"
+}
+],
+"types" : [ "route", "geocode" ]
+},
+{
+"description" : "318 South Federal Highway, Lantana, FL, United States",
+"id" : "2ee5a0794e28f38284633fdf7273541f89747092",
+"matched_substrings" : [
+{
+"length" : 3,
+"offset" : 0
+},
+{
+"length" : 13,
+"offset" : 4
+}
+],
+"place_id" : "ChIJUdaEPgLZ2IgRt2BPPiWvM7c",
+"reference" : "ClRNAAAAfTKC2xmUGOMHSoIhlnIPdhu27DEsw03MGb1IfT3_uIUlRGWPe_DJ21V9QuwShtmhfax70dH33NS1rMfvLMIKpc2mABndcN4hiyrFIj-oKPwSELz386rYloO2u0GHdY2wNk8aFBuSPI8LD4L0Mf5GhIvqfldDg4tL",
+"structured_formatting" : {
+"main_text" : "318 South Federal Highway",
+"main_text_matched_substrings" : [
+{
+"length" : 3,
+"offset" : 0
+},
+{
+"length" : 13,
+"offset" : 4
+}
+],
+"secondary_text" : "Lantana, FL, United States"
+},
+"terms" : [
+{
+"offset" : 0,
+"value" : "318"
+},
+{
+"offset" : 4,
+"value" : "South Federal Highway"
+},
+{
+"offset" : 27,
+"value" : "Lantana"
+},
+{
+"offset" : 36,
+"value" : "FL"
+},
+{
+"offset" : 40,
+"value" : "United States"
+}
+],
+"types" : [ "street_address", "geocode" ]
+},
+{
+"description" : "318 South Federal Avenue, Butler, IN, United States",
+"id" : "444414dd89aae1fc2c4562cd31c625f7b3251170",
+"matched_substrings" : [
+{
+"length" : 17,
+"offset" : 0
+}
+],
+"place_id" : "EjMzMTggU291dGggRmVkZXJhbCBBdmVudWUsIEJ1dGxlciwgSU4sIFVuaXRlZCBTdGF0ZXM",
+"reference" : "CkQ3AAAAmFhbP7Rh5xkaUWvsMmyM-f-muzYcrOZZrW12JwCj-Ij8oxwy8_9JbHwIWo1BD7Pb0NZF6E109rjBWnWh0170WRIQ9L-Y5pYhbBtzy5AGgUSLZBoUjdGeFTv60l3KYB_SHe7gGSnyJbM",
+"structured_formatting" : {
+"main_text" : "318 South Federal Avenue",
+"main_text_matched_substrings" : [
+{
+"length" : 17,
+"offset" : 0
+}
+],
+"secondary_text" : "Butler, IN, United States"
+},
+"terms" : [
+{
+"offset" : 0,
+"value" : "318 South Federal Avenue"
+},
+{
+"offset" : 26,
+"value" : "Butler"
+},
+{
+"offset" : 34,
+"value" : "IN"
+},
+{
+"offset" : 38,
+"value" : "United States"
+}
+],
+"types" : [ "route", "geocode" ]
+}
+],
+"status" : "OK"
+}

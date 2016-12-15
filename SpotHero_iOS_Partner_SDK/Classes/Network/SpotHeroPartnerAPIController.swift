@@ -39,7 +39,7 @@ struct SpotHeroPartnerAPIController {
         FormData
     }
     
-    private static var URLSession: NSURLSession = {
+    static var URLSession: NSURLSession = {
         let defaultConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration()
         let session = NSURLSession(configuration: defaultConfiguration)
         return session

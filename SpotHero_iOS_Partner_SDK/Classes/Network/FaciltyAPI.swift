@@ -56,8 +56,18 @@ struct FacilityAPI {
                                 completion: FacilityCompletion) {
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         
-        let startsString = DateFormatter.ISO8601NoSeconds.stringFromDate(starts)
-        let endsString = DateFormatter.ISO8601NoSeconds.stringFromDate(ends)
+        let startDate: NSDate
+        let endDate: NSDate
+        if NSClassFromString("KIFTestCase") == nil {
+            startDate = starts
+            endDate = ends
+        } else {
+            startDate = Constants.Test.startDate
+            endDate = Constants.Test.endDate
+        }
+        
+        let startsString = DateFormatter.ISO8601NoSeconds.stringFromDate(startDate)
+        let endsString = DateFormatter.ISO8601NoSeconds.stringFromDate(endDate)
         
         let latitude = "\(coordinate.latitude)"
         let longitude = "\(coordinate.longitude)"

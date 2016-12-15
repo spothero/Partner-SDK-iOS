@@ -16,7 +16,7 @@ class CheckoutUITests: BaseUITests {
     let phoneNumberIndexPath = NSIndexPath(forRow: PersonalInfoRow.Phone.row(true), inSection: CheckoutSection.PersonalInfo.rawValue)
     let licenseIndexPath = NSIndexPath(forRow: PersonalInfoRow.License.row(true), inSection: CheckoutSection.PersonalInfo.rawValue)
     let firstIndexPath = NSIndexPath(forItem: 0, inSection: 0)
-    let enteredText = "Chicago\n"
+    let enteredText = "Chicago"
     let expectedText = "Chicago, IL, United States"
     let visaCreditCard = "4242424242424242"
     let visaCVC = "123"
@@ -27,25 +27,14 @@ class CheckoutUITests: BaseUITests {
     
     //MARK: - Helper Methods
     
-    private func cancelReservation() {
-        let expectation = self.expectationWithDescription("Reservation Cancelled")
-        
-        ReservationAPI.cancelLastReservation { (success) in
-            XCTAssert(success, "Could not cancel last reservation")
-            expectation.fulfill()
-        }
-        
-        self.waitForExpectationsWithTimeout(10, handler: nil)
-    }
-    
     private func enterTextInFields(email: String,
-                           creditCardNumber: String,
-                           expiration: String? = nil,
-                           cvc: String? = nil,
-                           expectedCreditCard: String? = nil) {
+                                   creditCardNumber: String,
+                                   expiration: String? = nil,
+                                   cvc: String? = nil,
+                                   expectedCreditCard: String? = nil) {
         
-        let expectedCC = expectedCreditCard ??
-            creditCardNumber.substringWithRange(creditCardNumber.endIndex.advancedBy(-4)..<creditCardNumber.endIndex)
+        let lastFour = creditCardNumber.substringWithRange(creditCardNumber.endIndex.advancedBy(-4)..<creditCardNumber.endIndex)
+        let expectedCC = expectedCreditCard ?? lastFour
         
         tester().enterText(email, intoViewWithAccessibilityLabel: AccessibilityStrings.EmailTextField)
         tester().enterText(creditCardNumber,
@@ -83,12 +72,19 @@ class CheckoutUITests: BaseUITests {
         tester().tapViewWithAccessibilityLabel(AccessibilityStrings.PaymentButton)
         
         tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.ConfirmationScreen)
-        self.cancelReservation()
     }
         
     private func goToCheckoutScreen(searchBarText: String? = nil) {
         // Enter text into search bar and press return
-        self.enterTextIntoSearchBar(searchBarText ?? enteredText, expectedText: searchBarText ?? expectedText)
+        self.enterTextIntoSearchBar(searchBarText ?? self.enteredText, expectedText: searchBarText ?? self.enteredText)
+        
+        guard let predictionTableView = tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.PredictionTableView) as? UITableView else {
+            XCTFail("Cannot get predictions")
+            return
+        }
+        
+        tester().tapRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0), inTableView: predictionTableView)
+        tester().tapViewWithAccessibilityLabel(LocalizedStrings.SearchSpots)
         
         // Get collection view and tap book it button
         guard
@@ -100,6 +96,15 @@ class CheckoutUITests: BaseUITests {
         tester().waitForCellAtIndexPath(firstIndexPath, inCollectionView: collectionView)
         tester().tapViewWithAccessibilityLabel(LocalizedStrings.BookIt)
         tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.CheckoutScreen)
+    }
+    
+    private func verifyPaymentButtonDisabled(file: StaticString = #file, line: UInt = #line) {
+        guard let paymentButton = tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.PaymentButton) as? UIButton else {
+            XCTFail("Cannot get payment button")
+            return
+        }
+        
+        XCTAssertFalse(paymentButton.enabled, file: file, line: line)
     }
     
     //MARK: - Test Lifecycle
@@ -167,11 +172,7 @@ class CheckoutUITests: BaseUITests {
                                cvc: self.visaCVC)
         
         //THEN: The payment button should be disabled
-        if let paymentButton = tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.PaymentButton) as? UIButton {
-            XCTAssertFalse(paymentButton.enabled)
-        } else {
-            XCTFail("Cannot get payment button")
-        }
+        self.verifyPaymentButtonDisabled()
     }
     
     func testInvalidCreditCardNumber() {
@@ -183,11 +184,7 @@ class CheckoutUITests: BaseUITests {
                                expectedCreditCard: "1234 5678 1234 5678")
         
         //THEN: The payment button should be disabled
-        if let paymentButton = tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.PaymentButton) as? UIButton {
-            XCTAssertFalse(paymentButton.enabled)
-        } else {
-            XCTFail("Cannot get payment button")
-        }
+        self.verifyPaymentButtonDisabled()
     }
     
     func testInvalidExpiration() {
@@ -200,11 +197,7 @@ class CheckoutUITests: BaseUITests {
                                cvc: self.visaCVC)
         
         //THEN: The payment button should be disabled
-        if let paymentButton = tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.PaymentButton) as? UIButton {
-            XCTAssertFalse(paymentButton.enabled)
-        } else {
-            XCTFail("Cannot get payment button")
-        }
+        self.verifyPaymentButtonDisabled()
     }
     
     func testEmptyCreditCard() {
@@ -212,12 +205,9 @@ class CheckoutUITests: BaseUITests {
         self.goToCheckoutScreen()
         //WHEN: I fill out all the fields except the credit card fields
         tester().enterText(self.testEmail, intoViewWithAccessibilityLabel: AccessibilityStrings.EmailTextField)
+        
         //THEN: The payment button should be disabled
-        if let paymentButton = tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.PaymentButton) as? UIButton {
-            XCTAssertFalse(paymentButton.enabled)
-        } else {
-            XCTFail("Cannot get payment button")
-        }
+        self.verifyPaymentButtonDisabled()
     }
     
     func testEmptyExpirationDate() {
@@ -229,11 +219,7 @@ class CheckoutUITests: BaseUITests {
                                expiration: nil,
                                cvc: self.visaCVC)
         //THEN: The payment button should be disabled
-        if let paymentButton = tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.PaymentButton) as? UIButton {
-            XCTAssertFalse(paymentButton.enabled)
-        } else {
-            XCTFail("Cannot get payment button")
-        }
+        self.verifyPaymentButtonDisabled()
     }
     
     func testEmptyCVC() {
@@ -246,11 +232,7 @@ class CheckoutUITests: BaseUITests {
                                cvc: nil)
         tester().tapViewWithAccessibilityLabel(LocalizedStrings.Done)
         //THEN: The payment button should be disabled
-        if let paymentButton = tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.PaymentButton) as? UIButton {
-            XCTAssertFalse(paymentButton.enabled)
-        } else {
-            XCTFail("Cannot get payment button")
-        }
+        self.verifyPaymentButtonDisabled()
     }
     
     func testEmptyExpirationDateAndCVC() {
@@ -260,17 +242,13 @@ class CheckoutUITests: BaseUITests {
         self.enterTextInFields(self.testEmail, creditCardNumber: self.visaCreditCard)
         tester().tapViewWithAccessibilityLabel(LocalizedStrings.Done)
         //THEN: The payment button should be disabled
-        if let paymentButton = tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.PaymentButton) as? UIButton {
-            XCTAssertFalse(paymentButton.enabled)
-        } else {
-            XCTFail("Cannot get payment button")
-        }
+        self.verifyPaymentButtonDisabled()
     }
     
     func testEmailOnlyCheckout() {
         //GIVEN: I select a spot that only required an email address
         //WHEN: I see the checkout screen
-        self.goToCheckoutScreen("318 South Federal Street, Chicago, IL, United States\n")
+        self.goToCheckoutScreen("318 South Federal")
         //THEN: I should only see the email field
         tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.EmailTextField)
         tester().waitForAbsenceOfViewWithAccessibilityLabel(AccessibilityStrings.PhoneTextField)
@@ -280,7 +258,7 @@ class CheckoutUITests: BaseUITests {
     func testEmailandPhoneOnlyCheckout() {
         //GIVEN: I select a spot that only required an email address
         //WHEN: I see the checkout screen
-        self.goToCheckoutScreen("100 West Monroe Street, Chicago, IL, United States\n")
+        self.goToCheckoutScreen("100 West Monroe")
         //THEN: I should only see the email and phone fields
         tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.EmailTextField)
         tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.PhoneTextField)
@@ -290,7 +268,7 @@ class CheckoutUITests: BaseUITests {
     func testEmailAndLicenseOnlyCheckout() {
         //GIVEN: I select a spot that only required an email address
         //WHEN: I see the checkout screen
-        self.goToCheckoutScreen("328 South Wabash Avenue, Chicago, IL, United States\n")
+        self.goToCheckoutScreen("328 South Wabash")
         //THEN: I should only see the email and license fields
         tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.EmailTextField)
         tester().waitForAbsenceOfViewWithAccessibilityLabel(AccessibilityStrings.PhoneTextField)
@@ -300,7 +278,7 @@ class CheckoutUITests: BaseUITests {
     func testEmailPhoneAndLicenseCheckout() {
         //GIVEN: I select a spot that only required an email address
         //WHEN: I see the checkout screen
-        self.goToCheckoutScreen("525 South Wabash Avenue, Chicago, IL, United States\n")
+        self.goToCheckoutScreen("525 South Wabash")
         //THEN: I should see the email, phone and license fields
         tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.EmailTextField)
         tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.PhoneTextField)

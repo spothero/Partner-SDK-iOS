@@ -59,4 +59,9 @@ enum AccessibilityStrings {
                                                      comment: "Confimation screen. Seen after a spot is purchased")
     static let CheckoutScreen = NSLocalizedString("Checkout Screen",
                                                   comment: "Screen for entering checkout infomation")
+    static let StartDatePicker = NSLocalizedString("Date Picker for beginning of your reservation",
+                                              comment: "View for picking a date")
+    static let EndDatePicker = NSLocalizedString("Date Picker for end of your reservation",
+                                                   comment: "View for picking a date")
+    
 }

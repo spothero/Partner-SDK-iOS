@@ -16,10 +16,17 @@ enum Constants {
     static let SecondsInHour: NSTimeInterval = 60 * 60
     static let SixHoursInSeconds: NSTimeInterval = 6 * Constants.SecondsInHour
     static let MaxSearchRadiusInMeters = UnitsOfMeasurement.MetersPerMile.rawValue * 60.0
-    static let TestCreditCardNumber = "4242424242424242"
-    static let TestExpirationMonth = "12"
-    static let TestExpirationYear = "2020"
-    static let TestCVC = "123"
+    enum Test {
+        static let CreditCardNumber = "4242424242424242"
+        static let ExpirationMonth = "12"
+        static let ExpirationYear = "2020"
+        static let CVC = "123"
+        static let startDate = DateFormatter.ISO8601NoSeconds.dateFromString("2016-10-13T19:16")!
+        static let endDate = DateFormatter.ISO8601NoSeconds.dateFromString("2016-10-14T00:16")!
+        static let reservationStartDate = DateFormatter.ISO8601NoMillisecondsUTC.dateFromString("2016-08-02T00:08:00Z")!
+        static let reservationEndDate = DateFormatter.ISO8601NoMillisecondsUTC.dateFromString("2016-08-02T05:08:00Z")!
+    }
+    
     
     enum Segue {
         static let Confirmation = "confirmation"

@@ -11,12 +11,12 @@ import VOKMockUrlProtocol
 
 @testable import SpotHero_iOS_Partner_SDK
 
-//TODO: Fix mock data stuff 
 extension SpotHeroPartnerAPIController {
     /**
      Starts rerouting all HTTP requests made through the Swift API to disk.
+     - parameter bundle: Bundle to use
      */
-    static func sph_startUsingMockData() {
+    static func sph_startUsingMockData(bundle: NSBundle) {
         let mockConfig = NSURLSessionConfiguration.defaultSessionConfiguration()
         let mockURLProtocolClass = VOKMockUrlProtocol.self
         
@@ -32,9 +32,8 @@ extension SpotHeroPartnerAPIController {
         
         //Need to pass in the test bundle since HTTPSessionManager is in the main bundle,
         //and VOKMockUrlProtocol needs to look in the test bundle.
-        let testBundle = NSBundle(forClass: PartnerAPITests.self)
         
-        VOKMockUrlProtocol.setTestBundle(testBundle)
+        VOKMockUrlProtocol.setTestBundle(bundle)
         
         self.updateManagerWithConfiguration(mockConfig)
     }
