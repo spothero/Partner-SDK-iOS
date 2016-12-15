@@ -18,6 +18,14 @@ slack_webhook_url='https://hooks.slack.com/services/T02755W03/B17P10JU9/JGrtFKFL
 # The username of the CI user on iTunes Connect.
 ci_username = 'ci-ios@spothero.com'
 
+# Files to ignore in code coverage, as an array of strings. Wildcards may be used.
+coverage_files_to_ignore = [
+    'Pods/*',
+]
+
+# The location where derived data should be placed. 
+derived_data_folder = File.join(fastlane_folder, "DerivedData")
+
 #########################
 # Per-Project Variables #
 #########################
@@ -46,11 +54,8 @@ codesigning_id = 'iPhone Distribution: Spot Hero Inc.'
 # The identifier of the team to use when retrieving provisioning profiles
 team_identifier = 'ZW7QWR628D'
 
-# The SDK to use to archive builds. Should be of the format 'iphoneosX.X'
-archive_sdk = 'iphoneos10.0'
-
 # The name of the TestFlight provisioning profile
-test_flight_provisioning_profile_name = 'Distribution: SDK Sample App'
+test_flight_provisioning_profile_name = 'Distribution App Store: SDK Sample App'
 
 
 ###########
@@ -62,7 +67,7 @@ test_flight_provisioning_profile_name = 'Distribution: SDK Sample App'
 
         if is_ci 
             # Make sure we're on Xcode 7 on the build server. 
-            sh "sudo xcode-select --switch /Applications/Xcode_7.3.1.app/Contents/Developer"
+            switch_to_xcode_7
         end
     end
 
@@ -119,6 +124,18 @@ test_flight_provisioning_profile_name = 'Distribution: SDK Sample App'
 ## TESTING & CODE COVERAGE ##
 #############################
 
+    def switch_to_xcode_7 
+        xcversion(
+            version: "7.3.1",
+        )
+    end 
+
+    def switch_to_xcode_8
+        xcversion(
+            version: "~> 8.1.0", # Selects the latest installed version from the 8.1.x set
+        )    
+    end 
+
     desc "Runs tests with the given options"
     desc "Expects values for the following keys:"
     desc "scheme_options_key: The name of the scheme to use to run the tests"
@@ -136,36 +153,12 @@ test_flight_provisioning_profile_name = 'Distribution: SDK Sample App'
         scan(
             workspace: workspace_file,
             scheme: scheme,
-            sdk: 'iphonesimulator',
             skip_slack: !is_ci, # only let us know if we're on CI
             output_directory: File.join(fastlane_folder, output_folder),
+            derived_data_path: derived_data_folder,
             clean: true,
             skip_build: true, #the test action will already kick off a build, don't build twice
         )
-    end
-
-    desc "Runs slather with cobertura output on a specified scheme"
-    desc "Expects values for the following keys:"
-    desc "output_options_key: The folder in which to put the cobertura.xml file"
-    desc "scheme_options_key: The scheme to collect coverage for"
-    private_lane :slather_cobertura do |options|
-        if !options.key?(:scheme_options_key) || !options.key?(:output_options_key)
-            raise "Not all required options for this lane are present!"
-            return
-        end
-
-        # What should we test and where should we put it?
-        output = options[:output_options_key]
-        scheme = options[:scheme_options_key]
-
-        #TODO: Re-enable when I figure out wtf is going on with slather
-#        slather(
-#            cobertura_xml: true,
-#            proj: project_file,
-#            input_format: 'profdata',
-#            scheme: scheme,
-#            output_directory: File.join(fastlane_folder, output),
-#        )
     end
 
     desc "Runs all the tests of the app and gathers code coverage"
@@ -178,27 +171,12 @@ test_flight_provisioning_profile_name = 'Distribution: SDK Sample App'
             scheme_options_key: main_scheme,
             output_options_key: test_output_folder,
         )
-
-        # Run coverage for the app
-        slather_cobertura(
-            scheme_options_key: main_scheme,
-            output_options_key: test_output_folder,
-        )
     end
     
     desc "Runs all the tests of the app and gathers code coverage on Xcode 8"
     lane :test_8 do
-        if is_ci 
-            # Make sure we're on Xcode 8 on the build server. 
-            sh "sudo xcode-select --switch /Applications/Xcode_8.app/Contents/Developer"
-        end
-        
+        switch_to_xcode_8
         test 
-        
-        if is_ci 
-            # Make sure we're back to Xcode 7.3.1 on the build server. 
-            sh "sudo xcode-select --switch /Applications/Xcode_7.3.1.app/Contents/Developer"
-        end
     end
     
     desc "Runs all the tests of the app and gathers code coverage across all versions of xcode"
@@ -255,16 +233,20 @@ test_flight_provisioning_profile_name = 'Distribution: SDK Sample App'
 
         method = options[:method_options_key]
         scheme = options[:scheme_options_key]
+        
+        # make sure the build folder actually exists first
+        build_folder_name = "Build"
+        sh("mkdir -p #{build_folder_name}")
 
         # Archive away!
         gym(
             workspace: workspace_file,
             scheme: scheme,
             export_method: method,
-            output_directory: File.join(fastlane_folder, "Build"),
+            output_directory:  File.join(fastlane_folder, build_folder_name),
+            derived_data_path: derived_data_folder,
             include_bitcode: false,
             include_symbols: true,
-            sdk: archive_sdk,
             clean: true,
             codesigning_identity: codesigning_id,
         )
@@ -305,6 +287,9 @@ test_flight_provisioning_profile_name = 'Distribution: SDK Sample App'
     desc "Uploads a build iTunes Connect"
     desc "Note: This build should only be distributed via Test Flight."
     private_lane :itc do
+        #Build with latest Xcode
+        switch_to_xcode_8
+        
         # Create an iTunes Connect build
         build_itc
 
@@ -320,34 +305,82 @@ test_flight_provisioning_profile_name = 'Distribution: SDK Sample App'
 
         slack(message: "SDK Sample app build uploaded to iTunes Connect!", success: true)
     end
-
+        
+    def calculate_current_version
+        version = sh("git describe --tags $(git rev-list --tags='b[0-9]*' --max-count=1) --abbrev=0")
+        
+        puts("#{version}")
+                
+        #trim off the b
+        trimmed_version = version[1..version.length]
+        puts("#{trimmed_version}")
+        
+        #make it an integer
+        integer_version = trimmed_version.to_i
+        current_version = integer_version + 1        
+        return current_version
+    end 
+    
+    def checkout_current_branch
+        # For some reason, Jenkins is checking out a detached HEAD instead of the appropriate branch.
+        current_branch = ENV["GIT_BRANCH"]        
+        if current_branch
+            # Split on the first slash to trim the remote name off the branch name
+            split_on_first_slash = current_branch.split("/", 2)
+            current_branch = split_on_first_slash[1]
+        elsif
+            # We're not getting it from the environment - grab it from git by finding the starred branch.
+            current_branch = sh("git branch | grep \\*")
+            
+            # Trim off the "* " bit (2 characters)
+            current_branch = current_branch[2..current_branch.length]
+        end        
+        
+        # Check out the appropriate branch
+        sh "git checkout " + current_branch
+    end 
+    
     desc "Bumps the version, commits it to git with the appropriate tag, and pushes to the remote."
-    private_lane :bump_commit_tag do
-        # Bump the build number and commit it
+    lane :bump_commit do         
+        checkout_current_branch
+    
+        #figure out what the latest build number is
+        current_version = calculate_current_version
+        puts("Current version: #{current_version.to_s}")
+    
+        # Update the build number and commit it
         increment_build_number(
-            xcodeproj: project_file,
+            build_number: current_version,        
+            xcodeproj: project_file,        
         )
         commit_version_bump(
-            xcodeproj: project_file,
+            xcodeproj: project_file,        
         )
-
+        
         # Set the tag as b(build number) for the committed version bump.
         build_number = Actions.lane_context[Actions::SharedValues::BUILD_NUMBER]
         add_git_tag(
             tag: "b" + build_number
-        )
-
-        # Push to remote
-        push_to_git_remote(
-            # remote: 'GitHub',
-        )
+        )      
     end
+    
+    desc "Method which pushes commits using SSH instead of stored creds"
+    private_lane :push_with_ssh do 
+        # Update the remote URL for origin to use ssh
+        sh "git remote set-url origin git@github.com:spothero/iOS-Partner-SDK.git"
+        
+        # Push to remote with tags using ssh
+        push_to_git_remote(
+            tags: true,
+        ) 
+    end 
 
     desc "Method to run after a successful merge."
     desc "Will bump/commit/tag/push the version and upload to iTunes Connect."
     lane :sample_itc do
-        bump_commit_tag
+        bump_commit
         itc
+        push_with_ssh
     end
 
 

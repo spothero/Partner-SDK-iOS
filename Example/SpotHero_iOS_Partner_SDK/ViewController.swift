@@ -17,5 +17,4 @@ class ViewController: UIViewController {
         spotHeroSDK.partnerApplicationKey = "65f498a5f7966a9b814bd676f11a76025dd42a68"
         spotHeroSDK.launchSDKFromViewController(self)
     }
-    
 }
