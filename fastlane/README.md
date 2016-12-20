@@ -6,16 +6,16 @@ sudo gem install fastlane
 ```
 # Available Actions
 ## iOS
+### ios test_pod
+```
+fastlane ios test_pod
+```
+
 ### ios test
 ```
 fastlane ios test
 ```
-Runs all the tests of the app and gathers code coverage
-### ios test_8
-```
-fastlane ios test_8
-```
-Runs all the tests of the app and gathers code coverage on Xcode 8
+Runs all the tests of the sample app
 ### ios test_all
 ```
 fastlane ios test_all
