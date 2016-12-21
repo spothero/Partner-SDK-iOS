@@ -77,6 +77,8 @@ class PaymentInfoTableViewCell: UITableViewCell, ValidatorCell {
         self.expirationDateTextField.delegate = self
         self.cvcTextField.delegate = self
         
+        self.cardImage.accessibilityLabel = AccessibilityStrings.CardImage
+        
         self.creditCardTextField.placeholder = LocalizedStrings.CreditCardPlaceHolder
         self.expirationDateTextField.placeholder = LocalizedStrings.ExpirationDatePlaceHolder
         self.cvcTextField.placeholder = LocalizedStrings.CVCPlaceHolder

@@ -49,5 +49,6 @@ enum AccessibilityStrings {
                                               comment: "Accessibility label for start date picker")
     static let EndDatePicker = NSLocalizedString("Pick an end date for your reservation",
                                                    comment: "Accessibility label for end date picker")
-    
+    static let CardImage = NSLocalizedString("Credit card logo for type of card entered",
+                                             comment: "Accessibility string for credit card image")
 }

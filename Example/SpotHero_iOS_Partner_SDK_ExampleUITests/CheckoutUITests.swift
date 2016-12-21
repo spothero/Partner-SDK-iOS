@@ -19,8 +19,10 @@ class CheckoutUITests: BaseUITests {
     let enteredText = "Chicago"
     let expectedText = "Chicago, IL, United States"
     let visaCreditCard = "4242424242424242"
-    let visaCVC = "123"
+    let CVC = "123"
     let amExCreditCard = "345631899386110"
+    let discoverCreditCard = "6011111111111117"
+    let masterCardCreditCard = "5555555555554444"
     let amExCVC = "1234"
     let testEmail = "matt@test.com"
     let testExpiration = "1020"
@@ -28,6 +30,10 @@ class CheckoutUITests: BaseUITests {
     let emailandPhoneOnlyAddress = "100 West Monroe"
     let emailAndLicenseOnlyAddress = "328 South Wabash"
     let emailPhoneAndLicenseAddress = "525 South Wabash"
+    let visaCardType = "Visa"
+    let amExCardType = "AExp"
+    let discoverCardType = "Discover"
+    let masterCardCardType = "Mastercard"
     
     //MARK: - Helper Methods
     
@@ -60,11 +66,24 @@ class CheckoutUITests: BaseUITests {
         }
     }
     
-    private func purchaseSpot(creditCardNumber: String, cvc: String) {
+    private func purchaseSpot(creditCardNumber: String, cvc: String, cardType: String) {
         self.enterTextInFields(self.testEmail,
                                creditCardNumber: creditCardNumber,
                                expiration: self.testExpiration,
                                cvc: cvc)
+        
+        guard
+            let cardImageView = tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.CardImage) as? UIImageView,
+            let cardImage = cardImageView.image,
+            let testImage = UIImage(named: cardType, inBundle: NSBundle.shp_resourceBundle(), compatibleWithTraitCollection: nil) else {
+            XCTFail("Cannot get card image")
+            return
+        }
+        
+        let cardImageData = UIImagePNGRepresentation(cardImage)
+        let cardData = UIImagePNGRepresentation(testImage)
+        
+        XCTAssertEqual(cardImageData, cardData)
         
         guard let button = tester().waitForViewWithAccessibilityLabel(Constants.Test.ButtonTitle) as? UIButton else {
             XCTFail("Cannot get payment button")
@@ -121,12 +140,12 @@ class CheckoutUITests: BaseUITests {
     
     //MARK: - Test Methods
     
-    func testBuySpot() {
+    func testBuySpotVisa() {
         //GIVEN: I see the Checkout Table View
         self.goToCheckoutScreen()
         //WHEN: I enter an email, credit card number, expiration number and cvc
         //THEN: I see the confirmation screen
-        self.purchaseSpot(self.visaCreditCard, cvc: self.visaCVC)
+        self.purchaseSpot(self.visaCreditCard, cvc: self.CVC, cardType: self.visaCardType)
     }
     
     func testBuySpotAmEx() {
@@ -134,13 +153,29 @@ class CheckoutUITests: BaseUITests {
         self.goToCheckoutScreen()
         //WHEN: I enter an email, american express credit card number, expiration number and cvc
         //THEN: I should see the confirmation screen
-        self.purchaseSpot(self.amExCreditCard, cvc: self.amExCVC)
+        self.purchaseSpot(self.amExCreditCard, cvc: self.amExCVC, cardType: self.amExCardType)
+    }
+    
+    func testBuySpotDiscover() {
+        //GIVEN: I see the Checkout Table View
+        self.goToCheckoutScreen()
+        //WHEN: I enter an email, american express credit card number, expiration number and cvc
+        //THEN: I should see the confirmation screen
+        self.purchaseSpot(self.discoverCreditCard, cvc: self.CVC, cardType: self.discoverCardType)
+    }
+    
+    func testBuySpotMasterCard() {
+        //GIVEN: I see the Checkout Table View
+        self.goToCheckoutScreen()
+        //WHEN: I enter an email, american express credit card number, expiration number and cvc
+        //THEN: I should see the confirmation screen
+        self.purchaseSpot(self.masterCardCreditCard, cvc: self.CVC, cardType: self.masterCardCardType)
     }
     
     func testBookAnotherButton() {
         //GIVEN: I see the confimation screen
         self.goToCheckoutScreen()
-        self.purchaseSpot(self.visaCreditCard, cvc: self.visaCVC)
+        self.purchaseSpot(self.visaCreditCard, cvc: self.CVC, cardType: self.visaCardType)
         
         //WHEN: I tap the Book Another button
         tester().waitForViewWithAccessibilityLabel(LocalizedStrings.BookAnother)
@@ -153,7 +188,7 @@ class CheckoutUITests: BaseUITests {
     func testDoneButton() {
         //GIVEN: I see the confimation screen
         self.goToCheckoutScreen()
-        self.purchaseSpot(self.visaCreditCard, cvc: self.visaCVC)
+        self.purchaseSpot(self.visaCreditCard, cvc: self.CVC, cardType: self.visaCardType)
         
         //WHEN: I tap the Book Another button
         tester().waitForViewWithAccessibilityLabel(LocalizedStrings.Done)
@@ -173,7 +208,7 @@ class CheckoutUITests: BaseUITests {
         self.enterTextInFields("matt@test",
                                creditCardNumber: self.visaCreditCard,
                                expiration: self.testExpiration,
-                               cvc: self.visaCVC)
+                               cvc: self.CVC)
         
         //THEN: The payment button should be disabled
         self.verifyPaymentButtonDisabled()
@@ -198,7 +233,7 @@ class CheckoutUITests: BaseUITests {
         self.enterTextInFields(self.testEmail,
                                creditCardNumber: self.visaCreditCard,
                                expiration: "1013",
-                               cvc: self.visaCVC)
+                               cvc: self.CVC)
         
         //THEN: The payment button should be disabled
         self.verifyPaymentButtonDisabled()
@@ -221,7 +256,7 @@ class CheckoutUITests: BaseUITests {
         self.enterTextInFields(self.testEmail,
                                creditCardNumber: self.visaCreditCard,
                                expiration: nil,
-                               cvc: self.visaCVC)
+                               cvc: self.CVC)
         //THEN: The payment button should be disabled
         self.verifyPaymentButtonDisabled()
     }
