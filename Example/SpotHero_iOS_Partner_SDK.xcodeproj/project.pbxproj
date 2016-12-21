@@ -91,7 +91,7 @@
 		C7CBF48B1D412362001D988F /* PartnerAPIMockTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartnerAPIMockTests.swift; sourceTree = "<group>"; };
 		C7DEAAA51D9C607900443B3B /* NSDateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateTests.swift; sourceTree = "<group>"; };
 		C7E786011DB96B4800A0DC90 /* CheckoutUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutUITests.swift; sourceTree = "<group>"; };
-		C7FBD09A1D4273B40089A53B /* VOKMockData */ = {isa = PBXFileReference; lastKnownFileType = folder; path = VOKMockData; sourceTree = "<group>"; };
+		C7FBD09A1D4273B40089A53B /* VOKMockData */ = {isa = PBXFileReference; lastKnownFileType = folder; name = VOKMockData; path = Tests/VOKMockData; sourceTree = "<group>"; };
 		C7FBD0AD1D47BF170089A53B /* StripeWrapperTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StripeWrapperTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -154,6 +154,7 @@
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
+				C74CDDA91E0485C100EFEF9F /* SharedTestFiles */,
 				607FACF51AFB993E008FA782 /* Podspec Metadata */,
 				607FACD21AFB9204008FA782 /* Example */,
 				607FACE81AFB9204008FA782 /* Tests */,
@@ -199,9 +200,7 @@
 		607FACE81AFB9204008FA782 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				C7FBD09A1D4273B40089A53B /* VOKMockData */,
 				C7CBF48A1D41201F001D988F /* MockTests */,
-				C7CBF4861D411ED5001D988F /* Extensions */,
 				C70AC4C51D4FC64F004F8539 /* BaseTests.swift */,
 				3391D7911D9DA8D4009A42B8 /* DateCompareTests.swift */,
 				C79C65B61D58EF9D001CDCA4 /* FormatterTests.swift */,
@@ -242,12 +241,22 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		C74CDDA91E0485C100EFEF9F /* SharedTestFiles */ = {
+			isa = PBXGroup;
+			children = (
+				C7CBF4861D411ED5001D988F /* Extensions */,
+				C7FBD09A1D4273B40089A53B /* VOKMockData */,
+			);
+			name = SharedTestFiles;
+			sourceTree = "<group>";
+		};
 		C7CBF4861D411ED5001D988F /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				C7CBF4871D411EFA001D988F /* SpotHeroPartnerAPIController+Mock.swift */,
 			);
-			path = Extensions;
+			name = Extensions;
+			path = Tests/Extensions;
 			sourceTree = "<group>";
 		};
 		C7CBF48A1D41201F001D988F /* MockTests */ = {

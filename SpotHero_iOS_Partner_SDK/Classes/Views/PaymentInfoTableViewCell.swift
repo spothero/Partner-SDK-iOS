@@ -77,9 +77,13 @@ class PaymentInfoTableViewCell: UITableViewCell, ValidatorCell {
         self.expirationDateTextField.delegate = self
         self.cvcTextField.delegate = self
         
-        self.creditCardTextField.accessibilityLabel = AccessibilityStrings.CreditCardTextField
-        self.expirationDateTextField.accessibilityLabel = AccessibilityStrings.ExpirationTextField
-        self.cvcTextField.accessibilityLabel = AccessibilityStrings.CVCTextField
+        self.creditCardTextField.placeholder = LocalizedStrings.CreditCardPlaceHolder
+        self.expirationDateTextField.placeholder = LocalizedStrings.ExpirationDatePlaceHolder
+        self.cvcTextField.placeholder = LocalizedStrings.CVCPlaceHolder
+        
+        self.creditCardTextField.accessibilityLabel = LocalizedStrings.CreditCardPlaceHolder
+        self.expirationDateTextField.accessibilityLabel = LocalizedStrings.ExpirationDatePlaceHolder
+        self.cvcTextField.accessibilityLabel = LocalizedStrings.CVCPlaceHolder
     }
     
     func showExpirationDateAndCVCTextFields(show show: Bool) {

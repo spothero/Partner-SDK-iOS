@@ -21,10 +21,11 @@ enum Constants {
         static let ExpirationMonth = "12"
         static let ExpirationYear = "2020"
         static let CVC = "123"
-        static let startDate = DateFormatter.ISO8601NoSeconds.dateFromString("2016-10-13T19:16")!
-        static let endDate = DateFormatter.ISO8601NoSeconds.dateFromString("2016-10-14T00:16")!
-        static let reservationStartDate = DateFormatter.ISO8601NoMillisecondsUTC.dateFromString("2016-08-02T00:08:00Z")!
-        static let reservationEndDate = DateFormatter.ISO8601NoMillisecondsUTC.dateFromString("2016-08-02T05:08:00Z")!
+        static let StartDate = DateFormatter.ISO8601NoSeconds.dateFromString("2016-10-13T19:16")!
+        static let EndDate = DateFormatter.ISO8601NoSeconds.dateFromString("2016-10-14T00:16")!
+        static let ReservationStartDate = DateFormatter.ISO8601NoMillisecondsUTC.dateFromString("2016-08-02T00:08:00Z")!
+        static let ReservationEndDate = DateFormatter.ISO8601NoMillisecondsUTC.dateFromString("2016-08-02T05:08:00Z")!
+        static let ButtonTitle = "Payment Button"
     }
     
     

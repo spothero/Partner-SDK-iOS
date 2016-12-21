@@ -35,8 +35,8 @@ struct ReservationAPI {
             startDate = rate.starts
             endDate = rate.ends
         } else {
-            startDate = Constants.Test.startDate
-            endDate = Constants.Test.endDate
+            startDate = Constants.Test.StartDate
+            endDate = Constants.Test.EndDate
         }
         
         let starts = DateFormatter.ISO8601NoSeconds.stringFromDate(startDate)
@@ -122,7 +122,8 @@ struct ReservationAPI {
             return
         }
         
-        self.cancelReservation(reservation) { (error) -> (Void) in
+        self.cancelReservation(reservation) {
+            error in
             completion(error == nil)
         }
     }

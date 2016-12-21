@@ -62,8 +62,8 @@ struct FacilityAPI {
             startDate = starts
             endDate = ends
         } else {
-            startDate = Constants.Test.startDate
-            endDate = Constants.Test.endDate
+            startDate = Constants.Test.StartDate
+            endDate = Constants.Test.EndDate
         }
         
         let startsString = DateFormatter.ISO8601NoSeconds.stringFromDate(startDate)

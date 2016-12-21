@@ -103,17 +103,6 @@ enum PersonalInfoRow {
             return LocalizedStrings.LicensePlatePlaceHolder
         }
     }
-    
-    var accessibilityLabel: String {
-        switch self {
-        case .Email:
-            return AccessibilityStrings.EmailTextField
-        case .Phone:
-            return AccessibilityStrings.PhoneTextField
-        case .License:
-            return AccessibilityStrings.LicenseTextField
-        }
-    }
 }
 
 class CheckoutTableViewController: UIViewController {
@@ -146,7 +135,6 @@ class CheckoutTableViewController: UIViewController {
                           forControlEvents: .TouchUpInside)
         _button.backgroundColor = .shp_mutedGreen()
         _button.translatesAutoresizingMaskIntoConstraints = false
-        _button.accessibilityLabel = AccessibilityStrings.PaymentButton
         return _button
     }()
     
@@ -198,7 +186,12 @@ class CheckoutTableViewController: UIViewController {
                                                    left: 0,
                                                    bottom: self.paymentButtonHeight,
                                                    right: 0)
-        self.paymentButton.setTitle(String(format: LocalizedStrings.paymentButtonTitleFormat, price), forState: .Normal)
+        if NSClassFromString("KIFTestCase") == nil {
+            self.paymentButton.setTitle(String(format: LocalizedStrings.paymentButtonTitleFormat, price), forState: .Normal)
+        } else {
+            self.paymentButton.setTitle(Constants.Test.ButtonTitle, forState: .Normal)
+        }
+
         self.view.addSubview(self.paymentButton)
         let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("|-margin-[paymentButton]-margin-|",
                                                                                    options: NSLayoutFormatOptions(rawValue: 0),
@@ -409,8 +402,8 @@ class CheckoutTableViewController: UIViewController {
     private func configureCell(cell: PersonalInfoTableViewCell, row: PersonalInfoRow) {
         cell.titleLabel.text = row.title()
         cell.textField.placeholder = row.placeholder()
+        cell.textField.accessibilityLabel = row.placeholder()
         cell.textField.inputAccessoryView = self.toolbar
-        cell.textField.accessibilityLabel = row.accessibilityLabel
         cell.type = row
         cell.personalInfoCellDelegate = self
         

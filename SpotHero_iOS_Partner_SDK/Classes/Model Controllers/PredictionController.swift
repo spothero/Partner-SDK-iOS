@@ -91,10 +91,11 @@ extension PredictionController: UISearchBarDelegate {
         }
         
         self.block = dispatch_block_create(DISPATCH_BLOCK_INHERIT_QOS_CLASS) {
-            self.searchText(searchText)
+            [weak self] in
+            self?.searchText(searchText)
         }
         
-        let delay:Double
+        let delay: Double
         
         if NSClassFromString("KIFTestCase") == nil {
             delay = 0.3
@@ -102,7 +103,9 @@ extension PredictionController: UISearchBarDelegate {
             delay = 1.0
         }
         
+        // Force unwrapped due to block being set above
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), self.block!)
+        self.block = nil
     }
     
     func searchText(searchText: String) {

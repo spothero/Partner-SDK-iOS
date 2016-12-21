@@ -114,4 +114,10 @@ enum LocalizedStrings {
                                                comment: "Error message for when the user comes back to the app")
     static let BookAnother = NSLocalizedString("Book Another",
                                                comment: "Button to book another spot")
+    static let CreditCardPlaceHolder = NSLocalizedString("1234 5678 1234 5678",
+                                                         comment: "Place holder for credit card field")
+    static let ExpirationDatePlaceHolder = NSLocalizedString("MM/YY",
+                                                             comment: "Place holder for expiration date field")
+    static let CVCPlaceHolder = NSLocalizedString("123",
+                                                  comment: "Place holder for cvc field")
 }
