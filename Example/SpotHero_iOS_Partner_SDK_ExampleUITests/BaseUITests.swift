@@ -14,6 +14,7 @@ import KIF
 @testable import SpotHero_iOS_Partner_SDK
 
 class BaseUITests: KIFTestCase {
+    let waitTime: NSTimeInterval = 2
     
     override func beforeAll() {
         super.beforeAll()

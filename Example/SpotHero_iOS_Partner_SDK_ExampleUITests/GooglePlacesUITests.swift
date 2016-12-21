@@ -13,7 +13,6 @@ import KIF
 
 class GooglePlacesUITests: BaseUITests {
     let indexPath = NSIndexPath(forRow: 0, inSection: 0)
-    let waitTime: NSTimeInterval = 2
     
     func testGetPredictions() {
         //GIVEN: I see the search bar and type in an address
