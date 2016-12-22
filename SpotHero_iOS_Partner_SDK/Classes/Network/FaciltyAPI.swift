@@ -58,7 +58,7 @@ struct FacilityAPI {
         
         let startDate: NSDate
         let endDate: NSDate
-        if Testing.isUITesting() {
+        if TestingHelper.isUITesting() {
             startDate = Constants.Test.StartDate
             endDate = Constants.Test.EndDate
         } else {

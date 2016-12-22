@@ -97,7 +97,7 @@ extension PredictionController: UISearchBarDelegate {
         
         let delay: Double
         
-        if Testing.isUITesting() {
+        if TestingHelper.isUITesting() {
             delay = 1.0
         } else {
             delay = 0.3

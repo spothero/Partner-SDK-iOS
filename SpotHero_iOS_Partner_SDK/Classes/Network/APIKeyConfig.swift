@@ -17,7 +17,7 @@ class APIKeyConfig {
     
     typealias APIKeyCompletion = (Bool) -> ()
     func getKeys(completion: APIKeyCompletion) {
-        guard !Testing.isUITesting() else {
+        guard !TestingHelper.isUITesting() else {
             completion(true)
             return
         }

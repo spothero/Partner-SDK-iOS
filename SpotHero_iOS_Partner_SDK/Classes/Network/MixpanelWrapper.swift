@@ -54,7 +54,7 @@ struct MixpanelWrapper {
     private static let baseUrlString = "https://api.mixpanel.com/track/"
     
     static func track(event: MixpanelEvent, properties: [MixpanelKey: AnyObject] = [:]) {
-        guard !Testing.isTesting() else {
+        guard !TestingHelper.isTesting() else {
             return
         }
         
