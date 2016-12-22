@@ -186,10 +186,10 @@ class CheckoutTableViewController: UIViewController {
                                                    left: 0,
                                                    bottom: self.paymentButtonHeight,
                                                    right: 0)
-        if NSClassFromString("KIFTestCase") == nil {
-            self.paymentButton.setTitle(String(format: LocalizedStrings.paymentButtonTitleFormat, price), forState: .Normal)
-        } else {
+        if Testing.isUITesting() {
             self.paymentButton.setTitle(Constants.Test.ButtonTitle, forState: .Normal)
+        } else {
+            self.paymentButton.setTitle(String(format: LocalizedStrings.paymentButtonTitleFormat, price), forState: .Normal)
         }
 
         self.view.addSubview(self.paymentButton)

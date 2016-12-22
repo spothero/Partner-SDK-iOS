@@ -17,7 +17,7 @@ class APIKeyConfig {
     
     typealias APIKeyCompletion = (Bool) -> ()
     func getKeys(completion: APIKeyCompletion) {
-        guard NSClassFromString("KIFTestCase") == nil else {
+        guard !Testing.isUITesting() else {
             completion(true)
             return
         }

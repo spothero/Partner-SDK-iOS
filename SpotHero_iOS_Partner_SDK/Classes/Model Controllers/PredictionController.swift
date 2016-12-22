@@ -97,14 +97,16 @@ extension PredictionController: UISearchBarDelegate {
         
         let delay: Double
         
-        if NSClassFromString("KIFTestCase") == nil {
-            delay = 0.3
-        } else {
+        if Testing.isUITesting() {
             delay = 1.0
+        } else {
+            delay = 0.3
         }
         
         // Force unwrapped due to block being set above
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), self.block!)
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC))),
+                       dispatch_get_main_queue(),
+                       self.block!)
     }
     
     func searchText(searchText: String) {
@@ -112,6 +114,10 @@ extension PredictionController: UISearchBarDelegate {
             [weak self]
             predictions, error in
             self?.predictions = predictions
+            guard let delegate = self?.delegate else {
+                assertionFailure("Delegate is nil!")
+                return
+            }
             
             if !predictions.isEmpty {
                 self?.delegate?.shouldSelectFirstPrediction()

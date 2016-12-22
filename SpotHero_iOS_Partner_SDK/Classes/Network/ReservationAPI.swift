@@ -31,12 +31,12 @@ struct ReservationAPI {
         
         let startDate: NSDate
         let endDate: NSDate
-        if NSClassFromString("KIFTestCase") == nil {
-            startDate = rate.starts
-            endDate = rate.ends
-        } else {
+        if Testing.isUITesting() {
             startDate = Constants.Test.StartDate
             endDate = Constants.Test.EndDate
+        } else {
+            startDate = rate.starts
+            endDate = rate.ends
         }
         
         let starts = DateFormatter.ISO8601NoSeconds.stringFromDate(startDate)
@@ -52,8 +52,6 @@ struct ReservationAPI {
             "price" : rate.price,
             "stripe_token" : stripeToken,
         ]
-        
-        
         
         if let license = license where !license.isEmpty {
             params["license_plate"] = license

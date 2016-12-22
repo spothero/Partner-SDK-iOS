@@ -58,7 +58,6 @@ class CheckoutUITests: BaseUITests {
                                intoViewWithAccessibilityLabel: LocalizedStrings.ExpirationDatePlaceHolder,
                                traits: UIAccessibilityTraitNone,
                                expectedResult: expectedExpiration)
-
         }
         
         if let cvc = cvc {
@@ -66,7 +65,9 @@ class CheckoutUITests: BaseUITests {
         }
     }
     
-    private func purchaseSpot(creditCardNumber: String, cvc: String, cardType: String) {
+    private func purchaseSpot(creditCardNumber: String,
+                              cvc: String,
+                              cardType: String) {
         self.enterTextInFields(self.testEmail,
                                creditCardNumber: creditCardNumber,
                                expiration: self.testExpiration,
@@ -94,12 +95,13 @@ class CheckoutUITests: BaseUITests {
         
         tester().tapViewWithAccessibilityLabel(Constants.Test.ButtonTitle)
         
-        tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.ConfirmationScreen)
+        tester().waitForViewWithAccessibilityLabel(LocalizedStrings.BookAnother)
     }
         
     private func goToCheckoutScreen(searchBarText: String? = nil) {
         // Enter text into search bar and press return
-        self.enterTextIntoSearchBar(searchBarText ?? self.enteredText, expectedText: searchBarText ?? self.enteredText)
+        let text = searchBarText ?? self.enteredText
+        self.enterTextIntoSearchBar(text, expectedText: text)
         
         guard let predictionTableView = tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.PredictionTableView) as? UITableView else {
             XCTFail("Cannot get predictions")
@@ -145,7 +147,9 @@ class CheckoutUITests: BaseUITests {
         self.goToCheckoutScreen()
         //WHEN: I enter an email, credit card number, expiration number and cvc
         //THEN: I see the confirmation screen
-        self.purchaseSpot(self.visaCreditCard, cvc: self.CVC, cardType: self.visaCardType)
+        self.purchaseSpot(self.visaCreditCard,
+                          cvc: self.CVC,
+                          cardType: self.visaCardType)
     }
     
     func testBuySpotAmEx() {
@@ -153,7 +157,9 @@ class CheckoutUITests: BaseUITests {
         self.goToCheckoutScreen()
         //WHEN: I enter an email, american express credit card number, expiration number and cvc
         //THEN: I should see the confirmation screen
-        self.purchaseSpot(self.amExCreditCard, cvc: self.amExCVC, cardType: self.amExCardType)
+        self.purchaseSpot(self.amExCreditCard,
+                          cvc: self.amExCVC,
+                          cardType: self.amExCardType)
     }
     
     func testBuySpotDiscover() {
@@ -161,7 +167,9 @@ class CheckoutUITests: BaseUITests {
         self.goToCheckoutScreen()
         //WHEN: I enter an email, american express credit card number, expiration number and cvc
         //THEN: I should see the confirmation screen
-        self.purchaseSpot(self.discoverCreditCard, cvc: self.CVC, cardType: self.discoverCardType)
+        self.purchaseSpot(self.discoverCreditCard,
+                          cvc: self.CVC,
+                          cardType: self.discoverCardType)
     }
     
     func testBuySpotMasterCard() {
@@ -169,13 +177,17 @@ class CheckoutUITests: BaseUITests {
         self.goToCheckoutScreen()
         //WHEN: I enter an email, american express credit card number, expiration number and cvc
         //THEN: I should see the confirmation screen
-        self.purchaseSpot(self.masterCardCreditCard, cvc: self.CVC, cardType: self.masterCardCardType)
+        self.purchaseSpot(self.masterCardCreditCard,
+                          cvc: self.CVC,
+                          cardType: self.masterCardCardType)
     }
     
     func testBookAnotherButton() {
         //GIVEN: I see the confimation screen
         self.goToCheckoutScreen()
-        self.purchaseSpot(self.visaCreditCard, cvc: self.CVC, cardType: self.visaCardType)
+        self.purchaseSpot(self.visaCreditCard,
+                          cvc: self.CVC,
+                          cardType: self.visaCardType)
         
         //WHEN: I tap the Book Another button
         tester().waitForViewWithAccessibilityLabel(LocalizedStrings.BookAnother)
@@ -188,7 +200,9 @@ class CheckoutUITests: BaseUITests {
     func testDoneButton() {
         //GIVEN: I see the confimation screen
         self.goToCheckoutScreen()
-        self.purchaseSpot(self.visaCreditCard, cvc: self.CVC, cardType: self.visaCardType)
+        self.purchaseSpot(self.visaCreditCard,
+                          cvc: self.CVC,
+                          cardType: self.visaCardType)
         
         //WHEN: I tap the Book Another button
         tester().waitForViewWithAccessibilityLabel(LocalizedStrings.Done)

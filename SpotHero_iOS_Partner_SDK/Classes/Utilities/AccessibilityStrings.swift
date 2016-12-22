@@ -13,7 +13,7 @@ enum AccessibilityStrings {
                                            comment: "Accessibility label for map view")
     static let SearchBar = NSLocalizedString("Search for parking spots",
                                              comment: "Accessibility label for search bar")
-    static let PredictionTableView = NSLocalizedString("Table of place suggestions from Google",
+    static let PredictionTableView = NSLocalizedString("Place suggestions from Google",
                                                        comment: "Accessibility label for table that shows place predictions from google maps")
     static let Address = NSLocalizedString("The address of a place",
                                            comment: "Accessibility label for address label of place")
@@ -41,8 +41,6 @@ enum AccessibilityStrings {
                                                           comment: "Accessibility label for collapsed search bar view")
     static let SpotCards = NSLocalizedString("Shows info about a certain parking spot",
                                              comment: "Accessibility label for spot cards collection view")
-    static let ConfirmationScreen = NSLocalizedString("Confimation screen. Seen after a spot is purchased",
-                                                     comment: "Confimation screen. Seen after a spot is purchased")
     static let CheckoutScreen = NSLocalizedString("Screen for entering checkout infomation",
                                                   comment: "Accessibility label for checkout view")
     static let StartDatePicker = NSLocalizedString("Pick a start date for your reservation",

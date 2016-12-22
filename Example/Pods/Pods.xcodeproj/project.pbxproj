@@ -143,6 +143,7 @@
 		C547C17FA840E0E1233F44F117A00428 /* NSString+KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 939D0D61929FE6B2946996A630EBA746 /* NSString+KIFAdditions.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		C60F8EEE4BDD4D9E0B77D1ABA136E532 /* GooglePlacesPrediction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BBB2A3B31CBBA33553F8AD3F51346C /* GooglePlacesPrediction.swift */; };
 		C66097ED65CB3345A7311C4ACCB44351 /* UIView-Debugging.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AF5BE3DF0710E4168CC8C90C1B93579 /* UIView-Debugging.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C74888481E0C5DC500844EC7 /* Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74888471E0C5DC500844EC7 /* Testing.swift */; };
 		C796B3CA1E0C333F00DF53B1 /* SharedURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = C796B3C91E0C333F00DF53B1 /* SharedURLSession.swift */; };
 		C8AC1E16BA3511D428A07F83566C55F4 /* UIEvent+KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A17C7ED0DEB8DF18262CC7E68C63A1E /* UIEvent+KIFAdditions.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		C948A463841F5ADFF5F3D74B1970C438 /* LocalizedStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9B612E620394909323BF835461D768 /* LocalizedStrings.swift */; };
@@ -447,6 +448,7 @@
 		BFB888D7AF57F531266DD178438689EB /* Pods-SpotHero_iOS_Partner_SDK_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SpotHero_iOS_Partner_SDK_Example-dummy.m"; sourceTree = "<group>"; };
 		C171A8430E5A2E48B7CAF215AD81266F /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		C321384899786FC7D9BF8AE91986BCE5 /* GooglePredictionTableHeader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GooglePredictionTableHeader.swift; sourceTree = "<group>"; };
+		C74888471E0C5DC500844EC7 /* Testing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Testing.swift; sourceTree = "<group>"; };
 		C796B3C91E0C333F00DF53B1 /* SharedURLSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedURLSession.swift; sourceTree = "<group>"; };
 		C79B28A51C2E4CAE22F70E4E5D09112C /* Images.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		CA7EE750D29D3754DD2FD9EB83A926EA /* DLog.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DLog.swift; sourceTree = "<group>"; };
@@ -908,6 +910,7 @@
 				024866E9EA0F744E8D787BCCED320811 /* StringEnum.swift */,
 				3B4454A1BFB424B952251B3303349E16 /* UnitsOfMeasurement.swift */,
 				B243867BFCF487A3C933A2F870C4B12E /* Validator.swift */,
+				C74888471E0C5DC500844EC7 /* Testing.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -1415,6 +1418,7 @@
 				2AB828C663B2BFFB0E9F6B81FA11BD5C /* Facility.swift in Sources */,
 				818F645266660F253B1B7781283BBCEF /* FacilityAnnotation.swift in Sources */,
 				7E01B423FCCB88D12057FD6CEA1A634D /* FacilityAnnotationView.swift in Sources */,
+				C74888481E0C5DC500844EC7 /* Testing.swift in Sources */,
 				18538E3CDEFF7A06F050E8711FAA7768 /* FaciltyAPI.swift in Sources */,
 				89E7CF72E9D03C58496C84F6DAEA893C /* Formatter.swift in Sources */,
 				1412EDB0231DD3B52C14EDBC631E2622 /* GooglePlaceDetails.swift in Sources */,

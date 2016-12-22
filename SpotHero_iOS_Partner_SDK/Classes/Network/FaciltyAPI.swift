@@ -58,12 +58,12 @@ struct FacilityAPI {
         
         let startDate: NSDate
         let endDate: NSDate
-        if NSClassFromString("KIFTestCase") == nil {
-            startDate = starts
-            endDate = ends
-        } else {
+        if Testing.isUITesting() {
             startDate = Constants.Test.StartDate
             endDate = Constants.Test.EndDate
+        } else {
+            startDate = starts
+            endDate = ends
         }
         
         let startsString = DateFormatter.ISO8601NoSeconds.stringFromDate(startDate)
