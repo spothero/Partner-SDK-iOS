@@ -6,7 +6,7 @@ DEPENDENCIES:
 
 EXTERNAL SOURCES:
   SpotHero_iOS_Google_Places_Wrapper:
-    :path: "../"
+    :path: ../
 
 SPEC CHECKSUMS:
   SpotHero_iOS_Google_Places_Wrapper: 12eb749a2586ec4b40072d2f87a7d41bf0830998
