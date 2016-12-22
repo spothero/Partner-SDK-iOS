@@ -51,7 +51,7 @@ struct GooglePlacesWrapper {
         }
         
         if let url = urlComponents.URL {
-            SpotHeroPartnerAPIController.URLSession.dataTaskWithURL(url, completionHandler: {
+            SharedURLSession.sharedInstance.session.dataTaskWithURL(url, completionHandler: {
                 data, response, error in
                 NSOperationQueue.mainQueue().addOperationWithBlock {
                     guard let data = data else {
@@ -102,7 +102,7 @@ struct GooglePlacesWrapper {
         ]
         
         if let url = urlComponents.URL {
-            SpotHeroPartnerAPIController.URLSession.dataTaskWithURL(url, completionHandler: {
+            SharedURLSession.sharedInstance.session.dataTaskWithURL(url, completionHandler: {
                 data, response, error in
                 NSOperationQueue.mainQueue().addOperationWithBlock() {
                     guard let data = data else {

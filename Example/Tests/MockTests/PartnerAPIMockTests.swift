@@ -29,12 +29,12 @@ class PartnerAPIMockTests: XCTestCase {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
         let testBundle = NSBundle(forClass: PartnerAPITests.self)
-        SpotHeroPartnerAPIController.sph_startUsingMockData(testBundle)
+        SharedURLSession.sharedInstance.sph_startUsingMockData(testBundle)
     }
     
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
-        SpotHeroPartnerAPIController.sph_stopUsingMockData()
+        SharedURLSession.sharedInstance.sph_stopUsingMockData()
         super.tearDown()
     }
     

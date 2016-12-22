@@ -35,11 +35,11 @@ class BaseUITests: KIFTestCase {
     override func setUp() {
         super.setUp()
         let testBundle = NSBundle(forClass: BaseUITests.self)
-        SpotHeroPartnerAPIController.sph_startUsingMockData(testBundle)
+        SharedURLSession.sharedInstance.sph_startUsingMockData(testBundle)
     }
     
     override func tearDown() {
-        SpotHeroPartnerAPIController.sph_stopUsingMockData()
+        SharedURLSession.sharedInstance.sph_stopUsingMockData()
         super.tearDown()
     }
     

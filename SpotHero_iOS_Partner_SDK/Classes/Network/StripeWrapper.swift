@@ -32,7 +32,7 @@ struct StripeWrapper {
             
             request.HTTPBody = body.dataUsingEncoding(NSUTF8StringEncoding)
             
-            SpotHeroPartnerAPIController.URLSession.dataTaskWithRequest(request, completionHandler: {
+            SharedURLSession.sharedInstance.session.dataTaskWithRequest(request, completionHandler: {
                 data, response, error in
                 NSOperationQueue.mainQueue().addOperationWithBlock {
                     guard let data = data else {
