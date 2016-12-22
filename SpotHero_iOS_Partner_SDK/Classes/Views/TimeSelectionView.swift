@@ -95,6 +95,9 @@ class TimeSelectionView: UIView {
         self.startsView.accessibilityLabel = AccessibilityStrings.StartsTimeSelectionView
         self.endsView.accessibilityLabel = AccessibilityStrings.EndsTimeSelectionView
         
+        self.startDatePicker.accessibilityLabel = AccessibilityStrings.StartDatePicker
+        self.endDatePicker.accessibilityLabel = AccessibilityStrings.EndDatePicker
+        
         self.startTimeTextField.delegate = self
         self.endTimeTextField.delegate = self
         

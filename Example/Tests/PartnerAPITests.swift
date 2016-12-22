@@ -77,8 +77,7 @@ class PartnerAPITests: BaseTests {
        self.waitForExpectationsWithTimeout(self.timeoutDuration, handler: nil)
     }
     
-    // TODO unskip this when we get a staging stripe token
-    func skip_testCreateReservation() {
+    func testCreateReservation() {
         let expectation = self.expectationWithDescription("testCreateReservation")
         
         var testExecuting = false
@@ -102,10 +101,10 @@ class PartnerAPITests: BaseTests {
             if let facility = testFacility,
                 let rate = facility.availableRates.first {
                 facility.phoneNumberRequired
-                StripeWrapper.getToken(Constants.TestCreditCardNumber,
-                                       expirationMonth: Constants.TestExpirationMonth,
-                                       expirationYear: Constants.TestExpirationYear,
-                                       cvc: Constants.TestCVC) {
+                StripeWrapper.getToken(Constants.Test.CreditCardNumber,
+                                       expirationMonth: Constants.Test.ExpirationMonth,
+                                       expirationYear: Constants.Test.ExpirationYear,
+                                       cvc: Constants.Test.CVC) {
                                         token, error in
                                         guard let token = token else {
                                             XCTFail("Failed to get token")

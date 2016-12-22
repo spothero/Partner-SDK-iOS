@@ -17,6 +17,11 @@ class APIKeyConfig {
     
     typealias APIKeyCompletion = (Bool) -> ()
     func getKeys(completion: APIKeyCompletion) {
+        guard !TestingHelper.isUITesting() else {
+            completion(true)
+            return
+        }
+        
         let endpoint = "v1/mobile-config/iossdk"
         let headers = APIHeaders.defaultHeaders()
         SpotHeroPartnerAPIController.getJSONFromEndpoint(endpoint,

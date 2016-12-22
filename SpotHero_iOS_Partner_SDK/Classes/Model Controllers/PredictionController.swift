@@ -19,6 +19,7 @@ protocol PredictionControllerDelegate: class {
 
 class PredictionController: NSObject {
     let headerFooterHeight: CGFloat = 30
+    var block: dispatch_block_t?
     
     var predictions = [GooglePlacesPrediction]() {
         didSet {
@@ -85,11 +86,44 @@ extension PredictionController: UITableViewDelegate {
 
 extension PredictionController: UISearchBarDelegate {
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        if let block = self.block {
+            dispatch_block_cancel(block)
+        }
+        
+        self.block = dispatch_block_create(DISPATCH_BLOCK_INHERIT_QOS_CLASS) {
+            [weak self] in
+            self?.searchText(searchText)
+        }
+        
+        let delay: Double
+        
+        if TestingHelper.isUITesting() {
+            delay = 1.0
+        } else {
+            delay = 0.3
+        }
+        
+        // Force unwrapped due to block being set above
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC))),
+                       dispatch_get_main_queue(),
+                       self.block!)
+    }
+    
+    func searchText(searchText: String) {
         GooglePlacesWrapper.getPredictions(searchText) {
             [weak self]
             predictions, error in
             self?.predictions = predictions
-            self?.delegate?.shouldSelectFirstPrediction()
+            guard let delegate = self?.delegate else {
+                assertionFailure("Delegate is nil!")
+                return
+            }
+            
+            if !predictions.isEmpty {
+                self?.delegate?.shouldSelectFirstPrediction()
+            } else {
+                self?.delegate?.didTapXButton()
+            }
         }
         
         if (searchText.isEmpty) {

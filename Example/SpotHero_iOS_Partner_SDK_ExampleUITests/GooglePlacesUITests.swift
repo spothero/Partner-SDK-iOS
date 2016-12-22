@@ -14,10 +14,6 @@ import KIF
 class GooglePlacesUITests: BaseUITests {
     let indexPath = NSIndexPath(forRow: 0, inSection: 0)
     
-    override func beforeEach() {
-        super.beforeEach()
-    }
-    
     func testGetPredictions() {
         //GIVEN: I see the search bar and type in an address
         self.enterTextIntoSearchBar(AccessibilityStrings.SpotHero)
@@ -60,8 +56,6 @@ class GooglePlacesUITests: BaseUITests {
         }
         
         XCTAssertNotNil(searchBar.text)
-        
-        //TODO: Search for place
     }
     
     func testNoPredictions() {
@@ -74,9 +68,32 @@ class GooglePlacesUITests: BaseUITests {
             return
         }
         
-        tester().waitForTimeInterval(1)
+        tester().waitForTimeInterval(self.waitTime)
         
-        //THEN: The tableview's height should be 0
+        //THEN: The table view should collapse
+        XCTAssertEqual(tableView.frame.height, 0)
+    }
+    
+    func testDeleteText() {
+        //GIVEN: I see the search bar and begin typing
+        self.enterTextIntoSearchBar("Chicago")
+        
+        //WHEN: I see a table view
+        guard let tableView = tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.PredictionTableView) as? UITableView else {
+            XCTFail("No Prediction table view")
+            return
+        }
+        
+        tester().waitForTimeInterval(self.waitTime)
+        
+        //THEN: The table should be expanded
+        XCTAssertNotEqual(tableView.frame.height, 0)
+        
+        //WHEN: I delete the text
+        tester().clearTextFromFirstResponder()
+        tester().waitForTimeInterval(self.waitTime)
+        
+        //THEN: The table view should collapse
         XCTAssertEqual(tableView.frame.height, 0)
     }
 }

@@ -107,6 +107,7 @@ enum PersonalInfoRow {
 
 class CheckoutTableViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var closeButton: UIBarButtonItem!
     @IBOutlet var toolbar: UIToolbar!
     
     private let reservationCellHeight: CGFloat = 60
@@ -148,6 +149,8 @@ class CheckoutTableViewController: UIViewController {
         self.tableView.estimatedRowHeight = 60
         self.setupPaymentButton()
         self.registerForKeyboardNotifications()
+        self.closeButton.accessibilityLabel = LocalizedStrings.Close
+        self.view.accessibilityLabel = AccessibilityStrings.CheckoutScreen
     }
     
     
@@ -183,7 +186,12 @@ class CheckoutTableViewController: UIViewController {
                                                    left: 0,
                                                    bottom: self.paymentButtonHeight,
                                                    right: 0)
-        self.paymentButton.setTitle(String(format: LocalizedStrings.paymentButtonTitleFormat, price), forState: .Normal)
+        if TestingHelper.isUITesting() {
+            self.paymentButton.setTitle(Constants.Test.ButtonTitle, forState: .Normal)
+        } else {
+            self.paymentButton.setTitle(String(format: LocalizedStrings.paymentButtonTitleFormat, price), forState: .Normal)
+        }
+
         self.view.addSubview(self.paymentButton)
         let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("|-margin-[paymentButton]-margin-|",
                                                                                    options: NSLayoutFormatOptions(rawValue: 0),
@@ -248,6 +256,10 @@ class CheckoutTableViewController: UIViewController {
         self.view.endEditing(true)
     }
     
+    @IBAction func closeButtonPressed(_ sender: AnyObject) {
+        SpotHeroPartnerSDK.SharedInstance.reportSDKClosed()
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
     //MARK: Helpers
     
     /**
@@ -390,6 +402,7 @@ class CheckoutTableViewController: UIViewController {
     private func configureCell(cell: PersonalInfoTableViewCell, row: PersonalInfoRow) {
         cell.titleLabel.text = row.title()
         cell.textField.placeholder = row.placeholder()
+        cell.textField.accessibilityLabel = row.placeholder()
         cell.textField.inputAccessoryView = self.toolbar
         cell.type = row
         cell.personalInfoCellDelegate = self

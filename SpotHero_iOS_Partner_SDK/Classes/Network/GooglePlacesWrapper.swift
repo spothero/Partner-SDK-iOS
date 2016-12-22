@@ -39,6 +39,7 @@ struct GooglePlacesWrapper {
         urlComponents.host = Host
         urlComponents.scheme = Scheme
         urlComponents.path = "/maps/api/place/autocomplete/json"
+        
         urlComponents.queryItems = [
             NSURLQueryItem(name: "input", value: input),
             KeyQueryItem
@@ -50,7 +51,7 @@ struct GooglePlacesWrapper {
         }
         
         if let url = urlComponents.URL {
-            NSURLSession.sharedSession().dataTaskWithURL(url, completionHandler: {
+            SharedURLSession.sharedInstance.session.dataTaskWithURL(url, completionHandler: {
                 data, response, error in
                 NSOperationQueue.mainQueue().addOperationWithBlock {
                     guard let data = data else {
@@ -101,7 +102,7 @@ struct GooglePlacesWrapper {
         ]
         
         if let url = urlComponents.URL {
-            NSURLSession.sharedSession().dataTaskWithURL(url, completionHandler: {
+            SharedURLSession.sharedInstance.session.dataTaskWithURL(url, completionHandler: {
                 data, response, error in
                 NSOperationQueue.mainQueue().addOperationWithBlock() {
                     guard let data = data else {

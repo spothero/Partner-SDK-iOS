@@ -39,20 +39,6 @@ struct SpotHeroPartnerAPIController {
         FormData
     }
     
-    private static var URLSession: NSURLSession = {
-        let defaultConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration()
-        let session = NSURLSession(configuration: defaultConfiguration)
-        return session
-    }()
-    
-    static func updateManagerWithConfiguration(configuration: NSURLSessionConfiguration) {
-        self.URLSession = NSURLSession(configuration: configuration)
-    }
-    
-    static func useURLProtocols(protocols: [AnyClass]?) {
-        self.URLSession.configuration.protocolClasses = protocols
-    }
-    
     private static func formDataFromParameters(parameters: JSONDictionary) -> NSData? {
         //Internal functions here are taken from Alamofire's ParameterEncoding class to simplify
         //generating correct form data.
@@ -158,7 +144,7 @@ struct SpotHeroPartnerAPIController {
         }
         
         //Make the call.
-        let task = self.URLSession.dataTaskWithRequest(request) {
+        let task = SharedURLSession.sharedInstance.session.dataTaskWithRequest(request) {
             data, response, error in
             self.handleResponse(data,
                                 response,

@@ -19,7 +19,8 @@
   "source_files": [
     "GooglePlacesWrapperPod_Files/*",
     "SpotHero_iOS_Partner_SDK/Classes/*/GooglePlace*.swift",
-    "SpotHero_iOS_Partner_SDK/Classes/Network/JSONDictionary.swift"
+    "SpotHero_iOS_Partner_SDK/Classes/Network/JSONDictionary.swift",
+    "SpotHero_iOS_Partner_SDK/Classes/Network/SharedURLSession.swift"
   ],
   "frameworks": [
     "UIKit",

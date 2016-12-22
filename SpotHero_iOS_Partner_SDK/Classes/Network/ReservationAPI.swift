@@ -9,6 +9,7 @@
 import Foundation
 
 struct ReservationAPI {
+    private static var LastReservation: Reservation?
     
     /**
      Creates a reservation
@@ -28,9 +29,20 @@ struct ReservationAPI {
                                   license: String? = nil,
                                   completion: (Reservation?, ErrorType?) -> (Void))  {
         
-        let starts = DateFormatter.ISO8601NoSeconds.stringFromDate(rate.starts)
-        let ends = DateFormatter.ISO8601NoSeconds.stringFromDate(rate.ends)
-                
+        let startDate: NSDate
+        let endDate: NSDate
+        if TestingHelper.isUITesting() {
+            startDate = Constants.Test.StartDate
+            endDate = Constants.Test.EndDate
+        } else {
+            startDate = rate.starts
+            endDate = rate.ends
+        }
+        
+        let starts = DateFormatter.ISO8601NoSeconds.stringFromDate(startDate)
+        let ends = DateFormatter.ISO8601NoSeconds.stringFromDate(endDate)
+        
+        
         var params: [String: AnyObject] = [
             "facility_id" : facility.parkingSpotID,
             "rule_group_id" : rate.ruleGroupID,
@@ -68,6 +80,7 @@ struct ReservationAPI {
                 }
                 
                 let reservation  = try Reservation(json: data)
+                self.LastReservation = reservation
                 completion(reservation, nil)
             } catch let error {
                 completion(nil, error)
@@ -98,6 +111,18 @@ struct ReservationAPI {
         }) {
             JSON in
             completion?(nil)
+        }
+    }
+    
+    static func cancelLastReservation(completion: ((Bool) -> Void)) {
+        guard let reservation = self.LastReservation else {
+            completion(false)
+            return
+        }
+        
+        self.cancelReservation(reservation) {
+            error in
+            completion(error == nil)
         }
     }
 }
