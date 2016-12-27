@@ -355,6 +355,7 @@ class CheckoutTableViewController: UIViewController {
     
     private func configureCell(cell: PersonalInfoTableViewCell, row: PersonalInfoRow) {
         cell.titleLabel.text = row.title()
+        cell.textField.autocorrectionType = .No
         cell.textField.placeholder = row.placeholder()
         cell.textField.inputAccessoryView = self.toolbar
         cell.type = row
