@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     @IBAction private func launchSDKButtonPressed(sender: AnyObject) {
         let spotHeroSDK = SpotHeroPartnerSDK.SharedInstance
         // Enter your SpotHero Partner API Key here
-        spotHeroSDK.partnerApplicationKey = "65f498a5f7966a9b814bd676f11a76025dd42a68"
+        spotHeroSDK.partnerApplicationKey = "bb5ab4b58fc484d8f478ef06e3c67e3c2dd71543"
         spotHeroSDK.launchSDKFromViewController(self)
     }
 }

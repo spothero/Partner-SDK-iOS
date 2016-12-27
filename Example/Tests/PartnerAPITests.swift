@@ -15,7 +15,7 @@ class PartnerAPITests: BaseTests {
     
     override func setUp() {
         super.setUp()
-        SpotHeroPartnerSDK.SharedInstance.partnerApplicationKey = "65f498a5f7966a9b814bd676f11a76025dd42a68"
+        SpotHeroPartnerSDK.SharedInstance.partnerApplicationKey = "bb5ab4b58fc484d8f478ef06e3c67e3c2dd71543"
     }
     
     func getFacilities(location: CLLocation, completion: FacilityCompletion) {
