@@ -293,6 +293,7 @@ class CheckoutTableViewController: UIViewController {
         ReservationAPI.createReservation(facility,
                                          rate: rate,
                                          email: email,
+                                         phone: phoneNumber,
                                          stripeToken: token,
                                          license: license,
                                          completion: {
