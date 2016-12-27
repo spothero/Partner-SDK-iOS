@@ -285,7 +285,7 @@ class CheckoutTableViewController: UIViewController {
         var license: String?
         
         if let
-            licenseCell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: PersonalInfoRow.Email.rawValue, inSection: CheckoutSection.PersonalInfo.rawValue)) as? PersonalInfoTableViewCell
+            licenseCell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: PersonalInfoRow.License.rawValue, inSection: CheckoutSection.PersonalInfo.rawValue)) as? PersonalInfoTableViewCell
             where facility.licensePlateRequired {
             license = licenseCell.textField.text
         }
@@ -293,6 +293,7 @@ class CheckoutTableViewController: UIViewController {
         ReservationAPI.createReservation(facility,
                                          rate: rate,
                                          email: email,
+                                         phone: phoneNumber,
                                          stripeToken: token,
                                          license: license,
                                          completion: {
@@ -354,6 +355,7 @@ class CheckoutTableViewController: UIViewController {
     
     private func configureCell(cell: PersonalInfoTableViewCell, row: PersonalInfoRow) {
         cell.titleLabel.text = row.title()
+        cell.textField.autocorrectionType = .No
         cell.textField.placeholder = row.placeholder()
         cell.textField.inputAccessoryView = self.toolbar
         cell.type = row

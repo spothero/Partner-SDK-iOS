@@ -16,6 +16,7 @@ struct ReservationAPI {
      - parameter facility:    Facility to create reservation
      - parameter rate:        Rate for the facility
      - parameter email:       User's email address
+     - parameter phone:       User's phone number. (optional) Pass in nil or omit this parameter if phone number is not required. Defaults to nil.
      - parameter stripeToken: Stripe token for user's credit card
      - parameter license:     User's license plate number. (optional) Pass in nil or omit this parameter if license is not required. If license plate is required and user does not pass it in, pass an empty string
      - parameter completion:  Completion that passes in either a reservation or error
@@ -23,6 +24,7 @@ struct ReservationAPI {
     static func createReservation(facility: Facility,
                                   rate: Rate,
                                   email: String,
+                                  phone: String? = nil,
                                   stripeToken: String,
                                   license: String? = nil,
                                   completion: (Reservation?, ErrorType?) -> (Void))  {
@@ -44,6 +46,10 @@ struct ReservationAPI {
             params["license_plate"] = license
         } else if license != nil {
             params["license_plate"] = "UNKNOWN"
+        }
+        
+        if let phone = phone where !phone.isEmpty {
+            params["phone_number"] = phone
         }
 
         let headers = APIHeaders.defaultHeaders()
