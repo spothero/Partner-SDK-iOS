@@ -205,11 +205,11 @@ class TimeSelectionView: UIView {
     }
     
     @objc private func startDateChanged(datePicker: UIDatePicker) {
-        self.startDate = datePicker.date
+        self.setStartEndDateTimeLabelWithDate(datePicker.date)
     }
     
     @objc private func endDateChanged(datePicker: UIDatePicker) {
-        self.endDate = datePicker.date
+        self.setStartEndDateTimeLabelWithDate(datePicker.date)
     }
     
     //MARK: Helpers
