@@ -33,9 +33,9 @@ enum AccessibilityStrings {
                                                   comment: "Label that shows your reservation's start date")
     static let EndDateLabel = NSLocalizedString("Reservation end date",
                                                 comment: "Label that shows your reservation's end date")
-    static let StartTimeLabel = NSLocalizedString("Reservation start time",
+    static let StartTimeTextField = NSLocalizedString("Reservation start time",
                                                   comment: "Accessibility label for start time")
-    static let EndTimeLabel = NSLocalizedString("Reservation end time",
+    static let EndTimeTextField = NSLocalizedString("Reservation end time",
                                                 comment: "Accessibility label for end time")
     static let CollapsedSearchBarView = NSLocalizedString("Reservation's length",
                                                           comment: "Accessibility label for collapsed search bar view")
