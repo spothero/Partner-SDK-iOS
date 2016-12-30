@@ -19,24 +19,17 @@ class DateUITests: BaseUITests {
             return
         }
         
-        let startDate = NSDate(timeIntervalSince1970: 1580331600)
+        // Jan 29, 3:00pm Central Time
+        let startDateSeconds: NSTimeInterval = 1580331600
+        
+        // Jan 29, 9:00pm Central Time
+        let endDateSeconds: NSTimeInterval = startDateSeconds + (60 * 60 * 6)
+        let startDate = NSDate(timeIntervalSince1970: startDateSeconds)
+        let endDate = NSDate(timeIntervalSince1970: endDateSeconds)
         
         timeSelectionView.setStartEndDateTimeLabelWithDate(startDate)
         
-        tester().waitForTimeInterval(10)
-        
-        guard
-            let startTimeTextField = tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.StartTimeTextField) as? UITextField,
-            let startDateLabel = tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.StartDateLabel) as? UILabel,
-            let endTimetextField = tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.EndTimeTextField) as? UITextField,
-            let endDateLabel = tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.EndDateLabel) as? UILabel else {
-            XCTFail("Cannot get start time label")
-            return
-        }
-        
-        XCTAssertEqual("3:00pm", startTimeTextField.text)
-        XCTAssertEqual("Jan 29, 2020", startDateLabel.text)
-        XCTAssertEqual("9:00pm", endTimetextField.text)
-        XCTAssertEqual("Jan 29, 2020", endDateLabel.text)
+        XCTAssertEqual(timeSelectionView.startDate, startDate)
+        XCTAssertEqual(timeSelectionView.endDate, endDate)
     }
 }
