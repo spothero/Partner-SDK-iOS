@@ -34,7 +34,7 @@ struct APIError {
     //MARK: - Error Generation
     
     static func errorFromServerJSON(serverError: ServerErrorJSON, statusCode: Int) -> NSError {
-        let messages = serverError.messages.joinWithSeparator("\n")
+        let messages = serverError.messages
         
         return NSError(domain: PartnerSDKAPIErrorDomain.Network.rawValue,
                        code: statusCode,
