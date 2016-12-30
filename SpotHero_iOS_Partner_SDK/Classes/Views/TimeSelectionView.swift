@@ -90,8 +90,8 @@ class TimeSelectionView: UIView {
         
         self.startDateLabel.accessibilityLabel = AccessibilityStrings.StartDateLabel
         self.endDateLabel.accessibilityLabel = AccessibilityStrings.EndDateLabel
-        self.startTimeTextField.accessibilityLabel = AccessibilityStrings.StartTimeLabel
-        self.endTimeTextField.accessibilityLabel = AccessibilityStrings.EndTimeLabel
+        self.startTimeTextField.accessibilityLabel = AccessibilityStrings.StartTimeTextField
+        self.endTimeTextField.accessibilityLabel = AccessibilityStrings.EndTimeTextField
         self.startsView.accessibilityLabel = AccessibilityStrings.StartsTimeSelectionView
         self.endsView.accessibilityLabel = AccessibilityStrings.EndsTimeSelectionView
         
@@ -172,7 +172,7 @@ class TimeSelectionView: UIView {
         }
     }
     
-    private func setStartEndDateTimeLabelWithDate(date: NSDate) {
+    func setStartEndDateTimeLabelWithDate(date: NSDate) {
         if (self.startViewSelected) {
             self.startDate = date
             if (self.endDate.timeIntervalSinceDate(date) < Constants.ThirtyMinutesInSeconds) {

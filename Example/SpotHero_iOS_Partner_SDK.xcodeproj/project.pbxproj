@@ -25,6 +25,7 @@
 		C70AC4C31D4BF909004F8539 /* ValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70AC4C21D4BF909004F8539 /* ValidatorTests.swift */; };
 		C70AC4C61D4FC64F004F8539 /* BaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70AC4C51D4FC64F004F8539 /* BaseTests.swift */; };
 		C73848581D35538C0023E1A8 /* GooglePlacesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73848571D35538C0023E1A8 /* GooglePlacesTests.swift */; };
+		C748884B1E158E2C00844EC7 /* DateUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74888491E158D2900844EC7 /* DateUITests.swift */; };
 		C7527B931DEF4F5F00168F17 /* SharedURLSession+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7CBF4871D411EFA001D988F /* SharedURLSession+Mock.swift */; };
 		C7527B941DEF4F6300168F17 /* VOKMockData in Resources */ = {isa = PBXBuildFile; fileRef = C7FBD09A1D4273B40089A53B /* VOKMockData */; };
 		C79C65B71D58EF9D001CDCA4 /* FormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79C65B61D58EF9D001CDCA4 /* FormatterTests.swift */; };
@@ -86,6 +87,7 @@
 		C70AC4C21D4BF909004F8539 /* ValidatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidatorTests.swift; sourceTree = "<group>"; };
 		C70AC4C51D4FC64F004F8539 /* BaseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTests.swift; sourceTree = "<group>"; };
 		C73848571D35538C0023E1A8 /* GooglePlacesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GooglePlacesTests.swift; sourceTree = "<group>"; };
+		C74888491E158D2900844EC7 /* DateUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateUITests.swift; sourceTree = "<group>"; };
 		C79C65B61D58EF9D001CDCA4 /* FormatterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormatterTests.swift; sourceTree = "<group>"; };
 		C7CBF4871D411EFA001D988F /* SharedURLSession+Mock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SharedURLSession+Mock.swift"; sourceTree = "<group>"; };
 		C7CBF48B1D412362001D988F /* PartnerAPIMockTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartnerAPIMockTests.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 				12794D561D5BC9B30074E246 /* SearchSpotsUITests.swift */,
 				C70AA21F1D398432004C7BDE /* BaseUITests.swift */,
 				C7E786011DB96B4800A0DC90 /* CheckoutUITests.swift */,
+				C74888491E158D2900844EC7 /* DateUITests.swift */,
 			);
 			name = UITests;
 			path = SpotHero_iOS_Partner_SDK_ExampleUITests;
@@ -586,6 +589,7 @@
 				C70AA2211D398435004C7BDE /* BaseUITests.swift in Sources */,
 				3361782E1D249B1A00AF7AD6 /* ShowSDKUITests.swift in Sources */,
 				336178381D24A8BB00AF7AD6 /* XCTestCase+KIF.swift in Sources */,
+				C748884B1E158E2C00844EC7 /* DateUITests.swift in Sources */,
 				C7E786031DB96B7800A0DC90 /* CheckoutUITests.swift in Sources */,
 				C70AA21E1D397E75004C7BDE /* GooglePlacesUITests.swift in Sources */,
 				12794D581D5BC9DB0074E246 /* SearchSpotsUITests.swift in Sources */,
