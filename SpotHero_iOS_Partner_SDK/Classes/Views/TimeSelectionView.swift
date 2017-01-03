@@ -257,7 +257,7 @@ extension TimeSelectionView: UITextFieldDelegate {
         case self.startTimeTextField:
             self.endTimeTextField.becomeFirstResponder()
         default:
-            self.deselect()
+            break
         }
     }
 }
