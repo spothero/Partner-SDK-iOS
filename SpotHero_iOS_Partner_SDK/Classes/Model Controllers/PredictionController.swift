@@ -21,7 +21,16 @@ class PredictionController: NSObject {
     let headerFooterHeight: CGFloat = 30
     var block: dispatch_block_t?
     
-    var predictions = [GooglePlacesPrediction]()
+    var predictions = [GooglePlacesPrediction]() {
+        didSet {
+            guard let delegate = self.delegate else {
+                assertionFailure("delegate is nil")
+                return
+            }
+            
+            delegate.didUpdatePredictions(self.predictions)
+        }
+    }
     
     weak var delegate: PredictionControllerDelegate?
 }
