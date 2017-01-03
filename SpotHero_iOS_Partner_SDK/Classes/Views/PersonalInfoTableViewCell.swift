@@ -93,7 +93,7 @@ extension PersonalInfoTableViewCell: UITextFieldDelegate {
             switch error {
             case .FieldBlank(let fieldName):
                 self.errorLabel.text = String(format: LocalizedStrings.blankFieldErrorFormat, fieldName)
-            case .FieldInvalid(let fieldName, let message):
+            case .FieldInvalid(_, let message):
                 self.errorLabel.text = message
             }
         }
