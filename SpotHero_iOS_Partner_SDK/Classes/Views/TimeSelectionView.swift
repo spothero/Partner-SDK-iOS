@@ -152,9 +152,23 @@ class TimeSelectionView: UIView {
      Deselect both time selection views
      */
     func deselect() {
+        self.deselectStartView()
+        self.deselectEndView()
+    }
+    
+    /**
+     Deselect start time selection view
+     */
+    func deselectStartView() {
         self.startViewSelected = false
-        self.endViewSelected = false
         self.startTimeTextField.resignFirstResponder()
+    }
+    
+    /**
+     Deselect end time selection view
+     */
+    func deselectEndView() {
+        self.endViewSelected = false
         self.endTimeTextField.resignFirstResponder()
     }
     
@@ -257,7 +271,7 @@ extension TimeSelectionView: UITextFieldDelegate {
         case self.startTimeTextField:
             self.endTimeTextField.becomeFirstResponder()
         default:
-            break
+            self.deselectEndView()
         }
     }
 }
