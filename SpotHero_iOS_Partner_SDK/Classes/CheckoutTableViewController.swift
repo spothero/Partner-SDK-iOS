@@ -241,12 +241,20 @@ class CheckoutTableViewController: UIViewController {
             }
             
             self?.createReservation(token) {
-                success in
+                success, error in
                 ProgressHUD.hideHUDForView(self?.view)
                 if success {
                     self?.performSegueWithIdentifier(Constants.Segue.Confirmation, sender: nil)
                 } else {
-                    AlertView.presentErrorAlertView(message: LocalizedStrings.CreateReservationErrorMessage, from: self)
+                    
+                    if
+                        let error = error as? NSError,
+                        let userInfo = error.userInfo as? JSONDictionary,
+                        let message = userInfo[SpotHeroPartnerSDK.UnlocalizedDescriptionKey] as? String {
+                            AlertView.presentErrorAlertView(message: message, from: self)
+                    } else {
+                        AlertView.presentErrorAlertView(message: LocalizedStrings.CreateReservationErrorMessage, from: self)
+                    }
                 }
             }
         }
@@ -303,12 +311,12 @@ class CheckoutTableViewController: UIViewController {
      - parameter token:      Stripe Token
      - parameter completion: Passing in a bool. True if reservation was successfully created, false if an error occured
      */
-    func createReservation(token: String, completion: (Bool) -> ()) {
+    func createReservation(token: String, completion: (Bool, ErrorType?) -> ()) {
         guard
             let facility = self.facility,
             let rate = self.rate else {
                 assertionFailure("No facility or rate")
-                completion(false)
+                completion(false, nil)
                 return
         }
         
@@ -316,7 +324,7 @@ class CheckoutTableViewController: UIViewController {
             let emailCell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: PersonalInfoRow.Email.row(facility.phoneNumberRequired), inSection: CheckoutSection.PersonalInfo.rawValue)) as? PersonalInfoTableViewCell,
             let email = emailCell.textField.text else {
                 assertionFailure("Cannot get email cell")
-                completion(false)
+                completion(false, nil)
                 return
         }
         
@@ -346,7 +354,7 @@ class CheckoutTableViewController: UIViewController {
                                             [weak self]
                                             reservation, error in
                                             guard let reservation = reservation else {
-                                                completion(false)
+                                                completion(false, error)
                                                 return
                                             }
                                             
@@ -368,7 +376,7 @@ class CheckoutTableViewController: UIViewController {
                                                     .TimeFromReservationStart: rate.minutesToReservation(),
                                                     ])
                                             }
-                                            completion(true)
+                                            completion(true, nil)
             })
     }
     
