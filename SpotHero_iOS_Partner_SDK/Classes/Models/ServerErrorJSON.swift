@@ -19,7 +19,7 @@ extension ServerErrorJSON: JSONParseable {
         let errors = try data.shp_array("errors") as [JSONDictionary]
         
         guard let error = errors.first else {
-            throw JSONParsingError.KeyNotFound(key: "Error")
+            throw JSONParsingError.NoResults
         }
         
         self.code = try error.shp_string("code")
