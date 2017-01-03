@@ -20,6 +20,9 @@ enum JSONParsingError: ErrorType {
     
     /// Unexpected JSON `value` was found that is not convertible `to` type
     case ValueNotConvertible(value: AnyObject, to: Any.Type)
+    
+    /// The `key` was found but there were no results
+    case NoResults
 }
 
 protocol JSONParseable {

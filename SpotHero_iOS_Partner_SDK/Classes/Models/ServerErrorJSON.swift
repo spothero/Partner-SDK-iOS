@@ -10,12 +10,19 @@ import Foundation
 
 struct ServerErrorJSON {
     let code: String
-    let messages: [String]
+    let messages: [JSONDictionary]
 }
 
 extension ServerErrorJSON: JSONParseable {
     init(json: JSONDictionary) throws {
-        self.code = try json.shp_string("code")
-        self.messages =  try json.shp_array("messages")
+        let data = try json.shp_dictionary("data") as JSONDictionary
+        let errors = try data.shp_array("errors") as [JSONDictionary]
+        
+        guard let error = errors.first else {
+            throw JSONParsingError.NoResults
+        }
+        
+        self.code = try error.shp_string("code")
+        self.messages =  try error.shp_array("messages")
     }
 }
