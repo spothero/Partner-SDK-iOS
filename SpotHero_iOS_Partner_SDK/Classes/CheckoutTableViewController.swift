@@ -246,12 +246,11 @@ class CheckoutTableViewController: UIViewController {
                 if success {
                     self?.performSegueWithIdentifier(Constants.Segue.Confirmation, sender: nil)
                 } else {
+                    
                     if
                         let error = error as? NSError,
-                        let messageDictionary = error.userInfo.first?.1 as? [JSONDictionary],
-                        let nonFieldErrors = messageDictionary.first?["non_field_errors"] as? [JSONDictionary],
-                        let errorDictionary = nonFieldErrors.first,
-                        let message = errorDictionary["msg"] as? String {
+                        let userInfo = error.userInfo as? JSONDictionary,
+                        let message = userInfo[SpotHeroPartnerSDK.UnlocalizedDescriptionKey] as? String {
                             AlertView.presentErrorAlertView(message: message, from: self)
                     } else {
                         AlertView.presentErrorAlertView(message: LocalizedStrings.CreateReservationErrorMessage, from: self)
