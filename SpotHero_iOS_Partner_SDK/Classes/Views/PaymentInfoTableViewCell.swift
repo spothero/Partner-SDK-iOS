@@ -88,7 +88,7 @@ class PaymentInfoTableViewCell: UITableViewCell, ValidatorCell {
         self.cvcTextField.accessibilityLabel = LocalizedStrings.CVCPlaceHolder
     }
     
-    func showExpirationDateAndCVCTextFields(show show: Bool) {
+    func showExpirationDateAndCVCTextFields(show: Bool) {
         let width: CGFloat = show ? (self.textFieldContainer.frame.width / 3) : 0
         
         if !show {
@@ -233,7 +233,7 @@ extension PaymentInfoTableViewCell: UITextFieldDelegate {
         default:
             textField.text = Formatter.formatCreditCard(self.cardNumber).formatted
         }
-        self.showExpirationDateAndCVCTextFields(show: false)
+        self.showExpirationDateAndCVCTextFields(false)
     }
     
     func textFieldDidEndEditing(textField: UITextField) {
@@ -247,7 +247,7 @@ extension PaymentInfoTableViewCell: UITextFieldDelegate {
                 self.cardType = Validator.getCardType(text)
                 try Validator.validateCreditCard(self.cardNumber)
                 self.errors[.CreditCard] = nil
-                self.showExpirationDateAndCVCTextFields(show: true)
+                self.showExpirationDateAndCVCTextFields(true)
                 self.expirationDateTextField.becomeFirstResponder()
                 self.creditCardTextField.text = self.lastFourDigits(text)
             case self.expirationDateTextField:
