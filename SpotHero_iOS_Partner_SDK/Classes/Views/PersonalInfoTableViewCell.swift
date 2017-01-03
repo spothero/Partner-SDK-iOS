@@ -61,13 +61,15 @@ extension PersonalInfoTableViewCell: UITextFieldDelegate {
     func textField(textField: UITextField,
                    shouldChangeCharactersInRange range: NSRange,
                    replacementString string: String) -> Bool {
-        guard let text = (textField.text as? NSString)?.stringByReplacingCharactersInRange(range, withString: string) else {
+        guard let text = textField.text else {
             return true
         }
         
+        let subString = (text as NSString).stringByReplacingCharactersInRange(range, withString: string)
+        
         if self.type == .Phone {
             let cursorLocation = textField.shp_getCursorPosition(range, string: string)
-            let (formatted, unformatted) = Formatter.formatPhoneNumber(text)
+            let (formatted, unformatted) = Formatter.formatPhoneNumber(subString)
             textField.text = formatted
             textField.shp_setCursorPosition(cursorLocation)
             
