@@ -264,7 +264,7 @@ class CheckoutTableViewController: UIViewController {
         self.view.endEditing(true)
     }
     
-    @IBAction func closeButtonPressed(_ sender: AnyObject) {
+    @IBAction func closeButtonPressed(sender: AnyObject) {
         SpotHeroPartnerSDK.SharedInstance.reportSDKClosed()
         self.dismissViewControllerAnimated(true, completion: nil)
     }
@@ -353,7 +353,7 @@ class CheckoutTableViewController: UIViewController {
                                          completion: {
                                             [weak self]
                                             reservation, error in
-                                            guard let reservation = reservation else {
+                                            guard reservation != nil else {
                                                 completion(false, error)
                                                 return
                                             }
@@ -400,7 +400,7 @@ class CheckoutTableViewController: UIViewController {
     }
     
     private func getDateFormatString(date: NSDate) -> String {
-        guard let calendar = NSCalendar(calendarIdentifier: NSGregorianCalendar) where calendar.isDateInToday(date) || calendar.isDateInTomorrow(date) else {
+        guard let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian) where calendar.isDateInToday(date) || calendar.isDateInTomorrow(date) else {
             return DateFormatter.DayOfWeekWithDate.stringFromDate(date)
         }
         

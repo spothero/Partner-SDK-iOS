@@ -23,9 +23,12 @@ class PredictionController: NSObject {
     
     var predictions = [GooglePlacesPrediction]() {
         didSet {
-            guard let delegate = self.delegate?.didUpdatePredictions(self.predictions) else {
-                return assertionFailure("delegate is nil")
+            guard let delegate = self.delegate else {
+                assertionFailure("delegate is nil")
+                return
             }
+            
+            delegate.didUpdatePredictions(self.predictions)
         }
     }
     
@@ -120,9 +123,9 @@ extension PredictionController: UISearchBarDelegate {
             }
             
             if !predictions.isEmpty {
-                self?.delegate?.shouldSelectFirstPrediction()
+                delegate.shouldSelectFirstPrediction()
             } else {
-                self?.delegate?.didTapXButton()
+                delegate.didTapXButton()
             }
         }
         

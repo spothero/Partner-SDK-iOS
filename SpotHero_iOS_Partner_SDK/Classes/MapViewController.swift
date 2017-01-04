@@ -363,7 +363,7 @@ class MapViewController: UIViewController {
         GooglePlacesWrapper.getPlaceDetails(prediction) {
             [weak self]
             placeDetails, error in
-            if let error = error {
+            if error != nil {
                 self?.initialLoading = false
                 completion(nil)
             } else {
@@ -490,7 +490,7 @@ class MapViewController: UIViewController {
         }
     }
     
-    @IBAction private func redoSearchButtonPressed(_ sender: AnyObject) {
+    @IBAction private func redoSearchButtonPressed(sender: AnyObject) {
         self.redoSearchButton.hidden = true
         self.clearExistingFacilities()
         self.predictionPlaceDetails = nil

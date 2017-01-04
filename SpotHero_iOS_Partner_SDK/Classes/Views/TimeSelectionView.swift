@@ -199,12 +199,12 @@ class TimeSelectionView: UIView {
     
     //MARK: Actions
     
-    @IBAction private func startViewTapped(_ sender: AnyObject) {
+    @IBAction private func startViewTapped(sender: AnyObject) {
         self.startViewSelected = true
         self.delegate?.didTapStartView(self.startDate, endDate: self.endDate)
     }
     
-    @IBAction private func endViewTapped(_ sender: AnyObject) {
+    @IBAction private func endViewTapped(sender: AnyObject) {
         self.endViewSelected = true
         self.delegate?.didTapEndView(self.startDate, endDate: self.endDate)
     }
