@@ -36,7 +36,7 @@ struct APIError {
     static func errorFromServerJSON(serverError: ServerErrorJSON, statusCode: Int) -> NSError {
         guard
             let messages = serverError.messages.first,
-            let nonFieldErrors = messages["non_field_errors"] as? [JSONDictionary],
+            let nonFieldErrors = messages.values.first as? [JSONDictionary],
             let errorDictionary = nonFieldErrors.first,
             let message = errorDictionary["msg"] as? String else {
                 return NSError(domain: PartnerSDKAPIErrorDomain.Network.rawValue,
