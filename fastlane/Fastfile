@@ -23,7 +23,7 @@ coverage_files_to_ignore = [
     'Pods/*',
 ]
 
-# The location where derived data should be placed. 
+# The location where derived data should be placed.
 derived_data_folder = File.join(fastlane_folder, "DerivedData")
 
 #########################
@@ -61,13 +61,6 @@ test_flight_provisioning_profile_name = 'Distribution App Store: SDK Sample App'
 # Pod Project Variables #
 #########################
 
-# GOOGLE PLACES
-
-google_places_pod_workspace_file = 'SpotHero_Google_Places_Wrapper_Example/SpotHero_Google_Places_Wrapper_Example.xcworkspace'
-google_places_pod_scheme = 'SpotHero_Google_Places_Wrapper_Example'
-google_places_pod_test_output_folder = 'google_places_pod_test_output'
-
-
 ###########
 ## SETUP ##
 ###########
@@ -75,8 +68,8 @@ google_places_pod_test_output_folder = 'google_places_pod_test_output'
     before_all do
         ENV['SLACK_URL'] = slack_webhook_url
 
-        if is_ci 
-            # Make sure we're on Xcode 7 on the build server. 
+        if is_ci
+            # Make sure we're on Xcode 7 on the build server.
             switch_to_xcode_7
         end
     end
@@ -134,17 +127,17 @@ google_places_pod_test_output_folder = 'google_places_pod_test_output'
 ## TESTING & CODE COVERAGE ##
 #############################
 
-    def switch_to_xcode_7 
+    def switch_to_xcode_7
         xcversion(
             version: "7.3.1",
         )
-    end 
+    end
 
     def switch_to_xcode_8
         xcversion(
             version: "~> 8.1.0", # Selects the latest installed version from the 8.1.x set
-        )    
-    end 
+        )
+    end
 
     desc "Runs tests with the given options"
     desc "Expects values for the following keys:"
@@ -156,9 +149,9 @@ google_places_pod_test_output_folder = 'google_places_pod_test_output'
             raise "Not all required options for this lane are present!"
             return
         end
-        
-        #stop any existing sims        
-        sh "./kill_sim_if_running.sh"    
+
+        #stop any existing sims
+        sh "./kill_sim_if_running.sh"
 
         workspace = options[:workspace_options_key]
         scheme = options[:scheme_options_key]
@@ -175,32 +168,23 @@ google_places_pod_test_output_folder = 'google_places_pod_test_output'
             skip_build: true, #the test action will already kick off a build, don't build twice
         )
     end
-    
-    # Runs all the tests of the places pod's sample app. 
-    lane :test_pod do 
-        run_tests(
-            scheme_options_key: google_places_pod_scheme,
-            output_options_key: google_places_pod_test_output_folder,
-            workspace_options_key: google_places_pod_workspace_file,            
-        )
-    end
 
     desc "Runs all the tests of the sample app"
-    lane :test do     
+    lane :test do
         run_tests(
             scheme_options_key: main_scheme,
             output_options_key: test_output_folder,
             workspace_options_key: workspace_file,
         )
     end
-    
+
     desc "Runs all the tests of the app and gathers code coverage across all versions of xcode"
     lane :test_all do
         switch_to_xcode_7
         test
         test_pod
         switch_to_xcode_8
-        test 
+        test
         test_pod
     end
 
@@ -252,7 +236,7 @@ google_places_pod_test_output_folder = 'google_places_pod_test_output'
 
         method = options[:method_options_key]
         scheme = options[:scheme_options_key]
-        
+
         # make sure the build folder actually exists first
         build_folder_name = "Build"
         sh("mkdir -p #{build_folder_name}")
@@ -308,7 +292,7 @@ google_places_pod_test_output_folder = 'google_places_pod_test_output'
     private_lane :itc do
         #Build with latest Xcode
         switch_to_xcode_8
-        
+
         # Create an iTunes Connect build
         build_itc
 
@@ -324,25 +308,25 @@ google_places_pod_test_output_folder = 'google_places_pod_test_output'
 
         slack(message: "SDK Sample app build uploaded to iTunes Connect!", success: true)
     end
-        
+
     def calculate_current_version
         version = sh("git describe --tags $(git rev-list --tags='b[0-9]*' --max-count=1) --abbrev=0")
-        
+
         puts("#{version}")
-                
+
         #trim off the b
         trimmed_version = version[1..version.length]
         puts("#{trimmed_version}")
-        
+
         #make it an integer
         integer_version = trimmed_version.to_i
-        current_version = integer_version + 1        
+        current_version = integer_version + 1
         return current_version
-    end 
-    
+    end
+
     def checkout_current_branch
         # For some reason, Jenkins is checking out a detached HEAD instead of the appropriate branch.
-        current_branch = ENV["GIT_BRANCH"]        
+        current_branch = ENV["GIT_BRANCH"]
         if current_branch
             # Split on the first slash to trim the remote name off the branch name
             split_on_first_slash = current_branch.split("/", 2)
@@ -350,49 +334,49 @@ google_places_pod_test_output_folder = 'google_places_pod_test_output'
         elsif
             # We're not getting it from the environment - grab it from git by finding the starred branch.
             current_branch = sh("git branch | grep \\*")
-            
+
             # Trim off the "* " bit (2 characters)
             current_branch = current_branch[2..current_branch.length]
-        end        
-        
+        end
+
         # Check out the appropriate branch
         sh "git checkout " + current_branch
-    end 
-    
+    end
+
     desc "Bumps the version, commits it to git with the appropriate tag, and pushes to the remote."
-    lane :bump_commit do         
+    lane :bump_commit do
         checkout_current_branch
-    
+
         #figure out what the latest build number is
         current_version = calculate_current_version
         puts("Current version: #{current_version.to_s}")
-    
+
         # Update the build number and commit it
         increment_build_number(
-            build_number: current_version,        
-            xcodeproj: project_file,        
+            build_number: current_version,
+            xcodeproj: project_file,
         )
         commit_version_bump(
-            xcodeproj: project_file,        
+            xcodeproj: project_file,
         )
-        
+
         # Set the tag as b(build number) for the committed version bump.
         build_number = Actions.lane_context[Actions::SharedValues::BUILD_NUMBER]
         add_git_tag(
             tag: "b" + build_number
-        )      
+        )
     end
-    
+
     desc "Method which pushes commits using SSH instead of stored creds"
-    private_lane :push_with_ssh do 
+    private_lane :push_with_ssh do
         # Update the remote URL for origin to use ssh
         sh "git remote set-url origin git@github.com:spothero/iOS-Partner-SDK.git"
-        
+
         # Push to remote with tags using ssh
         push_to_git_remote(
             tags: true,
-        ) 
-    end 
+        )
+    end
 
     desc "Method to run after a successful merge."
     desc "Will bump/commit/tag/push the version and upload to iTunes Connect."
