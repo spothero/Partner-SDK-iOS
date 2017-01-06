@@ -3,7 +3,7 @@
   "platforms": {
     "ios": "9.0"
   },
-  "version": "0.1.1",
+  "version": "0.1.3",
   "summary": "An SDK for simple integration with SpotHero.",
   "license": "LICENSE.md",
   "description": "An SDK that allows your users to book SpotHero parking directly from within your app.",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/spothero/Partner-SDK-iOS.git",
-    "tag": "0.1.1"
+    "tag": "0.1.3"
   },
   "social_media_url": "https://twitter.com/SpotHero",
   "source_files": "SpotHero_iOS_Partner_SDK/Classes/**/*",
