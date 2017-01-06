@@ -44,11 +44,43 @@ enum ReservationInfoRow: Int, CountableIntEnum {
     }
 }
 
-enum PersonalInfoRow: Int, CountableIntEnum {
+enum PersonalInfoRow {
     case
     Email,
     Phone,
     License
+    
+    init(facility: Facility, index: Int) {
+        if index == 0 {
+            self = .Email
+        } else if index == 1 && facility.phoneNumberRequired {
+            self = .Phone
+        } else {
+            self = .License
+        }
+    }
+    
+    func row(phoneNumberRequired: Bool) -> Int {
+        switch self {
+        case .Email:
+            return 0
+        case .Phone:
+            return 1
+        case .License:
+            return phoneNumberRequired ? 2 : 1
+        }
+    }
+    
+    static func count(facility: Facility) -> Int {
+        if facility.licensePlateRequired && facility.phoneNumberRequired {
+            return 3
+        } else if facility.licensePlateRequired || facility.phoneNumberRequired {
+            return 2
+        } else {
+            return 1
+        }
+    }
+    
     
     func title() -> String {
         switch self {
@@ -75,6 +107,7 @@ enum PersonalInfoRow: Int, CountableIntEnum {
 
 class CheckoutTableViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var closeButton: UIBarButtonItem!
     @IBOutlet var toolbar: UIToolbar!
     
     private let reservationCellHeight: CGFloat = 60
@@ -116,6 +149,8 @@ class CheckoutTableViewController: UIViewController {
         self.tableView.estimatedRowHeight = 60
         self.setupPaymentButton()
         self.registerForKeyboardNotifications()
+        self.closeButton.accessibilityLabel = LocalizedStrings.Close
+        self.view.accessibilityLabel = AccessibilityStrings.CheckoutScreen
     }
     
     
@@ -151,7 +186,12 @@ class CheckoutTableViewController: UIViewController {
                                                    left: 0,
                                                    bottom: self.paymentButtonHeight,
                                                    right: 0)
-        self.paymentButton.setTitle(String(format: LocalizedStrings.paymentButtonTitleFormat, price), forState: .Normal)
+        if TestingHelper.isUITesting() {
+            self.paymentButton.setTitle(Constants.Test.ButtonTitle, forState: .Normal)
+        } else {
+            self.paymentButton.setTitle(String(format: LocalizedStrings.paymentButtonTitleFormat, price), forState: .Normal)
+        }
+
         self.view.addSubview(self.paymentButton)
         let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("|-margin-[paymentButton]-margin-|",
                                                                                    options: NSLayoutFormatOptions(rawValue: 0),
@@ -201,12 +241,20 @@ class CheckoutTableViewController: UIViewController {
             }
             
             self?.createReservation(token) {
-                success in
+                success, error in
                 ProgressHUD.hideHUDForView(self?.view)
                 if success {
                     self?.performSegueWithIdentifier(Constants.Segue.Confirmation, sender: nil)
                 } else {
-                    AlertView.presentErrorAlertView(message: LocalizedStrings.CreateReservationErrorMessage, from: self)
+                    
+                    if
+                        let error = error as? NSError,
+                        let userInfo = error.userInfo as? JSONDictionary,
+                        let message = userInfo[SpotHeroPartnerSDK.UnlocalizedDescriptionKey] as? String {
+                            AlertView.presentErrorAlertView(message: message, from: self)
+                    } else {
+                        AlertView.presentErrorAlertView(message: LocalizedStrings.CreateReservationErrorMessage, from: self)
+                    }
                 }
             }
         }
@@ -216,6 +264,10 @@ class CheckoutTableViewController: UIViewController {
         self.view.endEditing(true)
     }
     
+    @IBAction func closeButtonPressed(sender: AnyObject) {
+        SpotHeroPartnerSDK.SharedInstance.reportSDKClosed()
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
     //MARK: Helpers
     
     /**
@@ -259,35 +311,37 @@ class CheckoutTableViewController: UIViewController {
      - parameter token:      Stripe Token
      - parameter completion: Passing in a bool. True if reservation was successfully created, false if an error occured
      */
-    func createReservation(token: String, completion: (Bool) -> ()) {
+    func createReservation(token: String, completion: (Bool, ErrorType?) -> ()) {
         guard
             let facility = self.facility,
             let rate = self.rate else {
                 assertionFailure("No facility or rate")
-                completion(false)
+                completion(false, nil)
                 return
         }
         
         guard
-            let emailCell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: PersonalInfoRow.Email.rawValue, inSection: CheckoutSection.PersonalInfo.rawValue)) as? PersonalInfoTableViewCell,
+            let emailCell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: PersonalInfoRow.Email.row(facility.phoneNumberRequired), inSection: CheckoutSection.PersonalInfo.rawValue)) as? PersonalInfoTableViewCell,
             let email = emailCell.textField.text else {
                 assertionFailure("Cannot get email cell")
-                completion(false)
+                completion(false, nil)
                 return
         }
         
-        var phoneNumber = ""
-        if let phoneCell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: PersonalInfoRow.Phone.rawValue, inSection: CheckoutSection.PersonalInfo.rawValue)) as? PersonalInfoTableViewCell,
+        var phoneNumber: String?
+        if let
+            phoneCell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: PersonalInfoRow.Phone.row(facility.phoneNumberRequired), inSection: CheckoutSection.PersonalInfo.rawValue)) as? PersonalInfoTableViewCell
+            where facility.phoneNumberRequired,
             let text = phoneCell.textField.text {
-            phoneNumber = text
+                phoneNumber = text
         }
         
         var license: String?
         
         if let
-            licenseCell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: PersonalInfoRow.License.rawValue, inSection: CheckoutSection.PersonalInfo.rawValue)) as? PersonalInfoTableViewCell
+            licenseCell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: PersonalInfoRow.License.row(facility.phoneNumberRequired), inSection: CheckoutSection.PersonalInfo.rawValue)) as? PersonalInfoTableViewCell
             where facility.licensePlateRequired {
-            license = licenseCell.textField.text
+                license = licenseCell.textField.text
         }
         
         ReservationAPI.createReservation(facility,
@@ -299,8 +353,8 @@ class CheckoutTableViewController: UIViewController {
                                          completion: {
                                             [weak self]
                                             reservation, error in
-                                            guard let reservation = reservation else {
-                                                completion(false)
+                                            guard reservation != nil else {
+                                                completion(false, error)
                                                 return
                                             }
                                             
@@ -318,11 +372,11 @@ class CheckoutTableViewController: UIViewController {
                                                     .RequiredLicensePlate: facility.licensePlateRequired,
                                                     .RequiredPhoneNumber: facility.phoneNumberRequired,
                                                     .EmailAddress: email,
-                                                    .PhoneNumber: phoneNumber,
+                                                    .PhoneNumber: phoneNumber ?? "",
                                                     .TimeFromReservationStart: rate.minutesToReservation(),
                                                     ])
                                             }
-                                            completion(true)
+                                            completion(true, nil)
             })
     }
     
@@ -346,7 +400,7 @@ class CheckoutTableViewController: UIViewController {
     }
     
     private func getDateFormatString(date: NSDate) -> String {
-        guard let calendar = NSCalendar(calendarIdentifier: NSGregorianCalendar) where calendar.isDateInToday(date) || calendar.isDateInTomorrow(date) else {
+        guard let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian) where calendar.isDateInToday(date) || calendar.isDateInTomorrow(date) else {
             return DateFormatter.DayOfWeekWithDate.stringFromDate(date)
         }
         
@@ -355,8 +409,8 @@ class CheckoutTableViewController: UIViewController {
     
     private func configureCell(cell: PersonalInfoTableViewCell, row: PersonalInfoRow) {
         cell.titleLabel.text = row.title()
-        cell.textField.autocorrectionType = .No
         cell.textField.placeholder = row.placeholder()
+        cell.textField.accessibilityLabel = row.placeholder()
         cell.textField.inputAccessoryView = self.toolbar
         cell.type = row
         cell.personalInfoCellDelegate = self
@@ -409,10 +463,12 @@ extension CheckoutTableViewController: UITableViewDataSource {
         case .ReservationInfo:
             return ReservationInfoRow.AllCases.count
         case .PersonalInfo:
-            guard let licensePlateRequired = facility?.licensePlateRequired where licensePlateRequired else {
-                return PersonalInfoRow.AllCases.count - 1
+            guard let facility = self.facility else {
+                assertionFailure("self.facility is not set!")
+                return 0
             }
-            return PersonalInfoRow.AllCases.count
+            
+            return PersonalInfoRow.count(facility)
         case .PaymentInfo:
             return 1
         }
@@ -439,9 +495,9 @@ extension CheckoutTableViewController: UITableViewDataSource {
                                rate: rate)
         } else if
             let cell = cell as? PersonalInfoTableViewCell,
-            let row = PersonalInfoRow(rawValue: indexPath.row) {
-            
-            self.configureCell(cell, row: row)
+            let facility = self.facility {
+                let row = PersonalInfoRow(facility: facility, index: indexPath.row)
+                self.configureCell(cell, row: row)
         } else if let cell = cell as? PaymentInfoTableViewCell {
             cell.creditCardTextField.inputAccessoryView = self.toolbar
             cell.expirationDateTextField.inputAccessoryView = self.toolbar
@@ -545,7 +601,10 @@ extension CheckoutTableViewController: KeyboardNotification {
 
 extension CheckoutTableViewController: PersonalInfoTableViewCellDelegate {
     func textFieldShouldReturn(type: PersonalInfoRow) {
-        let indexPath = NSIndexPath(forRow: type.rawValue + 1, inSection: CheckoutSection.PersonalInfo.rawValue)
+        guard let facility = self.facility else {
+            return
+        }
+        let indexPath = NSIndexPath(forRow: type.row(facility.phoneNumberRequired) + 1, inSection: CheckoutSection.PersonalInfo.rawValue)
         if let cell = self.tableView.cellForRowAtIndexPath(indexPath) as? PersonalInfoTableViewCell {
             cell.textField.becomeFirstResponder()
         }

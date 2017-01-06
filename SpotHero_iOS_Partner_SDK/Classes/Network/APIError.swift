@@ -34,12 +34,22 @@ struct APIError {
     //MARK: - Error Generation
     
     static func errorFromServerJSON(serverError: ServerErrorJSON, statusCode: Int) -> NSError {
-        let messages = serverError.messages.joinWithSeparator("\n")
+        guard
+            let messages = serverError.messages.first,
+            let nonFieldErrors = messages.values.first as? [JSONDictionary],
+            let errorDictionary = nonFieldErrors.first,
+            let message = errorDictionary["msg"] as? String else {
+                return NSError(domain: PartnerSDKAPIErrorDomain.Network.rawValue,
+                               code: statusCode,
+                               userInfo: [
+                                SpotHeroPartnerSDK.UnlocalizedDescriptionKey: serverError.messages
+                ])
+        }
         
         return NSError(domain: PartnerSDKAPIErrorDomain.Network.rawValue,
                        code: statusCode,
                        userInfo: [
-                        SpotHeroPartnerSDK.UnlocalizedDescriptionKey: messages,
+                        SpotHeroPartnerSDK.UnlocalizedDescriptionKey: message,
                         SpotHeroPartnerSDK.ErrorCodeFromServer: serverError.code
             ])
     }

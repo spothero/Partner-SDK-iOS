@@ -7,12 +7,15 @@
 //
 
 import XCTest
+import VOKMockUrlProtocol
 import KIF
+
 @testable import SpotHero_iOS_Partner_SDK_Example
 @testable import SpotHero_iOS_Partner_SDK
 
 class BaseUITests: KIFTestCase {
-        
+    let waitTime: NSTimeInterval = 2
+    
     override func beforeAll() {
         super.beforeAll()
         
@@ -29,11 +32,22 @@ class BaseUITests: KIFTestCase {
         tester().waitForViewWithAccessibilityLabel(LocalizedStrings.LaunchSDK)
     }
     
-    func enterTextIntoSearchBar(text: String) {
+    override func setUp() {
+        super.setUp()
+        let testBundle = NSBundle(forClass: BaseUITests.self)
+        SharedURLSession.sharedInstance.sph_startUsingMockData(testBundle)
+    }
+    
+    override func tearDown() {
+        SharedURLSession.sharedInstance.sph_stopUsingMockData()
+        super.tearDown()
+    }
+    
+    func enterTextIntoSearchBar(text: String, expectedText: String? = nil) {
         tester().clearTextFromAndThenEnterText(text,
                                                intoViewWithAccessibilityLabel: AccessibilityStrings.SearchBar,
                                                traits: UIAccessibilityTraitNone,
-                                               expectedResult: text)
+                                               expectedResult: expectedText ?? text)
     }
     
 }
