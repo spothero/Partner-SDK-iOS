@@ -15,7 +15,7 @@ class PartnerAPITests: BaseTests {
     
     override func setUp() {
         super.setUp()
-        SpotHeroPartnerSDK.SharedInstance.partnerApplicationKey = "65f498a5f7966a9b814bd676f11a76025dd42a68"
+        SpotHeroPartnerSDK.SharedInstance.partnerApplicationKey = "bb5ab4b58fc484d8f478ef06e3c67e3c2dd71543"
     }
     
     func getFacilities(location: CLLocation, completion: FacilityCompletion) {
@@ -44,8 +44,6 @@ class PartnerAPITests: BaseTests {
     }
     
     func testCancelGetFacilities() {
-        let expectation = self.expectationWithDescription("Facility request cancelled")
-        
         self.getFacilities(Constants.ChicagoLocation) {
             facilities, error, hasMorePages in
             XCTAssertEqual(facilities.count, 0)
@@ -56,12 +54,10 @@ class PartnerAPITests: BaseTests {
             } else {
                 XCTFail("Received the wrong error type")
             }
-            expectation.fulfill()
         }
         
         FacilityAPI.stopSearching()
-        
-        self.waitForExpectationsWithTimeout(self.timeoutDuration, handler: nil)
+        XCTAssertFalse(FacilityAPI.searching())
     }
     
     func testNoFacilities() {
@@ -81,8 +77,7 @@ class PartnerAPITests: BaseTests {
        self.waitForExpectationsWithTimeout(self.timeoutDuration, handler: nil)
     }
     
-    // TODO unskip this when we get a staging stripe token
-    func skip_testCreateReservation() {
+    func testCreateReservation() {
         let expectation = self.expectationWithDescription("testCreateReservation")
         
         var testExecuting = false
@@ -106,10 +101,10 @@ class PartnerAPITests: BaseTests {
             if let facility = testFacility,
                 let rate = facility.availableRates.first {
                 facility.phoneNumberRequired
-                StripeWrapper.getToken(Constants.TestCreditCardNumber,
-                                       expirationMonth: Constants.TestExpirationMonth,
-                                       expirationYear: Constants.TestExpirationYear,
-                                       cvc: Constants.TestCVC) {
+                StripeWrapper.getToken(Constants.Test.CreditCardNumber,
+                                       expirationMonth: Constants.Test.ExpirationMonth,
+                                       expirationYear: Constants.Test.ExpirationYear,
+                                       cvc: Constants.Test.CVC) {
                                         token, error in
                                         guard let token = token else {
                                             XCTFail("Failed to get token")
@@ -120,6 +115,7 @@ class PartnerAPITests: BaseTests {
                                         ReservationAPI.createReservation(facility,
                                                                          rate: rate,
                                                                          email: self.testEmailRandom,
+                                                                         phone: self.testPhone,
                                                                          stripeToken: token,
                                                                          completion: {
                                                                             reservation, error in

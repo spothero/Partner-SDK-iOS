@@ -104,7 +104,7 @@ class MapViewController: UIViewController {
         let mapPinchRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(self.didDragMap(_:)))
         mapPinchRecognizer.delegate = self
         self.mapView.addGestureRecognizer(mapPinchRecognizer)
-        searchBar.becomeFirstResponder()
+        self.searchBar.becomeFirstResponder()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -160,6 +160,7 @@ class MapViewController: UIViewController {
         self.predictionTableView.accessibilityLabel = AccessibilityStrings.PredictionTableView
         self.timeSelectionView.accessibilityLabel = AccessibilityStrings.TimeSelectionView
         self.closeButton.accessibilityLabel = LocalizedStrings.Close
+        self.spotCardCollectionView.accessibilityLabel = AccessibilityStrings.SpotCards
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -169,7 +170,7 @@ class MapViewController: UIViewController {
         }
     }
     
-    private func showCollapsedSearchBar() {
+    private func hideSearchSpots() {
         self.searchSpotsButton.hidden = (self.searchBar.text ?? "").isEmpty
     }
     
@@ -228,7 +229,7 @@ class MapViewController: UIViewController {
         self.spotCardCollectionView.reloadData()
         
         for annotation in self.mapView.annotations {
-            if annotation.isKindOfClass(MKPointAnnotation) {
+            if annotation is MKPointAnnotation {
                 self.mapView.removeAnnotation(annotation)
                 break
             }
@@ -362,7 +363,7 @@ class MapViewController: UIViewController {
         GooglePlacesWrapper.getPlaceDetails(prediction) {
             [weak self]
             placeDetails, error in
-            if let error = error {
+            if error != nil {
                 self?.initialLoading = false
                 completion(nil)
             } else {
@@ -413,13 +414,7 @@ class MapViewController: UIViewController {
                                         //If there are more pages, show the wee loading view.
                                         self?.loadingView.hidden = !hasMorePages
                                         
-                                        var cancelled = false
-                                        
-                                        if let error = error as? NSError {
-                                            cancelled = (error.code == NSURLError.Cancelled.rawValue)
-                                        }
-                                        
-                                        if facilities.isEmpty && !hasMorePages && !cancelled && firstSearch {
+                                        if facilities.isEmpty && !hasMorePages && firstSearch {
                                             AlertView.presentErrorAlertView(LocalizedStrings.Sorry,
                                                 message: LocalizedStrings.NoSpotsFound,
                                                 from: self)
@@ -438,9 +433,7 @@ class MapViewController: UIViewController {
     
     private func searchSpots() {
         self.searchSpotsButton.hidden = true
-        self.collapsedSearchBar.show()
-        self.timeSelectionView.showTimeSelectionView(false)
-        self.collapsedSearchBar.time = NSCalendar.currentCalendar().components([.Hour, .Day, .Minute], fromDate: self.startDate, toDate: self.endDate, options: [])
+        self.showCollapsedSearchBar()
         self.searchPrediction()
         self.searchBar.resignFirstResponder()
     }
@@ -488,25 +481,34 @@ class MapViewController: UIViewController {
     }
     
     @IBAction private func didTapMapView(sender: AnyObject) {
-        self.view.endEditing(true)
-        self.timeSelectionView.deselect()
+        if facilities.isEmpty {
+            self.view.endEditing(true)
+            self.timeSelectionView.deselect()
+        } else {
+            self.showCollapsedSearchBar()
+            self.searchSpotsButton.hidden = true
+        }
     }
     
-    @IBAction private func redoSearchButtonPressed(_ sender: AnyObject) {
+    @IBAction private func redoSearchButtonPressed(sender: AnyObject) {
         self.redoSearchButton.hidden = true
         self.clearExistingFacilities()
         self.predictionPlaceDetails = nil
         self.searchSpotsButton.hidden = true
+        self.showCollapsedSearchBar()
+        self.fetchFacilities(self.mapView.centerCoordinate, redo: true)
+    }
+    
+    //MARK: Helpers
+
+    private func showCollapsedSearchBar() {
         self.collapsedSearchBar.show()
         self.timeSelectionView.showTimeSelectionView(false)
         self.collapsedSearchBar.time = NSCalendar.currentCalendar().components([.Hour, .Day, .Minute],
                                                                                fromDate: self.startDate,
                                                                                toDate: self.endDate,
                                                                                options: [])
-        self.fetchFacilities(self.mapView.centerCoordinate, redo: true)
     }
-    
-    //MARK: Helpers
     
     private func fetchFacilitiesIfPlaceDetailsExists() {
         if let placeDetails = self.predictionPlaceDetails {
@@ -555,16 +557,20 @@ extension MapViewController: PredictionControllerDelegate {
                                     let headerFooterHeight: CGFloat = 28
                                     let rowHeight: CGFloat = 60
                                     
-                                    if predictions.count > 0 {
+                                    if !predictions.isEmpty {
                                         self.searchSpotsButton.hidden = true
                                         self.timeSelectionView.showTimeSelectionView(false)
                                         let dynamicHeight = self.searchBarHeight + CGFloat(predictions.count) * rowHeight + headerFooterHeight * 2
                                         let height = min(dynamicHeight, self.maxTableHeight)
                                         self.searchContainerViewHeightConstraint.constant = height
                                         self.reservationContainerViewHeightConstraint.constant = height
+                                    } else if predictions.isEmpty && self.searchBar.text?.isEmpty == true {
+                                        self.searchContainerViewHeightConstraint.constant = self.searchBarHeight
                                     } else {
                                         self.searchContainerViewHeightConstraint.constant = self.searchBarHeight
+                                        self.reservationContainerViewHeightConstraint.constant = self.searchBarHeight
                                     }
+                                    
                                     self.view.layoutIfNeeded()
             },
                                    completion: nil)
@@ -575,7 +581,7 @@ extension MapViewController: PredictionControllerDelegate {
         self.redoSearchButton.hidden = true
         self.searchBar.text = prediction.predictionDescription
         self.timeSelectionView.showTimeSelectionView(true)
-        self.showCollapsedSearchBar()
+        self.hideSearchSpots()
         self.searchBar.resignFirstResponder()
         self.timeSelectionView.startViewSelected = true
     }
@@ -587,7 +593,6 @@ extension MapViewController: PredictionControllerDelegate {
     
     func didTapSearchButton() {
         guard self.predictionController.predictions.count > 0 else {
-            self.searchSpots()
             return
         }
         
@@ -647,14 +652,8 @@ extension MapViewController: StartEndDateDelegate {
 
 extension MapViewController: MKMapViewDelegate {
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
-        if let placeDetails = self.predictionPlaceDetails {
-            if annotation.coordinate == placeDetails.location.coordinate {
-                return self.locationAnnotationView(annotation)
-            }
-        } else {
-            if annotation.coordinate == self.mapView.centerCoordinate {
-                return self.locationAnnotationView(annotation)
-            }
+        if annotation is MKPointAnnotation {
+            return self.locationAnnotationView(annotation)
         }
         
         guard let annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(FacilityAnnotationView.Identifier) as? FacilityAnnotationView else {
@@ -725,6 +724,8 @@ extension MapViewController: UICollectionViewDataSource {
             
             cell.noReentryImageView.hidden = rate.allowsReentry()
         }
+        
+        self.setCenterCell()
         
         cell.delegate = self
         return cell

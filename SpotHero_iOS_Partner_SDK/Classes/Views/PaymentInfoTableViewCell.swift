@@ -39,7 +39,7 @@ class PaymentInfoTableViewCell: UITableViewCell, ValidatorCell {
         }
     }
     
-    var errors = [String: ValidatorError]() {
+    var errors = [ErrorKey: ValidatorError]() {
         didSet {
             var valid = true
             for value in self.errors.values {
@@ -76,9 +76,19 @@ class PaymentInfoTableViewCell: UITableViewCell, ValidatorCell {
         self.creditCardTextField.delegate = self
         self.expirationDateTextField.delegate = self
         self.cvcTextField.delegate = self
+        
+        self.cardImage.accessibilityLabel = AccessibilityStrings.CardImage
+        
+        self.creditCardTextField.placeholder = LocalizedStrings.CreditCardPlaceHolder
+        self.expirationDateTextField.placeholder = LocalizedStrings.ExpirationDatePlaceHolder
+        self.cvcTextField.placeholder = LocalizedStrings.CVCPlaceHolder
+        
+        self.creditCardTextField.accessibilityLabel = LocalizedStrings.CreditCardPlaceHolder
+        self.expirationDateTextField.accessibilityLabel = LocalizedStrings.ExpirationDatePlaceHolder
+        self.cvcTextField.accessibilityLabel = LocalizedStrings.CVCPlaceHolder
     }
     
-    func showExpirationDateAndCVCTextFields(show show: Bool) {
+    func showExpirationDateAndCVCTextFields(show: Bool) {
         let width: CGFloat = show ? (self.textFieldContainer.frame.width / 3) : 0
         
         if !show {
@@ -178,35 +188,33 @@ extension PaymentInfoTableViewCell: UITextFieldDelegate {
     func textField(textField: UITextField,
                    shouldChangeCharactersInRange range: NSRange,
                    replacementString string: String) -> Bool {
-        guard let text = (textField.text as? NSString)?.stringByReplacingCharactersInRange(range, withString: string) else {
+        guard let text = textField.text else {
             return true
         }
+        
+        let subString = (text as NSString).stringByReplacingCharactersInRange(range, withString: string)
         
         let cursorLocation = textField.shp_getCursorPosition(range, string: string)
         
         switch textField {
         case self.creditCardTextField:
             if string.isEmpty // If replacement string is is blank
-                && (textField.text as? NSString)?.substringWithRange(range) == " " // If deleted string is a space
+                && (text as NSString).substringWithRange(range) == " " // If deleted string is a space
                 && range.location > 2 { // make sure there are at least 3 charaters in the text field
                 let rangeBefore = NSRange(location: range.location - 1, length: 1)
-                if let newText = (text as? NSString)?.stringByReplacingCharactersInRange(rangeBefore, withString: "") {
-                    self.creditCardTextField.text = newText
-                } else {
-                    // Can't turn the String into an NSString so let's just delete the space
-                    return true
-                }
+                let newText = (subString as NSString).stringByReplacingCharactersInRange(rangeBefore, withString: "")
+                self.creditCardTextField.text = newText
             } else {
-                self.formatCreditCard(text)
+                self.formatCreditCard(subString)
             }
             textField.shp_setCursorPosition(cursorLocation)
             return false
         case self.expirationDateTextField:
-            self.formatExpirationDate(text)
+            self.formatExpirationDate(subString)
             textField.shp_setCursorPosition(cursorLocation)
             return false
         case self.cvcTextField:
-            return self.formatCVC(text)
+            return self.formatCVC(subString)
         default:
             return true
         }
@@ -223,7 +231,7 @@ extension PaymentInfoTableViewCell: UITextFieldDelegate {
         default:
             textField.text = Formatter.formatCreditCard(self.cardNumber).formatted
         }
-        self.showExpirationDateAndCVCTextFields(show: false)
+        self.showExpirationDateAndCVCTextFields(false)
     }
     
     func textFieldDidEndEditing(textField: UITextField) {
@@ -236,8 +244,8 @@ extension PaymentInfoTableViewCell: UITextFieldDelegate {
             case self.creditCardTextField:
                 self.cardType = Validator.getCardType(text)
                 try Validator.validateCreditCard(self.cardNumber)
-                self.errors[ErrorKey.CreditCard.rawValue] = nil
-                self.showExpirationDateAndCVCTextFields(show: true)
+                self.errors[.CreditCard] = nil
+                self.showExpirationDateAndCVCTextFields(true)
                 self.expirationDateTextField.becomeFirstResponder()
                 self.creditCardTextField.text = self.lastFourDigits(text)
             case self.expirationDateTextField:
@@ -251,7 +259,7 @@ extension PaymentInfoTableViewCell: UITextFieldDelegate {
                 } else {
                     throw ValidatorError.FieldInvalid(fieldName: LocalizedStrings.ExpirationDate, message: LocalizedStrings.InvalidDateErrorMessage)
                 }
-                self.errors[ErrorKey.Expiration.rawValue] = nil
+                self.errors[.Expiration] = nil
             case self.cvcTextField:
                 if cardType == .Amex {
                     try Validator.validateCVC(text, amex: true)
@@ -259,18 +267,18 @@ extension PaymentInfoTableViewCell: UITextFieldDelegate {
                     try Validator.validateCVC(text)
                 }
                 self.cvc = text
-                self.errors[ErrorKey.CVC.rawValue] = nil
+                self.errors[.CVC] = nil
             default:
                 break
             }
         } catch let error as ValidatorError {
             switch textField {
             case self.creditCardTextField:
-                self.errors[ErrorKey.CreditCard.rawValue] = error
+                self.errors[.CreditCard] = error
             case self.expirationDateTextField:
-                self.errors[ErrorKey.Expiration.rawValue] = error
+                self.errors[.Expiration] = error
             case self.cvcTextField:
-                self.errors[ErrorKey.CVC.rawValue] = error
+                self.errors[.CVC] = error
             default:
                 break
             }
@@ -287,7 +295,7 @@ extension PaymentInfoTableViewCell: UITextFieldDelegate {
         switch error {
         case .FieldBlank(let fieldName):
             self.errorLabel.text = String(format: LocalizedStrings.blankFieldErrorFormat, fieldName)
-        case .FieldInvalid(let fieldName, let message):
+        case .FieldInvalid(_, let message):
             self.errorLabel.text = message
         }
     }

@@ -12,14 +12,13 @@ import XCTest
 
 class StripeWrapperTests: BaseTests {
 
-    // TODO unskip this when we get a staging stripe token
-    func skip_testGetToken() {
+    func testGetToken() {
         let expectation = self.expectationWithDescription("testGetToken")
         
-        StripeWrapper.getToken(Constants.TestCreditCardNumber,
-                               expirationMonth: Constants.TestExpirationMonth,
-                               expirationYear: Constants.TestExpirationYear,
-                               cvc: Constants.TestCVC) {
+        StripeWrapper.getToken(Constants.Test.CreditCardNumber,
+                               expirationMonth: Constants.Test.ExpirationMonth,
+                               expirationYear: Constants.Test.ExpirationYear,
+                               cvc: Constants.Test.CVC) {
                                 token, error in
                                 XCTAssertNil(error)
                                 XCTAssertNotNil(token)

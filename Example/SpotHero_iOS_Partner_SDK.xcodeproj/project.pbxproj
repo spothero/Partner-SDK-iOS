@@ -25,10 +25,14 @@
 		C70AC4C31D4BF909004F8539 /* ValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70AC4C21D4BF909004F8539 /* ValidatorTests.swift */; };
 		C70AC4C61D4FC64F004F8539 /* BaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70AC4C51D4FC64F004F8539 /* BaseTests.swift */; };
 		C73848581D35538C0023E1A8 /* GooglePlacesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73848571D35538C0023E1A8 /* GooglePlacesTests.swift */; };
+		C748884B1E158E2C00844EC7 /* DateUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74888491E158D2900844EC7 /* DateUITests.swift */; };
+		C7527B931DEF4F5F00168F17 /* SharedURLSession+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7CBF4871D411EFA001D988F /* SharedURLSession+Mock.swift */; };
+		C7527B941DEF4F6300168F17 /* VOKMockData in Resources */ = {isa = PBXBuildFile; fileRef = C7FBD09A1D4273B40089A53B /* VOKMockData */; };
 		C79C65B71D58EF9D001CDCA4 /* FormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79C65B61D58EF9D001CDCA4 /* FormatterTests.swift */; };
-		C7CBF4891D411F0F001D988F /* SpotHeroPartnerAPIController+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7CBF4871D411EFA001D988F /* SpotHeroPartnerAPIController+Mock.swift */; };
+		C7CBF4891D411F0F001D988F /* SharedURLSession+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7CBF4871D411EFA001D988F /* SharedURLSession+Mock.swift */; };
 		C7CBF48C1D412362001D988F /* PartnerAPIMockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7CBF48B1D412362001D988F /* PartnerAPIMockTests.swift */; };
 		C7DEAAA61D9C607900443B3B /* NSDateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DEAAA51D9C607900443B3B /* NSDateTests.swift */; };
+		C7E786031DB96B7800A0DC90 /* CheckoutUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E786011DB96B4800A0DC90 /* CheckoutUITests.swift */; };
 		C7FBD09B1D4273B40089A53B /* VOKMockData in Resources */ = {isa = PBXBuildFile; fileRef = C7FBD09A1D4273B40089A53B /* VOKMockData */; };
 		C7FBD0AE1D47BF170089A53B /* StripeWrapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7FBD0AD1D47BF170089A53B /* StripeWrapperTests.swift */; };
 /* End PBXBuildFile section */
@@ -75,7 +79,6 @@
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* PartnerAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerAPITests.swift; sourceTree = "<group>"; };
 		98C2BDA4124E6288B4D2DBB4 /* Pods_SpotHero_iOS_Partner_SDK_ExampleUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpotHero_iOS_Partner_SDK_ExampleUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		ACCD235132D0F3E91139EDA1 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		B3D6EF80E8E12778E5EA7832 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		B881BE5BF8EFF967D394C2B4 /* SpotHero_iOS_Partner_SDK.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = SpotHero_iOS_Partner_SDK.podspec; path = ../SpotHero_iOS_Partner_SDK.podspec; sourceTree = "<group>"; };
 		C31FF8F2573F1F03B4C264B2 /* Pods-SpotHero_iOS_Partner_SDK_ExampleUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpotHero_iOS_Partner_SDK_ExampleUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SpotHero_iOS_Partner_SDK_ExampleUITests/Pods-SpotHero_iOS_Partner_SDK_ExampleUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -84,11 +87,13 @@
 		C70AC4C21D4BF909004F8539 /* ValidatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidatorTests.swift; sourceTree = "<group>"; };
 		C70AC4C51D4FC64F004F8539 /* BaseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTests.swift; sourceTree = "<group>"; };
 		C73848571D35538C0023E1A8 /* GooglePlacesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GooglePlacesTests.swift; sourceTree = "<group>"; };
+		C74888491E158D2900844EC7 /* DateUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateUITests.swift; sourceTree = "<group>"; };
 		C79C65B61D58EF9D001CDCA4 /* FormatterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormatterTests.swift; sourceTree = "<group>"; };
-		C7CBF4871D411EFA001D988F /* SpotHeroPartnerAPIController+Mock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SpotHeroPartnerAPIController+Mock.swift"; sourceTree = "<group>"; };
+		C7CBF4871D411EFA001D988F /* SharedURLSession+Mock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SharedURLSession+Mock.swift"; sourceTree = "<group>"; };
 		C7CBF48B1D412362001D988F /* PartnerAPIMockTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartnerAPIMockTests.swift; sourceTree = "<group>"; };
 		C7DEAAA51D9C607900443B3B /* NSDateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateTests.swift; sourceTree = "<group>"; };
-		C7FBD09A1D4273B40089A53B /* VOKMockData */ = {isa = PBXFileReference; lastKnownFileType = folder; path = VOKMockData; sourceTree = "<group>"; };
+		C7E786011DB96B4800A0DC90 /* CheckoutUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutUITests.swift; sourceTree = "<group>"; };
+		C7FBD09A1D4273B40089A53B /* VOKMockData */ = {isa = PBXFileReference; lastKnownFileType = folder; name = VOKMockData; path = Tests/VOKMockData; sourceTree = "<group>"; };
 		C7FBD0AD1D47BF170089A53B /* StripeWrapperTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StripeWrapperTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -129,6 +134,8 @@
 				C70AA21C1D397E2C004C7BDE /* GooglePlacesUITests.swift */,
 				12794D561D5BC9B30074E246 /* SearchSpotsUITests.swift */,
 				C70AA21F1D398432004C7BDE /* BaseUITests.swift */,
+				C7E786011DB96B4800A0DC90 /* CheckoutUITests.swift */,
+				C74888491E158D2900844EC7 /* DateUITests.swift */,
 			);
 			name = UITests;
 			path = SpotHero_iOS_Partner_SDK_ExampleUITests;
@@ -150,6 +157,7 @@
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
+				C74CDDA91E0485C100EFEF9F /* SharedTestFiles */,
 				607FACF51AFB993E008FA782 /* Podspec Metadata */,
 				607FACD21AFB9204008FA782 /* Example */,
 				607FACE81AFB9204008FA782 /* Tests */,
@@ -195,9 +203,7 @@
 		607FACE81AFB9204008FA782 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				C7FBD09A1D4273B40089A53B /* VOKMockData */,
 				C7CBF48A1D41201F001D988F /* MockTests */,
-				C7CBF4861D411ED5001D988F /* Extensions */,
 				C70AC4C51D4FC64F004F8539 /* BaseTests.swift */,
 				3391D7911D9DA8D4009A42B8 /* DateCompareTests.swift */,
 				C79C65B61D58EF9D001CDCA4 /* FormatterTests.swift */,
@@ -224,7 +230,6 @@
 			children = (
 				B881BE5BF8EFF967D394C2B4 /* SpotHero_iOS_Partner_SDK.podspec */,
 				B3D6EF80E8E12778E5EA7832 /* README.md */,
-				ACCD235132D0F3E91139EDA1 /* LICENSE */,
 			);
 			name = "Podspec Metadata";
 			sourceTree = "<group>";
@@ -239,12 +244,22 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		C74CDDA91E0485C100EFEF9F /* SharedTestFiles */ = {
+			isa = PBXGroup;
+			children = (
+				C7CBF4861D411ED5001D988F /* Extensions */,
+				C7FBD09A1D4273B40089A53B /* VOKMockData */,
+			);
+			name = SharedTestFiles;
+			sourceTree = "<group>";
+		};
 		C7CBF4861D411ED5001D988F /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				C7CBF4871D411EFA001D988F /* SpotHeroPartnerAPIController+Mock.swift */,
+				C7CBF4871D411EFA001D988F /* SharedURLSession+Mock.swift */,
 			);
-			path = Extensions;
+			name = Extensions;
+			path = Tests/Extensions;
 			sourceTree = "<group>";
 		};
 		C7CBF48A1D41201F001D988F /* MockTests */ = {
@@ -329,7 +344,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "SpotHero, Inc.";
 				TargetAttributes = {
 					3361782A1D249B1A00AF7AD6 = {
@@ -341,6 +356,7 @@
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
 						DevelopmentTeam = ZW7QWR628D;
+						ProvisioningStyle = Manual;
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
@@ -375,6 +391,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7527B941DEF4F6300168F17 /* VOKMockData in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -572,8 +589,11 @@
 				C70AA2211D398435004C7BDE /* BaseUITests.swift in Sources */,
 				3361782E1D249B1A00AF7AD6 /* ShowSDKUITests.swift in Sources */,
 				336178381D24A8BB00AF7AD6 /* XCTestCase+KIF.swift in Sources */,
+				C748884B1E158E2C00844EC7 /* DateUITests.swift in Sources */,
+				C7E786031DB96B7800A0DC90 /* CheckoutUITests.swift in Sources */,
 				C70AA21E1D397E75004C7BDE /* GooglePlacesUITests.swift in Sources */,
 				12794D581D5BC9DB0074E246 /* SearchSpotsUITests.swift in Sources */,
+				C7527B931DEF4F5F00168F17 /* SharedURLSession+Mock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -595,7 +615,7 @@
 				C73848581D35538C0023E1A8 /* GooglePlacesTests.swift in Sources */,
 				C7FBD0AE1D47BF170089A53B /* StripeWrapperTests.swift in Sources */,
 				C70AC4C61D4FC64F004F8539 /* BaseTests.swift in Sources */,
-				C7CBF4891D411F0F001D988F /* SpotHeroPartnerAPIController+Mock.swift in Sources */,
+				C7CBF4891D411F0F001D988F /* SharedURLSession+Mock.swift in Sources */,
 				607FACEC1AFB9204008FA782 /* PartnerAPITests.swift in Sources */,
 				C79C65B71D58EF9D001CDCA4 /* FormatterTests.swift in Sources */,
 				C7CBF48C1D412362001D988F /* PartnerAPIMockTests.swift in Sources */,
@@ -693,7 +713,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 47;
+				CURRENT_PROJECT_VERSION = 68;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = ZW7QWR628D;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -741,10 +761,10 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 47;
+				CURRENT_PROJECT_VERSION = 68;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = ZW7QWR628D;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -773,7 +793,8 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 47;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 68;
 				DEVELOPMENT_TEAM = ZW7QWR628D;
 				INFOPLIST_FILE = SpotHero_iOS_Partner_SDK/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -781,7 +802,7 @@
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.spothero.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "$(sigh_tools.fastlane.app_development)";
+				PROVISIONING_PROFILE_SPECIFIER = "Development: SDK Sample App";
 				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
@@ -792,8 +813,9 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 47;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CURRENT_PROJECT_VERSION = 68;
 				DEVELOPMENT_TEAM = ZW7QWR628D;
 				INFOPLIST_FILE = SpotHero_iOS_Partner_SDK/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -801,7 +823,7 @@
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.spothero.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "$(sigh_tools.fastlane.app_development)";
+				PROVISIONING_PROFILE_SPECIFIER = "Distribution App Store: SDK Sample App";
 				SWIFT_VERSION = 2.3;
 			};
 			name = Release;

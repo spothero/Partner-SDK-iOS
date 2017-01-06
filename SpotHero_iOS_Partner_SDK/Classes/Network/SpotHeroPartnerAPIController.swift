@@ -39,20 +39,6 @@ struct SpotHeroPartnerAPIController {
         FormData
     }
     
-    private static var URLSession: NSURLSession = {
-        let defaultConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration()
-        let session = NSURLSession(configuration: defaultConfiguration)
-        return session
-    }()
-    
-    static func updateManagerWithConfiguration(configuration: NSURLSessionConfiguration) {
-        self.URLSession = NSURLSession(configuration: configuration)
-    }
-    
-    static func useURLProtocols(protocols: [AnyClass]?) {
-        self.URLSession.configuration.protocolClasses = protocols
-    }
-    
     private static func formDataFromParameters(parameters: JSONDictionary) -> NSData? {
         //Internal functions here are taken from Alamofire's ParameterEncoding class to simplify
         //generating correct form data.
@@ -158,7 +144,7 @@ struct SpotHeroPartnerAPIController {
         }
         
         //Make the call.
-        let task = self.URLSession.dataTaskWithRequest(request) {
+        let task = SharedURLSession.sharedInstance.session.dataTaskWithRequest(request) {
             data, response, error in
             self.handleResponse(data,
                                 response,
@@ -183,13 +169,15 @@ struct SpotHeroPartnerAPIController {
             self.debugPrintResponseInfo(response, data: data)
         }
         
+        if let error = error {
+            NSOperationQueue.mainQueue().addOperationWithBlock({ 
+                errorCompletion(error: error)
+            })
+            return
+        }
+        
         guard let urlResponse = response as? NSHTTPURLResponse else {
-            //If theres no response and an error call the error completion.
-            if let error = error {
-                NSOperationQueue.mainQueue().addOperationWithBlock({ 
-                    errorCompletion(error: error)
-                })
-            }
+            //If theres no response
             return
         }
         

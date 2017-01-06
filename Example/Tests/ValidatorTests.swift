@@ -287,7 +287,7 @@ class ValidatorTests: XCTestCase {
             let invalidYear = "200e3"
             
             self.validateThatFieldInvalidErrorIsThrown(LocalizedStrings.ExpirationDate, errorMessage: LocalizedStrings.DateInThePastErrorMessage) {
-                if month == "12" {
+                if month == "1" {
                     try Validator.validateExpiration(pastMonth, year: pastYear)
                 } else {
                     try Validator.validateExpiration(pastMonth, year: year)

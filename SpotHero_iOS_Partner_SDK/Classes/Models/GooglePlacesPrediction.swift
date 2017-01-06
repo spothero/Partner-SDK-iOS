@@ -11,12 +11,13 @@ import Foundation
 /**
  *  Prediction of a google place
  */
-@objc(SPHGooglePlacesPrediction)
-class GooglePlacesPrediction: NSObject {
+struct GooglePlacesPrediction {
     let predictionDescription: String
     let placeID: String
     let terms: [String]
-    
+}
+
+extension GooglePlacesPrediction {
     init(json: JSONDictionary) throws {
         self.predictionDescription = try json.shp_string("description")
         self.placeID = try json.shp_string("place_id")
@@ -24,13 +25,5 @@ class GooglePlacesPrediction: NSObject {
         self.terms = try terms.map { term in
             return try term.shp_string("value")
         }
-    }
-    
-    init(predictionDescription: String,
-         placeID: String,
-         terms: [String]) {
-        self.predictionDescription = predictionDescription
-        self.placeID = placeID
-        self.terms = terms
     }
 }

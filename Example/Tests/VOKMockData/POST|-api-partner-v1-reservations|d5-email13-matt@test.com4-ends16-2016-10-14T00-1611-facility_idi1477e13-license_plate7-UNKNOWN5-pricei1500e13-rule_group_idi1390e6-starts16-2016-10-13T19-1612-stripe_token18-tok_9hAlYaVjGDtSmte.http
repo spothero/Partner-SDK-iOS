@@ -1,0 +1,13 @@
+HTTP/1.1 201 CREATED
+Server: nginx/1.11.5
+Date: Tue, 06 Dec 2016 17:08:08 GMT
+Content-Type: application/json
+Vary: User-Agent, Cookie
+X-Frame-Options: SAMEORIGIN
+Allow: POST, OPTIONS
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Transfer-Encoding: chunked
+Connection: Keep-alive
+
+{"notifications":[],"meta":{},"data":{"display_id":"3765212","barcode_content":"3765212","ends":"2016-12-06T23:00:00Z","rental_id":3765212,"parking_pass_url":"https://pdp.kickthe.tires/parking-pass/3765212/?key=02a2b65f33f37dd8abd9a6f2b007a4690310d32c9682d0b0d1d8f7101793acf2","facility_id":2175,"starts":"2016-12-06T17:00:00Z","price":2200,"reservation_url":"https://pdp.kickthe.tires/api/partner/v1/reservations/3765212/?key=02a2b65f33f37dd8abd9a6f2b007a4690310d32c9682d0b0d1d8f7101793acf2","reservation_status":"valid","license_plate":"","cancel_url":"https://pdp.kickthe.tires/api/partner/v1/reservations/3765212/cancel/?key=02a2b65f33f37dd8abd9a6f2b007a4690310d32c9682d0b0d1d8f7101793acf2","email":"matt@test.com","facility_title":"318 S Federal St. - South Loop Garage"}}

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0800"
+   LastUpgradeVersion = "0810"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -32,6 +32,34 @@
                BuildableName = "SpotHero_iOS_Partner_SDK_Tests.xctest"
                BlueprintName = "SpotHero_iOS_Partner_SDK_Tests"
                ReferencedContainer = "container:SpotHero_iOS_Partner_SDK.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "D3B85A50FA877CA6D57C7EFF0F492D75"
+               BuildableName = "SpotHero_iOS_Partner_SDK.bundle"
+               BlueprintName = "SpotHero_iOS_Partner_SDK-SpotHero_iOS_Partner_SDK"
+               ReferencedContainer = "container:Pods/Pods.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "0E139EE0880C9B3B8D57BA411E5595E3"
+               BuildableName = "SpotHero_iOS_Partner_SDK.framework"
+               BlueprintName = "SpotHero_iOS_Partner_SDK"
+               ReferencedContainer = "container:Pods/Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
