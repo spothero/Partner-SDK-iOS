@@ -182,10 +182,8 @@ test_flight_provisioning_profile_name = 'Distribution App Store: SDK Sample App'
     lane :test_all do
         switch_to_xcode_7
         test
-        test_pod
         switch_to_xcode_8
         test
-        test_pod
     end
 
 ########################
