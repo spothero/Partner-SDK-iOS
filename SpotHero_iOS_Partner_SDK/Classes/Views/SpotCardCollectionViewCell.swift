@@ -42,6 +42,7 @@ class SpotCardCollectionViewCell: UICollectionViewCell {
                                                 compatibleWithTraitCollection: nil)
         self.buyButton.backgroundColor = .shp_spotHeroBlue()
         self.buyButton.enabled = false
+        self.buyButton.accessibilityLabel = LocalizedStrings.BookIt
     }
     
     @IBAction func didTapBuyButton(button: UIButton) {

@@ -90,10 +90,13 @@ class TimeSelectionView: UIView {
         
         self.startDateLabel.accessibilityLabel = AccessibilityStrings.StartDateLabel
         self.endDateLabel.accessibilityLabel = AccessibilityStrings.EndDateLabel
-        self.startTimeTextField.accessibilityLabel = AccessibilityStrings.StartTimeLabel
-        self.endTimeTextField.accessibilityLabel = AccessibilityStrings.EndTimeLabel
+        self.startTimeTextField.accessibilityLabel = AccessibilityStrings.StartTimeTextField
+        self.endTimeTextField.accessibilityLabel = AccessibilityStrings.EndTimeTextField
         self.startsView.accessibilityLabel = AccessibilityStrings.StartsTimeSelectionView
         self.endsView.accessibilityLabel = AccessibilityStrings.EndsTimeSelectionView
+        
+        self.startDatePicker.accessibilityLabel = AccessibilityStrings.StartDatePicker
+        self.endDatePicker.accessibilityLabel = AccessibilityStrings.EndDatePicker
         
         self.startTimeTextField.delegate = self
         self.endTimeTextField.delegate = self
@@ -104,6 +107,9 @@ class TimeSelectionView: UIView {
     private func setupDatePickers() {
         self.startDatePicker.minuteInterval = 30
         self.endDatePicker.minuteInterval = 30
+        
+        self.startDatePicker.backgroundColor = .whiteColor()
+        self.endDatePicker.backgroundColor = .whiteColor()
         
         self.startDatePicker.addTarget(self, action: #selector(self.startDateChanged(_:)), forControlEvents: .ValueChanged)
         self.endDatePicker.addTarget(self, action: #selector(self.endDateChanged(_:)), forControlEvents: .ValueChanged)
@@ -146,8 +152,24 @@ class TimeSelectionView: UIView {
      Deselect both time selection views
      */
     func deselect() {
+        self.deselectStartView()
+        self.deselectEndView()
+    }
+    
+    /**
+     Deselect start time selection view
+     */
+    func deselectStartView() {
         self.startViewSelected = false
+        self.startTimeTextField.resignFirstResponder()
+    }
+    
+    /**
+     Deselect end time selection view
+     */
+    func deselectEndView() {
         self.endViewSelected = false
+        self.endTimeTextField.resignFirstResponder()
     }
     
     /**
@@ -164,7 +186,7 @@ class TimeSelectionView: UIView {
         }
     }
     
-    private func setStartEndDateTimeLabelWithDate(date: NSDate) {
+    func setStartEndDateTimeLabelWithDate(date: NSDate) {
         if (self.startViewSelected) {
             self.startDate = date
             if (self.endDate.timeIntervalSinceDate(date) < Constants.ThirtyMinutesInSeconds) {
@@ -177,12 +199,12 @@ class TimeSelectionView: UIView {
     
     //MARK: Actions
     
-    @IBAction private func startViewTapped(_ sender: AnyObject) {
+    @IBAction private func startViewTapped(sender: AnyObject) {
         self.startViewSelected = true
         self.delegate?.didTapStartView(self.startDate, endDate: self.endDate)
     }
     
-    @IBAction private func endViewTapped(_ sender: AnyObject) {
+    @IBAction private func endViewTapped(sender: AnyObject) {
         self.endViewSelected = true
         self.delegate?.didTapEndView(self.startDate, endDate: self.endDate)
     }
@@ -197,11 +219,11 @@ class TimeSelectionView: UIView {
     }
     
     @objc private func startDateChanged(datePicker: UIDatePicker) {
-        self.startDate = datePicker.date
+        self.setStartEndDateTimeLabelWithDate(datePicker.date)
     }
     
     @objc private func endDateChanged(datePicker: UIDatePicker) {
-        self.endDate = datePicker.date
+        self.setStartEndDateTimeLabelWithDate(datePicker.date)
     }
     
     //MARK: Helpers
@@ -249,7 +271,7 @@ extension TimeSelectionView: UITextFieldDelegate {
         case self.startTimeTextField:
             self.endTimeTextField.becomeFirstResponder()
         default:
-            self.deselect()
+            self.deselectEndView()
         }
     }
 }

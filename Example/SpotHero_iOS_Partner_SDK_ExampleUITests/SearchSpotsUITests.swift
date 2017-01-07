@@ -140,4 +140,27 @@ class SearchSpotsUITests: BaseUITests {
         tester().tapViewWithAccessibilityLabel(AccessibilityStrings.ClearText)
         tester().waitForAbsenceOfViewWithAccessibilityLabel(LocalizedStrings.SearchSpots)
     }
+    
+    func testCollapseSearchBarOnMapTap() {
+        //GIVEN: I see the collapsed search bar view
+        self.enterTextIntoSearchBar(AccessibilityStrings.SpotHero)
+        tester().tapViewWithAccessibilityLabel(self.spotHeroAddress)
+        tester().tapViewWithAccessibilityLabel(LocalizedStrings.SearchSpots)
+        tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.CollapsedSearchBarView)
+        
+        //WHEN: I tap the collapsed search bar view
+        tester().tapViewWithAccessibilityLabel(AccessibilityStrings.CollapsedSearchBarView)
+        
+        //WHEN: I tap the map
+        tester().waitForTimeInterval(self.waitTime)
+        tester().tapViewWithAccessibilityLabel(AccessibilityStrings.MapView)
+        
+        //THEN: I see the collapsed search bar view
+        tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.CollapsedSearchBarView)
+        
+        //reset state
+        tester().tapViewWithAccessibilityLabel(AccessibilityStrings.CollapsedSearchBarView)
+        tester().tapViewWithAccessibilityLabel(AccessibilityStrings.ClearText)
+        tester().waitForAbsenceOfViewWithAccessibilityLabel(LocalizedStrings.SearchSpots)
+    }
 }

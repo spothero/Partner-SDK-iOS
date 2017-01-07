@@ -14,13 +14,10 @@ import KIF
 class GooglePlacesUITests: BaseUITests {
     let indexPath = NSIndexPath(forRow: 0, inSection: 0)
     
-    override func beforeEach() {
-        super.beforeEach()
-        self.enterTextIntoSearchBar(AccessibilityStrings.SpotHero)
-    }
-    
     func testGetPredictions() {
         //GIVEN: I see the search bar and type in an address
+        self.enterTextIntoSearchBar(AccessibilityStrings.SpotHero)
+
         //THEN: I see a table with predictions
         guard let tableView = tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.PredictionTableView) as? UITableView else {
             XCTFail("No Prediction table view")
@@ -39,6 +36,8 @@ class GooglePlacesUITests: BaseUITests {
     
     func testTapAPlace() {
         //GIVEN: I see the search bar and type in an address
+        self.enterTextIntoSearchBar(AccessibilityStrings.SpotHero)
+
         //WHEN: I see a table with predictions and tap a row
         guard let tableView = tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.PredictionTableView) as? UITableView else {
             XCTFail("No Prediction table view")
@@ -57,7 +56,44 @@ class GooglePlacesUITests: BaseUITests {
         }
         
         XCTAssertNotNil(searchBar.text)
+    }
+    
+    func testNoPredictions() {
+        //GIVEN: I see the search bar and type in gibberish
+        self.enterTextIntoSearchBar("Fjndahdaosdahffsvoafifjnansfjwvauis")
+
+        //When: I see a table with no predictions
+        guard let tableView = tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.PredictionTableView) as? UITableView else {
+            XCTFail("No Prediction table view")
+            return
+        }
         
-        //TODO: Search for place
+        tester().waitForTimeInterval(self.waitTime)
+        
+        //THEN: The table view should collapse
+        XCTAssertEqual(tableView.frame.height, 0)
+    }
+    
+    func testDeleteText() {
+        //GIVEN: I see the search bar and begin typing
+        self.enterTextIntoSearchBar("Chicago")
+        
+        //WHEN: I see a table view
+        guard let tableView = tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.PredictionTableView) as? UITableView else {
+            XCTFail("No Prediction table view")
+            return
+        }
+        
+        tester().waitForTimeInterval(self.waitTime)
+        
+        //THEN: The table should be expanded
+        XCTAssertNotEqual(tableView.frame.height, 0)
+        
+        //WHEN: I delete the text
+        tester().clearTextFromFirstResponder()
+        tester().waitForTimeInterval(self.waitTime)
+        
+        //THEN: The table view should collapse
+        XCTAssertEqual(tableView.frame.height, 0)
     }
 }

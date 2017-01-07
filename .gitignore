@@ -36,3 +36,5 @@ fastlane/test_output
 local_config.sh
 fastlane/Provisioning
 fastlane/report.xml
+fastlane/google_places_pod_test_output
+fastlane/DerivedData

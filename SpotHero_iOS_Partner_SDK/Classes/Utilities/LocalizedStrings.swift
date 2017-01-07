@@ -35,7 +35,7 @@ enum LocalizedStrings {
                                          comment: "Title for Phone number row of checkout screen")
     static let EmailAddressPlaceHolder = NSLocalizedString("Email Address",
                                                  comment: "Placeholder for Email row of checkout screen")
-    static let PhoneNumberPlaceHolder = NSLocalizedString("Phone Number (Optional)",
+    static let PhoneNumberPlaceHolder = NSLocalizedString("Phone Number",
                                                  comment: "Placeholder for Phone Number row of checkout screen")
     static let ReservationInfo = NSLocalizedString("RESERVATION INFO",
                                                    comment: "Title for reservation info section of checkout screen")
@@ -111,5 +111,13 @@ enum LocalizedStrings {
     static let Distance = NSLocalizedString("Distance",
                                             comment: "Distance")
     static let RateExpired = NSLocalizedString("The spot you selected earlier has expired. Please select an updated spot.",
-                                               comment: "Error message for when the user comes back to the app ")
+                                               comment: "Error message for when the user comes back to the app")
+    static let BookAnother = NSLocalizedString("Book Another",
+                                               comment: "Button to book another spot")
+    static let CreditCardPlaceHolder = NSLocalizedString("1234 5678 1234 5678",
+                                                         comment: "Place holder for credit card field")
+    static let ExpirationDatePlaceHolder = NSLocalizedString("MM/YY",
+                                                             comment: "Place holder for expiration date field")
+    static let CVCPlaceHolder = NSLocalizedString("123",
+                                                  comment: "Place holder for cvc field")
 }

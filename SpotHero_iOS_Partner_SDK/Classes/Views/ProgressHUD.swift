@@ -36,7 +36,7 @@ class ProgressHUD: UIView {
         
         // Don't show if it is already being shown
         for subView in view.subviews {
-            if subView.isKindOfClass(ProgressHUD) {
+            if subView is ProgressHUD {
                 return
             }
         }
@@ -65,7 +65,7 @@ class ProgressHUD: UIView {
         view.userInteractionEnabled = true
         
         for subView in view.subviews {
-            if subView.isKindOfClass(ProgressHUD) {
+            if subView is ProgressHUD {
                 subView.removeFromSuperview()
                 return
             }

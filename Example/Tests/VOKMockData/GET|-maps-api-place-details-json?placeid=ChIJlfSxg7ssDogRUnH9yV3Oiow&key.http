@@ -1,0 +1,95 @@
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=UTF-8
+Date: Wed, 14 Dec 2016 22:16:41 GMT
+Expires: Wed, 14 Dec 2016 22:21:41 GMT
+Cache-Control: public, max-age=300
+Vary: Accept-Language
+Content-Encoding: gzip
+Server: pablo
+Content-Length: 1020
+X-XSS-Protection: 1; mode=block
+X-Frame-Options: SAMEORIGIN
+Alt-Svc: quic=":443"; ma=2592000; v="35,34"
+Connection: Keep-alive
+
+{
+"html_attributions" : [],
+"result" : {
+"address_components" : [
+{
+"long_name" : "100",
+"short_name" : "100",
+"types" : [ "street_number" ]
+},
+{
+"long_name" : "West Monroe Street",
+"short_name" : "W Monroe St",
+"types" : [ "route" ]
+},
+{
+"long_name" : "Chicago Loop",
+"short_name" : "Chicago Loop",
+"types" : [ "neighborhood", "political" ]
+},
+{
+"long_name" : "Chicago",
+"short_name" : "Chicago",
+"types" : [ "locality", "political" ]
+},
+{
+"long_name" : "Cook County",
+"short_name" : "Cook County",
+"types" : [ "administrative_area_level_2", "political" ]
+},
+{
+"long_name" : "Illinois",
+"short_name" : "IL",
+"types" : [ "administrative_area_level_1", "political" ]
+},
+{
+"long_name" : "United States",
+"short_name" : "US",
+"types" : [ "country", "political" ]
+},
+{
+"long_name" : "60603",
+"short_name" : "60603",
+"types" : [ "postal_code" ]
+},
+{
+"long_name" : "1602",
+"short_name" : "1602",
+"types" : [ "postal_code_suffix" ]
+}
+],
+"adr_address" : "\u003cspan class=\"street-address\"\u003e100 W Monroe St\u003c/span\u003e, \u003cspan class=\"locality\"\u003eChicago\u003c/span\u003e, \u003cspan class=\"region\"\u003eIL\u003c/span\u003e \u003cspan class=\"postal-code\"\u003e60603-1602\u003c/span\u003e, \u003cspan class=\"country-name\"\u003eUSA\u003c/span\u003e",
+"formatted_address" : "100 W Monroe St, Chicago, IL 60603, USA",
+"geometry" : {
+"location" : {
+"lat" : 41.88087489999999,
+"lng" : -87.63114829999999
+},
+"viewport" : {
+"northeast" : {
+"lat" : 41.88097675,
+"lng" : -87.63113824999998
+},
+"southwest" : {
+"lat" : 41.88056934999999,
+"lng" : -87.63115165000001
+}
+}
+},
+"icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/geocode-71.png",
+"id" : "df709dbcb561373903013f0aada65a2fbd320da7",
+"name" : "100 W Monroe St",
+"place_id" : "ChIJlfSxg7ssDogRUnH9yV3Oiow",
+"reference" : "CmRbAAAADc2XDsCMOBSqnpnqYVWtIx5pG3n1TG4HooczOgBQzwJlQN1D4nCPlrCuKkRuT_l0TwQWuo4-1H-RNgdnkbexyzl-rSfEqeTbjYtnAlXh8-X2HlFtq3oSAOkPAsKpTC_rEhAxm6tXNtcz2axwh48Do2kyGhSc2_ZbKmQaPvmmJC8fwlq5ngcDIw",
+"scope" : "GOOGLE",
+"types" : [ "street_address" ],
+"url" : "https://maps.google.com/?q=100+W+Monroe+St,+Chicago,+IL+60603,+USA&ftid=0x880e2cbb83b1f495:0x8c8ace5dc9fd7152",
+"utc_offset" : -360,
+"vicinity" : "Chicago"
+},
+"status" : "OK"
+}

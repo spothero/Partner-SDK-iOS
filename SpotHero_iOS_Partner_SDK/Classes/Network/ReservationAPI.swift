@@ -9,6 +9,7 @@
 import Foundation
 
 struct ReservationAPI {
+    private static var LastReservation: Reservation?
     
     /**
      Creates a reservation
@@ -23,13 +24,25 @@ struct ReservationAPI {
     static func createReservation(facility: Facility,
                                   rate: Rate,
                                   email: String,
+                                  phone: String? = nil,
                                   stripeToken: String,
                                   license: String? = nil,
                                   completion: (Reservation?, ErrorType?) -> (Void))  {
         
-        let starts = DateFormatter.ISO8601NoSeconds.stringFromDate(rate.starts)
-        let ends = DateFormatter.ISO8601NoSeconds.stringFromDate(rate.ends)
-                
+        let startDate: NSDate
+        let endDate: NSDate
+        if TestingHelper.isUITesting() {
+            startDate = Constants.Test.StartDate
+            endDate = Constants.Test.EndDate
+        } else {
+            startDate = rate.starts
+            endDate = rate.ends
+        }
+        
+        let starts = DateFormatter.ISO8601NoSeconds.stringFromDate(startDate)
+        let ends = DateFormatter.ISO8601NoSeconds.stringFromDate(endDate)
+        
+        
         var params: [String: AnyObject] = [
             "facility_id" : facility.parkingSpotID,
             "rule_group_id" : rate.ruleGroupID,
@@ -46,6 +59,10 @@ struct ReservationAPI {
             params["license_plate"] = "UNKNOWN"
         }
 
+        if let phone = phone where !phone.isEmpty {
+            params["phone_number"] = phone
+        }
+        
         let headers = APIHeaders.defaultHeaders()
         
         SpotHeroPartnerAPIController.postJSONtoEndpoint("partner/v1/reservations",
@@ -63,6 +80,7 @@ struct ReservationAPI {
                 }
                 
                 let reservation  = try Reservation(json: data)
+                self.LastReservation = reservation
                 completion(reservation, nil)
             } catch let error {
                 completion(nil, error)
@@ -93,6 +111,18 @@ struct ReservationAPI {
         }) {
             JSON in
             completion?(nil)
+        }
+    }
+    
+    static func cancelLastReservation(completion: ((Bool) -> Void)) {
+        guard let reservation = self.LastReservation else {
+            completion(false)
+            return
+        }
+        
+        self.cancelReservation(reservation) {
+            error in
+            completion(error == nil)
         }
     }
 }

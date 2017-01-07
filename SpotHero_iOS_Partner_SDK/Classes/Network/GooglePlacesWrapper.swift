@@ -19,11 +19,11 @@ enum GooglePlacesError: ErrorType {
 typealias GooglePlacesWrapperCompletion = ([GooglePlacesPrediction], ErrorType?) -> (Void)
 typealias GooglePlaceDetailsCompletion = (GooglePlaceDetails?, ErrorType?) -> (Void)
 
-@objc(SPHGooglePlacesWrapper)
-class GooglePlacesWrapper: NSObject {
+struct GooglePlacesWrapper {
     static let Host = "maps.googleapis.com"
     static let Scheme = "https"
-    static let KeyQueryItem = NSURLQueryItem(name: "key", value: APIKeyConfig.sharedInstance.googleApiKey)
+    static var GoogleAPIKey: String?
+    static let KeyQueryItem = NSURLQueryItem(name: "key", value: GooglePlacesWrapper.GoogleAPIKey)
     
     /**
      Finds Predictions based on a string
@@ -39,6 +39,7 @@ class GooglePlacesWrapper: NSObject {
         urlComponents.host = Host
         urlComponents.scheme = Scheme
         urlComponents.path = "/maps/api/place/autocomplete/json"
+        
         urlComponents.queryItems = [
             NSURLQueryItem(name: "input", value: input),
             KeyQueryItem
@@ -50,7 +51,7 @@ class GooglePlacesWrapper: NSObject {
         }
         
         if let url = urlComponents.URL {
-            NSURLSession.sharedSession().dataTaskWithURL(url, completionHandler: {
+            SharedURLSession.sharedInstance.session.dataTaskWithURL(url, completionHandler: {
                 data, response, error in
                 NSOperationQueue.mainQueue().addOperationWithBlock {
                     guard let data = data else {
@@ -101,7 +102,7 @@ class GooglePlacesWrapper: NSObject {
         ]
         
         if let url = urlComponents.URL {
-            NSURLSession.sharedSession().dataTaskWithURL(url, completionHandler: {
+            SharedURLSession.sharedInstance.session.dataTaskWithURL(url, completionHandler: {
                 data, response, error in
                 NSOperationQueue.mainQueue().addOperationWithBlock() {
                     guard let data = data else {

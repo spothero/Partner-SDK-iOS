@@ -21,8 +21,6 @@ struct StripeWrapper {
                          cvc: String,
                          completion: StripeWrapperCompletion) {
         
-        
-
         if let url = NSURL(string: "https://api.stripe.com/v1/tokens") {
             let request = NSMutableURLRequest(URL: url)
             request.HTTPMethod = "POST"
@@ -34,7 +32,7 @@ struct StripeWrapper {
             
             request.HTTPBody = body.dataUsingEncoding(NSUTF8StringEncoding)
             
-            NSURLSession.sharedSession().dataTaskWithRequest(request, completionHandler: {
+            SharedURLSession.sharedInstance.session.dataTaskWithRequest(request, completionHandler: {
                 data, response, error in
                 NSOperationQueue.mainQueue().addOperationWithBlock {
                     guard let data = data else {

@@ -43,7 +43,7 @@ extension Facility {
         let longitude = try json.shp_double("longitude")
         self.location = CLLocation(latitude: latitude, longitude: longitude)
         
-        if let rateDictionaries = try json.shp_array("hourly_rates") as? [JSONDictionary] {
+        if let rateDictionaries: [JSONDictionary] = try json.shp_array("hourly_rates") {
             for rateDictionary in rateDictionaries {
                 let rate = try Rate(json: rateDictionary)
                 rates.append(rate)
