@@ -246,7 +246,7 @@ class CheckoutTableViewController: UIViewController {
                 } else {
                     
                     if
-                        let error = error as? NSError,
+                        let error = error as NSError?,
                         let userInfo = error.userInfo as? JSONDictionary,
                         let message = userInfo[SpotHeroPartnerSDK.UnlocalizedDescriptionKey] as? String {
                             AlertView.presentErrorAlertView(message: message, from: self)

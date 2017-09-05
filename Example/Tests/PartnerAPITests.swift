@@ -49,7 +49,7 @@ class PartnerAPITests: BaseTests {
             XCTAssertEqual(facilities.count, 0)
             XCTAssertNotNil(error)
             XCTAssertFalse(hasMorePages)
-            if let error = error as? NSError {
+            if let error = error as NSError? {
                 XCTAssertEqual(error.code, URLError.cancelled.rawValue)
             } else {
                 XCTFail("Received the wrong error type")

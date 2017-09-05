@@ -212,7 +212,7 @@ struct SpotHeroPartnerAPIController {
     
     private static func debugPrintResponseInfo(_ response: URLResponse?, data: Data?) {
         if let response = response as? HTTPURLResponse {
-            DLog("URL: \(response.url)")
+            DLog("URL: \(String(describing: response.url))")
             DLog("Status: \(response.statusCode)")
             DLog("Headers: \(response.allHeaderFields)")
         } else {
@@ -220,7 +220,7 @@ struct SpotHeroPartnerAPIController {
         }
         
         if let data = data {
-            DLog("Data: \(NSString(data: data, encoding: String.Encoding.utf8.rawValue))")
+            DLog("Data: \(String(data: data, encoding: .utf8) ?? "")")
         } else {
             DLog("No data received!")
         }
