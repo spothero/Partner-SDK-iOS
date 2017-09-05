@@ -53,34 +53,35 @@ enum MixpanelEvent: String {
 struct MixpanelWrapper {
     private static let baseUrlString = "https://api.mixpanel.com/track/"
     
-    static func track(event: MixpanelEvent, properties: [MixpanelKey: AnyObject] = [:]) {
+    static func track(_ event: MixpanelEvent, properties: [MixpanelKey: Any] = [:]) {
         guard !TestingHelper.isTesting() else {
             return
         }
         
         var mutableProperties = properties
         mutableProperties[MixpanelKey.Token] = APIKeyConfig.sharedInstance.mixpanelApiKey
-        
-        var stringDictionary = [String: AnyObject]()
+        var stringDictionary = [String: Any]()
         
         for (key, value) in mutableProperties {
             stringDictionary [key.rawValue] = value
         }
         
-        let eventDictionary = [MixpanelKey.Event.rawValue: event.rawValue, MixpanelKey.Properties.rawValue: stringDictionary]
+        let eventDictionary: [String: Any] = [MixpanelKey.Event.rawValue: event.rawValue, MixpanelKey.Properties.rawValue: stringDictionary]
         
         do {
-            let jsonData = try NSJSONSerialization.dataWithJSONObject(eventDictionary, options: [])
-            let base64 = jsonData.base64EncodedStringWithOptions([])
-            let urlComponents = NSURLComponents(string: baseUrlString)
+            let jsonData = try JSONSerialization.data(withJSONObject: eventDictionary)
+            let base64 = jsonData.base64EncodedString(options: [])
+            var urlComponents = URLComponents(string: baseUrlString)
             urlComponents?.query = "data=\(base64)"
-            if let url = urlComponents?.URL {
-                NSURLSession.sharedSession().dataTaskWithURL(url, completionHandler: {
-                    data, response, error in
+            if let url = urlComponents?.url {
+                URLSession.shared.dataTask(with: url, completionHandler: {
+                    data, _, error in
                     if let error = error {
                         print(error)
                     } else {
-                        print(data)
+                        if let data = data {
+                            print(data)
+                        }
                         print("Mix Panel event: \(event) \nProperties: \(properties)")
                     }
                 }).resume()

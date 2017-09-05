@@ -4,15 +4,21 @@ disabled_rules:
   - function_parameter_count # "Number of function parameters should be low."
   - nesting # "Types should be nested at most 1 level deep, and statements should be nested at most 5 levels deep."
   - mark # "MARK comment should be in valid format."
-  - conditional_binding_cascade # this kicks up warnings in Swift 2.3+
-
+  - missing_docs # "Public declarations should be documented." - this is super broken in swift 3 - see https://github.com/realm/SwiftLint/issues/728
+  - closure_parameter_position # "Closure parameters should be on the same line as opening brace." - we want the opposite
+  
 opt_in_rules:
   - force_unwrapping # "Force unwrapping should be avoided."
   - empty_count # "Prefer checking `isEmpty` over comparing `count` to zero."
   - private_outlet # "IBOutlets should be private to avoid leaking UIKit to higher layers." 
   - vertical_whitespace # "Limit vertical whitespace to a single empty line."
-  - missing_docs # "Public declarations should be documented."
-
+  - first_where # "Prefer using `.first(where:)` over `.filter { }.first` in collections."
+  - operator_usage_whitespace # "Operators should be surrounded by a single whitespace"
+  - overridden_super_call # "Some overridden methods should always call super" eg: viewDidLoad
+  - prohibited_super_call # "Some methods should not call super" eg: loadView
+  - redundant_nil_coalescing # "Using nil coalescing operator with nil as rhs is redundant"
+  - switch_case_on_newline # "Cases inside a switch should always end on a newline"
+  - sorted_imports # "Imports should be sorted"
 
 force_try: warning # "Force tries should be avoided."
 empty_count: warning # "Prefer checking `isEmpty` over comparing `count` to zero."
@@ -32,7 +38,15 @@ variable_name: # "Variable names should not be too long or too short"
   excluded: # whitelisted exceptions to the above rule
     - x
     - y
+trailing_comma: # "Trailing commas in arrays and dictionaries should be avoided/enforced."    
+    mandatory_comma: true # "Trailing commas in arrays and dictionaries should be enforced."
+colon: # "Colons should be next to the identifier when specifying a type and next to the key in dictionary literals."
+    apply_to_dictionaries: false # we don't want this rule applied to dictionaries
+private_outlet:
+    allow_private_set: true
 
+included: 
+  - SpotHero_iOS_Partner_SDK
+  - ../SpotHero_iOS_Partner_SDK
 excluded: # what folders should be excluded from analysis? 
   - Pods
-

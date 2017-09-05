@@ -13,6 +13,6 @@ protocol ValidatorCell: class {
     weak var delegate: ValidatorCellDelegate? { get set }
 }
 
-protocol ValidatorCellDelegate: class  {
+protocol ValidatorCellDelegate: class {
     func didValidateText()
 }

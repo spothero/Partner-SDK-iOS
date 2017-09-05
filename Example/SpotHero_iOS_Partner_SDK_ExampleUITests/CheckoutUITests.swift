@@ -6,16 +6,16 @@
 //  Copyright © 2016 SpotHero, Inc. All rights reserved.
 //
 
-import XCTest
 import KIF
-@testable import SpotHero_iOS_Partner_SDK_Example
 @testable import SpotHero_iOS_Partner_SDK
+@testable import SpotHero_iOS_Partner_SDK_Example
+import XCTest
 
 class CheckoutUITests: BaseUITests {
-    let emailIndexPath = NSIndexPath(forRow: PersonalInfoRow.Email.row(true), inSection: CheckoutSection.PersonalInfo.rawValue)
-    let phoneNumberIndexPath = NSIndexPath(forRow: PersonalInfoRow.Phone.row(true), inSection: CheckoutSection.PersonalInfo.rawValue)
-    let licenseIndexPath = NSIndexPath(forRow: PersonalInfoRow.License.row(true), inSection: CheckoutSection.PersonalInfo.rawValue)
-    let firstIndexPath = NSIndexPath(forItem: 0, inSection: 0)
+    let emailIndexPath = IndexPath(row: PersonalInfoRow.email.row(true), section: CheckoutSection.personalInfo.rawValue)
+    let phoneNumberIndexPath = IndexPath(row: PersonalInfoRow.phone.row(true), section: CheckoutSection.personalInfo.rawValue)
+    let licenseIndexPath = IndexPath(row: PersonalInfoRow.license.row(true), section: CheckoutSection.personalInfo.rawValue)
+    let firstIndexPath = IndexPath(item: 0, section: 0)
     let enteredText = "Chicago"
     let expectedText = "Chicago, IL, United States"
     let visaCreditCard = "4242424242424242"
@@ -43,7 +43,7 @@ class CheckoutUITests: BaseUITests {
                                    cvc: String? = nil,
                                    expectedCreditCard: String? = nil) {
         
-        let lastFour = creditCardNumber.substringWithRange(creditCardNumber.endIndex.advancedBy(-4)..<creditCardNumber.endIndex)
+        let lastFour = creditCardNumber.substring(with: creditCardNumber.index(creditCardNumber.endIndex, offsetBy: -4)..<creditCardNumber.endIndex)
         let expectedCC = expectedCreditCard ?? lastFour
         
         tester().enterText(email, intoViewWithAccessibilityLabel: LocalizedStrings.EmailAddressPlaceHolder)
@@ -53,7 +53,7 @@ class CheckoutUITests: BaseUITests {
                            expectedResult: expectedCC)
         if let expiration = expiration {
             var expectedExpiration = expiration
-            expectedExpiration.insert("/", atIndex: expectedExpiration.startIndex.advancedBy(2))
+            expectedExpiration.insert("/", at: expectedExpiration.index(expectedExpiration.startIndex, offsetBy: 2))
             tester().enterText(expiration,
                                intoViewWithAccessibilityLabel: LocalizedStrings.ExpirationDatePlaceHolder,
                                traits: UIAccessibilityTraitNone,
@@ -68,15 +68,17 @@ class CheckoutUITests: BaseUITests {
     private func purchaseSpot(creditCardNumber: String,
                               cvc: String,
                               cardType: String) {
-        self.enterTextInFields(self.testEmail,
+        self.enterTextInFields(email: self.testEmail,
                                creditCardNumber: creditCardNumber,
                                expiration: self.testExpiration,
                                cvc: cvc)
         
         guard
-            let cardImageView = tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.CardImage) as? UIImageView,
+            let cardImageView = tester().waitForView(withAccessibilityLabel: AccessibilityStrings.CardImage) as? UIImageView,
             let cardImage = cardImageView.image,
-            let testImage = UIImage(named: cardType, inBundle: NSBundle.shp_resourceBundle(), compatibleWithTraitCollection: nil) else {
+            let testImage = UIImage(named: cardType,
+                                    in: Bundle.shp_resourceBundle(),
+                                    compatibleWith: nil) else {
             XCTFail("Cannot get card image")
             return
         }
@@ -86,16 +88,16 @@ class CheckoutUITests: BaseUITests {
         
         XCTAssertEqual(cardImageData, cardData)
         
-        guard let button = tester().waitForViewWithAccessibilityLabel(Constants.Test.ButtonTitle) as? UIButton else {
+        guard let button = tester().waitForView(withAccessibilityLabel: Constants.Test.ButtonTitle) as? UIButton else {
             XCTFail("Cannot get payment button")
             return
         }
         
-        XCTAssert(button.enabled)
+        XCTAssert(button.isEnabled)
         
-        tester().tapViewWithAccessibilityLabel(Constants.Test.ButtonTitle)
+        tester().tapView(withAccessibilityLabel: Constants.Test.ButtonTitle)
         
-        tester().waitForViewWithAccessibilityLabel(LocalizedStrings.BookAnother)
+        tester().waitForView(withAccessibilityLabel: LocalizedStrings.BookAnother)
     }
         
     private func goToCheckoutScreen(searchBarText: String? = nil) {
@@ -103,40 +105,42 @@ class CheckoutUITests: BaseUITests {
         let text = searchBarText ?? self.enteredText
         self.enterTextIntoSearchBar(text, expectedText: text)
         
-        guard let predictionTableView = tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.PredictionTableView) as? UITableView else {
+        guard let predictionTableView = tester().waitForView(withAccessibilityLabel: AccessibilityStrings.PredictionTableView) as? UITableView else {
             XCTFail("Cannot get predictions")
             return
         }
         
-        tester().tapRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0), inTableView: predictionTableView)
-        tester().tapViewWithAccessibilityLabel(LocalizedStrings.SearchSpots)
+        tester().tapRow(at: IndexPath(row: 0, section: 0), in: predictionTableView)
+        tester().tapView(withAccessibilityLabel: LocalizedStrings.SearchSpots)
         
         // Get collection view and tap book it button
         guard
-            let collectionView = tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.SpotCards) as? UICollectionView else {
+            let collectionView = tester().waitForView(withAccessibilityLabel: AccessibilityStrings.SpotCards) as? UICollectionView else {
                 XCTFail("Cannot get spot cards collection view")
                 return
         }
         
-        tester().waitForCellAtIndexPath(firstIndexPath, inCollectionView: collectionView)
-        tester().tapViewWithAccessibilityLabel(LocalizedStrings.BookIt)
-        tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.CheckoutScreen)
+        tester().waitForCell(at: firstIndexPath, in: collectionView)
+        tester().tapView(withAccessibilityLabel: LocalizedStrings.BookIt)
+        tester().waitForView(withAccessibilityLabel: AccessibilityStrings.CheckoutScreen)
     }
     
     private func verifyPaymentButtonDisabled(file: StaticString = #file, line: UInt = #line) {
-        guard let paymentButton = tester().waitForViewWithAccessibilityLabel(Constants.Test.ButtonTitle) as? UIButton else {
+        guard let paymentButton = tester().waitForView(withAccessibilityLabel: Constants.Test.ButtonTitle) as? UIButton else {
             XCTFail("Cannot get payment button")
             return
         }
         
-        XCTAssertFalse(paymentButton.enabled, file: file, line: line)
+        XCTAssertFalse(paymentButton.isEnabled,
+                       file: file,
+                       line: line)
     }
     
     //MARK: - Test Lifecycle
     
     override func tearDown() {
-        tester().tapViewWithAccessibilityLabel(LocalizedStrings.Close)
-        tester().tapViewWithAccessibilityLabel(LocalizedStrings.LaunchSDK)
+        tester().tapView(withAccessibilityLabel: LocalizedStrings.Close)
+        tester().tapView(withAccessibilityLabel: LocalizedStrings.LaunchSDK)
         super.tearDown()
     }
     
@@ -147,7 +151,7 @@ class CheckoutUITests: BaseUITests {
         self.goToCheckoutScreen()
         //WHEN: I enter an email, credit card number, expiration number and cvc
         //THEN: I see the confirmation screen
-        self.purchaseSpot(self.visaCreditCard,
+        self.purchaseSpot(creditCardNumber: self.visaCreditCard,
                           cvc: self.CVC,
                           cardType: self.visaCardType)
     }
@@ -157,7 +161,7 @@ class CheckoutUITests: BaseUITests {
         self.goToCheckoutScreen()
         //WHEN: I enter an email, american express credit card number, expiration number and cvc
         //THEN: I should see the confirmation screen
-        self.purchaseSpot(self.amExCreditCard,
+        self.purchaseSpot(creditCardNumber: self.amExCreditCard,
                           cvc: self.amExCVC,
                           cardType: self.amExCardType)
     }
@@ -167,7 +171,7 @@ class CheckoutUITests: BaseUITests {
         self.goToCheckoutScreen()
         //WHEN: I enter an email, american express credit card number, expiration number and cvc
         //THEN: I should see the confirmation screen
-        self.purchaseSpot(self.discoverCreditCard,
+        self.purchaseSpot(creditCardNumber: self.discoverCreditCard,
                           cvc: self.CVC,
                           cardType: self.discoverCardType)
     }
@@ -177,7 +181,7 @@ class CheckoutUITests: BaseUITests {
         self.goToCheckoutScreen()
         //WHEN: I enter an email, american express credit card number, expiration number and cvc
         //THEN: I should see the confirmation screen
-        self.purchaseSpot(self.masterCardCreditCard,
+        self.purchaseSpot(creditCardNumber: self.masterCardCreditCard,
                           cvc: self.CVC,
                           cardType: self.masterCardCardType)
     }
@@ -185,41 +189,41 @@ class CheckoutUITests: BaseUITests {
     func testBookAnotherButton() {
         //GIVEN: I see the confimation screen
         self.goToCheckoutScreen()
-        self.purchaseSpot(self.visaCreditCard,
+        self.purchaseSpot(creditCardNumber: self.visaCreditCard,
                           cvc: self.CVC,
                           cardType: self.visaCardType)
         
         //WHEN: I tap the Book Another button
-        tester().waitForViewWithAccessibilityLabel(LocalizedStrings.BookAnother)
-        tester().tapViewWithAccessibilityLabel(LocalizedStrings.BookAnother)
+        tester().waitForView(withAccessibilityLabel: LocalizedStrings.BookAnother)
+        tester().tapView(withAccessibilityLabel: LocalizedStrings.BookAnother)
         
         //THEN: I should see the Map View
-        tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.MapView)
+        tester().waitForView(withAccessibilityLabel: AccessibilityStrings.MapView)
     }
     
     func testDoneButton() {
         //GIVEN: I see the confimation screen
         self.goToCheckoutScreen()
-        self.purchaseSpot(self.visaCreditCard,
+        self.purchaseSpot(creditCardNumber: self.visaCreditCard,
                           cvc: self.CVC,
                           cardType: self.visaCardType)
         
         //WHEN: I tap the Book Another button
-        tester().waitForViewWithAccessibilityLabel(LocalizedStrings.Done)
-        tester().tapViewWithAccessibilityLabel(LocalizedStrings.Done)
+        tester().waitForView(withAccessibilityLabel: LocalizedStrings.Done)
+        tester().tapView(withAccessibilityLabel: LocalizedStrings.Done)
         
         //THEN: The view should dismiss
-        tester().waitForViewWithAccessibilityLabel(LocalizedStrings.LaunchSDK)
+        tester().waitForView(withAccessibilityLabel: LocalizedStrings.LaunchSDK)
         
         // Relaunch SDK
-        tester().tapViewWithAccessibilityLabel(LocalizedStrings.LaunchSDK)
+        tester().tapView(withAccessibilityLabel: LocalizedStrings.LaunchSDK)
     }
     
     func testInvalidEmail() {
         //GIVEN: I see the checkout screen
         self.goToCheckoutScreen()
         //WHEN: I enter an invalid email and valid credit card, expiration date and cvc
-        self.enterTextInFields("matt@test",
+        self.enterTextInFields(email: "matt@test",
                                creditCardNumber: self.visaCreditCard,
                                expiration: self.testExpiration,
                                cvc: self.CVC)
@@ -232,7 +236,7 @@ class CheckoutUITests: BaseUITests {
         //GIVEN: I see the checkout screen
         self.goToCheckoutScreen()
         //WHEN: I enter an invalid credit card number
-        self.enterTextInFields(self.testEmail,
+        self.enterTextInFields(email: self.testEmail,
                                creditCardNumber: "1234567812345678",
                                expectedCreditCard: "1234 5678 1234 5678")
         
@@ -244,7 +248,7 @@ class CheckoutUITests: BaseUITests {
         //GIVEN: I see the checkout screen
         self.goToCheckoutScreen()
         //WHEN: I enter an invalid expiration date
-        self.enterTextInFields(self.testEmail,
+        self.enterTextInFields(email: self.testEmail,
                                creditCardNumber: self.visaCreditCard,
                                expiration: "1013",
                                cvc: self.CVC)
@@ -267,7 +271,7 @@ class CheckoutUITests: BaseUITests {
         //GIVEN: I see the checkout screen
         self.goToCheckoutScreen()
         //WHEN: I fill out all the fields except the expiration date
-        self.enterTextInFields(self.testEmail,
+        self.enterTextInFields(email: self.testEmail,
                                creditCardNumber: self.visaCreditCard,
                                expiration: nil,
                                cvc: self.CVC)
@@ -279,12 +283,12 @@ class CheckoutUITests: BaseUITests {
         //GIVEN: I see the checkout screen
         self.goToCheckoutScreen()
         //WHEN: I fill out all the fields except the cvc
-        tester().tapViewWithAccessibilityLabel(LocalizedStrings.CreditCardPlaceHolder)
-        self.enterTextInFields(self.testEmail,
+        tester().tapView(withAccessibilityLabel: LocalizedStrings.CreditCardPlaceHolder)
+        self.enterTextInFields(email: self.testEmail,
                                creditCardNumber: self.visaCreditCard,
                                expiration: self.testExpiration,
                                cvc: nil)
-        tester().tapViewWithAccessibilityLabel(LocalizedStrings.Done)
+        tester().tapView(withAccessibilityLabel: LocalizedStrings.Done)
         //THEN: The payment button should be disabled
         self.verifyPaymentButtonDisabled()
     }
@@ -293,9 +297,9 @@ class CheckoutUITests: BaseUITests {
         //GIVEN: I see the checkout screen
         self.goToCheckoutScreen()
         //WHEN: I fill out all the fields except the expiration date and cvc
-        tester().tapViewWithAccessibilityLabel(LocalizedStrings.CreditCardPlaceHolder)
-        self.enterTextInFields(self.testEmail, creditCardNumber: self.visaCreditCard)
-        tester().tapViewWithAccessibilityLabel(LocalizedStrings.Done)
+        tester().tapView(withAccessibilityLabel: LocalizedStrings.CreditCardPlaceHolder)
+        self.enterTextInFields(email: self.testEmail, creditCardNumber: self.visaCreditCard)
+        tester().tapView(withAccessibilityLabel: LocalizedStrings.Done)
         //THEN: The payment button should be disabled
         self.verifyPaymentButtonDisabled()
     }
@@ -303,40 +307,40 @@ class CheckoutUITests: BaseUITests {
     func testEmailOnlyCheckout() {
         //GIVEN: I select a spot that only required an email address
         //WHEN: I see the checkout screen
-        self.goToCheckoutScreen(self.emailOnlyAddress)
+        self.goToCheckoutScreen(searchBarText: self.emailOnlyAddress)
         //THEN: I should only see the email field
-        tester().waitForViewWithAccessibilityLabel(LocalizedStrings.EmailAddressPlaceHolder)
-        tester().waitForAbsenceOfViewWithAccessibilityLabel(LocalizedStrings.PhoneNumberPlaceHolder)
-        tester().waitForAbsenceOfViewWithAccessibilityLabel(LocalizedStrings.LicensePlatePlaceHolder)
+        tester().waitForView(withAccessibilityLabel: LocalizedStrings.EmailAddressPlaceHolder)
+        tester().waitForAbsenceOfView(withAccessibilityLabel: LocalizedStrings.PhoneNumberPlaceHolder)
+        tester().waitForAbsenceOfView(withAccessibilityLabel: LocalizedStrings.LicensePlatePlaceHolder)
     }
     
     func testEmailandPhoneOnlyCheckout() {
         //GIVEN: I select a spot that only required an email address
         //WHEN: I see the checkout screen
-        self.goToCheckoutScreen(self.emailandPhoneOnlyAddress)
+        self.goToCheckoutScreen(searchBarText: self.emailandPhoneOnlyAddress)
         //THEN: I should only see the email and phone fields
-        tester().waitForViewWithAccessibilityLabel(LocalizedStrings.EmailAddressPlaceHolder)
-        tester().waitForViewWithAccessibilityLabel(LocalizedStrings.PhoneNumberPlaceHolder)
-        tester().waitForAbsenceOfViewWithAccessibilityLabel(LocalizedStrings.LicensePlatePlaceHolder)
+        tester().waitForView(withAccessibilityLabel: LocalizedStrings.EmailAddressPlaceHolder)
+        tester().waitForView(withAccessibilityLabel: LocalizedStrings.PhoneNumberPlaceHolder)
+        tester().waitForAbsenceOfView(withAccessibilityLabel: LocalizedStrings.LicensePlatePlaceHolder)
     }
     
     func testEmailAndLicenseOnlyCheckout() {
         //GIVEN: I select a spot that only required an email address
         //WHEN: I see the checkout screen
-        self.goToCheckoutScreen(self.emailAndLicenseOnlyAddress)
+        self.goToCheckoutScreen(searchBarText: self.emailAndLicenseOnlyAddress)
         //THEN: I should only see the email and license fields
-        tester().waitForViewWithAccessibilityLabel(LocalizedStrings.EmailAddressPlaceHolder)
-        tester().waitForAbsenceOfViewWithAccessibilityLabel(LocalizedStrings.PhoneNumberPlaceHolder)
-        tester().waitForViewWithAccessibilityLabel(LocalizedStrings.LicensePlatePlaceHolder)
+        tester().waitForView(withAccessibilityLabel: LocalizedStrings.EmailAddressPlaceHolder)
+        tester().waitForAbsenceOfView(withAccessibilityLabel: LocalizedStrings.PhoneNumberPlaceHolder)
+        tester().waitForView(withAccessibilityLabel: LocalizedStrings.LicensePlatePlaceHolder)
     }
     
     func testEmailPhoneAndLicenseCheckout() {
         //GIVEN: I select a spot that only required an email address
         //WHEN: I see the checkout screen
-        self.goToCheckoutScreen(self.emailPhoneAndLicenseAddress)
+        self.goToCheckoutScreen(searchBarText: self.emailPhoneAndLicenseAddress)
         //THEN: I should see the email, phone and license fields
-        tester().waitForViewWithAccessibilityLabel(LocalizedStrings.EmailAddressPlaceHolder)
-        tester().waitForViewWithAccessibilityLabel(LocalizedStrings.PhoneNumberPlaceHolder)
-        tester().waitForViewWithAccessibilityLabel(LocalizedStrings.LicensePlatePlaceHolder)
+        tester().waitForView(withAccessibilityLabel: LocalizedStrings.EmailAddressPlaceHolder)
+        tester().waitForView(withAccessibilityLabel: LocalizedStrings.PhoneNumberPlaceHolder)
+        tester().waitForView(withAccessibilityLabel: LocalizedStrings.LicensePlatePlaceHolder)
     }
 }

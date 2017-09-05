@@ -18,21 +18,22 @@ enum Formatter {
      
      - returns: Tuple with formatted phone number and unformatted phone number
      */
-    static func formatPhoneNumber(phone: String) -> Formatted {
-        let unformatted = phone.stringByReplacingOccurrencesOfString("-", withString: "")
+    static func formatPhoneNumber(_ phone: String) -> Formatted {
+        let unformatted = phone.replacingOccurrences(of: "-", with: "")
         
         if unformatted.characters.count > 3 {
             let startIndex = unformatted.startIndex
             let endIndex = unformatted.endIndex
-            let firstSection = unformatted.substringWithRange(startIndex..<startIndex.advancedBy(3))
+            let firstSection = unformatted.substring(with: startIndex..<unformatted.index(startIndex, offsetBy: 3))
             
             switch unformatted.characters.count {
             case 4..<7:
-                let secondSection = unformatted.substringWithRange(startIndex.advancedBy(3)..<endIndex)
+                let secondSection = unformatted.substring(with: unformatted.index(startIndex, offsetBy: 3)..<endIndex)
                 return ("\(firstSection)-\(secondSection)", unformatted)
             default:
-                let secondSection = unformatted.substringWithRange(startIndex.advancedBy(3)..<startIndex.advancedBy(6))
-                let thirdSection = unformatted.substringWithRange(startIndex.advancedBy(6)..<endIndex)
+                let thirdSectionStart = unformatted.index(startIndex, offsetBy: 6)
+                let secondSection = unformatted.substring(with: unformatted.index(startIndex, offsetBy: 3)..<thirdSectionStart)
+                let thirdSection = unformatted.substring(with: thirdSectionStart..<endIndex)
                 return ("\(firstSection)-\(secondSection)-\(thirdSection)", unformatted)
             }
         }
@@ -47,26 +48,29 @@ enum Formatter {
      
      - returns: Tuple with formatted credit card number and unformatted credit card number
      */
-    static func formatCreditCard(number: String) -> Formatted {
-        let unformatted = number.stringByReplacingOccurrencesOfString(" ", withString: "")
+    static func formatCreditCard(_ number: String) -> Formatted {
+        let unformatted = number.replacingOccurrences(of: " ", with: "")
         
         if unformatted.characters.count > 4 {
             let startIndex = unformatted.startIndex
             let endIndex = unformatted.endIndex
-            let firstSection = unformatted.substringWithRange(startIndex..<startIndex.advancedBy(4))
+            let firstSection = unformatted.substring(with: startIndex..<unformatted.index(startIndex, offsetBy: 4))
             
             switch unformatted.characters.count {
             case 5..<9:
-                let secondSection = unformatted.substringWithRange(startIndex.advancedBy(4)..<endIndex)
+                let secondSection = unformatted.substring(with: unformatted.index(startIndex, offsetBy: 4)..<endIndex)
                 return ("\(firstSection) \(secondSection)", unformatted)
             case 9..<13:
-                let secondSection = unformatted.substringWithRange(startIndex.advancedBy(4)..<startIndex.advancedBy(8))
-                let thirdSection = unformatted.substringWithRange(startIndex.advancedBy(8)..<endIndex)
+                let thirdSectionStart = unformatted.index(startIndex, offsetBy: 8)
+                let secondSection = unformatted.substring(with: unformatted.index(startIndex, offsetBy: 4)..<thirdSectionStart)
+                let thirdSection = unformatted.substring(with: thirdSectionStart..<endIndex)
                 return ("\(firstSection) \(secondSection) \(thirdSection)", unformatted)
             default:
-                let secondSection = unformatted.substringWithRange(startIndex.advancedBy(4)..<startIndex.advancedBy(8))
-                let thirdSection = unformatted.substringWithRange(startIndex.advancedBy(8)..<startIndex.advancedBy(12))
-                let fourthSection = unformatted.substringWithRange(startIndex.advancedBy(12)..<endIndex)
+                let thirdSectionStart = unformatted.index(startIndex, offsetBy: 8)
+                let fourthSectionStart = unformatted.index(startIndex, offsetBy: 12)
+                let secondSection = unformatted.substring(with: unformatted.index(startIndex, offsetBy: 4)..<thirdSectionStart)
+                let thirdSection = unformatted.substring(with: thirdSectionStart..<fourthSectionStart)
+                let fourthSection = unformatted.substring(with: fourthSectionStart..<endIndex)
                 return ("\(firstSection) \(secondSection) \(thirdSection) \(fourthSection)", unformatted)
             }
         }
@@ -81,21 +85,22 @@ enum Formatter {
      
      - returns: Tuple with formatted credit card number and unformatted credit card number
      */
-    static func formatCreditCardAmex(number: String) -> Formatted {
-        let unformatted = number.stringByReplacingOccurrencesOfString(" ", withString: "")
+    static func formatCreditCardAmex(_ number: String) -> Formatted {
+        let unformatted = number.replacingOccurrences(of: " ", with: "")
         
         if unformatted.characters.count > 4 {
             let startIndex = unformatted.startIndex
             let endIndex = unformatted.endIndex
-            let firstSection = unformatted.substringWithRange(startIndex..<startIndex.advancedBy(4))
+            let firstSection = unformatted.substring(with: startIndex..<unformatted.index(startIndex, offsetBy: 4))
             
             switch unformatted.characters.count {
             case 5..<11:
-                let secondSection = unformatted.substringWithRange(startIndex.advancedBy(4)..<endIndex)
+                let secondSection = unformatted.substring(with: unformatted.index(startIndex, offsetBy: 4)..<endIndex)
                 return ("\(firstSection) \(secondSection)", unformatted)
             default:
-                let secondSection = unformatted.substringWithRange(startIndex.advancedBy(4)..<startIndex.advancedBy(10))
-                let thirdSection = unformatted.substringWithRange(startIndex.advancedBy(10)..<endIndex)
+                let thirdSectionStart = unformatted.index(startIndex, offsetBy: 10)
+                let secondSection = unformatted.substring(with: unformatted.index(startIndex, offsetBy: 4)..<thirdSectionStart)
+                let thirdSection = unformatted.substring(with: thirdSectionStart..<endIndex)
                 return ("\(firstSection) \(secondSection) \(thirdSection)", unformatted)
             }
         }
@@ -110,13 +115,13 @@ enum Formatter {
      
      - returns: Formatted date string
      */
-    static func formatExpirationDate(date: String) -> Formatted {
-        let unformatted = date.stringByReplacingOccurrencesOfString("/", withString: "")
+    static func formatExpirationDate(_ date: String) -> Formatted {
+        let unformatted = date.replacingOccurrences(of: "/", with: "")
         if unformatted.characters.count > 2 {
             let startIndex = unformatted.startIndex
             let endIndex = unformatted.endIndex
-            let firstPart = unformatted.substringWithRange(startIndex..<startIndex.advancedBy(2))
-            let secondPart = unformatted.substringWithRange(startIndex.advancedBy(2)..<endIndex)
+            let firstPart = unformatted.substring(with: startIndex..<unformatted.index(startIndex, offsetBy: 2))
+            let secondPart = unformatted.substring(with: unformatted.index(startIndex, offsetBy: 2)..<endIndex)
             return ("\(firstPart)/\(secondPart)", unformatted)
         }
         return (unformatted, unformatted)

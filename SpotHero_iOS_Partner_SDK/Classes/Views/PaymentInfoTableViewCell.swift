@@ -16,24 +16,24 @@ class PaymentInfoTableViewCell: UITableViewCell, ValidatorCell {
         CVC
     }
     
-    @IBOutlet weak var creditCardView: UIView!
-    @IBOutlet weak var cardImage: UIImageView!
-    @IBOutlet weak var creditCardTextField: UITextField!
-    @IBOutlet weak var creditCardTextFieldWidthConstraint: NSLayoutConstraint!
-    @IBOutlet weak var creditCardContainerView: UIView!
-    @IBOutlet weak var warningLabel: UILabel!
-    @IBOutlet weak var expirationDateTextField: UITextField!
-    @IBOutlet weak var cvcTextField: UITextField!
-    @IBOutlet weak var cvcTextFieldWidthConstraint: NSLayoutConstraint!
-    @IBOutlet weak var textFieldContainer: UIView!
-    @IBOutlet weak var errorLabel: UILabel!
+    @IBOutlet private(set) weak var creditCardView: UIView!
+    @IBOutlet private(set) weak var cardImage: UIImageView!
+    @IBOutlet private(set) weak var creditCardTextField: UITextField!
+    @IBOutlet private(set) weak var creditCardTextFieldWidthConstraint: NSLayoutConstraint!
+    @IBOutlet private(set) weak var creditCardContainerView: UIView!
+    @IBOutlet private(set) weak var warningLabel: UILabel!
+    @IBOutlet private(set) weak var expirationDateTextField: UITextField!
+    @IBOutlet private(set) weak var cvcTextField: UITextField!
+    @IBOutlet private(set) weak var cvcTextFieldWidthConstraint: NSLayoutConstraint!
+    @IBOutlet private(set) weak var textFieldContainer: UIView!
+    @IBOutlet private(set) weak var errorLabel: UILabel!
     
     weak var delegate: ValidatorCellDelegate?
     var cardNumber = ""
     var expirationMonth = ""
     var expirationYear = ""
     var cvc = ""
-    var cardType: CardType = .Unknown {
+    var cardType: CardType = .unknown {
         didSet {
             self.cardImage.image = self.cardType.image()
         }
@@ -51,8 +51,8 @@ class PaymentInfoTableViewCell: UITableViewCell, ValidatorCell {
             self.valid = valid
             
             if self.valid {
-                self.errorLabel.hidden = true
-                self.creditCardContainerView.backgroundColor = .whiteColor()
+                self.errorLabel.isHidden = true
+                self.creditCardContainerView.backgroundColor = .white
             }
         }
     }
@@ -69,7 +69,7 @@ class PaymentInfoTableViewCell: UITableViewCell, ValidatorCell {
         super.awakeFromNib()
         // Initialization code
         self.creditCardView.layer.borderWidth = 1
-        self.creditCardView.layer.borderColor = UIColor.shp_lightGray().CGColor
+        self.creditCardView.layer.borderColor = UIColor.shp_lightGray().cgColor
         self.creditCardView.layer.cornerRadius = HeightsAndLengths.standardCornerRadius
         self.creditCardContainerView.layer.cornerRadius = HeightsAndLengths.standardCornerRadius
         self.warningLabel.text = LocalizedStrings.CreditCardWarning
@@ -96,9 +96,9 @@ class PaymentInfoTableViewCell: UITableViewCell, ValidatorCell {
             self.cvcTextField.resignFirstResponder()
         }
         
-        UIView.animateWithDuration(Constants.ViewAnimationDuration) {
-            self.creditCardTextFieldWidthConstraint.active = show
-            self.creditCardTextField.textAlignment = show ? .Center : .Left
+        UIView.animate(withDuration: Constants.ViewAnimationDuration) {
+            self.creditCardTextFieldWidthConstraint.isActive = show
+            self.creditCardTextField.textAlignment = show ? .center : .left
             self.cvcTextFieldWidthConstraint.constant = width
             self.layoutIfNeeded()
         }
@@ -106,24 +106,24 @@ class PaymentInfoTableViewCell: UITableViewCell, ValidatorCell {
     
     //MARK: Helpers
     
-    func lastFourDigits(digits: String) -> String {
+    func lastFourDigits(_ digits: String) -> String {
         let endIndex = digits.endIndex
-        return digits.substringWithRange(endIndex.advancedBy(-4)..<endIndex)
+        return digits.substring(with: digits.index(endIndex, offsetBy: -4)..<endIndex)
     }
     
     func fieldValidChanged() {
         self.delegate?.didValidateText()
     }
     
-    func formatCreditCard(text: String) {
+    func formatCreditCard(_ text: String) {
         if text.isEmpty {
-            self.cardType = .Unknown
+            self.cardType = .unknown
         }
         
-        let cardLength = self.cardType == .Amex ? 15 : 16
+        let cardLength = self.cardType == .amex ? 15 : 16
         
         switch self.cardType {
-        case .Amex:
+        case .amex:
             let (formatted, unformatted) = Formatter.formatCreditCardAmex(text)
             
             if unformatted.characters.count <= cardLength {
@@ -156,7 +156,7 @@ class PaymentInfoTableViewCell: UITableViewCell, ValidatorCell {
         }
     }
     
-    func formatExpirationDate(text: String) {
+    func formatExpirationDate(_ text: String) {
         let (formatted, unformatted) = Formatter.formatExpirationDate(text)
         if unformatted.characters.count <= 4 {
             self.expirationDateTextField.text = formatted
@@ -167,8 +167,8 @@ class PaymentInfoTableViewCell: UITableViewCell, ValidatorCell {
         }
     }
     
-    func formatCVC(text: String) -> Bool {
-        let cvcLength = self.cardType == .Amex ? 4 : 3
+    func formatCVC(_ text: String) -> Bool {
+        let cvcLength = self.cardType == .amex ? 4 : 3
         if text.characters.count > cvcLength {
             return false
         }
@@ -185,24 +185,24 @@ class PaymentInfoTableViewCell: UITableViewCell, ValidatorCell {
 // MARK: - UITextFieldDelegate
 
 extension PaymentInfoTableViewCell: UITextFieldDelegate {
-    func textField(textField: UITextField,
-                   shouldChangeCharactersInRange range: NSRange,
+    func textField(_ textField: UITextField,
+                   shouldChangeCharactersIn range: NSRange,
                    replacementString string: String) -> Bool {
         guard let text = textField.text else {
             return true
         }
         
-        let subString = (text as NSString).stringByReplacingCharactersInRange(range, withString: string)
+        let subString = (text as NSString).replacingCharacters(in: range, with: string)
         
         let cursorLocation = textField.shp_getCursorPosition(range, string: string)
         
         switch textField {
         case self.creditCardTextField:
             if string.isEmpty // If replacement string is is blank
-                && (text as NSString).substringWithRange(range) == " " // If deleted string is a space
+                && (text as NSString).substring(with: range) == " " // If deleted string is a space
                 && range.location > 2 { // make sure there are at least 3 charaters in the text field
                 let rangeBefore = NSRange(location: range.location - 1, length: 1)
-                let newText = (subString as NSString).stringByReplacingCharactersInRange(rangeBefore, withString: "")
+                let newText = (subString as NSString).replacingCharacters(in: rangeBefore, with: "")
                 self.creditCardTextField.text = newText
             } else {
                 self.formatCreditCard(subString)
@@ -220,21 +220,21 @@ extension PaymentInfoTableViewCell: UITextFieldDelegate {
         }
     }
     
-    func textFieldDidBeginEditing(textField: UITextField) {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
         guard textField === self.creditCardTextField && !self.cardNumber.isEmpty else {
             return
         }
         
         switch self.cardType {
-        case .Amex:
+        case .amex:
             textField.text = Formatter.formatCreditCardAmex(self.cardNumber).formatted
         default:
             textField.text = Formatter.formatCreditCard(self.cardNumber).formatted
         }
-        self.showExpirationDateAndCVCTextFields(false)
+        self.showExpirationDateAndCVCTextFields(show: false)
     }
     
-    func textFieldDidEndEditing(textField: UITextField) {
+    func textFieldDidEndEditing(_ textField: UITextField) {
         guard let text = textField.text else {
             return
         }
@@ -245,11 +245,11 @@ extension PaymentInfoTableViewCell: UITextFieldDelegate {
                 self.cardType = Validator.getCardType(text)
                 try Validator.validateCreditCard(self.cardNumber)
                 self.errors[.CreditCard] = nil
-                self.showExpirationDateAndCVCTextFields(true)
+                self.showExpirationDateAndCVCTextFields(show: true)
                 self.expirationDateTextField.becomeFirstResponder()
                 self.creditCardTextField.text = self.lastFourDigits(text)
             case self.expirationDateTextField:
-                let parts = text.componentsSeparatedByString("/")
+                let parts = text.components(separatedBy: "/")
                 if
                     let month = parts.first,
                     let year = parts.last {
@@ -257,11 +257,11 @@ extension PaymentInfoTableViewCell: UITextFieldDelegate {
                         self.expirationYear = "20\(year)"
                         try Validator.validateExpiration(self.expirationMonth, year: self.expirationYear)
                 } else {
-                    throw ValidatorError.FieldInvalid(fieldName: LocalizedStrings.ExpirationDate, message: LocalizedStrings.InvalidDateErrorMessage)
+                    throw ValidatorError.fieldInvalid(fieldName: LocalizedStrings.ExpirationDate, message: LocalizedStrings.InvalidDateErrorMessage)
                 }
                 self.errors[.Expiration] = nil
             case self.cvcTextField:
-                if cardType == .Amex {
+                if cardType == .amex {
                     try Validator.validateCVC(text, amex: true)
                 } else {
                     try Validator.validateCVC(text)
@@ -272,30 +272,34 @@ extension PaymentInfoTableViewCell: UITextFieldDelegate {
                 break
             }
         } catch let error as ValidatorError {
-            switch textField {
-            case self.creditCardTextField:
-                self.errors[.CreditCard] = error
-            case self.expirationDateTextField:
-                self.errors[.Expiration] = error
-            case self.cvcTextField:
-                self.errors[.CVC] = error
-            default:
-                break
-            }
+            self.handleValidatorError(error, in: textField)
         } catch let error {
             assertionFailure("Some other error was thrown: \(error)")
         }
     }
     
-    private func setErrorState(error: ValidatorError) {
-        self.errorLabel.hidden = false
+    private func handleValidatorError(_ error: ValidatorError, in textField: UITextField) {
+        switch textField {
+        case self.creditCardTextField:
+            self.errors[.CreditCard] = error
+        case self.expirationDateTextField:
+            self.errors[.Expiration] = error
+        case self.cvcTextField:
+            self.errors[.CVC] = error
+        default:
+            break
+        }
+    }
+    
+    fileprivate func setErrorState(_ error: ValidatorError) {
+        self.errorLabel.isHidden = false
         
         self.creditCardContainerView.backgroundColor = .shp_errorRed()
         
         switch error {
-        case .FieldBlank(let fieldName):
+        case .fieldBlank(let fieldName):
             self.errorLabel.text = String(format: LocalizedStrings.blankFieldErrorFormat, fieldName)
-        case .FieldInvalid(_, let message):
+        case .fieldInvalid(_, let message):
             self.errorLabel.text = message
         }
     }

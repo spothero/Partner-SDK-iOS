@@ -10,8 +10,8 @@ import Foundation
 
 class ProgressHUD: UIView {
     
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var progressLabel: UILabel!
+    @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet private weak var progressLabel: UILabel!
     
     /**
      Creates a new SHProgressHUD view, adds it to the provided view, starts animating the activity indicator and shows it.
@@ -19,20 +19,12 @@ class ProgressHUD: UIView {
      - parameter view: The view that the SHProgressHUD will be added to.
      - parameter text: The text that will be displayed under the activity indicator.
      */
-    static func showHUDAddedTo(view: UIView, withText text: String = "") {
-        #if swift(>=2.3)
-            guard let progressView = NSBundle.shp_resourceBundle().loadNibNamed(String(ProgressHUD),
-                                                                                owner: self,
-                                                                                options: nil)!.first as? ProgressHUD else {
-                                                                                    return
-            }
-        #else
-            guard let progressView = NSBundle.shp_resourceBundle().loadNibNamed(String(ProgressHUD),
-                                                                                owner: self,
-                                                                                options: nil).first as? ProgressHUD else {
-                                                                                    return
-            }
-        #endif
+    static func showHUDAddedTo(_ view: UIView, withText text: String = "") {
+        guard let progressView = Bundle.shp_resourceBundle().loadNibNamed(String(describing: ProgressHUD.self),
+                                                                          owner: self,
+                                                                          options: nil)?.first as? ProgressHUD else {
+                                                                            return
+        }
         
         // Don't show if it is already being shown
         for subView in view.subviews {
@@ -48,8 +40,8 @@ class ProgressHUD: UIView {
         progressView.progressLabel.text = text
         
         view.addSubview(progressView)
-        view.bringSubviewToFront(progressView)
-        view.userInteractionEnabled = false
+        view.bringSubview(toFront: progressView)
+        view.isUserInteractionEnabled = false
     }
     
     /**
@@ -57,12 +49,12 @@ class ProgressHUD: UIView {
      
      - parameter view: The view that is going to be searched for a SHProgressHUD subview.
      */
-    static func hideHUDForView(view: UIView?) {
+    static func hideHUDForView(_ view: UIView?) {
         guard let view = view else {
             return
         }
         
-        view.userInteractionEnabled = true
+        view.isUserInteractionEnabled = true
         
         for subView in view.subviews {
             if subView is ProgressHUD {

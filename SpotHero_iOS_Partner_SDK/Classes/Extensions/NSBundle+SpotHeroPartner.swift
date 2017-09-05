@@ -8,12 +8,14 @@
 
 import Foundation
 
-extension NSBundle {
-    static func shp_resourceBundle() -> NSBundle {
-        let frameworkBundle = NSBundle(forClass: SpotHeroPartnerSDK.self)
-        let resourceUrl = frameworkBundle.resourceURL?.URLByAppendingPathComponent("SpotHero_iOS_Partner_SDK.bundle")
-        if let resourceUrl = resourceUrl, resourceBundle = NSBundle(URL: resourceUrl) {
-            return resourceBundle
+extension Bundle {
+    static func shp_resourceBundle() -> Bundle {
+        let frameworkBundle = Bundle(for: SpotHeroPartnerSDK.self)
+        let resourceUrl = frameworkBundle.resourceURL?.appendingPathComponent("SpotHero_iOS_Partner_SDK.bundle")
+        if
+            let resourceUrl = resourceUrl,
+            let resourceBundle = Bundle(url: resourceUrl) {
+                return resourceBundle
         } else {
             assertionFailure("Cannot get resource bundle!")
             return frameworkBundle

@@ -1,0 +1,18 @@
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=UTF-8
+Date: Thu, 15 Dec 2016 16:53:08 GMT
+Expires: Thu, 15 Dec 2016 16:53:08 GMT
+Cache-Control: private, max-age=300
+Vary: Accept-Language
+Content-Encoding: gzip
+Server: pablo
+X-XSS-Protection: 1; mode=block
+X-Frame-Options: SAMEORIGIN
+Alt-Svc: quic=":443"; ma=2592000; v="35,34"
+Transfer-Encoding: chunked
+Connection: Keep-alive
+
+{
+"predictions" : [],
+"status" : "OK"
+}

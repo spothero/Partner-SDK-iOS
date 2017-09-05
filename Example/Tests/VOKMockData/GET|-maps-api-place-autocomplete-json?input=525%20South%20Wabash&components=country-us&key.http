@@ -1,0 +1,236 @@
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=UTF-8
+Date: Wed, 14 Dec 2016 22:17:29 GMT
+Expires: Wed, 14 Dec 2016 22:17:29 GMT
+Cache-Control: private, max-age=300
+Vary: Accept-Language
+Content-Encoding: gzip
+Server: pablo
+X-XSS-Protection: 1; mode=block
+X-Frame-Options: SAMEORIGIN
+Alt-Svc: quic=":443"; ma=2592000; v="35,34"
+Transfer-Encoding: chunked
+Connection: Keep-alive
+
+{
+"predictions" : [
+{
+"description" : "525 South Wabash Avenue, Chicago, IL, United States",
+"id" : "d04f2dc6c589ba4d6db742ae566858c6464b5971",
+"matched_substrings" : [
+{
+"length" : 3,
+"offset" : 0
+},
+{
+"length" : 12,
+"offset" : 4
+}
+],
+"place_id" : "ChIJ65XAaKIsDogRfgnkNk2MDN4",
+"reference" : "ClRLAAAAEr0NbTNeywqhKaudCAW2hepZe9Udu_wxvQPd_DsaB4YPLAjwq83Vq1Ph-2MZo6zg-R8WwWTbmJfDcY-HhLri8SWKlBA8zay1AtEVGZ3ZPLMSEOmAhCU-jM4p643je2yW7zQaFMbD9iR636tOT8yNI3KhtzDCmghN",
+"structured_formatting" : {
+"main_text" : "525 South Wabash Avenue",
+"main_text_matched_substrings" : [
+{
+"length" : 3,
+"offset" : 0
+},
+{
+"length" : 12,
+"offset" : 4
+}
+],
+"secondary_text" : "Chicago, IL, United States"
+},
+"terms" : [
+{
+"offset" : 0,
+"value" : "525"
+},
+{
+"offset" : 4,
+"value" : "South Wabash Avenue"
+},
+{
+"offset" : 25,
+"value" : "Chicago"
+},
+{
+"offset" : 34,
+"value" : "IL"
+},
+{
+"offset" : 38,
+"value" : "United States"
+}
+],
+"types" : [ "street_address", "geocode" ]
+},
+{
+"description" : "525 South Wabash Street, Hobart, IN, United States",
+"id" : "f2836f38fff8ecab17b79e19b537397240c38d8b",
+"matched_substrings" : [
+{
+"length" : 16,
+"offset" : 0
+}
+],
+"place_id" : "EjI1MjUgU291dGggV2FiYXNoIFN0cmVldCwgSG9iYXJ0LCBJTiwgVW5pdGVkIFN0YXRlcw",
+"reference" : "CkQ2AAAA9UEPfQQL7L4-bcnfbEQMMLW0kgCZ5OR5SAlEWzEcNxggjz87fLkiFsFMOdDcbdO5Th7QzDG67Lhv_dLfFk4bmBIQGztz_DR44JAXlm8sZsBL8hoUYP5TGTj-oi2_08boLvKPvsu0uTM",
+"structured_formatting" : {
+"main_text" : "525 South Wabash Street",
+"main_text_matched_substrings" : [
+{
+"length" : 16,
+"offset" : 0
+}
+],
+"secondary_text" : "Hobart, IN, United States"
+},
+"terms" : [
+{
+"offset" : 0,
+"value" : "525 South Wabash Street"
+},
+{
+"offset" : 25,
+"value" : "Hobart"
+},
+{
+"offset" : 33,
+"value" : "IN"
+},
+{
+"offset" : 37,
+"value" : "United States"
+}
+],
+"types" : [ "route", "geocode" ]
+},
+{
+"description" : "525 South Wabash Street, Wabash, IN, United States",
+"id" : "bf37cc57d596c2de2bbbb29b1ec8d7281dcc9199",
+"matched_substrings" : [
+{
+"length" : 16,
+"offset" : 0
+}
+],
+"place_id" : "EjI1MjUgU291dGggV2FiYXNoIFN0cmVldCwgV2FiYXNoLCBJTiwgVW5pdGVkIFN0YXRlcw",
+"reference" : "CkQ2AAAAVgLde2M8lTz-cNxZZuNdFgJCZxSZY5NHPg11oWXWYf2Peem4PUxAIpgFqSK_zRrc5OcdRkSQO6ngmvNjEl5RzRIQ-kqvK0NlrXcD3147TmxQGRoUbTMVC3x8mARwHt0X7DM00fYWWwk",
+"structured_formatting" : {
+"main_text" : "525 South Wabash Street",
+"main_text_matched_substrings" : [
+{
+"length" : 16,
+"offset" : 0
+}
+],
+"secondary_text" : "Wabash, IN, United States"
+},
+"terms" : [
+{
+"offset" : 0,
+"value" : "525 South Wabash Street"
+},
+{
+"offset" : 25,
+"value" : "Wabash"
+},
+{
+"offset" : 33,
+"value" : "IN"
+},
+{
+"offset" : 37,
+"value" : "United States"
+}
+],
+"types" : [ "route", "geocode" ]
+},
+{
+"description" : "525 South Wabash Street, Chicago, IL, United States",
+"id" : "63a94ca0c5846091c65a2e37db0d4b7e9e89f4c1",
+"matched_substrings" : [
+{
+"length" : 16,
+"offset" : 0
+}
+],
+"place_id" : "EjM1MjUgU291dGggV2FiYXNoIFN0cmVldCwgQ2hpY2FnbywgSUwsIFVuaXRlZCBTdGF0ZXM",
+"reference" : "CkQ3AAAAeTVE5MpLAZB_HYTKf0VeCK6cj_jx9Tczf9u-QqSxTW3CI3Halq1SPrAjbgC3tp5SbUoeGepnUWBj96asZjP1vxIQ6nyPH_Q3FMFXUfI06PDTmhoU4Tfewg6TwOfnKvrILVc7mFpgrnU",
+"structured_formatting" : {
+"main_text" : "525 South Wabash Street",
+"main_text_matched_substrings" : [
+{
+"length" : 16,
+"offset" : 0
+}
+],
+"secondary_text" : "Chicago, IL, United States"
+},
+"terms" : [
+{
+"offset" : 0,
+"value" : "525 South Wabash Street"
+},
+{
+"offset" : 25,
+"value" : "Chicago"
+},
+{
+"offset" : 34,
+"value" : "IL"
+},
+{
+"offset" : 38,
+"value" : "United States"
+}
+],
+"types" : [ "route", "geocode" ]
+},
+{
+"description" : "525 Wabash Street, Michigan City, IN, United States",
+"id" : "19de6b12b07dbe5a3269255e05d4556bc1b96d74",
+"matched_substrings" : [
+{
+"length" : 17,
+"offset" : 0
+}
+],
+"place_id" : "EjM1MjUgV2FiYXNoIFN0cmVldCwgTWljaGlnYW4gQ2l0eSwgSU4sIFVuaXRlZCBTdGF0ZXM",
+"reference" : "CkQ3AAAAoSU_FQjudk75B_DDTG1YYZr_yqfEgVUzIAjUIGwH9L7YhTJB382TAVIJlYf8ePABwMFMct11SBD-UHv-e1SqIhIQ5teLzDNLDPUrWL_X2L-jMxoUbuRb5FwpqX4lDY9jo_9T3kq71n8",
+"structured_formatting" : {
+"main_text" : "525 Wabash Street",
+"main_text_matched_substrings" : [
+{
+"length" : 17,
+"offset" : 0
+}
+],
+"secondary_text" : "Michigan City, IN, United States"
+},
+"terms" : [
+{
+"offset" : 0,
+"value" : "525 Wabash Street"
+},
+{
+"offset" : 19,
+"value" : "Michigan City"
+},
+{
+"offset" : 34,
+"value" : "IN"
+},
+{
+"offset" : 38,
+"value" : "United States"
+}
+],
+"types" : [ "route", "geocode" ]
+}
+],
+"status" : "OK"
+}

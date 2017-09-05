@@ -7,17 +7,16 @@
 //
 
 import Foundation
-import VOKMockUrlProtocol
-
 @testable import SpotHero_iOS_Partner_SDK
+import VOKMockUrlProtocol
 
 extension SharedURLSession {
     /**
      Starts rerouting all HTTP requests made through the Swift API to disk.
      - parameter bundle: Bundle to use
      */
-    func sph_startUsingMockData(bundle: NSBundle) {
-        let mockConfig = NSURLSessionConfiguration.defaultSessionConfiguration()
+    func sph_startUsingMockData(bundle: Bundle) {
+        let mockConfig = URLSessionConfiguration.default
         let mockURLProtocolClass = VOKMockUrlProtocol.self
         
         var urlProtocolsToUse: [AnyClass]
@@ -27,22 +26,21 @@ extension SharedURLSession {
             urlProtocolsToUse = [AnyClass]()
         }
         
-        urlProtocolsToUse.insert(mockURLProtocolClass, atIndex: 0)
+        urlProtocolsToUse.insert(mockURLProtocolClass, at: 0)
         mockConfig.protocolClasses = urlProtocolsToUse
         
         //Need to pass in the test bundle since HTTPSessionManager is in the main bundle,
         //and VOKMockUrlProtocol needs to look in the test bundle.
+        VOKMockUrlProtocol.setTest(bundle)
         
-        VOKMockUrlProtocol.setTestBundle(bundle)
-        
-        self.updateManagerWithConfiguration(mockConfig)
+        self.updateManagerWithConfiguration(configuration: mockConfig)
     }
     
     /**
      Stops rerouting all HTTP requests made through the Swift API to disk.
      */
     func sph_stopUsingMockData() {
-        let defaultConfig = NSURLSessionConfiguration.defaultSessionConfiguration()
-        self.updateManagerWithConfiguration(defaultConfig)
+        let defaultConfig = URLSessionConfiguration.default
+        self.updateManagerWithConfiguration(configuration: defaultConfig)
     }
 }

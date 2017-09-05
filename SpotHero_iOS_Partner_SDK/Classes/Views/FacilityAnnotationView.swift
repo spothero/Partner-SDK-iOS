@@ -8,24 +8,47 @@
 
 import Foundation
 import MapKit
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+private func < <T: Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+private func > <T: Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
 
 class FacilityAnnotationView: MKAnnotationView {
     
     static let Identifier = "FacilityAnnotationViewIdentifier"
     
-    private let growDuration: NSTimeInterval = 0.4
+    private let growDuration: TimeInterval = 0.4
     private let facilityGrowScale: CGFloat = 1.5
     private let priceTextColorActive = UIColor.shp_green()
     private let priceTextColorDefault = UIColor.shp_spotHeroBlue()
     private let facilityPinImageDefault = UIImage(named: "spot-marker-default",
-                                                  inBundle: NSBundle.shp_resourceBundle(),
-                                                  compatibleWithTraitCollection: nil)
+                                                  in: Bundle.shp_resourceBundle(),
+                                                  compatibleWith: nil)
     private let facilityPinImageActive = UIImage(named: "spot-marker-active",
-                                                 inBundle: NSBundle.shp_resourceBundle(),
-                                                 compatibleWithTraitCollection: nil)
+                                                 in: Bundle.shp_resourceBundle(),
+                                                 compatibleWith: nil)
     private var priceLabel: AnnotationLabel?
     private var backgroundImageView: UIImageView?
-    private let unscaledHeight:CGFloat = 38
+    private let unscaledHeight: CGFloat = 38
     
     override var annotation: MKAnnotation? {
         didSet {
@@ -36,13 +59,19 @@ class FacilityAnnotationView: MKAnnotationView {
                 self.priceLabel?.text = ""
                 return
             }
-            self.priceLabel?.font = UIFont.systemFontOfSize(self.priceLabel?.text?.characters.count > 3 ? AnnotationLabel.minLabelFontSize : AnnotationLabel.maxLabelFontSize)
+            
+            var fontSize = AnnotationLabel.maxLabelFontSize
+            if self.priceLabel?.text?.characters.count > 3 {
+                fontSize = AnnotationLabel.minLabelFontSize
+            }
+            
+            self.priceLabel?.font = UIFont.systemFont(ofSize: fontSize)
             self.priceLabel?.text = "$\(displayPrice)"
         }
     }
-    override var selected: Bool {
+    override var isSelected: Bool {
         didSet {
-            self.animate(selected)
+            self.animate(isSelected)
         }
     }
     
@@ -54,7 +83,7 @@ class FacilityAnnotationView: MKAnnotationView {
             return
         }
         self.frame.size = imageSize
-        self.backgroundColor = .clearColor()
+        self.backgroundColor = .clear
         self.centerOffset = CGPoint(x: 0, y: -imageSize.height / 2)
         self.canShowCallout = false
         
@@ -62,9 +91,9 @@ class FacilityAnnotationView: MKAnnotationView {
         self.backgroundImageView?.image = nil
         self.backgroundImageView?.image = self.facilityPinImageDefault
         self.backgroundImageView?.autoresizingMask = [
-            .FlexibleTopMargin,
-            .FlexibleLeftMargin,
-            .FlexibleRightMargin,
+            .flexibleTopMargin,
+            .flexibleLeftMargin,
+            .flexibleRightMargin,
         ]
         guard let imageView = self.backgroundImageView else {
             return
@@ -74,11 +103,11 @@ class FacilityAnnotationView: MKAnnotationView {
         self.priceLabel = AnnotationLabel(frame: self.labelBoundsWithScale(1))
         self.annotation = annotation
         self.priceLabel?.textColor = .shp_spotHeroBlue()
-        self.priceLabel?.contentMode = .Center
+        self.priceLabel?.contentMode = .center
         self.priceLabel?.autoresizingMask = [
-            .FlexibleTopMargin,
-            .FlexibleLeftMargin,
-            .FlexibleRightMargin
+            .flexibleTopMargin,
+            .flexibleLeftMargin,
+            .flexibleRightMargin,
         ]
         guard let priceLabel = self.priceLabel else {
             return
@@ -90,29 +119,22 @@ class FacilityAnnotationView: MKAnnotationView {
         super.init(coder: aDecoder)
     }
     
-    #if swift(>=2.3)
-    #else
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-    }
-    #endif
-    
-    private func labelBoundsWithScale(scale: CGFloat) -> CGRect {
+    private func labelBoundsWithScale(_ scale: CGFloat) -> CGRect {
         var labelBounds = self.bounds
-        labelBounds.size.height = labelBounds.size.height - 10 * scale
-        labelBounds.size.width = labelBounds.size.width - 8 * scale
-        labelBounds.origin.x = labelBounds.origin.x + 4 * scale
+        labelBounds.size.height -= (10 * scale)
+        labelBounds.size.width -= (8 * scale)
+        labelBounds.origin.x += (4 * scale)
         return labelBounds
     }
     
-    private func animate(selected: Bool) {
-        UIView.animateWithDuration(self.growDuration) {
+    private func animate(_ selected: Bool) {
+        UIView.animate(withDuration: self.growDuration) {
             self.backgroundImageView?.image = selected ? self.facilityPinImageActive : self.facilityPinImageDefault
             self.priceLabel?.textColor = selected ? self.priceTextColorActive : self.priceTextColorDefault
             let scale = selected ? self.facilityGrowScale : 1
             self.centerOffset = CGPoint(x: 0, y: (-self.unscaledHeight * scale) / 2)
-            self.transform = selected ? CGAffineTransformMakeScale(self.facilityGrowScale, self.facilityGrowScale) : CGAffineTransformIdentity
-        }
+            self.transform = selected ? CGAffineTransform(scaleX: self.facilityGrowScale, y: self.facilityGrowScale) : CGAffineTransform.identity
+        } 
     }
 }
 
@@ -135,9 +157,14 @@ class AnnotationLabel: UILabel {
             self.initialWidth = self.frame.width
         } //else don't update initial width or you'll get divide by zero errors.
         
-        self.backgroundColor = .clearColor()
-        self.textAlignment = .Center
-        self.font = UIFont(name: self.font!.fontName, size: AnnotationLabel.minLabelFontSize)
+        self.backgroundColor = .clear
+        self.textAlignment = .center
+        
+        guard let fontName = self.font?.fontName else {
+            assertionFailure("No font name for you!")
+            return
+        }
+        self.font = UIFont(name: fontName, size: AnnotationLabel.minLabelFontSize)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -153,6 +180,6 @@ class AnnotationLabel: UILabel {
         }
         
         let scale: CGFloat = self.frame.width / self.initialWidth
-        self.font = UIFont.systemFontOfSize(fontSize * scale)
+        self.font = UIFont.systemFont(ofSize: fontSize * scale)
     }
 }

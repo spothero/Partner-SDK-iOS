@@ -6,21 +6,21 @@
 //  Copyright © 2016 SpotHero, Inc. All rights reserved.
 //
 
-import XCTest
 import CoreLocation
 @testable import SpotHero_iOS_Partner_SDK
+import XCTest
 
 class PartnerAPITests: BaseTests {
-    let timeoutDuration: NSTimeInterval = 60
+    let timeoutDuration: TimeInterval = 60
     
     override func setUp() {
         super.setUp()
-        SpotHeroPartnerSDK.SharedInstance.partnerApplicationKey = "bb5ab4b58fc484d8f478ef06e3c67e3c2dd71543"
+        SpotHeroPartnerSDK.shared.partnerApplicationKey = "bb5ab4b58fc484d8f478ef06e3c67e3c2dd71543"
     }
     
-    func getFacilities(location: CLLocation, completion: FacilityCompletion) {
-        let startDate = NSDate().dateByAddingTimeInterval(60 * 60 * 5)
-        let endDate = NSDate().dateByAddingTimeInterval(60 * 60 * 10)
+    func getFacilities(_ location: CLLocation, completion: @escaping FacilityCompletion) {
+        let startDate = Date().addingTimeInterval(60 * 60 * 5)
+        let endDate = Date().addingTimeInterval(60 * 60 * 10)
         FacilityAPI.fetchFacilities(location.coordinate,
                                     starts: startDate,
                                     ends: endDate,
@@ -28,7 +28,7 @@ class PartnerAPITests: BaseTests {
     }
     
     func testGetFacilities() {
-        let expectation = self.expectationWithDescription("testGetFacilities")
+        let expectation = self.expectation(description: "testGetFacilities")
         
         self.getFacilities(Constants.ChicagoLocation) {
             facilities, error, hasMorePages in
@@ -40,7 +40,7 @@ class PartnerAPITests: BaseTests {
             }
         }
         
-        self.waitForExpectationsWithTimeout(self.timeoutDuration, handler: nil)
+        self.waitForExpectations(timeout: self.timeoutDuration, handler: nil)
     }
     
     func testCancelGetFacilities() {
@@ -50,7 +50,7 @@ class PartnerAPITests: BaseTests {
             XCTAssertNotNil(error)
             XCTAssertFalse(hasMorePages)
             if let error = error as? NSError {
-                XCTAssertEqual(error.code, NSURLError.Cancelled.rawValue)
+                XCTAssertEqual(error.code, URLError.cancelled.rawValue)
             } else {
                 XCTFail("Received the wrong error type")
             }
@@ -61,7 +61,7 @@ class PartnerAPITests: BaseTests {
     }
     
     func testNoFacilities() {
-        let expectation = self.expectationWithDescription("testNoFacilities")
+        let expectation = self.expectation(description: "testNoFacilities")
         
         // Location in london so no facilities will be found
         let location = CLLocation(latitude: 51.5074, longitude: 0.1278)
@@ -74,15 +74,15 @@ class PartnerAPITests: BaseTests {
             expectation.fulfill()
         }
         
-       self.waitForExpectationsWithTimeout(self.timeoutDuration, handler: nil)
+       self.waitForExpectations(timeout: self.timeoutDuration, handler: nil)
     }
     
     func testCreateReservation() {
-        let expectation = self.expectationWithDescription("testCreateReservation")
-        
+        let expectation = self.expectation(description: "testCreateReservation")
+    
         var testExecuting = false
         self.getFacilities(Constants.ChicagoLocation) {
-            facilities, error, hasMorePages in
+            facilities, error, _ in
             
             // This is another set of results from getting the facilities.
             if testExecuting {
@@ -100,7 +100,6 @@ class PartnerAPITests: BaseTests {
             
             if let facility = testFacility,
                 let rate = facility.availableRates.first {
-                facility.phoneNumberRequired
                 StripeWrapper.getToken(Constants.Test.CreditCardNumber,
                                        expirationMonth: Constants.Test.ExpirationMonth,
                                        expirationYear: Constants.Test.ExpirationYear,
@@ -140,6 +139,6 @@ class PartnerAPITests: BaseTests {
             }
         }
         
-        self.waitForExpectationsWithTimeout(self.timeoutDuration, handler: nil)
+        self.waitForExpectations(timeout: self.timeoutDuration, handler: nil)
     }
 }

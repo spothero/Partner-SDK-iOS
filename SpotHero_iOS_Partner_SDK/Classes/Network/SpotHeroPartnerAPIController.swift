@@ -11,13 +11,13 @@ import Foundation
 //MARK: - Completion Types
 
 /// Success completion for any endpoint expecting no response.
-typealias NoResponseExpectedAPISuccessCompletion = (() -> ())
+typealias NoResponseExpectedAPISuccessCompletion = (() -> Void)
 
 /// Success completion for any JSON endpoint. Returns a deserialized JSON dict.
-typealias JSONAPISuccessCompletion = ((JSON: JSONDictionary) -> ())
+typealias JSONAPISuccessCompletion = ((_ JSON: JSONDictionary) -> Void)
 
 /// Error completion for any endpoint. Returns an NSError explaining what ya done fucked up.
-public typealias APIErrorCompletion = ((error: NSError) -> ())
+public typealias APIErrorCompletion = ((_ error: Error) -> Void)
 
 //MARK: Main API Controller
 
@@ -34,28 +34,28 @@ struct SpotHeroPartnerAPIController {
     
     private enum EncodingType {
         case
-        None,
-        JSONData,
-        FormData
+        none,
+        jsonData,
+        formData
     }
     
-    private static func formDataFromParameters(parameters: JSONDictionary) -> NSData? {
+    private static func formDataFromParameters(_ parameters: JSONDictionary) -> Data? {
         //Internal functions here are taken from Alamofire's ParameterEncoding class to simplify
         //generating correct form data.
         //https://github.com/Alamofire/Alamofire/blob/24df4a7acff6b768914b67a5d59be0ccca32c370/Source/ParameterEncoding.swift
-        func escape(string: String) -> String {
+        func escape(_ string: String) -> String {
             let generalDelimitersToEncode = ":#[]@" // does not include "?" or "/" due to RFC 3986 - Section 3.4
             let subDelimitersToEncode = "!$&'()*+,;="
             
-            let allowedCharacterSet = NSCharacterSet.URLQueryAllowedCharacterSet().mutableCopy() as! NSMutableCharacterSet
-            allowedCharacterSet.removeCharactersInString(generalDelimitersToEncode + subDelimitersToEncode)
-            return string.stringByAddingPercentEncodingWithAllowedCharacters(allowedCharacterSet) ?? string
+            var allowedCharacterSet = CharacterSet.urlQueryAllowed
+            allowedCharacterSet.remove(charactersIn: generalDelimitersToEncode + subDelimitersToEncode)
+            return string.addingPercentEncoding(withAllowedCharacters: allowedCharacterSet) ?? string
         }
         
-        func queryComponents(key: String, _ value: AnyObject) -> [(String, String)] {
+        func queryComponents(_ key: String, _ value: Any) -> [(String, String)] {
             var components: [(String, String)] = []
             
-            if let dictionary = value as? [String: AnyObject] {
+            if let dictionary = value as? [String: Any] {
                 for (nestedKey, value) in dictionary {
                     components += queryComponents("\(key)[\(nestedKey)]", value)
                 }
@@ -70,73 +70,74 @@ struct SpotHeroPartnerAPIController {
             return components
         }
         
-        func query(queryParameters: [String : AnyObject]) -> String {
+        func query(_ queryParameters: [String : Any]) -> String {
             var components: [(String, String)] = []
             
-            for key in queryParameters.keys.sort(<) {
+            for key in queryParameters.keys.sorted(by: <) {
                 let value = queryParameters[key]!
                 components += queryComponents(key, value)
             }
             
-            return (components.map { "\($0)=\($1)" } as [String]).joinWithSeparator("&")
+            return (components.map { "\($0)=\($1)" } as [String]).joined(separator: "&")
         }
         
-        return query(parameters).dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
+        return query(parameters).data(using: String.Encoding.utf8, allowLossyConversion: false)
         
     }
     
-    private static func dataTaskWithMethod(method: HTTPMethod,
-                                           encoding: EncodingType = .None,
+    private static func dataTaskWithMethod(_ method: HTTPMethod,
+                                           encoding: EncodingType = .none,
                                            fullURLString: String,
                                            headers: [String : String],
                                            parameters: JSONDictionary? = nil,
-                                           errorCompletion: APIErrorCompletion,
+                                           errorCompletion: @escaping APIErrorCompletion,
                                            noResponseSuccessCompletion: NoResponseExpectedAPISuccessCompletion? = nil,
-                                           jsonSuccessCompletion: JSONAPISuccessCompletion?) -> NSURLSessionDataTask? {
+                                           jsonSuccessCompletion: JSONAPISuccessCompletion?) -> URLSessionDataTask? {
         
         //Pre-flight checks
-        if ((noResponseSuccessCompletion != nil && jsonSuccessCompletion != nil) //Both are there
-            || (noResponseSuccessCompletion == nil && jsonSuccessCompletion == nil)) { //both are nil
-            let error = APIError.errorWithDescription("You must select one, JSON success or no response expected success. You cannot has both or neither.",
-                                                      andStatusCode: APIError.PartnerSDKErrorCode.InvalidParameter.rawValue)
-            NSOperationQueue.mainQueue().addOperationWithBlock({
-                errorCompletion(error: error)
-            })
-            return nil
+        if
+            (noResponseSuccessCompletion != nil && jsonSuccessCompletion != nil) //Both are there
+            || (noResponseSuccessCompletion == nil && jsonSuccessCompletion == nil) { //OR both are nil
+                let description = "You must select one, JSON success or no response expected success. You cannot has both or neither."
+                let error = APIError.errorWithDescription(description,
+                                                          andStatusCode: APIError.PartnerSDKErrorCode.invalidParameter.rawValue)
+                OperationQueue.main.addOperation {
+                    errorCompletion(error)
+                }
+                return nil
         }
         
-        guard let url = NSURL(string: fullURLString) else {
+        guard let url = URL(string: fullURLString) else {
             let error = APIError.errorWithDescription("Could not create URL from string \(fullURLString)",
-                                                      andStatusCode: APIError.PartnerSDKErrorCode.CouldntMakeURLOutOfString.rawValue)
-            NSOperationQueue.mainQueue().addOperationWithBlock({
-                errorCompletion(error: error)
-            })
+                                                      andStatusCode: APIError.PartnerSDKErrorCode.couldntMakeURLOutOfString.rawValue)
+            OperationQueue.main.addOperation {
+                errorCompletion(error)
+            }
             return nil
         }
-        
         
         //Create the request
-        let request = NSMutableURLRequest(URL: url)
-        request.HTTPMethod = method.rawValue
+        var request = URLRequest(url: url)
+        request.httpMethod = method.rawValue
         request.allHTTPHeaderFields = headers
         
         //Encode and add data
         if let uploadData = parameters {
             switch encoding {
-            case .JSONData:
+            case .jsonData:
                 do {
-                    let jsonData = try NSJSONSerialization.dataWithJSONObject(uploadData, options:  NSJSONWritingOptions())
-                    request.HTTPBody = jsonData
+                    let jsonData = try JSONSerialization.data(withJSONObject: uploadData)
+                    request.httpBody = jsonData
                 } catch let error as NSError {
                     //Something went wrong with JSON encoding
-                    NSOperationQueue.mainQueue().addOperationWithBlock({
-                        errorCompletion(error: error)
-                    })
+                    OperationQueue.main.addOperation {
+                        errorCompletion(error)
+                    }
                     return nil
                 }
-            case .FormData:
-                request.HTTPBody = self.formDataFromParameters(uploadData)
-            case .None:
+            case .formData:
+                request.httpBody = self.formDataFromParameters(uploadData)
+            case .none:
                 //Do nothing.
                 break
             }
@@ -144,24 +145,25 @@ struct SpotHeroPartnerAPIController {
         }
         
         //Make the call.
-        let task = SharedURLSession.sharedInstance.session.dataTaskWithRequest(request) {
+        let task = SharedURLSession.sharedInstance.session.dataTask(with: request, completionHandler: {
             data, response, error in
+            
             self.handleResponse(data,
                                 response,
                                 error,
                                 errorCompletion,
                                 noResponseSuccessCompletion,
                                 jsonSuccessCompletion)
-        }
+        })
         
         task.resume()
         return task
     }
     
-    private static func handleResponse(data: NSData?,
-                                       _ response: NSURLResponse?,
-                                       _ error: NSError?,
-                                       _ errorCompletion: APIErrorCompletion,
+    private static func handleResponse(_ data: Data?,
+                                       _ response: URLResponse?,
+                                       _ error: Error?,
+                                       _ errorCompletion: @escaping APIErrorCompletion,
                                        _ noResponseSuccessCompletion: NoResponseExpectedAPISuccessCompletion?,
                                        _ jsonSuccessCompletion: JSONAPISuccessCompletion?) {
         
@@ -170,13 +172,13 @@ struct SpotHeroPartnerAPIController {
         }
         
         if let error = error {
-            NSOperationQueue.mainQueue().addOperationWithBlock({ 
-                errorCompletion(error: error)
-            })
+            OperationQueue.main.addOperation {
+                errorCompletion(error)
+            }
             return
         }
         
-        guard let urlResponse = response as? NSHTTPURLResponse else {
+        guard let urlResponse = response as? HTTPURLResponse else {
             //If theres no response
             return
         }
@@ -193,9 +195,9 @@ struct SpotHeroPartnerAPIController {
             }
             
             if let noResponseCompletion = noResponseSuccessCompletion {
-                NSOperationQueue.mainQueue().addOperationWithBlock({
+                OperationQueue.main.addOperation {
                     noResponseCompletion()
-                })
+                }
                 return
             }
             
@@ -208,9 +210,9 @@ struct SpotHeroPartnerAPIController {
         
     }
     
-    private static func debugPrintResponseInfo(response: NSURLResponse?, data: NSData?) {
-        if let response = response as? NSHTTPURLResponse {
-            DLog("URL: \(response.URL)")
+    private static func debugPrintResponseInfo(_ response: URLResponse?, data: Data?) {
+        if let response = response as? HTTPURLResponse {
+            DLog("URL: \(response.url)")
             DLog("Status: \(response.statusCode)")
             DLog("Headers: \(response.allHeaderFields)")
         } else {
@@ -218,23 +220,23 @@ struct SpotHeroPartnerAPIController {
         }
         
         if let data = data {
-            DLog("Data: \(NSString(data: data, encoding: NSUTF8StringEncoding))")
+            DLog("Data: \(NSString(data: data, encoding: String.Encoding.utf8.rawValue))")
         } else {
             DLog("No data received!")
         }
     }
     
-    private static func handleDataSuccessWithStatusCode(statusCode: Int,
-                                                        andData data: NSData?,
-                                                        errorCompletion: APIErrorCompletion,
-                                                        completion: JSONAPISuccessCompletion) {
+    private static func handleDataSuccessWithStatusCode(_ statusCode: Int,
+                                                        andData data: Data?,
+                                                        errorCompletion: @escaping APIErrorCompletion,
+                                                        completion: @escaping JSONAPISuccessCompletion) {
         guard let returnedData = data else {
             // There ought to be something here.
             let error = APIError.errorWithDescription("No data received. Did you mean to use the NoResponseExpected completion?",
-                                                      andStatusCode: APIError.PartnerSDKErrorCode.UnexpectedEmptyResponse.rawValue)
-            NSOperationQueue.mainQueue().addOperationWithBlock({
-                errorCompletion(error: error)
-            })
+                                                      andStatusCode: APIError.PartnerSDKErrorCode.unexpectedEmptyResponse.rawValue)
+            OperationQueue.main.addOperation {
+                errorCompletion(error)
+            }
             return
         }
         
@@ -244,19 +246,19 @@ struct SpotHeroPartnerAPIController {
         }
         
         // Ermahgerd! It worked!
-        NSOperationQueue.mainQueue().addOperationWithBlock {
-            completion(JSON: successJSON)
+        OperationQueue.main.addOperation {
+            completion(successJSON)
         }
     }
     
-    private static func handleErrorWithStatusCode(statusCode: Int,
-                                                  andData data: NSData?,
-                                                  completion: APIErrorCompletion) {
+    private static func handleErrorWithStatusCode(_ statusCode: Int,
+                                                  andData data: Data?,
+                                                  completion: @escaping APIErrorCompletion) {
         guard let errorData = data else {
             let error = APIError.errorFromHTTPStatusCode(statusCode)
-            NSOperationQueue.mainQueue().addOperationWithBlock({
-                completion(error: error)
-            })
+            OperationQueue.main.addOperation {
+                completion(error)
+            }
             return
         }
         
@@ -268,27 +270,27 @@ struct SpotHeroPartnerAPIController {
         do {
             let serverErrors = try ServerErrorJSON(json: errorJSON)
             let error = APIError.errorFromServerJSON(serverErrors, statusCode: statusCode)
-            NSOperationQueue.mainQueue().addOperationWithBlock({
-                completion(error: error)
-            })
+            OperationQueue.main.addOperation {
+                completion(error)
+            }
         } catch let parsingError {
             DLog("Parsing error: \(parsingError)")
             let error = APIError.parsingError(errorJSON)
-            NSOperationQueue.mainQueue().addOperationWithBlock({
-                completion(error: error)
-            })
+            OperationQueue.main.addOperation {
+                completion(error)
+            }
         }
         
     }
     
-    private static func jsonDictionaryFromData(data: NSData, errorCompletion: APIErrorCompletion) -> JSONDictionary? {
+    private static func jsonDictionaryFromData(_ data: Data, errorCompletion: @escaping APIErrorCompletion) -> JSONDictionary? {
         do {
-            let dictionary = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions()) as? JSONDictionary
+            let dictionary = try JSONSerialization.jsonObject(with: data) as? JSONDictionary
             return dictionary
         } catch let error as NSError {
-            NSOperationQueue.mainQueue().addOperationWithBlock({
-                errorCompletion(error: error)
-            })
+            OperationQueue.main.addOperation {
+                errorCompletion(error)
+            }
             return nil
         }
     }
@@ -304,18 +306,18 @@ struct SpotHeroPartnerAPIController {
      - parameter errorCompletion:   The completion block to execute on error
      - parameter successCompletion: The completion block to execute on success, which will return a  JSONDictionary object.
      */
-    static func getJSONFromEndpoint(endpoint: String,
+    static func getJSONFromEndpoint(_ endpoint: String,
                                     withHeaders headers: HeaderDictionary,
                                     additionalParams: [String : String]? = nil,
-                                    errorCompletion: APIErrorCompletion,
-                                    successCompletion: JSONAPISuccessCompletion) -> NSURLSessionDataTask? {
+                                    errorCompletion: @escaping APIErrorCompletion,
+                                    successCompletion: @escaping JSONAPISuccessCompletion) -> URLSessionDataTask? {
         
         let stringHeaders = APIHeaders.headerStringDict(headers)
         
         //Set up url query items for additional headers.
-        var queryItems = [NSURLQueryItem]()
+        var queryItems = [URLQueryItem]()
         if let params = additionalParams {
-            queryItems = NSURLQueryItem.shp_queryItemsFromDictionary(params)
+            queryItems = URLQueryItem.shp_queryItemsFromDictionary(params)
         }
         
         let fullURLString = ServerEnvironment
@@ -329,10 +331,10 @@ struct SpotHeroPartnerAPIController {
                                        jsonSuccessCompletion: successCompletion)
     }
     
-    static func getJSONFromFullURLString(fullURLString: String,
+    static func getJSONFromFullURLString(_ fullURLString: String,
                                          withHeaders headers: HeaderDictionary,
-                                         errorCompletion: APIErrorCompletion,
-                                         successCompletion: JSONAPISuccessCompletion) -> NSURLSessionDataTask? {
+                                         errorCompletion: @escaping APIErrorCompletion,
+                                         successCompletion: @escaping  JSONAPISuccessCompletion) -> URLSessionDataTask? {
         let stringHeaders = APIHeaders.headerStringDict(headers)
         return self.dataTaskWithMethod(.GET,
                                        fullURLString: fullURLString,
@@ -345,19 +347,20 @@ struct SpotHeroPartnerAPIController {
      POSTs JSON to a given endpoint
      
      - parameter endpoint:          The endpoint, without the base url
-     - parameter endpointIsDumb:    `true` if the endpoint is dumb and barfs on actual json input and needs everything put in the headers as well, `false` if it's smart enough to accept actual json.
+     - parameter endpointIsDumb:    `true` if the endpoint is dumb and barfs on actual json input and needs everything put in the headers 
+                                    as well, `false` if it's smart enough to accept actual json.
      - parameter headers:           A dictionary of headers. Types can be found in APIHeaders.swift
      - parameter jsonToPost:        A dictionary to post as JSON.
      - parameter errorCompletion:   The completion block to execute on error
      - parameter successCompletion: The completion block to execute on success, which will return a JSONDictionary object.
      
      */
-    static func postJSONtoEndpoint(endpoint: String,
+    static func postJSONtoEndpoint(_ endpoint: String,
                                    endpointIsDumb: Bool = false,
-                                   jsonToPost json: [String : AnyObject],
+                                   jsonToPost json: [String : Any],
                                    withHeaders headers: HeaderDictionary,
-                                   errorCompletion: APIErrorCompletion,
-                                   successCompletion: JSONAPISuccessCompletion) {
+                                   errorCompletion: @escaping APIErrorCompletion,
+                                   successCompletion: @escaping JSONAPISuccessCompletion) {
         
         let fullURLString = ServerEnvironment
             .CurrentEnvironment
@@ -365,9 +368,9 @@ struct SpotHeroPartnerAPIController {
         var stringHeaders = APIHeaders.headerStringDict(headers)
         
         //TODO: Remove this when DRF 1.8 update occurs.
-        if (endpointIsDumb) {
+        if endpointIsDumb {
             //BOOOOO FORM STUFF
-            stringHeaders[APIHeaders.HTTPHeaderField.ContentType.rawValue] = APIHeaders.HTTPContentType.Form.rawValue
+            stringHeaders[APIHeaders.HTTPHeaderField.contentType.rawValue] = APIHeaders.HTTPContentType.form.rawValue
             self.postFormDataToFullURLString(fullURLString,
                                              dictionaryToPost: json,
                                              withHeaders: stringHeaders,
@@ -376,31 +379,31 @@ struct SpotHeroPartnerAPIController {
             return
         }
         
-        self.dataTaskWithMethod(.POST,
-                                encoding: .JSONData,
-                                fullURLString: fullURLString,
-                                headers: stringHeaders,
-                                parameters: json,
-                                errorCompletion: errorCompletion,
-                                jsonSuccessCompletion: successCompletion)
+        _ = self.dataTaskWithMethod(.POST,
+                                    encoding: .jsonData,
+                                    fullURLString: fullURLString,
+                                    headers: stringHeaders,
+                                    parameters: json,
+                                    errorCompletion: errorCompletion,
+                                    jsonSuccessCompletion: successCompletion)
     }
     
     /**
      Workaround for certain APIs being too dumb to handle actual JSON input. Srsly.
      */
-    private static func postFormDataToFullURLString(fullURLString: String,
+    private static func postFormDataToFullURLString(_ fullURLString: String,
                                                     dictionaryToPost dictionary: JSONDictionary,
                                                     withHeaders headers: [String : String],
-                                                    errorCompletion: APIErrorCompletion,
-                                                    successCompletion: JSONAPISuccessCompletion) {
+                                                    errorCompletion: @escaping APIErrorCompletion,
+                                                    successCompletion: @escaping JSONAPISuccessCompletion) {
         
-        self.dataTaskWithMethod(.POST,
-                                encoding: .FormData,
-                                fullURLString: fullURLString,
-                                headers: headers,
-                                parameters: dictionary,
-                                errorCompletion: errorCompletion,
-                                jsonSuccessCompletion: successCompletion)
+        _ = self.dataTaskWithMethod(.POST,
+                                    encoding: .formData,
+                                    fullURLString: fullURLString,
+                                    headers: headers,
+                                    parameters: dictionary,
+                                    errorCompletion: errorCompletion,
+                                    jsonSuccessCompletion: successCompletion)
     }
     
     /**
@@ -412,23 +415,23 @@ struct SpotHeroPartnerAPIController {
      - parameter errorCompletion:   The completion block to execute on error
      - parameter successCompletion: The completion block to execute on success, which will return a JSONDictionary object.
      */
-    static func putJSONtoEndpoint(endpoint: String,
+    static func putJSONtoEndpoint(_ endpoint: String,
                                   jsonToPut json: JSONDictionary,
                                   withHeaders headers: HeaderDictionary,
-                                  errorCompletion: APIErrorCompletion,
-                                  successCompletion: JSONAPISuccessCompletion) {
+                                  errorCompletion: @escaping APIErrorCompletion,
+                                  successCompletion: @escaping JSONAPISuccessCompletion) {
         
         let stringHeaders = APIHeaders.headerStringDict(headers)
         let fullURLString = ServerEnvironment
             .CurrentEnvironment
             .fullURLStringForEndpoint(endpoint)
         
-        self.dataTaskWithMethod(.PUT,
-                                encoding: .JSONData,
-                                fullURLString: fullURLString,
-                                headers: stringHeaders,
-                                parameters: json,
-                                errorCompletion: errorCompletion,
-                                jsonSuccessCompletion: successCompletion)
+        _ = self.dataTaskWithMethod(.PUT,
+                                    encoding: .jsonData,
+                                    fullURLString: fullURLString,
+                                    headers: stringHeaders,
+                                    parameters: json,
+                                    errorCompletion: errorCompletion,
+                                    jsonSuccessCompletion: successCompletion)
     }
 }

@@ -6,14 +6,13 @@
 //  Copyright © 2016 SpotHero, Inc. All rights reserved.
 //
 
-import XCTest
-
 @testable import SpotHero_iOS_Partner_SDK
+import XCTest
 
 class StripeWrapperTests: BaseTests {
 
     func testGetToken() {
-        let expectation = self.expectationWithDescription("testGetToken")
+        let expectation = self.expectation(description: "testGetToken")
         
         StripeWrapper.getToken(Constants.Test.CreditCardNumber,
                                expirationMonth: Constants.Test.ExpirationMonth,
@@ -25,7 +24,6 @@ class StripeWrapperTests: BaseTests {
                                 expectation.fulfill()
         }
         
-        self.waitForExpectationsWithTimeout(60, handler: nil)
+        self.waitForExpectations(timeout: 60, handler: nil)
     }
-
 }

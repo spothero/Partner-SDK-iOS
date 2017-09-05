@@ -17,52 +17,52 @@ public struct APIHeaders {
     static let UserAgent: HTTPHeaderValue = {
         //TODO: Get this off the bundle
         let version = 1
-        return HTTPHeaderValue.PartnerSDKUserAgent(versionNumber: version)
+        return HTTPHeaderValue.partnerSDKUserAgent(versionNumber: version)
     }()
     
     ///Various standard header fields
     enum HTTPHeaderField: String {
         case
-        Authorization,
-        ContentType = "Content-Type",
-        UserAgent = "User-Agent",
-        APIMinorVersion = "SpotHero-Version",
-        Accept
+        authorization = "Authorization",
+        contentType = "Content-Type",
+        userAgent = "User-Agent",
+        apiMinorVersion = "SpotHero-Version",
+        accept = "Accept"
     }
     
     ///Various Content types
     enum HTTPContentType: String {
         case
-        JSON = "application/json",
-        Form = "application/x-www-form-urlencoded; charset=utf8"
+        json = "application/json",
+        form = "application/x-www-form-urlencoded; charset=utf8"
     }
     
     ///Various header values and types associated with them
     enum HTTPHeaderValue {
         case
-        ContentType(contentType: HTTPContentType),
-        PartnerSDKUserAgent(versionNumber: Int),
-        APIMinorVersion,
-        APIToken
+        contentType(contentType: HTTPContentType),
+        partnerSDKUserAgent(versionNumber: Int),
+        apiMinorVersion,
+        apiToken
         
         /**
          - returns: The value of the header as a single string.
          */
         func asString() -> String {
             switch self {
-            case ContentType(let contentType):
+            case .contentType(let contentType):
                 return contentType.rawValue
-            case PartnerSDKUserAgent(let buildNumber):
+            case .partnerSDKUserAgent(let buildNumber):
                 return "ios-partner-sdk-version-\(buildNumber)"
-            case APIMinorVersion:
+            case .apiMinorVersion:
                 return APIHeaders.CurrentAPIMinorVersion
-            case .APIToken:
-                return "Token \(SpotHeroPartnerSDK.SharedInstance.partnerApplicationKey)"
+            case .apiToken:
+                return "Token \(SpotHeroPartnerSDK.shared.partnerApplicationKey)"
             }
         }
     }
     
-    static func headerStringDict(headers: [HTTPHeaderField : HTTPHeaderValue]) -> [String : String] {
+    static func headerStringDict(_ headers: [HTTPHeaderField : HTTPHeaderValue]) -> [String : String] {
         var headerDictionary = [String : String]()
         for (key, value) in headers {
             headerDictionary[key.rawValue] = value.asString()
@@ -74,11 +74,11 @@ public struct APIHeaders {
     static func defaultHeaders() -> HeaderDictionary {
         var headers = [HTTPHeaderField : HTTPHeaderValue]()
         
-        headers[.ContentType] = .ContentType(contentType: .JSON)
-        headers[.APIMinorVersion] = .APIMinorVersion
-        headers[.UserAgent] = self.UserAgent
-        headers[.Accept] = .ContentType(contentType: .JSON)
-        headers[.Authorization] = .APIToken
+        headers[.contentType] = .contentType(contentType: .json)
+        headers[.apiMinorVersion] = .apiMinorVersion
+        headers[.userAgent] = self.UserAgent
+        headers[.accept] = .contentType(contentType: .json)
+        headers[.authorization] = .apiToken
         
         return headers
     }

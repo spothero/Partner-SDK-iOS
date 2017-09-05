@@ -15,8 +15,8 @@ class APIKeyConfig {
     private (set) var stripeApiKey = ""
     private (set) var mixpanelApiKey = ""
     
-    typealias APIKeyCompletion = (Bool) -> ()
-    func getKeys(completion: APIKeyCompletion) {
+    typealias APIKeyCompletion = (Bool) -> Void
+    func getKeys(_ completion: @escaping APIKeyCompletion) {
         guard !TestingHelper.isUITesting() else {
             completion(true)
             return
@@ -24,12 +24,12 @@ class APIKeyConfig {
         
         let endpoint = "v1/mobile-config/iossdk"
         let headers = APIHeaders.defaultHeaders()
-        SpotHeroPartnerAPIController.getJSONFromEndpoint(endpoint,
-                                                         withHeaders: headers,
-                                                         errorCompletion: {
-                                                            error in
-                                                            assertionFailure("Cannot get json, error \(error)")
-                                                            completion(false)
+        _ = SpotHeroPartnerAPIController.getJSONFromEndpoint(endpoint,
+                                                             withHeaders: headers,
+                                                             errorCompletion: {
+                                                                error in
+                                                                assertionFailure("Cannot get json, error \(error)")
+                                                                completion(false)
             }) {
                 JSON in
                 do {

@@ -1,0 +1,236 @@
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=UTF-8
+Date: Wed, 14 Dec 2016 22:17:13 GMT
+Expires: Wed, 14 Dec 2016 22:17:13 GMT
+Cache-Control: private, max-age=300
+Vary: Accept-Language
+Content-Encoding: gzip
+Server: pablo
+X-XSS-Protection: 1; mode=block
+X-Frame-Options: SAMEORIGIN
+Alt-Svc: quic=":443"; ma=2592000; v="35,34"
+Transfer-Encoding: chunked
+Connection: Keep-alive
+
+{
+"predictions" : [
+{
+"description" : "328 South Wabash Avenue, Chicago, IL, United States",
+"id" : "6fa36e1d92f51ab708338b4d72c35468721be260",
+"matched_substrings" : [
+{
+"length" : 3,
+"offset" : 0
+},
+{
+"length" : 12,
+"offset" : 4
+}
+],
+"place_id" : "ChIJDyxh-6IsDogRqI0OqJc_km4",
+"reference" : "ClRLAAAAHvzVBhhOu7sMzv-B0tgy76_HYmk2TXqq5n_e1LwJd92iqbgJLyM5P8QbN5xMDjV4UO9-d2z5_bomvqZ5OEV3dAVnhLrXke_7oG9a95EuPR8SEB1TCoUMcNCZhPA7qK96nUcaFG7IuQZGFDndkc7_AvD68YpYQPd9",
+"structured_formatting" : {
+"main_text" : "328 South Wabash Avenue",
+"main_text_matched_substrings" : [
+{
+"length" : 3,
+"offset" : 0
+},
+{
+"length" : 12,
+"offset" : 4
+}
+],
+"secondary_text" : "Chicago, IL, United States"
+},
+"terms" : [
+{
+"offset" : 0,
+"value" : "328"
+},
+{
+"offset" : 4,
+"value" : "South Wabash Avenue"
+},
+{
+"offset" : 25,
+"value" : "Chicago"
+},
+{
+"offset" : 34,
+"value" : "IL"
+},
+{
+"offset" : 38,
+"value" : "United States"
+}
+],
+"types" : [ "street_address", "geocode" ]
+},
+{
+"description" : "328 South Wabash Street, Hobart, IN, United States",
+"id" : "f2836f38fff8ecab17b79e19b537397240c38d8b",
+"matched_substrings" : [
+{
+"length" : 16,
+"offset" : 0
+}
+],
+"place_id" : "EjIzMjggU291dGggV2FiYXNoIFN0cmVldCwgSG9iYXJ0LCBJTiwgVW5pdGVkIFN0YXRlcw",
+"reference" : "CkQ2AAAApC5gfYIl1QfxTUaZS8IFhdL4Lc_vJhR7TzZZcBZpVjOVC8xd7qYjZxCOCILRr7HCOYZKghDe9uA1vc3Gq_rIpxIQaMxG0umjJhUSHZV8vocYlxoURiEzrdGVH8se8ZhxB6LYimltC6A",
+"structured_formatting" : {
+"main_text" : "328 South Wabash Street",
+"main_text_matched_substrings" : [
+{
+"length" : 16,
+"offset" : 0
+}
+],
+"secondary_text" : "Hobart, IN, United States"
+},
+"terms" : [
+{
+"offset" : 0,
+"value" : "328 South Wabash Street"
+},
+{
+"offset" : 25,
+"value" : "Hobart"
+},
+{
+"offset" : 33,
+"value" : "IN"
+},
+{
+"offset" : 37,
+"value" : "United States"
+}
+],
+"types" : [ "route", "geocode" ]
+},
+{
+"description" : "328 South Wabash Street, Wabash, IN, United States",
+"id" : "bf37cc57d596c2de2bbbb29b1ec8d7281dcc9199",
+"matched_substrings" : [
+{
+"length" : 16,
+"offset" : 0
+}
+],
+"place_id" : "EjIzMjggU291dGggV2FiYXNoIFN0cmVldCwgV2FiYXNoLCBJTiwgVW5pdGVkIFN0YXRlcw",
+"reference" : "CkQ2AAAADYjPPAyb0P5paLPpJ_vQ_D5LPTcu6n-d-mmmoY7jelTlqu9iAeLOVZOlTeIgzqP1WxDn-V5_kKvAXTgbOqkEhhIQuQfTs6Y3EMOjOt1-Y-qfkhoUioqd848FAByZNg4vWYV5PXWeDzk",
+"structured_formatting" : {
+"main_text" : "328 South Wabash Street",
+"main_text_matched_substrings" : [
+{
+"length" : 16,
+"offset" : 0
+}
+],
+"secondary_text" : "Wabash, IN, United States"
+},
+"terms" : [
+{
+"offset" : 0,
+"value" : "328 South Wabash Street"
+},
+{
+"offset" : 25,
+"value" : "Wabash"
+},
+{
+"offset" : 33,
+"value" : "IN"
+},
+{
+"offset" : 37,
+"value" : "United States"
+}
+],
+"types" : [ "route", "geocode" ]
+},
+{
+"description" : "328 South Wabash Avenue, Bradley, IL, United States",
+"id" : "a3cbca61a33a87264633ae13f083111c8d904365",
+"matched_substrings" : [
+{
+"length" : 16,
+"offset" : 0
+}
+],
+"place_id" : "EjMzMjggU291dGggV2FiYXNoIEF2ZW51ZSwgQnJhZGxleSwgSUwsIFVuaXRlZCBTdGF0ZXM",
+"reference" : "CkQ3AAAAscqhjsnUesB7BIu6jht96iGsEt_izqdNuWYV2Ku_zIfUl5GbvO0mENHeg4uW0-7MShoAIySotDM-DJpbsQVn9xIQgQbW4xj2-GFjbuaOItcqshoUeTa4pE8ls6lj8AUqJ5h0IkmBUvk",
+"structured_formatting" : {
+"main_text" : "328 South Wabash Avenue",
+"main_text_matched_substrings" : [
+{
+"length" : 16,
+"offset" : 0
+}
+],
+"secondary_text" : "Bradley, IL, United States"
+},
+"terms" : [
+{
+"offset" : 0,
+"value" : "328 South Wabash Avenue"
+},
+{
+"offset" : 25,
+"value" : "Bradley"
+},
+{
+"offset" : 34,
+"value" : "IL"
+},
+{
+"offset" : 38,
+"value" : "United States"
+}
+],
+"types" : [ "route", "geocode" ]
+},
+{
+"description" : "328 South Wabash Street, Chicago, IL, United States",
+"id" : "63a94ca0c5846091c65a2e37db0d4b7e9e89f4c1",
+"matched_substrings" : [
+{
+"length" : 16,
+"offset" : 0
+}
+],
+"place_id" : "EjMzMjggU291dGggV2FiYXNoIFN0cmVldCwgQ2hpY2FnbywgSUwsIFVuaXRlZCBTdGF0ZXM",
+"reference" : "CkQ3AAAA2tEa93VGcjpsruS12W8gkx0vkp0dZ98R-ULWmrXzt6M59B-6PdN8OYLlqKjUltz2AAHKyCQ2YewGwDE9rwAABRIQLprMcHAOiU62DmLTNMGzTRoUDPjlZ3hPNondT6zk4gTRz0gJhVY",
+"structured_formatting" : {
+"main_text" : "328 South Wabash Street",
+"main_text_matched_substrings" : [
+{
+"length" : 16,
+"offset" : 0
+}
+],
+"secondary_text" : "Chicago, IL, United States"
+},
+"terms" : [
+{
+"offset" : 0,
+"value" : "328 South Wabash Street"
+},
+{
+"offset" : 25,
+"value" : "Chicago"
+},
+{
+"offset" : 34,
+"value" : "IL"
+},
+{
+"offset" : 38,
+"value" : "United States"
+}
+],
+"types" : [ "route", "geocode" ]
+}
+],
+"status" : "OK"
+}

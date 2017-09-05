@@ -8,13 +8,13 @@
 
 import Foundation
 
-extension NSDate {
+extension Date {
 
-    func shp_isBeforeDate(date: NSDate) -> Bool {
-        return (self.compare(date) == .OrderedAscending)
+    func shp_isBeforeDate(_ date: Date) -> Bool {
+        return (self.compare(date) == .orderedAscending)
     }
     
-    func shp_isAfterDate(date: NSDate) -> Bool {
-        return (self.compare(date) == .OrderedDescending)
+    func shp_isAfterDate(_ date: Date) -> Bool {
+        return (self.compare(date) == .orderedDescending)
     }
 }

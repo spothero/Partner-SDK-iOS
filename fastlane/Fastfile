@@ -13,7 +13,7 @@ test_output_folder = 'test_output'
 fastlane_folder='fastlane'
 
 # The URL for the slack webhook to post to
-slack_webhook_url='https://hooks.slack.com/services/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'
+slack_webhook_url=''
 
 # The username of the CI user on iTunes Connect.
 ci_username = 'ci-ios@spothero.com'
@@ -67,11 +67,9 @@ test_flight_provisioning_profile_name = 'Distribution App Store: SDK Sample App'
 
     before_all do
         ENV['SLACK_URL'] = slack_webhook_url
-
-        if is_ci
-            # Make sure we're on Xcode 7 on the build server.
-            switch_to_xcode_7
-        end
+        
+        # make sure we're on an appropriate version of Xcode.            
+        switch_to_xcode_8
     end
 
 ##############
@@ -135,9 +133,9 @@ test_flight_provisioning_profile_name = 'Distribution App Store: SDK Sample App'
 
     def switch_to_xcode_8
         xcversion(
-            version: "~> 8.1.0", # Selects the latest installed version from the 8.1.x set
-        )
-    end
+            version: "~> 8.3.0", # Selects the latest installed version from the 8.3.x set
+        )    
+    end 
 
     desc "Runs tests with the given options"
     desc "Expects values for the following keys:"
@@ -149,6 +147,9 @@ test_flight_provisioning_profile_name = 'Distribution App Store: SDK Sample App'
             raise "Not all required options for this lane are present!"
             return
         end
+        
+        #stop any existing sims        
+        sh "./kill_sim_if_running.sh"    
 
         #stop any existing sims
         sh "./kill_sim_if_running.sh"
@@ -180,9 +181,6 @@ test_flight_provisioning_profile_name = 'Distribution App Store: SDK Sample App'
 
     desc "Runs all the tests of the app and gathers code coverage across all versions of xcode"
     lane :test_all do
-        switch_to_xcode_7
-        test
-        switch_to_xcode_8
         test
     end
 
@@ -287,10 +285,7 @@ test_flight_provisioning_profile_name = 'Distribution App Store: SDK Sample App'
 
     desc "Uploads a build iTunes Connect"
     desc "Note: This build should only be distributed via Test Flight."
-    private_lane :itc do
-        #Build with latest Xcode
-        switch_to_xcode_8
-
+    private_lane :itc do        
         # Create an iTunes Connect build
         build_itc
 

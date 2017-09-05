@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension NSURLQueryItem {
+extension URLQueryItem {
     
     /**
      Takes a dictionary of strings and turns them into an array of NSURLQueryItems.
@@ -17,15 +17,15 @@ extension NSURLQueryItem {
      
      - returns: An array of query items.
      */
-    static func shp_queryItemsFromDictionary(dictionary: [String : String]) -> [NSURLQueryItem] {
-        var queryItems = [NSURLQueryItem]()
+    static func shp_queryItemsFromDictionary(_ dictionary: [String : String]) -> [URLQueryItem] {
+        var queryItems = [URLQueryItem]()
         
         for (key, value) in dictionary {
-            let queryItem = NSURLQueryItem(name: key, value: value)
+            let queryItem = URLQueryItem(name: key, value: value)
             queryItems.append(queryItem)
         }
         
-        return queryItems.sort({
+        return queryItems.sorted(by: {
             (item1, item2) -> Bool in
             return item1.name < item2.name
         })

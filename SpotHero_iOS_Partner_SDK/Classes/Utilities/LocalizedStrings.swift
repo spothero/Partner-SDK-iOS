@@ -22,7 +22,7 @@ enum LocalizedStrings {
     static let SetStartTime = NSLocalizedString("Set Start Time",
                                                 comment: "Set Start Time")
     static let SetEndTime = NSLocalizedString("Set End Time",
-                                                comment: "Set End Time")
+                                              comment: "Set End Time")
     static let Address = NSLocalizedString("Address",
                                            comment: "Title for address row of checkout screen")
     static let Starts = NSLocalizedString("Starts",
@@ -30,13 +30,13 @@ enum LocalizedStrings {
     static let Ends = NSLocalizedString("Ends",
                                         comment: "Title for end date row of checkout screen")
     static let Email = NSLocalizedString("Email",
-                                           comment: "Title for Email row of checkout screen")
+                                         comment: "Title for Email row of checkout screen")
     static let Phone = NSLocalizedString("Phone",
                                          comment: "Title for Phone number row of checkout screen")
     static let EmailAddressPlaceHolder = NSLocalizedString("Email Address",
-                                                 comment: "Placeholder for Email row of checkout screen")
+                                                           comment: "Placeholder for Email row of checkout screen")
     static let PhoneNumberPlaceHolder = NSLocalizedString("Phone Number",
-                                                 comment: "Placeholder for Phone Number row of checkout screen")
+                                                          comment: "Placeholder for Phone Number row of checkout screen")
     static let ReservationInfo = NSLocalizedString("RESERVATION INFO",
                                                    comment: "Title for reservation info section of checkout screen")
     static let PersonalInfo = NSLocalizedString("PERSONAL INFO",
@@ -52,25 +52,26 @@ enum LocalizedStrings {
     static let CVC = NSLocalizedString("CVC",
                                        comment: "Name of CVC field")
     static let ZipCode = NSLocalizedString("Zip Code",
-                                       comment: "Name of zip code field")
+                                           comment: "Name of zip code field")
     static let FullNameErrorMessage = NSLocalizedString("Please enter a valid full name",
-                                    comment: "Error message for an invalid full name")
+                                                        comment: "Error message for an invalid full name")
     static let EmailErrorMessage = NSLocalizedString("Please enter a valid email",
-                                    comment: "Error message for an invalid email")
+                                                     comment: "Error message for an invalid email")
     static let PhoneErrorMessage = NSLocalizedString("Please enter a valid phone number",
                                                      comment: "Error message for an invalid phone number")
     static let CreditCardErrorMessage = NSLocalizedString("Please enter a valid credit card",
-                                                comment: "Error message for an invalid credit card")
+                                                          comment: "Error message for an invalid credit card")
     static let NonAcceptedCreditCardErrorMessage = NSLocalizedString("Please enter a Visa, Discover, MasterCard, or American Express card",
-                                                comment: "Error message for a credit card that is not a Visa, Discover, MasterCard, or American Express card")
+                                                                     //swiftlint:disable:next line_length
+                                                                     comment: "Error message for a credit card that is not a Visa, Discover, MasterCard, or American Express card")
     static let InvalidDateErrorMessage = NSLocalizedString("Please enter a valid expiration date",
-                                                comment: "Error message for an invalid expiration date")
+                                                           comment: "Error message for an invalid expiration date")
     static let DateInThePastErrorMessage = NSLocalizedString("Please enter an expiration date in the future",
-                                                comment: "Error message for an expiration date in the past")
+                                                             comment: "Error message for an expiration date in the past")
     static let CVCErrorMessage = NSLocalizedString("Please enter a valid cvc",
-                                                comment: "Error message for an invalid cvc")
+                                                   comment: "Error message for an invalid cvc")
     static let ZipErrorMessage = NSLocalizedString("Please enter a valid zip code",
-                                                comment: "Error message for an invalid zip code")
+                                                   comment: "Error message for an invalid zip code")
     static let Visa = NSLocalizedString("Visa",
                                         comment: "A Visa Credit Card")
     static let Amex = NSLocalizedString("American Express",
@@ -80,15 +81,15 @@ enum LocalizedStrings {
     static let Discover = NSLocalizedString("Discover",
                                         comment: "A Discover Credit Card")
     static let paymentButtonTitleFormat = NSLocalizedString("Pay %@ and Confirm Parking",
-                                                      comment: "Title of the checkout screen payment button")
+                                                            comment: "Title of the checkout screen payment button")
     static let blankFieldErrorFormat = NSLocalizedString("Please enter your %@",
-                                                   comment: "Error message for a blank field")
+                                                         comment: "Error message for a blank field")
     static let SearchSpots = NSLocalizedString("SEARCH SPOTS",
                                                comment: "Button title for search spots button")
     static let LicensePlate = NSLocalizedString("License Plate",
                                                 comment: "Title for License Plate row of checkout screen")
     static let LicensePlatePlaceHolder = NSLocalizedString("License Plate (Optional)",
-                                                     comment: "Enter License Plate Number")
+                                                           comment: "Enter License Plate Number")
     static let LicensePlateErrorMessage = NSLocalizedString("Please enter a valid license plate number",
                                                             comment: "Message to indicate that a license plate number is invalid")
     static let CreateReservationErrorMessage = NSLocalizedString("Something went wrong with creating the reservation. Please try again.",
@@ -97,7 +98,8 @@ enum LocalizedStrings {
                                                  comment: "Error message when an unknown issue has occured")
     static let Error = NSLocalizedString("Error",
                                          comment: "Title for an Error message")
-    static let OK = NSLocalizedString("OK", comment: "Title for button to dismiss an error")
+    static let Okay = NSLocalizedString("OK",
+                                        comment: "Title for button to dismiss an error")
     static let Loading = NSLocalizedString("Loading...",
                                            comment: "Loading progress HUD")
     static let BookIt = NSLocalizedString("Book It!",

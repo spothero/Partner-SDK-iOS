@@ -6,9 +6,8 @@
 //  Copyright © 2016 SpotHero, Inc. All rights reserved.
 //
 
-import XCTest
-
 @testable import SpotHero_iOS_Partner_SDK
+import XCTest
 
 class FormatterTests: XCTestCase {
 

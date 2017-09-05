@@ -9,23 +9,23 @@
 import UIKit
 
 protocol PersonalInfoTableViewCellDelegate: class {
-    func textFieldShouldReturn(type: PersonalInfoRow)
+    func textFieldShouldReturn(_ type: PersonalInfoRow)
 }
 
 class PersonalInfoTableViewCell: UITableViewCell, ValidatorCell {
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var textField: UITextField!
-    @IBOutlet weak var errorLabel: UILabel!
+    @IBOutlet private(set) weak var titleLabel: UILabel!
+    @IBOutlet private(set) weak var textField: UITextField!
+    @IBOutlet private(set) weak var errorLabel: UILabel!
     
-    var type: PersonalInfoRow = .Email
+    var type: PersonalInfoRow = .email
     
     weak var delegate: ValidatorCellDelegate?
     weak var personalInfoCellDelegate: PersonalInfoTableViewCellDelegate?
-    var validationClosure: ((String) throws -> ())?
+    var validationClosure: ((String) throws -> Void)?
     var valid = false {
         didSet {
-            self.backgroundColor = self.valid ? .whiteColor() : .shp_errorRed()
-            self.errorLabel.hidden = self.valid
+            self.backgroundColor = self.valid ? .white : .shp_errorRed()
+            self.errorLabel.isHidden = self.valid
             delegate?.didValidateText()
         }
     }
@@ -39,7 +39,7 @@ class PersonalInfoTableViewCell: UITableViewCell, ValidatorCell {
 }
 
 extension PersonalInfoTableViewCell: UITextFieldDelegate {
-    func textFieldDidEndEditing(textField: UITextField) {
+    func textFieldDidEndEditing(_ textField: UITextField) {
         guard let text = textField.text else {
             return
         }
@@ -58,16 +58,16 @@ extension PersonalInfoTableViewCell: UITextFieldDelegate {
         }
     }
     
-    func textField(textField: UITextField,
-                   shouldChangeCharactersInRange range: NSRange,
+    func textField(_ textField: UITextField,
+                   shouldChangeCharactersIn range: NSRange,
                    replacementString string: String) -> Bool {
         guard let text = textField.text else {
             return true
         }
         
-        let subString = (text as NSString).stringByReplacingCharactersInRange(range, withString: string)
+        let subString = (text as NSString).replacingCharacters(in: range, with: string)
         
-        if self.type == .Phone {
+        if self.type == .phone {
             let cursorLocation = textField.shp_getCursorPosition(range, string: string)
             let (formatted, unformatted) = Formatter.formatPhoneNumber(subString)
             textField.text = formatted
@@ -84,18 +84,18 @@ extension PersonalInfoTableViewCell: UITextFieldDelegate {
         return true
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         self.personalInfoCellDelegate?.textFieldShouldReturn(self.type)
         return false
     }
     
-    func setErrorState(error: ValidatorError?) {
+    func setErrorState(_ error: ValidatorError?) {
         if let error = error {
             switch error {
-            case .FieldBlank(let fieldName):
+            case .fieldBlank(let fieldName):
                 self.errorLabel.text = String(format: LocalizedStrings.blankFieldErrorFormat, fieldName)
-            case .FieldInvalid(_, let message):
+            case .fieldInvalid(_, let message):
                 self.errorLabel.text = message
             }
         }
