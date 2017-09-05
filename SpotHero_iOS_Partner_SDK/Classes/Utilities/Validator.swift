@@ -8,42 +8,42 @@
 
 import Foundation
 
-enum ValidatorError: ErrorType {
-    case FieldBlank(fieldName: String)
-    case FieldInvalid(fieldName: String, message: String)
+enum ValidatorError: Error {
+    case fieldBlank(fieldName: String)
+    case fieldInvalid(fieldName: String, message: String)
 }
 
 enum CardType {
     case
-    Visa,
-    Amex,
-    MasterCard,
-    Discover,
-    Unknown
+    visa,
+    amex,
+    masterCard,
+    discover,
+    unknown
     
     func image() -> UIImage? {
-        let bundle = NSBundle.shp_resourceBundle()
+        let bundle = Bundle.shp_resourceBundle()
         switch self {
-        case .Visa:
+        case .visa:
             return UIImage(named: "Visa",
-                           inBundle: bundle,
-                           compatibleWithTraitCollection: nil)
-        case .Amex:
+                           in: bundle,
+                           compatibleWith: nil)
+        case .amex:
             return UIImage(named: "AExp",
-                           inBundle: bundle,
-                           compatibleWithTraitCollection: nil)
-        case .MasterCard:
+                           in: bundle,
+                           compatibleWith: nil)
+        case .masterCard:
             return UIImage(named: "Mastercard",
-                           inBundle: bundle,
-                           compatibleWithTraitCollection: nil)
-        case .Discover:
+                           in: bundle,
+                           compatibleWith: nil)
+        case .discover:
             return UIImage(named: "Discover",
-                           inBundle: bundle,
-                           compatibleWithTraitCollection: nil)
-        case .Unknown:
+                           in: bundle,
+                           compatibleWith: nil)
+        case .unknown:
             return UIImage(named: "credit_card",
-                           inBundle: bundle,
-                           compatibleWithTraitCollection: nil)
+                           in: bundle,
+                           compatibleWith: nil)
         }
     }
 }
@@ -56,20 +56,20 @@ enum Validator {
      
      - throws: throws an error if string is empty or invalid
      */
-    static func validateEmail(email: String) throws {
+    static func validateEmail(_ email: String) throws {
         let fieldName = LocalizedStrings.Email
         let message = LocalizedStrings.EmailErrorMessage
         
         // Trim trailing spaces
-        let trimmedEmail = email.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        let trimmedEmail = email.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         
         if trimmedEmail.isEmpty {
-            throw ValidatorError.FieldBlank(fieldName: fieldName)
+            throw ValidatorError.fieldBlank(fieldName: fieldName)
         }
         
         let fullEmailPredicate = NSPredicate(format: "SELF MATCHES %@", "^\\b.+@.+\\..+\\b$")
-        if !fullEmailPredicate.evaluateWithObject(trimmedEmail) {
-            throw ValidatorError.FieldInvalid(fieldName: fieldName, message: message)
+        if !fullEmailPredicate.evaluate(with: trimmedEmail) {
+            throw ValidatorError.fieldInvalid(fieldName: fieldName, message: message)
         }
         
         let emailParts = self.emailParts(trimmedEmail)
@@ -82,12 +82,12 @@ enum Validator {
         let domainPredicate = NSPredicate(format: "SELF MATCHES %@", "[A-Z0-9a-z.-]+")
         let tldPredicate = NSPredicate(format: "SELF MATCHES %@", "[A-Za-z][A-Z0-9a-z-]{0,22}[A-Z0-9a-z]")
         
-        if !usernamePredicate.evaluateWithObject(username) || self.usernameInvalid(username) {
-            throw ValidatorError.FieldInvalid(fieldName: fieldName, message: message)
-        } else if domain.isEmpty || !domainPredicate.evaluateWithObject(domain) {
-            throw ValidatorError.FieldInvalid(fieldName: fieldName, message: message)
-        } else if !tldPredicate.evaluateWithObject(tld) {
-            throw ValidatorError.FieldInvalid(fieldName: fieldName, message: message)
+        if !usernamePredicate.evaluate(with: username) || self.usernameInvalid(username) {
+            throw ValidatorError.fieldInvalid(fieldName: fieldName, message: message)
+        } else if domain.isEmpty || !domainPredicate.evaluate(with: domain) {
+            throw ValidatorError.fieldInvalid(fieldName: fieldName, message: message)
+        } else if !tldPredicate.evaluate(with: tld) {
+            throw ValidatorError.fieldInvalid(fieldName: fieldName, message: message)
         }
     }
     
@@ -98,9 +98,9 @@ enum Validator {
      
      - throws: throws an error if string is empty or invalid
      */
-    static func validatePhone(phone: String) throws {
+    static func validatePhone(_ phone: String) throws {
         // Trim trailing spaces
-        let trimmedPhone = phone.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        let trimmedPhone = phone.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         
         // If phone number is blank return
         guard !trimmedPhone.isEmpty else {
@@ -108,14 +108,14 @@ enum Validator {
         }
         
         // Remove dashes
-        let digits = trimmedPhone.stringByReplacingOccurrencesOfString("-", withString: "")
+        let digits = trimmedPhone.replacingOccurrences(of: "-", with: "")
         
         // Check there are ten digits and Check phone number is numeric
         if digits.characters.count != 10 || !self.isStringNumeric(digits) {
             let fieldName = LocalizedStrings.Phone
             let message = LocalizedStrings.PhoneErrorMessage
             
-            throw ValidatorError.FieldInvalid(fieldName: fieldName, message: message)
+            throw ValidatorError.fieldInvalid(fieldName: fieldName, message: message)
         }
     }
     
@@ -126,28 +126,28 @@ enum Validator {
      
      - returns: Type of card
      */
-    static func getCardType(creditCard: String) -> CardType {
-        let trimmedCreditCard = creditCard.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+    static func getCardType(_ creditCard: String) -> CardType {
+        let trimmedCreditCard = creditCard.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         
         if trimmedCreditCard.isEmpty {
-            return .Unknown
+            return .unknown
         }
         
         if trimmedCreditCard.hasPrefix("4") {
-            return .Visa
+            return .visa
         } else if trimmedCreditCard.hasPrefix("34") ||
             trimmedCreditCard.hasPrefix("37") {
-            return .Amex
+            return .amex
         } else if trimmedCreditCard.hasPrefix("51") ||
             trimmedCreditCard.hasPrefix("52") ||
             trimmedCreditCard.hasPrefix("53") ||
             trimmedCreditCard.hasPrefix("54") ||
             trimmedCreditCard.hasPrefix("55") {
-            return .MasterCard
+            return .masterCard
         } else if trimmedCreditCard.hasPrefix("6011") {
-            return .Discover
+            return .discover
         } else {
-            return .Unknown
+            return .unknown
         }
     }
     
@@ -157,34 +157,34 @@ enum Validator {
      - parameter creditCard: string to validate
      
      - throws: throws an error if string is empty or invalid
-    */
-    static func validateCreditCard(creditCard: String) throws {
+     */
+    static func validateCreditCard(_ creditCard: String) throws {
         let fieldName = LocalizedStrings.CreditCard
-        let trimmedCreditCard = creditCard.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        let trimmedCreditCard = creditCard.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         let cardType = self.getCardType(trimmedCreditCard)
         
         if trimmedCreditCard.isEmpty {
-            throw ValidatorError.FieldBlank(fieldName: fieldName)
+            throw ValidatorError.fieldBlank(fieldName: fieldName)
         }
         
-        if cardType == .Unknown {
-            throw ValidatorError.FieldInvalid(fieldName: fieldName, message: LocalizedStrings.NonAcceptedCreditCardErrorMessage)
+        if cardType == .unknown {
+            throw ValidatorError.fieldInvalid(fieldName: fieldName, message: LocalizedStrings.NonAcceptedCreditCardErrorMessage)
         }
         
-        try self.validateCreditCard(trimmedCreditCard, isAmex: cardType == .Amex)
+        try self.validateCreditCard(trimmedCreditCard, isAmex: cardType == .amex)
     }
     
-    private static func validateCreditCard(creditCard: String, isAmex: Bool) throws {
+    private static func validateCreditCard(_ creditCard: String, isAmex: Bool) throws {
         let fieldName = LocalizedStrings.CreditCard
         let message = LocalizedStrings.CreditCardErrorMessage
         let numberOfDigits = isAmex ? 15 : 16
         
         // Remove spaces
-        let digits = creditCard.stringByReplacingOccurrencesOfString(" ", withString: "")
+        let digits = creditCard.replacingOccurrences(of: " ", with: "")
         
         // Check if there are an incorrect number of digits and Check if non numeric
         if digits.characters.count != numberOfDigits || !self.isStringNumeric(digits) {
-            throw ValidatorError.FieldInvalid(fieldName: fieldName, message: message)
+            throw ValidatorError.fieldInvalid(fieldName: fieldName, message: message)
         }
     }
     
@@ -196,42 +196,42 @@ enum Validator {
      
      - throws: throws an error if string is empty or invalid
      */
-    static func validateExpiration(month: String, year: String) throws {
+    static func validateExpiration(_ month: String, year: String) throws {
         let fieldName = LocalizedStrings.ExpirationDate
-
-        let trimmedMonth = month.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
-        let trimmedYear = year.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
-    
+        
+        let trimmedMonth = month.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+        let trimmedYear = year.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+        
         if trimmedMonth.isEmpty || trimmedYear.isEmpty {
-            throw ValidatorError.FieldBlank(fieldName: fieldName)
+            throw ValidatorError.fieldBlank(fieldName: fieldName)
         }
         
         let invalidDateMessage = LocalizedStrings.InvalidDateErrorMessage
         let dateInThePastMessage = LocalizedStrings.DateInThePastErrorMessage
         
-        let dateComponents = NSDateComponents()
-        if let
-            monthInt = Int(trimmedMonth),
-            yearInt = Int(trimmedYear) {
-            dateComponents.month = monthInt
-            dateComponents.year = yearInt
-            let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
-            
-            if dateComponents.month < 0 || dateComponents.month > 12 {
-                throw ValidatorError.FieldInvalid(fieldName: fieldName, message: invalidDateMessage)
-            } else if let date = calendar?.dateFromComponents(dateComponents)
-                    where date.shp_isBeforeDate(NSDate()) {
-                throw ValidatorError.FieldInvalid(fieldName: fieldName, message: dateInThePastMessage)
-            } else if calendar?.dateFromComponents(dateComponents) == nil {
-                throw ValidatorError.FieldInvalid(fieldName: fieldName, message: invalidDateMessage)
-            } else {
-                // Date is valid. Nothing to do
-            }
+        var dateComponents = DateComponents()
+        
+        if
+            let monthInt = Int(trimmedMonth),
+            let yearInt = Int(trimmedYear) {
+                dateComponents.month = monthInt
+                dateComponents.year = yearInt
+                let calendar = Calendar(identifier: Calendar.Identifier.gregorian)
+                
+                if monthInt < 0 || monthInt > 12 {
+                    throw ValidatorError.fieldInvalid(fieldName: fieldName, message: invalidDateMessage)
+                } else if let date = calendar.date(from: dateComponents), date.shp_isBeforeDate(Date()) {
+                    throw ValidatorError.fieldInvalid(fieldName: fieldName, message: dateInThePastMessage)
+                } else if calendar.date(from: dateComponents) == nil {
+                    throw ValidatorError.fieldInvalid(fieldName: fieldName, message: invalidDateMessage)
+                } else {
+                    // Date is valid. Nothing to do
+                }
         } else {
-            throw ValidatorError.FieldInvalid(fieldName: fieldName, message: invalidDateMessage)
+            throw ValidatorError.fieldInvalid(fieldName: fieldName, message: invalidDateMessage)
         }
     }
-
+    
     /**
      Validates that a string is a cvc
      
@@ -240,20 +240,20 @@ enum Validator {
      
      - throws: throws an error if string is empty or invalid
      */
-    static func validateCVC(cvc: String, amex: Bool = false) throws {
+    static func validateCVC(_ cvc: String, amex: Bool = false) throws {
         let fieldName = LocalizedStrings.CVC
         let message = LocalizedStrings.CVCErrorMessage
         
-        let trimmedCVC = cvc.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        let trimmedCVC = cvc.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         
         if trimmedCVC.isEmpty {
-            throw ValidatorError.FieldBlank(fieldName: fieldName)
+            throw ValidatorError.fieldBlank(fieldName: fieldName)
         }
         
         if amex && cvc.characters.count != 4 {
-            throw ValidatorError.FieldInvalid(fieldName: fieldName, message: message)
+            throw ValidatorError.fieldInvalid(fieldName: fieldName, message: message)
         } else if !amex && cvc.characters.count != 3 {
-            throw ValidatorError.FieldInvalid(fieldName: fieldName, message: message)
+            throw ValidatorError.fieldInvalid(fieldName: fieldName, message: message)
         } else {
             // CVC is valid. Nothing to do
         }
@@ -266,16 +266,16 @@ enum Validator {
      
      - throws: throws an error if string is empty or invalid
      */
-    static func validateZip(zip: String) throws {
+    static func validateZip(_ zip: String) throws {
         let fieldName = LocalizedStrings.ZipCode
-        let trimmedZip = zip.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        let trimmedZip = zip.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         
         if trimmedZip.isEmpty {
-           throw ValidatorError.FieldBlank(fieldName: fieldName)
+            throw ValidatorError.fieldBlank(fieldName: fieldName)
         }
         
         if trimmedZip.characters.count != 5 || !self.isStringNumeric(trimmedZip) {
-            throw ValidatorError.FieldInvalid(fieldName: fieldName, message: LocalizedStrings.ZipErrorMessage)
+            throw ValidatorError.fieldInvalid(fieldName: fieldName, message: LocalizedStrings.ZipErrorMessage)
         }
     }
     
@@ -286,8 +286,8 @@ enum Validator {
      
      - throws: throws an error if string is blank or in valid
      */
-    static func validateLicense(license: String) throws {
-        let trimmedLicense = license.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+    static func validateLicense(_ license: String) throws {
+        let trimmedLicense = license.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         
         let fieldName = LocalizedStrings.LicensePlate
         let message = LocalizedStrings.LicensePlateErrorMessage
@@ -295,40 +295,40 @@ enum Validator {
         let validLicensePlateCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890 "
         let maxPlateCharacters = 12
         
-        let invalidPlateCharacters = NSCharacterSet(charactersInString: validLicensePlateCharacters).invertedSet
+        let invalidPlateCharacters = CharacterSet(charactersIn: validLicensePlateCharacters).inverted
         
-        if trimmedLicense.rangeOfCharacterFromSet(invalidPlateCharacters) != nil || trimmedLicense.characters.count > maxPlateCharacters {
-            throw ValidatorError.FieldInvalid(fieldName: fieldName, message: message)
+        if trimmedLicense.rangeOfCharacter(from: invalidPlateCharacters) != nil || trimmedLicense.characters.count > maxPlateCharacters {
+            throw ValidatorError.fieldInvalid(fieldName: fieldName, message: message)
         }
     }
     
     // MARK: Helpers
     
-    private static func emailParts(email: String) -> [String] {
+    private static func emailParts(_ email: String) -> [String] {
         var username = ""
         var domain = ""
         var tld = ""
         
-        if let atRange = email.rangeOfString("@") {
-            username = email.substringToIndex(atRange.startIndex)
-            if let periodRange = email.rangeOfString(".", options: .BackwardsSearch) {
-                domain = email.substringWithRange(atRange.endIndex..<periodRange.startIndex)
-                tld = email.substringWithRange(periodRange.endIndex..<email.endIndex)
+        if let atRange = email.range(of: "@") {
+            username = email.substring(to: atRange.lowerBound)
+            if let periodRange = email.range(of: ".", options: .backwards) {
+                domain = email.substring(with: atRange.upperBound..<periodRange.lowerBound)
+                tld = email.substring(with: periodRange.upperBound..<email.endIndex)
             }
         }
-     
+        
         return [username, domain, tld]
     }
     
-    private static func usernameInvalid(username: String) -> Bool {
+    private static func usernameInvalid(_ username: String) -> Bool {
         return username.isEmpty ||
             username.hasPrefix(".") ||
             username.hasSuffix(".") ||
-            username.rangeOfString("..") != nil
+            username.range(of: "..") != nil
     }
     
-    static func isStringNumeric(string: String) -> Bool {
-        let allNonNumbers = NSCharacterSet.decimalDigitCharacterSet().invertedSet
-        return string.rangeOfCharacterFromSet(allNonNumbers) == nil
+    static func isStringNumeric(_ string: String) -> Bool {
+        let allNonNumbers = CharacterSet.decimalDigits.inverted
+        return string.rangeOfCharacter(from: allNonNumbers) == nil
     }
 }

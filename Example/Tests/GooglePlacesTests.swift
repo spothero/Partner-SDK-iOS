@@ -6,12 +6,12 @@
 //  Copyright © 2016 SpotHero, Inc. All rights reserved.
 //
 
-import XCTest
 import CoreLocation
 @testable import SpotHero_iOS_Partner_SDK
+import XCTest
 
 class GooglePlacesTests: BaseTests {
-    let waitDuration: NSTimeInterval = 10
+    let waitDuration: TimeInterval = 10
     let spotheroPrediction = GooglePlacesPrediction(predictionDescription: "SpotHero, West Huron Street, Chicago, IL, United States",
                                                     placeID: "ChIJEyn6463TD4gR9Ta3uIauNyo",
                                                     terms: [])
@@ -20,7 +20,7 @@ class GooglePlacesTests: BaseTests {
                                                    terms: [])
     
     func testGetPredictionsWithAddressSubstring() {
-        let expectation = self.expectationWithDescription("testGetPredictionsWithAddressSubstring")
+        let expectation = self.expectation(description: "testGetPredictionsWithAddressSubstring")
         
         GooglePlacesWrapper.getPredictions("325 W Huron",
                                            location: Constants.ChicagoLocation) {
@@ -31,11 +31,11 @@ class GooglePlacesTests: BaseTests {
                                             expectation.fulfill()
         }
         
-        self.waitForExpectationsWithTimeout(self.waitDuration, handler: nil)
+        self.waitForExpectations(timeout: self.waitDuration, handler: nil)
     }
     
     func testGetPredictionsWithPlaceName() {
-        let expectation = self.expectationWithDescription("testGetPredictionsWithPlaceName")
+        let expectation = self.expectation(description: "testGetPredictionsWithPlaceName")
         
         GooglePlacesWrapper.getPredictions(AccessibilityStrings.SpotHero,
                                            location: Constants.ChicagoLocation) {
@@ -46,27 +46,27 @@ class GooglePlacesTests: BaseTests {
                                             expectation.fulfill()
         }
         
-        self.waitForExpectationsWithTimeout(self.waitDuration, handler: nil)
+        self.waitForExpectations(timeout: self.waitDuration, handler: nil)
     }
     
     func testNoResults() {
-        let expectation = self.expectationWithDescription("testNoResults")
+        let expectation = self.expectation(description: "testNoResults")
         
         // Just passing in jibberish so it finds no predictions
         GooglePlacesWrapper.getPredictions("fgkgkbnvjjhkhjhjllhjjlgjl",
                                            location: Constants.ChicagoLocation) {
                                             predictions, error in
                                             XCTAssertNotNil(error)
-                                            XCTAssertEqual((error as? GooglePlacesError), GooglePlacesError.NoPredictions)
+                                            XCTAssertEqual((error as? GooglePlacesError), GooglePlacesError.noPredictions)
                                             XCTAssertEqual(predictions.count, 0)
                                             expectation.fulfill()
         }
         
-        self.waitForExpectationsWithTimeout(self.waitDuration, handler: nil)
+        self.waitForExpectations(timeout: self.waitDuration, handler: nil)
     }
     
     func testGetPlaceDetails() {
-        let expectation = self.expectationWithDescription("testGetPlaceDetails")
+        let expectation = self.expectation(description: "testGetPlaceDetails")
         
         GooglePlacesWrapper.getPlaceDetails(self.spotheroPrediction) {
             placeDetails, error in
@@ -89,20 +89,20 @@ class GooglePlacesTests: BaseTests {
             expectation.fulfill()
         }
         
-        self.waitForExpectationsWithTimeout(self.waitDuration, handler: nil)
+        self.waitForExpectations(timeout: self.waitDuration, handler: nil)
     }
     
     func testInvalidPlaceID() {
-        let expectation = self.expectationWithDescription("testGetPlaceDetails")
+        let expectation = self.expectation(description: "testGetPlaceDetails")
         
         GooglePlacesWrapper.getPlaceDetails(self.invalidPrediction) {
             placeDetails, error in
             XCTAssertNotNil(error)
             XCTAssertNil(placeDetails)
-            XCTAssertEqual((error as? GooglePlacesError), GooglePlacesError.PlaceDetailsNotFound)
+            XCTAssertEqual((error as? GooglePlacesError), GooglePlacesError.placeDetailsNotFound)
             expectation.fulfill()
         }
         
-        self.waitForExpectationsWithTimeout(self.waitDuration, handler: nil)
+        self.waitForExpectations(timeout: self.waitDuration, handler: nil)
     }
 }

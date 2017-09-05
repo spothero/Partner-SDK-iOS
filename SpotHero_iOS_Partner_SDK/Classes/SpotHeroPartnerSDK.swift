@@ -9,40 +9,39 @@
 import Foundation
 
 /**
- *  The primary interface for interacting with the partner SDK. 
+ *  The primary interface for interacting with the partner SDK.
  */
 @objc(SHPSpotHeroPartnerSDK)
-public class SpotHeroPartnerSDK: NSObject {
+public final class SpotHeroPartnerSDK: NSObject {
     
     //MARK: - Singleton
-
+    
     /// The singleton instance of this SDK
-    public static let SharedInstance = SpotHeroPartnerSDK()
+    public static let shared = SpotHeroPartnerSDK()
     
     //MARK: - Settable properties
     
-    /// Set to `true` if you would like a very large amount of debug logging. DO NOT set this to `true` for release builds. 
+    /// Set to `true` if you would like a very large amount of debug logging. DO NOT set this to `true` for release builds.
     public var debugPrintInfo = false
     
     /// The tint color to use for the background of the nav bar. Defaults to SpotHero Blue.
     public var tintColor: UIColor = .shp_spotHeroBlue()
     
     /// The text color to use for the nav bar. Defaults to white.
-    public var textColor: UIColor = .whiteColor()
+    public var textColor: UIColor = .white
     
     /// Your application's private key. Defaults to an empty string.
     public var partnerApplicationKey: String = ""
     
-    private var dateSDKOpened: NSDate?
+    private var dateSDKOpened: Date?
     
     //MARK: - Functions
     
-    
     /// Send Mixpanel event that sdk was closed
     func reportSDKClosed() {
-        let date = NSDate()
-        if let openDate = SpotHeroPartnerSDK.SharedInstance.dateSDKOpened {
-            let duration = date.timeIntervalSinceDate(openDate)
+        let date = Date()
+        if let openDate = SpotHeroPartnerSDK.shared.dateSDKOpened {
+            let duration = date.timeIntervalSince(openDate)
             MixpanelWrapper.track(.SDKClosed, properties: [.SDKClosed: duration])
         }
     }
@@ -53,8 +52,8 @@ public class SpotHeroPartnerSDK: NSObject {
      - parameter viewController: The view controller which you want to present the UI for getting a space through SpotHero
      - parameter completion:     A completion block to be passed through to `presentViewController`, or nil. Defaults to nil.
      */
-    public func launchSDKFromViewController(viewController: UIViewController, completion: (() -> Void)? = nil) {
-        let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.shp_resourceBundle())
+    public func launchSDKFromViewController(_ viewController: UIViewController, completion: (() -> Void)? = nil) {
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.shp_resourceBundle())
         guard let navController = storyboard.instantiateInitialViewController() as? UINavigationController else {
             return
         }
@@ -73,15 +72,15 @@ public class SpotHeroPartnerSDK: NSObject {
         navController.navigationBar.titleTextAttributes = textAttributes
         navController.navigationBar.tintColor = self.textColor
         navController.navigationBar.barTintColor = self.tintColor
-
+        
         APIKeyConfig.sharedInstance.getKeys {
             success in
             if success {
-                viewController.presentViewController(navController,
-                    animated: true,
-                    completion: completion)
+                viewController.present(navController,
+                                       animated: true,
+                                       completion: completion)
                 MixpanelWrapper.track(.SDKOpened)
-                self.dateSDKOpened = NSDate()
+                self.dateSDKOpened = Date()
             } else {
                 assertionFailure("Unable to get API Keys")
             }
@@ -96,5 +95,5 @@ public class SpotHeroPartnerSDK: NSObject {
     
     /// Key indicating the error code received from the SpotHero server.
     public static let ErrorCodeFromServer = "ErrorCodeFromSpotHeroServer"
-
+    
 }

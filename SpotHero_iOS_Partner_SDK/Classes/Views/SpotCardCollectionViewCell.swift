@@ -9,7 +9,7 @@
 import UIKit
 
 protocol SpotCardCollectionViewDelegate: class {
-    func didTapDoneButton(button: UIButton)
+    func didTapDoneButton(_ button: UIButton)
 }
 
 class SpotCardCollectionViewCell: UICollectionViewCell {
@@ -19,33 +19,34 @@ class SpotCardCollectionViewCell: UICollectionViewCell {
     static let ItemWidth: CGFloat = 275
     static let ItemHeight: CGFloat = 120
     static let ItemSpacing: CGFloat = 10
-    @IBOutlet weak var buyButton: UIButton!
-    @IBOutlet weak var streetAddressLabel: UILabel!
-    @IBOutlet weak var spotInfoLabel: UILabel!
-    @IBOutlet weak var accessibleParkingImageView: UIImageView!
-    @IBOutlet weak var noReentryImageView: UIImageView!
-    @IBOutlet weak var accessibleParkingImageViewWidthConstraint: NSLayoutConstraint!
+    @IBOutlet private(set) weak var buyButton: UIButton!
+    @IBOutlet private(set) weak var streetAddressLabel: UILabel!
+    @IBOutlet private(set) weak var spotInfoLabel: UILabel!
+    @IBOutlet private(set) weak var accessibleParkingImageView: UIImageView!
+    @IBOutlet private(set) weak var noReentryImageView: UIImageView!    
+    //swiftlint:disable:next variable_name (yes, this is long. so what?)
+    @IBOutlet private(set) weak var accessibleParkingImageViewWidthConstraint: NSLayoutConstraint!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
         self.layer.cornerRadius = HeightsAndLengths.standardCornerRadius
-        self.backgroundColor = .whiteColor()
+        self.backgroundColor = .white
         self.layer.borderWidth = 1.0
-        self.layer.borderColor = UIColor.shp_lightGray().CGColor
+        self.layer.borderColor = UIColor.shp_lightGray().cgColor
     
         self.accessibleParkingImageView.image = UIImage(named: "accessibility",
-                                                        inBundle: NSBundle.shp_resourceBundle(),
-                                                        compatibleWithTraitCollection: nil)
+                                                        in: Bundle.shp_resourceBundle(),
+                                                        compatibleWith: nil)
         self.noReentryImageView.image = UIImage(named: "Noreentry",
-                                                inBundle: NSBundle.shp_resourceBundle(),
-                                                compatibleWithTraitCollection: nil)
+                                                in: Bundle.shp_resourceBundle(),
+                                                compatibleWith: nil)
         self.buyButton.backgroundColor = .shp_spotHeroBlue()
-        self.buyButton.enabled = false
+        self.buyButton.isEnabled = false
         self.buyButton.accessibilityLabel = LocalizedStrings.BookIt
     }
     
-    @IBAction func didTapBuyButton(button: UIButton) {
+    @IBAction func didTapBuyButton(_ button: UIButton) {
         self.delegate?.didTapDoneButton(button)
     }
 }

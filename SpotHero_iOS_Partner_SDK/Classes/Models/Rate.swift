@@ -13,8 +13,8 @@ import Foundation
  */
 struct Rate {
     let displayPrice: Int
-    let starts: NSDate
-    let ends: NSDate
+    let starts: Date
+    let ends: Date
     let unavailable: Bool
     let price: Int
     let ruleGroupID: Int
@@ -37,25 +37,25 @@ extension Rate {
         self.duration = try json.shp_double("duration")
         
         let startsString = try json.shp_string("starts")
-        if let starts = DateFormatter.ISO8601NoSeconds.dateFromString(startsString) {
+        if let starts = SHPDateFormatter.ISO8601NoSeconds.date(from: startsString) {
             self.starts = starts
         } else {
             assertionFailure("Cannot parse start time")
-            self.starts = NSDate()
+            self.starts = Date()
         }
         
         let endsString = try json.shp_string("ends")
-        if let ends = DateFormatter.ISO8601NoSeconds.dateFromString(endsString) {
+        if let ends = SHPDateFormatter.ISO8601NoSeconds.date(from: endsString) {
             self.ends = ends
         } else {
             assertionFailure("Cannot parse end time")
-            self.ends = NSDate()
+            self.ends = Date()
         }
     }
     
     func isWheelchairAccessible() -> Bool {
         guard
-            let wheelchairDict = self.amenities["wheelchair"],
+            let wheelchairDict = self.amenities["wheelchair"] as? [String: Any],
             let visible = wheelchairDict["visible"] as? Bool else {
                 return false
         }
@@ -69,6 +69,11 @@ extension Rate {
     
     // TODO: add unit tests for this
     func minutesToReservation() -> Int {
-        return NSCalendar.currentCalendar().components([.Minute], fromDate: NSDate(), toDate: self.starts, options: []).minute
+        return Calendar
+            .current
+            .dateComponents([.minute],
+                            from: Date(),
+                            to: self.starts)
+            .minute ?? 0
     }
 }

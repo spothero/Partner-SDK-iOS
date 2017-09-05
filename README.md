@@ -10,36 +10,25 @@ If you've already got a SpotHero Partner Key, you're ready to start.
 
 ## Getting Started 
 
-Use [CocoaPods](https://guides.cocoapods.org/using/getting-started.html) to install our SDK. 
+Use [CocoaPods](https://guides.cocoapods.org/using/getting-started.html) to install our SDK. Follow the guide at the link to get started if you do not already have CocoaPods installed. 
 
 Add the following line to your [Podfile](https://guides.cocoapods.org/using/the-podfile.html), within the target you wish to add our SDK to:
 
 ```ruby
 target 'YourAppTargetName'
-  pod `SpotHero_iOS_Partner_SDK`, '~>0.1'
+  pod 'SpotHero_iOS_Partner_SDK', '~>1.0'
 end
 ```
 
 **NOTE**: Since our SDK is in Swift, you _must_ use the [`use_frameworks!`](https://guides.cocoapods.org/syntax/podfile.html#use_frameworks_bang) flag in your Podfile, or it won't build. 
 
-If you are running Xcode 7.3 or 7.3.1, you may skip this next step.
+Using the terminal, `cd` into the directory where your `Podfile` is located.  Run `pod install`, and the current version of our SDK will be installed. 
 
-If you are running Xcode 8 or higher, you need to add a post-install hook at the bottom of your Podfile (outside the target) to make sure that it builds using Swift 2.3 instead of 3.0: 
+Make sure you follow CocoaPods' instructions and open the `.xcworkspace` file instead of the `.xcodeproj` file, or your code won't build. 
 
-```ruby
-post_install do |installer|
-  installer.pods_project.targets.each do |target|
-    target.build_configurations.each do |config|
-      config.build_settings['SWIFT_VERSION'] = '2.3'
-    end
-  end
-end
-```
+**NOTE**: The current version SDK uses Swift 3.0.1, and requires a version of Xcode 8.2 or higher to build. If you need to use something compatible with anything down to Xcode 7.3, please use version [`0.1.3`](https://github.com/spothero/Partner-SDK-iOS/releases/tag/0.1.3) of the SDK, which builds in Swift 2.2 and 2.3. More detailed information about Swift versioning is available in our [note on Swift Versions](#a-note-on-swift-versions).
 
-More information about Swift verisoning is available in our [note on Swift Versions](#a-note-on-swift-versions).
-
-EVERYONE: Run `pod install`, and the current version of our SDK will be installed. 
-
+## Using The SDK in your Code
 
 To use the SDK or its elements in a Swift file, add the following line to the top of your file: 
 
@@ -52,7 +41,7 @@ To use the SDK or its elements in Objective-C file, add this line to the top of 
 ```objectivec
 @import SpotHero_iOS_Partner_SDK;
 ```
-## Launching the SDK
+### Launching the SDK
 
 The SpotHero SDK is implemented as a singleton which can be launched from any `UIViewController` subclass. It will be presented modally. There is only one **required** property which must be set:
 
@@ -97,10 +86,10 @@ Here is an example of that same `IBAction` with the  optional items set up:
 	spotHeroSDK.partnerApplicationKey = "Your SpotHero Partner Key Here"
         
 	//Text Color for nav bar: OPTIONAL
-	spotHeroSDK.textColor = .blackColor()
+	spotHeroSDK.textColor = .black
         
 	//Tint color for nav bar: OPTIONAL
-	spotHeroSDK.tintColor = .yellowColor()
+	spotHeroSDK.tintColor = .yellow
         
 	//Ignition, and liftoff!
 	spotHeroSDK.launchSDKFromViewController(self)
@@ -119,8 +108,16 @@ For security reasons, we ask that you ensure this is **not** set to `true` in an
 
 ## A note on Swift Versions
 
-One thing about Swift that's a bit of a pain until it becomes ABI stable is that your code and *all* dependencies must be using the same version of Swift. This SDK is entirely written in Swift, so make sure you figure out if you have any other Swift-based dependencies or any of your own coed tied to a particular version of Swift. 
+One thing about Swift that's a bit of a pain until it becomes ABI stable is that your code and *all* dependencies must be using the same version of Swift. This SDK is entirely written in Swift, so make sure you figure out if you have any other Swift-based dependencies or any of your own code tied to a particular version of Swift. 
 
-The current version of the SDK supports Swift 2.2 **and** 2.3, which means it can be built in Xcode 7.3 or Xcode 8. A future version will migrate the code to Swift 3.0, which can only be built in Xcode 8, and which will have a fairly significant number of breaking changes. We'll tag the branches appropriately at that point. 
+If you are running Xcode 8.2 or higher: 
+
+- Use the current version of the SDK, which is using Swift 3. 
+
+If you are running Xcode 8.1.x down to Xcode 7.3.x: 
+
+- Use version [`0.1.3`](https://github.com/spothero/Partner-SDK-iOS/releases/tag/0.1.3) of the SDK, which supports both Swift 2.2 **and** 2.3. Follow the instructions in the version of this document in the linked tag to ensure proper installation. 
+
+Note that if you are running anything below Xcode 7.3.x, you will not be able to build our SDK, since Swift 2.3 is not supported in those versions. 
 
 We're committed to ensuring timely updates to the SDK when new versions of Swift are made available through Xcode. Please reach out to the SpotHero engineering team through your partnership coordinator if you need access to a pre-release version. 

@@ -6,8 +6,8 @@
 //
 //
 
-import Foundation
 import CoreLocation
+import Foundation
 
 /**
  *  Represents a facility
@@ -24,7 +24,7 @@ struct Facility: Equatable {
     let streetAddress: String
     let distanceInMeters: Int
     
-    private var rates = [Rate]()
+    fileprivate var rates = [Rate]()
     var availableRates: [Rate] {
         return self.rates.filter { $0.unavailable == false }
     }
@@ -43,11 +43,10 @@ extension Facility {
         let longitude = try json.shp_double("longitude")
         self.location = CLLocation(latitude: latitude, longitude: longitude)
         
-        if let rateDictionaries: [JSONDictionary] = try json.shp_array("hourly_rates") {
-            for rateDictionary in rateDictionaries {
-                let rate = try Rate(json: rateDictionary)
-                rates.append(rate)
-            }
+        let rateDictionaries = try json.shp_array("hourly_rates") as [JSONDictionary]
+        for rateDictionary in rateDictionaries {
+            let rate = try Rate(json: rateDictionary)
+            rates.append(rate)
         }
         
         let details = try json.shp_dictionary("facility") as JSONDictionary
@@ -66,6 +65,7 @@ extension Facility {
     }
 }
 
+//swiftlint:disable:next operator_whitespace
 func ==(lhs: Facility, rhs: Facility) -> Bool {
     return lhs.parkingSpotID == rhs.parkingSpotID
 }

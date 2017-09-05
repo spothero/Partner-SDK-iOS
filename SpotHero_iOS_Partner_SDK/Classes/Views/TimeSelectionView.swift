@@ -9,18 +9,18 @@
 import UIKit
 
 protocol TimeSelectionViewDelegate: class {
-    func didTapStartView(startDate: NSDate, endDate: NSDate)
-    func didTapEndView(startDate: NSDate, endDate: NSDate)
+    func didTapStartView(_ startDate: Date, endDate: Date)
+    func didTapEndView(_ startDate: Date, endDate: Date)
     func timeSelectionViewShouldHide()
 }
 
 protocol ShowTimeSelectionViewDelegate: class {
-    func timeSelectionViewShouldShow(show: Bool)
+    func timeSelectionViewShouldShow(_ show: Bool)
     func didPressEndDoneButton()
 }
 
 protocol StartEndDateDelegate: class {
-    func didChangeStartEndDate(startDate startDate: NSDate, endDate: NSDate)
+    func didChangeStartEndDate(startDate: Date, endDate: Date)
     func didSelectStartEndView()
 }
 
@@ -28,9 +28,9 @@ class TimeSelectionView: UIView {
     
     @IBOutlet weak private var startDateLabel: UILabel!
     
-    @IBOutlet weak private var startTimeTextField: UITextField!
+    @IBOutlet weak fileprivate var startTimeTextField: UITextField!
     @IBOutlet weak private var endDateLabel: UILabel!
-    @IBOutlet weak private var endTimeTextField: UITextField!
+    @IBOutlet weak fileprivate var endTimeTextField: UITextField!
     @IBOutlet private var dateTimeLabels: [UILabel]!
     @IBOutlet weak private var startsView: UIView!
     @IBOutlet weak private var endsView: UIView!
@@ -44,38 +44,38 @@ class TimeSelectionView: UIView {
     
     var startViewSelected = false {
         didSet {
-            if (self.startViewSelected) {
+            if self.startViewSelected {
                 self.startTimeTextField.becomeFirstResponder()
             } else {
-                self.startDateLabel.textColor = .blackColor()
-                self.startTimeTextField.textColor = .blackColor()
+                self.startDateLabel.textColor = .black
+                self.startTimeTextField.textColor = .black
             }
         }
     }
     var endViewSelected = false {
         didSet {
-            if (self.endViewSelected) {
+            if self.endViewSelected {
                 self.endTimeTextField.becomeFirstResponder()
             } else {
-                self.endDateLabel.textColor = .blackColor()
-                self.endTimeTextField.textColor = .blackColor()
+                self.endDateLabel.textColor = .black
+                self.endTimeTextField.textColor = .black
             }
         }
     }
-    var startDate: NSDate = NSDate().shp_roundDateToNearestHalfHour(roundDown: true) {
+    var startDate: Date = Date().shp_roundDateToNearestHalfHour(roundDown: true) {
         didSet {
             self.startDatePicker.date = self.startDate
             self.setDateTimeLabels(self.startDate, endDate: self.endDate)
             self.startEndDateDelegate?.didChangeStartEndDate(startDate: self.startDate, endDate: self.endDate)
-            self.startTimeTextField.text = DateFormatter.TimeOnly.stringFromDate(self.startDate)
+            self.startTimeTextField.text = SHPDateFormatter.TimeOnly.string(from: self.startDate)
         }
     }
-    var endDate: NSDate = NSDate().dateByAddingTimeInterval(Constants.SixHoursInSeconds).shp_roundDateToNearestHalfHour(roundDown: true) {
+    var endDate: Date = Date().addingTimeInterval(Constants.SixHoursInSeconds).shp_roundDateToNearestHalfHour(roundDown: true) {
         didSet {
             self.endDatePicker.date = self.endDate
             self.setDateTimeLabels(self.startDate, endDate: self.endDate)
             self.startEndDateDelegate?.didChangeStartEndDate(startDate: self.startDate, endDate: self.endDate)
-            self.endTimeTextField.text = DateFormatter.TimeOnly.stringFromDate(self.endDate)
+            self.endTimeTextField.text = SHPDateFormatter.TimeOnly.string(from: self.endDate)
         }
     }
     
@@ -85,8 +85,8 @@ class TimeSelectionView: UIView {
     }
     
     private func setupTimeSelectionView() {
-        self.startDate = NSDate().shp_roundDateToNearestHalfHour(roundDown: true)
-        self.endDate = self.startDate.dateByAddingTimeInterval(Constants.SixHoursInSeconds)
+        self.startDate = Date().shp_roundDateToNearestHalfHour(roundDown: true)
+        self.endDate = self.startDate.addingTimeInterval(Constants.SixHoursInSeconds)
         
         self.startDateLabel.accessibilityLabel = AccessibilityStrings.StartDateLabel
         self.endDateLabel.accessibilityLabel = AccessibilityStrings.EndDateLabel
@@ -108,18 +108,18 @@ class TimeSelectionView: UIView {
         self.startDatePicker.minuteInterval = 30
         self.endDatePicker.minuteInterval = 30
         
-        self.startDatePicker.backgroundColor = .whiteColor()
-        self.endDatePicker.backgroundColor = .whiteColor()
+        self.startDatePicker.backgroundColor = .white
+        self.endDatePicker.backgroundColor = .white
         
-        self.startDatePicker.addTarget(self, action: #selector(self.startDateChanged(_:)), forControlEvents: .ValueChanged)
-        self.endDatePicker.addTarget(self, action: #selector(self.endDateChanged(_:)), forControlEvents: .ValueChanged)
+        self.startDatePicker.addTarget(self, action: #selector(self.startDateChanged(_:)), for: .valueChanged)
+        self.endDatePicker.addTarget(self, action: #selector(self.endDateChanged(_:)), for: .valueChanged)
         
         self.startTimeTextField.inputView = self.startDatePicker
         self.endTimeTextField.inputView = self.endDatePicker
         
         let startToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: 44))
-        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
-        let startDoneButton = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: #selector(self.startDoneButtonPressed))
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let startDoneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.startDoneButtonPressed))
         let startToolbarLabel = UILabel()
         startToolbarLabel.text = LocalizedStrings.SetStartTime
         startToolbarLabel.sizeToFit()
@@ -127,7 +127,7 @@ class TimeSelectionView: UIView {
         startToolbar.items = [flexibleSpace, startLabelBarButtonItem, flexibleSpace, startDoneButton]
         
         let endToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: 44))
-        let endDoneButton = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: #selector(self.endDoneButtonPressed))
+        let endDoneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.endDoneButtonPressed))
         let endToolbarLabel = UILabel()
         endToolbarLabel.text = LocalizedStrings.SetEndTime
         endToolbarLabel.sizeToFit()
@@ -138,12 +138,12 @@ class TimeSelectionView: UIView {
         self.endTimeTextField.inputAccessoryView = endToolbar
     }
     
-    private func setDateTimeLabels(startDate: NSDate, endDate: NSDate) {
+    private func setDateTimeLabels(_ startDate: Date, endDate: Date) {
         for label in self.dateTimeLabels {
-            if (label == self.startDateLabel) {
-                label.text = DateFormatter.PrettyMonthDayDate.stringFromDate(self.startDate)
-            } else if (label == self.endDateLabel) {
-                label.text = DateFormatter.PrettyMonthDayDate.stringFromDate(self.endDate)
+            if label == self.startDateLabel {
+                label.text = SHPDateFormatter.PrettyMonthDayDate.string(from: self.startDate)
+            } else if label == self.endDateLabel {
+                label.text = SHPDateFormatter.PrettyMonthDayDate.string(from: self.endDate)
             }
         }
     }
@@ -177,34 +177,34 @@ class TimeSelectionView: UIView {
      
      - parameter show: pass in true to show, false to hide
      */
-    func showTimeSelectionView(show: Bool) {
-        self.hidden = !show
+    func showTimeSelectionView(_ show: Bool) {
+        self.isHidden = !show
         self.showTimeSelectionViewDelegate?.timeSelectionViewShouldShow(show)
-        if self.hidden {
+        if self.isHidden {
             self.startTimeTextField.resignFirstResponder()
             self.endTimeTextField.resignFirstResponder()
         }
     }
     
-    func setStartEndDateTimeLabelWithDate(date: NSDate) {
-        if (self.startViewSelected) {
+    func setStartEndDateTimeLabelWithDate(_ date: Date) {
+        if self.startViewSelected {
             self.startDate = date
-            if (self.endDate.timeIntervalSinceDate(date) < Constants.ThirtyMinutesInSeconds) {
-                self.endDate = date.dateByAddingTimeInterval(Constants.SixHoursInSeconds).shp_roundDateToNearestHalfHour(roundDown: true)
+            if self.endDate.timeIntervalSince(date) < Constants.ThirtyMinutesInSeconds {
+                self.endDate = date.addingTimeInterval(Constants.SixHoursInSeconds).shp_roundDateToNearestHalfHour(roundDown: true)
             }
-        } else if (self.endViewSelected) {
+        } else if self.endViewSelected {
             self.endDate = date
         }
     }
     
     //MARK: Actions
     
-    @IBAction private func startViewTapped(sender: AnyObject) {
+    @IBAction private func startViewTapped(_ sender: AnyObject) {
         self.startViewSelected = true
         self.delegate?.didTapStartView(self.startDate, endDate: self.endDate)
     }
     
-    @IBAction private func endViewTapped(sender: AnyObject) {
+    @IBAction private func endViewTapped(_ sender: AnyObject) {
         self.endViewSelected = true
         self.delegate?.didTapEndView(self.startDate, endDate: self.endDate)
     }
@@ -218,32 +218,32 @@ class TimeSelectionView: UIView {
         self.showTimeSelectionViewDelegate?.didPressEndDoneButton()
     }
     
-    @objc private func startDateChanged(datePicker: UIDatePicker) {
+    @objc private func startDateChanged(_ datePicker: UIDatePicker) {
         self.setStartEndDateTimeLabelWithDate(datePicker.date)
     }
     
-    @objc private func endDateChanged(datePicker: UIDatePicker) {
+    @objc private func endDateChanged(_ datePicker: UIDatePicker) {
         self.setStartEndDateTimeLabelWithDate(datePicker.date)
     }
     
     //MARK: Helpers
     
-    private func selectStartView() {
+    fileprivate func selectStartView() {
         self.startDateLabel.textColor = .shp_spotHeroBlue()
         self.startTimeTextField.textColor = .shp_spotHeroBlue()
         self.endViewSelected = false
         self.startEndDateDelegate?.didSelectStartEndView()
     }
     
-    private func selectEndView() {
+    fileprivate func selectEndView() {
         self.endDateLabel.textColor = .shp_spotHeroBlue()
         self.endTimeTextField.textColor = .shp_spotHeroBlue()
         self.startViewSelected = false
         self.startEndDateDelegate?.didSelectStartEndView()
     }
     
-    private func updateMinimumDateIfNeeded() {
-        if let minimumDate = self.startDatePicker.minimumDate where self.startDate.compare(minimumDate) == .OrderedAscending {
+    fileprivate func updateMinimumDateIfNeeded() {
+        if let minimumDate = self.startDatePicker.minimumDate, self.startDate.compare(minimumDate) == .orderedAscending {
             self.startDate = minimumDate
         }
     }
@@ -252,11 +252,11 @@ class TimeSelectionView: UIView {
 //MARK: UITextFieldDelegate
 
 extension TimeSelectionView: UITextFieldDelegate {
-    func textFieldDidBeginEditing(textField: UITextField) {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
         switch textField {
         case self.startTimeTextField:
             self.selectStartView()
-            self.startDatePicker.minimumDate = NSDate().shp_roundDateToNearestHalfHour(roundDown: true)
+            self.startDatePicker.minimumDate = Date().shp_roundDateToNearestHalfHour(roundDown: true)
             self.updateMinimumDateIfNeeded()
         case self.endTimeTextField:
             self.selectEndView()
@@ -266,7 +266,7 @@ extension TimeSelectionView: UITextFieldDelegate {
         }
     }
     
-    func textFieldDidEndEditing(textField: UITextField) {
+    func textFieldDidEndEditing(_ textField: UITextField) {
         switch textField {
         case self.startTimeTextField:
             self.endTimeTextField.becomeFirstResponder()

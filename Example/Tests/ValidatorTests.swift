@@ -6,19 +6,18 @@
 //  Copyright © 2016 SpotHero, Inc. All rights reserved.
 //
 
+@testable import SpotHero_iOS_Partner_SDK
 import XCTest
 
-@testable import SpotHero_iOS_Partner_SDK
-
 class ValidatorTests: XCTestCase {
-    private let emptyString = ""
-    private let blankSpace = " "
+    fileprivate let emptyString = ""
+    fileprivate let blankSpace = " "
     
     //MARK: Helpers
     
-    private func validateThatErrorIsNotThrown(file: StaticString = #file,
-                                      line: UInt = #line,
-                                      closure: () throws -> ()) {
+    fileprivate func validateThatErrorIsNotThrown(_ file: StaticString = #file,
+                                                  line: UInt = #line,
+                                                  closure: () throws -> Void) {
         do {
             try closure()
             XCTAssert(true, "Did not throw an error",
@@ -31,16 +30,16 @@ class ValidatorTests: XCTestCase {
         }
     }
     
-    private func validateThatFieldBlankErrorThrown(errorFieldName: String,
-                                           file: StaticString = #file,
-                                           line: UInt = #line,
-                                           closure: () throws -> ()) {
+    fileprivate func validateThatFieldBlankErrorThrown(_ errorFieldName: String,
+                                                       file: StaticString = #file,
+                                                       line: UInt = #line,
+                                                       closure: () throws -> Void) {
         do {
             try closure()
             XCTFail("Did not throw an error",
                     file: file,
                     line: line)
-        } catch ValidatorError.FieldBlank(let fieldName) {
+        } catch ValidatorError.fieldBlank(let fieldName) {
             XCTAssertEqual(fieldName,
                            errorFieldName,
                            file: file,
@@ -52,17 +51,17 @@ class ValidatorTests: XCTestCase {
         }
     }
     
-    private func validateThatFieldInvalidErrorIsThrown(errorFieldName: String,
-                                               errorMessage: String,
-                                               file: StaticString = #file,
-                                               line: UInt = #line,
-                                               closure: () throws ->()) {
+    fileprivate func validateThatFieldInvalidErrorIsThrown(_ errorFieldName: String,
+                                                           errorMessage: String,
+                                                           file: StaticString = #file,
+                                                           line: UInt = #line,
+                                                           closure: () throws -> Void) {
         do {
             try closure()
             XCTFail("Did not throw an error",
                     file: file,
                     line: line)
-        } catch ValidatorError.FieldInvalid(let fieldName, let message) {
+        } catch ValidatorError.fieldInvalid(let fieldName, let message) {
             XCTAssertEqual(fieldName,
                            errorFieldName,
                            file: file,
@@ -89,14 +88,14 @@ class ValidatorTests: XCTestCase {
             try Validator.validateEmail(validEmail)
         }
     }
-
+    
     func testInvalidEmail() {
         let invalidEmailNoTLD = "matt.reed@spothero"
         let invalidUsername = "matt..reed@spothero.com"
         let invalidTLD = "matt.reed@spothero.c"
         let invalidEmailNoUsername = "@spothero.com"
         
-        self.validateThatFieldInvalidErrorIsThrown(LocalizedStrings.Email, errorMessage: LocalizedStrings.EmailErrorMessage) { 
+        self.validateThatFieldInvalidErrorIsThrown(LocalizedStrings.Email, errorMessage: LocalizedStrings.EmailErrorMessage) {
             try Validator.validateEmail(invalidEmailNoTLD)
         }
         
@@ -128,7 +127,7 @@ class ValidatorTests: XCTestCase {
     func testValidPhone() {
         let validPhone = "312-566-7768"
         
-        self.validateThatErrorIsNotThrown { 
+        self.validateThatErrorIsNotThrown {
             try Validator.validatePhone(validPhone)
         }
     }
@@ -137,11 +136,11 @@ class ValidatorTests: XCTestCase {
         let invalidPhoneNotTenDigits = "312-566"
         let invalidPhoneNonNumeric = "232-2d23-2232"
         
-        self.validateThatFieldInvalidErrorIsThrown(LocalizedStrings.Phone, errorMessage: LocalizedStrings.PhoneErrorMessage) { 
+        self.validateThatFieldInvalidErrorIsThrown(LocalizedStrings.Phone, errorMessage: LocalizedStrings.PhoneErrorMessage) {
             try Validator.validatePhone(invalidPhoneNotTenDigits)
         }
         
-        self.validateThatFieldInvalidErrorIsThrown(LocalizedStrings.Phone, errorMessage: LocalizedStrings.PhoneErrorMessage) { 
+        self.validateThatFieldInvalidErrorIsThrown(LocalizedStrings.Phone, errorMessage: LocalizedStrings.PhoneErrorMessage) {
             try Validator.validatePhone(invalidPhoneNonNumeric)
         }
     }
@@ -162,10 +161,10 @@ class ValidatorTests: XCTestCase {
     func testValidVisa() {
         let validVisa = "4556 6580 0837 9641"
         
-        self.validateThatErrorIsNotThrown { 
+        self.validateThatErrorIsNotThrown {
             let cardType = Validator.getCardType(validVisa)
             try Validator.validateCreditCard(validVisa)
-            XCTAssertEqual(cardType, CardType.Visa)
+            XCTAssertEqual(cardType, CardType.visa)
         }
     }
     
@@ -175,7 +174,7 @@ class ValidatorTests: XCTestCase {
         self.validateThatErrorIsNotThrown {
             let cardType = Validator.getCardType(validDiscover)
             try Validator.validateCreditCard(validDiscover)
-            XCTAssertEqual(cardType, CardType.Discover)
+            XCTAssertEqual(cardType, CardType.discover)
         }
     }
     
@@ -185,7 +184,7 @@ class ValidatorTests: XCTestCase {
         self.validateThatErrorIsNotThrown {
             let cardType = Validator.getCardType(validMasterCard)
             try Validator.validateCreditCard(validMasterCard)
-            XCTAssertEqual(cardType, CardType.MasterCard)
+            XCTAssertEqual(cardType, CardType.masterCard)
         }
     }
     
@@ -195,14 +194,14 @@ class ValidatorTests: XCTestCase {
         self.validateThatErrorIsNotThrown {
             let cardType = Validator.getCardType(validAmex)
             try Validator.validateCreditCard(validAmex)
-            XCTAssertEqual(cardType, CardType.Amex)
+            XCTAssertEqual(cardType, CardType.amex)
         }
     }
     
     func testInvalidVisa() {
         let invalidVisa = "4242 42 4242 234"
         
-        self.validateThatFieldInvalidErrorIsThrown(LocalizedStrings.CreditCard, errorMessage: LocalizedStrings.CreditCardErrorMessage) { 
+        self.validateThatFieldInvalidErrorIsThrown(LocalizedStrings.CreditCard, errorMessage: LocalizedStrings.CreditCardErrorMessage) {
             try Validator.validateCreditCard(invalidVisa)
         }
     }
@@ -240,7 +239,7 @@ class ValidatorTests: XCTestCase {
     }
     
     func testBlankCreditCard() {
-        self.validateThatFieldBlankErrorThrown(LocalizedStrings.CreditCard) { 
+        self.validateThatFieldBlankErrorThrown(LocalizedStrings.CreditCard) {
             try Validator.validateCreditCard(self.emptyString)
         }
         
@@ -252,66 +251,74 @@ class ValidatorTests: XCTestCase {
     //MARK: Expiration Date
     
     func testValidExpirationDate() {
-        let date = NSDate()
-        let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
+        let date = Date()
+        let calendar = Calendar(identifier: Calendar.Identifier.gregorian)
         
-        if let dateComponents = calendar?.components([.Month, .Year], fromDate: date) {
-            let month = String(dateComponents.month)
-            let year = String(dateComponents.year + 1)
-            
-            self.validateThatErrorIsNotThrown {
-                try Validator.validateExpiration(month, year: year)
-            }
+        let dateComponents = calendar.dateComponents([.month, .year], from: date)
+        if
+            let month = dateComponents.month,
+            let year = dateComponents.year {
+                let monthString = String(month)
+                let yearString = String(year + 1)
+                
+                self.validateThatErrorIsNotThrown {
+                    try Validator.validateExpiration(monthString, year: yearString)
+                }
         } else {
             XCTFail("Cannot get date")
         }
     }
     
     func testInvalidExpirationDate() {
-        let date = NSDate()
-        let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
-    
-        if let dateComponents = calendar?.components([.Month, .Year], fromDate: date) {
-            let month = String(dateComponents.month)
-            let year = String(dateComponents.year)
-            
-            let pastMonth: String
-            if dateComponents.month == 1 {
-                pastMonth = "12"
-            } else {
-                pastMonth = String(dateComponents.month - 1)
-            }
-            
-            let pastYear = String(dateComponents.year - 1)
-            let invalidMonth = "14"
-            let invalidYear = "200e3"
-            
-            self.validateThatFieldInvalidErrorIsThrown(LocalizedStrings.ExpirationDate, errorMessage: LocalizedStrings.DateInThePastErrorMessage) {
-                if month == "1" {
-                    try Validator.validateExpiration(pastMonth, year: pastYear)
+        let date = Date()
+        let calendar = Calendar(identifier: Calendar.Identifier.gregorian)
+        
+        let dateComponents = calendar.dateComponents([.month, .year], from: date)
+        if
+            let month = dateComponents.month,
+            let year = dateComponents.year {
+                let monthString = String(month)
+                let yearString = String(year)
+                
+                let pastMonth: String
+                if dateComponents.month == 1 {
+                    pastMonth = "12"
                 } else {
-                    try Validator.validateExpiration(pastMonth, year: year)
+                    pastMonth = String(month - 1)
                 }
-            }
-            
-            self.validateThatFieldInvalidErrorIsThrown(LocalizedStrings.ExpirationDate, errorMessage: LocalizedStrings.DateInThePastErrorMessage) {
-                try Validator.validateExpiration(month, year: pastYear)
-            }
-            
-            self.validateThatFieldInvalidErrorIsThrown(LocalizedStrings.ExpirationDate, errorMessage: LocalizedStrings.InvalidDateErrorMessage) {
-                try Validator.validateExpiration(month, year: invalidYear)
-            }
-            
-            self.validateThatFieldInvalidErrorIsThrown(LocalizedStrings.ExpirationDate, errorMessage: LocalizedStrings.InvalidDateErrorMessage) {
-                try Validator.validateExpiration(invalidMonth, year: year)
-            }
+                
+                let pastYear = String(year - 1)
+                let invalidMonth = "14"
+                let invalidYear = "200e3"
+                
+                self.validateThatFieldInvalidErrorIsThrown(LocalizedStrings.ExpirationDate,
+                                                           errorMessage: LocalizedStrings.DateInThePastErrorMessage) {
+                    if month == 1 {
+                        try Validator.validateExpiration(pastMonth, year: pastYear)
+                    } else {
+                        try Validator.validateExpiration(pastMonth, year: yearString)
+                    }
+                }
+                
+                self.validateThatFieldInvalidErrorIsThrown(LocalizedStrings.ExpirationDate,
+                                                           errorMessage: LocalizedStrings.DateInThePastErrorMessage) {
+                    try Validator.validateExpiration(monthString, year: pastYear)
+                }
+                
+                self.validateThatFieldInvalidErrorIsThrown(LocalizedStrings.ExpirationDate, errorMessage: LocalizedStrings.InvalidDateErrorMessage) {
+                    try Validator.validateExpiration(monthString, year: invalidYear)
+                }
+                
+                self.validateThatFieldInvalidErrorIsThrown(LocalizedStrings.ExpirationDate, errorMessage: LocalizedStrings.InvalidDateErrorMessage) {
+                    try Validator.validateExpiration(invalidMonth, year: yearString)
+                }
         } else {
             XCTFail("Cannot get date")
         }
     }
     
     func testBlankExpirationDate() {
-        self.validateThatFieldBlankErrorThrown(LocalizedStrings.ExpirationDate) { 
+        self.validateThatFieldBlankErrorThrown(LocalizedStrings.ExpirationDate) {
             try Validator.validateExpiration(self.emptyString, year: self.emptyString)
         }
         
@@ -326,11 +333,11 @@ class ValidatorTests: XCTestCase {
         let validCVCNonAmex = "123"
         let validCVCAmex = "1234"
         
-        self.validateThatErrorIsNotThrown { 
+        self.validateThatErrorIsNotThrown {
             try Validator.validateCVC(validCVCNonAmex)
         }
         
-        self.validateThatErrorIsNotThrown { 
+        self.validateThatErrorIsNotThrown {
             try Validator.validateCVC(validCVCAmex, amex: true)
         }
     }
@@ -340,7 +347,7 @@ class ValidatorTests: XCTestCase {
         let invalidCVCAmex = "123"
         let invalidCVCNonAmex = "1234"
         
-        self.validateThatFieldInvalidErrorIsThrown(LocalizedStrings.CVC, errorMessage: LocalizedStrings.CVCErrorMessage) { 
+        self.validateThatFieldInvalidErrorIsThrown(LocalizedStrings.CVC, errorMessage: LocalizedStrings.CVCErrorMessage) {
             try Validator.validateCVC(invalidCVC)
         }
         
@@ -356,11 +363,11 @@ class ValidatorTests: XCTestCase {
             try Validator.validateCVC(invalidCVCAmex, amex: true)
         }
         
-        self.validateThatErrorIsNotThrown { 
+        self.validateThatErrorIsNotThrown {
             try Validator.validateCVC(invalidCVCAmex)
         }
         
-        self.validateThatErrorIsNotThrown { 
+        self.validateThatErrorIsNotThrown {
             try Validator.validateCVC(invalidCVCNonAmex, amex: true)
         }
     }
@@ -380,7 +387,7 @@ class ValidatorTests: XCTestCase {
     func testValidZip() {
         let zip = "60601"
         
-        self.validateThatErrorIsNotThrown { 
+        self.validateThatErrorIsNotThrown {
             try Validator.validateZip(zip)
         }
     }
@@ -389,21 +396,21 @@ class ValidatorTests: XCTestCase {
         let zipWrongLength = "6061"
         let zipNonNumeric = "353m3"
         
-        self.validateThatFieldInvalidErrorIsThrown(LocalizedStrings.ZipCode, errorMessage: LocalizedStrings.ZipErrorMessage) { 
+        self.validateThatFieldInvalidErrorIsThrown(LocalizedStrings.ZipCode, errorMessage: LocalizedStrings.ZipErrorMessage) {
             try Validator.validateZip(zipWrongLength)
         }
         
-        self.validateThatFieldInvalidErrorIsThrown(LocalizedStrings.ZipCode, errorMessage: LocalizedStrings.ZipErrorMessage) { 
+        self.validateThatFieldInvalidErrorIsThrown(LocalizedStrings.ZipCode, errorMessage: LocalizedStrings.ZipErrorMessage) {
             try Validator.validateZip(zipNonNumeric)
         }
     }
     
     func testBlankZip() {
-        self.validateThatFieldBlankErrorThrown(LocalizedStrings.ZipCode) { 
+        self.validateThatFieldBlankErrorThrown(LocalizedStrings.ZipCode) {
             try Validator.validateZip(self.emptyString)
         }
         
-        self.validateThatFieldBlankErrorThrown(LocalizedStrings.ZipCode) { 
+        self.validateThatFieldBlankErrorThrown(LocalizedStrings.ZipCode) {
             try Validator.validateZip(self.blankSpace)
         }
     }
@@ -412,7 +419,7 @@ class ValidatorTests: XCTestCase {
     
     func testValidLicensePlate() {
         let validLicense = "A1phaNum3ric"
-        self.validateThatErrorIsNotThrown { 
+        self.validateThatErrorIsNotThrown {
             try Validator.validateLicense(validLicense)
         }
     }
@@ -420,7 +427,7 @@ class ValidatorTests: XCTestCase {
     func testInvalidLicensePlate() {
         let tooLong = "123456789012345"
         
-        self.validateThatFieldInvalidErrorIsThrown(LocalizedStrings.LicensePlate, errorMessage: LocalizedStrings.LicensePlateErrorMessage) { 
+        self.validateThatFieldInvalidErrorIsThrown(LocalizedStrings.LicensePlate, errorMessage: LocalizedStrings.LicensePlateErrorMessage) {
             try Validator.validateLicense(tooLong)
         }
         

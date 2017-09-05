@@ -9,6 +9,6 @@
 import UIKit
 
 class GooglePredictionTableHeader: UITableViewHeaderFooterView {
-    @IBOutlet weak var label: UILabel!
+    @IBOutlet private(set) weak var label: UILabel!
     static let reuseIdentifier = "predictionHeader"
 }

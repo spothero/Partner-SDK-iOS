@@ -20,11 +20,11 @@ import Foundation
  
  - parameter message:  The message you wish to log out.
  */
-func DLog(@autoclosure message: () -> String,
-    filename: StaticString = #file,
-    function: StaticString = #function,
-    line: UInt = #line) {
-    if (ServerEnvironment.ShouldDebugPrintInfo) {
+func DLog(_ message: @autoclosure () -> String,
+          filename: StaticString = #file,
+          function: StaticString = #function,
+          line: UInt = #line) {
+    if ServerEnvironment.ShouldDebugPrintInfo {
         detailedLog(message(), filename, function, line)
     } //Else, Do nothing out of debug mode
 }
@@ -34,10 +34,10 @@ func DLog(@autoclosure message: () -> String,
  
  - parameter message:  The message you wish to log out.
  */
-func ALog(@autoclosure message: () -> String,
-    filename: StaticString = #file,
-    function: StaticString = #function,
-    line: UInt = #line) {
+func ALog(_ message: @autoclosure () -> String,
+          filename: StaticString = #file,
+          function: StaticString = #function,
+          line: UInt = #line) {
     detailedLog(message(), filename, function, line)
 }
 
@@ -49,15 +49,15 @@ func ALog(@autoclosure message: () -> String,
  - parameter function: The function of the original caller
  - parameter line:     the line number of the original caller.
  */
-private func detailedLog(message: String,
+private func detailedLog(_ message: String,
                          _ filename: StaticString,
-                           _ function: StaticString,
-                             _ line: UInt) {
+                         _ function: StaticString,
+                         _ line: UInt) {
     print("[\(filename.shp_lastPathComponent()):\(line)] \(function) - \(message)")
 }
 
 private extension StaticString {
     func shp_lastPathComponent() -> String {
-        return (self.stringValue as NSString).lastPathComponent
+        return (String(describing: self) as NSString).lastPathComponent
     }
 }

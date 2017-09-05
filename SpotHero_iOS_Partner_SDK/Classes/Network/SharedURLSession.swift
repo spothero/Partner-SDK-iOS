@@ -11,14 +11,14 @@ import Foundation
 class SharedURLSession {
     static let sharedInstance = SharedURLSession()
     
-    var session: NSURLSession = {
-        let defaultConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration()
-        let session = NSURLSession(configuration: defaultConfiguration)
+    var session: URLSession = {
+        let defaultConfiguration = URLSessionConfiguration.default
+        let session = URLSession(configuration: defaultConfiguration)
         return session
     }()
     
-    func updateManagerWithConfiguration(configuration: NSURLSessionConfiguration) {
-        self.session = NSURLSession(configuration: configuration)
+    func updateManagerWithConfiguration(configuration: URLSessionConfiguration) {
+        self.session = URLSession(configuration: configuration)
     }
     
     func useURLProtocols(protocols: [AnyClass]?) {

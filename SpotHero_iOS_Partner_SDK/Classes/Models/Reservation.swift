@@ -14,8 +14,8 @@ import Foundation
 struct Reservation {
     let status: String
     let rentalID: Int
-    let starts: NSDate
-    let ends: NSDate
+    let starts: Date
+    let ends: Date
     let price: Double
     let receiptAccessKey: String
 }
@@ -28,7 +28,7 @@ extension Reservation {
         
         //TODO: Figure out better way to get this key
         let cancelURLString = try json.shp_string("cancel_url")
-        if let cancelURLComponents = NSURLComponents(string: cancelURLString), key = cancelURLComponents.queryItems?.first?.value {
+        if let cancelURLComponents = URLComponents(string: cancelURLString), let key = cancelURLComponents.queryItems?.first?.value {
             self.receiptAccessKey = key
         } else {
             assertionFailure("Could not get receipt access key")
@@ -36,19 +36,19 @@ extension Reservation {
         }
         
         let startsString = try json.shp_string("starts")
-        if let starts = DateFormatter.ISO8601NoMillisecondsUTC.dateFromString(startsString) {
+        if let starts = SHPDateFormatter.ISO8601NoMillisecondsUTC.date(from: startsString) {
             self.starts = starts
         } else {
             assertionFailure("Cannot parse start time")
-            self.starts = NSDate()
+            self.starts = Date()
         }
         
         let endsString = try json.shp_string("ends")
-        if let ends = DateFormatter.ISO8601NoMillisecondsUTC.dateFromString(endsString) {
+        if let ends = SHPDateFormatter.ISO8601NoMillisecondsUTC.date(from: endsString) {
             self.ends = ends
         } else {
             assertionFailure("Cannot parse end time")
-            self.ends = NSDate()
+            self.ends = Date()
         }
     }
 }

@@ -12,19 +12,19 @@ class CollapsedSearchBarView: UIView {
     @IBOutlet weak private var timeLabel: UILabel!
     @IBOutlet weak private var chevron: UIImageView!
     
-    static let DateComponentsFormatter: NSDateComponentsFormatter = {
-        let _dateComponentsFormatter = NSDateComponentsFormatter()
-        _dateComponentsFormatter.unitsStyle = .Full
+    static let SHPDateComponentsFormatter: DateComponentsFormatter = {
+        let _dateComponentsFormatter = DateComponentsFormatter()
+        _dateComponentsFormatter.unitsStyle = .full
         return _dateComponentsFormatter
     }()
     
-    var time: NSDateComponents? {
+    var time: DateComponents? {
         didSet {
             guard let time = self.time else {
                 return
             }
             
-            self.timeLabel.text = CollapsedSearchBarView.DateComponentsFormatter.stringFromDateComponents(time)
+            self.timeLabel.text = CollapsedSearchBarView.SHPDateComponentsFormatter.string(from: time)
         }
     }
     
@@ -38,15 +38,15 @@ class CollapsedSearchBarView: UIView {
      
      - parameter show: pass in true to show, false to hide
      */
-    func showCollapsedSearchBar(show: Bool) {
-        UIView.animateWithDuration(Constants.ViewAnimationDuration,
-                                   delay: 0,
-                                   options: .CurveEaseOut,
-                                   animations: {
-                                    self.alpha = show ? 1 : 0
+    func showCollapsedSearchBar(_ show: Bool) {
+        UIView.animate(withDuration: Constants.ViewAnimationDuration,
+                       delay: 0,
+                       options: .curveEaseOut,
+                       animations: {
+                        self.alpha = show ? 1 : 0
         }) {
-            finished in
-            self.hidden = !show
+            _ in
+            self.isHidden = !show
         }
     }
     

@@ -6,17 +6,17 @@
 //  Copyright © 2016 SpotHero, Inc. All rights reserved.
 //
 
-import XCTest
 import KIF
-@testable import SpotHero_iOS_Partner_SDK_Example
 @testable import SpotHero_iOS_Partner_SDK
+@testable import SpotHero_iOS_Partner_SDK_Example
+import XCTest
 
 class ShowSDKUITests: BaseUITests {
     
     func testLaunchSDKShowsMapView() {
-        tester().waitForViewWithAccessibilityLabel(LocalizedStrings.FindParking)
-        tester().waitForViewWithAccessibilityLabel(LocalizedStrings.Close)
-        tester().waitForViewWithAccessibilityLabel(AccessibilityStrings.MapView)
+        tester().waitForView(withAccessibilityLabel: LocalizedStrings.FindParking)
+        tester().waitForView(withAccessibilityLabel: LocalizedStrings.Close)
+        tester().waitForView(withAccessibilityLabel: AccessibilityStrings.MapView)
     }
     
 }

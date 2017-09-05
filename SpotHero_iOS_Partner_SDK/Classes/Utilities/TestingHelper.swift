@@ -17,7 +17,6 @@ struct TestingHelper {
         return NSClassFromString("XCTest") != nil
     }
     
-    
     /// Returns true if app is UITesting
     ///
     /// - Returns: Whether app is UITesting or not

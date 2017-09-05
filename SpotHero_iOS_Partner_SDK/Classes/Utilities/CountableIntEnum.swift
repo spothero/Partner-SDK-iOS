@@ -34,7 +34,7 @@ extension CountableIntEnum {
      */
     static var AllCases: [Self] {
         var caseIndex: Int = 0
-        let generator: AnyGenerator<Self> = AnyGenerator {
+        let generator: AnyIterator<Self> = AnyIterator {
             let _generator = Self(rawValue: caseIndex)
             caseIndex += 1
             return _generator
@@ -49,7 +49,7 @@ extension CountableIntEnum {
      
      - returns: The retrieved enum case. Fatal errors if it can't find it.
      */
-    static func forIndex(index: Int) -> Self {
+    static func forIndex(_ index: Int) -> Self {
         guard let rowOrSection = Self(rawValue: index) else {
             fatalError("Issue unwrapping row.")
         }

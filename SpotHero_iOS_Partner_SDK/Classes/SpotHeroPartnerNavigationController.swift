@@ -9,11 +9,11 @@
 import UIKit
 
 class SpotHeroPartnerNavigationController: UINavigationController {
-    override func preferredInterfaceOrientationForPresentation() -> UIInterfaceOrientation {
-        return .Portrait
+    override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
+        return .portrait
     }
     
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        return [.Portrait]
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return [.portrait]
     }
 }

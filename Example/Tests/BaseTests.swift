@@ -6,8 +6,8 @@
 //  Copyright © 2016 SpotHero, Inc. All rights reserved.
 //
 
-import XCTest
 @testable import SpotHero_iOS_Partner_SDK
+import XCTest
 
 class BaseTests: XCTestCase {
     let testEmail = "matt@gmail.com"
@@ -21,7 +21,8 @@ class BaseTests: XCTestCase {
     let testPhone = "3125555555"
     
     override func setUp() {
-        let expectation = self.expectationWithDescription("Retrieved API Keys")
+        super.setUp()
+        let expectation = self.expectation(description: "Retrieved API Keys")
         APIKeyConfig.sharedInstance.getKeys {
             success in
             expectation.fulfill()
@@ -30,6 +31,6 @@ class BaseTests: XCTestCase {
             XCTAssertNotNil(APIKeyConfig.sharedInstance.stripeApiKey)
             XCTAssertNotNil(APIKeyConfig.sharedInstance.mixpanelApiKey)
         }
-        self.waitForExpectationsWithTimeout(10.0, handler: nil)
+        self.waitForExpectations(timeout: 10.0, handler: nil)
     }
 }

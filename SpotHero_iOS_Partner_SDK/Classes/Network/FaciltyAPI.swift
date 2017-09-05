@@ -6,11 +6,11 @@
 //
 //
 
-import Foundation
 import CoreLocation
+import Foundation
 
-enum FacilityError: ErrorType {
-    case NoFacilitiesFound
+enum FacilityError: Error {
+    case noFacilitiesFound
 }
 
 /*
@@ -18,20 +18,19 @@ enum FacilityError: ErrorType {
  - parameter error:         [Optional] Any error encountered, or nil if none was encountered.
  - parameter hasMorePages:  true if there are more pages of facilities to load, false if not.
  */
-typealias FacilityCompletion = (facilities: [Facility],
-                                error: ErrorType?,
-                                hasMorePages: Bool) -> (Void)
+typealias FacilityCompletion = (_ facilities: [Facility],
+                                _ error: Error?,
+                                _ hasMorePages: Bool) -> (Void)
 
 struct FacilityAPI {
     private static var NextURLString: String?
-    private static var DataTasks = [NSURLSessionDataTask]()
+    private static var DataTasks = [URLSessionDataTask]()
     
     /// Cancel all facility requests
     static func stopSearching() {
         self.DataTasks.forEach { $0.cancel() }
         self.DataTasks.removeAll()
     }
-    
     
     /// Check if currently searching faclities
     ///
@@ -48,16 +47,16 @@ struct FacilityAPI {
      - parameter ends:       when the reservation should end
      - parameter completion: closure to call after each page of results is loaded.
      */
-    static func fetchFacilities(coordinate: CLLocationCoordinate2D,
-                                starts: NSDate,
-                                ends: NSDate,
+    static func fetchFacilities(_ coordinate: CLLocationCoordinate2D,
+                                starts: Date,
+                                ends: Date,
                                 minSearchRadius: Int = 0,
-                                maxSearchRadius: Double = UnitsOfMeasurement.MetersPerMile.rawValue,
-                                completion: FacilityCompletion) {
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+                                maxSearchRadius: Double = UnitsOfMeasurement.metersPerMile.rawValue,
+                                completion: @escaping FacilityCompletion) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
         
-        let startDate: NSDate
-        let endDate: NSDate
+        let startDate: Date
+        let endDate: Date
         if TestingHelper.isUITesting() {
             startDate = Constants.Test.StartDate
             endDate = Constants.Test.EndDate
@@ -66,8 +65,8 @@ struct FacilityAPI {
             endDate = ends
         }
         
-        let startsString = DateFormatter.ISO8601NoSeconds.stringFromDate(startDate)
-        let endsString = DateFormatter.ISO8601NoSeconds.stringFromDate(endDate)
+        let startsString = SHPDateFormatter.ISO8601NoSeconds.string(from: startDate)
+        let endsString = SHPDateFormatter.ISO8601NoSeconds.string(from: endDate)
         
         let latitude = "\(coordinate.latitude)"
         let longitude = "\(coordinate.longitude)"
@@ -90,10 +89,10 @@ struct FacilityAPI {
                                                                         additionalParams: params,
                                                                         errorCompletion: {
                                                                             error in
-                                                                            if error.code != NSURLError.Cancelled.rawValue {
-                                                                                completion(facilities: [],
-                                                                                    error: error,
-                                                                                    hasMorePages: false)
+                                                                            if (error as NSError).code != URLError.cancelled.rawValue {
+                                                                                completion([],
+                                                                                           error,
+                                                                                           false)
                                                                             }
                                                                         },
                                                                         successCompletion: self.facilityFetchSuccessHandler(completion))
@@ -103,9 +102,10 @@ struct FacilityAPI {
         }
     }
     
-    private static func mapJSON(JSON: JSONDictionary) -> (facilities: [Facility],
-                                                          error: ErrorType?,
-                                                          nextURLString: String?) {
+    //swiftlint:disable:next large_tuple (since it's internal only)
+    private static func mapJSON(_ JSON: JSONDictionary) -> (facilities: [Facility],
+                                                            error: Error?,
+                                                            nextURLString: String?) {
         do {
             let actualData = try JSON.shp_dictionary("data") as JSONDictionary
             let metaData = try JSON.shp_dictionary("meta") as JSONDictionary
@@ -121,25 +121,25 @@ struct FacilityAPI {
                 }
                 return (facilitiesWithRates, nil, nextURLString)
             } else {
-                return ([], FacilityError.NoFacilitiesFound, nextURLString)
+                return ([], FacilityError.noFacilitiesFound, nextURLString)
             }
         } catch let error {
             return ([], error, nil)
         }
     }
     
-    private static func fetchFacilitiesFromNextURLString(urlString: String,
+    private static func fetchFacilitiesFromNextURLString(_ urlString: String,
                                                          prevFacilities: [Facility],
-                                                         completion: FacilityCompletion) {
+                                                         completion: @escaping FacilityCompletion) {
         FacilityAPI.NextURLString = urlString
         let dataTask = SpotHeroPartnerAPIController.getJSONFromFullURLString(urlString,
                                                                              withHeaders: APIHeaders.defaultHeaders(),
                                                                              errorCompletion: {
                                                                                 error in
-                                                                                if error.code != NSURLError.Cancelled.rawValue {
-                                                                                    completion(facilities: [],
-                                                                                        error: error,
-                                                                                        hasMorePages: false)
+                                                                                if (error as NSError).code != URLError.cancelled.rawValue {
+                                                                                    completion([],
+                                                                                               error,
+                                                                                               false)
                                                                                 }
                                                                              },
                                                                              successCompletion: self.facilityFetchSuccessHandler(completion))
@@ -149,7 +149,7 @@ struct FacilityAPI {
         }
     }
     
-    private static func facilityFetchSuccessHandler(completion: FacilityCompletion) -> JSONAPISuccessCompletion {
+    private static func facilityFetchSuccessHandler(_ completion: @escaping FacilityCompletion) -> JSONAPISuccessCompletion {
         return {
             JSON in
 
@@ -157,20 +157,19 @@ struct FacilityAPI {
             let facilitiesWithRates = mappedJSON.facilities
             let error = mappedJSON.error
             
-            guard let nextURLString = mappedJSON.nextURLString
-                    where nextURLString != FacilityAPI.NextURLString else {
+            guard let nextURLString = mappedJSON.nextURLString, nextURLString != FacilityAPI.NextURLString else {
                 //We're done loading, hide the activity indicator and reset the next URL string
-                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 FacilityAPI.NextURLString = nil
                                                 
                 // Call the completion block and let them know we're out of pages.
-                completion(facilities: facilitiesWithRates, error: error, hasMorePages: false)
+                completion(facilitiesWithRates, error, false)
                 self.DataTasks.removeAll()
                 return
             }
             
             //Call the completion block, but let them know we have more pages.
-            completion(facilities: facilitiesWithRates, error: error, hasMorePages: true)
+            completion(facilitiesWithRates, error, true)
             
             //Get said more pages.
             FacilityAPI.fetchFacilitiesFromNextURLString(nextURLString,
