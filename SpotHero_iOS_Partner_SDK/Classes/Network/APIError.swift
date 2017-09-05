@@ -72,7 +72,7 @@ struct APIError {
     
     static func parsingError(_ json: JSONDictionary?) -> NSError {
         if ServerEnvironment.ShouldDebugPrintInfo {
-            print("JSON which couldn't be parsed: \(json)")
+            print("JSON which couldn't be parsed: \(String(describing: json))")
         }
         
         return NSError(domain: PartnerSDKAPIErrorDomain.Parsing.rawValue,
