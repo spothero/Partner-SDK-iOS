@@ -11,14 +11,15 @@ import Foundation
 /// Abstracts scheduling of a debounced (ie, performed only if it has not been cancelled) task
 /// on the main thread in Swift 3.
 class DebouncedTask {
+    typealias Task = () -> Void
     
     /// The task to perform
-    let task: (Void) -> Void
+    let task: Task
     
     /// Set to true if this task should not be performed after the delay.
     var isCancelled = false
     
-    init(task: @escaping (Void) -> Void) {
+    init(task: @escaping Task) {
         self.task = task
     }
     

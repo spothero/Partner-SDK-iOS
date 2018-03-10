@@ -18,6 +18,7 @@ struct Reservation {
     let ends: Date
     let price: Double
     let receiptAccessKey: String
+    let partnerRenterCardToken: String?
 }
 
 extension Reservation {
@@ -49,6 +50,18 @@ extension Reservation {
         } else {
             assertionFailure("Cannot parse end time")
             self.ends = Date()
+        }
+        
+        self.partnerRenterCardToken = try? json.shp_string("partner_renter_card_token")
+        //Save partner renter card token to keychain
+        if
+            let partnerRenterCardToken = self.partnerRenterCardToken,
+            let username = UserDefaultsWrapper.username {
+                let keychainItem = KeychainPasswordItem(account: username)
+                try keychainItem.savePassword(partnerRenterCardToken)
+        } else if UserDefaultsWrapper.username == nil {
+            // Clear Info if we don't get the token and there's no user saved
+            UserDefaultsWrapper.clearUserInfo()
         }
     }
 }

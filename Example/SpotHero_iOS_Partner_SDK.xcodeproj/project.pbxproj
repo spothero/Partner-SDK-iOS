@@ -12,6 +12,7 @@
 		3361782E1D249B1A00AF7AD6 /* ShowSDKUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3361782D1D249B1A00AF7AD6 /* ShowSDKUITests.swift */; };
 		336178381D24A8BB00AF7AD6 /* XCTestCase+KIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336178371D24A8BB00AF7AD6 /* XCTestCase+KIF.swift */; };
 		3391D7931D9DA98E009A42B8 /* DateCompareTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3391D7911D9DA8D4009A42B8 /* DateCompareTests.swift */; };
+		3471B5EA1FDAE74900A28614 /* CityListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3471B5E91FDAE74900A28614 /* CityListTests.swift */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
@@ -66,6 +67,7 @@
 		3361782F1D249B1A00AF7AD6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		336178371D24A8BB00AF7AD6 /* XCTestCase+KIF.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCTestCase+KIF.swift"; sourceTree = "<group>"; };
 		3391D7911D9DA8D4009A42B8 /* DateCompareTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateCompareTests.swift; sourceTree = "<group>"; };
+		3471B5E91FDAE74900A28614 /* CityListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListTests.swift; sourceTree = "<group>"; };
 		404DD54A3DE66EB92B0AF76B /* Pods-SpotHero_iOS_Partner_SDK_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpotHero_iOS_Partner_SDK_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SpotHero_iOS_Partner_SDK_Example/Pods-SpotHero_iOS_Partner_SDK_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		598A47307E22AF714D78D454 /* Pods-SpotHero_iOS_Partner_SDK_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpotHero_iOS_Partner_SDK_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SpotHero_iOS_Partner_SDK_Tests/Pods-SpotHero_iOS_Partner_SDK_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		5F9343FE890355916ED4BCDD /* Pods-SpotHero_iOS_Partner_SDK_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpotHero_iOS_Partner_SDK_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-SpotHero_iOS_Partner_SDK_Example/Pods-SpotHero_iOS_Partner_SDK_Example.release.xcconfig"; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 			children = (
 				C7CBF48A1D41201F001D988F /* MockTests */,
 				C70AC4C51D4FC64F004F8539 /* BaseTests.swift */,
+				3471B5E91FDAE74900A28614 /* CityListTests.swift */,
 				3391D7911D9DA8D4009A42B8 /* DateCompareTests.swift */,
 				C79C65B61D58EF9D001CDCA4 /* FormatterTests.swift */,
 				C73848571D35538C0023E1A8 /* GooglePlacesTests.swift */,
@@ -347,7 +350,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0910;
 				ORGANIZATIONNAME = "SpotHero, Inc.";
 				TargetAttributes = {
 					3361782A1D249B1A00AF7AD6 = {
@@ -646,6 +649,7 @@
 				C7DEAAA61D9C607900443B3B /* NSDateTests.swift in Sources */,
 				C70AC4C31D4BF909004F8539 /* ValidatorTests.swift in Sources */,
 				C73848581D35538C0023E1A8 /* GooglePlacesTests.swift in Sources */,
+				3471B5EA1FDAE74900A28614 /* CityListTests.swift in Sources */,
 				C7FBD0AE1D47BF170089A53B /* StripeWrapperTests.swift in Sources */,
 				C70AC4C61D4FC64F004F8539 /* BaseTests.swift in Sources */,
 				C7CBF4891D411F0F001D988F /* SharedURLSession+Mock.swift in Sources */,
@@ -699,7 +703,7 @@
 				CLANG_ANALYZER_NONNULL = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				INFOPLIST_FILE = SpotHero_iOS_Partner_SDK_ExampleUITests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.spothero.SpotHero-iOS-Partner-SDK-ExampleUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -715,7 +719,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
 				INFOPLIST_FILE = SpotHero_iOS_Partner_SDK_ExampleUITests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.spothero.SpotHero-iOS-Partner-SDK-ExampleUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -732,14 +736,20 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -766,7 +776,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -783,14 +793,20 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -810,7 +826,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -829,12 +845,13 @@
 				CURRENT_PROJECT_VERSION = 75;
 				DEVELOPMENT_TEAM = ZW7QWR628D;
 				INFOPLIST_FILE = SpotHero_iOS_Partner_SDK/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -Xfrontend -warn-long-function-bodies=125";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.spothero.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "d95d2b00-0ace-4113-a88d-f65e3bd7c4bd";
 				PROVISIONING_PROFILE_SPECIFIER = "Development: SDK Sample App";
 				SWIFT_VERSION = 3.0;
 			};
@@ -850,7 +867,7 @@
 				CURRENT_PROJECT_VERSION = 75;
 				DEVELOPMENT_TEAM = ZW7QWR628D;
 				INFOPLIST_FILE = SpotHero_iOS_Partner_SDK/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.spothero.demo.$(PRODUCT_NAME:rfc1034identifier)";

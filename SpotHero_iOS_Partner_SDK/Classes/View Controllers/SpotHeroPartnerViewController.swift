@@ -1,0 +1,61 @@
+//
+//  SpotHeroPartnerViewController.swift
+//  SpotHero_iOS_Partner_SDK
+//
+//  Created by Matthew Reed on 12/5/17.
+//
+
+import UIKit
+
+class SpotHeroPartnerViewController: UIViewController {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        if SpotHeroPartnerSDK.shared.showXButton {
+            self.addCloseButton()
+        }
+        self.registerForKeyboardnotifications()
+        // Kill the back button label on the next VC setting an empty title on the back button
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "",
+                                                                style: .plain,
+                                                                target: nil,
+                                                                action: nil)
+    }
+    
+    private func registerForKeyboardnotifications() {
+        let notificationCenter = NotificationCenter.default
+        
+        notificationCenter.addObserver(self,
+                                       selector: #selector(self.willShowKeyboard(notification:)),
+                                       name: .UIKeyboardWillShow,
+                                       object: nil)
+        notificationCenter.addObserver(self,
+                                       selector: #selector(self.willHideKeyboard(notification:)),
+                                       name: .UIKeyboardWillHide,
+                                       object: nil)
+    }
+    
+    func willShowKeyboard(notification: Notification) {
+        //Override as needed
+    }
+    
+    func willHideKeyboard(notification: Notification) {
+        //Override as needed
+    }
+
+    private func addCloseButton() {
+        let image = UIImage(shp_named: "icn_close")
+        let barButtonItem = UIBarButtonItem(image: image,
+                                            style: .plain,
+                                            target: self,
+                                            action: #selector(self.closeButtonTapped))
+        barButtonItem.accessibilityLabel = LocalizedStrings.Close
+        self.navigationItem.rightBarButtonItem = barButtonItem
+    }
+    
+    @IBAction private func closeButtonTapped() {
+        SpotHeroPartnerSDK.shared.reportSDKClosed()
+        self.dismiss(animated: true)
+    }
+}

@@ -8,7 +8,7 @@
 
 import Foundation
 
-typealias HeaderDictionary = [APIHeaders.HTTPHeaderField : APIHeaders.HTTPHeaderValue]
+typealias HeaderDictionary = [APIHeaders.HTTPHeaderField: APIHeaders.HTTPHeaderValue]
 
 public struct APIHeaders {
     private static let CurrentAPIMinorVersion = "2016-05-27"
@@ -62,7 +62,7 @@ public struct APIHeaders {
         }
     }
     
-    static func headerStringDict(_ headers: [HTTPHeaderField : HTTPHeaderValue]) -> [String : String] {
+    static func headerStringDict(_ headers: [HTTPHeaderField: HTTPHeaderValue]) -> [String: String] {
         var headerDictionary = [String : String]()
         for (key, value) in headers {
             headerDictionary[key.rawValue] = value.asString()

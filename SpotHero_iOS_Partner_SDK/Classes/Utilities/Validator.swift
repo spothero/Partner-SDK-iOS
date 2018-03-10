@@ -13,13 +13,28 @@ enum ValidatorError: Error {
     case fieldInvalid(fieldName: String, message: String)
 }
 
-enum CardType {
+enum CardType: String {
     case
     visa,
     amex,
     masterCard,
     discover,
     unknown
+    
+    var localizedName: String {
+        switch self {
+        case .visa:
+            return LocalizedStrings.Visa
+        case .amex:
+            return LocalizedStrings.Amex
+        case .masterCard:
+            return LocalizedStrings.MasterCard
+        case .discover:
+            return LocalizedStrings.Discover
+        default:
+            return ""
+        }
+    }
     
     func image() -> UIImage? {
         let bundle = Bundle.shp_resourceBundle()
@@ -92,34 +107,6 @@ enum Validator {
     }
     
     /**
-     Validates that a string is a phone number
-     
-     - parameter phone: string to validate
-     
-     - throws: throws an error if string is empty or invalid
-     */
-    static func validatePhone(_ phone: String) throws {
-        // Trim trailing spaces
-        let trimmedPhone = phone.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-        
-        // If phone number is blank return
-        guard !trimmedPhone.isEmpty else {
-            return
-        }
-        
-        // Remove dashes
-        let digits = trimmedPhone.replacingOccurrences(of: "-", with: "")
-        
-        // Check there are ten digits and Check phone number is numeric
-        if digits.characters.count != 10 || !self.isStringNumeric(digits) {
-            let fieldName = LocalizedStrings.Phone
-            let message = LocalizedStrings.PhoneErrorMessage
-            
-            throw ValidatorError.fieldInvalid(fieldName: fieldName, message: message)
-        }
-    }
-    
-    /**
      Returns the type of credit card
      
      - parameter creditCard: Credit card number
@@ -163,11 +150,7 @@ enum Validator {
         let trimmedCreditCard = creditCard.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         let cardType = self.getCardType(trimmedCreditCard)
         
-        if trimmedCreditCard.isEmpty {
-            throw ValidatorError.fieldBlank(fieldName: fieldName)
-        }
-        
-        if cardType == .unknown {
+        if trimmedCreditCard.isEmpty || cardType == .unknown {
             throw ValidatorError.fieldInvalid(fieldName: fieldName, message: LocalizedStrings.NonAcceptedCreditCardErrorMessage)
         }
         
@@ -183,7 +166,7 @@ enum Validator {
         let digits = creditCard.replacingOccurrences(of: " ", with: "")
         
         // Check if there are an incorrect number of digits and Check if non numeric
-        if digits.characters.count != numberOfDigits || !self.isStringNumeric(digits) {
+        if digits.count != numberOfDigits || !self.isStringNumeric(digits) {
             throw ValidatorError.fieldInvalid(fieldName: fieldName, message: message)
         }
     }
@@ -250,32 +233,12 @@ enum Validator {
             throw ValidatorError.fieldBlank(fieldName: fieldName)
         }
         
-        if amex && cvc.characters.count != 4 {
+        if amex && cvc.count != 4 {
             throw ValidatorError.fieldInvalid(fieldName: fieldName, message: message)
-        } else if !amex && cvc.characters.count != 3 {
+        } else if !amex && cvc.count != 3 {
             throw ValidatorError.fieldInvalid(fieldName: fieldName, message: message)
         } else {
             // CVC is valid. Nothing to do
-        }
-    }
-    
-    /**
-     Validates that a string is a zip code
-     
-     - parameter zip: string to validate
-     
-     - throws: throws an error if string is empty or invalid
-     */
-    static func validateZip(_ zip: String) throws {
-        let fieldName = LocalizedStrings.ZipCode
-        let trimmedZip = zip.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-        
-        if trimmedZip.isEmpty {
-            throw ValidatorError.fieldBlank(fieldName: fieldName)
-        }
-        
-        if trimmedZip.characters.count != 5 || !self.isStringNumeric(trimmedZip) {
-            throw ValidatorError.fieldInvalid(fieldName: fieldName, message: LocalizedStrings.ZipErrorMessage)
         }
     }
     
@@ -297,7 +260,7 @@ enum Validator {
         
         let invalidPlateCharacters = CharacterSet(charactersIn: validLicensePlateCharacters).inverted
         
-        if trimmedLicense.rangeOfCharacter(from: invalidPlateCharacters) != nil || trimmedLicense.characters.count > maxPlateCharacters {
+        if trimmedLicense.rangeOfCharacter(from: invalidPlateCharacters) != nil || trimmedLicense.count > maxPlateCharacters {
             throw ValidatorError.fieldInvalid(fieldName: fieldName, message: message)
         }
     }

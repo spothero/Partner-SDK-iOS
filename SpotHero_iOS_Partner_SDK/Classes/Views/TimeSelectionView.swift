@@ -229,15 +229,11 @@ class TimeSelectionView: UIView {
     //MARK: Helpers
     
     fileprivate func selectStartView() {
-        self.startDateLabel.textColor = .shp_spotHeroBlue()
-        self.startTimeTextField.textColor = .shp_spotHeroBlue()
         self.endViewSelected = false
         self.startEndDateDelegate?.didSelectStartEndView()
     }
     
     fileprivate func selectEndView() {
-        self.endDateLabel.textColor = .shp_spotHeroBlue()
-        self.endTimeTextField.textColor = .shp_spotHeroBlue()
         self.startViewSelected = false
         self.startEndDateDelegate?.didSelectStartEndView()
     }

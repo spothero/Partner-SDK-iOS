@@ -18,7 +18,7 @@ extension UITextField {
     /// - returns: Position of cursor
     func shp_getCursorPosition(_ range: NSRange, string: String) -> UITextPosition? {
         let beginning = self.beginningOfDocument
-        return self.position(from: beginning, offset: (range.location + string.characters.count))
+        return self.position(from: beginning, offset: (range.location + string.count))
     }
     
     /// Moves the cursor to the position passed in. In an extension for easy reuse

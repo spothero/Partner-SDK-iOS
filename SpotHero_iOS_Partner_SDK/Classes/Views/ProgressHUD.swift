@@ -11,7 +11,6 @@ import Foundation
 class ProgressHUD: UIView {
     
     @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
-    @IBOutlet private weak var progressLabel: UILabel!
     
     /**
      Creates a new SHProgressHUD view, adds it to the provided view, starts animating the activity indicator and shows it.
@@ -27,17 +26,14 @@ class ProgressHUD: UIView {
         }
         
         // Don't show if it is already being shown
-        for subView in view.subviews {
-            if subView is ProgressHUD {
-                return
-            }
+        for subView in view.subviews where subView is ProgressHUD {
+            return
         }
         
-        progressView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        progressView.frame = view.frame
         progressView.center = CGPoint(x: view.bounds.width / 2, y: view.bounds.height / 2)
-        progressView.layer.cornerRadius = HeightsAndLengths.standardCornerRadius
+        progressView.layer.cornerRadius = HeightsAndWidths.standardCornerRadius
         progressView.activityIndicator.startAnimating()
-        progressView.progressLabel.text = text
         
         view.addSubview(progressView)
         view.bringSubview(toFront: progressView)
@@ -56,11 +52,9 @@ class ProgressHUD: UIView {
         
         view.isUserInteractionEnabled = true
         
-        for subView in view.subviews {
-            if subView is ProgressHUD {
-                subView.removeFromSuperview()
-                return
-            }
+        for subView in view.subviews where subView is ProgressHUD {
+            subView.removeFromSuperview()
+            return
         }
     }
 }

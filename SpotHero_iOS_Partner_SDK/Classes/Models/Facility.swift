@@ -23,6 +23,11 @@ struct Facility: Equatable {
     let state: String
     let streetAddress: String
     let distanceInMeters: Int
+    let defaultImageURL: String
+    let restrictions: [String]
+    let hoursOfOperation: HoursOfOperation
+    let gettingHere: String
+    let images: [CloudinaryImage]
     
     fileprivate var rates = [Rate]()
     var availableRates: [Rate] {
@@ -53,6 +58,13 @@ extension Facility {
         self.city = try details.shp_string("city")
         self.state = try details.shp_string("state")
         self.streetAddress = try details.shp_string("street_address")
+        self.defaultImageURL = try json.shp_string("default_image_url")
+        self.restrictions = try details.shp_array("stripped_restrictions")
+        let hoursOfOperationDictionary: JSONDictionary = try details.shp_dictionary("hours_of_operation")
+        self.hoursOfOperation = try HoursOfOperation(json: hoursOfOperationDictionary)
+        self.gettingHere = try details.shp_string("getting_here")
+        let imageArray = try details.shp_array("images") as [JSONDictionary]
+        self.images = try imageArray.map { try CloudinaryImage(json: $0) }
     }
     
     func displayPrice() -> String {

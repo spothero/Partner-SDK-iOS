@@ -19,11 +19,18 @@ struct Rate {
     let price: Int
     let ruleGroupID: Int
     let unavailableReason: String?
+    let isOnlineCommuterRate: Bool
+    let onlineCommuterRateDescription: String?
+    let onlineCommuterRateEnterStart: Date?
+    let onlineCommuterRateEnterEnd: Date?
+    
     // TODO add tests
     let duration: Double
+    var appVisibleAmenities: [Amenity] {
+        return self.amenities.filter { $0.visible }
+    }
 
-    // TODO: Change to struct or enum
-    let amenities: JSONDictionary
+    fileprivate(set) var amenities = [Amenity]()
 }
 
 extension Rate {
@@ -32,7 +39,6 @@ extension Rate {
         self.unavailable = try json.shp_bool("unavailable")
         self.unavailableReason = try? json.shp_string("unavailable_reason")
         self.price = try json.shp_int("price")
-        self.amenities = try json.shp_dictionary("amenities") as JSONDictionary
         self.ruleGroupID = try json.shp_int("rule_group_id")
         self.duration = try json.shp_double("duration")
         
@@ -51,20 +57,18 @@ extension Rate {
             assertionFailure("Cannot parse end time")
             self.ends = Date()
         }
-    }
-    
-    func isWheelchairAccessible() -> Bool {
-        guard
-            let wheelchairDict = self.amenities["wheelchair"] as? [String: Any],
-            let visible = wheelchairDict["visible"] as? Bool else {
-                return false
+        
+        let amenityDictionaries = try json.shp_dictionary("amenities") as JSONDictionary
+        for case let amenityDictionary as JSONDictionary in amenityDictionaries.values {
+            self.amenities.append(try Amenity(json: amenityDictionary))
         }
         
-        return visible
-    }
-    
-    func allowsReentry() -> Bool {
-        return self.amenities["in-out"] != nil
+        self.isOnlineCommuterRate = try json.shp_bool("online_commuter_rate")
+        self.onlineCommuterRateDescription = try? json.shp_string("online_commuter_rate_description")
+        
+        let formatter = SHPDateFormatter.APIOnlineCommuter
+        self.onlineCommuterRateEnterStart = try? json.shp_date(forKey: "online_commuter_rate_enter_start", usingFormatter: formatter)
+        self.onlineCommuterRateEnterEnd = try? json.shp_date(forKey: "online_commuter_rate_enter_end", usingFormatter: formatter)
     }
     
     // TODO: add unit tests for this

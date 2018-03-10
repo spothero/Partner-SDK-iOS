@@ -122,39 +122,6 @@ class ValidatorTests: XCTestCase {
         }
     }
     
-    //MARK: Phone
-    
-    func testValidPhone() {
-        let validPhone = "312-566-7768"
-        
-        self.validateThatErrorIsNotThrown {
-            try Validator.validatePhone(validPhone)
-        }
-    }
-    
-    func testInvalidPhone() {
-        let invalidPhoneNotTenDigits = "312-566"
-        let invalidPhoneNonNumeric = "232-2d23-2232"
-        
-        self.validateThatFieldInvalidErrorIsThrown(LocalizedStrings.Phone, errorMessage: LocalizedStrings.PhoneErrorMessage) {
-            try Validator.validatePhone(invalidPhoneNotTenDigits)
-        }
-        
-        self.validateThatFieldInvalidErrorIsThrown(LocalizedStrings.Phone, errorMessage: LocalizedStrings.PhoneErrorMessage) {
-            try Validator.validatePhone(invalidPhoneNonNumeric)
-        }
-    }
-    
-    func testBlankPhone() {
-        self.validateThatErrorIsNotThrown {
-            try Validator.validatePhone(self.emptyString)
-        }
-        
-        self.validateThatErrorIsNotThrown {
-            try Validator.validatePhone(self.blankSpace)
-        }
-    }
-    
     //MARK: Credit Card
     //Fake credit cards from http://www.freeformatter.com/credit-card-number-generator-validator.html
     
@@ -239,11 +206,11 @@ class ValidatorTests: XCTestCase {
     }
     
     func testBlankCreditCard() {
-        self.validateThatFieldBlankErrorThrown(LocalizedStrings.CreditCard) {
+        self.validateThatFieldInvalidErrorIsThrown(LocalizedStrings.CreditCard, errorMessage: LocalizedStrings.NonAcceptedCreditCardErrorMessage) {
             try Validator.validateCreditCard(self.emptyString)
         }
         
-        self.validateThatFieldBlankErrorThrown(LocalizedStrings.CreditCard) {
+        self.validateThatFieldInvalidErrorIsThrown(LocalizedStrings.CreditCard, errorMessage: LocalizedStrings.NonAcceptedCreditCardErrorMessage) {
             try Validator.validateCreditCard(self.blankSpace)
         }
     }
@@ -379,72 +346,6 @@ class ValidatorTests: XCTestCase {
         
         self.validateThatFieldBlankErrorThrown(LocalizedStrings.CVC) {
             try Validator.validateCVC(self.blankSpace)
-        }
-    }
-    
-    //MARK: Zip Code
-    
-    func testValidZip() {
-        let zip = "60601"
-        
-        self.validateThatErrorIsNotThrown {
-            try Validator.validateZip(zip)
-        }
-    }
-    
-    func testInvalidZip() {
-        let zipWrongLength = "6061"
-        let zipNonNumeric = "353m3"
-        
-        self.validateThatFieldInvalidErrorIsThrown(LocalizedStrings.ZipCode, errorMessage: LocalizedStrings.ZipErrorMessage) {
-            try Validator.validateZip(zipWrongLength)
-        }
-        
-        self.validateThatFieldInvalidErrorIsThrown(LocalizedStrings.ZipCode, errorMessage: LocalizedStrings.ZipErrorMessage) {
-            try Validator.validateZip(zipNonNumeric)
-        }
-    }
-    
-    func testBlankZip() {
-        self.validateThatFieldBlankErrorThrown(LocalizedStrings.ZipCode) {
-            try Validator.validateZip(self.emptyString)
-        }
-        
-        self.validateThatFieldBlankErrorThrown(LocalizedStrings.ZipCode) {
-            try Validator.validateZip(self.blankSpace)
-        }
-    }
-    
-    // MARK: License Plate
-    
-    func testValidLicensePlate() {
-        let validLicense = "A1phaNum3ric"
-        self.validateThatErrorIsNotThrown {
-            try Validator.validateLicense(validLicense)
-        }
-    }
-    
-    func testInvalidLicensePlate() {
-        let tooLong = "123456789012345"
-        
-        self.validateThatFieldInvalidErrorIsThrown(LocalizedStrings.LicensePlate, errorMessage: LocalizedStrings.LicensePlateErrorMessage) {
-            try Validator.validateLicense(tooLong)
-        }
-        
-        let nonAlphaNumeric = "dskf#dd&ns"
-        
-        self.validateThatFieldInvalidErrorIsThrown(LocalizedStrings.LicensePlate, errorMessage: LocalizedStrings.LicensePlateErrorMessage) {
-            try Validator.validateLicense(nonAlphaNumeric)
-        }
-    }
-    
-    func testBlankLicense() {
-        self.validateThatErrorIsNotThrown {
-            try Validator.validateLicense(self.emptyString)
-        }
-        
-        self.validateThatErrorIsNotThrown {
-            try Validator.validateLicense(self.blankSpace)
         }
     }
 }

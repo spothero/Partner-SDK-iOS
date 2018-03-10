@@ -24,8 +24,8 @@ public final class SpotHeroPartnerSDK: NSObject {
     /// Set to `true` if you would like a very large amount of debug logging. DO NOT set this to `true` for release builds.
     public var debugPrintInfo = false
     
-    /// The tint color to use for the background of the nav bar. Defaults to SpotHero Blue.
-    public var tintColor: UIColor = .shp_spotHeroBlue()
+    /// The tint color to use for the background of the nav bar. Defaults to Tire (SpotHero dark grey).
+    public var tintColor: UIColor = .shp_tire
     
     /// The text color to use for the nav bar. Defaults to white.
     public var textColor: UIColor = .white
@@ -34,6 +34,7 @@ public final class SpotHeroPartnerSDK: NSObject {
     public var partnerApplicationKey: String = ""
     
     private var dateSDKOpened: Date?
+    internal var showXButton = true
     
     //MARK: - Functions
     
@@ -42,7 +43,7 @@ public final class SpotHeroPartnerSDK: NSObject {
         let date = Date()
         if let openDate = SpotHeroPartnerSDK.shared.dateSDKOpened {
             let duration = date.timeIntervalSince(openDate)
-            MixpanelWrapper.track(.SDKClosed, properties: [.SDKClosed: duration])
+            MixpanelWrapper.track(.sdkClosed, properties: [.sdkClosed: duration])
         }
     }
     
@@ -52,8 +53,10 @@ public final class SpotHeroPartnerSDK: NSObject {
      - parameter viewController: The view controller which you want to present the UI for getting a space through SpotHero
      - parameter completion:     A completion block to be passed through to `presentViewController`, or nil. Defaults to nil.
      */
-    public func launchSDKFromViewController(_ viewController: UIViewController, completion: (() -> Void)? = nil) {
+    public func launchSDK(fromViewController viewController: UIViewController? = nil,
+                          completion: ((UIViewController?) -> Void)? = nil) {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.shp_resourceBundle())
+        
         guard let navController = storyboard.instantiateInitialViewController() as? UINavigationController else {
             return
         }
@@ -72,20 +75,35 @@ public final class SpotHeroPartnerSDK: NSObject {
         navController.navigationBar.titleTextAttributes = textAttributes
         navController.navigationBar.tintColor = self.textColor
         navController.navigationBar.barTintColor = self.tintColor
+        // Set up custom back button
+        let arrowImage = UIImage(shp_named: "search_back_arrow")?.withRenderingMode(.alwaysTemplate)
+        navController.navigationBar.backIndicatorImage = arrowImage
+        navController.navigationBar.backIndicatorTransitionMaskImage = arrowImage
+
+        UIFont.loadAllFontsIfNeeded()
         
         APIKeyConfig.sharedInstance.getKeys {
             success in
-            if success {
+            if let viewController = viewController, success {
+                self.showXButton = true
                 viewController.present(navController,
-                                       animated: true,
-                                       completion: completion)
-                MixpanelWrapper.track(.SDKOpened)
-                self.dateSDKOpened = Date()
+                                       animated: true) {
+                                        completion?(nil)
+                                       }
+                self.trackSDKOpened()
+            } else if success {
+                self.trackSDKOpened()
+                self.showXButton = false
+                completion?(navController.topViewController)
             } else {
                 assertionFailure("Unable to get API Keys")
             }
         }
-        
+    }
+    
+    private func trackSDKOpened() {
+        MixpanelWrapper.track(.sdkOpened)
+        self.dateSDKOpened = Date()
     }
     
     //MARK: -  Error keys

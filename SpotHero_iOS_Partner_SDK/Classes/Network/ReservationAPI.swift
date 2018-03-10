@@ -27,10 +27,11 @@ struct ReservationAPI {
                                   rate: Rate,
                                   email: String,
                                   phone: String? = nil,
-                                  stripeToken: String,
+                                  stripeToken: String? = nil,
+                                  partnerRenterCardToken: String? = nil,
                                   license: String? = nil,
+                                  saveInfo: Bool,
                                   completion: @escaping (Reservation?, Error?) -> Void) {
-        
         let startDate: Date
         let endDate: Date
         if TestingHelper.isUITesting() {
@@ -41,8 +42,12 @@ struct ReservationAPI {
             endDate = rate.ends
         }
         
-        let starts = SHPDateFormatter.ISO8601NoSeconds.string(from: startDate)
-        let ends = SHPDateFormatter.ISO8601NoSeconds.string(from: endDate)
+        let formatter = SHPDateFormatter.ISO8601NoSeconds
+        if !TestingHelper.isTesting() {
+            formatter.timeZone = TimeZone(identifier: facility.timeZone)
+        }
+        let starts = formatter.string(from: startDate)
+        let ends = formatter.string(from: endDate)
         
         var params: [String: Any] = [
             "facility_id" : facility.parkingSpotID,
@@ -51,8 +56,16 @@ struct ReservationAPI {
             "starts" : starts,
             "ends" : ends,
             "price" : rate.price,
-            "stripe_token" : stripeToken,
-        ]
+            ]
+        
+        if let stripeToken = stripeToken {
+            params["stripe_token"] = stripeToken
+            params["save_partner_renter_card"] = saveInfo
+        } else if let partnerRenterCardToken = partnerRenterCardToken {
+            params["partner_renter_card_token"] = partnerRenterCardToken
+        } else {
+            assertionFailure("You should either have a renter token or stripe token")
+        }
         
         if let license = license,
             !license.isEmpty {
@@ -69,26 +82,28 @@ struct ReservationAPI {
         let headers = APIHeaders.defaultHeaders()
         
         SpotHeroPartnerAPIController.postJSONtoEndpoint("partner/v1/reservations",
+                                                        endpointIsDumb: true,
                                                         jsonToPost: params,
                                                         withHeaders: headers,
                                                         errorCompletion: {
                                                             error in
                                                             completion(nil, error)
-        }) {
-            JSON in
-            do {
-                guard let data = JSON["data"] as? JSONDictionary else {
-                    completion(nil, APIError.parsingError(JSON))
-                    return
-                }
+                                                        },
+                                                        successCompletion: {
+                                                            JSON in
+                                                            do {
+                                                                guard let data = JSON["data"] as? JSONDictionary else {
+                                                                    completion(nil, APIError.parsingError(JSON))
+                                                                    return
+                                                                }
                 
-                let reservation = try Reservation(json: data)
-                self.LastReservation = reservation
-                completion(reservation, nil)
-            } catch let error {
-                completion(nil, error)
-            }
-        }
+                                                                let reservation = try Reservation(json: data)
+                                                                self.LastReservation = reservation
+                                                                completion(reservation, nil)
+                                                            } catch let error {
+                                                                completion(nil, error)
+                                                            }
+                                                       })
     }
     
     /**
@@ -97,7 +112,7 @@ struct ReservationAPI {
      - parameter reservation: Reservation to cancel
      - parameter completion:  Completion block. No parameters
      */
-    static func cancelReservation(_ reservation: Reservation, completion: ((Error?) -> (Void))?) {
+    static func cancelReservation(_ reservation: Reservation, completion: ((Error?) -> Void)?) {
         let endpoint = "partner/v1/reservations/\(reservation.rentalID)/cancel"
         let headers = APIHeaders.defaultHeaders()
         let params = [
@@ -111,10 +126,11 @@ struct ReservationAPI {
                                                         errorCompletion: {
                                                             error in
                                                             completion?(error)
-        }) {
-            _ in
-            completion?(nil)
-        }
+                                                        },
+                                                        successCompletion: {
+                                                            _ in
+                                                            completion?(nil)
+                                                        })
     }
     
     static func cancelLastReservation(completion: @escaping ((Bool) -> Void)) {

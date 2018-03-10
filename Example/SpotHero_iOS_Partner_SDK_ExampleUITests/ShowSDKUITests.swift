@@ -14,9 +14,9 @@ import XCTest
 class ShowSDKUITests: BaseUITests {
     
     func testLaunchSDKShowsMapView() {
-        tester().waitForView(withAccessibilityLabel: LocalizedStrings.FindParking)
+        tester().waitForView(withAccessibilityLabel: LocalizedStrings.BookParking)
         tester().waitForView(withAccessibilityLabel: LocalizedStrings.Close)
-        tester().waitForView(withAccessibilityLabel: AccessibilityStrings.MapView)
+        tester().waitForView(withAccessibilityLabel: LocalizedStrings.ParkSmarter)
     }
     
 }

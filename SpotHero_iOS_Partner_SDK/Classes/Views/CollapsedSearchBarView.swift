@@ -44,10 +44,11 @@ class CollapsedSearchBarView: UIView {
                        options: .curveEaseOut,
                        animations: {
                         self.alpha = show ? 1 : 0
-        }) {
-            _ in
-            self.isHidden = !show
-        }
+                       },
+                       completion: {
+                        _ in
+                        self.isHidden = !show
+                       })
     }
     
     /**

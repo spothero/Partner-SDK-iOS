@@ -15,7 +15,7 @@ public enum ServerEnvironment {
     custom(baseURL: String) // Must be passed in as https://whatevs.com (no /api) to work
     
     /// What environment should we be pointed at?
-    public static var CurrentEnvironment = ServerEnvironment.staging
+    public static var CurrentEnvironment = ServerEnvironment.production
     
     /// Should the API debugPrint the info?
     public static var ShouldDebugPrintInfo = SpotHeroPartnerSDK.shared.debugPrintInfo
@@ -50,7 +50,7 @@ public enum ServerEnvironment {
         let pureBase: String
         switch self {
         case .staging:
-            pureBase = "https://pdp.kickthe.tires"
+            pureBase = "https://mobiledev.kickthe.tires"
         case .production:
             pureBase = "https://spothero.com"
         case .custom (let baseURLString):
@@ -65,7 +65,7 @@ public enum ServerEnvironment {
     public var websiteBaseURLString: String {
         switch self {
         case .staging:
-            return "http://pdp.kickthe.tires"
+            return "http://mobiledev.kickthe.tires"
         case .production:
             return "http://www.spothero.com"
         case .custom (let baseURLString):
