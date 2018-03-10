@@ -10,7 +10,7 @@ import Foundation
 
 struct ServerErrorJSON {
     let code: String
-    let messages: [JSONDictionary]
+    let messages: [String]
 }
 
 extension ServerErrorJSON: JSONParseable {

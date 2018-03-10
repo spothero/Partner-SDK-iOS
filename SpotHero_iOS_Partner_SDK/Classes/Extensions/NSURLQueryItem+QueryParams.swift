@@ -17,7 +17,7 @@ extension URLQueryItem {
      
      - returns: An array of query items.
      */
-    static func shp_queryItemsFromDictionary(_ dictionary: [String : String]) -> [URLQueryItem] {
+    static func shp_queryItemsFromDictionary(_ dictionary: [String: String]) -> [URLQueryItem] {
         var queryItems = [URLQueryItem]()
         
         for (key, value) in dictionary {

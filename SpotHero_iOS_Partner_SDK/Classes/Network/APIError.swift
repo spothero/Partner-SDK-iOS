@@ -12,8 +12,8 @@ struct APIError {
     
     private enum PartnerSDKAPIErrorDomain: String {
         case
-        Network = "com.spothero.partnersdk.network.error",
-        Parsing = "com.spothero.partnersdk.parsing.error"
+        network = "com.spothero.partnersdk.network.error",
+        parsing = "com.spothero.partnersdk.parsing.error"
         
     }
     
@@ -35,18 +35,15 @@ struct APIError {
     
     static func errorFromServerJSON(_ serverError: ServerErrorJSON, statusCode: Int) -> NSError {
         guard
-            let messages = serverError.messages.first,
-            let nonFieldErrors = messages.values.first as? [JSONDictionary],
-            let errorDictionary = nonFieldErrors.first,
-            let message = errorDictionary["msg"] as? String else {
-                return NSError(domain: PartnerSDKAPIErrorDomain.Network.rawValue,
+            let message = serverError.messages.first else {
+                return NSError(domain: PartnerSDKAPIErrorDomain.network.rawValue,
                                code: statusCode,
                                userInfo: [
                                 SpotHeroPartnerSDK.UnlocalizedDescriptionKey: serverError.messages,
                 ])
         }
         
-        return NSError(domain: PartnerSDKAPIErrorDomain.Network.rawValue,
+        return NSError(domain: PartnerSDKAPIErrorDomain.network.rawValue,
                        code: statusCode,
                        userInfo: [
                         SpotHeroPartnerSDK.UnlocalizedDescriptionKey: message,
@@ -55,7 +52,7 @@ struct APIError {
     }
     
     static func errorFromHTTPStatusCode(_ statusCode: Int) -> NSError {
-        return NSError(domain: PartnerSDKAPIErrorDomain.Network.rawValue,
+        return NSError(domain: PartnerSDKAPIErrorDomain.network.rawValue,
                        code: statusCode,
                        userInfo: [
                         SpotHeroPartnerSDK.UnlocalizedDescriptionKey: "Server error",
@@ -63,7 +60,7 @@ struct APIError {
     }
     
     static func errorWithDescription(_ description: String, andStatusCode statusCode: Int) -> NSError {
-        return NSError(domain: PartnerSDKAPIErrorDomain.Network.rawValue,
+        return NSError(domain: PartnerSDKAPIErrorDomain.network.rawValue,
                        code: statusCode,
                        userInfo: [
                         SpotHeroPartnerSDK.UnlocalizedDescriptionKey: description,
@@ -75,7 +72,7 @@ struct APIError {
             print("JSON which couldn't be parsed: \(String(describing: json))")
         }
         
-        return NSError(domain: PartnerSDKAPIErrorDomain.Parsing.rawValue,
+        return NSError(domain: PartnerSDKAPIErrorDomain.parsing.rawValue,
                        code: PartnerSDKErrorCode.jsonParsingFailure.rawValue,
                        userInfo: [
                         SpotHeroPartnerSDK.UnlocalizedDescriptionKey: "Couldn't parse the returned JSON!",

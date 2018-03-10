@@ -21,12 +21,12 @@ enum Formatter {
     static func formatPhoneNumber(_ phone: String) -> Formatted {
         let unformatted = phone.replacingOccurrences(of: "-", with: "")
         
-        if unformatted.characters.count > 3 {
+        if unformatted.count > 3 {
             let startIndex = unformatted.startIndex
             let endIndex = unformatted.endIndex
             let firstSection = unformatted.substring(with: startIndex..<unformatted.index(startIndex, offsetBy: 3))
             
-            switch unformatted.characters.count {
+            switch unformatted.count {
             case 4..<7:
                 let secondSection = unformatted.substring(with: unformatted.index(startIndex, offsetBy: 3)..<endIndex)
                 return ("\(firstSection)-\(secondSection)", unformatted)
@@ -51,12 +51,12 @@ enum Formatter {
     static func formatCreditCard(_ number: String) -> Formatted {
         let unformatted = number.replacingOccurrences(of: " ", with: "")
         
-        if unformatted.characters.count > 4 {
+        if unformatted.count > 4 {
             let startIndex = unformatted.startIndex
             let endIndex = unformatted.endIndex
             let firstSection = unformatted.substring(with: startIndex..<unformatted.index(startIndex, offsetBy: 4))
             
-            switch unformatted.characters.count {
+            switch unformatted.count {
             case 5..<9:
                 let secondSection = unformatted.substring(with: unformatted.index(startIndex, offsetBy: 4)..<endIndex)
                 return ("\(firstSection) \(secondSection)", unformatted)
@@ -88,12 +88,12 @@ enum Formatter {
     static func formatCreditCardAmex(_ number: String) -> Formatted {
         let unformatted = number.replacingOccurrences(of: " ", with: "")
         
-        if unformatted.characters.count > 4 {
+        if unformatted.count > 4 {
             let startIndex = unformatted.startIndex
             let endIndex = unformatted.endIndex
             let firstSection = unformatted.substring(with: startIndex..<unformatted.index(startIndex, offsetBy: 4))
             
-            switch unformatted.characters.count {
+            switch unformatted.count {
             case 5..<11:
                 let secondSection = unformatted.substring(with: unformatted.index(startIndex, offsetBy: 4)..<endIndex)
                 return ("\(firstSection) \(secondSection)", unformatted)
@@ -117,7 +117,7 @@ enum Formatter {
      */
     static func formatExpirationDate(_ date: String) -> Formatted {
         let unformatted = date.replacingOccurrences(of: "/", with: "")
-        if unformatted.characters.count > 2 {
+        if unformatted.count > 2 {
             let startIndex = unformatted.startIndex
             let endIndex = unformatted.endIndex
             let firstPart = unformatted.substring(with: startIndex..<unformatted.index(startIndex, offsetBy: 2))

@@ -87,7 +87,7 @@ Allow: GET, HEAD, OPTIONS
 "height_restriction_description": null,
 "barcode_type": "qrcode",
 "post_purchase_instructions": "",
-"restrictions": ["This facility does NOT allow in/out privileges. You CANNOT enter & exit more than once.", "If you park past 8:00 pm, please confirm key pick up location with the valet before you leave your car. You will either need to pick your keys up from the valet or on-site at Hub 51."],
+"stripped_restrictions": ["This facility does NOT allow in/out privileges. You CANNOT enter & exit more than once.", "If you park past 8:00 pm, please confirm key pick up location with the valet before you leave your car. You will either need to pick your keys up from the valet or on-site at Hub 51."],
 "hours_of_operation": {
 "text": ["This facility is open 24/7."],
 "periods": []
@@ -231,7 +231,7 @@ Allow: GET, HEAD, OPTIONS
 "height_restriction_description": null,
 "barcode_type": "qrcode",
 "post_purchase_instructions": "",
-"restrictions": ["This location does not require a print out. Your vehicle is monitored by the license plate entered to SpotHero. "],
+"stripped_restrictions": ["This location does not require a print out. Your vehicle is monitored by the license plate entered to SpotHero. "],
 "hours_of_operation": {
 "text": ["This facility is open 24/7."],
 "periods": []
@@ -381,7 +381,7 @@ Allow: GET, HEAD, OPTIONS
 "height_restriction_description": null,
 "barcode_type": "qrcode",
 "post_purchase_instructions": "",
-"restrictions": ["This facility does NOT allow in/out privileges. You CANNOT enter & exit more than once.", "Depending on parking occupancy, you may be asked to leave your keys with the attendant.", "The valet at this facility leaves by 5pm every night. If you do not retrieve your vehicle by 5pm, your keys will be stored at the MidCity lot at 11 W. Elm St. (located about 1.3 miles northwest of this lot). Please call SpotHero customer assistance if you have any questions, ph#312-566-7768.", "No oversized vehicles allowed - no box trucks, trailers, vans, or buses."],
+"stripped_restrictions": ["This facility does NOT allow in/out privileges. You CANNOT enter & exit more than once.", "Depending on parking occupancy, you may be asked to leave your keys with the attendant.", "The valet at this facility leaves by 5pm every night. If you do not retrieve your vehicle by 5pm, your keys will be stored at the MidCity lot at 11 W. Elm St. (located about 1.3 miles northwest of this lot). Please call SpotHero customer assistance if you have any questions, ph#312-566-7768.", "No oversized vehicles allowed - no box trucks, trailers, vans, or buses."],
 "hours_of_operation": {
 "text": ["This facility is open 24/7."],
 "periods": []
@@ -527,7 +527,7 @@ Allow: GET, HEAD, OPTIONS
 "types": ["physical", "search", "walking-distance", "default-vehicle-entrance"]
 }],
 "state": "IL",
-"restrictions": ["Depending on parking occupancy, this facility may become a valet and you may be asked to leave your keys with the attendant."],
+"stripped_restrictions": ["Depending on parking occupancy, this facility may become a valet and you may be asked to leave your keys with the attendant."],
 "redemption_instructions": [{
 "position": 1,
 "illustration_id": "pp3uajdxl5u9lrnak1as",
@@ -681,7 +681,7 @@ Allow: GET, HEAD, OPTIONS
 "height_restriction_description": "Height Restriction: 7'",
 "barcode_type": "code128",
 "post_purchase_instructions": "",
-"restrictions": ["Height Restriction: 7'", "This facility does NOT allow in/out privileges. You CANNOT enter & exit more than once.", "Pedestrian access is available on the north side of Erie St., between Franklin and LaSale, just before you reach the alley. There will be a sign above the entrance reading \"Parking\"", "For all reservation changes, please allow 15 minutes for updates to take effect."],
+"stripped_restrictions": ["Height Restriction: 7'", "This facility does NOT allow in/out privileges. You CANNOT enter & exit more than once.", "Pedestrian access is available on the north side of Erie St., between Franklin and LaSale, just before you reach the alley. There will be a sign above the entrance reading \"Parking\"", "For all reservation changes, please allow 15 minutes for updates to take effect."],
 "hours_of_operation": {
 "text": [],
 "periods": []
@@ -818,7 +818,7 @@ Allow: GET, HEAD, OPTIONS
 "types": ["physical", "search", "walking-distance", "default-vehicle-entrance"]
 }],
 "state": "IL",
-"restrictions": ["This facility does NOT allow in/out privileges. You CANNOT enter & exit more than once.", "No oversized vehicles allowed - no box trucks, trailers, vans, or buses."],
+"stripped_restrictions": ["This facility does NOT allow in/out privileges. You CANNOT enter & exit more than once.", "No oversized vehicles allowed - no box trucks, trailers, vans, or buses."],
 "redemption_instructions": [{
 "position": 1,
 "illustration_id": "pp3uajdxl5u9lrnak1as",
@@ -960,7 +960,7 @@ Allow: GET, HEAD, OPTIONS
 "height_restriction_description": null,
 "barcode_type": "qrcode",
 "post_purchase_instructions": "",
-"restrictions": ["This facility does NOT allow in/out privileges. You CANNOT enter & exit more than once."],
+"stripped_restrictions": ["This facility does NOT allow in/out privileges. You CANNOT enter & exit more than once."],
 "hours_of_operation": {
 "text": [],
 "periods": [{
@@ -1090,7 +1090,7 @@ Allow: GET, HEAD, OPTIONS
 "types": ["physical", "search", "walking-distance", "default-vehicle-entrance"]
 }],
 "state": "IL",
-"restrictions": ["This facility does NOT allow in/out privileges. You CANNOT enter & exit more than once.", "This location does not require a print out. Your vehicle is monitored by the license plate entered to SpotHero."],
+"stripped_restrictions": ["This facility does NOT allow in/out privileges. You CANNOT enter & exit more than once.", "This location does not require a print out. Your vehicle is monitored by the license plate entered to SpotHero."],
 "redemption_instructions": [{
 "position": 1,
 "illustration_id": "pp3uajdxl5u9lrnak1as",
@@ -1226,7 +1226,7 @@ Allow: GET, HEAD, OPTIONS
 "height_restriction_description": null,
 "barcode_type": "qrcode",
 "post_purchase_instructions": "",
-"restrictions": ["This facility does NOT allow in/out privileges. You CANNOT enter & exit more than once.", "No oversized vehicles allowed - no box trucks, trailers, vans, or buses.", "DO NOT park in the section labelled \"Private Parking,\" your vehicle will be towed. Please call SpotHero customer assistance at ph#312-566-7768 if you have any questions. "],
+"stripped_restrictions": ["This facility does NOT allow in/out privileges. You CANNOT enter & exit more than once.", "No oversized vehicles allowed - no box trucks, trailers, vans, or buses.", "DO NOT park in the section labelled \"Private Parking,\" your vehicle will be towed. Please call SpotHero customer assistance at ph#312-566-7768 if you have any questions. "],
 "hours_of_operation": {
 "text": ["This facility is open 24/7."],
 "periods": []
@@ -1382,7 +1382,7 @@ Allow: GET, HEAD, OPTIONS
 "height_restriction_description": "Height Restriction: 6' 8\"",
 "barcode_type": "qrcode",
 "post_purchase_instructions": "",
-"restrictions": ["Height Restriction: 6' 8\"", "This facility does NOT allow in/out privileges. You CANNOT enter & exit more than once.", "If the \"LOT FULL\" sign is on when you arrive, you will still have a spot in the garage. Scan your QR code at the entrance and continue into the garage. Please call SpotHero Customer Support with any questions, ph#312-566-7768"],
+"stripped_restrictions": ["Height Restriction: 6' 8\"", "This facility does NOT allow in/out privileges. You CANNOT enter & exit more than once.", "If the \"LOT FULL\" sign is on when you arrive, you will still have a spot in the garage. Scan your QR code at the entrance and continue into the garage. Please call SpotHero Customer Support with any questions, ph#312-566-7768"],
 "hours_of_operation": {
 "text": ["This facility is open 24/7."],
 "periods": []
@@ -1517,7 +1517,7 @@ Allow: GET, HEAD, OPTIONS
 "height_restriction_description": null,
 "barcode_type": "qrcode",
 "post_purchase_instructions": "",
-"restrictions": ["This facility does NOT allow in/out privileges. You CANNOT enter & exit more than once."],
+"stripped_restrictions": ["This facility does NOT allow in/out privileges. You CANNOT enter & exit more than once."],
 "hours_of_operation": {
 "text": [],
 "periods": [{
@@ -1647,7 +1647,7 @@ Allow: GET, HEAD, OPTIONS
 "types": ["physical", "search", "walking-distance", "default-vehicle-entrance"]
 }],
 "state": "IL",
-"restrictions": ["This facility does NOT allow in/out privileges. You CANNOT enter & exit more than once.", "This location does not require a print out. Your vehicle is monitored by the license plate entered to SpotHero."],
+"stripped_restrictions": ["This facility does NOT allow in/out privileges. You CANNOT enter & exit more than once.", "This location does not require a print out. Your vehicle is monitored by the license plate entered to SpotHero."],
 "redemption_instructions": [{
 "position": 1,
 "illustration_id": "pp3uajdxl5u9lrnak1as",
@@ -1821,7 +1821,7 @@ Allow: GET, HEAD, OPTIONS
 "height_restriction_description": null,
 "barcode_type": "qrcode",
 "post_purchase_instructions": "",
-"restrictions": ["This facility does NOT allow in/out privileges. You CANNOT enter & exit more than once."],
+"stripped_restrictions": ["This facility does NOT allow in/out privileges. You CANNOT enter & exit more than once."],
 "hours_of_operation": {
 "text": [],
 "periods": [{
@@ -1986,7 +1986,7 @@ Allow: GET, HEAD, OPTIONS
 "height_restriction_description": "Height Restriction: 6' 8\"",
 "barcode_type": "code128",
 "post_purchase_instructions": "",
-"restrictions": ["Height Restriction: 6' 8\"", "This facility does NOT allow in/out privileges. You CANNOT enter & exit more than once.", "Pedestrian entry is located at 320 W. Illinois St, through the River North Park Condominium lobby", "For all reservation changes, please allow 15 minutes for updates to take effect."],
+"stripped_restrictions": ["Height Restriction: 6' 8\"", "This facility does NOT allow in/out privileges. You CANNOT enter & exit more than once.", "Pedestrian entry is located at 320 W. Illinois St, through the River North Park Condominium lobby", "For all reservation changes, please allow 15 minutes for updates to take effect."],
 "hours_of_operation": {
 "text": ["This facility is open 24/7."],
 "periods": []
@@ -2121,7 +2121,7 @@ Allow: GET, HEAD, OPTIONS
 "height_restriction_description": null,
 "barcode_type": "qrcode",
 "post_purchase_instructions": "",
-"restrictions": ["This parking spot is under the EL tracks. You are getting a great price, but please remember, you are parking beneath an active train line. Oil may drip from the tracks. It can be dark, unpaved, & impacted by the unpredictable Chicago weather. SpotHero assumes no liability for any vehicle damages that may occur. Please park at your own risk.", "This location does not require a print out. Your vehicle is monitored by the license plate entered to SpotHero."],
+"stripped_restrictions": ["This parking spot is under the EL tracks. You are getting a great price, but please remember, you are parking beneath an active train line. Oil may drip from the tracks. It can be dark, unpaved, & impacted by the unpredictable Chicago weather. SpotHero assumes no liability for any vehicle damages that may occur. Please park at your own risk.", "This location does not require a print out. Your vehicle is monitored by the license plate entered to SpotHero."],
 "hours_of_operation": {
 "text": ["This facility is open 24/7."],
 "periods": []
@@ -2256,7 +2256,7 @@ Allow: GET, HEAD, OPTIONS
 "height_restriction_description": null,
 "barcode_type": "qrcode",
 "post_purchase_instructions": "",
-"restrictions": ["SpotHero and local parking provider are not responsible for theft, damage to your vehicle, or personal property. Please keep vehicle locked and do not leave valuables in your car."],
+"stripped_restrictions": ["SpotHero and local parking provider are not responsible for theft, damage to your vehicle, or personal property. Please keep vehicle locked and do not leave valuables in your car."],
 "hours_of_operation": {
 "text": [],
 "periods": [{
@@ -2428,7 +2428,7 @@ Allow: GET, HEAD, OPTIONS
 "height_restriction_description": "Height Restriction: 8' 2\"",
 "barcode_type": "qrcode",
 "post_purchase_instructions": "",
-"restrictions": ["Height Restriction: 8' 2\"", "This facility does NOT allow in/out privileges. You CANNOT enter & exit more than once.", "The scanner window sits low on the ticket dispenser upon entry. You may have to pull forward and open driver-side door to reach the scanner window. We apologize for any inconvenience may cause. If you cannot reach the scanner, pull a ticket and use the \"Assistance\" button while exiting.   ", "For all reservation changes, please allow 15 minutes for updates to take effect."],
+"stripped_restrictions": ["Height Restriction: 8' 2\"", "This facility does NOT allow in/out privileges. You CANNOT enter & exit more than once.", "The scanner window sits low on the ticket dispenser upon entry. You may have to pull forward and open driver-side door to reach the scanner window. We apologize for any inconvenience may cause. If you cannot reach the scanner, pull a ticket and use the \"Assistance\" button while exiting.   ", "For all reservation changes, please allow 15 minutes for updates to take effect."],
 "hours_of_operation": {
 "text": ["This facility is open 24/7."],
 "periods": []

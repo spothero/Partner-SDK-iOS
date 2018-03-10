@@ -10,11 +10,28 @@ import SpotHero_iOS_Partner_SDK
 import UIKit
 
 class ViewController: UIViewController {
+    private let apiKey = "Your API key Here"
     
-    @IBAction fileprivate func launchSDKButtonPressed(_ sender: AnyObject) {
+    @IBAction private func presentSDKButtonTapped(_ sender: Any) {
         let spotHeroSDK = SpotHeroPartnerSDK.shared
         // Enter your SpotHero Partner API Key here
-        spotHeroSDK.partnerApplicationKey = "bb5ab4b58fc484d8f478ef06e3c67e3c2dd71543"
-        spotHeroSDK.launchSDKFromViewController(self)
+        spotHeroSDK.partnerApplicationKey = self.apiKey
+        
+        // Present SDK as modal
+        spotHeroSDK.launchSDK(fromViewController: self)
+    }
+    
+    @IBAction private func pushSDKButtonTapped(_ sender: AnyObject) {
+        let spotHeroSDK = SpotHeroPartnerSDK.shared
+        // Enter your SpotHero Partner API Key here
+        spotHeroSDK.partnerApplicationKey = self.apiKey
+        
+        // Launch SDK and get the view controller from a completion block
+        spotHeroSDK.launchSDK {
+            viewController in
+            if let viewController = viewController {
+                self.navigationController?.pushViewController(viewController, animated: true)
+            }
+        }
     }
 }

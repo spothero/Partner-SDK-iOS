@@ -14,7 +14,7 @@ import XCTest
 class GooglePlacesUITests: BaseUITests {
     let indexPath = IndexPath(row: 0, section: 0)
     
-    func testGetPredictions() {
+    func skip_testGetPredictions() {
         //GIVEN: I see the search bar and type in an address
         self.enterTextIntoSearchBar(AccessibilityStrings.SpotHero)
 
@@ -34,7 +34,7 @@ class GooglePlacesUITests: BaseUITests {
         XCTAssertNotNil(cell.cityLabel.text)
     }
     
-    func testTapAPlace() {
+    func skip_testTapAPlace() {
         //GIVEN: I see the search bar and type in an address
         self.enterTextIntoSearchBar(AccessibilityStrings.SpotHero)
 
@@ -58,7 +58,7 @@ class GooglePlacesUITests: BaseUITests {
         XCTAssertNotNil(searchBar.text)
     }
     
-    func testNoPredictions() {
+    func skip_testNoPredictions() {
         //GIVEN: I see the search bar and type in gibberish
         self.enterTextIntoSearchBar("Fjndahdaosdahffsvoafifjnansfjwvauis")
 
@@ -74,7 +74,7 @@ class GooglePlacesUITests: BaseUITests {
         XCTAssertEqual(tableView.frame.height, 0)
     }
     
-    func testDeleteText() {
+    func skip_testDeleteText() {
         //GIVEN: I see the search bar and begin typing
         self.enterTextIntoSearchBar("Chicago")
         

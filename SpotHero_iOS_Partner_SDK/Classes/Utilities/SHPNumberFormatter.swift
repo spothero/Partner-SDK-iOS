@@ -61,7 +61,7 @@ class SHPNumberFormatter: NSObject {
     
     /**
      Turns a number of cents into number of dollars. For example, passing in
-     300 would return $3, and 350 would return $3.50
+     300 would return $3.00, and 350 would return $3.50
      
      - parameter cents: The number of cents to convert.
      
@@ -69,14 +69,8 @@ class SHPNumberFormatter: NSObject {
      */
     static func dollarStringFromCents(_ cents: Int) -> String? {
         let dollars = NSNumber(value: (Float(cents) / Float(100)))
-        
-        if (cents % 100) == 0 {
-            //Use a formatter that will truncate to 0 decimal places.
-            return USDCurrencyFormatter.string(from: dollars)
-        } else {
-            //Use a formatter that forces 2 decimal places
-            return USDCurrencyFormatterAlwaysCents.string(from: dollars)
-        }
+        //Use a formatter that forces 2 decimal places
+        return USDCurrencyFormatterAlwaysCents.string(from: dollars)
     }
     
     static let PercentageFormatter: NumberFormatter = {

@@ -9,7 +9,7 @@
 import Foundation
 
 // Let's make this a hair more readable, shall we?
-public typealias JSONDictionary = [String : Any]
+public typealias JSONDictionary = [String: Any]
 
 enum JSONParsingError: Error {
     /// The `index` is out of bounds for a JSON array
@@ -89,7 +89,7 @@ extension Dictionary where Key: ExpressibleByStringLiteral, Value: Any {
         return try self.shp_generic(key)
     }
     
-    func shp_dictionary<K, V>(_ key: Key) throws -> [K : V] {
+    func shp_dictionary<K, V>(_ key: Key) throws -> [K: V] {
         return try self.shp_generic(key)
     }
     
@@ -106,5 +106,30 @@ extension Dictionary where Key: ExpressibleByStringLiteral, Value: Any {
         }
         
         return parsedObjects
+    }
+    
+    func shp_date(forKey key: Key,
+                  usingFormatter formatter: DateFormatter,
+                  inTimeZone timeZone: TimeZone? = nil) throws -> Date {
+        let oldTimeZone = formatter.timeZone
+        defer {
+            //Set the old time zone back when scope exits
+            formatter.timeZone = oldTimeZone
+        }
+        
+        if let timeZoneToUse = timeZone {
+            //Use passed-in time zone for grabbing dates
+            formatter.timeZone = timeZoneToUse
+        }
+        
+        // Grab the string
+        let startDateString = try self.shp_string(key)
+        
+        // Attempt to parse it with the formatter.
+        guard let date = formatter.date(from: startDateString) else {
+            throw JSONParsingError.valueNotConvertible(value: startDateString, to: Date.self)
+        }
+        
+        return date
     }
 }

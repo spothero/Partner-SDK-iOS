@@ -13,154 +13,35 @@ import XCTest
 
 class SearchSpotsUITests: BaseUITests {
     
-    fileprivate let spotHeroAddress = "SpotHero, West Huron Street, Chicago, IL"
-    
     //MARK: Helpers
     
-    fileprivate func validateStartEndViewSelectedState() {
-        let timeSelectionView = tester().waitForView(withAccessibilityLabel: AccessibilityStrings.TimeSelectionView) as? TimeSelectionView
-        XCTAssertNotEqual(timeSelectionView?.endViewSelected, timeSelectionView?.startViewSelected)
-    }
-    
-    fileprivate func dismissStartView() {
-        let timeSelectionView = tester().waitForView(withAccessibilityLabel: AccessibilityStrings.TimeSelectionView) as? TimeSelectionView
-        tester().tapView(withAccessibilityLabel: LocalizedStrings.Done)
-        XCTAssertEqual(false, timeSelectionView?.startViewSelected)
-        tester().tapView(withAccessibilityLabel: LocalizedStrings.Done)
-        XCTAssertEqual(false, timeSelectionView?.endViewSelected)
-    }
-    
-    fileprivate func dismissEndView() {
-        let timeSelectionView = tester().waitForView(withAccessibilityLabel: AccessibilityStrings.TimeSelectionView) as? TimeSelectionView
-        tester().tapView(withAccessibilityLabel: LocalizedStrings.Done)
-        XCTAssertEqual(false, timeSelectionView?.startViewSelected)
-        XCTAssertEqual(false, timeSelectionView?.endViewSelected)
-    }
     
     //MARK: Tests
     
-    func testTypingAddressHidesTimeSelectionView() {
-        //GIVEN: I see the map view
-        //WHEN: I tap on the search bar and type an address
-        self.enterTextIntoSearchBar(AccessibilityStrings.SpotHero)
+    func testViewingSearchPage() {
+        //GIVEN: I start the SDK
+        //WHEN: I view the search page
+        //THEN: I should see the default content
+        tester().waitForView(withAccessibilityLabel: LocalizedStrings.ParkSmarter)
+        tester().waitForView(withAccessibilityLabel: LocalizedStrings.SearchDetail)
+        tester().waitForView(withAccessibilityLabel: LocalizedStrings.WhereAreYouGoing)
         
-        //THEN: The time selection view is hidden
-        tester().waitForAbsenceOfView(withAccessibilityLabel: AccessibilityStrings.TimeSelectionView)
-        
-        tester().tapView(withAccessibilityLabel: AccessibilityStrings.ClearText)
+        //THEN: I should see the search input
+        tester().waitForView(withAccessibilityLabel: AccessibilityStrings.SearchBar)
     }
     
-    func testTappingStartsViewShowsStartDatePickerView() {
-        //GIVEN: I see the map view
-        //WHEN: I tap on the starts view
-        tester().tapView(withAccessibilityLabel: AccessibilityStrings.StartsTimeSelectionView)
+    func skip_testSearchBarBecomesActive() {
+        //GIVEN: I am on the search page
+        //WHEN: I tapped the search bar
+        tester().tapView(withAccessibilityLabel: AccessibilityStrings.SearchBar)
+        //THEN: I should no longer see the default content
+        tester().waitForAbsenceOfView(withAccessibilityLabel: LocalizedStrings.ParkSmarter)
+        tester().waitForAbsenceOfView(withAccessibilityLabel: LocalizedStrings.SearchDetail)
+        tester().waitForAbsenceOfView(withAccessibilityLabel: LocalizedStrings.WhereAreYouGoing)
         
-        //THEN: I see the start date picker view
-        tester().waitForView(withAccessibilityLabel: LocalizedStrings.SetStartTime)
-        tester().waitForView(withAccessibilityLabel: LocalizedStrings.Done)
-        self.validateStartEndViewSelectedState()
-        
-        self.dismissStartView()
+        //THEN: I should not see the nav bar
+        tester().waitForAbsenceOfView(withAccessibilityLabel: LocalizedStrings.BookParking)
     }
     
-    func testTappingEndsViewShowsEndDatePickerView() {
-        //GIVEN: I see the map view
-        //WHEN: I tap on the ends view
-        tester().tapView(withAccessibilityLabel: AccessibilityStrings.EndsTimeSelectionView)
-        
-        //THEN: I see the end date picker view
-        tester().waitForView(withAccessibilityLabel: LocalizedStrings.SetEndTime)
-        tester().waitForView(withAccessibilityLabel: LocalizedStrings.Done)
-        self.validateStartEndViewSelectedState()
-        
-        self.dismissEndView()
-    }
     
-    func testSelectingAddressShowsSearchSpotsButton() {
-        //GIVEN: I see the map view
-        //WHEN: I search for an address
-        self.enterTextIntoSearchBar(AccessibilityStrings.SpotHero)
-        tester().tapView(withAccessibilityLabel: self.spotHeroAddress)
-        
-        //THEN: I see the search spots button
-        tester().waitForView(withAccessibilityLabel: LocalizedStrings.SearchSpots)
-        
-        tester().tapView(withAccessibilityLabel: AccessibilityStrings.ClearText)
-    }
-    
-    func testClearingTextHidesSearchSpotsButton() {
-        //GIVEN: I see the map view
-        //WHEN: I search for an address
-        self.enterTextIntoSearchBar(AccessibilityStrings.SpotHero)
-        tester().tapView(withAccessibilityLabel: self.spotHeroAddress)
-        tester().waitForView(withAccessibilityLabel: LocalizedStrings.SearchSpots)
-        
-        //WHEN: I tap clear text
-        tester().tapView(withAccessibilityLabel: AccessibilityStrings.ClearText)
-        
-        //THEN: The search spots button is hidden
-        tester().waitForAbsenceOfView(withAccessibilityLabel: LocalizedStrings.SearchSpots)
-    }
-    
-    func testTappingSearchSpotsShowsCollapsedSearchBar() {
-        //GIVEN: I see the map view
-        //WHEN: I search for an address
-        self.enterTextIntoSearchBar(AccessibilityStrings.SpotHero)
-        tester().tapView(withAccessibilityLabel: self.spotHeroAddress)
-        
-        //WHEN: I tap the search spots button
-        tester().tapView(withAccessibilityLabel: LocalizedStrings.SearchSpots)
-        
-        //THEN: I see the collapsed search bar
-        tester().waitForView(withAccessibilityLabel: AccessibilityStrings.CollapsedSearchBarView)
-        tester().waitForAbsenceOfView(withAccessibilityLabel: AccessibilityStrings.TimeSelectionView)
-        tester().waitForAbsenceOfView(withAccessibilityLabel: LocalizedStrings.SearchSpots)
-        
-        //reset state
-        tester().tapView(withAccessibilityLabel: AccessibilityStrings.CollapsedSearchBarView)
-        tester().tapView(withAccessibilityLabel: AccessibilityStrings.ClearText)
-        tester().waitForAbsenceOfView(withAccessibilityLabel: LocalizedStrings.SearchSpots)
-    }
-    
-    func testTappingCollapsedSearchBarShowsTimeSelectionView() {
-        //GIVEN: I see the collapsed search bar view
-        self.enterTextIntoSearchBar(AccessibilityStrings.SpotHero)
-        tester().tapView(withAccessibilityLabel: self.spotHeroAddress)
-        tester().tapView(withAccessibilityLabel: LocalizedStrings.SearchSpots)
-        tester().waitForView(withAccessibilityLabel: AccessibilityStrings.CollapsedSearchBarView)
-        
-        //WHEN: I tap the collapsed search bar view
-        tester().tapView(withAccessibilityLabel: AccessibilityStrings.CollapsedSearchBarView)
-        
-        //THEN: I see the time selection view
-        tester().waitForAbsenceOfView(withAccessibilityLabel: AccessibilityStrings.CollapsedSearchBarView)
-        tester().waitForView(withAccessibilityLabel: AccessibilityStrings.TimeSelectionView)
-        
-        //reset state
-        tester().tapView(withAccessibilityLabel: AccessibilityStrings.ClearText)
-        tester().waitForAbsenceOfView(withAccessibilityLabel: LocalizedStrings.SearchSpots)
-    }
-    
-    func testCollapseSearchBarOnMapTap() {
-        //GIVEN: I see the collapsed search bar view
-        self.enterTextIntoSearchBar(AccessibilityStrings.SpotHero)
-        tester().tapView(withAccessibilityLabel: self.spotHeroAddress)
-        tester().tapView(withAccessibilityLabel: LocalizedStrings.SearchSpots)
-        tester().waitForView(withAccessibilityLabel: AccessibilityStrings.CollapsedSearchBarView)
-        
-        //WHEN: I tap the collapsed search bar view
-        tester().tapView(withAccessibilityLabel: AccessibilityStrings.CollapsedSearchBarView)
-        
-        //WHEN: I tap the map
-        tester().wait(forTimeInterval: self.waitTime)
-        tester().tapView(withAccessibilityLabel: AccessibilityStrings.MapView)
-        
-        //THEN: I see the collapsed search bar view
-        tester().waitForView(withAccessibilityLabel: AccessibilityStrings.CollapsedSearchBarView)
-        
-        //reset state
-        tester().tapView(withAccessibilityLabel: AccessibilityStrings.CollapsedSearchBarView)
-        tester().tapView(withAccessibilityLabel: AccessibilityStrings.ClearText)
-        tester().waitForAbsenceOfView(withAccessibilityLabel: LocalizedStrings.SearchSpots)
-    }
 }

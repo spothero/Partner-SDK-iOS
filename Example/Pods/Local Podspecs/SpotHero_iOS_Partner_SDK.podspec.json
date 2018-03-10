@@ -1,7 +1,7 @@
 {
   "name": "SpotHero_iOS_Partner_SDK",
   "platforms": {
-    "ios": "9.0"
+    "ios": "10.0"
   },
   "version": "1.0.0",
   "summary": "An SDK for simple integration with SpotHero.",
@@ -19,7 +19,7 @@
   "source_files": "SpotHero_iOS_Partner_SDK/Classes/**/*",
   "resource_bundles": {
     "SpotHero_iOS_Partner_SDK": [
-      "SpotHero_iOS_Partner_SDK/Assets/*.{png,storyboard,lproj,xcassets,xib}"
+      "SpotHero_iOS_Partner_SDK/Assets/**/*.{png,storyboard,lproj,xcassets,xib,otf}"
     ]
   },
   "screenshots": "https://github.com/spothero/Partner-SDK-iOS/blob/master/readme_img/stock.png",

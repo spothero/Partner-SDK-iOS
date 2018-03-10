@@ -24,14 +24,14 @@ class BaseUITests: KIFTestCase {
     
     override func beforeEach() {
         super.beforeEach()
-        tester().tapView(withAccessibilityLabel: LocalizedStrings.LaunchSDK)
-        tester().waitForView(withAccessibilityLabel: LocalizedStrings.FindParking)
+        tester().tapView(withAccessibilityLabel: LocalizedStrings.PresentSDK)
+        tester().waitForView(withAccessibilityLabel: LocalizedStrings.BookParking)
     }
     
     override func afterEach() {
         super.afterEach()
         tester().tapView(withAccessibilityLabel: LocalizedStrings.Close)
-        tester().waitForView(withAccessibilityLabel: LocalizedStrings.LaunchSDK)
+        tester().waitForView(withAccessibilityLabel: LocalizedStrings.PresentSDK)
     }
     
     override func setUp() {

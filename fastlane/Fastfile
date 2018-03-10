@@ -13,7 +13,7 @@ test_output_folder = 'test_output'
 fastlane_folder='fastlane'
 
 # The URL for the slack webhook to post to
-slack_webhook_url=''
+slack_webhook_url='https://hooks.slack.com/services/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'
 
 # The username of the CI user on iTunes Connect.
 ci_username = 'ci-ios@spothero.com'
@@ -61,15 +61,26 @@ test_flight_provisioning_profile_name = 'Distribution App Store: SDK Sample App'
 # Pod Project Variables #
 #########################
 
+# GOOGLE PLACES
+
+google_places_pod_workspace_file = 'SpotHero_Google_Places_Wrapper_Example/SpotHero_Google_Places_Wrapper_Example.xcworkspace'
+google_places_pod_scheme = 'SpotHero_Google_Places_Wrapper_Example'
+google_places_pod_test_output_folder = 'google_places_pod_test_output'
+
+
 ###########
 ## SETUP ##
 ###########
 
     before_all do
         ENV['SLACK_URL'] = slack_webhook_url
-        
-        # make sure we're on an appropriate version of Xcode.            
-        switch_to_xcode_8
+
+        # make sure we're on an appropriate version of Xcode.
+        switch_to_xcode_9
+    end
+
+    def is_bitrise
+        ENV.key?('BITRISE_IO')
     end
 
 ##############
@@ -125,54 +136,60 @@ test_flight_provisioning_profile_name = 'Distribution App Store: SDK Sample App'
 ## TESTING & CODE COVERAGE ##
 #############################
 
-    def switch_to_xcode_7
+    def switch_to_xcode_9
         xcversion(
-            version: "7.3.1",
+            version: "~> 9.2.0", # Selects the latest installed version from the 9.1.x set
         )
     end
-
-    def switch_to_xcode_8
-        xcversion(
-            version: "~> 8.3.0", # Selects the latest installed version from the 8.3.x set
-        )    
-    end 
 
     desc "Runs tests with the given options"
     desc "Expects values for the following keys:"
     desc "scheme_options_key: The name of the scheme to use to run the tests"
     desc "output_options_key: The path to output information from the tests"
     desc "workspace_options_key: The path to the workspace to run tests on"
-    private_lane :run_tests do |options|
+    private_lane :sh_run_tests do |options|
         if !options.key?(:scheme_options_key) || !options.key?(:output_options_key) || !options.key?(:workspace_options_key)
             raise "Not all required options for this lane are present!"
             return
         end
-        
-        #stop any existing sims        
-        sh "./kill_sim_if_running.sh"    
 
         #stop any existing sims
-        sh "./kill_sim_if_running.sh"
+        sh 'cd .. && scripts/kill_sim_if_running.sh'
 
         workspace = options[:workspace_options_key]
         scheme = options[:scheme_options_key]
         output_folder = options[:output_options_key]
+
+        if is_bitrise
+            output_directory = ENV['BITRISE_DEPLOY_DIR']
+        else
+            output_directory = File.join(fastlane_folder, output_folder)
+        end
 
         # Build and run the given tests
         scan(
             workspace: workspace,
             scheme: scheme,
             skip_slack: !is_ci, # only let us know if we're on CI
-            output_directory: File.join(fastlane_folder, output_folder),
+            output_directory: output_directory,
             derived_data_path: derived_data_folder,
             clean: true,
             skip_build: true, #the test action will already kick off a build, don't build twice
         )
     end
 
+    # Runs all the tests of the places pod's sample app.
+    lane :test_pod do
+        sh_run_tests(
+            scheme_options_key: google_places_pod_scheme,
+            output_options_key: google_places_pod_test_output_folder,
+            workspace_options_key: google_places_pod_workspace_file,
+        )
+    end
+
     desc "Runs all the tests of the sample app"
     lane :test do
-        run_tests(
+        sh_run_tests(
             scheme_options_key: main_scheme,
             output_options_key: test_output_folder,
             workspace_options_key: workspace_file,
@@ -182,6 +199,7 @@ test_flight_provisioning_profile_name = 'Distribution App Store: SDK Sample App'
     desc "Runs all the tests of the app and gathers code coverage across all versions of xcode"
     lane :test_all do
         test
+        test_pod
     end
 
 ########################
@@ -237,12 +255,18 @@ test_flight_provisioning_profile_name = 'Distribution App Store: SDK Sample App'
         build_folder_name = "Build"
         sh("mkdir -p #{build_folder_name}")
 
+        if is_bitrise
+            output_directory = ENV['BITRISE_DEPLOY_DIR']
+        else
+            output_directory = File.join(fastlane_folder, build_folder_name)
+        end
+
         # Archive away!
         gym(
             workspace: workspace_file,
             scheme: scheme,
             export_method: method,
-            output_directory:  File.join(fastlane_folder, build_folder_name),
+            output_directory:  output_directory,
             derived_data_path: derived_data_folder,
             include_bitcode: false,
             include_symbols: true,
@@ -285,7 +309,7 @@ test_flight_provisioning_profile_name = 'Distribution App Store: SDK Sample App'
 
     desc "Uploads a build iTunes Connect"
     desc "Note: This build should only be distributed via Test Flight."
-    private_lane :itc do        
+    private_lane :itc do
         # Create an iTunes Connect build
         build_itc
 

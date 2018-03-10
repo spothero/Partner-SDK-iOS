@@ -20,7 +20,7 @@ enum FacilityError: Error {
  */
 typealias FacilityCompletion = (_ facilities: [Facility],
                                 _ error: Error?,
-                                _ hasMorePages: Bool) -> (Void)
+                                _ hasMorePages: Bool) -> Void
 
 struct FacilityAPI {
     private static var NextURLString: String?
@@ -79,7 +79,7 @@ struct FacilityAPI {
             "ends" : endsString,
             "distance__gt" : "\(minSearchRadius)",
             "distance__lt" : "\(maxSearchRadius)",
-            "include" : "facility",
+            "include" : "facility,facility.images,facility.stripped_restrictions",
         ]
         
         self.stopSearching()

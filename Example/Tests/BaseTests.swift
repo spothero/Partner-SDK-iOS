@@ -11,6 +11,7 @@ import XCTest
 
 class BaseTests: XCTestCase {
     let testEmail = "matt@gmail.com"
+    let timeout = 10.0
     
     // Create random email to deal with rate limiting emails
     var testEmailRandom: String {
@@ -19,6 +20,10 @@ class BaseTests: XCTestCase {
     }
     
     let testPhone = "3125555555"
+    
+    func waitForExpectations() {
+        self.waitForExpectations(timeout: self.timeout, handler: nil)
+    }
     
     override func setUp() {
         super.setUp()
@@ -31,6 +36,6 @@ class BaseTests: XCTestCase {
             XCTAssertNotNil(APIKeyConfig.sharedInstance.stripeApiKey)
             XCTAssertNotNil(APIKeyConfig.sharedInstance.mixpanelApiKey)
         }
-        self.waitForExpectations(timeout: 10.0, handler: nil)
+        self.waitForExpectations()
     }
 }

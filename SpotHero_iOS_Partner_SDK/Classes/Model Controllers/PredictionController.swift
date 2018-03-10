@@ -17,6 +17,7 @@ protocol PredictionControllerDelegate: class {
     func shouldSelectFirstPrediction()
 }
 
+//TODO: Decide if we still need this
 class PredictionController: NSObject {
     let headerFooterHeight: CGFloat = 30
     var debouncedTask: DebouncedTask?

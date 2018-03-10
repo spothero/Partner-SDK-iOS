@@ -8,7 +8,7 @@
 
 import Foundation
 
-typealias StripeWrapperCompletion = (String?, Error?) -> (Void)
+typealias StripeWrapperCompletion = (String?, Error?) -> Void
 
 enum StripeAPIError: Error {
     case cannotGetToken(message: String)

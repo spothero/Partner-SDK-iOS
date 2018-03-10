@@ -70,11 +70,11 @@ struct SpotHeroPartnerAPIController {
             return components
         }
         
-        func query(_ queryParameters: [String : Any]) -> String {
+        func query(_ queryParameters: [String: Any]) -> String {
             var components: [(String, String)] = []
             
             for key in queryParameters.keys.sorted(by: <) {
-                let value = queryParameters[key]!
+                let value = queryParameters[key]! // swiftlint:disable:this force_unwrapping
                 components += queryComponents(key, value)
             }
             
@@ -88,7 +88,7 @@ struct SpotHeroPartnerAPIController {
     private static func dataTaskWithMethod(_ method: HTTPMethod,
                                            encoding: EncodingType = .none,
                                            fullURLString: String,
-                                           headers: [String : String],
+                                           headers: [String: String],
                                            parameters: JSONDictionary? = nil,
                                            errorCompletion: @escaping APIErrorCompletion,
                                            noResponseSuccessCompletion: NoResponseExpectedAPISuccessCompletion? = nil,
@@ -306,9 +306,10 @@ struct SpotHeroPartnerAPIController {
      - parameter errorCompletion:   The completion block to execute on error
      - parameter successCompletion: The completion block to execute on success, which will return a  JSONDictionary object.
      */
+    @discardableResult
     static func getJSONFromEndpoint(_ endpoint: String,
                                     withHeaders headers: HeaderDictionary,
-                                    additionalParams: [String : String]? = nil,
+                                    additionalParams: [String: String]? = nil,
                                     errorCompletion: @escaping APIErrorCompletion,
                                     successCompletion: @escaping JSONAPISuccessCompletion) -> URLSessionDataTask? {
         
@@ -357,7 +358,7 @@ struct SpotHeroPartnerAPIController {
      */
     static func postJSONtoEndpoint(_ endpoint: String,
                                    endpointIsDumb: Bool = false,
-                                   jsonToPost json: [String : Any],
+                                   jsonToPost json: [String: Any],
                                    withHeaders headers: HeaderDictionary,
                                    errorCompletion: @escaping APIErrorCompletion,
                                    successCompletion: @escaping JSONAPISuccessCompletion) {
@@ -393,7 +394,7 @@ struct SpotHeroPartnerAPIController {
      */
     private static func postFormDataToFullURLString(_ fullURLString: String,
                                                     dictionaryToPost dictionary: JSONDictionary,
-                                                    withHeaders headers: [String : String],
+                                                    withHeaders headers: [String: String],
                                                     errorCompletion: @escaping APIErrorCompletion,
                                                     successCompletion: @escaping JSONAPISuccessCompletion) {
         

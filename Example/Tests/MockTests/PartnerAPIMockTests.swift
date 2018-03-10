@@ -70,7 +70,7 @@ class PartnerAPIMockTests: XCTestCase {
             }
             
             XCTAssertNil(error)
-            XCTAssertEqual(facilities.count, 12)
+            XCTAssertEqual(facilities.count, 13)
             guard
                 let facility = facilities.first,
                 let rate = facility.availableRates.first else {
@@ -121,6 +121,7 @@ class PartnerAPIMockTests: XCTestCase {
                                                      email: self.mockTestEmail,
                                                      phone: self.mockTestPhone,
                                                      stripeToken: "",
+                                                     saveInfo: false,
                                                      completion: {
                                                         reservation, reservationError in
                                                         
@@ -148,6 +149,28 @@ class PartnerAPIMockTests: XCTestCase {
             }
         }
         
+        self.waitForExpectations(timeout: self.timeoutDuration, handler: nil)
+    }
+    
+    func testMockGetCities() {
+        let expectation = self.expectation(description: "Got cities")
+        CityListAPI.getCities {
+            cities in
+            XCTAssertFalse(cities.isEmpty)
+            cities.forEach { XCTAssertTrue($0.isSpotHeroCity) }
+            // Fort Lauderdale has "is_spothero_city" set to false
+            XCTAssertTrue(cities.filter { $0.title == "Fort Lauderdale" }.isEmpty )
+            if let atlanta = cities.first {
+                XCTAssertEqual(atlanta.identifier, 39)
+                XCTAssertEqual(atlanta.title, "Atlanta")
+                XCTAssertEqual(atlanta.slug, "atlanta")
+                XCTAssertEqual(atlanta.location.coordinate.latitude, 33.758665008)
+                XCTAssertEqual(atlanta.location.coordinate.longitude, -84.3881969768)
+            } else {
+                XCTFail("We got 0 cities. Check your mock data file")
+            }
+            expectation.fulfill()
+        }
         self.waitForExpectations(timeout: self.timeoutDuration, handler: nil)
     }
 }
