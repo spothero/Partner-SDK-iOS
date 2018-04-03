@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
-# Make sure all gems are using consistent versions for troubleshooting
+ruby '2.4.2'
 
-gem 'fastlane', '~>1.111.0'
-gem 'bundler', '~>1.13.6'
+gem 'fastlane', '~> 2.72.0'
+gem 'bundler', '~> 1.16.0'
+gem 'xcode-install', '~> 2.2.0'
