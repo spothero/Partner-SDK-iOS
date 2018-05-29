@@ -10,22 +10,24 @@ import SpotHero_iOS_Partner_SDK
 import UIKit
 
 class ViewController: UIViewController {
-    private let apiKey = "Your API key Here"
     
-    @IBAction private func presentSDKButtonTapped(_ sender: Any) {
+    private func configureSDK() -> SpotHeroPartnerSDK {
+        //Production is the default setting, but for testing we will use the staging environment.
+        ServerEnvironment.CurrentEnvironment = .staging
         let spotHeroSDK = SpotHeroPartnerSDK.shared
         // Enter your SpotHero Partner API Key here
-        spotHeroSDK.partnerApplicationKey = self.apiKey
-        
+        spotHeroSDK.partnerApplicationKey = ""
+        return spotHeroSDK
+    }
+    
+    @IBAction private func presentSDKButtonTapped(_ sender: Any) {
+        let spotHeroSDK = self.configureSDK()
         // Present SDK as modal
         spotHeroSDK.launchSDK(fromViewController: self)
     }
     
     @IBAction private func pushSDKButtonTapped(_ sender: AnyObject) {
-        let spotHeroSDK = SpotHeroPartnerSDK.shared
-        // Enter your SpotHero Partner API Key here
-        spotHeroSDK.partnerApplicationKey = self.apiKey
-        
+        let spotHeroSDK = self.configureSDK()
         // Launch SDK and get the view controller from a completion block
         spotHeroSDK.launchSDK {
             viewController in

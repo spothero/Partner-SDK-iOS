@@ -15,6 +15,8 @@ class PartnerAPITests: BaseTests {
     
     override func setUp() {
         super.setUp()
+        ServerEnvironment.CurrentEnvironment = .staging
+        // Enter your SpotHero Partner API Key here
         SpotHeroPartnerSDK.shared.partnerApplicationKey = ""
     }
     

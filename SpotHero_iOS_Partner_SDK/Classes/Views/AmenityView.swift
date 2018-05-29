@@ -143,13 +143,13 @@ class AmenityView: UIStackView {
             amenityLabel.layer.borderColor = UIColor.shp_pavement.cgColor
             amenityLabel.layer.cornerRadius = self.frame.height / 2 //fully rounded corners
             amenityLabel.text = amenity
-            amenityLabel.setContentHuggingPriority(UILayoutPriorityRequired, for: .horizontal)
+            amenityLabel.setContentHuggingPriority(.required, for: .horizontal)
             self.addArrangedSubview(amenityLabel)
         }
         if overflowAmenities > 0 {
             let additionalAmenitiesLabel = CaptionInputLabel()
             additionalAmenitiesLabel.text = String(format:LocalizedStrings.MoreAmenitiesFormat, "\(overflowAmenities)")
-            additionalAmenitiesLabel.setContentCompressionResistancePriority(UILayoutPriorityRequired, for: .horizontal)
+            additionalAmenitiesLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
             additionalAmenitiesLabel.allowsDefaultTighteningForTruncation = true
             self.addArrangedSubview(additionalAmenitiesLabel)
         } else {

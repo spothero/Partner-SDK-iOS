@@ -145,7 +145,7 @@ class PaymentInfoView: UIView {
     
     func lastFourDigits(_ digits: String) -> String {
         let endIndex = digits.endIndex
-        return digits.substring(with: digits.index(endIndex, offsetBy: -4)..<endIndex)
+        return String(digits[digits.index(endIndex, offsetBy: -4)..<endIndex])
     }
     
     func fieldValidChanged() {

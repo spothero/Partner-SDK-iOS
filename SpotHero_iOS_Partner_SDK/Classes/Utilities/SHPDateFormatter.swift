@@ -10,7 +10,7 @@ import Foundation
 
 class SHPDateFormatter: NSObject {
     
-    private enum ISO8601Format: String, StringEnum {
+    private enum ISO8601Format: String {
         case
         noTime = "yyyy-MM-dd",
         noMillisecondsUTC = "yyyy-MM-dd'T'HH:mm:ssZ",
@@ -18,7 +18,7 @@ class SHPDateFormatter: NSObject {
         noSeconds = "yyyy-MM-dd'T'HH:mm"
     }
     
-    private enum APIFormat: String, StringEnum {
+    private enum APIFormat: String {
         case
         noTime = "MM-dd-yyyy",
         apiTime = "HH:mm:ss",
@@ -26,7 +26,7 @@ class SHPDateFormatter: NSObject {
         onlineCommuter = "h:mm a"
     }
     
-    private enum DateFormat: String, StringEnum {
+    private enum DateFormat: String {
         case
         noTime = "MM/dd/yyyy",
         dateOnlyNoYear = "MMM d",
@@ -42,7 +42,7 @@ class SHPDateFormatter: NSObject {
         dayOfWeekWithDate = "EEEE, MM/dd"
     }
     
-    private static func formatterWithFormat(_ format: StringEnum) -> DateFormatter {
+    private static func formatterWithFormat<E>(_ format: E) -> DateFormatter where E: RawRepresentable, E.RawValue == String {
         let formatter = DateFormatter()
         formatter.dateFormat = format.rawValue
         formatter.amSymbol = "am"

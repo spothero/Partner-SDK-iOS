@@ -22,9 +22,9 @@ class SpotCardCollectionViewCell: UICollectionViewCell {
     static let ItemHeight: CGFloat = 177
     static let ItemSpacing: CGFloat = 10
     static let DistanceFormatter: MKDistanceFormatter = {
-        let df = MKDistanceFormatter()
-        df.unitStyle = .abbreviated
-        return df
+        let formatter = MKDistanceFormatter()
+        formatter.unitStyle = .abbreviated
+        return formatter
     }()
     
     @IBOutlet private var buyButton: UIButton!

@@ -12,6 +12,7 @@ import XCTest
 class StripeWrapperTests: BaseTests {
 
     func testGetToken() {
+        ServerEnvironment.CurrentEnvironment = .staging
         let expectation = self.expectation(description: "testGetToken")
         
         StripeWrapper.getToken(Constants.Test.CreditCardNumber,

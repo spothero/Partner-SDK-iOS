@@ -26,17 +26,17 @@ enum HeightsAndWidths {
     }
     
     enum Shadow {
-        public enum Radius {
-            public static let Standard: CGFloat = 3
+        enum Radius {
+            static let Standard: CGFloat = 3
         }
         
-        public enum Opacity {
-            public static let Standard: Float = 0.25
+        enum Opacity {
+            static let Standard: Float = 0.25
         }
     }
     
-    public enum LineHeight {
-        public static let Standard: CGFloat = 24
+    enum LineHeight {
+        static let Standard: CGFloat = 24
     }
     
     // Eyeballed from design

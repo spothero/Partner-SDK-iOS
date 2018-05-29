@@ -145,7 +145,7 @@ class MapViewController: SpotHeroPartnerViewController {
         self.titleLabel.font = .shp_subheadTwo
         self.subtitleLabel.font = .shp_body
         
-        if let color = self.navigationController?.navigationBar.titleTextAttributes?[NSForegroundColorAttributeName] as? UIColor {
+        if let color = self.navigationController?.navigationBar.titleTextAttributes?[.foregroundColor] as? UIColor {
             self.titleLabel.textColor = color
             self.subtitleLabel.textColor = color
         }
@@ -155,9 +155,9 @@ class MapViewController: SpotHeroPartnerViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let vc = segue.destination as? CheckoutViewController {
-            vc.facility = self.selectedFacility
-            vc.rate = self.selectedFacility?.availableRates.first
+        if let viewController = segue.destination as? CheckoutViewController {
+            viewController.facility = self.selectedFacility
+            viewController.rate = self.selectedFacility?.availableRates.first
         }
     }
     
@@ -273,7 +273,7 @@ class MapViewController: SpotHeroPartnerViewController {
     fileprivate func selectAnnotation(withIndexPath indexPath: IndexPath) {
         let facility = self.spotCardFacilities[indexPath.row]
         let annotation = self.mapView.annotations
-            .flatMap { $0 as? FacilityAnnotation }
+            .compactMap { $0 as? FacilityAnnotation }
             .first { $0.facility == facility }
         
         if let annotation = annotation {
@@ -609,13 +609,13 @@ extension MapViewController: SpotCardCollectionViewDelegate {
         }
         
         let facility = self.spotCardFacilities[indexPath.row]
-        let vc = SpotDetailsViewController.fromStoryboard()
-        vc.facility = facility
-        vc.searchLocation = self.searchLocation
-        vc.searchLocationName = self.predictionPlaceDetails?.formattedAddress
-        vc.searchStartDate = self.startDate
-        vc.searchEndDate = self.endDate
-        self.navigationController?.pushViewController(vc, animated: true)
+        let viewController = SpotDetailsViewController.fromStoryboard()
+        viewController.facility = facility
+        viewController.searchLocation = self.searchLocation
+        viewController.searchLocationName = self.predictionPlaceDetails?.formattedAddress
+        viewController.searchStartDate = self.startDate
+        viewController.searchEndDate = self.endDate
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     func didTapBuyButton(_ button: UIButton, cell: SpotCardCollectionViewCell) {

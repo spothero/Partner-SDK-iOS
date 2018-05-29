@@ -273,10 +273,10 @@ enum Validator {
         var tld = ""
         
         if let atRange = email.range(of: "@") {
-            username = email.substring(to: atRange.lowerBound)
+            username = String(email[..<atRange.lowerBound])
             if let periodRange = email.range(of: ".", options: .backwards) {
-                domain = email.substring(with: atRange.upperBound..<periodRange.lowerBound)
-                tld = email.substring(with: periodRange.upperBound..<email.endIndex)
+                domain = String(email[atRange.upperBound..<periodRange.lowerBound])
+                tld = String(email[periodRange.upperBound..<email.endIndex])
             }
         }
         

@@ -13,7 +13,7 @@ test_output_folder = 'test_output'
 fastlane_folder='fastlane'
 
 # The URL for the slack webhook to post to
-slack_webhook_url='https://hooks.slack.com/services/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'
+slack_webhook_url='https://hooks.slack.com/services/YOUR/SLACK/KEY'
 
 # The username of the CI user on iTunes Connect.
 ci_username = 'ci-ios@spothero.com'
@@ -60,13 +60,6 @@ test_flight_provisioning_profile_name = 'Distribution App Store: SDK Sample App'
 #########################
 # Pod Project Variables #
 #########################
-
-# GOOGLE PLACES
-
-google_places_pod_workspace_file = 'SpotHero_Google_Places_Wrapper_Example/SpotHero_Google_Places_Wrapper_Example.xcworkspace'
-google_places_pod_scheme = 'SpotHero_Google_Places_Wrapper_Example'
-google_places_pod_test_output_folder = 'google_places_pod_test_output'
-
 
 ###########
 ## SETUP ##
@@ -138,7 +131,7 @@ google_places_pod_test_output_folder = 'google_places_pod_test_output'
 
     def switch_to_xcode_9
         xcversion(
-            version: "~> 9.2.0", # Selects the latest installed version from the 9.1.x set
+            version: "~> 9.3", # Selects the latest installed version from the 9.3.x set
         )
     end
 
@@ -178,15 +171,6 @@ google_places_pod_test_output_folder = 'google_places_pod_test_output'
         )
     end
 
-    # Runs all the tests of the places pod's sample app.
-    lane :test_pod do
-        sh_run_tests(
-            scheme_options_key: google_places_pod_scheme,
-            output_options_key: google_places_pod_test_output_folder,
-            workspace_options_key: google_places_pod_workspace_file,
-        )
-    end
-
     desc "Runs all the tests of the sample app"
     lane :test do
         sh_run_tests(
@@ -199,7 +183,6 @@ google_places_pod_test_output_folder = 'google_places_pod_test_output'
     desc "Runs all the tests of the app and gathers code coverage across all versions of xcode"
     lane :test_all do
         test
-        test_pod
     end
 
 ########################

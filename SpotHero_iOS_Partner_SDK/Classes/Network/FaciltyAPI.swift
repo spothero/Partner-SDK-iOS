@@ -111,7 +111,7 @@ struct FacilityAPI {
             let metaData = try JSON.shp_dictionary("meta") as JSONDictionary
             let results = try actualData.shp_array("results") as [JSONDictionary]
             
-            let facilities = results.flatMap { return try? Facility(json: $0) }
+            let facilities = results.compactMap { return try? Facility(json: $0) }
             
             let facilitiesWithRates = facilities.filter { !$0.availableRates.isEmpty }
             var nextURLString = metaData["next"] as? String

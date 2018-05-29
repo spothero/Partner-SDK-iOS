@@ -23,19 +23,19 @@ struct DeviceType {
     private static let iPhoneXHeight: CGFloat = 812
     
     /// - Returns: true if the device's screen size looks like an iphone 5, false for anything else
-    public static func isEqualOrLessThanIphone5() -> Bool {
+    static func isEqualOrLessThanIphone5() -> Bool {
         return self.Screen.bounds.height <= self.SmallHeight
     }
     
     /// - Returns: true if the device's screen looks like a plus sized (large screen) phone
-    public static func isPlusSized() -> Bool {
+    static func isPlusSized() -> Bool {
         let height = self.Screen.bounds.height
         //add a max height so we don't get iPads by mistake
         return height > self.NormalHeight && height <= self.LargeHeight
     }
     
     /// - Returns: true if the device's screen looks like the iPhone X
-    public static func isIPhoneX() -> Bool {
+    static func isIPhoneX() -> Bool {
         let height = self.Screen.bounds.height
         //add a max height so we don't get iPads by mistake
         return height > self.LargeHeight && height <= self.iPhoneXHeight

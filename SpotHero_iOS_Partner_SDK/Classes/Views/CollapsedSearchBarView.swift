@@ -13,9 +13,9 @@ class CollapsedSearchBarView: UIView {
     @IBOutlet weak private var chevron: UIImageView!
     
     static let SHPDateComponentsFormatter: DateComponentsFormatter = {
-        let _dateComponentsFormatter = DateComponentsFormatter()
-        _dateComponentsFormatter.unitsStyle = .full
-        return _dateComponentsFormatter
+        let dateComponentsFormatter = DateComponentsFormatter()
+        dateComponentsFormatter.unitsStyle = .full
+        return dateComponentsFormatter
     }()
     
     var time: DateComponents? {

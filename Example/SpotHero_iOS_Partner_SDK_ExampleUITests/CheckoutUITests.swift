@@ -40,8 +40,8 @@ class CheckoutUITests: BaseUITests {
                                    cvc: String? = nil,
                                    expectedCreditCard: String? = nil) {
         
-        let lastFour = creditCardNumber.substring(with: creditCardNumber.index(creditCardNumber.endIndex, offsetBy: -4)..<creditCardNumber.endIndex)
-        let expectedCC = expectedCreditCard ?? lastFour
+        let lastFour = creditCardNumber[creditCardNumber.index(creditCardNumber.endIndex, offsetBy: -4)..<creditCardNumber.endIndex]
+        let expectedCC = expectedCreditCard ?? String(lastFour)
         
         tester().enterText(email, intoViewWithAccessibilityLabel: LocalizedStrings.EmailAddressPlaceHolder)
         tester().enterText(creditCardNumber,

@@ -38,7 +38,7 @@ struct CityListAPI {
                                                             }
                                                             
                                                             let cities: [City] = results
-                                                                .flatMap { City(json: $0) }
+                                                                .compactMap { City(json: $0) }
                                                                 .filter { $0.isSpotHeroCity }
                                                                 .sorted { $0.title < $1.title }
                                                             

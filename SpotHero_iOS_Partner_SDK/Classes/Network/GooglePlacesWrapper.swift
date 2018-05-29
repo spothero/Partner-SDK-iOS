@@ -11,6 +11,7 @@ import Foundation
 
 enum GooglePlacesError: Error {
     case
+    noAPIKey,
     noPredictions,
     cannotFormURL,
     placeDetailsNotFound
@@ -58,30 +59,46 @@ typealias GooglePlacesGeocodeCompletion = ([GooglePlaceDetails], Error?) -> Void
 
 struct GooglePlacesWrapper {
     static var GoogleAPIKey: String?
-    static let CountryQueryItem = URLQueryItem(name: GooglePlacesQueryItem.components.rawValue, value: "country:us")
     static let StandardRadius = 10000
+    
+    private static func countriesQueryItem(_ countries: [String]) -> URLQueryItem {
+        //multiple countries are joined by pipes, eg: "country:us|country:ca"
+        // https://developers.google.com/places/web-service/autocomplete
+        // https://developers.google.com/maps/documentation/geocoding/intro#ComponentFiltering
+        // https://en.wikipedia.org/wiki/ISO_3166-1#Current_codes
+        let allCountries = countries
+            .map { "country:" + $0 }
+            .joined(separator: "|")
+        return URLQueryItem(name: GooglePlacesQueryItem.components.rawValue, value: allCountries)
+    }
     
     /// Finds Predictions based on a string
     ///
     /// - Parameters:
     ///   - input:      String to base predictions on
+    ///   - countries:  Array of 2 letter country codes to limit search, defaults to "us"
     ///   - location:   Location to find predictions near. Optional
     ///   - radius:     Radius in meters around the location within which to search. Optional
     ///   - completion: Completion closure. Passes in array of predictions and possible error.
     static func getPredictions(_ input: String,
+                               countries: [String] = ["us"],
                                location: CLLocation? = nil,
                                radius: Int? = GooglePlacesWrapper.StandardRadius,
                                completion: @escaping GooglePlacesWrapperCompletion) {
         guard let key = GooglePlacesWrapper.GoogleAPIKey else {
             assertionFailure("You need an api key for this")
+            completion([], GooglePlacesError.noAPIKey)
             return
         }
         
         var queryItems = [
             URLQueryItem(name: GooglePlacesQueryItem.input.rawValue, value: input),
-            CountryQueryItem,
             URLQueryItem(name: GooglePlacesQueryItem.key.rawValue, value: key),
         ]
+        
+        if !countries.isEmpty {
+            queryItems.append(self.countriesQueryItem(countries))
+        }
         
         if let location = location {
             let locationQueryItem = URLQueryItem(name: "location", value: "\(location.coordinate.latitude),\(location.coordinate.longitude)")
@@ -137,6 +154,7 @@ struct GooglePlacesWrapper {
     static func getPlaceDetails(_ prediction: GooglePlacesPrediction, completion: @escaping GooglePlaceDetailsCompletion) {
         guard let key = GooglePlacesWrapper.GoogleAPIKey else {
             assertionFailure("You need an api key for this")
+            completion(nil, GooglePlacesError.noAPIKey)
             return
         }
         
@@ -175,23 +193,29 @@ struct GooglePlacesWrapper {
         }
     }
     
-    /**
-     Finds the places details based on passed-in text
-     
-     - parameter address:  String to geocode into places
-     - parameter completion: Completion closure. Passing in either an array of GooglePlaceDetails or an error
-     */
-    static func geocode(address: String, completion: @escaping GooglePlacesGeocodeCompletion) {
+    /// Finds the places details based on passed-in text
+    ///
+    /// - Parameters:
+    ///   - address: String to geocode into places
+    ///   - country:  A 2 letter country code to limit the search, defaults to "us".
+    ///   - completion: Completion closure. Passing in either an array of GooglePlaceDetails or an error
+    static func geocode(address: String,
+                        country: String? = "us",
+                        completion: @escaping GooglePlacesGeocodeCompletion) {
         guard let key = GooglePlacesWrapper.GoogleAPIKey else {
             assertionFailure("You need an api key for this")
+            completion([], GooglePlacesError.noAPIKey)
             return
         }
         
-        let queryItems = [
+        var queryItems = [
             URLQueryItem(name: GooglePlacesQueryItem.address.rawValue, value: address),
             URLQueryItem(name: GooglePlacesQueryItem.key.rawValue, value: key),
-            CountryQueryItem,
         ]
+        
+        if let country = country {
+            queryItems.append(self.countriesQueryItem([country]))
+        }
         
         if let url = ServerEndpoint.geocode.fullURLString(withQueryItems: queryItems) {
             SharedURLSession.sharedInstance.session.dataTask(with: url, completionHandler: {
@@ -236,6 +260,7 @@ struct GooglePlacesWrapper {
     static func reverseGeocode(coordinate: CLLocationCoordinate2D, completion: @escaping GooglePlacesGeocodeCompletion) {
         guard let key = GooglePlacesWrapper.GoogleAPIKey else {
             assertionFailure("You need an api key for this")
+            completion([], GooglePlacesError.noAPIKey)
             return
         }
         
@@ -276,9 +301,5 @@ struct GooglePlacesWrapper {
                 completion([], GooglePlacesError.cannotFormURL)
             }
         }
-    }
-    
-    static func getTimezone() {
-        
-    }
+    }    
 }

@@ -24,16 +24,16 @@ enum Formatter {
         if unformatted.count > 3 {
             let startIndex = unformatted.startIndex
             let endIndex = unformatted.endIndex
-            let firstSection = unformatted.substring(with: startIndex..<unformatted.index(startIndex, offsetBy: 3))
+            let firstSection = unformatted[startIndex..<unformatted.index(startIndex, offsetBy: 3)]
             
             switch unformatted.count {
             case 4..<7:
-                let secondSection = unformatted.substring(with: unformatted.index(startIndex, offsetBy: 3)..<endIndex)
+                let secondSection = unformatted[unformatted.index(startIndex, offsetBy: 3)..<endIndex]
                 return ("\(firstSection)-\(secondSection)", unformatted)
             default:
                 let thirdSectionStart = unformatted.index(startIndex, offsetBy: 6)
-                let secondSection = unformatted.substring(with: unformatted.index(startIndex, offsetBy: 3)..<thirdSectionStart)
-                let thirdSection = unformatted.substring(with: thirdSectionStart..<endIndex)
+                let secondSection = unformatted[unformatted.index(startIndex, offsetBy: 3)..<thirdSectionStart]
+                let thirdSection = unformatted[thirdSectionStart..<endIndex]
                 return ("\(firstSection)-\(secondSection)-\(thirdSection)", unformatted)
             }
         }
@@ -54,23 +54,23 @@ enum Formatter {
         if unformatted.count > 4 {
             let startIndex = unformatted.startIndex
             let endIndex = unformatted.endIndex
-            let firstSection = unformatted.substring(with: startIndex..<unformatted.index(startIndex, offsetBy: 4))
+            let firstSection = unformatted[startIndex..<unformatted.index(startIndex, offsetBy: 4)]
             
             switch unformatted.count {
             case 5..<9:
-                let secondSection = unformatted.substring(with: unformatted.index(startIndex, offsetBy: 4)..<endIndex)
+                let secondSection = unformatted[unformatted.index(startIndex, offsetBy: 4)..<endIndex]
                 return ("\(firstSection) \(secondSection)", unformatted)
             case 9..<13:
                 let thirdSectionStart = unformatted.index(startIndex, offsetBy: 8)
-                let secondSection = unformatted.substring(with: unformatted.index(startIndex, offsetBy: 4)..<thirdSectionStart)
-                let thirdSection = unformatted.substring(with: thirdSectionStart..<endIndex)
+                let secondSection = unformatted[unformatted.index(startIndex, offsetBy: 4)..<thirdSectionStart]
+                let thirdSection = unformatted[thirdSectionStart..<endIndex]
                 return ("\(firstSection) \(secondSection) \(thirdSection)", unformatted)
             default:
                 let thirdSectionStart = unformatted.index(startIndex, offsetBy: 8)
                 let fourthSectionStart = unformatted.index(startIndex, offsetBy: 12)
-                let secondSection = unformatted.substring(with: unformatted.index(startIndex, offsetBy: 4)..<thirdSectionStart)
-                let thirdSection = unformatted.substring(with: thirdSectionStart..<fourthSectionStart)
-                let fourthSection = unformatted.substring(with: fourthSectionStart..<endIndex)
+                let secondSection = unformatted[unformatted.index(startIndex, offsetBy: 4)..<thirdSectionStart]
+                let thirdSection = unformatted[thirdSectionStart..<fourthSectionStart]
+                let fourthSection = unformatted[fourthSectionStart..<endIndex]
                 return ("\(firstSection) \(secondSection) \(thirdSection) \(fourthSection)", unformatted)
             }
         }
@@ -91,16 +91,16 @@ enum Formatter {
         if unformatted.count > 4 {
             let startIndex = unformatted.startIndex
             let endIndex = unformatted.endIndex
-            let firstSection = unformatted.substring(with: startIndex..<unformatted.index(startIndex, offsetBy: 4))
+            let firstSection = unformatted[startIndex..<unformatted.index(startIndex, offsetBy: 4)]
             
             switch unformatted.count {
             case 5..<11:
-                let secondSection = unformatted.substring(with: unformatted.index(startIndex, offsetBy: 4)..<endIndex)
+                let secondSection = unformatted[unformatted.index(startIndex, offsetBy: 4)..<endIndex]
                 return ("\(firstSection) \(secondSection)", unformatted)
             default:
                 let thirdSectionStart = unformatted.index(startIndex, offsetBy: 10)
-                let secondSection = unformatted.substring(with: unformatted.index(startIndex, offsetBy: 4)..<thirdSectionStart)
-                let thirdSection = unformatted.substring(with: thirdSectionStart..<endIndex)
+                let secondSection = unformatted[unformatted.index(startIndex, offsetBy: 4)..<thirdSectionStart]
+                let thirdSection = unformatted[thirdSectionStart..<endIndex]
                 return ("\(firstSection) \(secondSection) \(thirdSection)", unformatted)
             }
         }
@@ -120,8 +120,8 @@ enum Formatter {
         if unformatted.count > 2 {
             let startIndex = unformatted.startIndex
             let endIndex = unformatted.endIndex
-            let firstPart = unformatted.substring(with: startIndex..<unformatted.index(startIndex, offsetBy: 2))
-            let secondPart = unformatted.substring(with: unformatted.index(startIndex, offsetBy: 2)..<endIndex)
+            let firstPart = unformatted[startIndex..<unformatted.index(startIndex, offsetBy: 2)]
+            let secondPart = unformatted[unformatted.index(startIndex, offsetBy: 2)..<endIndex]
             return ("\(firstPart)/\(secondPart)", unformatted)
         }
         return (unformatted, unformatted)

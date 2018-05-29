@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
     s.name                  = 'SpotHero_iOS_Partner_SDK'
     s.ios.deployment_target = '10.0'
-    s.version               = '2.0.0'
+    s.version               = '2.1.1'
     s.summary               = 'An SDK for simple integration with SpotHero.'
     s.license               = 'LICENSE.md'
     s.description           = <<-DESC
@@ -18,4 +18,5 @@ An SDK that allows your users to book SpotHero parking directly from within your
     s.screenshots           = 'https://github.com/spothero/Partner-SDK-iOS/blob/master/readme_img/stock.png'
 
     s.frameworks            = 'UIKit', 'MapKit', 'CoreLocation'
+    s.swift_version         = '4.0'
 end

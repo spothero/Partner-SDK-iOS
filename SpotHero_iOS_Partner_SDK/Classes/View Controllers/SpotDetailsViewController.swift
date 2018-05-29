@@ -269,8 +269,8 @@ class SpotDetailsViewController: SpotHeroPartnerViewController {
         var restrictions = [String]()
         let count = min(countToShow, facility.restrictions.count)
         
-        for i in 0..<count {
-            restrictions.append("• \(facility.restrictions[i])")
+        for index in 0..<count {
+            restrictions.append("• \(facility.restrictions[index])")
         }
         
         self.restrictionsLabel.text = restrictions.joined(separator: "\n\n")
@@ -417,9 +417,9 @@ class SpotDetailsViewController: SpotHeroPartnerViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let vc = segue.destination as? CheckoutViewController {
-            vc.facility = self.facility
-            vc.rate = self.facility?.availableRates.first
+        if let viewController = segue.destination as? CheckoutViewController {
+            viewController.facility = self.facility
+            viewController.rate = self.facility?.availableRates.first
         }
     }
     
@@ -585,11 +585,11 @@ extension SpotDetailsViewController: UIGestureRecognizerDelegate {
 
 extension SpotDetailsViewController: CalloutViewDelegate {
     func didTapInfoButton(calloutView: CalloutView) {
-        let vc = PopoverViewController(kind: calloutView.kind)
-        vc.view.alpha = 0.0
-        self.present(vc, animated: false) {
+        let viewController = PopoverViewController(kind: calloutView.kind)
+        viewController.view.alpha = 0.0
+        self.present(viewController, animated: false) {
             UIView.animate(withDuration: Animation.Duration.Standard) {
-                vc.view.alpha = 1.0
+                viewController.view.alpha = 1.0
             }
         }
     }

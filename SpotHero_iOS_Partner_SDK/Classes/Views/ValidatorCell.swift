@@ -10,7 +10,7 @@ import Foundation
 
 protocol ValidatorCell: class {
     var valid: Bool { get }
-    weak var delegate: ValidatorCellDelegate? { get set }
+    var delegate: ValidatorCellDelegate? { get set }
 }
 
 protocol ValidatorCellDelegate: class {
