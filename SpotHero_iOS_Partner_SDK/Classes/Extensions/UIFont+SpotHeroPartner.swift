@@ -102,7 +102,7 @@ extension UIFont {
     func shp_sizeOfString(_ string: String, constrainedToHeight height: CGFloat) -> CGSize {
         return NSString(string: string).boundingRect(with: CGSize(width: CGFloat.greatestFiniteMagnitude, height: height),
                                                      options: .usesLineFragmentOrigin,
-                                                     attributes: [NSFontAttributeName: self],
+                                                     attributes: [.font: self],
                                                      context: nil).size
     }
 }

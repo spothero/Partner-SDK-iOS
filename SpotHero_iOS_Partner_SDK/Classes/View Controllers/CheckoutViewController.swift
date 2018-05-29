@@ -308,8 +308,7 @@ class CheckoutViewController: SpotHeroPartnerViewController {
             
             if
                 let error = error as NSError?,
-                let userInfo = error.userInfo as? JSONDictionary,
-                let message = userInfo[SpotHeroPartnerSDK.UnlocalizedDescriptionKey] as? String {
+                let message = error.userInfo[SpotHeroPartnerSDK.UnlocalizedDescriptionKey] as? String {
                 AlertView.presentErrorAlertView(message: message, from: self)
             } else {
                 AlertView.presentErrorAlertView(message: LocalizedStrings.CreateReservationErrorMessage, from: self)

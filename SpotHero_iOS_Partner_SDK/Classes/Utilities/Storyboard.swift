@@ -12,9 +12,9 @@ enum Storyboard: String {
     
     func viewController<T>(from identifier: String) -> T {
         let storyboard = UIStoryboard(name: self.rawValue, bundle: Bundle.shp_resourceBundle())
-        let vc = storyboard.instantiateViewController(withIdentifier: identifier)
+        let viewController = storyboard.instantiateViewController(withIdentifier: identifier)
         
-        guard let typedVC = vc as? T else {
+        guard let typedVC = viewController as? T else {
             fatalError("The view controller with identifier \(identifier) in storyboard \(self.rawValue) was not of type \(T.self)")
         }
         

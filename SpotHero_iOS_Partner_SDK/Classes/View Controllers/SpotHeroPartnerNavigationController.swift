@@ -9,6 +9,8 @@
 import UIKit
 
 class SpotHeroPartnerNavigationController: UINavigationController {
+    var statusBarStyle: UIStatusBarStyle = .lightContent
+    
     override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
         return .portrait
     }
@@ -18,6 +20,6 @@ class SpotHeroPartnerNavigationController: UINavigationController {
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
+        return self.statusBarStyle
     }
 }

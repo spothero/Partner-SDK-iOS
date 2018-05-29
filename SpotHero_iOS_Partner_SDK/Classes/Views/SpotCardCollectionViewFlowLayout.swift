@@ -60,6 +60,7 @@ class SpotCardCollectionViewFlowLayout: UICollectionViewFlowLayout {
         return CGPoint(x: proposedContentOffset.x + offsetAdjustment, y: proposedContentOffset.y)
     }
     
+    @objc
     func respondToSwipeGesture(_ recognizer: UISwipeGestureRecognizer) {
         self.delegate?.didSwipeCollectionView(recognizer.direction)
     }

@@ -30,7 +30,7 @@ class TextInputView: UIControl {
         didSet {
             if let placeholder = self.placeholder {
                 self.textField.attributedPlaceholder = NSAttributedString(string: placeholder,
-                                                                          attributes: [NSForegroundColorAttributeName: UIColor.shp_secondary])
+                                                                          attributes: [.foregroundColor: UIColor.shp_secondary])
             }
             self.inputLabel.text = self.placeholder
         }
@@ -122,8 +122,13 @@ class TextInputView: UIControl {
             ])
     }
     
+    @objc
     internal func becomeActive() {
         self.textField.becomeFirstResponder()
+    }
+    
+    func resignActive() {
+        self.textField.resignFirstResponder()
     }
     
     @IBAction private func didUpdateText() {
@@ -152,7 +157,8 @@ extension TextInputView: UITextFieldDelegate {
             self.bottomBorder.backgroundColor = .shp_input
             if textField.text?.isEmpty == true {
                 self.inputLabel.alpha = 0
-                self.textField.placeholder = self.placeholder
+                let placeholderText = self.placeholder
+                self.placeholder = placeholderText
             }
             self.layoutIfNeeded()
         }

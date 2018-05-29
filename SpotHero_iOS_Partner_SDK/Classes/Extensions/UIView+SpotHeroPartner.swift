@@ -15,10 +15,10 @@ extension UIView {
     ///   - opacity: Shadow opacity, default of HeightsAndWidths.Shadow.Opacity.Standard
     ///   - offset: Shadow offset, defaults to zero meaning drop shadow in all directions
     ///   - radius: Shadow radius, defaults to HeightsAndWidths.Shadow.Radius.Standard
-    public func shp_addShadow(color: UIColor = .black,
-                              opacity: Float = HeightsAndWidths.Shadow.Opacity.Standard,
-                              offset: CGSize = .zero,
-                              radius: CGFloat = HeightsAndWidths.Shadow.Radius.Standard) {
+    func shp_addShadow(color: UIColor = .black,
+                       opacity: Float = HeightsAndWidths.Shadow.Opacity.Standard,
+                       offset: CGSize = .zero,
+                       radius: CGFloat = HeightsAndWidths.Shadow.Radius.Standard) {
         let layer = self.layer
         let shadowPath = UIBezierPath(rect: self.bounds)
         layer.shadowPath = shadowPath.cgPath

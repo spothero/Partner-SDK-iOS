@@ -8,6 +8,7 @@
 import CoreLocation
 import Foundation
 
+//swiftlint:disable identifier_name
 struct City {
     let identifier: Int
     let title: String
@@ -15,7 +16,6 @@ struct City {
     let location: CLLocation
     let isSpotHeroCity: Bool
     
-    //swiftlint:disable identifier_name
     enum JSONKey: String {
         case
         id,
@@ -25,7 +25,6 @@ struct City {
         longitude,
         is_spothero_city
     }
-    //swiftlint:enable identifier_name
 }
 
 extension City {
@@ -48,3 +47,4 @@ extension City {
                   isSpotHeroCity: isSpotHeroCity)
     }
 }
+//swiftlint:enable identifier_name

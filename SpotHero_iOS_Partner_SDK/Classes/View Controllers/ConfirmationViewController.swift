@@ -28,12 +28,11 @@ class ConfirmationViewController: SpotHeroPartnerViewController {
     
     @IBAction func bookAnotherButtonPressed(_ sender: AnyObject) {
         MixpanelWrapper.track(.postPurchase, properties: [.tappedBookAnother: true])
-        self.navigationController?.setViewControllers([SearchViewController.fromStoryboard()], animated: true)
+        SpotHeroPartnerSDK.shared.resetToSearch(from: self)
     }
     
     @IBAction func doneButtonPressed(_ sender: AnyObject) {
         MixpanelWrapper.track(.postPurchase, properties: [.tappedDone: true])
-        SpotHeroPartnerSDK.shared.reportSDKClosed()
-        self.dismiss(animated: true)
+        SpotHeroPartnerSDK.shared.close(from: self)
     }
 }

@@ -19,14 +19,14 @@ class LinkBarButtonItem: UIBarButtonItem {
     }
     
     func setTextStyle() {
-        let barButtonItemTitleTextAttributes: [String: Any] = [
-            NSFontAttributeName: UIFont.shp_link,
-            NSForegroundColorAttributeName: UIColor.shp_link,
+        let barButtonItemTitleTextAttributes: [NSAttributedStringKey: Any] = [
+            .font: UIFont.shp_link,
+            .foregroundColor: UIColor.shp_link,
             ]
         
-        let barButtonItemDisabledTitleTextAttributes: [String: Any] = [
-            NSFontAttributeName: UIFont.shp_link,
-            NSForegroundColorAttributeName: UIColor.shp_disabled,
+        let barButtonItemDisabledTitleTextAttributes: [NSAttributedStringKey: Any] = [
+            .font: UIFont.shp_link,
+            .foregroundColor: UIColor.shp_disabled,
             ]
         
         self.setTitleTextAttributes(barButtonItemTitleTextAttributes, for: .normal)

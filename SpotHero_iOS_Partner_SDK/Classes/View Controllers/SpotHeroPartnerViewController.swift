@@ -36,10 +36,12 @@ class SpotHeroPartnerViewController: UIViewController {
                                        object: nil)
     }
     
+    @objc
     func willShowKeyboard(notification: Notification) {
         //Override as needed
     }
     
+    @objc
     func willHideKeyboard(notification: Notification) {
         //Override as needed
     }
@@ -55,7 +57,6 @@ class SpotHeroPartnerViewController: UIViewController {
     }
     
     @IBAction private func closeButtonTapped() {
-        SpotHeroPartnerSDK.shared.reportSDKClosed()
-        self.dismiss(animated: true)
+        SpotHeroPartnerSDK.shared.close(from: self)
     }
 }

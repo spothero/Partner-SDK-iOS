@@ -1,5 +1,5 @@
 # iOS-Partner-SDK
-
+ 
 The SpotHero iOS Partner SDK allows your users to purchase parking through SpotHero with minimal setup by your development team.
 
 ## Before You Start
@@ -16,7 +16,7 @@ Add the following line to your [Podfile](https://guides.cocoapods.org/using/the-
 
 ```ruby
 target 'YourAppTargetName'
-  pod 'SpotHero_iOS_Partner_SDK', '~>1.0'
+  pod 'SpotHero_iOS_Partner_SDK', '~>2.1.1'
 end
 ```
 
@@ -26,7 +26,7 @@ Using the terminal, `cd` into the directory where your `Podfile` is located.  Ru
 
 Make sure you follow CocoaPods' instructions and open the `.xcworkspace` file instead of the `.xcodeproj` file, or your code won't build.
 
-**NOTE**: The current version SDK uses Swift 3.0.1, and requires a version of Xcode 8.2 or higher to build. If you need to use something compatible with anything down to Xcode 7.3, please use version [`0.1.3`](https://github.com/spothero/Partner-SDK-iOS/releases/tag/0.1.3) of the SDK, which builds in Swift 2.2 and 2.3. More detailed information about Swift versioning is available in our [note on Swift Versions](#a-note-on-swift-versions).
+**NOTE**: The current version SDK uses Swift 4, and requires a version of Xcode 9 or higher to build. If you need to use something compatible with anything down to Xcode 7.3, please use version [`0.1.3`](https://github.com/spothero/Partner-SDK-iOS/releases/tag/0.1.3) of the SDK, which builds in Swift 2.2 and 2.3. More detailed information about Swift versioning is available in our [note on Swift Versions](#a-note-on-swift-versions).
 
 ## Using The SDK in your Code
 
@@ -81,7 +81,7 @@ If you use the default options, the SDK should launch looking something like thi
 
 ## Configurable Options
 
-There are a couple of options you may configure to have the SDK look a bit more at home in its host application. They are:
+There are a couple of options you can configure to have the SDK look a bit more at home in its host application. They are:
 
 - `tintColor: UIColor`: The tint color to use for the background of the nav bar.
 - `textColor: UIColor`: The text color to use on buttons and titles in the navigation bar.
@@ -110,6 +110,11 @@ And here is what it would look like on launch:
 
 ![](readme_img/custom_nav_bar.png)
 
+## Staging Environment
+
+If you want to test the SDK in a non-production environment,  set `ServerEnvironment.CurrentEnvironment = .staging`
+The default server environment is production.
+
 ## Debugging Help
 
 If you are running into problems and you would like to see a very, very large amount of detail about the calls going to and from the SpotHero server, you may change the `debugPrintInfo` property on the SDK singleton to `true`.
@@ -120,9 +125,11 @@ For security reasons, we ask that you ensure this is **not** set to `true` in an
 
 One thing about Swift that's a bit of a pain until it becomes ABI stable is that your code and *all* dependencies must be using the same version of Swift. This SDK is entirely written in Swift, so make sure you figure out if you have any other Swift-based dependencies or any of your own code tied to a particular version of Swift.
 
-If you are running Xcode 8.2 or higher:
+When used with Xcode 9, the current version of the SDK supports both Swift 4 and Swift 3.
 
-- Use the current version of the SDK, which is using Swift 3.
+If you are using only Swift 3 (or Xcode 8):
+
+- Use version [`1.0.0`](https://github.com/spothero/Partner-SDK-iOS/releases/tag/1.0.0) of the SDK.
 
 If you are running Xcode 8.1.x down to Xcode 7.3.x:
 
