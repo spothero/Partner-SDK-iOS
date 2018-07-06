@@ -53,7 +53,7 @@ The absolute bare minimum implementation, assuming you have a button hooked up t
 
 ```swift
 @IBAction private func launchSDKButtonPressed(sender: AnyObject) {
-  let spotHeroSDK = SpotHeroPartnerSDK.SharedInstance        
+  let spotHeroSDK = SpotHeroPartnerSDK.shared        
 
   //Partner key: REQUIRED
   spotHeroSDK.partnerApplicationKey = "Your SpotHero Partner Key Here"
@@ -90,7 +90,7 @@ Here is an example of that same `IBAction` with the optional items set up:
 
 ```swift
 @IBAction private func launchSDKButtonPressed(sender: AnyObject) {
-	let spotHeroSDK = SpotHeroPartnerSDK.SharedInstance
+	let spotHeroSDK = SpotHeroPartnerSDK.shared
 
 	//Partner key: REQUIRED
 	spotHeroSDK.partnerApplicationKey = "Your SpotHero Partner Key Here"
