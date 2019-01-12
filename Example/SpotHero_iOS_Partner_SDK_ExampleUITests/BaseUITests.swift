@@ -48,7 +48,7 @@ class BaseUITests: KIFTestCase {
     func enterTextIntoSearchBar(_ text: String, expectedText: String? = nil) {
         tester().clearText(fromAndThenEnterText: text,
                            intoViewWithAccessibilityLabel: AccessibilityStrings.SearchBar,
-                           traits: UIAccessibilityTraitNone,
+                           traits: .none,
                            expectedResult: expectedText ?? text)
     }
 }

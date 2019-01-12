@@ -32,22 +32,12 @@ struct ReservationAPI {
                                   license: String? = nil,
                                   saveInfo: Bool,
                                   completion: @escaping (Reservation?, Error?) -> Void) {
-        let startDate: Date
-        let endDate: Date
-        if TestingHelper.isUITesting() {
-            startDate = Constants.Test.StartDate
-            endDate = Constants.Test.EndDate
-        } else {
-            startDate = rate.starts
-            endDate = rate.ends
-        }
-        
         let formatter = SHPDateFormatter.ISO8601NoSeconds
-        if !TestingHelper.isTesting() {
-            formatter.timeZone = TimeZone(identifier: facility.timeZone)
-        }
-        let starts = formatter.string(from: startDate)
-        let ends = formatter.string(from: endDate)
+        let previousTimeZone = formatter.timeZone
+        formatter.timeZone = TimeZone(identifier: facility.timeZone)
+        let starts = formatter.string(from: rate.starts)
+        let ends = formatter.string(from: rate.ends)
+        formatter.timeZone = previousTimeZone
         
         var params: [String: Any] = [
             "facility_id" : facility.parkingSpotID,

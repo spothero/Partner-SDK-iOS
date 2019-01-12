@@ -80,7 +80,7 @@ class MapViewController: SpotHeroPartnerViewController {
             .default
             .addObserver(self,
                          selector: #selector(applicationWillEnterForeground(_:)),
-                         name: .UIApplicationWillEnterForeground,
+                         name: UIApplication.willEnterForegroundNotification,
                          object: nil)
     }
     
@@ -182,9 +182,9 @@ class MapViewController: SpotHeroPartnerViewController {
      */
     private func addAndShowFacilityAnnotations(_ facilities: [Facility], firstSearch: Bool) {
         if let predictionPlaceDetails = predictionPlaceDetails, firstSearch {
-            let coordinateRegion = MKCoordinateRegionMakeWithDistance(predictionPlaceDetails.location.coordinate,
-                                                                      self.defaultSearchRadius,
-                                                                      self.defaultSearchRadius)
+            let coordinateRegion = MKCoordinateRegion(center: predictionPlaceDetails.location.coordinate,
+                                                      latitudinalMeters: self.defaultSearchRadius,
+                                                      longitudinalMeters: self.defaultSearchRadius)
             self.mapView.setRegion(coordinateRegion, animated: false)
         }
         
@@ -499,7 +499,7 @@ class MapViewController: SpotHeroPartnerViewController {
     override func willShowKeyboard(notification: Notification) {
         guard
             let userInfo = notification.userInfo,
-            let frame = userInfo[UIKeyboardFrameEndUserInfoKey] as? CGRect else {
+            let frame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else {
                 return
         }
         
@@ -631,15 +631,15 @@ extension MapViewController: SpotCardCollectionViewDelegate {
 //MARK: SpotCardCollectionViewFlowLayoutDelegate
 
 extension MapViewController: SpotCardCollectionViewFlowLayoutDelegate {
-    func didSwipeCollectionView(_ direction: UISwipeGestureRecognizerDirection) {
+    func didSwipeCollectionView(_ direction: UISwipeGestureRecognizer.Direction) {
         switch direction {
-        case UISwipeGestureRecognizerDirection.left:
+        case .left:
             if self.currentIndex + 1 < self.spotCardFacilities.count {
                 self.currentIndex += 1
             } else {
                 return
             }
-        case UISwipeGestureRecognizerDirection.right:
+        case .right:
             if self.currentIndex > 0 {
                 self.currentIndex -= 1
             } else {
