@@ -36,7 +36,7 @@ class ProgressHUD: UIView {
         progressView.activityIndicator.startAnimating()
         
         view.addSubview(progressView)
-        view.bringSubview(toFront: progressView)
+        view.bringSubviewToFront(progressView)
         view.isUserInteractionEnabled = false
     }
     

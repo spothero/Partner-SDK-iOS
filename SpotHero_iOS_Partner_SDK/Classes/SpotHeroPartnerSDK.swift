@@ -102,7 +102,7 @@ public final class SpotHeroPartnerSDK: NSObject {
         }
         
         let textAttributes = [
-            NSAttributedStringKey.foregroundColor: self.textColor,
+            NSAttributedString.Key.foregroundColor: self.textColor,
             ]
         
         navController.navigationBar.titleTextAttributes = textAttributes

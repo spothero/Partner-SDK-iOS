@@ -31,6 +31,7 @@ class CheckoutUITests: BaseUITests {
     let amExCardType = "AExp"
     let discoverCardType = "Discover"
     let masterCardCardType = "Mastercard"
+    let buttonTitle = "Payment Button"
     
     //MARK: - Helper Methods
     
@@ -46,14 +47,14 @@ class CheckoutUITests: BaseUITests {
         tester().enterText(email, intoViewWithAccessibilityLabel: LocalizedStrings.EmailAddressPlaceHolder)
         tester().enterText(creditCardNumber,
                            intoViewWithAccessibilityLabel: LocalizedStrings.CreditCardPlaceHolder,
-                           traits: UIAccessibilityTraitNone,
+                           traits: .none,
                            expectedResult: expectedCC)
         if let expiration = expiration {
             var expectedExpiration = expiration
             expectedExpiration.insert("/", at: expectedExpiration.index(expectedExpiration.startIndex, offsetBy: 2))
             tester().enterText(expiration,
                                intoViewWithAccessibilityLabel: LocalizedStrings.ExpirationDatePlaceHolder,
-                               traits: UIAccessibilityTraitNone,
+                               traits: .none,
                                expectedResult: expectedExpiration)
         }
         
@@ -78,19 +79,19 @@ class CheckoutUITests: BaseUITests {
                 return
         }
         
-        let cardImageData = UIImagePNGRepresentation(cardImage)
-        let cardData = UIImagePNGRepresentation(testImage)
+        let cardImageData = cardImage.pngData()
+        let cardData = testImage.pngData()
         
         XCTAssertEqual(cardImageData, cardData)
         
-        guard let button = tester().waitForView(withAccessibilityLabel: Constants.Test.ButtonTitle) as? UIButton else {
+        guard let button = tester().waitForView(withAccessibilityLabel: self.buttonTitle) as? UIButton else {
             XCTFail("Cannot get payment button")
             return
         }
         
         XCTAssert(button.isEnabled)
         
-        tester().tapView(withAccessibilityLabel: Constants.Test.ButtonTitle)
+        tester().tapView(withAccessibilityLabel: self.buttonTitle)
         
         tester().waitForView(withAccessibilityLabel: LocalizedStrings.BookAnother)
     }
@@ -121,7 +122,7 @@ class CheckoutUITests: BaseUITests {
     }
     
     private func verifyPaymentButtonDisabled(file: StaticString = #file, line: UInt = #line) {
-        guard let paymentButton = tester().waitForView(withAccessibilityLabel: Constants.Test.ButtonTitle) as? UIButton else {
+        guard let paymentButton = tester().waitForView(withAccessibilityLabel: self.buttonTitle) as? UIButton else {
             XCTFail("Cannot get payment button")
             return
         }

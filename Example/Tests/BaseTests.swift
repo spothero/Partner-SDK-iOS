@@ -10,7 +10,10 @@
 import XCTest
 
 class BaseTests: XCTestCase {
-    let testEmail = "matt@gmail.com"
+    let creditCardNumber = "4242424242424242"
+    let expirationMonth = "12"
+    let expirationYear = "2020"
+    let cvc = "123"
     let timeout = 10.0
     
     // Create random email to deal with rate limiting emails
@@ -28,6 +31,8 @@ class BaseTests: XCTestCase {
     override func setUp() {
         super.setUp()
         let expectation = self.expectation(description: "Retrieved API Keys")
+        ServerEnvironment.CurrentEnvironment = .staging
+        SpotHeroPartnerSDK.shared.partnerApplicationKey = "YOUR APPLICATION KEY HERE"
         APIKeyConfig.sharedInstance.getKeys {
             success in
             expectation.fulfill()

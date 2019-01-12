@@ -55,18 +55,8 @@ struct FacilityAPI {
                                 completion: @escaping FacilityCompletion) {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         
-        let startDate: Date
-        let endDate: Date
-        if TestingHelper.isUITesting() {
-            startDate = Constants.Test.StartDate
-            endDate = Constants.Test.EndDate
-        } else {
-            startDate = starts
-            endDate = ends
-        }
-        
-        let startsString = SHPDateFormatter.ISO8601NoSeconds.string(from: startDate)
-        let endsString = SHPDateFormatter.ISO8601NoSeconds.string(from: endDate)
+        let startsString = SHPDateFormatter.ISO8601NoSeconds.string(from: starts)
+        let endsString = SHPDateFormatter.ISO8601NoSeconds.string(from: ends)
         
         let latitude = "\(coordinate.latitude)"
         let longitude = "\(coordinate.longitude)"

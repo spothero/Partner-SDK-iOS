@@ -16,7 +16,7 @@ Add the following line to your [Podfile](https://guides.cocoapods.org/using/the-
 
 ```ruby
 target 'YourAppTargetName'
-  pod 'SpotHero_iOS_Partner_SDK', '~>2.1.1'
+  pod 'SpotHero_iOS_Partner_SDK', '~> 2.2.0'
 end
 ```
 
@@ -26,7 +26,7 @@ Using the terminal, `cd` into the directory where your `Podfile` is located.  Ru
 
 Make sure you follow CocoaPods' instructions and open the `.xcworkspace` file instead of the `.xcodeproj` file, or your code won't build.
 
-**NOTE**: The current version SDK uses Swift 4, and requires a version of Xcode 9 or higher to build. If you need to use something compatible with anything down to Xcode 7.3, please use version [`0.1.3`](https://github.com/spothero/Partner-SDK-iOS/releases/tag/0.1.3) of the SDK, which builds in Swift 2.2 and 2.3. More detailed information about Swift versioning is available in our [note on Swift Versions](#a-note-on-swift-versions).
+**NOTE**: The current version SDK uses Swift 4.2, and requires a version of Xcode 10 or higher to build. If you need to use something compatible with anything down to Xcode 7.3, please use version [`0.1.3`](https://github.com/spothero/Partner-SDK-iOS/releases/tag/0.1.3) of the SDK, which builds in Swift 2.2 and 2.3. More detailed information about Swift versioning is available in our [note on Swift Versions](#a-note-on-swift-versions).
 
 ## Using The SDK in your Code
 
@@ -57,6 +57,8 @@ The absolute bare minimum implementation, assuming you have a button hooked up t
 
   //Partner key: REQUIRED
   spotHeroSDK.partnerApplicationKey = "Your SpotHero Partner Key Here"
+  //Production is the default setting, but if you're testing with a staging application key, change it like so:
+  ServerEnvironment.CurrentEnvironment = .staging
 
   // Present SDK as modal
   spotHeroSDK.launchSDK(fromViewController: self)
@@ -102,7 +104,7 @@ Here is an example of that same `IBAction` with the optional items set up:
 	spotHeroSDK.tintColor = .yellow
 
 	//Ignition, and liftoff!
-	spotHeroSDK.launchSDKFromViewController(self)
+	spotHeroSDK.launchSDK(fromViewController: self)
 }
 ```
 
@@ -113,7 +115,7 @@ And here is what it would look like on launch:
 ## Staging Environment
 
 If you want to test the SDK in a non-production environment,  set `ServerEnvironment.CurrentEnvironment = .staging`
-The default server environment is production.
+The default server environment is production.  **Note that your application key will be different in staging vs. production.**
 
 ## Debugging Help
 
@@ -125,7 +127,11 @@ For security reasons, we ask that you ensure this is **not** set to `true` in an
 
 One thing about Swift that's a bit of a pain until it becomes ABI stable is that your code and *all* dependencies must be using the same version of Swift. This SDK is entirely written in Swift, so make sure you figure out if you have any other Swift-based dependencies or any of your own code tied to a particular version of Swift.
 
-When used with Xcode 9, the current version of the SDK supports both Swift 4 and Swift 3.
+When used with Xcode 10, the current version of the SDK supports both Swift 4 and Swift 3.
+
+If you are using Xcode 9 (with Swift 3 or 4):
+
+- Use version [`2.1.1`](https://github.com/spothero/Partner-SDK-iOS/releases/tag/2.1.1) of the SDK.
 
 If you are using only Swift 3 (or Xcode 8):
 

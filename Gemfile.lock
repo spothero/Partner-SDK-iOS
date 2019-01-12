@@ -138,7 +138,7 @@ GEM
     unf_ext (0.0.7.5)
     unicode-display_width (1.4.1)
     word_wrap (1.0.0)
-    xcode-install (2.5.0)
+    xcode-install (2.4.4)
       claide (>= 0.9.1, < 1.1.0)
       fastlane (>= 2.1.0, < 3.0.0)
     xcodeproj (1.7.0)
@@ -156,9 +156,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bundler (~> 1.17)
+  bundler (~> 1.17.1)
   fastlane (~> 2.112)
-  xcode-install (~> 2.4)
+  xcode-install (~> 2.4.0)
 
 BUNDLED WITH
    1.17.1

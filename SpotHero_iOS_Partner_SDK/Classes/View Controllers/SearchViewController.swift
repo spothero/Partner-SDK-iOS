@@ -106,7 +106,7 @@ class SearchViewController: SpotHeroPartnerViewController {
     override func willShowKeyboard(notification: Notification) {
         guard
             let userInfo = notification.userInfo,
-            let keyboardFrame = userInfo[UIKeyboardFrameEndUserInfoKey] as? CGRect else {
+            let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else {
                 return
         }
         

@@ -19,7 +19,7 @@ enum JSONParsingError: Error {
     case keyNotFound(key: String)
     
     /// Unexpected JSON `value` was found that is not convertible `to` type
-    case valueNotConvertible(value: Any, to: Any.Type)
+    case valueNotConvertible(value: Any, to: Any.Type) //swiftlint:disable:this identifier_name
     
     /// The `key` was found but there were no results
     case noResults

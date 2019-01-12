@@ -14,7 +14,7 @@ class SHPTextField: UITextField {
     }
     
     func setAttributedPlaceholder(text: String) {
-        let placeholderAttribues = [NSAttributedStringKey.foregroundColor: UIColor.shp_pavement]
+        let placeholderAttribues = [NSAttributedString.Key.foregroundColor: UIColor.shp_pavement]
         self.attributedPlaceholder = NSAttributedString(string: text,
                                                         attributes: placeholderAttribues)
     }

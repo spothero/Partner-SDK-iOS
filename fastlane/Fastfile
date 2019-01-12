@@ -69,7 +69,7 @@ test_flight_provisioning_profile_name = 'Distribution App Store: SDK Sample App'
         ENV['SLACK_URL'] = slack_webhook_url
 
         # make sure we're on an appropriate version of Xcode.
-        switch_to_xcode_9
+        switch_to_xcode_10
     end
 
     def is_bitrise
@@ -129,9 +129,9 @@ test_flight_provisioning_profile_name = 'Distribution App Store: SDK Sample App'
 ## TESTING & CODE COVERAGE ##
 #############################
 
-    def switch_to_xcode_9
+    def switch_to_xcode_10
         xcversion(
-            version: "~> 9.3", # Selects the latest installed version from the 9.3.x set
+            version: "~> 10", # Selects the latest installed version from the 10.x set
         )
     end
 

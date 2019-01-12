@@ -308,7 +308,6 @@
 				607FACCD1AFB9204008FA782 /* Frameworks */,
 				607FACCE1AFB9204008FA782 /* Resources */,
 				336178351D249EA300AF7AD6 /* 🤓 SwiftLint Run Script */,
-				336178361D24A64200AF7AD6 /* ⚠️ Swift Warning Run Script */,
 				3583224C1D12D105F5CAE194 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
@@ -353,19 +352,19 @@
 					3361782A1D249B1A00AF7AD6 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = ZW7QWR628D;
-						LastSwiftMigration = 0930;
+						LastSwiftMigration = 1010;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
 						DevelopmentTeam = ZW7QWR628D;
-						LastSwiftMigration = 0930;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Manual;
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
 						DevelopmentTeam = ZW7QWR628D;
-						LastSwiftMigration = 0930;
+						LastSwiftMigration = 1010;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
 				};
@@ -450,21 +449,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Scripts/SwiftLint_Run_Script.sh\"";
-		};
-		336178361D24A64200AF7AD6 /* ⚠️ Swift Warning Run Script */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "⚠️ Swift Warning Run Script";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Scripts/Swift_Warning_Run_Script.sh\"";
+			shellScript = "\"${SRCROOT}/Scripts/SwiftLint_Run_Script.sh\"\n";
 		};
 		3583224C1D12D105F5CAE194 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -733,7 +718,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -784,7 +769,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

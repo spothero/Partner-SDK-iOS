@@ -10,6 +10,6 @@ import MapKit
 
 extension MKMapRect {
     func shp_contains(coordinate: CLLocationCoordinate2D) -> Bool {
-        return MKMapRectContainsPoint(self, MKMapPointForCoordinate(coordinate))
+        return self.contains(MKMapPoint(coordinate))
     }
 }

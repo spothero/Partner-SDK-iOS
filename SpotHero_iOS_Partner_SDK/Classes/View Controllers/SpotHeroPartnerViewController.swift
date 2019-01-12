@@ -28,11 +28,11 @@ class SpotHeroPartnerViewController: UIViewController {
         
         notificationCenter.addObserver(self,
                                        selector: #selector(self.willShowKeyboard(notification:)),
-                                       name: .UIKeyboardWillShow,
+                                       name: UIResponder.keyboardWillShowNotification,
                                        object: nil)
         notificationCenter.addObserver(self,
                                        selector: #selector(self.willHideKeyboard(notification:)),
-                                       name: .UIKeyboardWillHide,
+                                       name: UIResponder.keyboardWillHideNotification,
                                        object: nil)
     }
     

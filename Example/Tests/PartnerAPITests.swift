@@ -13,13 +13,6 @@ import XCTest
 class PartnerAPITests: BaseTests {
     let timeoutDuration: TimeInterval = 60
     
-    override func setUp() {
-        super.setUp()
-        ServerEnvironment.CurrentEnvironment = .staging
-        // Enter your SpotHero Partner API Key here
-        SpotHeroPartnerSDK.shared.partnerApplicationKey = ""
-    }
-    
     func getFacilities(_ location: CLLocation, completion: @escaping FacilityCompletion) {
         let startDate = Date().addingTimeInterval(60 * 60 * 5)
         let endDate = Date().addingTimeInterval(60 * 60 * 10)
@@ -83,7 +76,7 @@ class PartnerAPITests: BaseTests {
         let expectation = self.expectation(description: "testCreateReservation")
     
         var testExecuting = false
-        self.getFacilities(Constants.ChicagoLocation) {
+        self.getFacilities(Constants.HuronStLocation) {
             facilities, error, _ in
             
             // This is another set of results from getting the facilities.
@@ -102,10 +95,10 @@ class PartnerAPITests: BaseTests {
             
             if let facility = testFacility,
                 let rate = facility.availableRates.first {
-                StripeWrapper.getToken(Constants.Test.CreditCardNumber,
-                                       expirationMonth: Constants.Test.ExpirationMonth,
-                                       expirationYear: Constants.Test.ExpirationYear,
-                                       cvc: Constants.Test.CVC) {
+                StripeWrapper.getToken(self.creditCardNumber,
+                                       expirationMonth: self.expirationMonth,
+                                       expirationYear: self.expirationYear,
+                                       cvc: self.cvc) {
                                         token, error in
                                         guard let token = token else {
                                             XCTFail("Failed to get token")

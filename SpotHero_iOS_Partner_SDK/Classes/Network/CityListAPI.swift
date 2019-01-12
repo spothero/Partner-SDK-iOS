@@ -21,7 +21,7 @@ struct CityListAPI {
     
     static func getCities(completion: CityCompletion? = nil) {
         let headers = APIHeaders.defaultHeaders()
-        SpotHeroPartnerAPIController.getJSONFromEndpoint("/v1/cities/",
+        SpotHeroPartnerAPIController.getJSONFromEndpoint("v1/cities",
                                                          withHeaders: headers,
                                                          additionalParams: nil,
                                                          errorCompletion: {

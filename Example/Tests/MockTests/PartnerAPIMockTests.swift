@@ -19,8 +19,15 @@ class PartnerAPIMockTests: XCTestCase {
     let mockTestEmail = "matt@gmail.com"
     let mockTestPhone = "5555555555"
     let timeoutDuration: TimeInterval = 10
-    let startDate = SHPDateFormatter.ISO8601NoSeconds.date(from: "2016-10-13T19:16")
-    let endDate = SHPDateFormatter.ISO8601NoSeconds.date(from: "2016-10-14T00:16")
+    lazy var facilityDates: DateInterval? = {
+        let formatter = SHPDateFormatter.formatter(SHPDateFormatter.ISO8601NoSeconds, inTimeZoneName: "America/Chicago")
+        guard
+            let start = formatter.date(from: "2016-10-13T19:16"),
+            let end = formatter.date(from: "2016-10-14T00:16") else {
+                return nil
+        }
+        return DateInterval(start: start, end: end)
+    }()
     let reservationStartDate = SHPDateFormatter.ISO8601NoMillisecondsUTC.date(from: "2016-08-02T00:08:00Z")
     let reservationEndDate = SHPDateFormatter.ISO8601NoMillisecondsUTC.date(from: "2016-08-02T05:08:00Z")
     
@@ -38,13 +45,11 @@ class PartnerAPIMockTests: XCTestCase {
     }
     
     fileprivate func getFacilities(_ location: CLLocation, completion: @escaping FacilityCompletion) {
-        if
-            let startDate = self.startDate,
-            let endDate = self.endDate {
-                FacilityAPI.fetchFacilities(location.coordinate,
-                                            starts: startDate,
-                                            ends: endDate,
-                                            completion: completion)
+        if let dates = self.facilityDates {
+            FacilityAPI.fetchFacilities(location.coordinate,
+                                        starts: dates.start,
+                                        ends: dates.end,
+                                        completion: completion)
         } else {
             completion([],
                        PartnerAPIMockTestsError.cannotParseDate,
@@ -87,8 +92,8 @@ class PartnerAPIMockTests: XCTestCase {
             XCTAssertFalse(facility.phoneNumberRequired)
             
             XCTAssertEqual(rate.displayPrice, 15)
-            XCTAssertEqual(rate.starts, self.startDate)
-            XCTAssertEqual(rate.ends, self.endDate)
+            XCTAssertEqual(rate.starts, self.facilityDates?.start)
+            XCTAssertEqual(rate.ends, self.facilityDates?.end)
             XCTAssertFalse(rate.unavailable)
             XCTAssertEqual(rate.price, 1500)
             XCTAssertEqual(rate.ruleGroupID, 1390)

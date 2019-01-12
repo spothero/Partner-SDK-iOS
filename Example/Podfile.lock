@@ -3,8 +3,8 @@ PODS:
   - KIF (3.7.2):
     - KIF/Core (= 3.7.2)
   - KIF/Core (3.7.2)
-  - SpotHero_iOS_Partner_SDK (2.1.1)
-  - SwiftLint (0.25.1)
+  - SpotHero_iOS_Partner_SDK (2.2.0)
+  - SwiftLint (0.29.3)
   - VOKBenkode (0.3.0)
   - VOKMockUrlProtocol (2.4.0):
     - ILGHttpConstants (~> 2.0)
@@ -13,7 +13,7 @@ PODS:
 DEPENDENCIES:
   - KIF (~> 3.7.1)
   - SpotHero_iOS_Partner_SDK (from `../`)
-  - SwiftLint (~> 0.25.0)
+  - SwiftLint (~> 0.29.3)
   - VOKMockUrlProtocol (~> 2.4.0)
 
 SPEC REPOS:
@@ -31,11 +31,11 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   ILGHttpConstants: e00456719151b96eec4b1c170e12f5edf71564e1
   KIF: a01333c63303557730ec74dabbc7a661185ced9f
-  SpotHero_iOS_Partner_SDK: 861a1e832ed77a47a054abbee1aae2f6eb4493d0
-  SwiftLint: ce933681be10c3266e82576dad676fa815a602e9
+  SpotHero_iOS_Partner_SDK: 575b484c6c043cece0782fd4b32719f3a2adf894
+  SwiftLint: bfa7ca7b4d170cfaf0d236ca3ffd969e88a2f002
   VOKBenkode: 272b78425bbeca87d0e2fc0809ffc041f88f8cd1
   VOKMockUrlProtocol: 087760219686ac91d9d5ae9dad488575437ab77c
 
-PODFILE CHECKSUM: 083b1f39c2c09a442221eb4d4405a1d36b1dd723
+PODFILE CHECKSUM: ff5eb32b2ece834dd7b92e6630f680bb98898b45
 
-COCOAPODS: 1.5.2
+COCOAPODS: 1.5.3

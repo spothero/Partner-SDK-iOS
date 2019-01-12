@@ -40,7 +40,8 @@ extension Facility {
         self.title = try json.shp_string("title")
         self.licensePlateRequired = try json.shp_bool("license_plate_required")
         self.parkingSpotID = try json.shp_int("parking_spot_id")
-        self.timeZone = try json.shp_string("timezone")
+        let timeZone = try json.shp_string("timezone")
+        self.timeZone = timeZone
         self.phoneNumberRequired = try json.shp_bool("phone_number_required")
         self.distanceInMeters = try json.shp_int("distance")
         
@@ -48,11 +49,17 @@ extension Facility {
         let longitude = try json.shp_double("longitude")
         self.location = CLLocation(latitude: latitude, longitude: longitude)
         
+        //parse rate dates in the facility's timezone in case we searched from a different timezone
+        let formatter = SHPDateFormatter.ISO8601NoSeconds
+        let previousTimeZone = formatter.timeZone
+        formatter.timeZone = TimeZone(identifier: timeZone)
         let rateDictionaries = try json.shp_array("hourly_rates") as [JSONDictionary]
         for rateDictionary in rateDictionaries {
             let rate = try Rate(json: rateDictionary)
             rates.append(rate)
         }
+        //reset the previous timezone
+        formatter.timeZone = previousTimeZone
         
         let details = try json.shp_dictionary("facility") as JSONDictionary
         self.city = try details.shp_string("city")

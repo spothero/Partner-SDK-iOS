@@ -9,7 +9,7 @@
 import UIKit
 
 protocol SpotCardCollectionViewFlowLayoutDelegate: class {
-    func didSwipeCollectionView(_ direction: UISwipeGestureRecognizerDirection)
+    func didSwipeCollectionView(_ direction: UISwipeGestureRecognizer.Direction)
 }
 
 class SpotCardCollectionViewFlowLayout: UICollectionViewFlowLayout {

@@ -78,7 +78,7 @@ class SpotDetailsViewController: SpotHeroPartnerViewController {
             .default
             .addObserver(self,
                          selector: #selector(applicationWillEnterForeground(_:)),
-                         name: .UIApplicationWillEnterForeground,
+                         name: UIApplication.willEnterForegroundNotification,
                          object: nil)
     }
     
@@ -352,7 +352,7 @@ class SpotDetailsViewController: SpotHeroPartnerViewController {
         self.mapView?.delegate = self
         self.addAnnotations(start: facilityCoordinate, end: searchLocation.coordinate)
         
-        let request = MKDirectionsRequest()
+        let request = MKDirections.Request()
         request.source = MKMapItem(placemark: MKPlacemark(coordinate: facilityCoordinate))
         request.destination = MKMapItem(placemark: MKPlacemark(coordinate: searchLocation.coordinate))
         request.transportType = .walking
@@ -376,7 +376,7 @@ class SpotDetailsViewController: SpotHeroPartnerViewController {
                 strongSelf.mapView?.setVisibleMapRect(rect,
                                                  edgePadding: padding,
                                                  animated: false)
-                strongSelf.mapView?.add(route.polyline)
+                strongSelf.mapView?.addOverlay(route.polyline)
                 
                 let formatter = DateComponentsFormatter()
                 formatter.unitsStyle = .short
