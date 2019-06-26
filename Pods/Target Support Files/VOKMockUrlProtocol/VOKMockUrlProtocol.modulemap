@@ -1,0 +1,6 @@
+framework module VOKMockUrlProtocol {
+  umbrella header "VOKMockUrlProtocol-umbrella.h"
+
+  export *
+  module * { export * }
+}
