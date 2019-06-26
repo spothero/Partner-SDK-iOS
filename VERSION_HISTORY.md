@@ -1,5 +1,5 @@
 # Version History
-[2.2.0](https://github.com/spothero/Partner-SDK-iOS/releases/tag/2.2.0)
+[2.1.1](https://github.com/spothero/Partner-SDK-iOS/releases/tag/2.1.1)
 
 - Moves the whole SDK to using Swift 4.2.
 
