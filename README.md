@@ -16,7 +16,7 @@ Add the following line to your [Podfile](https://guides.cocoapods.org/using/the-
 
 ```ruby
 target 'YourAppTargetName'
-  pod 'SpotHero_iOS_Partner_SDK', '~> 2.2.0'
+  pod 'SpotHero_iOS_Partner_SDK', '~> 2.3.0'
 end
 ```
 
